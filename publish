@@ -14,7 +14,7 @@ config_files=( "gradle.properties" "forge/src/main/resources/META-INF/mods.toml"
 curseforge_url=https://minecraft.curseforge.com
 curseforge_project_id=966366
 minecraft_version_key="minecraft_version"
-mod_id=<MOD_NAME>
+mod_id=example_mod
 mod_version_key="mod_version"
 mod_loaders=( "forge" ) # [common, forge, fabric]
 
