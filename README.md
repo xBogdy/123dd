@@ -1,6 +1,8 @@
 # Multi ML
 
-This repository contains multi modloader project templates for different versions of minecraft. Simply fork the project and use the desired version branch as starting point for your project.
+This repository contains multi modloader project templates for different versions of minecraft. Simply clone the project and use the desired version branch as starting point for your project.
+
+> Do not forget to update to your own *remote* with `git remote set-url origin <remote_url>`.
 
 ## How to get started
 
