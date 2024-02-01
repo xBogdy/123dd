@@ -15,9 +15,9 @@
  * You should have received a copy of the GNU Lesser General Public License along
  * with Example Mod. If not, see <http://www.gnu.org/licenses/lgpl>.
  */
-package com.gitlab.srcmc.modtemplate.forge;
+package com.gitlab.srcmc.my_mod_id.forge;
 
-import com.gitlab.srcmc.modtemplate.ModTemplate;
+import com.gitlab.srcmc.my_mod_id.ModCommon;
 
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.item.Item;
@@ -41,7 +41,7 @@ public class ModRegistries {
         public static final DeferredRegister<SoundEvent> REGISTRY;
 
         static {
-            REGISTRY = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, ModTemplate.MODID);
+            REGISTRY = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, ModCommon.MOD_ID);
         }
     }
 
@@ -49,7 +49,7 @@ public class ModRegistries {
         public static final DeferredRegister<Item> REGISTRY;
 
         static {
-            REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, ModTemplate.MODID);
+            REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, ModCommon.MOD_ID);
         }
     }
 
@@ -57,7 +57,7 @@ public class ModRegistries {
         public static final DeferredRegister<Block> REGISTRY;
 
         static {
-            REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCKS, ModTemplate.MODID);
+            REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCKS, ModCommon.MOD_ID);
         }
     }
 
@@ -65,7 +65,7 @@ public class ModRegistries {
         public static final DeferredRegister<BlockEntityType<?>> REGISTRY;
 
         static {
-            REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, ModTemplate.MODID);
+            REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, ModCommon.MOD_ID);
         }
     }
 }

@@ -1,7 +1,5 @@
 plugins {
     id 'fabric-loom' version '1.0-SNAPSHOT'
-    id 'maven-publish'
-    id 'idea'
 }
 
 archivesBaseName = "${mod_id}-fabric-${minecraft_version}-${mod_version}"
@@ -9,9 +7,13 @@ archivesBaseName = "${mod_id}-fabric-${minecraft_version}-${mod_version}"
 dependencies {
     minecraft "com.mojang:minecraft:${minecraft_version}"
     mappings loom.officialMojangMappings()
+
+    // Mod Loader
     modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
     implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
+
+    // Common
     implementation project(":common")
 
     // JEI
@@ -20,48 +22,24 @@ dependencies {
 
 loom {
     runs {
-        client {
+        client_1 {
             client()
-            setConfigName("Fabric Client")
-            ideConfigGenerated(true)
-            runDir("run")
+            programArg "--username Dev1"
+            setConfigName("Fabric Client 1")
+            runDir("run/client_1")
+        }
+
+        runClient2 {
+            inherit client_1
+            programArg "--username Dev2"
+            setConfigName("Fabric Client 2")
+            runDir("run/client_2")
         }
 
         server {
             server()
             setConfigName("Fabric Server")
-            ideConfigGenerated(true)
-            runDir("run")
-        }
-    }
-}
-
-processResources {
-    from project(":common").sourceSets.main.resources
-    inputs.property "version", project.version
-
-    filesMatching("fabric.mod.json") {
-        expand "version": project.version
-    }
-}
-
-tasks.withType(JavaCompile) {
-    source(project(":common").sourceSets.main.allSource)
-}
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            groupId project.group
-            artifactId project.archivesBaseName
-            version project.version
-            from components.java
-        }
-    }
-
-    repositories {
-        maven {
-            url "file://" + System.getenv("local_maven")
+            runDir("run/server")
         }
     }
 }

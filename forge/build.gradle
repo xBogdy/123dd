@@ -1,8 +1,6 @@
 plugins {
-    id 'java'
-    id 'eclipse'
-    id 'maven-publish'
     id 'net.minecraftforge.gradle' version '5.1.+'
+    id 'org.spongepowered.mixin' version '0.7.+'
 }
 
 archivesBaseName = "${mod_id}-forge-${minecraft_version}-${mod_version}"
@@ -19,7 +17,7 @@ minecraft {
 
     runs {
         client {
-            workingDirectory project.file('run')
+            workingDirectory project.file('run/client_1')
             ideaModule "${rootProject.name}.${project.name}.main"
             property 'mixin.env.remapRefMap', 'true'
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
@@ -32,13 +30,14 @@ minecraft {
         }
 
         client2 {
+            parent runs.client
+            workingDirectory project.file('run/client_2')
             taskName 'runClient2'
             args '--username', 'Dev2'
-            parent runs.client
         }
 
         server {
-            workingDirectory project.file('run')
+            workingDirectory project.file('run/server')
             ideaModule "${rootProject.name}.${project.name}.main"
             property 'mixin.env.remapRefMap', 'true'
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
@@ -66,8 +65,6 @@ minecraft {
     }
 }
 
-sourceSets.main.resources.srcDir 'src/generated/resources'
-
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     compileOnly project(":common")
@@ -77,7 +74,7 @@ dependencies {
     runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
 
     // CraftTweaker
-    runtimeOnly(fg.deobf("com.blamejared.crafttweaker:CraftTweaker-forge-${minecraft_version}:${ct_version}"))
+    runtimeOnly(fg.deobf("com.blamejared.crafttweaker:CraftTweaker-forge-${minecraft_version}:${crafttweaker_version}"))
 
     // Mekanism
     runtimeOnly fg.deobf("mekanism:Mekanism:${minecraft_version}-${mekanism_version}") // core
@@ -86,29 +83,10 @@ dependencies {
     runtimeOnly fg.deobf("mekanism:Mekanism:${minecraft_version}-${mekanism_version}:tools") // Mekanism: Tools
 }
 
-tasks.withType(JavaCompile) {
-    source(project(":common").sourceSets.main.allSource)
+mixin {
+    add sourceSets.main, "mixins.${mod_id}.refmap.json"
+    config "mixins.${mod_id}.json"
 }
 
-processResources {
-    from project(":common").sourceSets.main.resources
-}
-
+sourceSets.main.resources.srcDir 'src/generated/resources'
 jar.finalizedBy('reobfJar')
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            groupId project.group
-            artifactId project.archivesBaseName
-            version project.version
-            artifact jar
-        }
-    }
-
-    repositories {
-        maven {
-            url "file://" + System.getenv("local_maven")
-        }
-    }
-}

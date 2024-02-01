@@ -15,13 +15,13 @@
  * You should have received a copy of the GNU Lesser General Public License along
  * with Example Mod. If not, see <http://www.gnu.org/licenses/lgpl>.
  */
-package com.gitlab.srcmc.modtemplate.forge;
+package com.gitlab.srcmc.my_mod_id.forge;
 
-import com.gitlab.srcmc.modtemplate.ModTemplate;
+import com.gitlab.srcmc.my_mod_id.ModCommon;
 
 import net.minecraftforge.fml.common.Mod;
 
-@Mod(ModTemplate.MODID)
+@Mod(ModCommon.MOD_ID)
 public class ModForge {
     static { ModRegistries.init(); }
 }

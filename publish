@@ -10,13 +10,14 @@
 set -e
 
 # config
-config_files=( "gradle.properties" "forge/src/main/resources/META-INF/mods.toml" )
 curseforge_url=https://minecraft.curseforge.com
-curseforge_project_id=966366
-minecraft_version_key="minecraft_version"
-mod_id=example_mod
-mod_version_key="mod_version"
+curseforge_project_id=123456
+config_files=( "gradle.properties" )
 mod_loaders=( "forge" ) # [common, forge, fabric]
+
+minecraft_version_key="minecraft_version"
+mod_version_key="mod_version"
+mod_id_key="mod_id"
 
 # curseforge will give an error response if a certain version id has an invalid
 # type (output $minecraft_version_ids to inspect what type the id had)
@@ -57,7 +58,7 @@ function get_version() {
         fi
     done
 
-    assert "$result" "get_version: ${version_key:0:-1} not found"
+    assert "$result" "get_version: $1 not found"
     echo "$result"
 }
 
@@ -69,6 +70,22 @@ function set_version() {
     for file in "${config_files[@]}"; do
         sed -i "s/^$version_key=[^ ]*/$version_key=$2/g" "$file"
     done
+}
+
+function get_mod_id() {
+    _mod_id_key="$mod_id_key="
+
+    for file in "$(find -name gradle.properties)"; do
+        result=$(grep "^$_mod_id_key" "$file")
+
+        if [ -n "$result" ]; then
+            result="${result:${#_mod_id_key}}"
+            break
+        fi
+    done
+
+    assert "$result" "get_mod_id: $mod_id_key not found"
+    echo "$result"
 }
 
 function as_json() {
@@ -188,7 +205,23 @@ minecraft_version_ids=$(echo $minecraft_version_ids \
 assert "$minecraft_version_ids" "minecraft version '$minecraft_version' not found"
 minecraft_version_ids="${minecraft_version_ids:0:-1}" # trailing comma ','
 
-# build curseforge metadata for upload
+# commit changes if version was updated
+if [ "$(git status --porcelain)" ]; then
+    echo "Versions have been updated"
+    read -p "Type 'confirm' to continue: " answer
+
+    if [ "$answer" != "confirm" ]; then
+        assert "aborted"
+    fi
+
+    git add .
+    git commit -m "Updated version"
+fi
+
+# retrieve mod_id
+mod_id=$(get_mod_id)
+
+# how to set mod_loader?
 metadata="{
     \"changelog\": \"$(as_json "$(<CHANGELOG.md)")\",
     \"changelogType\": \"markdown\",
@@ -208,12 +241,6 @@ for mod_loader in "${mod_loaders[@]}"; do
 
     echo "- published '$mod_archive': $response"
 done
-
-# commit changes if version was updated
-if [ "$(git status --porcelain)" ]; then
-    git add .
-    git commit -m "Updated version"
-fi
 
 # create tag for new version
 git tag -a $version_tag -m "Update $mod_version"

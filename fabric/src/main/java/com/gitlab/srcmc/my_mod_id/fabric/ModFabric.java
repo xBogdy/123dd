@@ -15,13 +15,11 @@
  * You should have received a copy of the GNU Lesser General Public License along
  * with Example Mod. If not, see <http://www.gnu.org/licenses/lgpl>.
  */
-package com.gitlab.srcmc.modtemplate;
+package com.gitlab.srcmc.my_mod_id.fabric;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import net.fabricmc.api.ModInitializer;
 
-public class ModTemplate {
-    public static final String MODID = "example_mod";
-    public static final String MOD_NAME = "Example Mod";
-	public static final Logger LOG = LoggerFactory.getLogger(MOD_NAME);
+public class ModFabric implements ModInitializer{
+    @Override
+    public void onInitialize() {}
 }

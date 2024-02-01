@@ -1,6 +1,12 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
 subprojects {
     apply plugin: 'java'
-    
+    apply plugin: 'maven-publish'
+
     java.toolchain.languageVersion = JavaLanguageVersion.of(17)
     java.withSourcesJar()
     java.withJavadocJar()
@@ -61,5 +67,36 @@ subprojects {
     // other mod developers.
     tasks.withType(GenerateModuleMetadata) {
         enabled = false
+    }
+
+    processResources {
+        from project(":common").sourceSets.main.resources
+        
+        filesMatching(['**/mods.toml', 'pack.mcmeta', 'fabric.mod.json', 'mixins.*.json']) {
+            expand project.properties
+        }
+    }
+
+    if(it.name != 'common') {
+        tasks.withType(JavaCompile) {
+            source(project(":common").sourceSets.main.allSource)
+        }
+
+        publishing {
+            publications {
+                mavenJava(MavenPublication) {
+                    groupId project.group
+                    artifactId project.archivesBaseName
+                    version project.version
+                    artifact jar
+                }
+            }
+
+            repositories {
+                maven {
+                    url "file://" + System.getenv("local_maven")
+                }
+            }
+        }
     }
 }

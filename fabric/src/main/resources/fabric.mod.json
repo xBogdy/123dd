@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "${mod_id}",
+  "version": "${mod_version}",
+  "name": "${mod_name}",
+  "description": "${mod_description}",
+  "authors": [
+    "${mod_author}"
+  ],
+  "license": "${license}",
+  "icon": "assets/${mod_id}/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "${group}.${mod_id}.fabric.ModFabric"
+    ]
+  },
+  "mixins": [
+    "mixins.${mod_id}.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${fabric_loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
