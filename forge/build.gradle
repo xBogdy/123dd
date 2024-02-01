@@ -69,9 +69,9 @@ dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     compileOnly project(":common")
 
-    // JEI (not supported)
-    // compileOnly fg.deobf("mezz.jei:jei-${jei_mc_version}-common-api:${jei_version}")
-    // runtimeOnly fg.deobf("mezz.jei:jei-${jei_mc_version}-forge:${jei_version}")
+    // JEI
+    compileOnly fg.deobf("mezz.jei:jei-${jei_mc_version}-common-api:${jei_version}")
+    runtimeOnly fg.deobf("mezz.jei:jei-${jei_mc_version}-forge:${jei_version}")
 
     // CraftTweaker (not supported)
     // runtimeOnly(fg.deobf("com.blamejared.crafttweaker:CraftTweaker-forge-${crafttweaker_mc_version}:${crafttweaker_version}"))
