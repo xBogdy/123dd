@@ -1,7 +1,7 @@
 {
   "required": true,
   "compatibilityLevel": "JAVA_17",
-  "package": "test.${mod_id}.mixins",
+  "package": "${group}.${mod_id}.mixins",
   "mixins": [],
   "injectors": {
     "defaultRequire": 1
