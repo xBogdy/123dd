@@ -69,18 +69,18 @@ dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     compileOnly project(":common")
 
-    // JEI
-    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
-    runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
+    // JEI (not supported)
+    // compileOnly fg.deobf("mezz.jei:jei-${jei_mc_version}-common-api:${jei_version}")
+    // runtimeOnly fg.deobf("mezz.jei:jei-${jei_mc_version}-forge:${jei_version}")
 
-    // CraftTweaker
-    runtimeOnly(fg.deobf("com.blamejared.crafttweaker:CraftTweaker-forge-${minecraft_version}:${crafttweaker_version}"))
+    // CraftTweaker (not supported)
+    // runtimeOnly(fg.deobf("com.blamejared.crafttweaker:CraftTweaker-forge-${crafttweaker_mc_version}:${crafttweaker_version}"))
 
     // Mekanism
-    runtimeOnly fg.deobf("mekanism:Mekanism:${minecraft_version}-${mekanism_version}") // core
-    runtimeOnly fg.deobf("mekanism:Mekanism:${minecraft_version}-${mekanism_version}:additions") // Mekanism: Additions
-    runtimeOnly fg.deobf("mekanism:Mekanism:${minecraft_version}-${mekanism_version}:generators") // Mekanism: Generators
-    runtimeOnly fg.deobf("mekanism:Mekanism:${minecraft_version}-${mekanism_version}:tools") // Mekanism: Tools
+    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_mc_version}-${mekanism_version}") // core
+    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_mc_version}-${mekanism_version}:additions") // Mekanism: Additions
+    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_mc_version}-${mekanism_version}:generators") // Mekanism: Generators
+    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_mc_version}-${mekanism_version}:tools") // Mekanism: Tools
 }
 
 mixin {
