@@ -76,11 +76,11 @@ dependencies {
     // CraftTweaker
     runtimeOnly(fg.deobf("com.blamejared.crafttweaker:CraftTweaker-forge-${crafttweaker_mc_version}:${crafttweaker_version}"))
 
-    // Mekanism (not supported)
-    // runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_mc_version}-${mekanism_version}") // core
-    // runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_mc_version}-${mekanism_version}:additions") // Mekanism: Additions
-    // runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_mc_version}-${mekanism_version}:generators") // Mekanism: Generators
-    // runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_mc_version}-${mekanism_version}:tools") // Mekanism: Tools
+    // Mekanism
+    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_mc_version}-${mekanism_version}") // core
+    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_mc_version}-${mekanism_version}:additions") // Mekanism: Additions
+    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_mc_version}-${mekanism_version}:generators") // Mekanism: Generators
+    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_mc_version}-${mekanism_version}:tools") // Mekanism: Tools
 }
 
 mixin {
