@@ -15,9 +15,9 @@
  * You should have received a copy of the GNU Lesser General Public License along
  * with Example Mod. If not, see <http://www.gnu.org/licenses/lgpl>.
  */
-package com.gitlab.srcmc.my_mod_id.forge;
+package com.gitlab.srcmc.mymodid.forge;
 
-import com.gitlab.srcmc.my_mod_id.ModCommon;
+import com.gitlab.srcmc.mymodid.ModCommon;
 
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.item.Item;

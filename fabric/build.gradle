@@ -17,7 +17,7 @@ dependencies {
     implementation project(":common")
 
     // JEI
-    modRuntimeOnly "mezz.jei:jei-${minecraft_version}-fabric:${jei_version}"
+    modRuntimeOnly "mezz.jei:jei-${jei_mc_version}-fabric:${jei_version}"
 }
 
 loom {

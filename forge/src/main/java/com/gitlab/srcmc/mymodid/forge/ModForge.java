@@ -15,11 +15,13 @@
  * You should have received a copy of the GNU Lesser General Public License along
  * with Example Mod. If not, see <http://www.gnu.org/licenses/lgpl>.
  */
-package com.gitlab.srcmc.my_mod_id.fabric;
+package com.gitlab.srcmc.mymodid.forge;
 
-import net.fabricmc.api.ModInitializer;
+import com.gitlab.srcmc.mymodid.ModCommon;
 
-public class ModFabric implements ModInitializer{
-    @Override
-    public void onInitialize() {}
+import net.minecraftforge.fml.common.Mod;
+
+@Mod(ModCommon.MOD_ID)
+public class ModForge {
+    static { ModRegistries.init(); }
 }
