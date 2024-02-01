@@ -15,13 +15,13 @@
  * You should have received a copy of the GNU Lesser General Public License along
  * with Example Mod. If not, see <http://www.gnu.org/licenses/lgpl>.
  */
-package com.gitlab.srcmc.my_mod_id.forge;
+package com.gitlab.srcmc.mymodid;
 
-import com.gitlab.srcmc.my_mod_id.ModCommon;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import net.minecraftforge.fml.common.Mod;
-
-@Mod(ModCommon.MOD_ID)
-public class ModForge {
-    static { ModRegistries.init(); }
+public class ModCommon {
+    public static final String MOD_ID = "mymodid"; // must match mod_id
+    public static final String MOD_NAME = "Example Mod"; // should match mod_name
+	public static final Logger LOG = LoggerFactory.getLogger(MOD_NAME);;
 }
