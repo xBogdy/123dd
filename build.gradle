@@ -55,6 +55,11 @@ subprojects {
             name = 'Mod Maven (Mekanism)'
             url = 'https://modmaven.dev/'
         }
+
+        maven {
+            name = 'CurseForge'
+            url = 'https://www.cursemaven.com'
+        }
     }
 
     tasks.withType(JavaCompile).configureEach {
