@@ -85,7 +85,10 @@ dependencies {
 
 mixin {
     add sourceSets.main, "mixins.${mod_id}.refmap.json"
+    add sourceSets.main, "mixins.${mod_id}.forge.refmap.json"
+
     config "mixins.${mod_id}.json"
+    config "mixins.${mod_id}.forge.json"
 }
 
 sourceSets.main.resources.srcDir 'src/generated/resources'
