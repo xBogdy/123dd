@@ -135,7 +135,7 @@ else
 fi
 
 # check if tag is unique
-version_tag="v$mod_version"
+version_tag="v$mod_version-$minecraft_version"
 
 if [ -n "$(git tag -l $version_tag)" ]; then
     assert "tag '$version_tag' already exists"
