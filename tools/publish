@@ -17,10 +17,6 @@ minecraft_version_key="minecraft_version"
 mod_version_key="mod_version"
 mod_id_key="mod_id"
 
-# curseforge will give an error response if a certain version id has an invalid
-# type (output $minecraft_version_ids to inspect what type the id had)
-minecraft_version_type_backlist=( "1", "615" )
-
 function assert() {
     if [ -z "$2" ]; then
         echo "error: $1" >&2
@@ -183,6 +179,32 @@ fi
 ./gradlew clean --console=plain
 ./gradlew build --console=plain
 
+# commit changes if version was updated
+if [ "$(git status --porcelain)" ]; then
+    echo "Versions have been updated"
+    read -p "Type 'confirm' to continue: " answer
+
+    if [ "$answer" != "confirm" ]; then
+        assert "aborted"
+    fi
+
+    git add .
+    git commit -m "Updated version"
+fi
+
+# retrieve mod_id
+mod_id=$(get_mod_id)
+
+#####################################################
+#                    Curseforge                     #
+#####################################################
+
+curseforge_url=https://minecraft.curseforge.com
+
+# curseforge will give an error response if a certain version id has an invalid
+# type (output $minecraft_version_ids to inspect what type the id had)
+minecraft_version_type_backlist=( "1", "615" )
+
 # escape common regex special characters
 minecraft_version_esc="${minecraft_version//./\\.}"
 minecraft_version_esc="${minecraft_version_esc//+/\\+}"
@@ -211,28 +233,6 @@ minecraft_version_ids=$(echo $minecraft_version_ids \
 
 assert "$minecraft_version_ids" "minecraft version '$minecraft_version' not found"
 minecraft_version_ids="${minecraft_version_ids:0:-1}" # trailing comma ','
-
-# commit changes if version was updated
-if [ "$(git status --porcelain)" ]; then
-    echo "Versions have been updated"
-    read -p "Type 'confirm' to continue: " answer
-
-    if [ "$answer" != "confirm" ]; then
-        assert "aborted"
-    fi
-
-    git add .
-    git commit -m "Updated version"
-fi
-
-# retrieve mod_id
-mod_id=$(get_mod_id)
-
-#####################################################
-#                    Curseforge                     #
-#####################################################
-
-curseforge_url=https://minecraft.curseforge.com
 
 unset answer
 while [ "$answer" != "y" -a "$answer" != "n" ]; do
