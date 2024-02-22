@@ -281,7 +281,7 @@ if [ "$answer" = "y" ]; then
     for mod_loader in "${mod_loaders[@]}"; do
         metadata="{
             \"name\": \"Version $mod_version\",
-            \"version\": \"$mod_version\",
+            \"version_number\": \"$mod_version\",
             \"changelog\": \"$(as_json "$(<CHANGELOG.md)")\",
             \"dependencies\": [],
             \"game_versions\": [\"$minecraft_version\"],
