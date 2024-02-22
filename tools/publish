@@ -251,8 +251,6 @@ if [ "$answer" = "y" ]; then
     # upload archives to curseforge
     for mod_loader in "${mod_loaders[@]}"; do
         mod_archive="./$mod_loader/build/libs/$mod_id-$mod_loader-$minecraft_version-$mod_version.jar"
-
-        # upload jar-archive to curseforge
         response=$(assert_curl -s -F metadata="$metadata" -F file="@$mod_archive" \
             -H 'Accept: application/json' \
             -H "X-Api-Token: $CURSE_API_KEY" \
@@ -299,6 +297,10 @@ if [ "$answer" = "y" ]; then
         echo "Published '$mod_archive' to Modrinth: $response"
     done
 fi
+
+#####################################################
+#                      Git Tag                      #
+#####################################################
 
 if [ -n "$skip_tag" ]; then
     # create tag for new version
