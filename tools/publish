@@ -295,7 +295,7 @@ if [ "$answer" = "y" ]; then
         mod_archive="./$mod_loader/build/libs/$mod_id-$mod_loader-$minecraft_version-$mod_version.jar"
         response=$(assert_curl -s -F data="$metadata" -F file="@$mod_archive" \
             -H 'Accept: application/json' \
-            -H "X-Api-Token: $MODRINTH_API_KEY" \
+            -H "Authorization: $MODRINTH_API_KEY" \
             "$modrinth_url/version")
 
         echo "Published '$mod_archive' to Modrinth: $response"
