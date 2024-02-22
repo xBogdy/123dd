@@ -10,7 +10,6 @@
 set -e
 
 # config
-curseforge_url=https://minecraft.curseforge.com
 config_files=( "gradle.properties" )
 mod_loaders=( "forge" ) # [common, forge, fabric]
 
@@ -37,7 +36,7 @@ function assert() {
 function assert_curl() {
     response=$(curl "$@")
 
-    if [ -n "$(echo $response | grep error)" ]; then
+    if [ -n "$(echo $response | grep "error":)" ]; then
         assert "$response"
     fi
 
@@ -139,6 +138,15 @@ version_tag="v$mod_version-$minecraft_version"
 
 if [ -n "$(git tag -l $version_tag)" ]; then
     assert "tag '$version_tag' already exists"
+    echo "The tag '$version_tag' already exists."
+    read -p "Type 'confirm' to skip tag creation: " answer
+
+    if [ "$answer" != "confirm" ]; then
+        assert "aborted"
+    fi
+
+    skip_tag=1
+    unset answer
 fi
 
 # update version in changelog (optional)
@@ -173,7 +181,8 @@ if [ "$answer" != "confirm" ]; then
 fi
 
 # create clean build
-./gradlew clean build --console=plain
+./gradlew clean --console=plain
+./gradlew build --console=plain
 
 # escape common regex special characters
 minecraft_version_esc="${minecraft_version//./\\.}"
@@ -220,31 +229,84 @@ fi
 # retrieve mod_id
 mod_id=$(get_mod_id)
 
-# how to set mod_loader?
-metadata="{
-    \"changelog\": \"$(as_json "$(<CHANGELOG.md)")\",
-    \"changelogType\": \"markdown\",
-    \"gameVersions\": [$minecraft_version_ids],
-    \"releaseType\": \"$release_type\"
-}"
+#####################################################
+#                    Curseforge                     #
+#####################################################
 
-# upload archives to curseforge
-for mod_loader in "${mod_loaders[@]}"; do
-    mod_archive="./$mod_loader/build/libs/$mod_id-$mod_loader-$minecraft_version-$mod_version.jar"
+curseforge_url=https://minecraft.curseforge.com
 
-    # upload jar-archive to curseforge
-    response=$(assert_curl -s -F metadata="$metadata" -F file="@$mod_archive" \
-        -H 'Accept: application/json' \
-        -H "X-Api-Token: $CURSE_API_KEY" \
-        "$curseforge_url/api/projects/$CURSE_PROJECT_ID/upload-file")
-
-    echo "- published '$mod_archive': $response"
+unset answer
+while [ "$answer" != "y" -a "$answer" != "n" ]; do
+    read -p "Do you wish to upload to Curseforge (y/n)?: " answer
 done
 
-# create tag for new version
-git tag -a $version_tag -m "Update $mod_version"
+if [ "$answer" = "y" ]; then
+    # how to set mod_loader?
+    metadata="{
+        \"changelog\": \"$(as_json "$(<CHANGELOG.md)")\",
+        \"changelogType\": \"markdown\",
+        \"gameVersions\": [$minecraft_version_ids],
+        \"releaseType\": \"$release_type\"
+    }"
 
-# push changes
-git push --follow-tags
+    # upload archives to curseforge
+    for mod_loader in "${mod_loaders[@]}"; do
+        mod_archive="./$mod_loader/build/libs/$mod_id-$mod_loader-$minecraft_version-$mod_version.jar"
+
+        # upload jar-archive to curseforge
+        response=$(assert_curl -s -F metadata="$metadata" -F file="@$mod_archive" \
+            -H 'Accept: application/json' \
+            -H "X-Api-Token: $CURSE_API_KEY" \
+            "$curseforge_url/api/projects/$CURSE_PROJECT_ID/upload-file")
+
+        echo "Published '$mod_archive' to Curseforge: $response"
+    done
+fi
+
+#####################################################
+#                     Modrinth                      #
+#####################################################
+
+# https://api.modrinth.com/v2
+modrinth_url=https://staging-api.modrinth.com/v2
+
+unset answer
+while [ "$answer" != "y" -a "$answer" != "n" ]; do
+    read -p "Do you wish to upload to Modrinth (y/n)?: " answer
+done
+
+if [ "$answer" = "y" ]; then
+    # upload archives to modrinth
+    for mod_loader in "${mod_loaders[@]}"; do
+        metadata="{
+            \"name\": \"Version $mod_version\",
+            \"version\": \"$mod_version\",
+            \"changelog\": \"$(as_json "$(<CHANGELOG.md)")\",
+            \"dependencies\": [],
+            \"game_versions\": [\"$minecraft_version\"],
+            \"version_type\": \"$release_type\",
+            \"loaders\": [\"$mod_loader\"],
+            \"featured\": false,
+            \"project_id\": \"$MODRINTH_PROJECT_ID\",
+            \"file_parts\": [\"$mod_id-$mod_loader-$minecraft_version-$mod_version.jar\"]
+        }"
+
+        mod_archive="./$mod_loader/build/libs/$mod_id-$mod_loader-$minecraft_version-$mod_version.jar"
+        response=$(assert_curl -s -F data="$metadata" -F file="@$mod_archive" \
+            -H 'Accept: application/json' \
+            -H "X-Api-Token: $MODRINTH_API_KEY" \
+            "$modrinth_url/version")
+
+        echo "Published '$mod_archive' to Modrinth: $response"
+    done
+fi
+
+if [ -n "$skip_tag" ]; then
+    # create tag for new version
+    git tag -a $version_tag -m "Update $mod_version"
+
+    # push changes
+    git push --follow-tags
+fi
 
 set +e
