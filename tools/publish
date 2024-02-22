@@ -306,7 +306,7 @@ fi
 #                      Git Tag                      #
 #####################################################
 
-if [ -n "$skip_tag" ]; then
+if [ -z "$skip_tag" ]; then
     # create tag for new version
     git tag -a $version_tag -m "Update $mod_version"
 
