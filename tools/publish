@@ -268,8 +268,7 @@ fi
 #                     Modrinth                      #
 #####################################################
 
-# https://api.modrinth.com/v2
-modrinth_url=https://staging-api.modrinth.com/v2
+modrinth_url=https://api.modrinth.com/v2
 
 unset answer
 while [ "$answer" != "y" -a "$answer" != "n" ]; do
