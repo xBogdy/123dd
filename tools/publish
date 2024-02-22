@@ -35,6 +35,10 @@ function assert_curl() {
     if [ -n "$(echo $response | grep "error":)" ]; then
         assert "$response"
     fi
+    
+    if [ -n "$(echo $response | grep "errorCode":)" ]; then
+        assert "$response"
+    fi
 
     echo "$response"
 }
