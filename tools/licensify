@@ -79,9 +79,10 @@ while [ "$#" -gt 0 ]; do
         fi
 
         if [ -n "$header" ]; then
-            echo -e -n "$(echo "$header" | sed -e s/"<title>"/"$title"/g -e s/"<author>"/"$author"/g)\n$content" > "$1"
+            echo "$(echo "$header" | sed -e s/"<title>"/"$title"/g -e s/"<author>"/"$author"/g)" > "$1"
+            echo "$content" >> "$1"
         else
-            echo -n "$content" > "$1"
+            echo "$content" > "$1"
         fi
 
         unset first
