@@ -19,7 +19,7 @@ package com.gitlab.srcmc.mymodid.fabric;
 
 import net.fabricmc.api.ModInitializer;
 
-public class ModFabric implements ModInitializer{
+public class ModFabric implements ModInitializer {
     @Override
     public void onInitialize() {}
 }
