@@ -73,11 +73,11 @@ public class ModRegistries {
     @SubscribeEvent
     public static void onRegisterItems(final RegisterEvent event) {
         if(event.getRegistryKey().equals(ForgeRegistries.Keys.ITEMS)) {
-            Blocks.REGISTRY.getEntries().forEach(blockRegistryObject -> {
-                event.register(
-                    ForgeRegistries.Keys.ITEMS, blockRegistryObject.getId(),
-                    () -> new BlockItem(blockRegistryObject.get(), new Item.Properties().tab(ModCreativeTab.get())));
-            });
+            Blocks.REGISTRY.getEntries().stream()
+                .filter(bro -> true)
+                .forEach(bro -> event.register(
+                    ForgeRegistries.Keys.ITEMS, bro.getId(),
+                    () -> new BlockItem(bro.get(), new Item.Properties().tab(ModCreativeTab.get()))));
         }
     }
 }
