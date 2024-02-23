@@ -1,42 +1,25 @@
-/*
- * This file is part of Example Mod.
- * Copyright (c) 2024, HDainester, All rights reserved.
- *
- * Example Mod is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * Example Mod is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for
- * more details.
- *
- * You should have received a copy of the GNU Lesser General Public License along
- * with Example Mod. If not, see <http://www.gnu.org/licenses/lgpl>.
- */
 package com.gitlab.srcmc.mymodid.forge;
 
 import com.gitlab.srcmc.mymodid.ModCommon;
 
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
+import net.minecraftforge.fml.event.lifecycle.FMLConstructModEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegisterEvent;
 
+@Mod.EventBusSubscriber(modid = ModCommon.MOD_ID, bus = Bus.MOD)
 public class ModRegistries {
-    public static void init() {
-        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-        Sounds.REGISTRY.register(bus);
-        Items.REGISTRY.register(bus);
-        Blocks.REGISTRY.register(bus);
-        BlockEntities.REGISTRY.register(bus);
-    }
-
     public static class Sounds {
         public static final DeferredRegister<SoundEvent> REGISTRY;
 
@@ -59,13 +42,42 @@ public class ModRegistries {
         static {
             REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCKS, ModCommon.MOD_ID);
         }
+
+        public static class Entities {
+            public static final DeferredRegister<BlockEntityType<?>> REGISTRY;
+
+            static {
+                REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, ModCommon.MOD_ID);
+            }
+        }
     }
 
-    public static class BlockEntities {
-        public static final DeferredRegister<BlockEntityType<?>> REGISTRY;
+    public static class Entities {
+        public static final DeferredRegister<EntityType<?>> REGISTRY;
 
         static {
-            REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, ModCommon.MOD_ID);
+            REGISTRY = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, ModCommon.MOD_ID);
+        }
+    }
+
+    @SubscribeEvent
+    public static void onConstructMod(final FMLConstructModEvent event) {
+        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+        Sounds.REGISTRY.register(bus);
+        Items.REGISTRY.register(bus);
+        Blocks.REGISTRY.register(bus);
+        Blocks.Entities.REGISTRY.register(bus);
+        Entities.REGISTRY.register(bus);
+    }
+
+    @SubscribeEvent
+    public static void onRegisterItems(final RegisterEvent event) {
+        if(event.getRegistryKey().equals(ForgeRegistries.Keys.ITEMS)) {
+            Blocks.REGISTRY.getEntries().forEach(blockRegistryObject -> {
+                event.register(
+                    ForgeRegistries.Keys.ITEMS, blockRegistryObject.getId(),
+                    () -> new BlockItem(blockRegistryObject.get(), new Item.Properties().tab(ModCreativeTab.get())));
+            });
         }
     }
 }
