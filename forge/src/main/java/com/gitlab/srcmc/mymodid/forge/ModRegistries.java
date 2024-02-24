@@ -64,6 +64,8 @@ public class ModRegistries {
 
     @SubscribeEvent
     public static void onConstructMod(final FMLConstructModEvent event) {
+        registerBlockItems();
+
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         Sounds.REGISTRY.register(bus);
         Items.REGISTRY.register(bus);
@@ -74,17 +76,23 @@ public class ModRegistries {
 
     @SubscribeEvent
     public static void onCreativeTabsRegister(CreativeModeTabEvent.Register event) {
-        event.registerCreativeModeTab(new ResourceLocation(ModCommon.MOD_ID), builder ->
-            builder.title(Component.translatable("item_group." + ModCommon.MOD_ID))
-                .icon(() -> net.minecraft.world.item.Items.END_CRYSTAL.getDefaultInstance())
-                .displayItems((enabledFlags, populator, hasPermissions) -> {
-                    ModRegistries.Blocks.REGISTRY.getEntries()
-                        .stream().filter(bro -> true) // all blocks by default
-                        .forEach(bro -> populator.accept(new BlockItem(bro.get(), new Item.Properties())));
+        if(!Items.REGISTRY.getEntries().isEmpty()) {
+            event.registerCreativeModeTab(new ResourceLocation(ModCommon.MOD_ID), builder ->
+                builder.title(Component.translatable("itemGroup." + ModCommon.MOD_ID))
+                    .icon(() -> net.minecraft.world.item.Items.END_CRYSTAL.getDefaultInstance())
+                    .displayItems((enabledFlags, populator, hasPermissions) -> {
+                        ModRegistries.Items.REGISTRY.getEntries()
+                            .stream().filter(iro -> true) // all items by default
+                            .forEach(iro -> populator.accept(() -> iro.get()));
+                    }));
+        }
+    }
 
-                    ModRegistries.Items.REGISTRY.getEntries()
-                        .stream().filter(iro -> true) // all items by default
-                        .forEach(iro -> populator.accept(iro.get()));
-                }));
+    private static void registerBlockItems() {
+        ModRegistries.Blocks.REGISTRY.getEntries()
+            .stream().filter(bro -> true) // all blocks by default
+            .forEach(bro -> Items.REGISTRY.register(
+                bro.getId().getPath(),
+                () -> new BlockItem(bro.get(), new Item.Properties())));
     }
 }
