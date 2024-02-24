@@ -80,10 +80,10 @@ public class ModRegistries {
             event.registerCreativeModeTab(new ResourceLocation(ModCommon.MOD_ID), builder ->
                 builder.title(Component.translatable("itemGroup." + ModCommon.MOD_ID))
                     .icon(() -> net.minecraft.world.item.Items.END_CRYSTAL.getDefaultInstance())
-                    .displayItems((enabledFlags, populator, hasPermissions) -> {
+                    .displayItems((params, output) -> {
                         ModRegistries.Items.REGISTRY.getEntries()
                             .stream().filter(iro -> true) // all items by default
-                            .forEach(iro -> populator.accept(() -> iro.get()));
+                            .forEach(iro -> output.accept(() -> iro.get()));
                     }));
         }
     }
