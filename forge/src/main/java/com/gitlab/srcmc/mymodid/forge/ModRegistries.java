@@ -2,12 +2,15 @@ package com.gitlab.srcmc.mymodid.forge;
 
 import com.gitlab.srcmc.mymodid.ModCommon;
 
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -16,7 +19,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLConstructModEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegisterEvent;
 
 @Mod.EventBusSubscriber(modid = ModCommon.MOD_ID, bus = Bus.MOD)
 public class ModRegistries {
@@ -62,6 +64,8 @@ public class ModRegistries {
 
     @SubscribeEvent
     public static void onConstructMod(final FMLConstructModEvent event) {
+        registerBlockItems();
+
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         Sounds.REGISTRY.register(bus);
         Items.REGISTRY.register(bus);
@@ -71,13 +75,24 @@ public class ModRegistries {
     }
 
     @SubscribeEvent
-    public static void onRegisterItems(final RegisterEvent event) {
-        if(event.getRegistryKey().equals(ForgeRegistries.Keys.ITEMS)) {
-            Blocks.REGISTRY.getEntries().stream()
-                .filter(bro -> true)
-                .forEach(bro -> event.register(
-                    ForgeRegistries.Keys.ITEMS, bro.getId(),
-                    () -> new BlockItem(bro.get(), new Item.Properties().tab(ModCreativeTab.get()))));
+    public static void onCreativeTabsRegister(CreativeModeTabEvent.Register event) {
+        if(!Items.REGISTRY.getEntries().isEmpty()) {
+            event.registerCreativeModeTab(new ResourceLocation(ModCommon.MOD_ID), builder ->
+                builder.title(Component.translatable("itemGroup." + ModCommon.MOD_ID))
+                    .icon(() -> net.minecraft.world.item.Items.END_CRYSTAL.getDefaultInstance())
+                    .displayItems((enabledFlags, populator, hasPermissions) -> {
+                        ModRegistries.Items.REGISTRY.getEntries()
+                            .stream().filter(iro -> true) // all items by default
+                            .forEach(iro -> populator.accept(() -> iro.get()));
+                    }));
         }
+    }
+
+    private static void registerBlockItems() {
+        ModRegistries.Blocks.REGISTRY.getEntries()
+            .stream().filter(bro -> true) // all blocks by default
+            .forEach(bro -> Items.REGISTRY.register(
+                bro.getId().getPath(),
+                () -> new BlockItem(bro.get(), new Item.Properties())));
     }
 }
