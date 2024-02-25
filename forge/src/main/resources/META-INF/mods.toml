@@ -4,12 +4,12 @@ loaderVersion="[${forge_major_version},)"
 license="${license}"
 
 [[mods]]
-modId="${mod_id}"
-version="${mod_version}"
-displayName="${mod_name}"
-logoFile="logo.png"
-authors="${mod_author}"
-description='''${mod_description}'''
+  modId="${mod_id}"
+  version="${mod_version}"
+  displayName="${mod_name}"
+  logoFile="logo.png"
+  authors="${mod_author}"
+  description='''${mod_description}'''
 
 [[dependencies.${mod_id}]]
   modId="forge"
