@@ -2,15 +2,18 @@ package com.gitlab.srcmc.mymodid.forge;
 
 import com.gitlab.srcmc.mymodid.ModCommon;
 
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraftforge.event.CreativeModeTabEvent;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -19,6 +22,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLConstructModEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegisterEvent;
 
 @Mod.EventBusSubscriber(modid = ModCommon.MOD_ID, bus = Bus.MOD)
 public class ModRegistries {
@@ -74,17 +78,33 @@ public class ModRegistries {
         Entities.REGISTRY.register(bus);
     }
 
+    private static ResourceKey<CreativeModeTab> modCreativeTab;
+    
     @SubscribeEvent
-    public static void onCreativeTabsRegister(CreativeModeTabEvent.Register event) {
+    public static void onCreativeTabsRegister(RegisterEvent event) {
         if(!Items.REGISTRY.getEntries().isEmpty()) {
-            event.registerCreativeModeTab(new ResourceLocation(ModCommon.MOD_ID), builder ->
-                builder.title(Component.translatable("itemGroup." + ModCommon.MOD_ID))
-                    .icon(() -> net.minecraft.world.item.Items.END_CRYSTAL.getDefaultInstance())
-                    .displayItems((params, output) -> {
-                        ModRegistries.Items.REGISTRY.getEntries()
-                            .stream().filter(iro -> true) // all items by default
-                            .forEach(iro -> output.accept(() -> iro.get()));
-                    }));
+            modCreativeTab = ResourceKey.create(
+                Registries.CREATIVE_MODE_TAB,
+                new ResourceLocation(ModCommon.MOD_ID, "creative_tab"));
+
+            event.register(Registries.CREATIVE_MODE_TAB, registerHelper ->
+                registerHelper.register(modCreativeTab,
+                    CreativeModeTab.builder().title(Component.translatable("itemGroup." + ModCommon.MOD_ID))
+                        .icon(() -> net.minecraft.world.item.Items.END_CRYSTAL.getDefaultInstance())
+                        .displayItems((params, output) -> {
+                            ModRegistries.Items.REGISTRY.getEntries()
+                                .stream().filter(iro -> true) // all items by default
+                                .forEach(iro -> output.accept(() -> iro.get()));
+                        }).build()));
+        }
+    }
+
+    @SubscribeEvent
+    public void onCreativeTabBuildContents(BuildCreativeModeTabContentsEvent event) {
+        if(event.getTabKey() == modCreativeTab) {
+            ModRegistries.Items.REGISTRY.getEntries()
+                .stream().filter(iro -> true) // all items by default
+                .forEach(iro -> event.accept(iro.get()));
         }
     }
 
