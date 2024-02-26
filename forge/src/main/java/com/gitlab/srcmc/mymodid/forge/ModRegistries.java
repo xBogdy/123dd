@@ -13,7 +13,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -39,6 +39,7 @@ public class ModRegistries {
 
         static {
             REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, ModCommon.MOD_ID);
+            REGISTRY.register("rxample_item", () -> new Item(new Item.Properties()));
         }
     }
 
@@ -47,6 +48,7 @@ public class ModRegistries {
 
         static {
             REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCKS, ModCommon.MOD_ID);
+            REGISTRY.register("example_block", () -> new Block(BlockBehaviour.Properties.of()));
         }
 
         public static class Entities {
@@ -94,17 +96,8 @@ public class ModRegistries {
                         .displayItems((params, output) -> {
                             ModRegistries.Items.REGISTRY.getEntries()
                                 .stream().filter(iro -> true) // all items by default
-                                .forEach(iro -> output.accept(() -> iro.get()));
+                                .forEach(iro -> output.accept(iro.get()));
                         }).build()));
-        }
-    }
-
-    @SubscribeEvent
-    public void onCreativeTabBuildContents(BuildCreativeModeTabContentsEvent event) {
-        if(event.getTabKey() == modCreativeTab) {
-            ModRegistries.Items.REGISTRY.getEntries()
-                .stream().filter(iro -> true) // all items by default
-                .forEach(iro -> event.accept(iro.get()));
         }
     }
 
