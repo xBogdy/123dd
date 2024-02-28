@@ -31,7 +31,7 @@ if [ -z "$current_branch" ]; then
 fi
 
 for branch in "${target_branches[@]}"; do
-    if [ "$(git checkout "$branch" --no-guess)" ]; then
+    if git checkout "$branch" --no-guess; then
         git merge "$current_branch"
         current_branch="$branch"
     fi
