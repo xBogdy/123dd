@@ -18,10 +18,10 @@ target_branches=()
 for branch in "${branches[@]}"; do
     if [ -n "$current_branch" ]; then
         target_branches+=( "$branch" )
-    fi
-
-    if [ "$git_branch" = "$branch" ]; then
-        current_branch="$branch"
+    else
+        if [ "$git_branch" = "$branch" ]; then
+            current_branch="$branch"
+        fi
     fi
 done
 
