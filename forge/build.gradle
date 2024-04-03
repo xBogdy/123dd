@@ -69,6 +69,18 @@ dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     compileOnly project(":common")
 
+    // Architectury
+    implementation fg.deobf("curse.maven:architectury-api-419699:5137938")
+
+    // Kotlin for Forge
+    implementation fg.deobf("thedarkcolour:kotlinforforge:4.10.0")
+
+    // Cobblemon
+    implementation fg.deobf("curse.maven:cobblemon-687131:4977476")
+
+    // Cobblemon Trainers
+    implementation fg.deobf("curse.maven:cobblemontrainers-959503:5199334")
+
     // Configured
     runtimeOnly fg.deobf("curse.maven:configured-457570:${configured_version}")
 

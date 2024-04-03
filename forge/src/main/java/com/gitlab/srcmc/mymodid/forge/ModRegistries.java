@@ -1,6 +1,7 @@
 package com.gitlab.srcmc.mymodid.forge;
 
 import com.gitlab.srcmc.mymodid.ModCommon;
+import com.gitlab.srcmc.mymodid.world.entities.TrainerMob;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -22,6 +23,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegisterEvent;
+import net.minecraftforge.registries.RegistryObject;
 
 @Mod.EventBusSubscriber(modid = ModCommon.MOD_ID, bus = Bus.MOD)
 public class ModRegistries {
@@ -59,9 +61,11 @@ public class ModRegistries {
 
     public static class Entities {
         public static final DeferredRegister<EntityType<?>> REGISTRY;
+        public static final RegistryObject<EntityType<TrainerMob>> TRAINER;
 
         static {
             REGISTRY = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, ModCommon.MOD_ID);
+            TRAINER = REGISTRY.register("trainer", TrainerMob::getEntityType);
         }
     }
 
