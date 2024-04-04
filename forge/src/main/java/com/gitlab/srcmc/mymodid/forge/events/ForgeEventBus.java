@@ -33,6 +33,6 @@ public class ForgeEventBus {
     private static void addTrainer(ResourceLocation rl, Resource rs) {
         var trainerReg = CobblemonTrainers.INSTANCE.getTRAINER_REGISTRY();
         var trainer = new VolatileTrainer(rl, rs);
-        trainerReg.addTrainer(trainer);
+        trainerReg.addOrUpdateTrainer(trainer);
     }
 }
