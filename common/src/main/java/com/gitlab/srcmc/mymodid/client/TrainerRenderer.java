@@ -26,19 +26,3 @@ public class TrainerRenderer extends HumanoidMobRenderer<TrainerMob, HumanoidMod
         super.render(pEntity, pEntityYaw, pPartialTicks, pPoseStack, pBuffer, pPackedLight);
     }
 }
-
-// public class TrainerRenderer extends MobRenderer<Trainer, TrainerModel<Trainer>> {
-//     public TrainerRenderer(EntityRendererProvider.Context pContext) {
-//         super(pContext, new TrainerModel<>(pContext.bakeLayer(ModelLayers.TRAINER_LAYER)), 1f);
-//     }
-
-//     @Override
-//     public ResourceLocation getTextureLocation(Trainer Trainer) {
-//         return new ResourceLocation(ModCommon.MOD_ID, "textures/entity/trainer.png");
-//     }
-
-//     @Override
-//     public void render(Trainer pEntity, float pEntityYaw, float pPartialTicks, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight) {
-//         super.render(pEntity, pEntityYaw, pPartialTicks, pPoseStack, pBuffer, pPackedLight);
-//     }
-// }

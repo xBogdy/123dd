@@ -1,6 +1,7 @@
 package com.gitlab.srcmc.mymodid.api;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -112,8 +113,8 @@ public class TrainerPlayerData extends SavedData {
         return this.activeTrainers.contains(entityId);
     }
 
-    public List<Integer> getActiveTrainers() {
-        return List.copyOf(this.activeTrainers);
+    public Set<Integer> getActiveTrainers() {
+        return Collections.unmodifiableSet(this.activeTrainers);
     }
 
     public boolean addActiveTrainer(int entityId) {

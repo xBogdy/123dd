@@ -1,6 +1,7 @@
 package com.gitlab.srcmc.mymodid.api;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import net.minecraft.resources.ResourceLocation;
 
@@ -42,7 +43,7 @@ public class TrainerTeam {
         public int getLevel() { return this.level; }
         public String getNature() { return this.nature; }
         public String getAbility() { return this.ability; }
-        public List<String> getMoveset() { return List.copyOf(this.moveset); }
+        public List<String> getMoveset() { return Collections.unmodifiableList(this.moveset); }
         public Stats getIVs() { return this.ivs; }
         public Stats getEVs() { return this.evs; }
         public boolean getShiny() { return this.shiny; }
@@ -64,7 +65,7 @@ public class TrainerTeam {
     }
 
     public List<Pokemon> getMembers() {
-        return List.copyOf(this.team);
+        return Collections.unmodifiableList(this.team);
     }
 
     public ResourceLocation getResourceLocation() {

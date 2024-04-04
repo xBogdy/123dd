@@ -1,0 +1,14 @@
+{
+    "type": "NORMAL",
+    "rewardLevelCap": 0,
+    "requiredBadges": 0,
+    "requiredBeatenE4": 0,
+    "requiredBeatenChamps": 0,
+    "maxPlayerWins": 1,
+    "maxPlayerLosses": 2,
+    "battleCooldownTicks": 2000,
+    "biomeWhitelist": [],
+    "biomeBlacklist": [],
+    "dimensionWhitelist": [],
+    "dimensionBlacklist": []
+}

@@ -1,14 +1,19 @@
 package com.gitlab.srcmc.mymodid.api;
 
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import com.gitlab.srcmc.mymodid.ModCommon;
+import com.google.gson.reflect.TypeToken;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.dimension.DimensionType;
 
 public class TrainerMobData {
     public enum Group {
@@ -101,51 +106,108 @@ public class TrainerMobData {
         YOUNGSTER,
     }
 
+    private static final String PATH_MOB_DEFAULT = "mobs/trainers/default.json";
+
+    public enum Type {
+        NORMAL, BOSS, LEADER, E4, CHAMP, RIVAL, PROF, PLAYER
+    }
+
+    private Type type = Type.NORMAL;
+    private int rewardLevelCap;
+    private int requiredBadges;
+    private int requiredBeatenE4;
+    private int requiredBeatenChamps;
+
+    private int maxPlayerWins = 1;
+    private int maxPlayerLosses = 2;
+    private int battleCooldownTicks = 2000;
+
     private Set<String> biomeWhitelist = new HashSet<>();
     private Set<String> biomeBlacklist = new HashSet<>();
-    private int requiredBadges = 0;
-    private int requiredBeatenE4 = 0;
-    private int requiredBeatenChamps = 0;
+    private Set<String> dimensionWhitelist = new HashSet<>();
+    private Set<String> dimensionBlacklist = new HashSet<>();
 
+    private transient Map<String, String[]> dialog = new HashMap<>();
     private transient ResourceLocation textureResource;
+    private transient ResourceLocation lootTableResource;
     private transient TrainerTeam team;
 
     public static TrainerMobData loadFromOrThrow(ResourceLocation location) {
         var tmd = JsonUtils.loadFromOrThrow(location, TrainerMobData.class);
-        var textureResource = new ResourceLocation(ModCommon.MOD_ID, "textures/" + location.getPath().replace(".json", ".png"));
+        tmd.initResources(location);
+        return tmd;
+    }
 
-        if(Minecraft.getInstance().getResourceManager().getResource(textureResource).isPresent()) {
-            tmd.textureResource = textureResource;
+    public static TrainerMobData loadFromOrFallback(ResourceLocation location, Map<ResourceLocation, TrainerMobData> groups) {
+        var rm = Minecraft.getInstance().getResourceManager();
+        var trainerId = PathUtils.filename(location.getPath());
+        var defaultLocation = new ResourceLocation(ModCommon.MOD_ID, PATH_MOB_DEFAULT);
+        ResourceLocation groupLocation = null;
+        TrainerMobData tmd = null;
+
+        if(rm.getResource(location).isPresent()) {
+            tmd = JsonUtils.loadFromOrThrow(location, TrainerMobData.class);
         }
 
+        for(var groupEntry : groups.entrySet()) {
+            var groupId = PathUtils.filename(groupEntry.getKey().getPath());
+
+            if(trainerId.equals(groupId) || trainerId.contains("_" + groupId) || trainerId.contains(groupId + "_")) {
+                if(tmd == null) {
+                    tmd = new TrainerMobData(groupEntry.getValue());
+                }
+
+                groupLocation = groupEntry.getKey();
+                break;
+            }
+        }
+
+        if(tmd == null) {
+            tmd = JsonUtils.loadFromOrThrow(defaultLocation, TrainerMobData.class);
+        }
+
+        tmd.initResources(defaultLocation);
+
+        if(groupLocation != null) {
+            tmd.initResources(groupLocation);
+        }
+
+        tmd.initResources(location);
+        
         return tmd;
     }
 
     public TrainerMobData() {
-        this(new TrainerTeam());
-    }
-
-    public TrainerMobData(TrainerTeam team) {
-        this.team = team;
-        this.textureResource = new ResourceLocation(ModCommon.MOD_ID, "textures/trainers/trainer.png");
+        this.team = new TrainerTeam();
+        this.textureResource = new ResourceLocation(ModCommon.MOD_ID, PATH_MOB_DEFAULT.replaceFirst("mob", "texture").replace(".json", ".png"));
+        this.lootTableResource = new ResourceLocation(ModCommon.MOD_ID, PATH_MOB_DEFAULT.replaceFirst("mob", "loot_table"));
     }
 
     public TrainerMobData(TrainerMobData origin) {
-        this.biomeBlacklist = Set.copyOf(origin.biomeBlacklist);
-        this.biomeWhitelist = Set.copyOf(origin.biomeBlacklist);
+        this.type = origin.type;
+        this.rewardLevelCap = origin.rewardLevelCap;
         this.requiredBadges = origin.requiredBadges;
         this.requiredBeatenE4 = origin.requiredBeatenE4;
         this.requiredBeatenChamps = origin.requiredBeatenChamps;
+        this.maxPlayerWins = origin.maxPlayerWins;
+        this.maxPlayerLosses = origin.maxPlayerLosses;
+        this.battleCooldownTicks = origin.battleCooldownTicks;
+        this.biomeBlacklist = Set.copyOf(origin.biomeBlacklist);
+        this.biomeWhitelist = Set.copyOf(origin.biomeBlacklist);
+        this.dimensionBlacklist = Set.copyOf(origin.dimensionBlacklist);
+        this.dimensionWhitelist = Set.copyOf(origin.dimensionWhitelist);
+        this.dialog = Map.copyOf(origin.dialog);
         this.textureResource = origin.textureResource;
-        this.team = origin.team;
+        this.lootTableResource = origin.lootTableResource;
+        this.team = origin.team; // no need for deep copy since immutable
     }
 
-    public Set<String> getBiomeWhitelist() {
-        return Set.copyOf(this.biomeWhitelist);
+    public Type getType() {
+        return this.type;
     }
 
-    public Set<String> getBiomeBlacklist() {
-        return Set.copyOf(this.biomeBlacklist);
+    public int getRewardLevelCap() {
+        return this.rewardLevelCap;
     }
 
     public int getRequiredLevelCap() {
@@ -164,8 +226,44 @@ public class TrainerMobData {
         return this.requiredBeatenChamps;
     }
 
+    public int getMaxPlayerWins() {
+        return this.maxPlayerWins;
+    }
+
+    public int getMaxPlayerLosses() {
+        return this.maxPlayerLosses;
+    }
+
+    public int getBattleCooldownTicks() {
+        return this.battleCooldownTicks;
+    }
+
+    public Set<String> getBiomeBlacklist() {
+        return Collections.unmodifiableSet(this.biomeBlacklist);
+    }
+
+    public Set<String> getBiomeWhitelist() {
+        return Collections.unmodifiableSet(this.biomeWhitelist);
+    }
+
+    public Set<String> getDimensionBlacklist() {
+        return Collections.unmodifiableSet(this.dimensionBlacklist);
+    }
+
+    public Set<String> getDimensionWhitelist() {
+        return Collections.unmodifiableSet(this.dimensionWhitelist);
+    }
+
+    public Map<String, String[]> getDialog() {
+        return Collections.unmodifiableMap(this.dialog);
+    }
+
     public ResourceLocation getTextureResource() {
         return this.textureResource;
+    }
+
+    public ResourceLocation getLootTableResource() {
+        return this.lootTableResource;
     }
 
     public TrainerTeam getTeam() {
@@ -176,7 +274,30 @@ public class TrainerMobData {
         this.team = team;
     }
 
-    public boolean canSpawnIn(Holder<Biome> biome) {
+    public boolean canSpawnIn(DimensionType dimension, Holder<Biome> biome) {
+        // TODO
         return false;
+    }
+
+    private void initResources(ResourceLocation mobLocation) {
+        var textureResource = new ResourceLocation(ModCommon.MOD_ID, mobLocation.getPath().replaceFirst("mobs", "textures").replace(".json", ".png"));
+        var lootTableResource = new ResourceLocation(ModCommon.MOD_ID, mobLocation.getPath().replaceFirst("mobs", "loot_tables"));
+        var dialogResource = new ResourceLocation(ModCommon.MOD_ID, mobLocation.getPath().replaceFirst("mobs", "dialogs"));
+        var rm = Minecraft.getInstance().getResourceManager();
+
+        if(rm.getResource(textureResource).isPresent()) {
+            this.textureResource = textureResource;
+        }
+
+        if(rm.getResource(lootTableResource).isPresent()) {
+            this.lootTableResource = lootTableResource;
+        }
+
+        ModCommon.LOG.info("LOADING DIALOG FROM: " + dialogResource.getPath());
+        if(rm.getResource(dialogResource).isPresent()) {
+            ModCommon.LOG.info("SUCCESS");
+            var dialog = JsonUtils.loadFromOrThrow(dialogResource, new TypeToken<Map<String, String[]>>() {});
+            this.dialog = dialog != null ? dialog : new HashMap<>();
+        } else ModCommon.LOG.info("FAILURE");
     }
 }

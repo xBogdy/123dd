@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import com.cobblemon.mod.common.pokemon.Pokemon;
 import com.cobblemon.mod.common.pokemon.Species;
+import com.gitlab.srcmc.mymodid.api.PathUtils;
 import com.google.gson.JsonParser;
 import com.selfdot.cobblemontrainers.CobblemonTrainers;
 import com.selfdot.cobblemontrainers.trainer.Trainer;
@@ -12,9 +13,7 @@ import net.minecraft.server.packs.resources.Resource;
 
 public class VolatileTrainer extends Trainer {
 	public VolatileTrainer(ResourceLocation location, Resource resource) {
-		super(CobblemonTrainers.INSTANCE, location.getPath()
-			.substring(0, location.getPath().length() - 5)
-			.replaceFirst(location.getNamespace(), ""), "radical");
+		super(CobblemonTrainers.INSTANCE, PathUtils.filename(location.getPath()), "Radical");
 
         try(var rd = resource.openAsReader()) {
 			this.loadFromJson(JsonParser.parseReader(rd));

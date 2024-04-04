@@ -146,7 +146,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
-        this.entityData.define(DATA_TRAINER_ID, "trainer");
+        this.entityData.define(DATA_TRAINER_ID, "");
         this.entityData.define(DATA_DEFEATED, false);
     }
 

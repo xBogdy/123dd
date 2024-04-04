@@ -20,7 +20,7 @@ public class ForgeEventBus {
     @SubscribeEvent
     static void onLevelLoad(LevelEvent.Load event) {
         Minecraft.getInstance().getResourceManager()
-            .listResources("trainers/teams", rl -> rl.getPath().toLowerCase().endsWith(".json"))
+            .listResources("trainers", rl -> rl.getPath().toLowerCase().endsWith(".json"))
             .forEach(ForgeEventBus::addTrainer);
     }
 

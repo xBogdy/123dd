@@ -16,8 +16,12 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.biome.Biome;
 
 public class TrainerManager {
-    private Map<String, TrainerMobData> trainerGroups = new HashMap<>();
+    private Map<ResourceLocation, TrainerMobData> trainerGroups = new HashMap<>();
     private Map<String, TrainerMobData> trainerMobs = new HashMap<>();
+
+    private static final String PATH_MOBS_GROUPS = "mobs/trainers/groups";
+    private static final String PATH_MOBS_SINGLE = "mobs/trainers/single";
+    private static final String PATH_TRAINERS = "trainers";
 
     public void load() {
         trainerMobs.clear();
@@ -31,23 +35,24 @@ public class TrainerManager {
     private void dump() {
         ModCommon.LOG.info("TRAINER GROUPS:");
         for(var kv : trainerGroups.entrySet()) {
-            ModCommon.LOG.info(kv.getKey() + ": " + kv.getValue().getTextureResource().getPath());
+            ModCommon.LOG.info("- [" + kv.getKey() + "]");
+            ModCommon.LOG.info(JsonUtils.toJson(kv.getValue()));
         }
 
         ModCommon.LOG.info("TRAINER MOBS:");
         for(var kv : trainerMobs.entrySet()) {
-            ModCommon.LOG.info(kv.getKey() + ": " + kv.getValue().getTextureResource().getPath());
-            ModCommon.LOG.info(" TEAM: " + kv.getValue().getTeam().getDisplayName());
-
-            for(var p : kv.getValue().getTeam().getMembers()) {
-                ModCommon.LOG.info("  poke: " + p.getSpecies());
-            }
+            ModCommon.LOG.info("- [" + kv.getKey() + "]");
+            ModCommon.LOG.info(kv.getValue().getTextureResource().getPath());
+            ModCommon.LOG.info(JsonUtils.toJson(kv.getValue()));
         }
     }
 
     public TrainerMobData getData(TrainerMob mob) {
         if(!trainerMobs.containsKey(mob.getTrainerId())) {
-            ModCommon.LOG.error(String.format("Invalid trainer id '%s' for mob: %s", mob.getTrainerId(), mob.getDisplayName().getString()));
+            if(!mob.getTrainerId().isEmpty()) {
+                ModCommon.LOG.error(String.format("Invalid trainer id '%s' for mob: %s", mob.getTrainerId(), mob.getDisplayName().getString()));
+            }
+
             return new TrainerMobData();
         }
 
@@ -79,42 +84,25 @@ public class TrainerManager {
 
     private void loadTrainerGroups() {
         Minecraft.getInstance().getResourceManager()
-            .listResources("trainers/groups", rl -> rl.getPath().toLowerCase().endsWith(".json"))
+            .listResources(PATH_MOBS_GROUPS, rl -> rl.getPath().toLowerCase().endsWith(".json"))
             .forEach(this::loadTrainerGroup);
     }
 
     private void loadTrainerGroup(ResourceLocation rl, Resource rs) {
-        var groupId = rl.getPath().substring(0, rl.getPath().length() - 5).replace("trainers/groups/", "");
-        trainerGroups.put(groupId, TrainerMobData.loadFromOrThrow(rl));
+        trainerGroups.put(rl, TrainerMobData.loadFromOrThrow(rl));
     }
 
     private void loadTrainerMobs() {
         Minecraft.getInstance().getResourceManager()
-            .listResources("trainers/teams", rl -> rl.getPath().toLowerCase().endsWith(".json"))
+            .listResources(PATH_TRAINERS, rl -> rl.getPath().toLowerCase().endsWith(".json"))
             .forEach(this::loadTrainerMob);
     }
 
     private void loadTrainerMob(ResourceLocation rl, Resource rs) {
-        var rm = Minecraft.getInstance().getResourceManager();
-        var team = TrainerTeam.loadFromOrThrow(rl);
-        var trainerId = rl.getPath().substring(0, rl.getPath().length() - 5).replace("trainers/teams/", "");
-        var mobRl = new ResourceLocation(ModCommon.MOD_ID, "trainers/mobs/" + trainerId + ".json");
-
-        if(rm.getResource(mobRl).isPresent()) {
-            var tmd = TrainerMobData.loadFromOrThrow(mobRl);
-            trainerMobs.put(trainerId, tmd);
-            tmd.setTeam(team);
-        } else {
-            for(var groupId : trainerGroups.keySet()) {
-                if(trainerId.equals(groupId) || trainerId.contains("_" + groupId) || trainerId.contains(groupId + "_")) {
-                    var tmd = new TrainerMobData(trainerGroups.get(groupId));
-                    trainerMobs.put(trainerId, tmd);
-                    tmd.setTeam(team);
-                    return;
-                }
-            }
-
-            trainerMobs.put(trainerId, new TrainerMobData(team)); // TODO: default trainer
-        }
+        var trainerId = PathUtils.filename(rl.getPath());
+        var mobResource = new ResourceLocation(ModCommon.MOD_ID, PATH_MOBS_SINGLE + "/" + trainerId + ".json");
+        var tmd = TrainerMobData.loadFromOrFallback(mobResource, trainerGroups);
+        tmd.setTeam(TrainerTeam.loadFromOrThrow(rl));
+        trainerMobs.put(trainerId, tmd);
     }
 }
