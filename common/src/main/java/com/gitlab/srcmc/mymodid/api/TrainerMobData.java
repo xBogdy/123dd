@@ -293,11 +293,9 @@ public class TrainerMobData {
             this.lootTableResource = lootTableResource;
         }
 
-        ModCommon.LOG.info("LOADING DIALOG FROM: " + dialogResource.getPath());
         if(rm.getResource(dialogResource).isPresent()) {
-            ModCommon.LOG.info("SUCCESS");
             var dialog = JsonUtils.loadFromOrThrow(dialogResource, new TypeToken<Map<String, String[]>>() {});
             this.dialog = dialog != null ? dialog : new HashMap<>();
-        } else ModCommon.LOG.info("FAILURE");
+        }
     }
 }

@@ -102,21 +102,24 @@ public class TrainerPlayerData extends SavedData {
         }
     }
 
-    public void addBeatenChamps() {
+    public void addBeatenChamp() {
         if(this.beatenChamps < MAX_BEATEN_CHAMPS) {
             this.beatenChamps++;
             this.setDirty();
         }
     }
 
+    // TODO: rename isSpawnedTrainer
     public boolean isActiveTrainer(int entityId) {
         return this.activeTrainers.contains(entityId);
     }
 
+    // TODO: rename getSpawnedTrainers
     public Set<Integer> getActiveTrainers() {
         return Collections.unmodifiableSet(this.activeTrainers);
     }
 
+    // TODO: rename addSpawnedTrainer
     public boolean addActiveTrainer(int entityId) {
         var added = this.activeTrainers.add(entityId);
 
