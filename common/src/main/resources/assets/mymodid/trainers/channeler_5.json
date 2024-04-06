@@ -1,0 +1,102 @@
+{
+  "displayName": "Channeler",
+  "team": [
+    {
+      "species": "cobblemon:gastly",
+      "gender": "FEMALE",
+      "level": 22,
+      "nature": "cobblemon:mild",
+      "ability": "levitate",
+      "moveset": [
+        "nightshade",
+        "sludge",
+        "confuseray",
+        "suckerpunch"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:gastly",
+      "gender": "FEMALE",
+      "level": 22,
+      "nature": "cobblemon:gentle",
+      "ability": "levitate",
+      "moveset": [
+        "nightshade",
+        "sludge",
+        "confuseray",
+        "suckerpunch"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:gastly",
+      "gender": "MALE",
+      "level": 22,
+      "nature": "cobblemon:timid",
+      "ability": "levitate",
+      "moveset": [
+        "nightshade",
+        "sludge",
+        "confuseray",
+        "suckerpunch"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}
