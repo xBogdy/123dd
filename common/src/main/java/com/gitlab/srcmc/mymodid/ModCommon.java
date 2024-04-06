@@ -10,8 +10,4 @@ public class ModCommon {
     public static final String MOD_NAME = "Example Mod"; // should match mod_name
     public static final Logger LOG = LoggerFactory.getLogger(MOD_NAME);
     public static final TrainerManager TRAINER_MANAGER = new TrainerManager();
-
-    public ModCommon() {
-        TRAINER_MANAGER.load();
-    }
 }
