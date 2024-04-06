@@ -3,7 +3,9 @@ package com.gitlab.srcmc.mymodid.api;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
+import java.util.UUID;
 
 import com.gitlab.srcmc.mymodid.ModCommon;
 import com.gitlab.srcmc.mymodid.world.entities.TrainerMob;
@@ -18,6 +20,7 @@ import net.minecraft.world.level.biome.Biome;
 public class TrainerManager {
     private Map<ResourceLocation, TrainerMobData> trainerGroups = new HashMap<>();
     private Map<String, TrainerMobData> trainerMobs = new HashMap<>();
+    private Map<UUID, TrainerBattle> trainerBattles = new HashMap<>();
 
     private static final String PATH_MOBS_GROUPS = "mobs/trainers/groups";
     private static final String PATH_MOBS_SINGLE = "mobs/trainers/single";
@@ -47,10 +50,31 @@ public class TrainerManager {
         }
     }
 
+    public void addBattle(Player initiator, TrainerMob opponent) {
+        trainerBattles.put(initiator.getUUID(), new TrainerBattle(initiator, opponent));
+    }
+
+    public void addBattle(Player[] initiatorSidePlayers, TrainerMob[] initiatorSideMobs, Player[] trainerSidePlayers, TrainerMob[] trainerSideMobs) {
+        var battle = new TrainerBattle(initiatorSidePlayers, initiatorSideMobs, trainerSidePlayers, trainerSideMobs);
+        trainerBattles.put(battle.getInitiator().getUUID(), battle);
+    }
+
+    public Optional<TrainerBattle> getBattle(UUID initiatorId) {
+        return trainerBattles.containsKey(initiatorId)
+            ? Optional.of(trainerBattles.get(initiatorId))
+            : Optional.empty();
+    }
+
+    public boolean removeBattle(UUID initiatorId) {
+        return trainerBattles.remove(initiatorId) != null;
+    }
+
     public TrainerMobData getData(TrainerMob mob) {
         if(!trainerMobs.containsKey(mob.getTrainerId())) {
             if(!mob.getTrainerId().isEmpty()) {
-                ModCommon.LOG.error(String.format("Invalid trainer id '%s' for mob: %s", mob.getTrainerId(), mob.getDisplayName().getString()));
+                ModCommon.LOG.error(String.format(
+                    "Invalid trainer id '%s' for mob: %s",
+                    mob.getTrainerId(), mob.getDisplayName().getString()));
             }
 
             return new TrainerMobData();

@@ -12,6 +12,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.DifficultyInstance;
@@ -44,6 +46,9 @@ import net.minecraft.world.entity.npc.Npc;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 
 public class TrainerMob extends PathfinderMob implements Npc {
     private static final EntityDataAccessor<String> DATA_TRAINER_ID = SynchedEntityData.defineId(TrainerMob.class, EntityDataSerializers.STRING);
@@ -98,9 +103,11 @@ public class TrainerMob extends PathfinderMob implements Npc {
             } else if(trPlayer.getLevelCap() < trMob.getTeam().getMembers().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0)) {
                 ChatUtils.reply(this, player, "low_level_cap");
             } else {
-                this.setOpponent(player);
-                ChatUtils.reply(this, player, "battle_start");
-                ChatUtils.battle(this, player);
+                if(ChatUtils.makebattle(this, player)) {
+                    ModCommon.TRAINER_MANAGER.addBattle(player, this);
+                    ChatUtils.reply(this, player, "battle_start");
+                    this.setOpponent(player);
+                }
             }
         }
     }
@@ -143,6 +150,34 @@ public class TrainerMob extends PathfinderMob implements Npc {
         return this.entityData.get(DATA_TRAINER_ID);
     }
 
+    public void finishBattle(boolean defeated) {
+        var level = this.level();
+
+        if(!level.isClientSide && isInBattle()) {
+            ChatUtils.reply(this, this.getOpponent(), defeated ? "battle_lost" : "battle_win");
+            this.setDefeated(defeated);
+            this.setOpponent(null);
+            this.setTarget(null);
+
+            if(defeated) {
+                this.dropBattleLoot(ModCommon.TRAINER_MANAGER.getData(this).getLootTableResource());
+            }
+        }
+    }
+
+    protected void dropBattleLoot(ResourceLocation lootTableResource) {
+        var level = this.level();
+        var lootTable = level.getServer().getLootData().getLootTable(lootTableResource);
+        var builder = (new LootParams.Builder((ServerLevel)level))
+            .withParameter(LootContextParams.THIS_ENTITY, this)
+            .withParameter(LootContextParams.DAMAGE_SOURCE, this.getLastDamageSource())
+            .withParameter(LootContextParams.ORIGIN, this.position());
+
+        lootTable.getRandomItems(
+            builder.create(LootContextParamSets.ENTITY),
+            this.getLootTableSeed(), this::spawnAtLocation);
+    }
+
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
@@ -161,18 +196,8 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
             return InteractionResult.sidedSuccess(level.isClientSide);
         } else {
-            // TEST
-            var level = this.level();
-            if(!level.isClientSide) {
-                this.setDefeated(true);
-                this.setOpponent(null);
-                this.setTarget(null);
-                ChatUtils.reply(this, player, "battle_lost");
-            }
-            return InteractionResult.sidedSuccess(level.isClientSide);
-            /////
-
-            // return super.mobInteract(player, interactionHand);
+            // TODO: "defeated" or "busy/cooldown" response
+            return super.mobInteract(player, interactionHand);
         }
     }
 

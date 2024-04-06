@@ -22,9 +22,11 @@ public final class ChatUtils {
         }
     }
 
-    public static void battle(TrainerMob source, Player target) {
+    public static boolean makebattle(TrainerMob source, Player target) {
         try {
-            target.getServer().getCommands().getDispatcher().execute(battleCommand(source, target, source.getTrainerId()), target.createCommandSourceStack());
+            return target.getServer()
+                .getCommands().getDispatcher()
+                .execute(battleCommand(source, target, source.getTrainerId()), target.createCommandSourceStack()) != -1;
         } catch(CommandSyntaxException e) {
             throw new RuntimeException(e);
         }
