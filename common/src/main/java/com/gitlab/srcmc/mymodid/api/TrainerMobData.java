@@ -179,8 +179,8 @@ public class TrainerMobData {
 
     public TrainerMobData() {
         this.team = new TrainerTeam();
-        this.textureResource = new ResourceLocation(ModCommon.MOD_ID, PATH_MOB_DEFAULT.replaceFirst("mob", "texture").replace(".json", ".png"));
-        this.lootTableResource = new ResourceLocation(ModCommon.MOD_ID, PATH_MOB_DEFAULT.replaceFirst("mob", "loot_table"));
+        this.textureResource = new ResourceLocation(ModCommon.MOD_ID, PATH_MOB_DEFAULT.replaceFirst("mobs/", "textures/").replace(".json", ".png"));
+        this.lootTableResource = new ResourceLocation(ModCommon.MOD_ID, PATH_MOB_DEFAULT.replaceFirst("mobs/", "").replace(".json", "")); // "loot_tables/" is inferred from context
     }
 
     public TrainerMobData(TrainerMobData origin) {
