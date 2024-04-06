@@ -2,6 +2,7 @@ package com.gitlab.srcmc.mymodid.forge;
 
 import com.gitlab.srcmc.mymodid.ModCommon;
 import com.gitlab.srcmc.mymodid.world.entities.TrainerMob;
+import com.gitlab.srcmc.mymodid.world.loot.conditions.LevelRangeCondition;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -14,6 +15,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -69,6 +71,17 @@ public class ModRegistries {
         }
     }
 
+    public static class LootItemConditions {
+        public static final DeferredRegister<LootItemConditionType> REGISTRY;
+        public static final RegistryObject<LootItemConditionType> LEVEL_RANGE;
+
+        static {
+            REGISTRY = DeferredRegister.create(Registries.LOOT_CONDITION_TYPE, ModCommon.MOD_ID);
+            LEVEL_RANGE = REGISTRY.register("level_range", () -> new LootItemConditionType(new LevelRangeCondition.Serializer()));
+            LevelRangeCondition.init(LEVEL_RANGE);
+        }
+    }
+
     @SubscribeEvent
     public static void onConstructMod(final FMLConstructModEvent event) {
         registerBlockItems();
@@ -79,6 +92,7 @@ public class ModRegistries {
         Blocks.REGISTRY.register(bus);
         Blocks.Entities.REGISTRY.register(bus);
         Entities.REGISTRY.register(bus);
+        LootItemConditions.REGISTRY.register(bus);
     }
 
     private static ResourceKey<CreativeModeTab> modCreativeTab;
