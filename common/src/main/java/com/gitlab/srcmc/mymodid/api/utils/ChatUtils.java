@@ -1,6 +1,6 @@
 package com.gitlab.srcmc.mymodid.api.utils;
 
-import com.gitlab.srcmc.mymodid.ModCommon;
+import com.gitlab.srcmc.mymodid.api.RCTMod;
 import com.gitlab.srcmc.mymodid.world.entities.TrainerMob;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 
@@ -14,7 +14,7 @@ public final class ChatUtils {
     private ChatUtils() {}
 
     public static void reply(TrainerMob source, Player target, String context) {
-        var messages = ModCommon.TRAINER_MANAGER.getData(source).getDialog().get(context);
+        var messages = RCTMod.get().getTrainerManager().getData(source).getDialog().get(context);
 
         if(messages != null && messages.length > 0) {
             var message = PlayerChatMessage.unsigned(target.getUUID(), messages[(target.getRandom().nextInt() & Integer.MAX_VALUE) % messages.length]);

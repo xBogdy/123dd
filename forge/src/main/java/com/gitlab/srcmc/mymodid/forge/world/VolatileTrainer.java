@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import com.cobblemon.mod.common.pokemon.Pokemon;
 import com.cobblemon.mod.common.pokemon.Species;
-import com.gitlab.srcmc.mymodid.api.PathUtils;
+import com.gitlab.srcmc.mymodid.api.utils.PathUtils;
 import com.google.gson.JsonParser;
 import com.selfdot.cobblemontrainers.CobblemonTrainers;
 import com.selfdot.cobblemontrainers.trainer.Trainer;

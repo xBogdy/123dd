@@ -78,7 +78,6 @@ public class ModRegistries {
         static {
             REGISTRY = DeferredRegister.create(Registries.LOOT_CONDITION_TYPE, ModCommon.MOD_ID);
             LEVEL_RANGE = REGISTRY.register("level_range", () -> new LootItemConditionType(new LevelRangeCondition.Serializer()));
-            LevelRangeCondition.init(LEVEL_RANGE);
         }
     }
 

@@ -7,6 +7,7 @@ import com.cobblemon.mod.common.api.battles.model.actor.BattleActor;
 import com.cobblemon.mod.common.api.events.CobblemonEvents;
 import com.cobblemon.mod.common.api.events.battles.BattleVictoryEvent;
 import com.gitlab.srcmc.mymodid.ModCommon;
+import com.gitlab.srcmc.mymodid.api.RCTMod;
 import com.gitlab.srcmc.mymodid.forge.ModRegistries;
 import com.gitlab.srcmc.mymodid.world.entities.TrainerMob;
 import kotlin.Unit;
@@ -19,7 +20,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 public class ModEventBus {
     @SubscribeEvent
     static void onCommonSetup(FMLCommonSetupEvent event) {
-        ModCommon.TRAINER_MANAGER.load();
+        RCTMod.init(ModRegistries.LootItemConditions.LEVEL_RANGE);
+        RCTMod.get().getTrainerManager().load();
         CobblemonEvents.BATTLE_VICTORY.subscribe(Priority.NORMAL, ModEventBus::handleBattleVictory);
     }
 
@@ -38,10 +40,10 @@ public class ModEventBus {
 
     private static boolean checkForTrainerBattle(List<BattleActor> actors, boolean winners) {
         for(var actor : actors) {
-            var trainerBattle = ModCommon.TRAINER_MANAGER.getBattle(actor.getUuid());
+            var trainerBattle = RCTMod.get().getTrainerManager().getBattle(actor.getUuid());
 
             if(trainerBattle.isPresent()) {
-                ModCommon.TRAINER_MANAGER.removeBattle(actor.getUuid());
+                RCTMod.get().getTrainerManager().removeBattle(actor.getUuid());
                 trainerBattle.get().distributeRewards(winners);
                 return true;
             }

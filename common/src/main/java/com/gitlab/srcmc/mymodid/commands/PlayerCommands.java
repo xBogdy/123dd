@@ -1,6 +1,7 @@
 package com.gitlab.srcmc.mymodid.commands;
 
 import com.gitlab.srcmc.mymodid.ModCommon;
+import com.gitlab.srcmc.mymodid.api.RCTMod;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.context.CommandContext;
@@ -66,7 +67,7 @@ public final class PlayerCommands {
 
     private static int player_get_level_cap(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         if(context.getSource().getEntity() instanceof Player player) {
-            var level_cap = ModCommon.TRAINER_MANAGER.getData(player).getLevelCap();
+            var level_cap = RCTMod.get().getTrainerManager().getData(player).getLevelCap();
             context.getSource().sendSuccess(() -> Component.literal(String.valueOf(level_cap)), false);
             return level_cap;
         }
@@ -77,14 +78,14 @@ public final class PlayerCommands {
 
     private static int player_get_level_cap_target(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         var player = EntityArgument.getPlayer(context, "target");
-        var level_cap = ModCommon.TRAINER_MANAGER.getData(player).getLevelCap();
+        var level_cap = RCTMod.get().getTrainerManager().getData(player).getLevelCap();
         context.getSource().sendSuccess(() -> Component.literal(String.valueOf(level_cap)), false);
         return level_cap;
     }
 
     private static int player_get_badges(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         if(context.getSource().getEntity() instanceof Player player) {
-            var badges = ModCommon.TRAINER_MANAGER.getData(player).getBadges();
+            var badges = RCTMod.get().getTrainerManager().getData(player).getBadges();
             context.getSource().sendSuccess(() -> Component.literal(String.valueOf(badges)), false);
             return badges;
         }
@@ -95,14 +96,14 @@ public final class PlayerCommands {
 
     private static int player_get_badges_target(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         var player = EntityArgument.getPlayer(context, "target");
-        var badges = ModCommon.TRAINER_MANAGER.getData(player).getBadges();
+        var badges = RCTMod.get().getTrainerManager().getData(player).getBadges();
         context.getSource().sendSuccess(() -> Component.literal(String.valueOf(badges)), false);
         return badges;
     }
 
     private static int player_get_beaten_e4(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         if(context.getSource().getEntity() instanceof Player player) {
-            var beaten_e4 = ModCommon.TRAINER_MANAGER.getData(player).getBeatenE4();
+            var beaten_e4 = RCTMod.get().getTrainerManager().getData(player).getBeatenE4();
             context.getSource().sendSuccess(() -> Component.literal(String.valueOf(beaten_e4)), false);
             return beaten_e4;
         }
@@ -113,14 +114,14 @@ public final class PlayerCommands {
 
     private static int player_get_beaten_e4_target(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         var player = EntityArgument.getPlayer(context, "target");
-        var beaten_e4 = ModCommon.TRAINER_MANAGER.getData(player).getBeatenE4();
+        var beaten_e4 = RCTMod.get().getTrainerManager().getData(player).getBeatenE4();
         context.getSource().sendSuccess(() -> Component.literal(String.valueOf(beaten_e4)), false);
         return beaten_e4;
     }
 
     private static int player_get_beaten_champs(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         if(context.getSource().getEntity() instanceof Player player) {
-            var beaten_champs = ModCommon.TRAINER_MANAGER.getData(player).getBeatenChamps();
+            var beaten_champs = RCTMod.get().getTrainerManager().getData(player).getBeatenChamps();
             context.getSource().sendSuccess(() -> Component.literal(String.valueOf(beaten_champs)), false);
             return beaten_champs;
         }
@@ -131,7 +132,7 @@ public final class PlayerCommands {
 
     private static int player_get_beaten_champs_target(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         var player = EntityArgument.getPlayer(context, "target");
-        var beaten_champs = ModCommon.TRAINER_MANAGER.getData(player).getBeatenChamps();
+        var beaten_champs = RCTMod.get().getTrainerManager().getData(player).getBeatenChamps();
         context.getSource().sendSuccess(() -> Component.literal(String.valueOf(beaten_champs)), false);
         return beaten_champs;
     }
@@ -139,7 +140,7 @@ public final class PlayerCommands {
     private static int player_set_level_cap_value(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         if(context.getSource().getEntity() instanceof Player player) {
             var level_cap = IntegerArgumentType.getInteger(context, "value");
-            ModCommon.TRAINER_MANAGER.getData(player).setLevelCap(level_cap);
+            RCTMod.get().getTrainerManager().getData(player).setLevelCap(level_cap);
             return level_cap;
         }
         
@@ -152,7 +153,7 @@ public final class PlayerCommands {
         var level_cap = IntegerArgumentType.getInteger(context, "value");
 
         for(var player : targets) {
-            ModCommon.TRAINER_MANAGER.getData(player).setLevelCap(level_cap);
+            RCTMod.get().getTrainerManager().getData(player).setLevelCap(level_cap);
         }
         
         return level_cap;
@@ -161,7 +162,7 @@ public final class PlayerCommands {
     private static int player_set_badges_value(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         if(context.getSource().getEntity() instanceof Player player) {
             var badges = IntegerArgumentType.getInteger(context, "value");
-            ModCommon.TRAINER_MANAGER.getData(player).setBadges(badges);
+            RCTMod.get().getTrainerManager().getData(player).setBadges(badges);
             return badges;
         }
         
@@ -174,7 +175,7 @@ public final class PlayerCommands {
         var badges = IntegerArgumentType.getInteger(context, "value");
 
         for(var player : targets) {
-            ModCommon.TRAINER_MANAGER.getData(player).setBadges(badges);
+            RCTMod.get().getTrainerManager().getData(player).setBadges(badges);
         }
         
         return badges;
@@ -183,7 +184,7 @@ public final class PlayerCommands {
     private static int player_set_beaten_e4_value(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         if(context.getSource().getEntity() instanceof Player player) {
             var beaten_e4 = IntegerArgumentType.getInteger(context, "value");
-            ModCommon.TRAINER_MANAGER.getData(player).setBeatenE4(beaten_e4);
+            RCTMod.get().getTrainerManager().getData(player).setBeatenE4(beaten_e4);
             return beaten_e4;
         }
         
@@ -196,7 +197,7 @@ public final class PlayerCommands {
         var beaten_e4 = IntegerArgumentType.getInteger(context, "value");
 
         for(var player : targets) {
-            ModCommon.TRAINER_MANAGER.getData(player).setBeatenE4(beaten_e4);
+            RCTMod.get().getTrainerManager().getData(player).setBeatenE4(beaten_e4);
         }
         
         return beaten_e4;
@@ -205,7 +206,7 @@ public final class PlayerCommands {
     private static int player_set_beaten_champs_value(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         if(context.getSource().getEntity() instanceof Player player) {
             var beaten_champs = IntegerArgumentType.getInteger(context, "value");
-            ModCommon.TRAINER_MANAGER.getData(player).setBeatenChamps(beaten_champs);
+            RCTMod.get().getTrainerManager().getData(player).setBeatenChamps(beaten_champs);
             return beaten_champs;
         }
         
@@ -218,7 +219,7 @@ public final class PlayerCommands {
         var beaten_champs = IntegerArgumentType.getInteger(context, "value");
 
         for(var player : targets) {
-            ModCommon.TRAINER_MANAGER.getData(player).setBeatenChamps(beaten_champs);
+            RCTMod.get().getTrainerManager().getData(player).setBeatenChamps(beaten_champs);
         }
         
         return beaten_champs;

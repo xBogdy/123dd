@@ -1,6 +1,7 @@
 package com.gitlab.srcmc.mymodid.world.entities;
 
 import com.gitlab.srcmc.mymodid.ModCommon;
+import com.gitlab.srcmc.mymodid.api.RCTMod;
 import com.gitlab.srcmc.mymodid.api.utils.ChatUtils;
 import com.gitlab.srcmc.mymodid.world.entities.goals.LookAtPlayerAndWaitGoal;
 import com.gitlab.srcmc.mymodid.world.entities.goals.PokemonBattleGoal;
@@ -77,8 +78,8 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
     public boolean canBattle(Entity e) {
         if(e instanceof Player player) {
-            var trPlayer = ModCommon.TRAINER_MANAGER.getData(player);
-            var trMob = ModCommon.TRAINER_MANAGER.getData(this);
+            var trPlayer = RCTMod.get().getTrainerManager().getData(player);
+            var trMob = RCTMod.get().getTrainerManager().getData(this);
 
             return trPlayer.getBadges() >= trMob.getRequiredBadges()
                 && trPlayer.getBeatenE4() >= trMob.getRequiredBeatenE4()
@@ -91,8 +92,8 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
     public void startBattleWith(Player player) {
         if(!this.isInBattle() && !this.isDefeated()) {
-            var trPlayer = ModCommon.TRAINER_MANAGER.getData(player);
-            var trMob = ModCommon.TRAINER_MANAGER.getData(this);
+            var trPlayer = RCTMod.get().getTrainerManager().getData(player);
+            var trMob = RCTMod.get().getTrainerManager().getData(this);
 
             if(trPlayer.getBadges() < trMob.getRequiredBadges()) {
                 ChatUtils.reply(this, player, "missing_badges");
@@ -104,7 +105,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
                 ChatUtils.reply(this, player, "low_level_cap");
             } else {
                 if(ChatUtils.makebattle(this, player)) {
-                    ModCommon.TRAINER_MANAGER.addBattle(player, this);
+                    RCTMod.get().getTrainerManager().addBattle(player, this);
                     ChatUtils.reply(this, player, "battle_start");
                     this.setOpponent(player);
                 }
@@ -141,7 +142,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
         if(!level.isClientSide) {
             this.entityData.set(DATA_TRAINER_ID, trainerId);
-            var tmd = ModCommon.TRAINER_MANAGER.getData(this);
+            var tmd = RCTMod.get().getTrainerManager().getData(this);
             this.setCustomName(Component.literal(tmd.getTeam().getDisplayName()));
         }
     }
@@ -160,7 +161,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
             this.setTarget(null);
 
             if(defeated) {
-                this.dropBattleLoot(ModCommon.TRAINER_MANAGER.getData(this).getLootTableResource());
+                this.dropBattleLoot(RCTMod.get().getTrainerManager().getData(this).getLootTableResource());
             }
         }
     }

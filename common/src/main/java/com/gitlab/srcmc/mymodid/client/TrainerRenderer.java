@@ -1,6 +1,6 @@
 package com.gitlab.srcmc.mymodid.client;
 
-import com.gitlab.srcmc.mymodid.ModCommon;
+import com.gitlab.srcmc.mymodid.api.RCTMod;
 import com.gitlab.srcmc.mymodid.world.entities.TrainerMob;
 import com.mojang.blaze3d.vertex.PoseStack;
 
@@ -18,7 +18,7 @@ public class TrainerRenderer extends HumanoidMobRenderer<TrainerMob, HumanoidMod
 
     @Override
     public ResourceLocation getTextureLocation(TrainerMob mob) {
-        return ModCommon.TRAINER_MANAGER.getData(mob).getTextureResource();
+        return RCTMod.get().getTrainerManager().getData(mob).getTextureResource();
     }
 
     @Override

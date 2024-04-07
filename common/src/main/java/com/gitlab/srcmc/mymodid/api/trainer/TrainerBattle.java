@@ -1,7 +1,7 @@
 package com.gitlab.srcmc.mymodid.api.trainer;
 
 import java.util.List;
-import com.gitlab.srcmc.mymodid.ModCommon;
+import com.gitlab.srcmc.mymodid.api.RCTMod;
 import com.gitlab.srcmc.mymodid.world.entities.TrainerMob;
 
 import net.minecraft.world.entity.player.Player;
@@ -41,8 +41,8 @@ public class TrainerBattle {
 
         for(var player : winnerPlayers) {
             for(var mob : looserMobs) {
-                var mobTr = ModCommon.TRAINER_MANAGER.getData(mob);
-                var playerTr = ModCommon.TRAINER_MANAGER.getData(player);
+                var mobTr = RCTMod.get().getTrainerManager().getData(mob);
+                var playerTr = RCTMod.get().getTrainerManager().getData(player);
                 playerTr.setLevelCap(Math.max(mobTr.getRewardLevelCap(), playerTr.getLevelCap()));
                 mob.finishBattle(true);
 

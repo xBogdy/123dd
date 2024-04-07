@@ -1,6 +1,7 @@
 package com.gitlab.srcmc.mymodid.commands;
 
 import com.gitlab.srcmc.mymodid.ModCommon;
+import com.gitlab.srcmc.mymodid.api.RCTMod;
 import com.gitlab.srcmc.mymodid.world.entities.TrainerMob;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
@@ -35,7 +36,7 @@ public class MobCommands {
 
     private static int mob_get_required_level_cap_target(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         if(EntityArgument.getEntity(context, "target") instanceof TrainerMob mob) {
-            var required_level_cap = ModCommon.TRAINER_MANAGER.getData(mob).getRequiredLevelCap();
+            var required_level_cap = RCTMod.get().getTrainerManager().getData(mob).getRequiredLevelCap();
             context.getSource().sendSuccess(() -> Component.literal(String.valueOf(required_level_cap)), false);
             return required_level_cap;
         }
@@ -46,7 +47,7 @@ public class MobCommands {
 
     private static int mob_get_required_badges_target(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         if(EntityArgument.getEntity(context, "target") instanceof TrainerMob mob) {
-            var required_badges = ModCommon.TRAINER_MANAGER.getData(mob).getRequiredBadges();
+            var required_badges = RCTMod.get().getTrainerManager().getData(mob).getRequiredBadges();
             context.getSource().sendSuccess(() -> Component.literal(String.valueOf(required_badges)), false);
             return required_badges;
         }
@@ -57,7 +58,7 @@ public class MobCommands {
 
     private static int mob_get_required_beaten_e4_target(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         if(EntityArgument.getEntity(context, "target") instanceof TrainerMob mob) {
-            var required_beaten_e4 = ModCommon.TRAINER_MANAGER.getData(mob).getRequiredBeatenE4();
+            var required_beaten_e4 = RCTMod.get().getTrainerManager().getData(mob).getRequiredBeatenE4();
             context.getSource().sendSuccess(() -> Component.literal(String.valueOf(required_beaten_e4)), false);
             return required_beaten_e4;
         }
@@ -68,7 +69,7 @@ public class MobCommands {
 
     private static int mob_get_required_beaten_champs_target(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         if(EntityArgument.getEntity(context, "target") instanceof TrainerMob mob) {
-            var required_beaten_champs = ModCommon.TRAINER_MANAGER.getData(mob).getRequiredBeatenChamps();
+            var required_beaten_champs = RCTMod.get().getTrainerManager().getData(mob).getRequiredBeatenChamps();
             context.getSource().sendSuccess(() -> Component.literal(String.valueOf(required_beaten_champs)), false);
             return required_beaten_champs;
         }

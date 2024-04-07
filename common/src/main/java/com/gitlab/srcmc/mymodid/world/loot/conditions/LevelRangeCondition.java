@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Supplier;
 
-import com.gitlab.srcmc.mymodid.ModCommon;
+import com.gitlab.srcmc.mymodid.api.RCTMod;
 import com.gitlab.srcmc.mymodid.world.entities.TrainerMob;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonObject;
@@ -61,7 +61,7 @@ public class LevelRangeCondition implements LootItemCondition {
 
     public boolean test(LootContext lootContext) {
         if(lootContext.getParamOrNull(this.entityTarget.getParam()) instanceof TrainerMob mob) {
-            var teamLevel = ModCommon.TRAINER_MANAGER
+            var teamLevel = RCTMod.get().getTrainerManager()
                 .getData(mob).getTeam().getMembers().stream()
                 .map(p -> p.getLevel()).max(Integer::compare).orElse(0);
 
