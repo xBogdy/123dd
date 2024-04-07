@@ -7,6 +7,8 @@ import java.util.Map;
 import java.util.Set;
 
 import com.gitlab.srcmc.mymodid.ModCommon;
+import com.gitlab.srcmc.mymodid.api.utils.JsonUtils;
+import com.gitlab.srcmc.mymodid.api.utils.PathUtils;
 import com.google.gson.reflect.TypeToken;
 
 import net.minecraft.client.Minecraft;

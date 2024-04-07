@@ -1,4 +1,4 @@
-package com.gitlab.srcmc.mymodid.api;
+package com.gitlab.srcmc.mymodid.api.utils;
 
 public final class PathUtils {
     private PathUtils() {}

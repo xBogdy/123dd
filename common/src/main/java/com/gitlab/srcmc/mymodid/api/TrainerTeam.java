@@ -3,6 +3,9 @@ package com.gitlab.srcmc.mymodid.api;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import com.gitlab.srcmc.mymodid.api.utils.JsonUtils;
+
 import net.minecraft.resources.ResourceLocation;
 
 public class TrainerTeam {

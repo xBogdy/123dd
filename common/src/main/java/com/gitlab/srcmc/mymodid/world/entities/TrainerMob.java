@@ -1,7 +1,7 @@
 package com.gitlab.srcmc.mymodid.world.entities;
 
 import com.gitlab.srcmc.mymodid.ModCommon;
-import com.gitlab.srcmc.mymodid.api.ChatUtils;
+import com.gitlab.srcmc.mymodid.api.utils.ChatUtils;
 import com.gitlab.srcmc.mymodid.world.entities.goals.LookAtPlayerAndWaitGoal;
 import com.gitlab.srcmc.mymodid.world.entities.goals.PokemonBattleGoal;
 

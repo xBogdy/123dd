@@ -8,6 +8,8 @@ import java.util.Set;
 import java.util.UUID;
 
 import com.gitlab.srcmc.mymodid.ModCommon;
+import com.gitlab.srcmc.mymodid.api.utils.JsonUtils;
+import com.gitlab.srcmc.mymodid.api.utils.PathUtils;
 import com.gitlab.srcmc.mymodid.world.entities.TrainerMob;
 
 import net.minecraft.client.Minecraft;

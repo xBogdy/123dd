@@ -1,4 +1,4 @@
-package com.gitlab.srcmc.mymodid.api;
+package com.gitlab.srcmc.mymodid.api.utils;
 
 import com.gitlab.srcmc.mymodid.ModCommon;
 import com.gitlab.srcmc.mymodid.world.entities.TrainerMob;
