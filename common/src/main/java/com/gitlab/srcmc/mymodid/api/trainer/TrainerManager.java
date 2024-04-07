@@ -1,54 +1,63 @@
 package com.gitlab.srcmc.mymodid.api.trainer;
 
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
-
 import com.gitlab.srcmc.mymodid.ModCommon;
-import com.gitlab.srcmc.mymodid.api.utils.JsonUtils;
 import com.gitlab.srcmc.mymodid.api.utils.PathUtils;
 import com.gitlab.srcmc.mymodid.world.entities.TrainerMob;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.packs.resources.Resource;
+import net.minecraft.server.packs.PackResources;
+import net.minecraft.server.packs.PackType;
+import net.minecraft.server.packs.PackResources.ResourceOutput;
+import net.minecraft.server.packs.resources.IoSupplier;
+import net.minecraft.server.packs.resources.ResourceManager;
+import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
+import net.minecraft.util.profiling.ProfilerFiller;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.biome.Biome;
 
-public class TrainerManager {
-    private Map<ResourceLocation, TrainerMobData> trainerGroups = new HashMap<>();
-    private Map<String, TrainerMobData> trainerMobs = new HashMap<>();
-    private Map<UUID, TrainerBattle> trainerBattles = new HashMap<>();
-
+public class TrainerManager extends SimpleJsonResourceReloadListener {
     private static final String PATH_MOBS_GROUPS = "mobs/trainers/groups";
     private static final String PATH_MOBS_SINGLE = "mobs/trainers/single";
     private static final String PATH_TRAINERS = "trainers";
+    private final static Gson GSON = new Gson();
 
-    public void load() {
-        trainerMobs.clear();
-        loadTrainerGroups();
-        loadTrainerMobs();
-        dump();
-        trainerGroups.clear();
+    private Map<ResourceLocation, TrainerMobData> trainerGroups = new HashMap<>();
+    private Map<String, TrainerMobData> trainerMobs = new HashMap<>();
+    private Map<UUID, TrainerBattle> trainerBattles = new HashMap<>();
+    private PackResources dataPack;
+
+    /**
+     * Constructs a new trainer manager. Be sure to register this instance as
+     * ReloadListener and invoke registerTrainers before usage.
+     */
+    public TrainerManager() {
+        super(GSON, ModCommon.MOD_ID);
     }
 
-    // TODO: remove debug function
-    private void dump() {
-        ModCommon.LOG.info("TRAINER GROUPS:");
-        for(var kv : trainerGroups.entrySet()) {
-            ModCommon.LOG.info("- [" + kv.getKey() + "]");
-            ModCommon.LOG.info(JsonUtils.toJson(kv.getValue()));
-        }
+    /**
+     * Invokes the given consumer for all trainer teams. Can be used to register
+     * trainers to other registries (e.g. from CobblemonTrainers).
+     * 
+     * @param trainerConsumer Consumer invoked for each trainer team.
+     */
+    public void registerTrainers(ResourceOutput trainerConsumer) {
+        if(this.dataPack != null) {
+            this.dataPack.listResources(
+                PackType.SERVER_DATA,
+                ModCommon.MOD_ID, PATH_TRAINERS,
+                trainerConsumer);
 
-        ModCommon.LOG.info("TRAINER MOBS:");
-        for(var kv : trainerMobs.entrySet()) {
-            ModCommon.LOG.info("- [" + kv.getKey() + "]");
-            ModCommon.LOG.info(kv.getValue().getTextureResource().getPath());
-            ModCommon.LOG.info(JsonUtils.toJson(kv.getValue()));
+            this.dataPack.close();
         }
     }
 
@@ -94,6 +103,11 @@ public class TrainerManager {
             trainerPlayerDataFile(player));
     }
 
+    @Override
+    protected void apply(Map<ResourceLocation, JsonElement> object, ResourceManager resourceManager, ProfilerFiller profilerFiller) {
+        this.load(resourceManager);
+    }
+
     private String trainerPlayerDataFile(Player player) {
         return String.format("%s.trainer.%s", ModCommon.MOD_ID, player.getUUID().toString());
     }
@@ -108,27 +122,53 @@ public class TrainerManager {
         return result;
     }
 
-    private void loadTrainerGroups() {
-        Minecraft.getInstance().getResourceManager()
-            .listResources(PATH_MOBS_GROUPS, rl -> rl.getPath().toLowerCase().endsWith(".json"))
-            .forEach(this::loadTrainerGroup);
+    private void initDataPack(ResourceManager resourceManager) {
+        var it = resourceManager.listPacks().iterator();
+
+        while(it.hasNext()) {
+            var dp = it.next();
+
+            if(dp.packId().equals("main")) {
+                this.dataPack = dp;
+                return;
+            }
+        }
+
+        throw new IllegalStateException("missing internal data pack");
     }
 
-    private void loadTrainerGroup(ResourceLocation rl, Resource rs) {
-        trainerGroups.put(rl, TrainerMobData.loadFromOrThrow(rl));
+    private void load(ResourceManager resourceManager) {
+        this.initDataPack(resourceManager);
+        this.trainerMobs.clear();
+        this.loadTrainerGroups();
+        this.loadTrainerMobs();
+        this.trainerGroups.clear();
+        this.dataPack.close();
+    }
+
+    private void loadTrainerGroups() {
+        this.dataPack.listResources(
+            PackType.SERVER_DATA,
+            ModCommon.MOD_ID, PATH_MOBS_GROUPS,
+            this::loadTrainerGroup);
+    }
+
+    private void loadTrainerGroup(ResourceLocation rl, IoSupplier<InputStream> io) {
+        trainerGroups.put(rl, TrainerMobData.loadFromOrThrow(rl, io));
     }
 
     private void loadTrainerMobs() {
-        Minecraft.getInstance().getResourceManager()
-            .listResources(PATH_TRAINERS, rl -> rl.getPath().toLowerCase().endsWith(".json"))
-            .forEach(this::loadTrainerMob);
+        this.dataPack.listResources(
+            PackType.SERVER_DATA,
+            ModCommon.MOD_ID, PATH_TRAINERS,
+            this::loadTrainerMob);
     }
 
-    private void loadTrainerMob(ResourceLocation rl, Resource rs) {
+    private void loadTrainerMob(ResourceLocation rl, IoSupplier<InputStream> io) {
         var trainerId = PathUtils.filename(rl.getPath());
-        var mobResource = new ResourceLocation(ModCommon.MOD_ID, PATH_MOBS_SINGLE + "/" + trainerId + ".json");
-        var tmd = TrainerMobData.loadFromOrFallback(mobResource, trainerGroups);
-        tmd.setTeam(TrainerTeam.loadFromOrThrow(rl));
+        var mobResource = new ResourceLocation(PATH_MOBS_SINGLE + "/" + trainerId + ".json");
+        var tmd = TrainerMobData.loadFromOrFallback(this.dataPack, mobResource, this.dataPack.getResource(PackType.SERVER_DATA, mobResource), trainerGroups);
+        tmd.setTeam(TrainerTeam.loadFromOrThrow(rl, io));
         trainerMobs.put(trainerId, tmd);
     }
 }

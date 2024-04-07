@@ -1,5 +1,6 @@
 package com.gitlab.srcmc.mymodid.api.trainer;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -7,6 +8,7 @@ import java.util.List;
 import com.gitlab.srcmc.mymodid.api.utils.JsonUtils;
 
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.resources.IoSupplier;
 
 public class TrainerTeam {
     public class Pokemon {
@@ -57,6 +59,13 @@ public class TrainerTeam {
     private List<Pokemon> team = new ArrayList<>();
     private transient ResourceLocation resourceLocation;
 
+    public static TrainerTeam loadFromOrThrow(ResourceLocation rl, IoSupplier<InputStream> io) {
+        var tt = JsonUtils.loadFromOrThrow(io, TrainerTeam.class);
+        tt.resourceLocation = rl;
+        return tt;
+    }
+
+    // deprecated
     public static TrainerTeam loadFromOrThrow(ResourceLocation rl) {
         var tt = JsonUtils.loadFromOrThrow(rl, TrainerTeam.class);
         tt.resourceLocation = rl;

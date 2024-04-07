@@ -21,7 +21,6 @@ public class ModEventBus {
     @SubscribeEvent
     static void onCommonSetup(FMLCommonSetupEvent event) {
         RCTMod.init(ModRegistries.LootItemConditions.LEVEL_RANGE);
-        RCTMod.get().getTrainerManager().load();
         CobblemonEvents.BATTLE_VICTORY.subscribe(Priority.NORMAL, ModEventBus::handleBattleVictory);
     }
 
