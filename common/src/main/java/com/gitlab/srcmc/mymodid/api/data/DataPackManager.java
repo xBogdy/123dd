@@ -1,4 +1,4 @@
-package com.gitlab.srcmc.mymodid.api.resources;
+package com.gitlab.srcmc.mymodid.api.data;
 
 import java.util.HashMap;
 import java.util.Map;

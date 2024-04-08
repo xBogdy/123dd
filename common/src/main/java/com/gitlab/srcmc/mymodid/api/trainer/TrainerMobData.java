@@ -7,8 +7,8 @@ import java.util.Map;
 import java.util.Set;
 
 import com.gitlab.srcmc.mymodid.ModCommon;
-import com.gitlab.srcmc.mymodid.api.resources.DataPackManager;
-import com.gitlab.srcmc.mymodid.api.resources.IDataPackObject;
+import com.gitlab.srcmc.mymodid.api.data.DataPackManager;
+import com.gitlab.srcmc.mymodid.api.data.IDataPackObject;
 import com.google.gson.reflect.TypeToken;
 
 import net.minecraft.core.Holder;

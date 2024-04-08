@@ -2,7 +2,7 @@ package com.gitlab.srcmc.mymodid.api;
 
 import java.util.function.Supplier;
 
-import com.gitlab.srcmc.mymodid.api.resources.DataPackManager;
+import com.gitlab.srcmc.mymodid.api.data.DataPackManager;
 import com.gitlab.srcmc.mymodid.api.trainer.TrainerManager;
 import com.gitlab.srcmc.mymodid.world.loot.conditions.LevelRangeCondition;
 
