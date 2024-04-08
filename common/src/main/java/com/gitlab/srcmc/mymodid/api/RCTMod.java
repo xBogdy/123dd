@@ -2,6 +2,7 @@ package com.gitlab.srcmc.mymodid.api;
 
 import java.util.function.Supplier;
 
+import com.gitlab.srcmc.mymodid.api.resources.DataPackManager;
 import com.gitlab.srcmc.mymodid.api.trainer.TrainerManager;
 import com.gitlab.srcmc.mymodid.world.loot.conditions.LevelRangeCondition;
 
@@ -9,6 +10,7 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 
 public final class RCTMod {
     private TrainerManager trainerManager;
+    private DataPackManager dataPackManager;
 
     private static Supplier<RCTMod> instance = () -> {
         throw new RuntimeException(RCTMod.class.getName() + " not initialized");
@@ -26,9 +28,14 @@ public final class RCTMod {
 
     private RCTMod() {
         this.trainerManager = new TrainerManager();
+        this.dataPackManager = new DataPackManager();
     }
 
     public TrainerManager getTrainerManager() {
         return this.trainerManager;
+    }
+
+    public DataPackManager getDataPackManager() {
+        return this.dataPackManager;
     }
 }

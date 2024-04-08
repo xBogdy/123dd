@@ -13,7 +13,6 @@ import com.selfdot.cobblemontrainers.CobblemonTrainers;
 import com.selfdot.cobblemontrainers.trainer.Trainer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.IoSupplier;
-import net.minecraft.server.packs.resources.Resource;
 
 public class VolatileTrainer extends Trainer {
 	public VolatileTrainer(ResourceLocation location, IoSupplier<InputStream> io) {
@@ -23,17 +22,6 @@ public class VolatileTrainer extends Trainer {
 			this.loadFromJson(JsonParser.parseReader(rd));
         } catch(IOException e) {
             throw new IllegalStateException(e);
-        }
-	}
-
-	// deprecated
-	public VolatileTrainer(ResourceLocation location, Resource resource) {
-		super(CobblemonTrainers.INSTANCE, PathUtils.filename(location.getPath()), "Radical");
-
-        try(var rd = resource.openAsReader()) {
-			this.loadFromJson(JsonParser.parseReader(rd));
-        } catch(IOException e) {
-            throw new RuntimeException(e);
         }
 	}
 

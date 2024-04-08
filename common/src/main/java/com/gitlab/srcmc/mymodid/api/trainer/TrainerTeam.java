@@ -65,13 +65,6 @@ public class TrainerTeam {
         return tt;
     }
 
-    // deprecated
-    public static TrainerTeam loadFromOrThrow(ResourceLocation rl) {
-        var tt = JsonUtils.loadFromOrThrow(rl, TrainerTeam.class);
-        tt.resourceLocation = rl;
-        return tt;
-    }
-
     public String getDisplayName() {
         return this.displayName;
     }

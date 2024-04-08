@@ -21,7 +21,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 public class ForgeEventBus {
     @SubscribeEvent
     static void onServerStarted(ServerStartedEvent event) {
-        RCTMod.get().getTrainerManager().registerTrainers(ForgeEventBus::addTrainer);
+        RCTMod.get().getDataPackManager().listTrainerTeams(ForgeEventBus::addTrainer);
     }
 
     @SubscribeEvent

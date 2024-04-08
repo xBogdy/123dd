@@ -1,6 +1,5 @@
 package com.gitlab.srcmc.mymodid.api.trainer;
 
-import java.io.InputStream;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -8,20 +7,16 @@ import java.util.Map;
 import java.util.Set;
 
 import com.gitlab.srcmc.mymodid.ModCommon;
-import com.gitlab.srcmc.mymodid.api.utils.JsonUtils;
-import com.gitlab.srcmc.mymodid.api.utils.PathUtils;
+import com.gitlab.srcmc.mymodid.api.resources.DataPackManager;
+import com.gitlab.srcmc.mymodid.api.resources.IDataPackObject;
 import com.google.gson.reflect.TypeToken;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.packs.PackResources;
-import net.minecraft.server.packs.PackType;
-import net.minecraft.server.packs.resources.IoSupplier;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.dimension.DimensionType;
 
-public class TrainerMobData {
+public class TrainerMobData implements IDataPackObject {
     public enum Group {
         UNKNOWN,
         ACE_TRAINER,
@@ -112,8 +107,6 @@ public class TrainerMobData {
         YOUNGSTER,
     }
 
-    private static final String PATH_MOB_DEFAULT = "mobs/trainers/default.json";
-
     public enum Type {
         NORMAL, BOSS, LEADER, E4, CHAMP, RIVAL, PROF, PLAYER
     }
@@ -138,101 +131,8 @@ public class TrainerMobData {
     private transient ResourceLocation lootTableResource;
     private transient TrainerTeam team;
 
-    public static TrainerMobData loadFromOrThrow(ResourceLocation location, IoSupplier<InputStream> io) {
-        var tmd = JsonUtils.loadFromOrThrow(io, TrainerMobData.class);
-        tmd.initResources(location);
-        return tmd;
-    }
-
-    // deprecated
-    public static TrainerMobData loadFromOrThrow(ResourceLocation location) {
-        var tmd = JsonUtils.loadFromOrThrow(location, TrainerMobData.class);
-        tmd.initResources(location);
-        return tmd;
-    }
-
-    public static TrainerMobData loadFromOrFallback(PackResources dataPack, ResourceLocation location, IoSupplier<InputStream> io, Map<ResourceLocation, TrainerMobData> groups) {
-        var trainerId = PathUtils.filename(location.getPath());
-        var defaultLocation = new ResourceLocation(ModCommon.MOD_ID, PATH_MOB_DEFAULT);
-        ResourceLocation groupLocation = null;
-        TrainerMobData tmd = null;
-
-        if(io != null) {
-            tmd = JsonUtils.loadFromOrThrow(io, TrainerMobData.class);
-        }
-
-        for(var groupEntry : groups.entrySet()) {
-            var groupId = PathUtils.filename(groupEntry.getKey().getPath());
-
-            if(trainerId.equals(groupId) || trainerId.contains("_" + groupId) || trainerId.contains(groupId + "_")) {
-                if(tmd == null) {
-                    tmd = new TrainerMobData(groupEntry.getValue());
-                }
-
-                groupLocation = groupEntry.getKey();
-                break;
-            }
-        }
-
-        if(tmd == null) {
-            tmd = JsonUtils.loadFromOrThrow(dataPack.getResource(PackType.SERVER_DATA, defaultLocation), TrainerMobData.class);
-        }
-
-        tmd.initResources(dataPack, defaultLocation);
-
-        if(groupLocation != null) {
-            tmd.initResources(dataPack, groupLocation);
-        }
-
-        tmd.initResources(dataPack, location);
-        
-        return tmd;
-    }
-
-    // deprecated
-    public static TrainerMobData loadFromOrFallback(ResourceLocation location, Map<ResourceLocation, TrainerMobData> groups) {
-        var rm = Minecraft.getInstance().getResourceManager();
-        var trainerId = PathUtils.filename(location.getPath());
-        var defaultLocation = new ResourceLocation(ModCommon.MOD_ID, PATH_MOB_DEFAULT);
-        ResourceLocation groupLocation = null;
-        TrainerMobData tmd = null;
-
-        if(rm.getResource(location).isPresent()) {
-            tmd = JsonUtils.loadFromOrThrow(location, TrainerMobData.class);
-        }
-
-        for(var groupEntry : groups.entrySet()) {
-            var groupId = PathUtils.filename(groupEntry.getKey().getPath());
-
-            if(trainerId.equals(groupId) || trainerId.contains("_" + groupId) || trainerId.contains(groupId + "_")) {
-                if(tmd == null) {
-                    tmd = new TrainerMobData(groupEntry.getValue());
-                }
-
-                groupLocation = groupEntry.getKey();
-                break;
-            }
-        }
-
-        if(tmd == null) {
-            tmd = JsonUtils.loadFromOrThrow(defaultLocation, TrainerMobData.class);
-        }
-
-        tmd.initResources(defaultLocation);
-
-        if(groupLocation != null) {
-            tmd.initResources(groupLocation);
-        }
-
-        tmd.initResources(location);
-        
-        return tmd;
-    }
-
     public TrainerMobData() {
         this.team = new TrainerTeam();
-        this.textureResource = new ResourceLocation(ModCommon.MOD_ID, PATH_MOB_DEFAULT.replaceFirst("mobs/", "textures/").replace(".json", ".png"));
-        this.lootTableResource = new ResourceLocation(ModCommon.MOD_ID, PATH_MOB_DEFAULT.replaceFirst("mobs/", "").replace(".json", ""));
     }
 
     public TrainerMobData(TrainerMobData origin) {
@@ -322,52 +222,40 @@ public class TrainerMobData {
         return this.team;
     }
 
-    public void setTeam(TrainerTeam team) {
-        this.team = team;
-    }
-
     public boolean canSpawnIn(DimensionType dimension, Holder<Biome> biome) {
         // TODO
         return false;
     }
 
-    private void initResources(PackResources dataPack, ResourceLocation mobLocation) {
-        var textureResource = new ResourceLocation(ModCommon.MOD_ID, mobLocation.getPath().replaceFirst("mobs/", "textures/").replace(".json", ".png"));
-        var lootTableResource = new ResourceLocation(ModCommon.MOD_ID, mobLocation.getPath().replaceFirst("mobs/", "").replace(".json", ""));
-        var dialogResource = new ResourceLocation(ModCommon.MOD_ID, mobLocation.getPath().replaceFirst("mobs/", "dialogs/"));
+    @Override
+    public void onLoad(DataPackManager dpm, String trainerId, String context) {
+        var lootTableResource = dpm.findResource(trainerId, "loot_tables");
+        var textureResource = dpm.findResource(trainerId, "textures");
 
-        if(dataPack.getResource(PackType.CLIENT_RESOURCES, textureResource) != null) {
-            this.textureResource = textureResource; // TODO: load texture?
-        }
-        
-        if(dataPack.getResource(PackType.SERVER_DATA, lootTableResource) != null) {
-            this.lootTableResource = lootTableResource;
+        if(textureResource.isPresent()) {
+            this.textureResource = textureResource.get();
         }
 
-        if(dataPack.getResource(PackType.SERVER_DATA, dialogResource) != null) {
-            var dialog = JsonUtils.loadFromOrThrow(dataPack.getResource(PackType.SERVER_DATA, dialogResource), new TypeToken<Map<String, String[]>>() {});
-            this.dialog = dialog != null ? dialog : new HashMap<>(); // TODO: maybe client side (lang keys?)
-        }
-    }
-
-    // deprecated
-    private void initResources(ResourceLocation mobLocation) {
-        var textureResource = new ResourceLocation(ModCommon.MOD_ID, mobLocation.getPath().replaceFirst("mobs", "textures").replace(".json", ".png"));
-        var lootTableResource = new ResourceLocation(ModCommon.MOD_ID, mobLocation.getPath().replaceFirst("mobs", "loot_tables"));
-        var dialogResource = new ResourceLocation(ModCommon.MOD_ID, mobLocation.getPath().replaceFirst("mobs", "dialogs"));
-        var rm = Minecraft.getInstance().getResourceManager();
-
-        if(rm.getResource(textureResource).isPresent()) {
-            this.textureResource = textureResource;
+        if(lootTableResource.isPresent()) {
+            // the loot table is loaded by net.minecraft.world.level.storage.loot.LootDataManager
+            // which resolves a 'shorthand' resource location automatically.
+            this.lootTableResource = new ResourceLocation(ModCommon.MOD_ID, lootTableResource.get().getPath()
+                .replace("loot_tables/", "")
+                .replace(".json", ""));
         }
 
-        if(rm.getResource(lootTableResource).isPresent()) {
-            this.lootTableResource = lootTableResource;
+        dpm.loadResource(trainerId, "dialogs",
+            dialog -> this.dialog = dialog,
+            new TypeToken<Map<String, String[]>>() {});
+
+        if(this.dialog == null) {
+            this.dialog = new HashMap<>();
         }
 
-        if(rm.getResource(dialogResource).isPresent()) {
-            var dialog = JsonUtils.loadFromOrThrow(dialogResource, new TypeToken<Map<String, String[]>>() {});
-            this.dialog = dialog != null ? dialog : new HashMap<>();
+        var team = dpm.loadTrainerTeam(trainerId);
+
+        if(team.isPresent()) {
+            this.team = team.get();
         }
     }
 }
