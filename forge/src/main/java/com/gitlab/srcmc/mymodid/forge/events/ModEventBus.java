@@ -6,6 +6,7 @@ import com.cobblemon.mod.common.api.Priority;
 import com.cobblemon.mod.common.api.battles.model.actor.BattleActor;
 import com.cobblemon.mod.common.api.events.CobblemonEvents;
 import com.cobblemon.mod.common.api.events.battles.BattleVictoryEvent;
+import com.cobblemon.mod.common.api.events.pokemon.ExperienceGainedPreEvent;
 import com.gitlab.srcmc.mymodid.ModCommon;
 import com.gitlab.srcmc.mymodid.api.RCTMod;
 import com.gitlab.srcmc.mymodid.forge.ModRegistries;
@@ -22,6 +23,7 @@ public class ModEventBus {
     static void onCommonSetup(FMLCommonSetupEvent event) {
         RCTMod.init(ModRegistries.LootItemConditions.LEVEL_RANGE);
         CobblemonEvents.BATTLE_VICTORY.subscribe(Priority.NORMAL, ModEventBus::handleBattleVictory);
+        CobblemonEvents.EXPERIENCE_GAINED_EVENT_PRE.subscribe(Priority.HIGHEST, ModEventBus::handleExperienceGained);
     }
 
     @SubscribeEvent
@@ -32,6 +34,18 @@ public class ModEventBus {
     private static Unit handleBattleVictory(BattleVictoryEvent event) {
         if(!checkForTrainerBattle(event.getWinners(), true)) {
             checkForTrainerBattle(event.getLosers(), false);
+        }
+
+        return Unit.INSTANCE;
+    }
+
+    private static Unit handleExperienceGained(ExperienceGainedPreEvent event) {
+        var owner = event.getPokemon().getOwnerPlayer();
+
+        if(owner != null) {
+            var playerTr = RCTMod.get().getTrainerManager().getData(owner);
+            var maxExp = event.getPokemon().getExperienceToLevel(playerTr.getLevelCap());
+            event.setExperience(Math.min(event.getExperience(), maxExp));
         }
 
         return Unit.INSTANCE;
