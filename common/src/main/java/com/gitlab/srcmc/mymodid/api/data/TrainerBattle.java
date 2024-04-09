@@ -38,30 +38,34 @@ public class TrainerBattle {
     public void distributeRewards(boolean initiatorWins) {
         var winnerPlayers = initiatorWins ? initiatorSidePlayers : trainerSidePlayers;
         var looserMobs = initiatorWins ? trainerSideMobs : initiatorSideMobs;
+        var tm = RCTMod.get().getTrainerManager();
 
         for(var player : winnerPlayers) {
             for(var mob : looserMobs) {
-                var mobTr = RCTMod.get().getTrainerManager().getData(mob);
-                var playerTr = RCTMod.get().getTrainerManager().getData(player);
-                playerTr.setLevelCap(Math.max(mobTr.getRewardLevelCap(), playerTr.getLevelCap()));
-                mob.finishBattle(true);
+                var mobTr = tm.getData(mob);
+                var playerTr = tm.getData(player);
+                var battleMem = tm.getBattleMemory(mob);
 
-                switch (mobTr.getType()) {
-                    case LEADER:
-                        // TODO: check if player has beaten leader yet
-                        playerTr.addBadge();
-                        break;
-                    case E4:
-                        // TODO: check if player has beaten e4 yet
-                        playerTr.addBeatenE4();
-                        break;
-                    case CHAMP:
-                        // TODO: check if player has beaten champ yet
-                        playerTr.addBeatenChamp();
-                        break;
-                    default:
-                        break;
+                if(battleMem.getDefeatByCount(player) == 0) {
+                    // TODO: advancement trigger here
+                    switch (mobTr.getType()) {
+                        case LEADER:
+                            playerTr.addBadge();
+                            break;
+                        case E4:
+                            playerTr.addBeatenE4();
+                            break;
+                        case CHAMP:
+                            playerTr.addBeatenChamp();
+                            break;
+                        default:
+                            break;
+                    }
                 }
+
+                playerTr.setLevelCap(Math.max(mobTr.getRewardLevelCap(), playerTr.getLevelCap()));
+                battleMem.addDefeatedBy(player);
+                mob.finishBattle(true);
             }
         }
 

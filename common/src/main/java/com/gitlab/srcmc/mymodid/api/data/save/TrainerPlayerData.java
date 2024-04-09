@@ -1,12 +1,6 @@
 package com.gitlab.srcmc.mymodid.api.data.save;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
-import java.util.stream.Collectors;
+import com.gitlab.srcmc.mymodid.ModCommon;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.player.Player;
@@ -18,30 +12,24 @@ public class TrainerPlayerData extends SavedData {
     public static final int MAX_BEATEN_E4 = 4;
     public static final int MAX_BEATEN_CHAMPS = 1;
 
-    private UUID playerUUID;
     private int levelCap;
     private int badges;
     private int beatenE4;
     private int beatenChamps;
-    private Set<Integer> activeTrainers = new HashSet<>();
+    // private Set<Integer> activeTrainers = new HashSet<>();
 
     public static TrainerPlayerData of(CompoundTag tag) {
         var tpd = new TrainerPlayerData();
-        tpd.playerUUID = tag.getUUID("playerUUID");
         tpd.levelCap = tag.getInt("levelCap");
         tpd.badges = tag.getInt("badges");
         tpd.beatenE4 = tag.getInt("beatenE4");
         tpd.beatenChamps = tag.getInt("beatenChamps");
-        tpd.activeTrainers = Arrays.stream(tag.getIntArray("activeTrainers")).boxed().collect(Collectors.toSet());
+        // tpd.activeTrainers = Arrays.stream(tag.getIntArray("activeTrainers")).boxed().collect(Collectors.toSet());
         return tpd;
     }
 
-    public TrainerPlayerData(Player player) {
-        this.playerUUID = player.getUUID();
-    }
-
-    private TrainerPlayerData() {
-        // default data not associated to any player yet
+    public static String filePath(Player player) {
+        return String.format("%s.player.%s.stat", ModCommon.MOD_ID, player.getUUID().toString());
     }
 
     public int getLevelCap() {
@@ -109,45 +97,44 @@ public class TrainerPlayerData extends SavedData {
         }
     }
 
-    // TODO: rename isSpawnedTrainer
-    public boolean isActiveTrainer(int entityId) {
-        return this.activeTrainers.contains(entityId);
-    }
+    // // TODO: rename isSpawnedTrainer
+    // public boolean isActiveTrainer(int entityId) {
+    //     return this.activeTrainers.contains(entityId);
+    // }
 
-    // TODO: rename getSpawnedTrainers
-    public Set<Integer> getActiveTrainers() {
-        return Collections.unmodifiableSet(this.activeTrainers);
-    }
+    // // TODO: rename getSpawnedTrainers
+    // public Set<Integer> getActiveTrainers() {
+    //     return Collections.unmodifiableSet(this.activeTrainers);
+    // }
 
-    // TODO: rename addSpawnedTrainer
-    public boolean addActiveTrainer(int entityId) {
-        var added = this.activeTrainers.add(entityId);
+    // // TODO: rename addSpawnedTrainer
+    // public boolean addActiveTrainer(int entityId) {
+    //     var added = this.activeTrainers.add(entityId);
 
-        if(added) {
-            this.setDirty();
-        }
+    //     if(added) {
+    //         this.setDirty();
+    //     }
 
-        return added;
-    }
+    //     return added;
+    // }
 
-    public boolean removeActiveTrainer(int entityId) {
-        var removed = this.activeTrainers.remove(entityId);
+    // public boolean removeActiveTrainer(int entityId) {
+    //     var removed = this.activeTrainers.remove(entityId);
 
-        if(removed) {
-            this.setDirty();
-        }
+    //     if(removed) {
+    //         this.setDirty();
+    //     }
 
-        return removed;
-    }
+    //     return removed;
+    // }
 
     @Override
     public CompoundTag save(CompoundTag compoundTag) {
-        compoundTag.putUUID("playerUUID", this.playerUUID);
         compoundTag.putInt("levelCap", this.levelCap);
         compoundTag.putInt("badges", this.badges);
         compoundTag.putInt("beatenE4", this.beatenE4);
         compoundTag.putInt("beatenChamps", this.beatenChamps);
-        compoundTag.putIntArray("activeTrainer", List.copyOf(this.activeTrainers));
+        // compoundTag.putIntArray("activeTrainer", List.copyOf(this.activeTrainers));
         return compoundTag;
     }
 }

@@ -10,6 +10,7 @@ import com.gitlab.srcmc.mymodid.ModCommon;
 import com.gitlab.srcmc.mymodid.api.RCTMod;
 import com.gitlab.srcmc.mymodid.api.data.TrainerBattle;
 import com.gitlab.srcmc.mymodid.api.data.pack.TrainerMobData;
+import com.gitlab.srcmc.mymodid.api.data.save.TrainerBattleMemory;
 import com.gitlab.srcmc.mymodid.api.data.save.TrainerPlayerData;
 import com.gitlab.srcmc.mymodid.api.utils.PathUtils;
 import com.gitlab.srcmc.mymodid.world.entities.TrainerMob;
@@ -72,8 +73,17 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
 
         return level.getDataStorage().computeIfAbsent(
             TrainerPlayerData::of,
-            () -> new TrainerPlayerData(player),
-            trainerPlayerDataFile(player));
+            TrainerPlayerData::new,
+            TrainerPlayerData.filePath(player));
+    }
+
+    public TrainerBattleMemory getBattleMemory(TrainerMob mob) {
+        var level = mob.getServer().overworld();
+
+        return level.getDataStorage().computeIfAbsent(
+            TrainerBattleMemory::of,
+            TrainerBattleMemory::new,
+            TrainerBattleMemory.filePath(mob));
     }
 
     @Override
@@ -87,10 +97,6 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
         });
 
         dpm.close();
-    }
-
-    private String trainerPlayerDataFile(Player player) {
-        return String.format("%s.trainer.%s", ModCommon.MOD_ID, player.getUUID().toString());
     }
 
     // TODO: DRAFT
