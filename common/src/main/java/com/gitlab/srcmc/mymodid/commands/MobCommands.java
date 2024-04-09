@@ -20,6 +20,12 @@ public class MobCommands {
             .requires(css -> css.hasPermission(1))
             .then(Commands.literal("mob")
                 .then(Commands.literal("get")
+                    .then(Commands.literal("max_trainer_wins")
+                        .then(Commands.argument("target", EntityArgument.entity())
+                            .executes(MobCommands::mob_get_max_trainer_wins_target)))
+                    .then(Commands.literal("max_trainer_defeats")
+                        .then(Commands.argument("target", EntityArgument.entity())
+                            .executes(MobCommands::mob_get_max_trainer_defeats_target)))
                     .then(Commands.literal("required_level_cap")
                         .then(Commands.argument("target", EntityArgument.entity())
                             .executes(MobCommands::mob_get_required_level_cap_target)))
@@ -32,6 +38,28 @@ public class MobCommands {
                     .then(Commands.literal("required_beaten_champs")
                         .then(Commands.argument("target", EntityArgument.entity())
                             .executes(MobCommands::mob_get_required_beaten_champs_target))))));
+    }
+
+    private static int mob_get_max_trainer_wins_target(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        if(EntityArgument.getEntity(context, "target") instanceof TrainerMob mob) {
+            var max_trainer_wins = RCTMod.get().getTrainerManager().getData(mob).getMaxTrainerWins();
+            context.getSource().sendSuccess(() -> Component.literal(String.valueOf(max_trainer_wins)), false);
+            return max_trainer_wins;
+        }
+
+        context.getSource().sendFailure(Component.literal("target is not a trainer mob"));
+        return -1;
+    }
+
+    private static int mob_get_max_trainer_defeats_target(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        if(EntityArgument.getEntity(context, "target") instanceof TrainerMob mob) {
+            var max_trainer_defeats = RCTMod.get().getTrainerManager().getData(mob).getMaxTrainerDefeats();
+            context.getSource().sendSuccess(() -> Component.literal(String.valueOf(max_trainer_defeats)), false);
+            return max_trainer_defeats;
+        }
+
+        context.getSource().sendFailure(Component.literal("target is not a trainer mob"));
+        return -1;
     }
 
     private static int mob_get_required_level_cap_target(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
