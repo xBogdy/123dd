@@ -1,6 +1,5 @@
 package com.gitlab.srcmc.mymodid.world.entities;
 
-import com.gitlab.srcmc.mymodid.ModCommon;
 import com.gitlab.srcmc.mymodid.api.RCTMod;
 import com.gitlab.srcmc.mymodid.api.utils.ChatUtils;
 import com.gitlab.srcmc.mymodid.world.entities.goals.LookAtPlayerAndWaitGoal;
@@ -53,19 +52,27 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 
 public class TrainerMob extends PathfinderMob implements Npc {
     private static final EntityDataAccessor<String> DATA_TRAINER_ID = SynchedEntityData.defineId(TrainerMob.class, EntityDataSerializers.STRING);
-    private static final EntityDataAccessor<Boolean> DATA_DEFEATED = SynchedEntityData.defineId(TrainerMob.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Integer> DATA_DEFEATS = SynchedEntityData.defineId(TrainerMob.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> DATA_WINS = SynchedEntityData.defineId(TrainerMob.class, EntityDataSerializers.INT);
     private static final EntityType<TrainerMob> TYPE = EntityType.Builder
         .of(TrainerMob::new, MobCategory.MISC)
         .canSpawnFarFromPlayer()
         .sized(0.6F, 1.95F).build("trainer");
 
-    private int initDespawnDelay, despawnDelay;
+    private static final int DISCARD_DELAY = 100;
+    private static final int DESPAWN_DISTANCE = 128; // TODO: configurable despawn distance? (or based of render distance? how?)
+    private static final int DESPAWN_DELAY = 24000; // TODO: RCTMod.getConfig()... (default: ~24000 (20 min))
+
+    private int despawnDelay, discardDelay;
     private BlockPos wanderTarget;
     private Player opponent;
 
     protected TrainerMob(EntityType<? extends PathfinderMob> entityType, Level level) {
         super(entityType, level);
+        this.despawnDelay = DESPAWN_DELAY;
+        this.discardDelay = DISCARD_DELAY;
         this.setCustomNameVisible(true);
+        this.udpateCustomName();
     }
 
     public static EntityType<TrainerMob> getEntityType() {
@@ -76,7 +83,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
         return Mob.createMobAttributes().add(Attributes.MOVEMENT_SPEED, 0.5).add(Attributes.FOLLOW_RANGE, 48.0);
     }
 
-    public boolean canBattle(Entity e) {
+    public boolean canBattleAgainst(Entity e) {
         if(e instanceof Player player) {
             var trPlayer = RCTMod.get().getTrainerManager().getData(player);
             var trMob = RCTMod.get().getTrainerManager().getData(this);
@@ -91,7 +98,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
     }
 
     public void startBattleWith(Player player) {
-        if(!this.isInBattle() && !this.isDefeated()) {
+        if(this.canBattle()) {
             var trPlayer = RCTMod.get().getTrainerManager().getData(player);
             var trMob = RCTMod.get().getTrainerManager().getData(this);
 
@@ -125,16 +132,50 @@ public class TrainerMob extends PathfinderMob implements Npc {
         return opponent != null;
     }
 
-    protected void setDefeated(boolean defeated) {
+    protected void updateBattleResult(boolean defeated) {
         var level = this.level();
 
         if(!level.isClientSide) {
-            this.entityData.set(DATA_DEFEATED, defeated);
+            if(defeated) {
+                var defeats = this.getDefeats();
+                this.entityData.set(DATA_DEFEATS, defeats < Integer.MAX_VALUE ? defeats + 1 : defeats);
+            } else {
+                var wins = this.getWins();
+                this.entityData.set(DATA_WINS, wins < Integer.MAX_VALUE ? wins + 1 : wins);
+            }
         }
     }
 
-    public boolean isDefeated() {
-        return this.entityData.get(DATA_DEFEATED);
+    public void setDefeats(int defeats) {
+        var level = this.level();
+
+        if(!level.isClientSide) {
+            this.entityData.set(DATA_DEFEATS, defeats);
+        }
+    }
+
+    public int getDefeats() {
+        return this.entityData.get(DATA_DEFEATS);
+    }
+
+    public void setWins(int wins) {
+        var level = this.level();
+
+        if(!level.isClientSide) {
+            this.entityData.set(DATA_WINS, wins);
+        }
+    }
+
+    public int getWins() {
+        return this.entityData.get(DATA_WINS);
+    }
+
+    public boolean canBattle() {
+        var mobTr = RCTMod.get().getTrainerManager().getData(this);
+
+        return !this.isInBattle()
+            && this.getDefeats() < mobTr.getMaxTrainerDefeats()
+            && this.getWins() < mobTr.getMaxTrainerWins();
     }
 
     public void setTrainerId(String trainerId) {
@@ -142,9 +183,13 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
         if(!level.isClientSide) {
             this.entityData.set(DATA_TRAINER_ID, trainerId);
-            var tmd = RCTMod.get().getTrainerManager().getData(this);
-            this.setCustomName(Component.literal(tmd.getTeam().getDisplayName()));
+            this.udpateCustomName();
         }
+    }
+
+    private void udpateCustomName() {
+        var tmd = RCTMod.get().getTrainerManager().getData(this);
+        this.setCustomName(Component.literal(tmd.getTeam().getDisplayName()));
     }
 
     public String getTrainerId() {
@@ -156,12 +201,14 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
         if(!level.isClientSide && isInBattle()) {
             ChatUtils.reply(this, this.getOpponent(), defeated ? "battle_lost" : "battle_win");
-            this.setDefeated(defeated);
+            this.updateBattleResult(defeated);
             this.setOpponent(null);
             this.setTarget(null);
 
             if(defeated) {
-                this.dropBattleLoot(RCTMod.get().getTrainerManager().getData(this).getLootTableResource());
+                this.dropBattleLoot(RCTMod.get()
+                    .getTrainerManager().getData(this)
+                    .getLootTableResource());
             }
         }
     }
@@ -183,12 +230,13 @@ public class TrainerMob extends PathfinderMob implements Npc {
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(DATA_TRAINER_ID, "");
-        this.entityData.define(DATA_DEFEATED, false);
+        this.entityData.define(DATA_DEFEATS, 0);
+        this.entityData.define(DATA_WINS, 0);
     }
 
     @Override
     public InteractionResult mobInteract(Player player, InteractionHand interactionHand) {
-        if(!this.isInBattle() && !this.isDefeated()) {
+        if(this.canBattle()) {
             var level = this.level();
 
             if(!level.isClientSide) {
@@ -218,9 +266,9 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
     @Override
     public void onPathfindingStart() {
-        if(!this.isInBattle() && !this.isDefeated()) {
+        if(canBattle()) {
             var level = this.level();
-            var target = level.getNearestPlayer(this.getX(), this.getY(), this.getZ(), 128, this::canBattle);
+            var target = level.getNearestPlayer(this.getX(), this.getY(), this.getZ(), 128, this::canBattleAgainst);
             this.setTarget(target);
         }
     }
@@ -240,11 +288,6 @@ public class TrainerMob extends PathfinderMob implements Npc {
         return SoundEvents.WANDERING_TRADER_DEATH;
     }
 
-    public void setDespawnDelay(int i) {
-        this.despawnDelay = i;
-        this.initDespawnDelay = i;
-    }
-
     public int getDespawnDelay() {
         return this.despawnDelay;
     }
@@ -260,12 +303,17 @@ public class TrainerMob extends PathfinderMob implements Npc {
     }
 
     private void maybeDespawn() {
-        if(this.despawnDelay > 0 && !this.isInBattle() && --this.despawnDelay == 0) {
-            if(!this.isDefeated() && (this.initDespawnDelay /= 2) > 0) {
-                this.despawnDelay = this.initDespawnDelay;
-            } else {
-                ModCommon.LOG.info("DESPAWNING: " + this.getName().getString());
-                this.discard();
+        if(!this.isInBattle()) {
+            if(this.despawnDelay == 0 || (this.despawnDelay > 0 && --this.despawnDelay == 0) || !this.canBattle()) {
+                var level = this.level();
+
+                if(level.getNearestPlayer(this, DESPAWN_DISTANCE) == null) {
+                    if(this.discardDelay < 0 || --this.discardDelay < 0) {
+                        this.discard();
+                    }
+                } else {
+                    this.discardDelay = DISCARD_DELAY;
+                }
             }
         }
     }
@@ -281,8 +329,9 @@ public class TrainerMob extends PathfinderMob implements Npc {
     @Override
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
-        compoundTag.putInt("DespawnDelay", this.despawnDelay);
-        compoundTag.putBoolean("Defeated", this.isDefeated());
+        compoundTag.putInt("DespawnDelay", this.getDespawnDelay());
+        compoundTag.putInt("Defeats", this.getDefeats());
+        compoundTag.putInt("Wins", this.getWins());
         compoundTag.putString("TrainerId", this.getTrainerId());
 
         if(this.wanderTarget != null) {
@@ -296,11 +345,14 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
         if(compoundTag.contains("DespawnDelay", 99)) {
             this.despawnDelay = compoundTag.getInt("DespawnDelay");
-            this.initDespawnDelay = this.despawnDelay;
         }
 
-        if(compoundTag.contains("Defeated")) {
-            this.setDefeated(compoundTag.getBoolean("Defeated"));
+        if(compoundTag.contains("Defeats")) {
+            this.setDefeats(compoundTag.getInt("Defeats"));
+        }
+
+        if(compoundTag.contains("Wins")) {
+            this.setWins(compoundTag.getInt("Wins"));
         }
 
         if(compoundTag.contains("WanderTarget")) {
@@ -328,7 +380,6 @@ public class TrainerMob extends PathfinderMob implements Npc {
         this.goalSelector.addGoal(4, new MoveTowardsTargetGoal(this, 0.35, 64F));
         // this.goalSelector.addGoal(4, new MoveTowardsRestrictionGoal(this, 0.35));
         this.goalSelector.addGoal(8, new WaterAvoidingRandomStrollGoal(this, 0.35));
-        // this.goalSelector.addGoal(9, new InteractGoal(this, Player.class, 3.0F,
-        // 1.0F));
+        // this.goalSelector.addGoal(9, new InteractGoal(this, Player.class, 3.0F, // 1.0F));
     }
 }

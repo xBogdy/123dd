@@ -117,8 +117,8 @@ public class TrainerMobData implements IDataPackObject {
     private int requiredBeatenE4;
     private int requiredBeatenChamps;
 
-    private int maxPlayerWins = 1;
-    private int maxPlayerLosses = 2;
+    private int maxTrainerWins = 3;
+    private int maxTrainerDefeats = 1;
     private int battleCooldownTicks = 2000;
 
     private Set<String> biomeWhitelist = new HashSet<>();
@@ -132,6 +132,8 @@ public class TrainerMobData implements IDataPackObject {
     private transient TrainerTeam team;
 
     public TrainerMobData() {
+        this.textureResource = new ResourceLocation(ModCommon.MOD_ID, "textures/" + DataPackManager.PATH_DEFAULT + ".png");
+        this.lootTableResource = new ResourceLocation(ModCommon.MOD_ID, DataPackManager.PATH_DEFAULT);
         this.team = new TrainerTeam();
     }
 
@@ -141,8 +143,8 @@ public class TrainerMobData implements IDataPackObject {
         this.requiredBadges = origin.requiredBadges;
         this.requiredBeatenE4 = origin.requiredBeatenE4;
         this.requiredBeatenChamps = origin.requiredBeatenChamps;
-        this.maxPlayerWins = origin.maxPlayerWins;
-        this.maxPlayerLosses = origin.maxPlayerLosses;
+        this.maxTrainerWins = origin.maxTrainerWins;
+        this.maxTrainerDefeats = origin.maxTrainerDefeats;
         this.battleCooldownTicks = origin.battleCooldownTicks;
         this.biomeBlacklist = Set.copyOf(origin.biomeBlacklist);
         this.biomeWhitelist = Set.copyOf(origin.biomeBlacklist);
@@ -178,12 +180,12 @@ public class TrainerMobData implements IDataPackObject {
         return this.requiredBeatenChamps;
     }
 
-    public int getMaxPlayerWins() {
-        return this.maxPlayerWins;
+    public int getMaxTrainerWins() {
+        return this.maxTrainerWins;
     }
 
-    public int getMaxPlayerLosses() {
-        return this.maxPlayerLosses;
+    public int getMaxTrainerDefeats() {
+        return this.maxTrainerDefeats;
     }
 
     public int getBattleCooldownTicks() {

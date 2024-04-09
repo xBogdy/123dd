@@ -18,10 +18,10 @@ import net.minecraft.server.packs.PackResources.ResourceOutput;
 import net.minecraft.server.packs.resources.ResourceManager;
 
 public class DataPackManager implements AutoCloseable {
-    private static final String PATH_GROUPS = "trainers/groups";
-    private static final String PATH_SINGLE = "trainers/single";
-    private static final String PATH_DEFAULT = "trainers/default";
-    private static final String PATH_TRAINERS = "trainers";
+    public static final String PATH_GROUPS = "trainers/groups";
+    public static final String PATH_SINGLE = "trainers/single";
+    public static final String PATH_DEFAULT = "trainers/default";
+    public static final String PATH_TRAINERS = "trainers";
 
     private static class DataLocator {
         public final Map<ResourceLocation, PackResources> groupData = new HashMap<>();
