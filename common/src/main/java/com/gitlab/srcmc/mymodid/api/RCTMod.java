@@ -2,8 +2,8 @@ package com.gitlab.srcmc.mymodid.api;
 
 import java.util.function.Supplier;
 
-import com.gitlab.srcmc.mymodid.api.data.DataPackManager;
-import com.gitlab.srcmc.mymodid.api.trainer.TrainerManager;
+import com.gitlab.srcmc.mymodid.api.data.pack.DataPackManager;
+import com.gitlab.srcmc.mymodid.api.service.TrainerManager;
 import com.gitlab.srcmc.mymodid.world.loot.conditions.LevelRangeCondition;
 
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;

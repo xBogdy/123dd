@@ -1,4 +1,4 @@
-package com.gitlab.srcmc.mymodid.api.data;
+package com.gitlab.srcmc.mymodid.api.data.pack;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,7 +6,6 @@ import java.util.Optional;
 import java.util.function.Consumer;
 
 import com.gitlab.srcmc.mymodid.ModCommon;
-import com.gitlab.srcmc.mymodid.api.trainer.TrainerTeam;
 import com.gitlab.srcmc.mymodid.api.utils.JsonUtils;
 import com.gitlab.srcmc.mymodid.api.utils.PathUtils;
 import com.google.gson.reflect.TypeToken;

@@ -1,4 +1,4 @@
-package com.gitlab.srcmc.mymodid.api.trainer;
+package com.gitlab.srcmc.mymodid.api.service;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;

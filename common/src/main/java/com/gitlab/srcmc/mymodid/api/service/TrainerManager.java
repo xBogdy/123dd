@@ -1,4 +1,4 @@
-package com.gitlab.srcmc.mymodid.api.trainer;
+package com.gitlab.srcmc.mymodid.api.service;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -8,6 +8,9 @@ import java.util.Set;
 import java.util.UUID;
 import com.gitlab.srcmc.mymodid.ModCommon;
 import com.gitlab.srcmc.mymodid.api.RCTMod;
+import com.gitlab.srcmc.mymodid.api.data.TrainerBattle;
+import com.gitlab.srcmc.mymodid.api.data.pack.TrainerMobData;
+import com.gitlab.srcmc.mymodid.api.data.save.TrainerPlayerData;
 import com.gitlab.srcmc.mymodid.api.utils.PathUtils;
 import com.gitlab.srcmc.mymodid.world.entities.TrainerMob;
 import com.google.gson.Gson;

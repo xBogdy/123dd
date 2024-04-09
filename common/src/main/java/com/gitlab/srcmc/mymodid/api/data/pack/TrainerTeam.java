@@ -1,4 +1,4 @@
-package com.gitlab.srcmc.mymodid.api.trainer;
+package com.gitlab.srcmc.mymodid.api.data.pack;
 
 import java.io.InputStream;
 import java.util.ArrayList;

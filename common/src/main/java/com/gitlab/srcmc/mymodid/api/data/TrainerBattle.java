@@ -1,4 +1,4 @@
-package com.gitlab.srcmc.mymodid.api.trainer;
+package com.gitlab.srcmc.mymodid.api.data;
 
 import java.util.List;
 import com.gitlab.srcmc.mymodid.api.RCTMod;

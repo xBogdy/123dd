@@ -1,4 +1,4 @@
-package com.gitlab.srcmc.mymodid.api.trainer;
+package com.gitlab.srcmc.mymodid.api.data.save;
 
 import java.util.Arrays;
 import java.util.Collections;
