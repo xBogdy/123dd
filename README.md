@@ -1,52 +1,74 @@
-# Multi ML
+# Radical Cobblemon Trainers
 
-This repository contains multi modloader project templates for different versions of minecraft. Simply clone the project and use the desired version branch as starting point for your project.
+Over **650** unique and **challenging** trainers, from the Pokemon rom hack *Radical Red* (v3.2), that will spawn naturally in your world.
 
-> Do not forget to update to your own *remote* with `git remote set-url origin <remote_url>`.
+## Important
 
-## How to get started
+This mod, though mostly in a usable state, is currently in an early developement stage. That means there might be bugs and future updates **may** contain changes that will not be compatible with worlds that have been run with previous versions. Be sure to backup your world before updating.
 
-Once you have checked out to your desired version branch (e.g. `git checkout 1.19.2`) the first thing you should do is to define some of the properties describing your project. These are mostly located in the `gradle.properties` file but some are also reflected by the project structure itself. A [`setup`](tools/setup) script is provided which guides the user interactively through the process and adjusts the files and project structure automatically. Regardless, if manual adjustments are required following are the points of interest:
+The *higher* the version update the more likeley it is for issues to arise, e.g:
 
-| Property          | Description                                                           | Points of interest                                                                                                                                                                                                                                                                                                                                                                                                                                         | Default value          | Requires change |
-| ----------------- | --------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- | --------------- |
-| `mod_name`        | Name of the mod                                                       | field in `gradle.properties` / `MOD_NAME` field in `common/src/main/java/com/gitlab/srcmc/mymodid/ModCommon.java` / mentioned in license header of source files                                                                                                                                                                                                                                                                                              | `Example Mod`          | yes             |
-| `mod_id`          | Id of the mod                                                         | field in `gradle.properties` / `MOD_ID` field in `common/src/main/java/com/gitlab/srcmc/mymodid/ModCommon.java` / name of `common/src/main/resources/mixin.*.json`, `forge/src/main/resources/mixin.*.forge.json` and `fabric/src/main/resources/mixin.*.fabric.json` files / name of the primary packages for `common/src/main/java/com/gitlab/srcmc/*`, `fabric/src/main/java/com/gitlab/srcmc/fabric/*` and `forge/src/main/java/com/gitlab/srcmc/forge/*` | `mymodid`              | yes             |
-| `mod_author`      | Author of the mod                                                     | field in `gradle.properties` / mentioned in license header of source files                                                                                                                                                                                                                                                                                                                                                                                  | `JoeDoe`               | yes             |
-| `mod_version`     | Current version of the mod / You may handle this value to your likings | field in `gradle.properties`                                                                                                                                                                                                                                                                                                                                                                                                                               | `0.1.0-alpha`          | no              |
-| `mod_description` | A short description of the mod                                        | field in `gradle.properties`                                                                                                                                                                                                                                                                                                                                                                                                                               | `A mod for Minecraft.` | no              |
-| `group`           | Maven group                                                           | field in `gradle.properties` / reflects package structure of `common/src/main/java/*/mymodid`, `fabric/src/main/java/*/mymodid/fabric` and `forge/src/main/java/*/mymodid/forge`                                                                                                                                                                                                                                                                            | `com.gitlab.srcmc`     | yes             |
-| `license`         | The license of this project                                           | field in `gradle.properties` / short description located in header of source files / `LICENSE.md` file at the root of the project                                                                                                                                                                                                                                                                                                                            | `GNU-LGPL-3`           | no              |
+|             |     |            |          |
+| ----------- | --- | ---------- | -------- |
+| 0.5.0       | ->  | 0.5.1      | unlikely |
+| 0.5.0       | ->  | 0.6.0      | possible |
+| 0.9.0       | ->  | 1.0.0      | likely   |
+| 0.9.0-alpha | ->  | 0.9.0-beta | possible |
 
-You may at any point merge your changes into different version branches or discard other branches altogether if you dont need them.
+## Key Features
 
-## How to test locally
+- Over **650** unique and challenging trainer teams for all level ranges (including gym leaders, elite 4 members, champions and some special ones)
+- Custom trainer npc spawning system
+  - loosely comparable to the wandering trader but with a significant smaller delay and a higher spawn cap by default
+  - ensures uniqueness: Never will you see two trainers with the same name (unless cheated in)
+- Custom trainer npc ai (e.g. trainers *stroll* towards players that can battle against them and will either despawn after some time or if beaten)
+- Player stats:
+  - badge count (increases if a player beats a leader for their first time)
+  - beaten elite 4 count (increases if a player beats an elite 4 member for their first time)
+  - beaten champion count (increases if a player beats a champion for their first time)
+  - level cap (increases after a player has beaten certain trainers (e.g. gym leaders))
+- Level cap system
+  - Pokemon at or above the level cap will not gain any exp
+  - it is **alot** more likely for trainers around the level cap of a player to spawn
+- Battle dependencies: Trainers might have requirements to be battled (e.g. level cap, gym badge count, beaten elite 4, ...)
+- Battle reward system powered by loot tables
+  - custom condition for data pack creators: `level_range`
+  - custom condition for data pack creators: `not_defeated` (not yet implemented)
+- Trainers talk: Based of the context trainers will give different responses in the chat
+- And probably some other things that I can't think of right now...
 
-The project is setup to provide distinct run configurations for up to 2 clients and 1 server per mod loader. Following gradle commands can be used to run the project in a dev environment:
+## Commands
 
-| Command                     | Description                                         |
-| --------------------------- | --------------------------------------------------- |
-| `gradlew fabric:runClient`  | Runs the first client with the `fabric` mod loader  |
-| `gradlew fabric:runClient2` | Runs the second client with the `fabric` mod loader |
-| `gradlew fabric:runServer`  | Runs the server with the `fabric` mod loader        |
-| `gradlew forge:runClient`   | Runs the first client with the `forge` mod loader   |
-| `gradlew forge:runClient2`  | Runs the second client with the `forge` mod loader  |
-| `gradlew forge:runServer`   | Runs the server with the `forge` mod loader         |
+Following commands are available:
 
-> Append the `--console=plain` flag if the console output is gibberish.
+| Command                                                                                                  | Description                                                                                                               | Op Level |
+| -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `rctmod player get (level_cap/badges/beaten_e4/beaten_champs) [<player>]`                                | Retrieves either the level cap or the amount of badges, beaten elite 4 or champions from the given player.                | `1`      |
+| `rctmod player set (level_cap/badges/beaten_e4/beaten_champs) [<player>] <value>`                        | Sets either the level cap or the amount of badges, beaten elite 4 or champions from the given player to the given value.  | `2`      |
+| `rctmod mob get (required_level_cap/required_badges/required_beaten_e4/required_beaten_champs) <entity>` | Retrieves either the required level cap or the amount of required badges, beaten elite 4 or champions from the given mob. | `1`      |
+| `rctmod mob get (player_wins/player_defeats) <entity> [<player>]`                                        | Retrieves the amount of wins or defeats the given player has against the given mob.                                       | `1`      |
+| `rctmod mob spawn [<player>]`                                                                            | Attempts to spawn a trainer mob in the vicinity of the given player (uses natural spawning mechanisms).                   | `2`      |
+| `rctmod mob summon <trainerId> [<position>]`                                                             | Summns a trainer mob at the given postion. (**not implemented**: use `/summon` + `/data modify ... TrainerId` instead)        | `2`      |
 
-## How to publish
+## Configuration
 
-The first step would be to build your project, which can be archieved with `gradlew build`. The resulting jar files for the different mod loaders are located at `common/build/libs`, `fabric/build/libs` and `forge/build/libs`. You may distribute those files to your liking.
+Some global aspects of the mod (e.g. spawn interval or spawn cap) can be adjusted to fit a servers needs.
 
-A [`publish`](tools/publish) script is provided which can be used to build and publish the project to [Curseforge](https://www.curseforge.com/). A Curseforge api key and the project id must be defined with the environment variables `CURSE_API_KEY` and `CURSE_PROJECT_ID`.
+**Currently not implemented**.
 
-**Usage:**
+## Datapack support
 
-```bash
-publish [<mod_version>] [<minecraft_version>]
-```
+Almost all of the data is provided by an internal datapack. **Alot** can be configured by *overshadowing* certain files with an own custom data pack. Please refer to the [wiki](todo.com) for more information.
 
-If either version is not provided it is inferred from the projects configuration files. Otherwise said configuration files are updated with the given version. The release type is inferred from the suffix of the mod version (i.e. a suffix of `-alpha` or `-beta` will result in an alpha or beta release, otherwise a full release is published).
+## Planned features
 
-> The script publishes by default only for the `forge` mod loader. This can be adjusted by modifying the `mod_loaders` array at the top of the script (in the *config* section).
+- Advancements
+- More user feedback in certain situations (e.g. when a player gains a badge)
+- More/Better/Fixed assets (Teams, Textures, Mobs, Dialogs, ...)
+- Some config options
+- More commands
+
+## Dependencies
+
+- [Cobblemon](todo.com)
+- [CobblemonTrainers](todo.com)
