@@ -37,7 +37,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 
 @Mod.EventBusSubscriber(modid = ModCommon.MOD_ID, bus = Bus.FORGE)
 public class ForgeEventBus {
-    static int SPAWN_DELAY = 200;
+    static int SPAWN_DELAY = 200; // TODO: config option (and longer by default ~ 6000 ticks = 5 min)
 
     @SubscribeEvent
     static void onServerStarted(ServerStartedEvent event) {
