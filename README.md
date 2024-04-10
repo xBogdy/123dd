@@ -51,7 +51,7 @@ The balancing is based around the original game (Radical Red). Gym leaders must 
 | Giovanni       | `59`             | 4 Badges                 | Leader   |
 | Sabrina        | `68`             | 5 Badges                 | Leader   |
 | Koga           | `76`             | 6 Badges                 | Leader   |
-| Blaine         | `82`             | 7 Badges                 | Leader   |
+| Blaine         | `85`             | 7 Badges                 | Leader   |
 | *Any Elite 4*  |                  | 8 Badges                 | Elite 4  |
 | *Any Champion* | `94`             | 4 beaten Elite 4 members | Champion |
 | ???            | `100`            | 1 beaten Champion        | ???      |
