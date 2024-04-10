@@ -10,7 +10,7 @@ The *greater* the difference inbetween versions the more likely it is for issues
 
 |             |     |            |          |
 | ----------- | --- | ---------- | -------- |
-| 0.5.0       | ->  | 0.5.1      | unlikely |
+| 0.5.0       | ->  | 0.5.42     | unlikely |
 | 0.5.0       | ->  | 0.6.0      | possible |
 | 0.9.0       | ->  | 1.0.0      | likely   |
 | 0.9.0-alpha | ->  | 0.9.0-beta | possible |
@@ -38,6 +38,26 @@ The *greater* the difference inbetween versions the more likely it is for issues
 - Trainers talk: Based of the context trainers will give different responses in the chat
 - And probably some other things that I can't think of right now...
 
+## Balancing
+
+The balancing is based around the original game (Radical Red). Gym leaders must be defeated to increase a players level cap and gain badges. The initial level cap is `15`:
+
+| Trainer        | Reward Level Cap | Requirements             | Type     |
+| -------------- | ---------------- | ------------------------ | -------- |
+| Brock          | `27`             |                          | Leader   |
+| Misty          | `34`             | 1 Badge                  | Leader   |
+| Lt. Surge      | `44`             | 2 Badges                 | Leader   |
+| Erika          | `47`             | 3 Badges                 | Leader   |
+| Giovanni       | `59`             | 4 Badges                 | Leader   |
+| Sabrina        | `68`             | 5 Badges                 | Leader   |
+| Koga           | `76`             | 6 Badges                 | Leader   |
+| Blaine         | `82`             | 7 Badges                 | Leader   |
+| *Any Elite 4*  |                  | 8 Badges                 | Elite 4  |
+| *Any Champion* | `94`             | 4 beaten Elite 4 members | Champion |
+| ???            | `100`            | 1 beaten Champion        | ???      |
+
+> There are some extra leaders that do not grant an increased level cap or badges. It is planned to have such leaders (and other special trainers) reward players with special loot.
+
 ## Commands
 
 Following commands are available:
@@ -48,8 +68,8 @@ Following commands are available:
 | `rctmod player set (level_cap/badges/beaten_e4/beaten_champs) [<player>] <value>`                        | Sets either the level cap or the amount of badges, beaten elite 4 or champions from the given player to the given value.  | `2`      |
 | `rctmod mob get (required_level_cap/required_badges/required_beaten_e4/required_beaten_champs) <entity>` | Retrieves either the required level cap or the amount of required badges, beaten elite 4 or champions from the given mob. | `1`      |
 | `rctmod mob get (player_wins/player_defeats) <entity> [<player>]`                                        | Retrieves the amount of wins or defeats the given player has against the given mob.                                       | `1`      |
-| `rctmod mob spawn [<player>]`                                                                            | Attempts to spawn a trainer mob in the vicinity of the given player (uses natural spawning mechanisms).                   | `2`      |
-| `rctmod mob summon <trainerId> [<position>]`                                                             | Summns a trainer mob at the given postion. (**not implemented**: use `/summon` + `/data modify ... TrainerId` instead)        | `2`      |
+| `rctmod mob spawn_for [<player>]`                                                                        | Attempts to spawn a trainer mob in the vicinity of the given player (uses natural spawning mechanics).                    | `2`      |
+| `rctmod mob summon <trainerId> [<position>]`                                                             | Summns a trainer mob at the given postion.                                                                                | `2`      |
 
 ## Configuration
 
@@ -67,7 +87,7 @@ Almost all of the data is provided by an internal data pack. **Alot** can be con
 - More user feedback in certain situations (e.g. when a player gains a badge)
 - More/Better/Fixed assets (Teams, Textures, Mobs, Dialogs, Loot tables, ...)
 - Some config options
-- More commands
+- ~~More commands~~
 - Fabric
 
 ## Dependencies
