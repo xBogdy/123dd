@@ -1,0 +1,71 @@
+{
+  "displayName": "Sis And Bro Lil \u0026 Ian",
+  "team": [
+    {
+      "species": "cobblemon:seadra",
+      "gender": "MALE",
+      "level": 55,
+      "nature": "cobblemon:lax",
+      "ability": "sniper",
+      "moveset": [
+        "brine",
+        "agility",
+        "dragonpulse",
+        "dragondance"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:starmie",
+      "gender": "GENDERLESS",
+      "level": 55,
+      "nature": "cobblemon:quirky",
+      "ability": "illuminate",
+      "moveset": [
+        "rapidspin",
+        "recover",
+        "psybeam",
+        "confuseray"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

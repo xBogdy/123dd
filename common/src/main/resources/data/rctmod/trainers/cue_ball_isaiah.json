@@ -1,0 +1,71 @@
+{
+  "displayName": "Cue Ball Isaiah",
+  "team": [
+    {
+      "species": "cobblemon:zangoose",
+      "gender": "FEMALE",
+      "level": 55,
+      "nature": "cobblemon:relaxed",
+      "ability": "toughclaws",
+      "moveset": [
+        "fakeout",
+        "taunt",
+        "swordsdance",
+        "closecombat"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:seviper",
+      "gender": "FEMALE",
+      "level": 55,
+      "nature": "cobblemon:brave",
+      "ability": "merciless",
+      "moveset": [
+        "belch",
+        "coil",
+        "wringout",
+        "gunkshot"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

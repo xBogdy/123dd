@@ -1,0 +1,102 @@
+{
+  "displayName": "Youngster Timmy",
+  "team": [
+    {
+      "species": "cobblemon:raticate",
+      "gender": "MALE",
+      "level": 27,
+      "nature": "cobblemon:mild",
+      "ability": "guts",
+      "moveset": [
+        "hyperfang",
+        "pursuit",
+        "zenheadbutt",
+        "crunch"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:ekans",
+      "gender": "MALE",
+      "level": 27,
+      "nature": "cobblemon:naughty",
+      "ability": "shedskin",
+      "moveset": [
+        "suckerpunch",
+        "stockpile",
+        "swallow",
+        "spitup"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:golbat",
+      "gender": "FEMALE",
+      "level": 27,
+      "nature": "cobblemon:sassy",
+      "ability": "sniper",
+      "moveset": [
+        "confuseray",
+        "aircutter",
+        "meanlook",
+        "poisonfang"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

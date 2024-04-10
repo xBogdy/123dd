@@ -1,0 +1,102 @@
+{
+  "displayName": "Bug Catcher Conner",
+  "team": [
+    {
+      "species": "cobblemon:heracross",
+      "gender": "FEMALE",
+      "level": 28,
+      "nature": "cobblemon:timid",
+      "ability": "swarm",
+      "moveset": [
+        "chipaway",
+        "counter",
+        "furyattack",
+        "brickbreak"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 1,
+        "defence": 1,
+        "special_attack": 1,
+        "special_defence": 1,
+        "speed": 1
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:vibrava",
+      "gender": "FEMALE",
+      "level": 28,
+      "nature": "cobblemon:careful",
+      "ability": "levitate",
+      "moveset": [
+        "rockslide",
+        "supersonic",
+        "screech",
+        "earthpower"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 1,
+        "defence": 1,
+        "special_attack": 1,
+        "special_defence": 1,
+        "speed": 1
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:venonat",
+      "gender": "MALE",
+      "level": 29,
+      "nature": "cobblemon:mild",
+      "ability": "compoundeyes",
+      "moveset": [
+        "psybeam",
+        "stunspore",
+        "signalbeam",
+        "sleeppowder"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 1,
+        "defence": 1,
+        "special_attack": 1,
+        "special_defence": 1,
+        "speed": 1
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

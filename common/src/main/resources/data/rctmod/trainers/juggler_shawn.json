@@ -1,0 +1,71 @@
+{
+  "displayName": "Juggler Shawn",
+  "team": [
+    {
+      "species": "cobblemon:magmortar",
+      "gender": "FEMALE",
+      "level": 63,
+      "nature": "cobblemon:sassy",
+      "ability": "magmaarmor",
+      "moveset": [
+        "sunnyday",
+        "flamethrower",
+        "fireblast",
+        "hyperbeam"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:hypno",
+      "gender": "MALE",
+      "level": 63,
+      "nature": "cobblemon:jolly",
+      "ability": "forewarn",
+      "moveset": [
+        "swagger",
+        "nastyplot",
+        "psyshock",
+        "futuresight"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

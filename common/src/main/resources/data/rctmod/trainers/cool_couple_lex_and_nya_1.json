@@ -1,0 +1,71 @@
+{
+  "displayName": "Cool Couple Lex \u0026 Nya",
+  "team": [
+    {
+      "species": "cobblemon:miltank",
+      "gender": "FEMALE",
+      "level": 57,
+      "nature": "cobblemon:quiet",
+      "ability": "scrappy",
+      "moveset": [
+        "bodyslam",
+        "milkdrink",
+        "growl",
+        "defensecurl"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 25,
+        "defence": 25,
+        "special_attack": 25,
+        "special_defence": 25,
+        "speed": 25
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:tauros",
+      "gender": "MALE",
+      "level": 57,
+      "nature": "cobblemon:impish",
+      "ability": "angerpoint",
+      "moveset": [
+        "takedown",
+        "scaryface",
+        "pursuit",
+        "swagger"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 25,
+        "defence": 25,
+        "special_attack": 25,
+        "special_defence": 25,
+        "speed": 25
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

@@ -1,0 +1,71 @@
+{
+  "displayName": "Twins Miu \u0026 Mia",
+  "team": [
+    {
+      "species": "cobblemon:pikachu",
+      "gender": "MALE",
+      "level": 50,
+      "nature": "cobblemon:hasty",
+      "ability": "static",
+      "moveset": [
+        "extremespeed",
+        "thunderbolt",
+        "agility",
+        "wildcharge"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:pikachu",
+      "gender": "MALE",
+      "level": 50,
+      "nature": "cobblemon:lax",
+      "ability": "static",
+      "moveset": [
+        "extremespeed",
+        "thunderbolt",
+        "agility",
+        "wildcharge"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

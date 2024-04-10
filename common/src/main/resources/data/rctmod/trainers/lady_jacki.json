@@ -1,0 +1,71 @@
+{
+  "displayName": "Lady Jacki",
+  "team": [
+    {
+      "species": "cobblemon:hoppip",
+      "gender": "MALE",
+      "level": 48,
+      "nature": "cobblemon:naive",
+      "ability": "leafguard",
+      "moveset": [
+        "uturn",
+        "worryseed",
+        "gigadrain",
+        "bounce"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 20,
+        "defence": 20,
+        "special_attack": 20,
+        "special_defence": 20,
+        "speed": 20
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:stardust"
+    },
+    {
+      "species": "cobblemon:skiploom",
+      "gender": "MALE",
+      "level": 50,
+      "nature": "cobblemon:brave",
+      "ability": "leafguard",
+      "moveset": [
+        "ragepowder",
+        "cottonspore",
+        "uturn",
+        "worryseed"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 20,
+        "defence": 20,
+        "special_attack": 20,
+        "special_defence": 20,
+        "speed": 20
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:stardust"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

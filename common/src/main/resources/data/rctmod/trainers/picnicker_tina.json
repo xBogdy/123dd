@@ -1,0 +1,71 @@
+{
+  "displayName": "Picnicker Tina",
+  "team": [
+    {
+      "species": "cobblemon:breloom",
+      "gender": "FEMALE",
+      "level": 37,
+      "nature": "cobblemon:naive",
+      "ability": "effectspore",
+      "moveset": [
+        "feint",
+        "counter",
+        "forcepalm",
+        "mindreader"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:quilladin",
+      "gender": "FEMALE",
+      "level": 35,
+      "nature": "cobblemon:gentle",
+      "ability": "bulletproof",
+      "moveset": [
+        "leechseed",
+        "pinmissile",
+        "takedown",
+        "seedbomb"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

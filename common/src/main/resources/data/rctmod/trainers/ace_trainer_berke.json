@@ -1,0 +1,164 @@
+{
+  "displayName": "Ace Trainer Berke",
+  "team": [
+    {
+      "species": "cobblemon:seel",
+      "gender": "MALE",
+      "level": 42,
+      "nature": "cobblemon:adamant",
+      "ability": "hydration",
+      "moveset": [
+        "takedown",
+        "aurorabeam",
+        "icywind",
+        "growl"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 25,
+        "defence": 25,
+        "special_attack": 25,
+        "special_defence": 25,
+        "speed": 25
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:graveler",
+      "gender": "MALE",
+      "level": 42,
+      "nature": "cobblemon:lonely",
+      "ability": "sturdy",
+      "moveset": [
+        "rockblast",
+        "magnitude",
+        "rockthrow",
+        "mudsport"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 25,
+        "defence": 25,
+        "special_attack": 25,
+        "special_defence": 25,
+        "speed": 25
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:kingler",
+      "gender": "FEMALE",
+      "level": 42,
+      "nature": "cobblemon:gentle",
+      "ability": "battlearmor",
+      "moveset": [
+        "guillotine",
+        "stomp",
+        "mudshot",
+        "bubble"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 25,
+        "defence": 25,
+        "special_attack": 25,
+        "special_defence": 25,
+        "speed": 25
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:onix",
+      "gender": "MALE",
+      "level": 42,
+      "nature": "cobblemon:lax",
+      "ability": "sturdy",
+      "moveset": [
+        "slam",
+        "sandstorm",
+        "dragonbreath",
+        "rockthrow"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 25,
+        "defence": 25,
+        "special_attack": 25,
+        "special_defence": 25,
+        "speed": 25
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:cloyster",
+      "gender": "MALE",
+      "level": 42,
+      "nature": "cobblemon:docile",
+      "ability": "skilllink",
+      "moveset": [
+        "spikecannon",
+        "aurorabeam",
+        "supersonic",
+        "protect"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 25,
+        "defence": 25,
+        "special_attack": 25,
+        "special_defence": 25,
+        "speed": 25
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

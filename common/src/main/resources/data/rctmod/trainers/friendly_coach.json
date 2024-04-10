@@ -1,0 +1,177 @@
+{
+  "displayName": "Friendly Coach",
+  "team": [
+    {
+      "species": "cobblemon:jumpluff",
+      "gender": "MALE",
+      "level": 1,
+      "nature": "cobblemon:lax",
+      "ability": "leafguard",
+      "moveset": [
+        "memento"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:jumpluff",
+      "gender": "MALE",
+      "level": 1,
+      "nature": "cobblemon:bashful",
+      "ability": "leafguard",
+      "moveset": [
+        "memento"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:jumpluff",
+      "gender": "FEMALE",
+      "level": 1,
+      "nature": "cobblemon:bashful",
+      "ability": "leafguard",
+      "moveset": [
+        "memento"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:jumpluff",
+      "gender": "MALE",
+      "level": 1,
+      "nature": "cobblemon:hasty",
+      "ability": "leafguard",
+      "moveset": [
+        "memento"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:jumpluff",
+      "gender": "MALE",
+      "level": 1,
+      "nature": "cobblemon:calm",
+      "ability": "leafguard",
+      "moveset": [
+        "memento"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:jumpluff",
+      "gender": "FEMALE",
+      "level": 1,
+      "nature": "cobblemon:calm",
+      "ability": "leafguard",
+      "moveset": [
+        "memento"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

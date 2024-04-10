@@ -1,0 +1,71 @@
+{
+  "displayName": "Lass Reli",
+  "team": [
+    {
+      "species": "cobblemon:pidgey",
+      "gender": "FEMALE",
+      "level": 20,
+      "nature": "cobblemon:impish",
+      "ability": "frisk",
+      "moveset": [
+        "gust",
+        "quickattack",
+        "takedown",
+        "whirlwind"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:nidoranf",
+      "gender": "FEMALE",
+      "level": 20,
+      "nature": "cobblemon:rash",
+      "ability": "poisontouch",
+      "moveset": [
+        "tailwhip",
+        "doublekick",
+        "poisonsting",
+        "furyswipes"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

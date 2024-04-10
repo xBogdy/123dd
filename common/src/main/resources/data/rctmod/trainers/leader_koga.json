@@ -1,0 +1,191 @@
+{
+  "displayName": "Leader Koga",
+  "team": [
+    {
+      "species": "cobblemon:swellow",
+      "gender": "FEMALE",
+      "level": 67,
+      "nature": "cobblemon:timid",
+      "ability": "aerilate",
+      "moveset": [
+        "boomburst",
+        "uturn"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 252,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:choice_specs"
+    },
+    {
+      "species": "cobblemon:accelgor",
+      "gender": "FEMALE",
+      "level": 68,
+      "nature": "cobblemon:timid",
+      "ability": "sheerforce",
+      "moveset": [
+        "bugbuzz",
+        "uturn",
+        "focusblast",
+        "sludgebomb"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 252,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:life_orb"
+    },
+    {
+      "species": "cobblemon:greninja",
+      "gender": "FEMALE",
+      "level": 68,
+      "nature": "cobblemon:timid",
+      "ability": "battlebond",
+      "moveset": [
+        "surf",
+        "watershuriken",
+        "darkpulse",
+        "icebeam"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 252,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:life_orb"
+    },
+    {
+      "species": "cobblemon:drapion",
+      "gender": "FEMALE",
+      "level": 68,
+      "nature": "cobblemon:jolly",
+      "ability": "sniper",
+      "moveset": [
+        "wickedblow",
+        "crosspoison"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 252,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:choice_scarf"
+    },
+    {
+      "species": "cobblemon:dragapult",
+      "gender": "FEMALE",
+      "level": 68,
+      "nature": "cobblemon:timid",
+      "ability": "infiltrator",
+      "moveset": [
+        "shadowball",
+        "flamethrower",
+        "dragonpulse",
+        "uturn"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 252,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:life_orb"
+    },
+    {
+      "species": "cobblemon:toxtricity",
+      "gender": "MALE",
+      "level": 68,
+      "nature": "cobblemon:timid",
+      "ability": "plus",
+      "moveset": [
+        "voltswitch",
+        "boomburst",
+        "sludgebomb",
+        "overdrive"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 252,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:toxtricitite"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

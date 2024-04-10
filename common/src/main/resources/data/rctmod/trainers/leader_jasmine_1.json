@@ -1,0 +1,195 @@
+{
+  "displayName": "Leader Jasmine",
+  "team": [
+    {
+      "species": "cobblemon:forretress",
+      "gender": "FEMALE",
+      "level": 60,
+      "nature": "cobblemon:impish",
+      "ability": "sturdy",
+      "moveset": [
+        "stealthrock",
+        "explosion",
+        "spikes",
+        "voltswitch"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 252,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:leftovers"
+    },
+    {
+      "species": "cobblemon:melmetal",
+      "gender": "GENDERLESS",
+      "level": 60,
+      "nature": "cobblemon:adamant",
+      "ability": "ironfist",
+      "moveset": [
+        "superpower",
+        "doubleironbash",
+        "earthquake",
+        "thunderpunch"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 252,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 6
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:choice_band"
+    },
+    {
+      "species": "cobblemon:metagross",
+      "gender": "GENDERLESS",
+      "level": 65,
+      "nature": "cobblemon:adamant",
+      "ability": "clearbody",
+      "moveset": [
+        "meteormash",
+        "earthquake",
+        "zenheadbutt",
+        "bulletpunch"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 252,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:air_balloon"
+    },
+    {
+      "species": "cobblemon:magnezone",
+      "gender": "GENDERLESS",
+      "level": 60,
+      "nature": "cobblemon:modest",
+      "ability": "magnetpull",
+      "moveset": [
+        "voltswitch",
+        "thunderbolt",
+        "flashcannon",
+        "bodypress"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 252,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:magnet"
+    },
+    {
+      "species": "cobblemon:lucario",
+      "gender": "FEMALE",
+      "level": 60,
+      "nature": "cobblemon:adamant",
+      "ability": "innerfocus",
+      "moveset": [
+        "swordsdance",
+        "extremespeed",
+        "closecombat",
+        "meteormash"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 252,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:life_orb"
+    },
+    {
+      "species": "cobblemon:aggron",
+      "gender": "FEMALE",
+      "level": 60,
+      "nature": "cobblemon:adamant",
+      "ability": "sturdy",
+      "moveset": [
+        "dragonclaw",
+        "heavyslam",
+        "earthquake",
+        "firepunch"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 252,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 6
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:aggronite"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

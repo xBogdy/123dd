@@ -1,0 +1,163 @@
+{
+  "displayName": "Scientist Gideon",
+  "team": [
+    {
+      "species": "cobblemon:voltorb",
+      "gender": "GENDERLESS",
+      "level": 46,
+      "nature": "cobblemon:naive",
+      "ability": "soundproof",
+      "moveset": [
+        "swift",
+        "screech",
+        "spark",
+        "sonicboom"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:electrode",
+      "gender": "GENDERLESS",
+      "level": 46,
+      "nature": "cobblemon:adamant",
+      "ability": "soundproof",
+      "moveset": [
+        "spark",
+        "sonicboom",
+        "screech",
+        "charge"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:magnemite",
+      "gender": "GENDERLESS",
+      "level": 46,
+      "nature": "cobblemon:lonely",
+      "ability": "magnetpull",
+      "moveset": [
+        "screech",
+        "swift",
+        "spark",
+        "thunderwave"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:magneton",
+      "gender": "GENDERLESS",
+      "level": 46,
+      "nature": "cobblemon:gentle",
+      "ability": "magnetpull",
+      "moveset": [
+        "triattack",
+        "spark",
+        "thunderwave",
+        "sonicboom"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:porygon",
+      "gender": "GENDERLESS",
+      "level": 46,
+      "nature": "cobblemon:naughty",
+      "ability": "trace",
+      "moveset": [
+        "triattack",
+        "recover",
+        "psybeam"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

@@ -1,0 +1,102 @@
+{
+  "displayName": "Sailor Dylan",
+  "team": [
+    {
+      "species": "cobblemon:horsea",
+      "gender": "MALE",
+      "level": 28,
+      "nature": "cobblemon:serious",
+      "ability": "sniper",
+      "moveset": [
+        "watergun",
+        "twister",
+        "bubblebeam",
+        "focusenergy"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:clamperl",
+      "gender": "MALE",
+      "level": 27,
+      "nature": "cobblemon:brave",
+      "ability": "battlearmor",
+      "moveset": [
+        "bubble",
+        "whirlpool",
+        "irondefense",
+        "aurorabeam"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:ducklett",
+      "gender": "FEMALE",
+      "level": 29,
+      "nature": "cobblemon:naughty",
+      "ability": "frisk",
+      "moveset": [
+        "featherdance",
+        "icywind",
+        "aquaring",
+        "airslash"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

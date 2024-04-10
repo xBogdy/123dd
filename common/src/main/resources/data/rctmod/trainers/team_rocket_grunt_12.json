@@ -1,0 +1,133 @@
+{
+  "displayName": "Team Rocket Grunt",
+  "team": [
+    {
+      "species": "cobblemon:krokorok",
+      "gender": "MALE",
+      "level": 41,
+      "nature": "cobblemon:jolly",
+      "ability": "moxie",
+      "moveset": [
+        "crunch",
+        "dig",
+        "scaryface",
+        "foulplay"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:mightyena",
+      "gender": "MALE",
+      "level": 42,
+      "nature": "cobblemon:lonely",
+      "ability": "strongjaw",
+      "moveset": [
+        "scaryface",
+        "crunch",
+        "taunt",
+        "embargo"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:gumshoos",
+      "gender": "FEMALE",
+      "level": 38,
+      "nature": "cobblemon:careful",
+      "ability": "strongjaw",
+      "moveset": [
+        "icefang",
+        "superfang",
+        "takedown",
+        "scaryface"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:stunky",
+      "gender": "MALE",
+      "level": 42,
+      "nature": "cobblemon:brave",
+      "ability": "aftermath",
+      "moveset": [
+        "nightslash",
+        "poisonjab",
+        "venomdrench",
+        "suckerpunch"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

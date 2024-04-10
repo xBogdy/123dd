@@ -1,0 +1,132 @@
+{
+  "displayName": "Super Nerd Aidan",
+  "team": [
+    {
+      "species": "cobblemon:voltorb",
+      "gender": "GENDERLESS",
+      "level": 35,
+      "nature": "cobblemon:hardy",
+      "ability": "static",
+      "moveset": [
+        "sonicboom",
+        "screech",
+        "sonicboom",
+        "spark"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:koffing",
+      "gender": "MALE",
+      "level": 35,
+      "nature": "cobblemon:lax",
+      "ability": "neutralizinggas",
+      "moveset": [
+        "sludge",
+        "smog",
+        "selfdestruct",
+        "sludge"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:eelektrik",
+      "gender": "FEMALE",
+      "level": 36,
+      "nature": "cobblemon:gentle",
+      "ability": "levitate",
+      "moveset": [
+        "sonicboom",
+        "discharge",
+        "crunch",
+        "charge"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:elgyem",
+      "gender": "MALE",
+      "level": 37,
+      "nature": "cobblemon:hasty",
+      "ability": "synchronize",
+      "moveset": [
+        "sonicboom",
+        "psybeam",
+        "headbutt"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

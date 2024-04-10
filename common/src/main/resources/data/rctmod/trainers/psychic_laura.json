@@ -1,0 +1,102 @@
+{
+  "displayName": "Psychic Laura",
+  "team": [
+    {
+      "species": "cobblemon:natu",
+      "gender": "MALE",
+      "level": 48,
+      "nature": "cobblemon:modest",
+      "ability": "earlybird",
+      "moveset": [
+        "psychoshift",
+        "futuresight",
+        "powerswap",
+        "guardswap"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:natu",
+      "gender": "MALE",
+      "level": 48,
+      "nature": "cobblemon:bold",
+      "ability": "earlybird",
+      "moveset": [
+        "psychoshift",
+        "futuresight",
+        "powerswap",
+        "guardswap"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:xatu",
+      "gender": "FEMALE",
+      "level": 49,
+      "nature": "cobblemon:gentle",
+      "ability": "earlybird",
+      "moveset": [
+        "psychic",
+        "miracleeye",
+        "psychoshift",
+        "futuresight"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

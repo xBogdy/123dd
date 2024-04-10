@@ -1,0 +1,71 @@
+{
+  "displayName": "Hiker Eric",
+  "team": [
+    {
+      "species": "cobblemon:hariyama",
+      "gender": "FEMALE",
+      "level": 33,
+      "nature": "cobblemon:impish",
+      "ability": "thickfat",
+      "moveset": [
+        "knockoff",
+        "vitalthrow",
+        "bellydrum",
+        "smellingsalts"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:gligar",
+      "gender": "FEMALE",
+      "level": 34,
+      "nature": "cobblemon:hardy",
+      "ability": "hypercutter",
+      "moveset": [
+        "feintattack",
+        "acrobatics",
+        "slash",
+        "uturn"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

@@ -1,0 +1,164 @@
+{
+  "displayName": "Ace Trainer Yuji",
+  "team": [
+    {
+      "species": "cobblemon:sandslash",
+      "gender": "FEMALE",
+      "level": 38,
+      "nature": "cobblemon:hasty",
+      "ability": "sandveil",
+      "moveset": [
+        "slash",
+        "swift",
+        "sandattack",
+        "poisonsting"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 25,
+        "defence": 25,
+        "special_attack": 25,
+        "special_defence": 25,
+        "speed": 25
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:graveler",
+      "gender": "FEMALE",
+      "level": 38,
+      "nature": "cobblemon:docile",
+      "ability": "rockhead",
+      "moveset": [
+        "rockblast",
+        "magnitude",
+        "mudsport",
+        "defensecurl"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 25,
+        "defence": 25,
+        "special_attack": 25,
+        "special_defence": 25,
+        "speed": 25
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:onix",
+      "gender": "MALE",
+      "level": 38,
+      "nature": "cobblemon:mild",
+      "ability": "rockhead",
+      "moveset": [
+        "dragonbreath",
+        "sandstorm",
+        "rockthrow",
+        "bind"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 25,
+        "defence": 25,
+        "special_attack": 25,
+        "special_defence": 25,
+        "speed": 25
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:graveler",
+      "gender": "FEMALE",
+      "level": 38,
+      "nature": "cobblemon:brave",
+      "ability": "rockhead",
+      "moveset": [
+        "rockblast",
+        "magnitude",
+        "rollout",
+        "defensecurl"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 25,
+        "defence": 25,
+        "special_attack": 25,
+        "special_defence": 25,
+        "speed": 25
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:marowak",
+      "gender": "FEMALE",
+      "level": 38,
+      "nature": "cobblemon:naive",
+      "ability": "rockhead",
+      "moveset": [
+        "bonemerang",
+        "headbutt",
+        "leer",
+        "growl"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 25,
+        "defence": 25,
+        "special_attack": 25,
+        "special_defence": 25,
+        "speed": 25
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

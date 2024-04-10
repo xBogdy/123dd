@@ -1,0 +1,71 @@
+{
+  "displayName": "Crush Girl Sharon",
+  "team": [
+    {
+      "species": "cobblemon:primeape",
+      "gender": "FEMALE",
+      "level": 55,
+      "nature": "cobblemon:hasty",
+      "ability": "vitalspirit",
+      "moveset": [
+        "screech",
+        "stompingtantrum",
+        "outrage",
+        "crosschop"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:black_belt"
+    },
+    {
+      "species": "cobblemon:primeape",
+      "gender": "FEMALE",
+      "level": 55,
+      "nature": "cobblemon:bold",
+      "ability": "vitalspirit",
+      "moveset": [
+        "screech",
+        "stompingtantrum",
+        "outrage",
+        "crosschop"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:black_belt"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

@@ -1,0 +1,102 @@
+{
+  "displayName": "Lass Ali",
+  "team": [
+    {
+      "species": "cobblemon:snubbull",
+      "gender": "MALE",
+      "level": 16,
+      "nature": "cobblemon:adamant",
+      "ability": "strongjaw",
+      "moveset": [
+        "thunderfang",
+        "charm",
+        "bite",
+        "covet"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:teddiursa",
+      "gender": "MALE",
+      "level": 17,
+      "nature": "cobblemon:bashful",
+      "ability": "quickfeet",
+      "moveset": [
+        "lick",
+        "faketears",
+        "furyswipes",
+        "feintattack"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:smoochum",
+      "gender": "FEMALE",
+      "level": 18,
+      "nature": "cobblemon:jolly",
+      "ability": "forewarn",
+      "moveset": [
+        "sweetkiss",
+        "icywind",
+        "confusion",
+        "sing"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

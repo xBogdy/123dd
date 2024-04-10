@@ -1,0 +1,71 @@
+{
+  "displayName": "Lass Paige",
+  "team": [
+    {
+      "species": "cobblemon:nidoranf",
+      "gender": "FEMALE",
+      "level": 37,
+      "nature": "cobblemon:sassy",
+      "ability": "rivalry",
+      "moveset": [
+        "helpinghand",
+        "toxicspikes",
+        "flatter",
+        "crunch"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:lopunny",
+      "gender": "MALE",
+      "level": 36,
+      "nature": "cobblemon:naughty",
+      "ability": "klutz",
+      "moveset": [
+        "jumpkick",
+        "machpunch",
+        "agility",
+        "dizzypunch"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

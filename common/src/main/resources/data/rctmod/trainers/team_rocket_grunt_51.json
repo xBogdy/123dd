@@ -1,0 +1,102 @@
+{
+  "displayName": "Team Rocket Grunt",
+  "team": [
+    {
+      "species": "cobblemon:ekans",
+      "gender": "MALE",
+      "level": 48,
+      "nature": "cobblemon:jolly",
+      "ability": "shedskin",
+      "moveset": [
+        "coil",
+        "jawlock",
+        "belch",
+        "haze"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:gloom",
+      "gender": "MALE",
+      "level": 48,
+      "nature": "cobblemon:careful",
+      "ability": "chlorophyll",
+      "moveset": [
+        "moonlight",
+        "gigadrain",
+        "toxic",
+        "naturalgift"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:gloom",
+      "gender": "FEMALE",
+      "level": 48,
+      "nature": "cobblemon:quirky",
+      "ability": "chlorophyll",
+      "moveset": [
+        "moonlight",
+        "gigadrain",
+        "toxic",
+        "naturalgift"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

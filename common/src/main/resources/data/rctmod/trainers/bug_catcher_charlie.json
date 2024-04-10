@@ -1,0 +1,97 @@
+{
+  "displayName": "Bug Catcher Charlie",
+  "team": [
+    {
+      "species": "cobblemon:nincada",
+      "gender": "FEMALE",
+      "level": 6,
+      "nature": "cobblemon:timid",
+      "ability": "compoundeyes",
+      "moveset": [
+        "scratch",
+        "harden",
+        "absorb"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 1,
+        "defence": 1,
+        "special_attack": 1,
+        "special_defence": 1,
+        "speed": 1
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:spewpa",
+      "gender": "FEMALE",
+      "level": 9,
+      "nature": "cobblemon:hardy",
+      "ability": "shedskin",
+      "moveset": [
+        "detect",
+        "harden"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 1,
+        "defence": 1,
+        "special_attack": 1,
+        "special_defence": 1,
+        "speed": 1
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:metapod",
+      "gender": "FEMALE",
+      "level": 8,
+      "nature": "cobblemon:quiet",
+      "ability": "shedskin",
+      "moveset": [
+        "harden",
+        "bugbite"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 1,
+        "defence": 1,
+        "special_attack": 1,
+        "special_defence": 1,
+        "speed": 1
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

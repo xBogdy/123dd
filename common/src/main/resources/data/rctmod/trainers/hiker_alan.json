@@ -1,0 +1,70 @@
+{
+  "displayName": "Hiker Alan",
+  "team": [
+    {
+      "species": "cobblemon:larvitar",
+      "gender": "FEMALE",
+      "level": 31,
+      "nature": "cobblemon:mild",
+      "ability": "guts",
+      "moveset": [
+        "magnitude",
+        "sandstorm",
+        "screech",
+        "rockslide"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:carkol",
+      "gender": "FEMALE",
+      "level": 32,
+      "nature": "cobblemon:brave",
+      "ability": "steamengine",
+      "moveset": [
+        "harden",
+        "flamecharge",
+        "rocktomb"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

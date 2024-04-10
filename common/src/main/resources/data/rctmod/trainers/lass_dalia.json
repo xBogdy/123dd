@@ -1,0 +1,133 @@
+{
+  "displayName": "Lass Dalia",
+  "team": [
+    {
+      "species": "cobblemon:hoppip",
+      "gender": "MALE",
+      "level": 46,
+      "nature": "cobblemon:sassy",
+      "ability": "leafguard",
+      "moveset": [
+        "uturn",
+        "worryseed",
+        "gigadrain",
+        "bounce"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:hoppip",
+      "gender": "MALE",
+      "level": 47,
+      "nature": "cobblemon:rash",
+      "ability": "leafguard",
+      "moveset": [
+        "uturn",
+        "worryseed",
+        "gigadrain",
+        "bounce"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:skiploom",
+      "gender": "FEMALE",
+      "level": 47,
+      "nature": "cobblemon:docile",
+      "ability": "leafguard",
+      "moveset": [
+        "acrobatics",
+        "ragepowder",
+        "cottonspore",
+        "uturn"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:skiploom",
+      "gender": "MALE",
+      "level": 48,
+      "nature": "cobblemon:hasty",
+      "ability": "leafguard",
+      "moveset": [
+        "ragepowder",
+        "cottonspore",
+        "uturn",
+        "worryseed"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

@@ -1,0 +1,102 @@
+{
+  "displayName": "Biker Isaac",
+  "team": [
+    {
+      "species": "cobblemon:garbodor",
+      "gender": "MALE",
+      "level": 57,
+      "nature": "cobblemon:brave",
+      "ability": "weakarmor",
+      "moveset": [
+        "screech",
+        "toxicspikes",
+        "sludgebomb",
+        "spikes"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:crobat",
+      "gender": "MALE",
+      "level": 57,
+      "nature": "cobblemon:lax",
+      "ability": "sniper",
+      "moveset": [
+        "screech",
+        "bravebird",
+        "sludgebomb",
+        "heatwave"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:rhydon",
+      "gender": "FEMALE",
+      "level": 57,
+      "nature": "cobblemon:relaxed",
+      "ability": "rockhead",
+      "moveset": [
+        "smokescreen",
+        "earthquake",
+        "rockblast",
+        "megahorn"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

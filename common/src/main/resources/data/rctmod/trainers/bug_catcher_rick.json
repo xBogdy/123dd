@@ -1,0 +1,68 @@
+{
+  "displayName": "Bug Catcher Rick",
+  "team": [
+    {
+      "species": "cobblemon:caterpie",
+      "gender": "FEMALE",
+      "level": 6,
+      "nature": "cobblemon:hardy",
+      "ability": "shielddust",
+      "moveset": [
+        "tackle",
+        "stringshot"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 1,
+        "defence": 1,
+        "special_attack": 1,
+        "special_defence": 1,
+        "speed": 1
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:wurmple",
+      "gender": "FEMALE",
+      "level": 7,
+      "nature": "cobblemon:quirky",
+      "ability": "shielddust",
+      "moveset": [
+        "tackle",
+        "stringshot",
+        "poisonsting"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 1,
+        "defence": 1,
+        "special_attack": 1,
+        "special_defence": 1,
+        "speed": 1
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

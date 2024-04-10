@@ -1,0 +1,102 @@
+{
+  "displayName": "Picnicker Yazmin",
+  "team": [
+    {
+      "species": "cobblemon:weepinbell",
+      "gender": "FEMALE",
+      "level": 57,
+      "nature": "cobblemon:adamant",
+      "ability": "chlorophyll",
+      "moveset": [
+        "gastroacid",
+        "razorleaf",
+        "poisonjab",
+        "slam"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:leavanny",
+      "gender": "FEMALE",
+      "level": 57,
+      "nature": "cobblemon:mild",
+      "ability": "swarm",
+      "moveset": [
+        "entrainment",
+        "swordsdance",
+        "leafstorm",
+        "sacredsword"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:alcremie",
+      "gender": "FEMALE",
+      "level": 58,
+      "nature": "cobblemon:calm",
+      "ability": "sweetveil",
+      "moveset": [
+        "dazzlinggleam",
+        "recover",
+        "mistyterrain",
+        "entrainment"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

@@ -1,0 +1,133 @@
+{
+  "displayName": "Picnicker Alicia",
+  "team": [
+    {
+      "species": "cobblemon:oddish",
+      "gender": "FEMALE",
+      "level": 28,
+      "nature": "cobblemon:impish",
+      "ability": "chlorophyll",
+      "moveset": [
+        "sleeppowder",
+        "megadrain",
+        "sludge",
+        "moonlight"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:bellsprout",
+      "gender": "FEMALE",
+      "level": 28,
+      "nature": "cobblemon:careful",
+      "ability": "chlorophyll",
+      "moveset": [
+        "poisonpowder",
+        "stunspore",
+        "sludge",
+        "megadrain"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:sewaddle",
+      "gender": "MALE",
+      "level": 28,
+      "nature": "cobblemon:lonely",
+      "ability": "swarm",
+      "moveset": [
+        "stringshot",
+        "bugbite",
+        "razorleaf",
+        "strugglebug"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:morelull",
+      "gender": "FEMALE",
+      "level": 28,
+      "nature": "cobblemon:gentle",
+      "ability": "effectspore",
+      "moveset": [
+        "megadrain",
+        "sleeppowder",
+        "ingrain",
+        "confuseray"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

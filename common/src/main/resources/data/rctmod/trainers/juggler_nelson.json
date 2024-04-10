@@ -1,0 +1,133 @@
+{
+  "displayName": "Juggler Nelson",
+  "team": [
+    {
+      "species": "cobblemon:hypno",
+      "gender": "FEMALE",
+      "level": 80,
+      "nature": "cobblemon:naive",
+      "ability": "insomnia",
+      "moveset": [
+        "swagger",
+        "nastyplot",
+        "psyshock",
+        "futuresight"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:electrode",
+      "gender": "GENDERLESS",
+      "level": 81,
+      "nature": "cobblemon:adamant",
+      "ability": "soundproof",
+      "moveset": [
+        "explosion",
+        "gyroball",
+        "mirrorcoat",
+        "courtchange"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:meowstic",
+      "gender": "MALE",
+      "level": 76,
+      "nature": "cobblemon:quirky",
+      "ability": "prankster",
+      "moveset": [
+        "imprison",
+        "suckerpunch",
+        "mistyterrain",
+        "quickguard"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:gothitelle",
+      "gender": "MALE",
+      "level": 82,
+      "nature": "cobblemon:relaxed",
+      "ability": "frisk",
+      "moveset": [
+        "psychic",
+        "charm",
+        "magicroom",
+        "psychoboost"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

@@ -1,0 +1,71 @@
+{
+  "displayName": "Lass Andrea",
+  "team": [
+    {
+      "species": "cobblemon:meowth",
+      "gender": "FEMALE",
+      "level": 36,
+      "nature": "cobblemon:docile",
+      "ability": "pickup",
+      "moveset": [
+        "taunt",
+        "shockwave",
+        "payday",
+        "slash"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:cutiefly",
+      "gender": "MALE",
+      "level": 37,
+      "nature": "cobblemon:naive",
+      "ability": "swarm",
+      "moveset": [
+        "sweetscent",
+        "bugbuzz",
+        "dazzlinggleam",
+        "aromatherapy"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

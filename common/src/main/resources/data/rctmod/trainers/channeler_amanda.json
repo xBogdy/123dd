@@ -1,0 +1,71 @@
+{
+  "displayName": "Channeler Amanda",
+  "team": [
+    {
+      "species": "cobblemon:dusclops",
+      "gender": "FEMALE",
+      "level": 54,
+      "nature": "cobblemon:gentle",
+      "ability": "pressure",
+      "moveset": [
+        "curse",
+        "hex",
+        "shadowball",
+        "meanlook"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:cofagrigus",
+      "gender": "FEMALE",
+      "level": 55,
+      "nature": "cobblemon:lonely",
+      "ability": "mummy",
+      "moveset": [
+        "guardsplit",
+        "shadowball",
+        "grudge",
+        "meanlook"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

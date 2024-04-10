@@ -1,0 +1,102 @@
+{
+  "displayName": "Psychic Jaclyn",
+  "team": [
+    {
+      "species": "cobblemon:natu",
+      "gender": "FEMALE",
+      "level": 48,
+      "nature": "cobblemon:lonely",
+      "ability": "synchronize",
+      "moveset": [
+        "nightshade",
+        "confuseray",
+        "futuresight",
+        "wish"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:slowbro",
+      "gender": "FEMALE",
+      "level": 48,
+      "nature": "cobblemon:naive",
+      "ability": "oblivious",
+      "moveset": [
+        "psychic",
+        "headbutt",
+        "amnesia",
+        "yawn"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:kadabra",
+      "gender": "FEMALE",
+      "level": 49,
+      "nature": "cobblemon:modest",
+      "ability": "synchronize",
+      "moveset": [
+        "psychic",
+        "futuresight",
+        "recover",
+        "reflect"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

@@ -1,0 +1,71 @@
+{
+  "displayName": "Twins Eli \u0026 Anne",
+  "team": [
+    {
+      "species": "cobblemon:swinub",
+      "gender": "FEMALE",
+      "level": 36,
+      "nature": "cobblemon:docile",
+      "ability": "oblivious",
+      "moveset": [
+        "icywind",
+        "icefang",
+        "takedown",
+        "mist"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:espurr",
+      "gender": "FEMALE",
+      "level": 37,
+      "nature": "cobblemon:hasty",
+      "ability": "frisk",
+      "moveset": [
+        "psybeam",
+        "fakeout",
+        "disarmingvoice",
+        "psyshock"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

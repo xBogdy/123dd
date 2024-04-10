@@ -1,0 +1,133 @@
+{
+  "displayName": "Hiker Lenny",
+  "team": [
+    {
+      "species": "cobblemon:anorith",
+      "gender": "FEMALE",
+      "level": 32,
+      "nature": "cobblemon:relaxed",
+      "ability": "battlearmor",
+      "moveset": [
+        "metalclaw",
+        "ancientpower",
+        "bugbite",
+        "brine"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:lileep",
+      "gender": "FEMALE",
+      "level": 31,
+      "nature": "cobblemon:hasty",
+      "ability": "suctioncups",
+      "moveset": [
+        "ancientpower",
+        "brine",
+        "gigadrain",
+        "gastroacid"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:cranidos",
+      "gender": "FEMALE",
+      "level": 31,
+      "nature": "cobblemon:rash",
+      "ability": "moldbreaker",
+      "moveset": [
+        "takedown",
+        "scaryface",
+        "assurance",
+        "chipaway"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:shieldon",
+      "gender": "FEMALE",
+      "level": 32,
+      "nature": "cobblemon:jolly",
+      "ability": "sturdy",
+      "moveset": [
+        "takedown",
+        "irondefense",
+        "swagger",
+        "ancientpower"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

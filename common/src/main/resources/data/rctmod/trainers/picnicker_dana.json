@@ -1,0 +1,102 @@
+{
+  "displayName": "Picnicker Dana",
+  "team": [
+    {
+      "species": "cobblemon:zorua",
+      "gender": "FEMALE",
+      "level": 34,
+      "nature": "cobblemon:relaxed",
+      "ability": "illusion",
+      "moveset": [
+        "scaryface",
+        "taunt",
+        "foulplay",
+        "torment"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:clobbopus",
+      "gender": "FEMALE",
+      "level": 35,
+      "nature": "cobblemon:docile",
+      "ability": "limber",
+      "moveset": [
+        "lowsweep",
+        "bulkup",
+        "submission",
+        "taunt"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:golduck",
+      "gender": "MALE",
+      "level": 35,
+      "nature": "cobblemon:adamant",
+      "ability": "swiftswim",
+      "moveset": [
+        "zenheadbutt",
+        "aquatail",
+        "soak",
+        "psychic"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

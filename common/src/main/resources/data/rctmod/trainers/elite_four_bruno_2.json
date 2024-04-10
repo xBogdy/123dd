@@ -1,0 +1,164 @@
+{
+  "displayName": "Elite Four Bruno",
+  "team": [
+    {
+      "species": "cobblemon:onix",
+      "gender": "MALE",
+      "level": 51,
+      "nature": "cobblemon:adamant",
+      "ability": "sturdy",
+      "moveset": [
+        "earthquake",
+        "rocktomb",
+        "irontail",
+        "roar"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:hitmonchan",
+      "gender": "MALE",
+      "level": 53,
+      "nature": "cobblemon:gentle",
+      "ability": "ironfist",
+      "moveset": [
+        "skyuppercut",
+        "machpunch",
+        "rocktomb",
+        "counter"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:hitmonlee",
+      "gender": "MALE",
+      "level": 53,
+      "nature": "cobblemon:lax",
+      "ability": "reckless",
+      "moveset": [
+        "megakick",
+        "foresight",
+        "brickbreak",
+        "facade"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:onix",
+      "gender": "MALE",
+      "level": 54,
+      "nature": "cobblemon:gentle",
+      "ability": "sturdy",
+      "moveset": [
+        "doubleedge",
+        "earthquake",
+        "irontail",
+        "sandtomb"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:machamp",
+      "gender": "FEMALE",
+      "level": 56,
+      "nature": "cobblemon:careful",
+      "ability": "noguard",
+      "moveset": [
+        "crosschop",
+        "bulkup",
+        "scaryface",
+        "rocktomb"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:sitrus_berry"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

@@ -1,0 +1,71 @@
+{
+  "displayName": "Camper Riley",
+  "team": [
+    {
+      "species": "cobblemon:pinsir",
+      "gender": "MALE",
+      "level": 49,
+      "nature": "cobblemon:naughty",
+      "ability": "moldbreaker",
+      "moveset": [
+        "stormthrow",
+        "swordsdance",
+        "thrash",
+        "superpower"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:heracross",
+      "gender": "MALE",
+      "level": 50,
+      "nature": "cobblemon:hardy",
+      "ability": "guts",
+      "moveset": [
+        "takedown",
+        "megahorn",
+        "closecombat",
+        "reversal"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

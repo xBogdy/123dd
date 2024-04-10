@@ -1,0 +1,102 @@
+{
+  "displayName": "Lady Gillian",
+  "team": [
+    {
+      "species": "cobblemon:mareep",
+      "gender": "FEMALE",
+      "level": 47,
+      "nature": "cobblemon:impish",
+      "ability": "static",
+      "moveset": [
+        "discharge",
+        "signalbeam",
+        "lightscreen",
+        "thunder"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 20,
+        "defence": 20,
+        "special_attack": 20,
+        "special_defence": 20,
+        "speed": 20
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:stardust"
+    },
+    {
+      "species": "cobblemon:mareep",
+      "gender": "FEMALE",
+      "level": 48,
+      "nature": "cobblemon:naive",
+      "ability": "static",
+      "moveset": [
+        "discharge",
+        "signalbeam",
+        "lightscreen",
+        "thunder"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 20,
+        "defence": 20,
+        "special_attack": 20,
+        "special_defence": 20,
+        "speed": 20
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:stardust"
+    },
+    {
+      "species": "cobblemon:flaaffy",
+      "gender": "FEMALE",
+      "level": 49,
+      "nature": "cobblemon:brave",
+      "ability": "static",
+      "moveset": [
+        "confuseray",
+        "powergem",
+        "discharge",
+        "signalbeam"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 20,
+        "defence": 20,
+        "special_attack": 20,
+        "special_defence": 20,
+        "speed": 20
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:nugget"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

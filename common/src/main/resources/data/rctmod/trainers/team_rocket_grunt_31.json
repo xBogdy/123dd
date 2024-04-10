@@ -1,0 +1,102 @@
+{
+  "displayName": "Team Rocket Grunt",
+  "team": [
+    {
+      "species": "cobblemon:corviknight",
+      "gender": "MALE",
+      "level": 49,
+      "nature": "cobblemon:timid",
+      "ability": "unnerve",
+      "moveset": [
+        "taunt",
+        "scaryface",
+        "drillpeck",
+        "swagger"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:golbat",
+      "gender": "MALE",
+      "level": 48,
+      "nature": "cobblemon:serious",
+      "ability": "sniper",
+      "moveset": [
+        "dualwingbeat",
+        "haze",
+        "venoshock",
+        "airslash"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:crobat",
+      "gender": "FEMALE",
+      "level": 48,
+      "nature": "cobblemon:quiet",
+      "ability": "sniper",
+      "moveset": [
+        "dualwingbeat",
+        "haze",
+        "venoshock",
+        "airslash"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

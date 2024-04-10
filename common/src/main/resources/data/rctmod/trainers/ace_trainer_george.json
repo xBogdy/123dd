@@ -1,0 +1,133 @@
+{
+  "displayName": "Ace Trainer George",
+  "team": [
+    {
+      "species": "cobblemon:donphan",
+      "gender": "FEMALE",
+      "level": 84,
+      "nature": "cobblemon:adamant",
+      "ability": "technician",
+      "moveset": [
+        "bonemerang",
+        "iceshard",
+        "rockblast",
+        "knockoff"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 252,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 6
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:leftovers"
+    },
+    {
+      "species": "cobblemon:cloyster",
+      "gender": "MALE",
+      "level": 84,
+      "nature": "cobblemon:jolly",
+      "ability": "skilllink",
+      "moveset": [
+        "rockblast",
+        "iciclespear",
+        "liquidation",
+        "shellsmash"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 252,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:white_herb"
+    },
+    {
+      "species": "cobblemon:mienshao",
+      "gender": "FEMALE",
+      "level": 84,
+      "nature": "cobblemon:jolly",
+      "ability": "regenerator",
+      "moveset": [
+        "fakeout",
+        "closecombat",
+        "uturn",
+        "knockoff"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 252,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:life_orb"
+    },
+    {
+      "species": "cobblemon:pinsir",
+      "gender": "FEMALE",
+      "level": 84,
+      "nature": "cobblemon:jolly",
+      "ability": "hypercutter",
+      "moveset": [
+        "quickattack",
+        "xscissor",
+        "doubleedge",
+        "closecombat"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 252,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:pinsirite"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

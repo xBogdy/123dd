@@ -1,0 +1,133 @@
+{
+  "displayName": "Team Rocket Grunt",
+  "team": [
+    {
+      "species": "cobblemon:crawdaunt",
+      "gender": "MALE",
+      "level": 47,
+      "nature": "cobblemon:docile",
+      "ability": "battlearmor",
+      "moveset": [
+        "scaryface",
+        "crabhammer",
+        "crunch",
+        "aquajet"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:zangoose",
+      "gender": "MALE",
+      "level": 47,
+      "nature": "cobblemon:sassy",
+      "ability": "toughclaws",
+      "moveset": [
+        "glare",
+        "facade",
+        "quickattack",
+        "closecombat"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:mightyena",
+      "gender": "FEMALE",
+      "level": 46,
+      "nature": "cobblemon:lonely",
+      "ability": "strongjaw",
+      "moveset": [
+        "smokescreen",
+        "crunch",
+        "icefang",
+        "firefang"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:drapion",
+      "gender": "MALE",
+      "level": 47,
+      "nature": "cobblemon:naughty",
+      "ability": "sniper",
+      "moveset": [
+        "wingattack",
+        "crunch",
+        "poisonjab",
+        "aquatail"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

@@ -1,0 +1,164 @@
+{
+  "displayName": "Elite Four Agatha",
+  "team": [
+    {
+      "species": "cobblemon:gengar",
+      "gender": "FEMALE",
+      "level": 66,
+      "nature": "cobblemon:lax",
+      "ability": "levitate",
+      "moveset": [
+        "shadowball",
+        "psychic",
+        "confuseray",
+        "hypnosis"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:crobat",
+      "gender": "FEMALE",
+      "level": 66,
+      "nature": "cobblemon:bashful",
+      "ability": "infiltrator",
+      "moveset": [
+        "sludgebomb",
+        "aircutter",
+        "shadowball",
+        "confuseray"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:misdreavus",
+      "gender": "MALE",
+      "level": 65,
+      "nature": "cobblemon:docile",
+      "ability": "levitate",
+      "moveset": [
+        "shadowball",
+        "psychic",
+        "thunderbolt",
+        "attract"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:arbok",
+      "gender": "FEMALE",
+      "level": 68,
+      "nature": "cobblemon:serious",
+      "ability": "intimidate",
+      "moveset": [
+        "sludgebomb",
+        "earthquake",
+        "gigadrain",
+        "doubleteam"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:gengar",
+      "gender": "FEMALE",
+      "level": 70,
+      "nature": "cobblemon:naughty",
+      "ability": "levitate",
+      "moveset": [
+        "shadowball",
+        "psychic",
+        "thunderbolt",
+        "sludgebomb"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:chesto_berry"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

@@ -1,0 +1,71 @@
+{
+  "displayName": "Youngster Dillon",
+  "team": [
+    {
+      "species": "cobblemon:phanpy",
+      "gender": "FEMALE",
+      "level": 25,
+      "nature": "cobblemon:calm",
+      "ability": "pickup",
+      "moveset": [
+        "rollout",
+        "magnitude",
+        "endure",
+        "slam"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:woobat",
+      "gender": "FEMALE",
+      "level": 26,
+      "nature": "cobblemon:quirky",
+      "ability": "unaware",
+      "moveset": [
+        "heartstamp",
+        "imprison",
+        "aircutter",
+        "attract"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

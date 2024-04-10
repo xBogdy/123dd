@@ -1,0 +1,132 @@
+{
+  "displayName": "Scientist Beau",
+  "team": [
+    {
+      "species": "cobblemon:electabuzz",
+      "gender": "FEMALE",
+      "level": 41,
+      "nature": "cobblemon:hasty",
+      "ability": "static",
+      "moveset": [
+        "thunderbolt",
+        "voltswitch",
+        "icepunch",
+        "firepunch"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:kecleon",
+      "gender": "FEMALE",
+      "level": 41,
+      "nature": "cobblemon:bold",
+      "ability": "colorchange",
+      "moveset": [
+        "drainpunch",
+        "suckerpunch",
+        "rockslide"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:gardevoir",
+      "gender": "MALE",
+      "level": 41,
+      "nature": "cobblemon:docile",
+      "ability": "synchronize",
+      "moveset": [
+        "dazzlinggleam",
+        "psychic",
+        "signalbeam",
+        "destinybond"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:arcanine",
+      "gender": "FEMALE",
+      "level": 41,
+      "nature": "cobblemon:jolly",
+      "ability": "intimidate",
+      "moveset": [
+        "flamethrower",
+        "wildcharge",
+        "extremespeed",
+        "playrough"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

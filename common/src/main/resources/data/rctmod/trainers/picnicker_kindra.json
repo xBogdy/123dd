@@ -1,0 +1,102 @@
+{
+  "displayName": "Picnicker Kindra",
+  "team": [
+    {
+      "species": "cobblemon:eldegoss",
+      "gender": "FEMALE",
+      "level": 57,
+      "nature": "cobblemon:gentle",
+      "ability": "cottondown",
+      "moveset": [
+        "hypervoice",
+        "aromatherapy",
+        "leafstorm",
+        "cottonguard"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:flapple",
+      "gender": "FEMALE",
+      "level": 58,
+      "nature": "cobblemon:calm",
+      "ability": "ripen",
+      "moveset": [
+        "irondefense",
+        "fly",
+        "dragonrush",
+        "outrage"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:venomoth",
+      "gender": "MALE",
+      "level": 56,
+      "nature": "cobblemon:naive",
+      "ability": "shielddust",
+      "moveset": [
+        "leechlife",
+        "zenheadbutt",
+        "poisonfang",
+        "psychic"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

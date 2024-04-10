@@ -1,0 +1,164 @@
+{
+  "displayName": "Ace Trainer Owen",
+  "team": [
+    {
+      "species": "cobblemon:nidorino",
+      "gender": "MALE",
+      "level": 42,
+      "nature": "cobblemon:sassy",
+      "ability": "poisontouch",
+      "moveset": [
+        "scratch",
+        "poisonsting",
+        "doublekick",
+        "bite"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 25,
+        "defence": 25,
+        "special_attack": 25,
+        "special_defence": 25,
+        "speed": 25
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:nidorina",
+      "gender": "FEMALE",
+      "level": 42,
+      "nature": "cobblemon:calm",
+      "ability": "poisontouch",
+      "moveset": [
+        "hornattack",
+        "poisonsting",
+        "doublekick",
+        "leer"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 25,
+        "defence": 25,
+        "special_attack": 25,
+        "special_defence": 25,
+        "speed": 25
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:raticate",
+      "gender": "MALE",
+      "level": 42,
+      "nature": "cobblemon:timid",
+      "ability": "runaway",
+      "moveset": [
+        "superfang",
+        "pursuit",
+        "scaryface",
+        "quickattack"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 25,
+        "defence": 25,
+        "special_attack": 25,
+        "special_defence": 25,
+        "speed": 25
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:sandslash",
+      "gender": "FEMALE",
+      "level": 42,
+      "nature": "cobblemon:quirky",
+      "ability": "sandveil",
+      "moveset": [
+        "furyswipes",
+        "swift",
+        "slash",
+        "poisonsting"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 25,
+        "defence": 25,
+        "special_attack": 25,
+        "special_defence": 25,
+        "speed": 25
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:rhyhorn",
+      "gender": "FEMALE",
+      "level": 42,
+      "nature": "cobblemon:relaxed",
+      "ability": "lightningrod",
+      "moveset": [
+        "rockblast",
+        "scaryface",
+        "stomp",
+        "tailwhip"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 25,
+        "defence": 25,
+        "special_attack": 25,
+        "special_defence": 25,
+        "speed": 25
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

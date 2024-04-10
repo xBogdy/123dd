@@ -1,0 +1,39 @@
+{
+  "displayName": "Rival Terry",
+  "team": [
+    {
+      "species": "cobblemon:squirtle",
+      "gender": "FEMALE",
+      "level": 5,
+      "nature": "cobblemon:mild",
+      "ability": "torrent",
+      "moveset": [
+        "tackle",
+        "falseswipe",
+        "tailwhip"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 25,
+        "defence": 25,
+        "special_attack": 25,
+        "special_defence": 25,
+        "speed": 25
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

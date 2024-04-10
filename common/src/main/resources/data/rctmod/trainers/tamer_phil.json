@@ -1,0 +1,71 @@
+{
+  "displayName": "Tamer Phil",
+  "team": [
+    {
+      "species": "cobblemon:copperajah",
+      "gender": "FEMALE",
+      "level": 62,
+      "nature": "cobblemon:naive",
+      "ability": "heavymetal",
+      "moveset": [
+        "strength",
+        "ironhead",
+        "playrough",
+        "highhorsepower"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 20,
+        "defence": 20,
+        "special_attack": 20,
+        "special_defence": 20,
+        "speed": 20
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:seviper",
+      "gender": "FEMALE",
+      "level": 63,
+      "nature": "cobblemon:adamant",
+      "ability": "merciless",
+      "moveset": [
+        "belch",
+        "coil",
+        "wringout",
+        "gunkshot"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 20,
+        "defence": 20,
+        "special_attack": 20,
+        "special_defence": 20,
+        "speed": 20
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

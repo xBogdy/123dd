@@ -1,0 +1,164 @@
+{
+  "displayName": "Biker Ernest",
+  "team": [
+    {
+      "species": "cobblemon:weezing",
+      "gender": "FEMALE",
+      "level": 57,
+      "nature": "cobblemon:hasty",
+      "ability": "levitate",
+      "moveset": [
+        "smokescreen",
+        "explosion",
+        "smog",
+        "painsplit"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:weezing",
+      "gender": "FEMALE",
+      "level": 57,
+      "nature": "cobblemon:bold",
+      "ability": "levitate",
+      "moveset": [
+        "smokescreen",
+        "sludgebomb",
+        "flamethrower",
+        "willowisp"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:weezing",
+      "gender": "MALE",
+      "level": 57,
+      "nature": "cobblemon:impish",
+      "ability": "levitate",
+      "moveset": [
+        "smokescreen",
+        "sludgebomb",
+        "thunderbolt",
+        "toxic"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:salazzle",
+      "gender": "FEMALE",
+      "level": 57,
+      "nature": "cobblemon:bashful",
+      "ability": "corrosion",
+      "moveset": [
+        "smokescreen",
+        "sludgebomb",
+        "flamethrower",
+        "nastyplot"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:gengar",
+      "gender": "FEMALE",
+      "level": 58,
+      "nature": "cobblemon:bashful",
+      "ability": "levitate",
+      "moveset": [
+        "minimize",
+        "sludgebomb",
+        "shadowball",
+        "destinybond"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

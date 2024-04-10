@@ -1,0 +1,133 @@
+{
+  "displayName": "Juggler Edward",
+  "team": [
+    {
+      "species": "cobblemon:voltorb",
+      "gender": "GENDERLESS",
+      "level": 46,
+      "nature": "cobblemon:calm",
+      "ability": "soundproof",
+      "moveset": [
+        "swift",
+        "lightscreen",
+        "spark",
+        "sonicboom"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:voltorb",
+      "gender": "GENDERLESS",
+      "level": 46,
+      "nature": "cobblemon:careful",
+      "ability": "soundproof",
+      "moveset": [
+        "swift",
+        "lightscreen",
+        "spark",
+        "sonicboom"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:electrode",
+      "gender": "GENDERLESS",
+      "level": 47,
+      "nature": "cobblemon:brave",
+      "ability": "soundproof",
+      "moveset": [
+        "swift",
+        "spark",
+        "selfdestruct",
+        "sonicboom"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:mrmime",
+      "gender": "FEMALE",
+      "level": 48,
+      "nature": "cobblemon:impish",
+      "ability": "soundproof",
+      "moveset": [
+        "psychic",
+        "roleplay",
+        "reflect",
+        "encore"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

@@ -1,0 +1,98 @@
+{
+  "displayName": "Bug Catcher Colton",
+  "team": [
+    {
+      "species": "cobblemon:dottler",
+      "gender": "FEMALE",
+      "level": 11,
+      "nature": "cobblemon:naughty",
+      "ability": "swarm",
+      "moveset": [
+        "strugglebug",
+        "psybeam",
+        "reflect",
+        "lightscreen"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 1,
+        "defence": 1,
+        "special_attack": 1,
+        "special_defence": 1,
+        "speed": 1
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:spewpa",
+      "gender": "FEMALE",
+      "level": 10,
+      "nature": "cobblemon:timid",
+      "ability": "shedskin",
+      "moveset": [
+        "detect",
+        "harden"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 1,
+        "defence": 1,
+        "special_attack": 1,
+        "special_defence": 1,
+        "speed": 1
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:snom",
+      "gender": "MALE",
+      "level": 11,
+      "nature": "cobblemon:quiet",
+      "ability": "shielddust",
+      "moveset": [
+        "powdersnow",
+        "strugglebug"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 1,
+        "defence": 1,
+        "special_attack": 1,
+        "special_defence": 1,
+        "speed": 1
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

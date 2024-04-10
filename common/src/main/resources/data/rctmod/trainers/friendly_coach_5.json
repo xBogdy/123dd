@@ -1,0 +1,177 @@
+{
+  "displayName": "Friendly Coach",
+  "team": [
+    {
+      "species": "cobblemon:audino",
+      "gender": "MALE",
+      "level": 1,
+      "nature": "cobblemon:jolly",
+      "ability": "regenerator",
+      "moveset": [
+        "memento"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 252,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:choice_scarf"
+    },
+    {
+      "species": "cobblemon:audino",
+      "gender": "MALE",
+      "level": 1,
+      "nature": "cobblemon:jolly",
+      "ability": "regenerator",
+      "moveset": [
+        "memento"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 252,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:choice_scarf"
+    },
+    {
+      "species": "cobblemon:audino",
+      "gender": "FEMALE",
+      "level": 1,
+      "nature": "cobblemon:jolly",
+      "ability": "healer",
+      "moveset": [
+        "memento"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 252,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:choice_scarf"
+    },
+    {
+      "species": "cobblemon:audino",
+      "gender": "MALE",
+      "level": 1,
+      "nature": "cobblemon:jolly",
+      "ability": "regenerator",
+      "moveset": [
+        "memento"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 252,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:choice_scarf"
+    },
+    {
+      "species": "cobblemon:audino",
+      "gender": "MALE",
+      "level": 1,
+      "nature": "cobblemon:jolly",
+      "ability": "healer",
+      "moveset": [
+        "memento"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 252,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:choice_scarf"
+    },
+    {
+      "species": "cobblemon:audino",
+      "gender": "FEMALE",
+      "level": 1,
+      "nature": "cobblemon:jolly",
+      "ability": "healer",
+      "moveset": [
+        "memento"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 252,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:choice_scarf"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

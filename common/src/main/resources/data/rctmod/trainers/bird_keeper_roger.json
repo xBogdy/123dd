@@ -1,0 +1,102 @@
+{
+  "displayName": "Bird Keeper Roger",
+  "team": [
+    {
+      "species": "cobblemon:pelipper",
+      "gender": "MALE",
+      "level": 63,
+      "nature": "cobblemon:lax",
+      "ability": "raindish",
+      "moveset": [
+        "roost",
+        "tailwind",
+        "hydropump",
+        "hurricane"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:corviknight",
+      "gender": "MALE",
+      "level": 63,
+      "nature": "cobblemon:quiet",
+      "ability": "unnerve",
+      "moveset": [
+        "drillpeck",
+        "swagger",
+        "bravebird",
+        "irondefense"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:unfezant",
+      "gender": "FEMALE",
+      "level": 64,
+      "nature": "cobblemon:brave",
+      "ability": "superluck",
+      "moveset": [
+        "nightslash",
+        "swagger",
+        "facade",
+        "tailwind"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

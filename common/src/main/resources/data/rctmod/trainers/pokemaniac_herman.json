@@ -1,0 +1,71 @@
+{
+  "displayName": "Pokémaniac Herman",
+  "team": [
+    {
+      "species": "cobblemon:lickitung",
+      "gender": "FEMALE",
+      "level": 34,
+      "nature": "cobblemon:hardy",
+      "ability": "owntempo",
+      "moveset": [
+        "stomp",
+        "disable",
+        "slam",
+        "rollout"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:raboot",
+      "gender": "FEMALE",
+      "level": 35,
+      "nature": "cobblemon:relaxed",
+      "ability": "blaze",
+      "moveset": [
+        "suckerpunch",
+        "mudshot",
+        "agility",
+        "headbutt"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

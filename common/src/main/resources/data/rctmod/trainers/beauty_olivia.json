@@ -1,0 +1,71 @@
+{
+  "displayName": "Beauty Olivia",
+  "team": [
+    {
+      "species": "cobblemon:venusaur",
+      "gender": "FEMALE",
+      "level": 58,
+      "nature": "cobblemon:sassy",
+      "ability": "overgrow",
+      "moveset": [
+        "sludgebomb",
+        "synthesis",
+        "petalblizzard",
+        "solarbeam"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:torterra",
+      "gender": "FEMALE",
+      "level": 57,
+      "nature": "cobblemon:mild",
+      "ability": "overgrow",
+      "moveset": [
+        "synthesis",
+        "crunch",
+        "gigadrain",
+        "leafstorm"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

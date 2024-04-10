@@ -1,0 +1,164 @@
+{
+  "displayName": "Ace Trainer Julie",
+  "team": [
+    {
+      "species": "cobblemon:persian",
+      "gender": "MALE",
+      "level": 42,
+      "nature": "cobblemon:hasty",
+      "ability": "technician",
+      "moveset": [
+        "furyswipes",
+        "bite",
+        "screech",
+        "feintattack"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 25,
+        "defence": 25,
+        "special_attack": 25,
+        "special_defence": 25,
+        "speed": 25
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:ninetales",
+      "gender": "MALE",
+      "level": 42,
+      "nature": "cobblemon:bashful",
+      "ability": "flashfire",
+      "moveset": [
+        "flamethrower",
+        "willowisp",
+        "confuseray",
+        "grudge"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 25,
+        "defence": 25,
+        "special_attack": 25,
+        "special_defence": 25,
+        "speed": 25
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:rapidash",
+      "gender": "FEMALE",
+      "level": 42,
+      "nature": "cobblemon:docile",
+      "ability": "flashfire",
+      "moveset": [
+        "furyattack",
+        "firespin",
+        "takedown",
+        "agility"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 25,
+        "defence": 25,
+        "special_attack": 25,
+        "special_defence": 25,
+        "speed": 25
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:pikachu",
+      "gender": "MALE",
+      "level": 42,
+      "nature": "cobblemon:careful",
+      "ability": "static",
+      "moveset": [
+        "thunderbolt",
+        "thunderwave",
+        "doubleteam",
+        "quickattack"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 25,
+        "defence": 25,
+        "special_attack": 25,
+        "special_defence": 25,
+        "speed": 25
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:raichu",
+      "gender": "MALE",
+      "level": 42,
+      "nature": "cobblemon:bold",
+      "ability": "static",
+      "moveset": [
+        "thunder",
+        "thunderwave",
+        "slam",
+        "doubleteam"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 25,
+        "defence": 25,
+        "special_attack": 25,
+        "special_defence": 25,
+        "speed": 25
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

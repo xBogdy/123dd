@@ -1,0 +1,70 @@
+{
+  "displayName": "Cue Ball Corey",
+  "team": [
+    {
+      "species": "cobblemon:huntail",
+      "gender": "MALE",
+      "level": 56,
+      "nature": "cobblemon:impish",
+      "ability": "intimidate",
+      "moveset": [
+        "coil",
+        "crunch",
+        "shellsmash"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:nidoking",
+      "gender": "MALE",
+      "level": 56,
+      "nature": "cobblemon:lonely",
+      "ability": "rivalry",
+      "moveset": [
+        "poisonsting",
+        "chipaway",
+        "thrash",
+        "earthpower"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

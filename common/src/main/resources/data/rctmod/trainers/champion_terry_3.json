@@ -1,0 +1,195 @@
+{
+  "displayName": "Champion Terry",
+  "team": [
+    {
+      "species": "cobblemon:heracross",
+      "gender": "MALE",
+      "level": 72,
+      "nature": "cobblemon:careful",
+      "ability": "guts",
+      "moveset": [
+        "megahorn",
+        "earthquake",
+        "counter",
+        "rocktomb"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:alakazam",
+      "gender": "FEMALE",
+      "level": 73,
+      "nature": "cobblemon:lax",
+      "ability": "innerfocus",
+      "moveset": [
+        "psychic",
+        "shadowball",
+        "calmmind",
+        "reflect"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:tyranitar",
+      "gender": "FEMALE",
+      "level": 72,
+      "nature": "cobblemon:bashful",
+      "ability": "sandstream",
+      "moveset": [
+        "crunch",
+        "earthquake",
+        "thunderbolt",
+        "aerialace"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:arcanine",
+      "gender": "FEMALE",
+      "level": 73,
+      "nature": "cobblemon:relaxed",
+      "ability": "flashfire",
+      "moveset": [
+        "extremespeed",
+        "overheat",
+        "aerialace",
+        "irontail"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:exeggutor",
+      "gender": "MALE",
+      "level": 73,
+      "nature": "cobblemon:lonely",
+      "ability": "chlorophyll",
+      "moveset": [
+        "gigadrain",
+        "psychic",
+        "sleeppowder",
+        "lightscreen"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:blastoise",
+      "gender": "FEMALE",
+      "level": 75,
+      "nature": "cobblemon:mild",
+      "ability": "torrent",
+      "moveset": [
+        "hydropump",
+        "icebeam",
+        "earthquake",
+        "raindance"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:sitrus_berry"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

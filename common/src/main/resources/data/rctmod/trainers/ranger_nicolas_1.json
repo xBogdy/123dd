@@ -1,0 +1,71 @@
+{
+  "displayName": "Ranger Nicolas",
+  "team": [
+    {
+      "species": "cobblemon:victreebel",
+      "gender": "FEMALE",
+      "level": 55,
+      "nature": "cobblemon:impish",
+      "ability": "chlorophyll",
+      "moveset": [
+        "razorleaf",
+        "acid",
+        "stunspore",
+        "wrap"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 20,
+        "defence": 20,
+        "special_attack": 20,
+        "special_defence": 20,
+        "speed": 20
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:victreebel",
+      "gender": "FEMALE",
+      "level": 55,
+      "nature": "cobblemon:naive",
+      "ability": "chlorophyll",
+      "moveset": [
+        "razorleaf",
+        "acid",
+        "sleeppowder",
+        "slam"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 20,
+        "defence": 20,
+        "special_attack": 20,
+        "special_defence": 20,
+        "speed": 20
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

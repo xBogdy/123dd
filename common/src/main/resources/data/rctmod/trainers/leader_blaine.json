@@ -1,0 +1,195 @@
+{
+  "displayName": "Leader Blaine",
+  "team": [
+    {
+      "species": "cobblemon:torkoal",
+      "gender": "FEMALE",
+      "level": 75,
+      "nature": "cobblemon:quiet",
+      "ability": "drought",
+      "moveset": [
+        "stealthrock",
+        "explosion",
+        "lavaplume",
+        "earthpower"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 4,
+        "special_attack": 252,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:heat_rock"
+    },
+    {
+      "species": "cobblemon:cinderace",
+      "gender": "FEMALE",
+      "level": 75,
+      "nature": "cobblemon:jolly",
+      "ability": "protean",
+      "moveset": [
+        "pyroball",
+        "suckerpunch",
+        "highjumpkick",
+        "zenheadbutt"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 252,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:life_orb"
+    },
+    {
+      "species": "cobblemon:exeggutor",
+      "gender": "MALE",
+      "level": 76,
+      "nature": "cobblemon:timid",
+      "ability": "harvest",
+      "moveset": [
+        "growth",
+        "gigadrain",
+        "psyshock",
+        "weatherball"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 252,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:focus_sash"
+    },
+    {
+      "species": "cobblemon:typhlosion",
+      "gender": "FEMALE",
+      "level": 76,
+      "nature": "cobblemon:modest",
+      "ability": "flashfire",
+      "moveset": [
+        "eruption",
+        "flamethrower",
+        "hiddenpower",
+        "focusblast"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 30,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 252,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:heavydboots"
+    },
+    {
+      "species": "cobblemon:sunflora",
+      "gender": "FEMALE",
+      "level": 76,
+      "nature": "cobblemon:timid",
+      "ability": "chlorophyll",
+      "moveset": [
+        "seedflare",
+        "flamethrower",
+        "earthpower",
+        "sunnyday"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 252,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:life_orb"
+    },
+    {
+      "species": "cobblemon:charizard",
+      "gender": "FEMALE",
+      "level": 76,
+      "nature": "cobblemon:timid",
+      "ability": "blaze",
+      "moveset": [
+        "flamethrower",
+        "airslash",
+        "solarbeam",
+        "dragonpulse"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 252,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:charzarditey"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

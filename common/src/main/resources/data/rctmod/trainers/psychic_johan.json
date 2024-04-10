@@ -1,0 +1,133 @@
+{
+  "displayName": "Psychic Johan",
+  "team": [
+    {
+      "species": "cobblemon:grumpig",
+      "gender": "MALE",
+      "level": 53,
+      "nature": "cobblemon:hasty",
+      "ability": "owntempo",
+      "moveset": [
+        "snore",
+        "psyshock",
+        "payback",
+        "psychic"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:meowstic",
+      "gender": "MALE",
+      "level": 53,
+      "nature": "cobblemon:modest",
+      "ability": "runaway",
+      "moveset": [
+        "imprison",
+        "suckerpunch",
+        "mistyterrain",
+        "quickguard"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:gallade",
+      "gender": "MALE",
+      "level": 54,
+      "nature": "cobblemon:careful",
+      "ability": "steadfast",
+      "moveset": [
+        "feint",
+        "falseswipe",
+        "protect",
+        "closecombat"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:espeon",
+      "gender": "FEMALE",
+      "level": 53,
+      "nature": "cobblemon:rash",
+      "ability": "synchronize",
+      "moveset": [
+        "morningsun",
+        "psychic",
+        "lastresort",
+        "powerswap"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

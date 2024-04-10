@@ -1,0 +1,164 @@
+{
+  "displayName": "Ace Trainer Leroy",
+  "team": [
+    {
+      "species": "cobblemon:rhydon",
+      "gender": "MALE",
+      "level": 52,
+      "nature": "cobblemon:lax",
+      "ability": "rockhead",
+      "moveset": [
+        "earthquake",
+        "horndrill",
+        "rockblast",
+        "scaryface"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 25,
+        "defence": 25,
+        "special_attack": 25,
+        "special_defence": 25,
+        "speed": 25
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:slowbro",
+      "gender": "MALE",
+      "level": 54,
+      "nature": "cobblemon:timid",
+      "ability": "owntempo",
+      "moveset": [
+        "psychic",
+        "headbutt",
+        "amnesia",
+        "disable"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 25,
+        "defence": 25,
+        "special_attack": 25,
+        "special_defence": 25,
+        "speed": 25
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:kangaskhan",
+      "gender": "FEMALE",
+      "level": 52,
+      "nature": "cobblemon:mild",
+      "ability": "scrappy",
+      "moveset": [
+        "dizzypunch",
+        "bite",
+        "endure",
+        "reversal"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 25,
+        "defence": 25,
+        "special_attack": 25,
+        "special_defence": 25,
+        "speed": 25
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:machamp",
+      "gender": "FEMALE",
+      "level": 52,
+      "nature": "cobblemon:relaxed",
+      "ability": "noguard",
+      "moveset": [
+        "crosschop",
+        "vitalthrow",
+        "revenge",
+        "seismictoss"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 25,
+        "defence": 25,
+        "special_attack": 25,
+        "special_defence": 25,
+        "speed": 25
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:ursaring",
+      "gender": "MALE",
+      "level": 55,
+      "nature": "cobblemon:careful",
+      "ability": "quickfeet",
+      "moveset": [
+        "slash",
+        "feintattack",
+        "snore",
+        "rest"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 25,
+        "defence": 25,
+        "special_attack": 25,
+        "special_defence": 25,
+        "speed": 25
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

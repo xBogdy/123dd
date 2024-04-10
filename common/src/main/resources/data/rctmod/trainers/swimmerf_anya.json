@@ -1,0 +1,133 @@
+{
+  "displayName": "Swimmer♀ Anya",
+  "team": [
+    {
+      "species": "cobblemon:quagsire",
+      "gender": "FEMALE",
+      "level": 62,
+      "nature": "cobblemon:calm",
+      "ability": "damp",
+      "moveset": [
+        "raindance",
+        "mist",
+        "haze",
+        "muddywater"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:seaking",
+      "gender": "FEMALE",
+      "level": 61,
+      "nature": "cobblemon:quiet",
+      "ability": "lightningrod",
+      "moveset": [
+        "waterfall",
+        "soak",
+        "megahorn",
+        "fishiousrend"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:alomomola",
+      "gender": "MALE",
+      "level": 57,
+      "nature": "cobblemon:adamant",
+      "ability": "healer",
+      "moveset": [
+        "safeguard",
+        "whirlpool",
+        "helpinghand",
+        "healingwish"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:jellicent",
+      "gender": "FEMALE",
+      "level": 63,
+      "nature": "cobblemon:naughty",
+      "ability": "waterabsorb",
+      "moveset": [
+        "raindance",
+        "hex",
+        "hydropump",
+        "wringout"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

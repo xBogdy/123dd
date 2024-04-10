@@ -1,0 +1,71 @@
+{
+  "displayName": "Crush Kin Ron \u0026 Mya",
+  "team": [
+    {
+      "species": "cobblemon:grapploct",
+      "gender": "MALE",
+      "level": 58,
+      "nature": "cobblemon:lax",
+      "ability": "limber",
+      "moveset": [
+        "reversal",
+        "superpower",
+        "topsyturvy",
+        "brutalswing"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:black_belt"
+    },
+    {
+      "species": "cobblemon:sirfetchd",
+      "gender": "MALE",
+      "level": 58,
+      "nature": "cobblemon:naive",
+      "ability": "runaway",
+      "moveset": [
+        "brickbreak",
+        "swordsdance",
+        "slam",
+        "leafblade"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:black_belt"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

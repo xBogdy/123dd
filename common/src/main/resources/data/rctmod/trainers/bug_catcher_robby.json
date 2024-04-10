@@ -1,0 +1,98 @@
+{
+  "displayName": "Bug Catcher Robby",
+  "team": [
+    {
+      "species": "cobblemon:caterpie",
+      "gender": "MALE",
+      "level": 12,
+      "nature": "cobblemon:impish",
+      "ability": "shielddust",
+      "moveset": [
+        "tackle",
+        "stringshot",
+        "bugbite"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 1,
+        "defence": 1,
+        "special_attack": 1,
+        "special_defence": 1,
+        "speed": 1
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:karrablast",
+      "gender": "MALE",
+      "level": 12,
+      "nature": "cobblemon:mild",
+      "ability": "shedskin",
+      "moveset": [
+        "peck",
+        "leer",
+        "endure"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 1,
+        "defence": 1,
+        "special_attack": 1,
+        "special_defence": 1,
+        "speed": 1
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:butterfree",
+      "gender": "FEMALE",
+      "level": 10,
+      "nature": "cobblemon:quiet",
+      "ability": "compoundeyes",
+      "moveset": [
+        "gust",
+        "confusion"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 1,
+        "defence": 1,
+        "special_attack": 1,
+        "special_defence": 1,
+        "speed": 1
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

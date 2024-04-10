@@ -1,0 +1,193 @@
+{
+  "displayName": "Fisherman Wade",
+  "team": [
+    {
+      "species": "cobblemon:magikarp",
+      "gender": "FEMALE",
+      "level": 70,
+      "nature": "cobblemon:gentle",
+      "ability": "swiftswim",
+      "moveset": [
+        "splash",
+        "tackle",
+        "flail"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:feebas",
+      "gender": "FEMALE",
+      "level": 70,
+      "nature": "cobblemon:bold",
+      "ability": "swiftswim",
+      "moveset": [
+        "splash",
+        "tackle",
+        "flail"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:gyarados",
+      "gender": "MALE",
+      "level": 64,
+      "nature": "cobblemon:naughty",
+      "ability": "intimidate",
+      "moveset": [
+        "dragondance",
+        "hurricane",
+        "raindance",
+        "hyperbeam"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:milotic",
+      "gender": "FEMALE",
+      "level": 63,
+      "nature": "cobblemon:lax",
+      "ability": "marvelscale",
+      "moveset": [
+        "safeguard",
+        "coil",
+        "hydropump",
+        "raindance"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:alomomola",
+      "gender": "FEMALE",
+      "level": 62,
+      "nature": "cobblemon:jolly",
+      "ability": "healer",
+      "moveset": [
+        "whirlpool",
+        "helpinghand",
+        "healingwish",
+        "wideguard"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:luvdisc",
+      "gender": "MALE",
+      "level": 65,
+      "nature": "cobblemon:modest",
+      "ability": "swiftswim",
+      "moveset": [
+        "lovelykiss",
+        "soak",
+        "hydropump",
+        "safeguard"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

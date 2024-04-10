@@ -1,0 +1,71 @@
+{
+  "displayName": "Hiker Trent",
+  "team": [
+    {
+      "species": "cobblemon:onix",
+      "gender": "MALE",
+      "level": 31,
+      "nature": "cobblemon:calm",
+      "ability": "sturdy",
+      "moveset": [
+        "smackdown",
+        "dragonbreath",
+        "slam",
+        "screech"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:graveler",
+      "gender": "MALE",
+      "level": 31,
+      "nature": "cobblemon:lax",
+      "ability": "sturdy",
+      "moveset": [
+        "smackdown",
+        "bulldoze",
+        "selfdestruct",
+        "stealthrock"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

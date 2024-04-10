@@ -1,0 +1,164 @@
+{
+  "displayName": "Dumbass Jojo Fan",
+  "team": [
+    {
+      "species": "cobblemon:aegislash",
+      "gender": "FEMALE",
+      "level": 60,
+      "nature": "cobblemon:modest",
+      "ability": "stancechange",
+      "moveset": [
+        "shadowball",
+        "kingsshield",
+        "shadowsneak",
+        "flashcannon"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 252,
+        "special_defence": 0,
+        "speed": 6
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:leftovers"
+    },
+    {
+      "species": "cobblemon:ferrothorn",
+      "gender": "FEMALE",
+      "level": 60,
+      "nature": "cobblemon:impish",
+      "ability": "ironbarbs",
+      "moveset": [
+        "leechseed",
+        "powerwhip",
+        "thunderwave",
+        "bodypress"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 128,
+        "special_attack": 0,
+        "special_defence": 128,
+        "speed": 4
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:rocky_helmet"
+    },
+    {
+      "species": "cobblemon:simisear",
+      "gender": "FEMALE",
+      "level": 60,
+      "nature": "cobblemon:modest",
+      "ability": "runaway",
+      "moveset": [
+        "flamethrower",
+        "hiddenpower",
+        "focusblast",
+        "scorchingsands"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 30,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 252,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:choice_scarf"
+    },
+    {
+      "species": "cobblemon:celebi",
+      "gender": "GENDERLESS",
+      "level": 60,
+      "nature": "cobblemon:timid",
+      "ability": "naturalcure",
+      "moveset": [
+        "nastyplot",
+        "gigadrain",
+        "psychic",
+        "earthpower"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 252,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:life_orb"
+    },
+    {
+      "species": "cobblemon:machamp",
+      "gender": "FEMALE",
+      "level": 60,
+      "nature": "cobblemon:adamant",
+      "ability": "guts",
+      "moveset": [
+        "poweruppunch",
+        "bulletpunch",
+        "icepunch",
+        "drainpunch"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 252,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:machampite"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

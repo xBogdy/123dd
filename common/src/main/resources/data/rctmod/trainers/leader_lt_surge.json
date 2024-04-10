@@ -1,0 +1,133 @@
+{
+  "displayName": "Leader Lt. Surge",
+  "team": [
+    {
+      "species": "cobblemon:pachirisu",
+      "gender": "MALE",
+      "level": 54,
+      "nature": "cobblemon:impish",
+      "ability": "prankster",
+      "moveset": [
+        "reflect",
+        "lightscreen",
+        "nuzzle",
+        "uturn"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 252,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:light_clay"
+    },
+    {
+      "species": "cobblemon:dracozolt",
+      "gender": "GENDERLESS",
+      "level": 55,
+      "nature": "cobblemon:adamant",
+      "ability": "hustle",
+      "moveset": [
+        "boltbeak",
+        "dragonclaw",
+        "crunch",
+        "firefang"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 252,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:choice_scarf"
+    },
+    {
+      "species": "cobblemon:dedenne",
+      "gender": "MALE",
+      "level": 55,
+      "nature": "cobblemon:timid",
+      "ability": "electricsurge",
+      "moveset": [
+        "risingvoltage",
+        "voltswitch",
+        "dazzlinggleam",
+        "grassknot"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 252,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:terrain_ext"
+    },
+    {
+      "species": "cobblemon:manectric",
+      "gender": "FEMALE",
+      "level": 54,
+      "nature": "cobblemon:timid",
+      "ability": "intimidate",
+      "moveset": [
+        "voltswitch",
+        "risingvoltage",
+        "flamethrower",
+        "hiddenpower"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 30,
+        "defence": 31,
+        "special_attack": 30,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 4,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:manectite"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

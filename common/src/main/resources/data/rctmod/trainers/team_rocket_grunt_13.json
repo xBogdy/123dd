@@ -1,0 +1,163 @@
+{
+  "displayName": "Team Rocket Grunt",
+  "team": [
+    {
+      "species": "cobblemon:golbat",
+      "gender": "MALE",
+      "level": 41,
+      "nature": "cobblemon:brave",
+      "ability": "sniper",
+      "moveset": [
+        "bite",
+        "bite",
+        "dualwingbeat",
+        "confuseray"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:muk",
+      "gender": "MALE",
+      "level": 41,
+      "nature": "cobblemon:mild",
+      "ability": "stickyhold",
+      "moveset": [
+        "smog",
+        "sludge",
+        "sludgebomb",
+        "screech"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:cacturne",
+      "gender": "FEMALE",
+      "level": 40,
+      "nature": "cobblemon:gentle",
+      "ability": "waterabsorb",
+      "moveset": [
+        "sludge",
+        "pinmissile",
+        "gigadrain",
+        "feintattack"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:bisharp",
+      "gender": "MALE",
+      "level": 40,
+      "nature": "cobblemon:hardy",
+      "ability": "innerfocus",
+      "moveset": [
+        "bite",
+        "suckerpunch",
+        "ironhead"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:vullaby",
+      "gender": "FEMALE",
+      "level": 40,
+      "nature": "cobblemon:brave",
+      "ability": "overcoat",
+      "moveset": [
+        "hyperfang",
+        "pluck",
+        "foulplay",
+        "roost"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

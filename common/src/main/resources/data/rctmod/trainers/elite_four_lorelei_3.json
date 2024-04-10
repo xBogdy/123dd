@@ -1,0 +1,164 @@
+{
+  "displayName": "Elite Four Lorelei",
+  "team": [
+    {
+      "species": "cobblemon:dewgong",
+      "gender": "FEMALE",
+      "level": 64,
+      "nature": "cobblemon:naughty",
+      "ability": "icescales",
+      "moveset": [
+        "icebeam",
+        "surf",
+        "signalbeam",
+        "doubleteam"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:cloyster",
+      "gender": "FEMALE",
+      "level": 63,
+      "nature": "cobblemon:bold",
+      "ability": "skilllink",
+      "moveset": [
+        "icebeam",
+        "surf",
+        "supersonic",
+        "raindance"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:piloswine",
+      "gender": "FEMALE",
+      "level": 63,
+      "nature": "cobblemon:quirky",
+      "ability": "snowcloak",
+      "moveset": [
+        "blizzard",
+        "earthquake",
+        "doubleedge",
+        "rockslide"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:jynx",
+      "gender": "FEMALE",
+      "level": 66,
+      "nature": "cobblemon:relaxed",
+      "ability": "forewarn",
+      "moveset": [
+        "icebeam",
+        "psychic",
+        "lovelykiss",
+        "attract"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:lapras",
+      "gender": "FEMALE",
+      "level": 66,
+      "nature": "cobblemon:naive",
+      "ability": "hydration",
+      "moveset": [
+        "icebeam",
+        "surf",
+        "psychic",
+        "thunder"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:cheri_berry"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

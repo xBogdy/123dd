@@ -1,0 +1,102 @@
+{
+  "displayName": "Bug Catcher Keigo",
+  "team": [
+    {
+      "species": "cobblemon:ledian",
+      "gender": "MALE",
+      "level": 22,
+      "nature": "cobblemon:relaxed",
+      "ability": "ironfist",
+      "moveset": [
+        "reflect",
+        "safeguard",
+        "machpunch",
+        "bugbite"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 1,
+        "defence": 1,
+        "special_attack": 1,
+        "special_defence": 1,
+        "speed": 1
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:mothim",
+      "gender": "MALE",
+      "level": 22,
+      "nature": "cobblemon:serious",
+      "ability": "swarm",
+      "moveset": [
+        "aircutter",
+        "detect",
+        "bugbite",
+        "airslash"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 1,
+        "defence": 1,
+        "special_attack": 1,
+        "special_defence": 1,
+        "speed": 1
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:karrablast",
+      "gender": "FEMALE",
+      "level": 23,
+      "nature": "cobblemon:gentle",
+      "ability": "shedskin",
+      "moveset": [
+        "endure",
+        "furycutter",
+        "bugbite",
+        "headbutt"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 1,
+        "defence": 1,
+        "special_attack": 1,
+        "special_defence": 1,
+        "speed": 1
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

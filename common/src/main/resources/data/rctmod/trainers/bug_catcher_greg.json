@@ -1,0 +1,128 @@
+{
+  "displayName": "Bug Catcher Greg",
+  "team": [
+    {
+      "species": "cobblemon:nincada",
+      "gender": "FEMALE",
+      "level": 11,
+      "nature": "cobblemon:bashful",
+      "ability": "compoundeyes",
+      "moveset": [
+        "scratch",
+        "harden",
+        "absorb"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 1,
+        "defence": 1,
+        "special_attack": 1,
+        "special_defence": 1,
+        "speed": 1
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:sizzlipede",
+      "gender": "FEMALE",
+      "level": 11,
+      "nature": "cobblemon:sassy",
+      "ability": "flashfire",
+      "moveset": [
+        "ember",
+        "wrap",
+        "bite"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 1,
+        "defence": 1,
+        "special_attack": 1,
+        "special_defence": 1,
+        "speed": 1
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:dustox",
+      "gender": "MALE",
+      "level": 10,
+      "nature": "cobblemon:naughty",
+      "ability": "shielddust",
+      "moveset": [
+        "gust"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 1,
+        "defence": 1,
+        "special_attack": 1,
+        "special_defence": 1,
+        "speed": 1
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:joltik",
+      "gender": "FEMALE",
+      "level": 11,
+      "nature": "cobblemon:serious",
+      "ability": "compoundeyes",
+      "moveset": [
+        "megadrain",
+        "spiderweb",
+        "thunderwave",
+        "screech"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 1,
+        "defence": 1,
+        "special_attack": 1,
+        "special_defence": 1,
+        "speed": 1
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

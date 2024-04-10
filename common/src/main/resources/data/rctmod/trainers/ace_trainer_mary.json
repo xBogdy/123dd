@@ -1,0 +1,164 @@
+{
+  "displayName": "Ace Trainer Mary",
+  "team": [
+    {
+      "species": "cobblemon:grotle",
+      "gender": "FEMALE",
+      "level": 35,
+      "nature": "cobblemon:brave",
+      "ability": "overgrow",
+      "moveset": [
+        "curse",
+        "bite",
+        "seedbomb",
+        "leechseed"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 25,
+        "defence": 25,
+        "special_attack": 25,
+        "special_defence": 25,
+        "speed": 25
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:graveler",
+      "gender": "FEMALE",
+      "level": 35,
+      "nature": "cobblemon:quirky",
+      "ability": "rockhead",
+      "moveset": [
+        "bulldoze",
+        "selfdestruct",
+        "stealthrock",
+        "rockblast"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 25,
+        "defence": 25,
+        "special_attack": 25,
+        "special_defence": 25,
+        "speed": 25
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:ferroseed",
+      "gender": "MALE",
+      "level": 36,
+      "nature": "cobblemon:rash",
+      "ability": "ironbarbs",
+      "moveset": [
+        "gyroball",
+        "irondefense",
+        "mirrorshot",
+        "ingrain"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 25,
+        "defence": 25,
+        "special_attack": 25,
+        "special_defence": 25,
+        "speed": 25
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:tentacruel",
+      "gender": "FEMALE",
+      "level": 35,
+      "nature": "cobblemon:serious",
+      "ability": "clearbody",
+      "moveset": [
+        "bubblebeam",
+        "barrier",
+        "poisonjab",
+        "scald"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 25,
+        "defence": 25,
+        "special_attack": 25,
+        "special_defence": 25,
+        "speed": 25
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:lombre",
+      "gender": "FEMALE",
+      "level": 38,
+      "nature": "cobblemon:brave",
+      "ability": "swiftswim",
+      "moveset": [
+        "bubblebeam",
+        "naturepower",
+        "uproar",
+        "knockoff"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 25,
+        "defence": 25,
+        "special_attack": 25,
+        "special_defence": 25,
+        "speed": 25
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

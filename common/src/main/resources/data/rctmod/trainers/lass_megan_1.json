@@ -1,0 +1,164 @@
+{
+  "displayName": "Lass Megan",
+  "team": [
+    {
+      "species": "cobblemon:pidgeotto",
+      "gender": "MALE",
+      "level": 22,
+      "nature": "cobblemon:brave",
+      "ability": "tangledfeet",
+      "moveset": [
+        "gust",
+        "quickattack",
+        "takedown",
+        "whirlwind"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:raticate",
+      "gender": "MALE",
+      "level": 22,
+      "nature": "cobblemon:adamant",
+      "ability": "guts",
+      "moveset": [
+        "focusenergy",
+        "hyperfang",
+        "pursuit",
+        "zenheadbutt"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:nidoranm",
+      "gender": "MALE",
+      "level": 23,
+      "nature": "cobblemon:sassy",
+      "ability": "rivalry",
+      "moveset": [
+        "doublekick",
+        "poisonsting",
+        "furyattack",
+        "hornattack"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:meowth",
+      "gender": "MALE",
+      "level": 21,
+      "nature": "cobblemon:bold",
+      "ability": "technician",
+      "moveset": [
+        "fakeout",
+        "bulletseed",
+        "furyswipes",
+        "screech"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:pikachu",
+      "gender": "MALE",
+      "level": 22,
+      "nature": "cobblemon:hasty",
+      "ability": "static",
+      "moveset": [
+        "quickattack",
+        "electroball",
+        "thunderwave",
+        "feint"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

@@ -1,0 +1,71 @@
+{
+  "displayName": "Camper Chris",
+  "team": [
+    {
+      "species": "cobblemon:arcanine",
+      "gender": "FEMALE",
+      "level": 54,
+      "nature": "cobblemon:docile",
+      "ability": "flashfire",
+      "moveset": [
+        "firefang",
+        "flareblitz",
+        "helpinghand",
+        "retaliate"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:charmeleon",
+      "gender": "FEMALE",
+      "level": 54,
+      "nature": "cobblemon:bold",
+      "ability": "blaze",
+      "moveset": [
+        "slash",
+        "flamethrower",
+        "firespin",
+        "inferno"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

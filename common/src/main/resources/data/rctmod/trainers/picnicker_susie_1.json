@@ -1,0 +1,164 @@
+{
+  "displayName": "Picnicker Susie",
+  "team": [
+    {
+      "species": "cobblemon:pidgeotto",
+      "gender": "MALE",
+      "level": 47,
+      "nature": "cobblemon:hardy",
+      "ability": "tangledfeet",
+      "moveset": [
+        "agility",
+        "airslash",
+        "mirrormove",
+        "tailwind"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:persian",
+      "gender": "MALE",
+      "level": 47,
+      "nature": "cobblemon:relaxed",
+      "ability": "technician",
+      "moveset": [
+        "shockwave",
+        "powergem",
+        "slash",
+        "nastyplot"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:raticate",
+      "gender": "FEMALE",
+      "level": 47,
+      "nature": "cobblemon:sassy",
+      "ability": "guts",
+      "moveset": [
+        "return",
+        "superfang",
+        "doubleedge",
+        "endeavor"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:pikachu",
+      "gender": "MALE",
+      "level": 47,
+      "nature": "cobblemon:timid",
+      "ability": "static",
+      "moveset": [
+        "discharge",
+        "extremespeed",
+        "thunderbolt",
+        "agility"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:persian",
+      "gender": "MALE",
+      "level": 47,
+      "nature": "cobblemon:quiet",
+      "ability": "technician",
+      "moveset": [
+        "shockwave",
+        "powergem",
+        "slash",
+        "nastyplot"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

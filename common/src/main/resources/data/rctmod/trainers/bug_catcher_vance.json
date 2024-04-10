@@ -1,0 +1,71 @@
+{
+  "displayName": "Bug Catcher Vance",
+  "team": [
+    {
+      "species": "cobblemon:venonat",
+      "gender": "MALE",
+      "level": 48,
+      "nature": "cobblemon:bashful",
+      "ability": "tintedlens",
+      "moveset": [
+        "leechlife",
+        "zenheadbutt",
+        "poisonfang",
+        "psychic"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 1,
+        "defence": 1,
+        "special_attack": 1,
+        "special_defence": 1,
+        "speed": 1
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:venomoth",
+      "gender": "MALE",
+      "level": 48,
+      "nature": "cobblemon:lax",
+      "ability": "tintedlens",
+      "moveset": [
+        "sleeppowder",
+        "leechlife",
+        "zenheadbutt",
+        "poisonfang"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 1,
+        "defence": 1,
+        "special_attack": 1,
+        "special_defence": 1,
+        "speed": 1
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

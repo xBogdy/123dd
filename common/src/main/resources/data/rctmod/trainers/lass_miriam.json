@@ -1,0 +1,71 @@
+{
+  "displayName": "Lass Miriam",
+  "team": [
+    {
+      "species": "cobblemon:applin",
+      "gender": "FEMALE",
+      "level": 14,
+      "nature": "cobblemon:bold",
+      "ability": "ripen",
+      "moveset": [
+        "astonish",
+        "withdraw",
+        "megadrain",
+        "dragonbreath"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:audino",
+      "gender": "FEMALE",
+      "level": 15,
+      "nature": "cobblemon:rash",
+      "ability": "healer",
+      "moveset": [
+        "helpinghand",
+        "babydolleyes",
+        "refresh",
+        "disarmingvoice"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

@@ -1,0 +1,71 @@
+{
+  "displayName": "Cue Ball Isaiah",
+  "team": [
+    {
+      "species": "cobblemon:machoke",
+      "gender": "FEMALE",
+      "level": 49,
+      "nature": "cobblemon:lax",
+      "ability": "guts",
+      "moveset": [
+        "dualchop",
+        "submission",
+        "bulkup",
+        "crosschop"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:machamp",
+      "gender": "FEMALE",
+      "level": 49,
+      "nature": "cobblemon:calm",
+      "ability": "guts",
+      "moveset": [
+        "dualchop",
+        "submission",
+        "bulkup",
+        "crosschop"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

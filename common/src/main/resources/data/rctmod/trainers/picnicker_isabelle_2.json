@@ -1,0 +1,102 @@
+{
+  "displayName": "Picnicker Isabelle",
+  "team": [
+    {
+      "species": "cobblemon:pidgeotto",
+      "gender": "FEMALE",
+      "level": 29,
+      "nature": "cobblemon:gentle",
+      "ability": "frisk",
+      "moveset": [
+        "takedown",
+        "whirlwind",
+        "return",
+        "roost"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:pidgeotto",
+      "gender": "FEMALE",
+      "level": 29,
+      "nature": "cobblemon:naive",
+      "ability": "frisk",
+      "moveset": [
+        "takedown",
+        "whirlwind",
+        "return",
+        "roost"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:pidgeotto",
+      "gender": "MALE",
+      "level": 26,
+      "nature": "cobblemon:mild",
+      "ability": "frisk",
+      "moveset": [
+        "takedown",
+        "whirlwind",
+        "return",
+        "roost"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

@@ -1,0 +1,133 @@
+{
+  "displayName": "Juggler Mason",
+  "team": [
+    {
+      "species": "cobblemon:voltorb",
+      "gender": "GENDERLESS",
+      "level": 47,
+      "nature": "cobblemon:careful",
+      "ability": "static",
+      "moveset": [
+        "swift",
+        "lightscreen",
+        "spark",
+        "sonicboom"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:pineco",
+      "gender": "MALE",
+      "level": 47,
+      "nature": "cobblemon:sassy",
+      "ability": "sturdy",
+      "moveset": [
+        "spikes",
+        "bide",
+        "rapidspin",
+        "takedown"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:voltorb",
+      "gender": "GENDERLESS",
+      "level": 47,
+      "nature": "cobblemon:hasty",
+      "ability": "static",
+      "moveset": [
+        "swift",
+        "lightscreen",
+        "spark",
+        "sonicboom"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:pineco",
+      "gender": "MALE",
+      "level": 47,
+      "nature": "cobblemon:rash",
+      "ability": "sturdy",
+      "moveset": [
+        "spikes",
+        "bide",
+        "rapidspin",
+        "explosion"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

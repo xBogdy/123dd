@@ -1,0 +1,164 @@
+{
+  "displayName": "Ace Trainer Austina",
+  "team": [
+    {
+      "species": "cobblemon:rhyhorn",
+      "gender": "FEMALE",
+      "level": 42,
+      "nature": "cobblemon:rash",
+      "ability": "rockhead",
+      "moveset": [
+        "horndrill",
+        "rockblast",
+        "scaryface",
+        "stomp"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 25,
+        "defence": 25,
+        "special_attack": 25,
+        "special_defence": 25,
+        "speed": 25
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:nidorina",
+      "gender": "FEMALE",
+      "level": 42,
+      "nature": "cobblemon:lonely",
+      "ability": "rivalry",
+      "moveset": [
+        "doublekick",
+        "furyswipes",
+        "bite",
+        "flatter"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 25,
+        "defence": 25,
+        "special_attack": 25,
+        "special_defence": 25,
+        "speed": 25
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:nidoqueen",
+      "gender": "FEMALE",
+      "level": 42,
+      "nature": "cobblemon:mild",
+      "ability": "rivalry",
+      "moveset": [
+        "bodyslam",
+        "doublekick",
+        "bite",
+        "growl"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 25,
+        "defence": 25,
+        "special_attack": 25,
+        "special_defence": 25,
+        "speed": 25
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:nidorino",
+      "gender": "MALE",
+      "level": 42,
+      "nature": "cobblemon:mild",
+      "ability": "rivalry",
+      "moveset": [
+        "hornattack",
+        "poisonsting",
+        "focusenergy",
+        "leer"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 25,
+        "defence": 25,
+        "special_attack": 25,
+        "special_defence": 25,
+        "speed": 25
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:nidoking",
+      "gender": "MALE",
+      "level": 42,
+      "nature": "cobblemon:quiet",
+      "ability": "rivalry",
+      "moveset": [
+        "thrash",
+        "doublekick",
+        "poisonsting",
+        "peck"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 25,
+        "defence": 25,
+        "special_attack": 25,
+        "special_defence": 25,
+        "speed": 25
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

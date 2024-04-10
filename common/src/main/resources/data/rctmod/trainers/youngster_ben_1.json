@@ -1,0 +1,71 @@
+{
+  "displayName": "Youngster Ben",
+  "team": [
+    {
+      "species": "cobblemon:rattata",
+      "gender": "MALE",
+      "level": 17,
+      "nature": "cobblemon:bashful",
+      "ability": "guts",
+      "moveset": [
+        "quickattack",
+        "focusenergy",
+        "hyperfang",
+        "pursuit"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:ekans",
+      "gender": "MALE",
+      "level": 17,
+      "nature": "cobblemon:impish",
+      "ability": "shedskin",
+      "moveset": [
+        "bite",
+        "glare",
+        "poisontail",
+        "screech"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

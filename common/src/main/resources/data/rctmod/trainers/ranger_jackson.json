@@ -1,0 +1,102 @@
+{
+  "displayName": "Ranger Jackson",
+  "team": [
+    {
+      "species": "cobblemon:tangela",
+      "gender": "FEMALE",
+      "level": 49,
+      "nature": "cobblemon:gentle",
+      "ability": "leafguard",
+      "moveset": [
+        "slam",
+        "megadrain",
+        "bind",
+        "ingrain"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 20,
+        "defence": 20,
+        "special_attack": 20,
+        "special_defence": 20,
+        "speed": 20
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:exeggcute",
+      "gender": "FEMALE",
+      "level": 49,
+      "nature": "cobblemon:docile",
+      "ability": "chlorophyll",
+      "moveset": [
+        "confusion",
+        "poisonpowder",
+        "barrage",
+        "reflect"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 20,
+        "defence": 20,
+        "special_attack": 20,
+        "special_defence": 20,
+        "speed": 20
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:exeggutor",
+      "gender": "FEMALE",
+      "level": 49,
+      "nature": "cobblemon:relaxed",
+      "ability": "chlorophyll",
+      "moveset": [
+        "confusion",
+        "eggbomb",
+        "sleeppowder",
+        "stomp"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 20,
+        "defence": 20,
+        "special_attack": 20,
+        "special_defence": 20,
+        "speed": 20
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

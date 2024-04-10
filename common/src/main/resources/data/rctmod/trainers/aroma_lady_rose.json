@@ -1,0 +1,71 @@
+{
+  "displayName": "Aroma Lady Rose",
+  "team": [
+    {
+      "species": "cobblemon:sunkern",
+      "gender": "FEMALE",
+      "level": 49,
+      "nature": "cobblemon:quirky",
+      "ability": "chlorophyll",
+      "moveset": [
+        "solarbeam",
+        "doubleedge",
+        "sunnyday",
+        "seedbomb"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:sunflora",
+      "gender": "FEMALE",
+      "level": 49,
+      "nature": "cobblemon:naughty",
+      "ability": "chlorophyll",
+      "moveset": [
+        "solarbeam",
+        "doubleedge",
+        "sunnyday",
+        "leafstorm"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

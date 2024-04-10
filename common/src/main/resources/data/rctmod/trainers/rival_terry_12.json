@@ -1,0 +1,163 @@
+{
+  "displayName": "Rival Terry",
+  "team": [
+    {
+      "species": "cobblemon:pidgeotto",
+      "gender": "MALE",
+      "level": 25,
+      "nature": "cobblemon:adamant",
+      "ability": "tangledfeet",
+      "moveset": [
+        "quickattack",
+        "takedown",
+        "whirlwind",
+        "return"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:growlithe",
+      "gender": "FEMALE",
+      "level": 23,
+      "nature": "cobblemon:quiet",
+      "ability": "flashfire",
+      "moveset": [
+        "flamewheel",
+        "reversal",
+        "firefang",
+        "takedown"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:exeggcute",
+      "gender": "FEMALE",
+      "level": 22,
+      "nature": "cobblemon:brave",
+      "ability": "chlorophyll",
+      "moveset": [
+        "stunspore",
+        "megadrain",
+        "poisonpowder"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:kadabra",
+      "gender": "FEMALE",
+      "level": 20,
+      "nature": "cobblemon:relaxed",
+      "ability": "innerfocus",
+      "moveset": [
+        "teleport",
+        "confusion",
+        "hiddenpower",
+        "disable"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:wartortle",
+      "gender": "FEMALE",
+      "level": 25,
+      "nature": "cobblemon:hasty",
+      "ability": "torrent",
+      "moveset": [
+        "waterpulse",
+        "bite",
+        "fakeout",
+        "detect"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

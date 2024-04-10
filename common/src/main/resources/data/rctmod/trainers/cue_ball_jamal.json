@@ -1,0 +1,133 @@
+{
+  "displayName": "Cue Ball Jamal",
+  "team": [
+    {
+      "species": "cobblemon:feraligatr",
+      "gender": "FEMALE",
+      "level": 55,
+      "nature": "cobblemon:sassy",
+      "ability": "sheerforce",
+      "moveset": [
+        "crunch",
+        "chipaway",
+        "slash",
+        "screech"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:rapidash",
+      "gender": "MALE",
+      "level": 55,
+      "nature": "cobblemon:quirky",
+      "ability": "flashfire",
+      "moveset": [
+        "fireblast",
+        "bounce",
+        "flareblitz",
+        "jumpkick"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:obstagoon",
+      "gender": "FEMALE",
+      "level": 56,
+      "nature": "cobblemon:docile",
+      "ability": "guts",
+      "moveset": [
+        "scaryface",
+        "counter",
+        "taunt",
+        "doubleedge"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:dodrio",
+      "gender": "MALE",
+      "level": 56,
+      "nature": "cobblemon:relaxed",
+      "ability": "earlybird",
+      "moveset": [
+        "jumpkick",
+        "doubleedge",
+        "endeavor",
+        "thrash"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

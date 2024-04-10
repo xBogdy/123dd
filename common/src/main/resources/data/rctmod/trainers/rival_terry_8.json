@@ -1,0 +1,127 @@
+{
+  "displayName": "Rival Terry",
+  "team": [
+    {
+      "species": "cobblemon:kirlia",
+      "gender": "MALE",
+      "level": 18,
+      "nature": "cobblemon:bashful",
+      "ability": "synchronize",
+      "moveset": [
+        "confusion",
+        "disarmingvoice",
+        "magicalleaf"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 40
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:staravia",
+      "gender": "MALE",
+      "level": 19,
+      "nature": "cobblemon:bashful",
+      "ability": "intimidate",
+      "moveset": [
+        "wingattack",
+        "quickattack"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 40
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:rockruff",
+      "gender": "FEMALE",
+      "level": 20,
+      "nature": "cobblemon:bashful",
+      "ability": "frisk",
+      "moveset": [
+        "rocktomb",
+        "bite",
+        "howl"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 40
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:charmeleon",
+      "gender": "FEMALE",
+      "level": 21,
+      "nature": "cobblemon:adamant",
+      "ability": "blaze",
+      "moveset": [
+        "scratch",
+        "ember"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 100,
+        "defence": 0,
+        "special_attack": 16,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:sitrus_berry"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

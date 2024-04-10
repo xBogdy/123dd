@@ -1,0 +1,164 @@
+{
+  "displayName": "Leader Giovanni",
+  "team": [
+    {
+      "species": "cobblemon:rhyhorn",
+      "gender": "FEMALE",
+      "level": 45,
+      "nature": "cobblemon:adamant",
+      "ability": "lightningrod",
+      "moveset": [
+        "takedown",
+        "rockblast",
+        "scaryface",
+        "earthquake"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:dugtrio",
+      "gender": "FEMALE",
+      "level": 42,
+      "nature": "cobblemon:docile",
+      "ability": "sandveil",
+      "moveset": [
+        "slash",
+        "sandtomb",
+        "mudslap",
+        "earthquake"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:nidoqueen",
+      "gender": "FEMALE",
+      "level": 44,
+      "nature": "cobblemon:sassy",
+      "ability": "poisontouch",
+      "moveset": [
+        "bodyslam",
+        "doublekick",
+        "poisonsting",
+        "earthquake"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:nidoking",
+      "gender": "MALE",
+      "level": 45,
+      "nature": "cobblemon:sassy",
+      "ability": "poisontouch",
+      "moveset": [
+        "thrash",
+        "doublekick",
+        "poisonsting",
+        "earthquake"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:rhyhorn",
+      "gender": "FEMALE",
+      "level": 50,
+      "nature": "cobblemon:sassy",
+      "ability": "lightningrod",
+      "moveset": [
+        "takedown",
+        "rockblast",
+        "scaryface",
+        "earthquake"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

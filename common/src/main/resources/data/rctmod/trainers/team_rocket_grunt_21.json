@@ -1,0 +1,133 @@
+{
+  "displayName": "Team Rocket Grunt",
+  "team": [
+    {
+      "species": "cobblemon:seviper",
+      "gender": "MALE",
+      "level": 43,
+      "nature": "cobblemon:gentle",
+      "ability": "shedskin",
+      "moveset": [
+        "haze",
+        "swordsdance",
+        "crunch",
+        "belch"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:gumshoos",
+      "gender": "MALE",
+      "level": 43,
+      "nature": "cobblemon:brave",
+      "ability": "strongjaw",
+      "moveset": [
+        "takedown",
+        "scaryface",
+        "crunch",
+        "hyperfang"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:scolipede",
+      "gender": "FEMALE",
+      "level": 43,
+      "nature": "cobblemon:sassy",
+      "ability": "swarm",
+      "moveset": [
+        "bugbite",
+        "venoshock",
+        "agility",
+        "steamroller"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:meowstic",
+      "gender": "MALE",
+      "level": 44,
+      "nature": "cobblemon:brave",
+      "ability": "runaway",
+      "moveset": [
+        "miracleeye",
+        "reflect",
+        "psychic",
+        "roleplay"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

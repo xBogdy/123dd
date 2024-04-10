@@ -1,0 +1,133 @@
+{
+  "displayName": "Rival Terry",
+  "team": [
+    {
+      "species": "cobblemon:kirlia",
+      "gender": "MALE",
+      "level": 28,
+      "nature": "cobblemon:docile",
+      "ability": "trace",
+      "moveset": [
+        "magicalleaf",
+        "healpulse",
+        "drainingkiss",
+        "calmmind"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:lycanroc",
+      "gender": "MALE",
+      "level": 26,
+      "nature": "cobblemon:quiet",
+      "ability": "toughclaws",
+      "moveset": [
+        "rockthrow",
+        "odorsleuth",
+        "rocktomb",
+        "roar"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:staravia",
+      "gender": "FEMALE",
+      "level": 26,
+      "nature": "cobblemon:rash",
+      "ability": "intimidate",
+      "moveset": [
+        "quickattack",
+        "wingattack",
+        "endeavor",
+        "whirlwind"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:ivysaur",
+      "gender": "FEMALE",
+      "level": 28,
+      "nature": "cobblemon:hasty",
+      "ability": "overgrow",
+      "moveset": [
+        "sludge",
+        "megadrain",
+        "takedown",
+        "growth"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

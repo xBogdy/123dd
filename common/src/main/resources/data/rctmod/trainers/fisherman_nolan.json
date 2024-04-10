@@ -1,0 +1,71 @@
+{
+  "displayName": "Fisherman Nolan",
+  "team": [
+    {
+      "species": "cobblemon:cramorant",
+      "gender": "MALE",
+      "level": 64,
+      "nature": "cobblemon:hardy",
+      "ability": "gulpmissile",
+      "moveset": [
+        "drillpeck",
+        "amnesia",
+        "surf",
+        "hydropump"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:kingler",
+      "gender": "MALE",
+      "level": 63,
+      "nature": "cobblemon:rash",
+      "ability": "battlearmor",
+      "moveset": [
+        "slam",
+        "brine",
+        "crabhammer",
+        "flail"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

@@ -1,0 +1,133 @@
+{
+  "displayName": "Super Nerd Aavery",
+  "team": [
+    {
+      "species": "cobblemon:heatmor",
+      "gender": "FEMALE",
+      "level": 72,
+      "nature": "cobblemon:adamant",
+      "ability": "gluttony",
+      "moveset": [
+        "spitup",
+        "swallow",
+        "flareblitz",
+        "inferno"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:charizard",
+      "gender": "FEMALE",
+      "level": 71,
+      "nature": "cobblemon:docile",
+      "ability": "blaze",
+      "moveset": [
+        "flamethrower",
+        "firespin",
+        "inferno",
+        "heatwave"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:talonflame",
+      "gender": "MALE",
+      "level": 73,
+      "nature": "cobblemon:docile",
+      "ability": "flamebody",
+      "moveset": [
+        "mefirst",
+        "tailwind",
+        "steelwing",
+        "bravebird"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:oricorio",
+      "gender": "MALE",
+      "level": 72,
+      "nature": "cobblemon:serious",
+      "ability": "dancer",
+      "moveset": [
+        "mirrormove",
+        "agility",
+        "hurricane",
+        "quiverdance"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

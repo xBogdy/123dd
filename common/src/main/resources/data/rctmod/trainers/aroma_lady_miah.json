@@ -1,0 +1,71 @@
+{
+  "displayName": "Aroma Lady Miah",
+  "team": [
+    {
+      "species": "cobblemon:bellossom",
+      "gender": "FEMALE",
+      "level": 50,
+      "nature": "cobblemon:sassy",
+      "ability": "chlorophyll",
+      "moveset": [
+        "stunspore",
+        "sunnyday",
+        "petalblizzard",
+        "petaldance"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    },
+    {
+      "species": "cobblemon:bellossom",
+      "gender": "FEMALE",
+      "level": 50,
+      "nature": "cobblemon:naughty",
+      "ability": "chlorophyll",
+      "moveset": [
+        "stunspore",
+        "sunnyday",
+        "petalblizzard",
+        "petaldance"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

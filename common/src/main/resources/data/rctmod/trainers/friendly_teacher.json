@@ -1,0 +1,37 @@
+{
+  "displayName": "Friendly Teacher",
+  "team": [
+    {
+      "species": "cobblemon:pikachu",
+      "gender": "FEMALE",
+      "level": 100,
+      "nature": "cobblemon:jolly",
+      "ability": "static",
+      "moveset": [
+        "splash"
+      ],
+      "ivs": {
+        "hp": 0,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:eviolite"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}
