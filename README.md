@@ -1,6 +1,6 @@
 # Radical Cobblemon Trainers
 
-Over **650** unique and **challenging** trainers, from the Pokemon rom hack *Radical Red* (v3.2), that will spawn naturally in your world.
+Over **650** unique and **challenging** trainers, from the Pokemon rom hack *Radical Red* (v3.02), that will spawn naturally in your world.
 
 ## Important
 
