@@ -6,7 +6,7 @@ Over **650** unique and **challenging** trainers, from the Pokemon rom hack *Rad
 
 This mod, though mostly in a usable state, is currently in an early developement stage. That means there might be bugs and future updates **may** contain changes that will not be compatible with worlds that have been run with previous versions. Be sure to backup your world before updating.
 
-The *higher* the version update the more likeley it is for issues to arise, e.g:
+The *greater* the difference inbetween versions the more likely it is for issues to arise, e.g:
 
 |             |     |            |          |
 | ----------- | --- | ---------- | -------- |
@@ -18,20 +18,21 @@ The *higher* the version update the more likeley it is for issues to arise, e.g:
 ## Key Features
 
 - Over **650** unique and challenging trainer teams for all level ranges (including gym leaders, elite 4 members, champions and some special ones)
-- Custom trainer npc spawning system
+- Custom trainer npc natural spawning system:
   - loosely comparable to the wandering trader but with a significant smaller delay and a higher spawn cap by default
   - ensures uniqueness: Never will you see two trainers with the same name (unless cheated in)
+  - matching spawns: trainers that spawn around a palyer will attempt to match the players strength
 - Custom trainer npc ai (e.g. trainers *stroll* towards players that can battle against them and will either despawn after some time or if beaten)
 - Player stats:
-  - badge count (increases if a player beats a leader for their first time)
-  - beaten elite 4 count (increases if a player beats an elite 4 member for their first time)
-  - beaten champion count (increases if a player beats a champion for their first time)
-  - level cap (increases after a player has beaten certain trainers (e.g. gym leaders))
-- Level cap system
+  - badge count: increases if a player beats a leader for their first time
+  - beaten elite 4 count: increases if a player beats an elite 4 member for their first time
+  - beaten champion count: increases if a player beats a champion for their first time
+  - level cap: increases after a player has beaten certain trainers (e.g. gym leaders)
+- Level cap system:
   - Pokemon at or above the level cap will not gain any exp
   - it is **alot** more likely for trainers around the level cap of a player to spawn
-- Battle dependencies: Trainers might have requirements to be battled (e.g. level cap, gym badge count, beaten elite 4, ...)
-- Battle reward system powered by loot tables
+- Battle dependencies: Trainers might have requirements to be battled with (e.g. level cap, gym badge count, beaten elite 4, ...)
+- Battle reward system powered by loot tables:
   - custom condition for data pack creators: `level_range`
   - custom condition for data pack creators: `not_defeated` (not yet implemented)
 - Trainers talk: Based of the context trainers will give different responses in the chat
@@ -58,15 +59,16 @@ Some global aspects of the mod (e.g. spawn interval or spawn cap) can be adjuste
 
 ## Datapack support
 
-Almost all of the data is provided by an internal datapack. **Alot** can be configured by *overshadowing* certain files with an own custom data pack. Please refer to the [wiki](todo.com) for more information.
+Almost all of the data is provided by an internal data pack. **Alot** can be configured by *overshadowing* certain files with an own custom data pack. Please refer to the [wiki](todo.com) for more information.
 
 ## Planned features
 
 - Advancements
 - More user feedback in certain situations (e.g. when a player gains a badge)
-- More/Better/Fixed assets (Teams, Textures, Mobs, Dialogs, ...)
+- More/Better/Fixed assets (Teams, Textures, Mobs, Dialogs, Loot tables, ...)
 - Some config options
 - More commands
+- Fabric
 
 ## Dependencies
 
