@@ -69,7 +69,7 @@ Following commands are available:
 | `rctmod mob get (required_level_cap/required_badges/required_beaten_e4/required_beaten_champs) <entity>` | Retrieves either the required level cap or the amount of required badges, beaten elite 4 or champions from the given mob. | `1`      |
 | `rctmod mob get (player_wins/player_defeats) <entity> [<player>]`                                        | Retrieves the amount of wins or defeats the given player has against the given mob.                                       | `1`      |
 | `rctmod mob spawn_for [<player>]`                                                                        | Attempts to spawn a trainer mob in the vicinity of the given player (uses natural spawning mechanics).                    | `2`      |
-| `rctmod mob summon <trainerId> [<position>]`                                                             | Summns a trainer mob at the given postion.                                                                                | `2`      |
+| `rctmod mob summon <trainerId> [<position>]`                                                             | Summons a trainer mob at the given postion.                                                                               | `2`      |
 
 ## Configuration
 
