@@ -88,7 +88,7 @@ public class MobCommands {
             try {
                 var level = player.level();
                 var mob = TrainerMob.getEntityType().create(level);
-                mob.setPos(player.blockPosition().above().getCenter());
+                mob.setPos(player.blockPosition().above().getCenter().add(0, -0.5, 0));
                 mob.setTrainerId(context.getArgument("trainer", String.class));
                 level.addFreshEntity(mob);
             } catch(Exception e) {
