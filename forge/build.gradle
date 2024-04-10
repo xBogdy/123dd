@@ -70,16 +70,16 @@ dependencies {
     compileOnly project(":common")
 
     // Architectury
-    implementation fg.deobf("curse.maven:architectury-api-419699:5137938")
+    implementation fg.deobf("curse.maven:architectury-api-419699:${architectury_version}")
 
     // Kotlin for Forge
-    implementation fg.deobf("thedarkcolour:kotlinforforge:4.10.0")
+    implementation fg.deobf("thedarkcolour:kotlinforforge:${kotlin_for_forge_version}")
 
     // Cobblemon
-    implementation fg.deobf("curse.maven:cobblemon-687131:4977476")
+    implementation fg.deobf("curse.maven:cobblemon-687131:${cobblemon_version}")
 
     // Cobblemon Trainers
-    implementation fg.deobf("curse.maven:cobblemontrainers-959503:5199334")
+    implementation fg.deobf("curse.maven:cobblemontrainers-959503:${cobblemontrainers_version}")
 
     // Configured
     runtimeOnly fg.deobf("curse.maven:configured-457570:${configured_version}")
@@ -87,15 +87,6 @@ dependencies {
     // JEI
     // compileOnly fg.deobf("mezz.jei:jei-${jei_mc_version}-common-api:${jei_version}")
     runtimeOnly fg.deobf("mezz.jei:jei-${jei_mc_version}-forge:${jei_version}")
-
-    // CraftTweaker
-    runtimeOnly(fg.deobf("com.blamejared.crafttweaker:CraftTweaker-forge-${crafttweaker_mc_version}:${crafttweaker_version}"))
-
-    // Mekanism
-    // runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_mc_version}-${mekanism_version}") // core
-    // runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_mc_version}-${mekanism_version}:additions") // Mekanism: Additions
-    // runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_mc_version}-${mekanism_version}:generators") // Mekanism: Generators
-    // runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_mc_version}-${mekanism_version}:tools") // Mekanism: Tools
 }
 
 mixin {

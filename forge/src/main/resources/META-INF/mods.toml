@@ -24,3 +24,17 @@ license="${license}"
   versionRange="[${minecraft_version}]"
   ordering="NONE"
   side="BOTH"
+
+[[dependencies.${mod_id}]]
+  modId="cobblemon"
+  mandatory=true
+  versionRange="[${cobblemon_min_ver},${cobblemon_max_ver})"
+  ordering="NONE"
+  side="BOTH"
+
+[[dependencies.${mod_id}]]
+  modId="cobblemontrainers"
+  mandatory=true
+  versionRange="[${cobblemontrainers_min_ver},${cobblemontrainers_max_ver})"
+  ordering="NONE"
+  side="BOTH"
