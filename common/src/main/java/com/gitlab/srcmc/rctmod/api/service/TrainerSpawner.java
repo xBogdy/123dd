@@ -122,7 +122,7 @@ public class TrainerSpawner {
     private void spawnFor(Player player, String trainerId, String trainerName, BlockPos pos) {
         var level = player.level();
         var mob = TrainerMob.getEntityType().create(level);
-        mob.setPos(pos.getCenter());
+        mob.setPos(pos.getCenter().add(0, -0.5, 0));
         mob.setTrainerId(trainerId);
         mob.setOriginPlayer(player.getUUID());
         level.addFreshEntity(mob);
