@@ -1,6 +1,9 @@
 package com.gitlab.srcmc.mymodid.world.entities;
 
+import java.util.UUID;
+
 import com.gitlab.srcmc.mymodid.api.RCTMod;
+import com.gitlab.srcmc.mymodid.api.service.TrainerSpawner;
 import com.gitlab.srcmc.mymodid.api.utils.ChatUtils;
 import com.gitlab.srcmc.mymodid.world.entities.goals.LookAtPlayerAndWaitGoal;
 import com.gitlab.srcmc.mymodid.world.entities.goals.PokemonBattleGoal;
@@ -16,18 +19,14 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
@@ -45,7 +44,6 @@ import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.npc.Npc;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
@@ -66,6 +64,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
     private int despawnDelay, discardDelay;
     private BlockPos wanderTarget;
     private Player opponent;
+    private UUID originPlayer;
 
     protected TrainerMob(EntityType<? extends PathfinderMob> entityType, Level level) {
         super(entityType, level);
@@ -178,18 +177,24 @@ public class TrainerMob extends PathfinderMob implements Npc {
             && this.getWins() < mobTr.getMaxTrainerWins();
     }
 
+    private void udpateCustomName() {
+        var tmd = RCTMod.get().getTrainerManager().getData(this);
+        this.setCustomName(Component.literal(tmd.getTeam().getDisplayName()));
+    }
+
     public void setTrainerId(String trainerId) {
         var level = this.level();
 
         if(!level.isClientSide) {
-            this.entityData.set(DATA_TRAINER_ID, trainerId);
-            this.udpateCustomName();
-        }
-    }
+            var currentId = this.getTrainerId();
 
-    private void udpateCustomName() {
-        var tmd = RCTMod.get().getTrainerManager().getData(this);
-        this.setCustomName(Component.literal(tmd.getTeam().getDisplayName()));
+            if((currentId == null && trainerId != null) || !currentId.equals(trainerId)) {
+                RCTMod.get().getTrainerSpawner().unregisterMob(this);
+                this.entityData.set(DATA_TRAINER_ID, trainerId);
+                this.udpateCustomName();
+                RCTMod.get().getTrainerSpawner().registerMob(this);
+            }
+        }
     }
 
     public String getTrainerId() {
@@ -229,9 +234,9 @@ public class TrainerMob extends PathfinderMob implements Npc {
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
-        this.entityData.define(DATA_TRAINER_ID, "");
-        this.entityData.define(DATA_DEFEATS, 0);
-        this.entityData.define(DATA_WINS, 0);
+        this.entityData.define(DATA_TRAINER_ID, ""); // TODO: sync not required?
+        this.entityData.define(DATA_DEFEATS, 0); // TODO: sync not required?
+        this.entityData.define(DATA_WINS, 0); // TODO: sync not required?
     }
 
     @Override
@@ -251,17 +256,9 @@ public class TrainerMob extends PathfinderMob implements Npc {
     }
 
     @Override
-    public SpawnGroupData finalizeSpawn(
-        ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance,
-        MobSpawnType mobSpawnType, SpawnGroupData spawnGroupData, CompoundTag compoundTag)
-    {
-        if(spawnGroupData == null) {
-            spawnGroupData = new AgeableMob.AgeableMobGroupData(false);
-        }
-
-        return super.finalizeSpawn(
-            serverLevelAccessor, difficultyInstance, mobSpawnType,
-            (SpawnGroupData) spawnGroupData, compoundTag);
+    public void remove(RemovalReason reason) {
+        RCTMod.get().getTrainerSpawner().unregisterMob(this);
+        super.remove(reason);
     }
 
     @Override
@@ -307,7 +304,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
             if(this.despawnDelay == 0 || (this.despawnDelay > 0 && --this.despawnDelay == 0) || !this.canBattle()) {
                 var level = this.level();
 
-                if(level.getNearestPlayer(this, DESPAWN_DISTANCE) == null) {
+                if(level.getNearestPlayer(this, TrainerSpawner.MAX_DISTANCE_TO_PLAYERS) == null) {
                     if(this.discardDelay < 0 || --this.discardDelay < 0) {
                         this.discard();
                     }
@@ -318,11 +315,23 @@ public class TrainerMob extends PathfinderMob implements Npc {
         }
     }
 
+    public void setOriginPlayer(UUID originPlayer) {
+        if((this.originPlayer == null && originPlayer != null) || !this.originPlayer.equals(originPlayer)) {
+            RCTMod.get().getTrainerSpawner().unregisterMob(this);
+            this.originPlayer = originPlayer;
+            RCTMod.get().getTrainerSpawner().registerMob(this);
+        }
+    }
+
+    public UUID getOriginPlayer() {
+        return this.originPlayer;
+    }
+
     public void setWanderTarget(BlockPos blockPos) {
         this.wanderTarget = blockPos;
     }
 
-    BlockPos getWanderTarget() {
+    public BlockPos getWanderTarget() {
         return this.wanderTarget;
     }
 
@@ -333,6 +342,10 @@ public class TrainerMob extends PathfinderMob implements Npc {
         compoundTag.putInt("Defeats", this.getDefeats());
         compoundTag.putInt("Wins", this.getWins());
         compoundTag.putString("TrainerId", this.getTrainerId());
+
+        if(this.originPlayer != null) {
+            compoundTag.putUUID("OriginPlayer", this.originPlayer);
+        }
 
         if(this.wanderTarget != null) {
             compoundTag.put("WanderTarget", NbtUtils.writeBlockPos(this.wanderTarget));
@@ -353,6 +366,10 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
         if(compoundTag.contains("Wins")) {
             this.setWins(compoundTag.getInt("Wins"));
+        }
+
+        if(compoundTag.contains("OriginPlayer")) {
+            this.setOriginPlayer(compoundTag.getUUID("OriginPlayer"));
         }
 
         if(compoundTag.contains("WanderTarget")) {
@@ -377,7 +394,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
         this.goalSelector.addGoal(1, new AvoidEntityGoal<Zoglin>(this, Zoglin.class, 10.0F, 0.5, 0.5));
         this.goalSelector.addGoal(1, new PanicGoal(this, 0.5));
         this.goalSelector.addGoal(2, new LookAtPlayerAndWaitGoal(this, Player.class, 8.0F));
-        this.goalSelector.addGoal(4, new MoveTowardsTargetGoal(this, 0.35, 64F));
+        this.goalSelector.addGoal(4, new MoveTowardsTargetGoal(this, 0.35, 1.5F*TrainerSpawner.MAX_DISTANCE_TO_PLAYERS));
         // this.goalSelector.addGoal(4, new MoveTowardsRestrictionGoal(this, 0.35));
         this.goalSelector.addGoal(8, new WaterAvoidingRandomStrollGoal(this, 0.35));
         // this.goalSelector.addGoal(9, new InteractGoal(this, Player.class, 3.0F, // 1.0F));

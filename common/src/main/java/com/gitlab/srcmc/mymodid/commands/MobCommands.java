@@ -11,6 +11,7 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.player.Player;
 
 public class MobCommands {
     private MobCommands() {}
@@ -19,6 +20,8 @@ public class MobCommands {
         dispatcher.register(Commands.literal(ModCommon.MOD_ID)
             .requires(css -> css.hasPermission(1))
             .then(Commands.literal("mob")
+                .then(Commands.literal("spawn")
+                    .executes(MobCommands::mob_spawn))
                 .then(Commands.literal("get")
                     .then(Commands.literal("max_trainer_wins")
                         .then(Commands.argument("target", EntityArgument.entity())
@@ -38,6 +41,21 @@ public class MobCommands {
                     .then(Commands.literal("required_beaten_champs")
                         .then(Commands.argument("target", EntityArgument.entity())
                             .executes(MobCommands::mob_get_required_beaten_champs_target))))));
+    }
+
+    private static int mob_spawn(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        if(context.getSource().getEntity() instanceof Player player) {
+            var tsp = RCTMod.get().getTrainerSpawner();
+            try {
+                tsp.attemptSpawnFor(player);
+            } catch(Exception e) {
+                ModCommon.LOG.error(e.getMessage(), e);
+            }
+            return 0;
+        }
+        
+        context.getSource().sendFailure(Component.literal("caller is not a player"));
+        return -1;
     }
 
     private static int mob_get_max_trainer_wins_target(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {

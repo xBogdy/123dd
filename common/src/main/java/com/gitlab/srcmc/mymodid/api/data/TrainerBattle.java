@@ -47,7 +47,7 @@ public class TrainerBattle {
                 var battleMem = tm.getBattleMemory(mob);
 
                 if(battleMem.getDefeatByCount(player) == 0) {
-                    // TODO: advancement trigger here
+                    // TODO: advancement trigger here (player.awardStat())
                     switch (mobTr.getType()) {
                         case LEADER:
                             playerTr.addBadge();

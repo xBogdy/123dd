@@ -4,6 +4,7 @@ import java.util.function.Supplier;
 
 import com.gitlab.srcmc.mymodid.api.data.pack.DataPackManager;
 import com.gitlab.srcmc.mymodid.api.service.TrainerManager;
+import com.gitlab.srcmc.mymodid.api.service.TrainerSpawner;
 import com.gitlab.srcmc.mymodid.world.loot.conditions.LevelRangeCondition;
 
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
@@ -11,6 +12,7 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 public final class RCTMod {
     private TrainerManager trainerManager;
     private DataPackManager dataPackManager;
+    private TrainerSpawner trainerSpawner;
 
     private static Supplier<RCTMod> instance = () -> {
         throw new RuntimeException(RCTMod.class.getName() + " not initialized");
@@ -29,6 +31,7 @@ public final class RCTMod {
     private RCTMod() {
         this.trainerManager = new TrainerManager();
         this.dataPackManager = new DataPackManager();
+        this.trainerSpawner = new TrainerSpawner();
     }
 
     public TrainerManager getTrainerManager() {
@@ -37,5 +40,9 @@ public final class RCTMod {
 
     public DataPackManager getDataPackManager() {
         return this.dataPackManager;
+    }
+
+    public TrainerSpawner getTrainerSpawner() {
+        return this.trainerSpawner;
     }
 }

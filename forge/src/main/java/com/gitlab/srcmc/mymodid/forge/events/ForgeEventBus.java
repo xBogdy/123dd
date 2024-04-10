@@ -12,6 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.IoSupplier;
 import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
+import net.minecraftforge.event.TickEvent.PlayerTickEvent;
 import net.minecraftforge.event.server.ServerStartedEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -19,9 +20,20 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 
 @Mod.EventBusSubscriber(modid = ModCommon.MOD_ID, bus = Bus.FORGE)
 public class ForgeEventBus {
+    static int SPAWN_DELAY = 200;
+
     @SubscribeEvent
     static void onServerStarted(ServerStartedEvent event) {
         RCTMod.get().getDataPackManager().listTrainerTeams(ForgeEventBus::addTrainer);
+    }
+
+    @SubscribeEvent
+    static void onPlayerTick(PlayerTickEvent event) {
+        if(event.side.isServer()) {
+            if(SPAWN_DELAY == 0 || SPAWN_DELAY > 0 && event.player.tickCount % SPAWN_DELAY == 0) {
+                RCTMod.get().getTrainerSpawner().attemptSpawnFor(event.player);
+            }
+        }
     }
 
     @SubscribeEvent

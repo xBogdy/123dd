@@ -6,6 +6,8 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
+import java.util.stream.Stream;
+
 import com.gitlab.srcmc.mymodid.ModCommon;
 import com.gitlab.srcmc.mymodid.api.RCTMod;
 import com.gitlab.srcmc.mymodid.api.data.TrainerBattle;
@@ -75,6 +77,10 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
             TrainerPlayerData::of,
             TrainerPlayerData::new,
             TrainerPlayerData.filePath(player));
+    }
+
+    public Stream<Map.Entry<String, TrainerMobData>> getAllData() {
+        return trainerMobs.entrySet().stream();
     }
 
     public TrainerBattleMemory getBattleMemory(TrainerMob mob) {

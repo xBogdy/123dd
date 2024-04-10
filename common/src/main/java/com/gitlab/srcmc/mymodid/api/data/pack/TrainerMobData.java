@@ -119,6 +119,7 @@ public class TrainerMobData implements IDataPackObject {
     private int maxTrainerDefeats = 1;
     private int battleCooldownTicks = 2000;
 
+    private float spawnChance = 1F; // [0, 1]
     private Set<String> biomeWhitelist = new HashSet<>();
     private Set<String> biomeBlacklist = new HashSet<>();
     private Set<String> dimensionWhitelist = new HashSet<>();
@@ -188,6 +189,10 @@ public class TrainerMobData implements IDataPackObject {
 
     public int getBattleCooldownTicks() {
         return this.battleCooldownTicks;
+    }
+
+    public float getSpawnChance() {
+        return this.spawnChance;
     }
 
     public Set<String> getBiomeBlacklist() {
