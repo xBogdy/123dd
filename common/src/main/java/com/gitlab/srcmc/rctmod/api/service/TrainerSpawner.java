@@ -133,8 +133,8 @@ public class TrainerSpawner {
         var level = player.level();
         var rng = player.getRandom();
         int d = MAX_DISTANCE_TO_PLAYERS - MIN_DISTANCE_TO_PLAYERS;
-        int dx = (MIN_DISTANCE_TO_PLAYERS + (d % rng.nextInt())) * (rng.nextInt() % 2 == 0 ? 1 : -1);
-        int dz = (MIN_DISTANCE_TO_PLAYERS + (d % rng.nextInt())) * (rng.nextInt() % 2 == 0 ? 1 : -1);
+        int dx = (MIN_DISTANCE_TO_PLAYERS + (Math.abs(rng.nextInt()) % d)) * (rng.nextInt() < 0 ? -1 : 1);
+        int dz = (MIN_DISTANCE_TO_PLAYERS + (Math.abs(rng.nextInt()) % d)) * (rng.nextInt() < 0 ? -1 : 1);
         int dy = MAX_VERTICAL_DISTAINCE_TO_PLAYERS;
 
         int x = player.getBlockX() + dx;
