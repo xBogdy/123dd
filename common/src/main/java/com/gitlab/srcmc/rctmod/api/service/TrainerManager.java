@@ -113,6 +113,7 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
     protected void apply(Map<ResourceLocation, JsonElement> object, ResourceManager resourceManager, ProfilerFiller profilerFiller) {
         var dpm = RCTMod.get().getDataPackManager();
         dpm.init(resourceManager);
+        this.trainerMobs.clear();
 
         dpm.listTrainerTeams((rl, io) -> {
             var trainerId = PathUtils.filename(rl.getPath());

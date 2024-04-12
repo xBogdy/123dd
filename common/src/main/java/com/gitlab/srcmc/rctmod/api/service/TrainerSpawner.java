@@ -200,10 +200,10 @@ public class TrainerSpawner {
             .getTrainerManager()
             .getData(player);
 
-        int diff = Math.abs(mobTr.getTeam()
+        int diff = playerTr.getLevelCap() - mobTr.getTeam()
             .getMembers().stream().map(p -> p.getLevel())
-            .max(Integer::compare).orElse(0) - playerTr.getLevelCap());
+            .max(Integer::compare).orElse(0);
 
-        return diff <= MAX_LEVEL_DIFF ? ((MAX_LEVEL_DIFF + 1) - diff)*mobTr.getSpawnChance() : 0;
+        return diff < 0 || diff > MAX_LEVEL_DIFF ? 0 : ((MAX_LEVEL_DIFF + 1) - diff)*mobTr.getSpawnChance();
     }
 }
