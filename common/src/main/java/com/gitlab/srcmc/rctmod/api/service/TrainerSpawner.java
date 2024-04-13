@@ -40,7 +40,7 @@ public class TrainerSpawner {
     private static final int MAX_VERTICAL_DISTAINCE_TO_PLAYERS = 30;
     private static final int MAX_TRAINERS_PER_PLAYER = 3;
     private static final int MAX_TRAINERS_TOTAL = 20;
-    private static final int MAX_LEVEL_DIFF = 1; // TODO: mod config
+    private static final int MAX_LEVEL_DIFF = 25; // TODO: mod config
     private static final int SPAWN_TICK_COOLDOWN = 20;
     private static final int SPAWN_ATTEMPS = 3;
 
@@ -59,7 +59,7 @@ public class TrainerSpawner {
     private Set<String> spawnedTotal = new HashSet<>();
 
     public void registerMob(TrainerMob mob) {
-        ModCommon.LOG.info("REGISTERING: " + mob.getDisplayName().getString());
+        // ModCommon.LOG.info("REGISTERING: " + mob.getDisplayName().getString());
         var originPlayer = mob.getOriginPlayer();
         var tmd = RCTMod.get().getTrainerManager().getData(mob);
         this.spawnedTotal.add(tmd.getTeam().getDisplayName());
@@ -77,7 +77,7 @@ public class TrainerSpawner {
     }
 
     public void unregisterMob(TrainerMob mob) {
-        ModCommon.LOG.info("UNREGISTERING: " + mob.getDisplayName().getString());
+        // ModCommon.LOG.info("UNREGISTERING: " + mob.getDisplayName().getString());
         var originPlayer = mob.getOriginPlayer();
         var tmd = RCTMod.get().getTrainerManager().getData(mob);
         this.spawnedTotal.remove(tmd.getTeam().getDisplayName());
@@ -92,7 +92,7 @@ public class TrainerSpawner {
     }
 
     public void attemptSpawnFor(Player player) {
-        ModCommon.LOG.info("SPAWN ATTEMPT FOR: " + player.getName().getString());
+        // ModCommon.LOG.info("SPAWN ATTEMPT FOR: " + player.getName().getString());
 
         if(this.spawnedTotal.size() < MAX_TRAINERS_TOTAL) {
             var spawnedFor = this.spawnedFor.get(player.getUUID());
@@ -126,7 +126,7 @@ public class TrainerSpawner {
         mob.setTrainerId(trainerId);
         mob.setOriginPlayer(player.getUUID());
         level.addFreshEntity(mob);
-        ModCommon.LOG.info("SPAWNED TRAINER: " + mob.getDisplayName().getString());
+        // ModCommon.LOG.info("SPAWNED TRAINER: " + mob.getDisplayName().getString());
     }
 
     private BlockPos nextPos(Player player) {
@@ -144,7 +144,7 @@ public class TrainerSpawner {
         
         for(int i = dy; i >= -dy; i--) {
             var pos = new BlockPos(x, y + i, z);
-            ModCommon.LOG.info("POSSIBLE POS: " + pos.toShortString() + ", air: " + level.getBlockState(pos).isAir());
+            // ModCommon.LOG.info("POSSIBLE POS: " + pos.toShortString() + ", air: " + level.getBlockState(pos).isAir());
 
             if(level.getBlockState(pos).isAir()) {
                 air++;
@@ -175,7 +175,7 @@ public class TrainerSpawner {
                 }
             });
 
-        ModCommon.LOG.info("SPAWN CANDIDATES: " + candidates.size());
+        // ModCommon.LOG.info("SPAWN CANDIDATES: " + candidates.size());
         return candidates.size() > 0 ? this.selectRandom(player.getRandom(), candidates) : null;
     }
 

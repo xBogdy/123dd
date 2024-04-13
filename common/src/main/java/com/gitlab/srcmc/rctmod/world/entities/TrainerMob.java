@@ -87,7 +87,6 @@ public class TrainerMob extends PathfinderMob implements Npc {
         super(entityType, level);
         this.despawnDelay = DESPAWN_DELAY;
         this.discardDelay = DISCARD_DELAY;
-        this.setCustomNameVisible(true);
         this.udpateCustomName();
     }
 
