@@ -25,10 +25,12 @@ import com.cobblemon.mod.common.api.events.CobblemonEvents;
 import com.cobblemon.mod.common.api.events.battles.BattleVictoryEvent;
 import com.cobblemon.mod.common.api.events.pokemon.ExperienceGainedPreEvent;
 import com.gitlab.srcmc.rctmod.ModCommon;
+import com.gitlab.srcmc.rctmod.advancements.criteria.DefeatCountTrigger;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.forge.ModRegistries;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import kotlin.Unit;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -52,6 +54,7 @@ public class ModEventBus {
     static void onCommonSetup(FMLCommonSetupEvent event) {
         CobblemonEvents.BATTLE_VICTORY.subscribe(Priority.NORMAL, ModEventBus::handleBattleVictory);
         CobblemonEvents.EXPERIENCE_GAINED_EVENT_PRE.subscribe(Priority.HIGHEST, ModEventBus::handleExperienceGained);
+        event.enqueueWork(() -> CriteriaTriggers.register(DefeatCountTrigger.get()));
     }
 
     @SubscribeEvent

@@ -18,9 +18,13 @@
 package com.gitlab.srcmc.rctmod.api.data;
 
 import java.util.List;
+
+import com.gitlab.srcmc.rctmod.ModCommon;
+import com.gitlab.srcmc.rctmod.advancements.criteria.DefeatCountTrigger;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 
 public class TrainerBattle {
@@ -64,7 +68,6 @@ public class TrainerBattle {
                 var battleMem = tm.getBattleMemory(mob);
 
                 if(battleMem.getDefeatByCount(player) == 0) {
-                    // TODO: advancement trigger here (player.awardStat())
                     switch (mobTr.getType()) {
                         case LEADER:
                             playerTr.addBadge();
@@ -83,6 +86,7 @@ public class TrainerBattle {
                 playerTr.setLevelCap(Math.max(mobTr.getRewardLevelCap(), playerTr.getLevelCap()));
                 battleMem.addDefeatedBy(player);
                 mob.finishBattle(true);
+                DefeatCountTrigger.get().trigger((ServerPlayer)player, mob);
             }
         }
 
