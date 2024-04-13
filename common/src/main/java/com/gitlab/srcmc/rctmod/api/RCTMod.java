@@ -24,11 +24,13 @@ import com.gitlab.srcmc.rctmod.api.service.TrainerManager;
 import com.gitlab.srcmc.rctmod.api.service.TrainerSpawner;
 import com.gitlab.srcmc.rctmod.world.loot.conditions.LevelRangeCondition;
 
+import net.minecraft.server.packs.PackType;
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 
 public final class RCTMod {
     private TrainerManager trainerManager;
-    private DataPackManager dataPackManager;
+    private DataPackManager clientDataManager;
+    private DataPackManager serverDataManager;
     private TrainerSpawner trainerSpawner;
 
     private static Supplier<RCTMod> instance = () -> {
@@ -47,7 +49,8 @@ public final class RCTMod {
 
     private RCTMod() {
         this.trainerManager = new TrainerManager();
-        this.dataPackManager = new DataPackManager();
+        this.clientDataManager = new DataPackManager(PackType.CLIENT_RESOURCES);
+        this.serverDataManager = new DataPackManager(PackType.SERVER_DATA);
         this.trainerSpawner = new TrainerSpawner();
     }
 
@@ -55,8 +58,12 @@ public final class RCTMod {
         return this.trainerManager;
     }
 
-    public DataPackManager getDataPackManager() {
-        return this.dataPackManager;
+    public DataPackManager getClientDataManager() {
+        return this.clientDataManager;
+    }
+
+    public DataPackManager getServerDataManager() {
+        return this.serverDataManager;
     }
 
     public TrainerSpawner getTrainerSpawner() {

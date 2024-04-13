@@ -25,6 +25,8 @@ import java.util.function.Consumer;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.utils.JsonUtils;
 import com.gitlab.srcmc.rctmod.api.utils.PathUtils;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
 
 import net.minecraft.resources.ResourceLocation;
@@ -32,8 +34,12 @@ import net.minecraft.server.packs.PackResources;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.PackResources.ResourceOutput;
 import net.minecraft.server.packs.resources.ResourceManager;
+import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
+import net.minecraft.util.profiling.ProfilerFiller;
 
-public class DataPackManager implements AutoCloseable {
+public class DataPackManager extends SimpleJsonResourceReloadListener implements AutoCloseable {
+    private final static Gson GSON = new Gson();
+    
     public static final String PATH_GROUPS = "trainers/groups";
     public static final String PATH_SINGLE = "trainers/single";
     public static final String PATH_DEFAULT = "trainers/default";
@@ -52,7 +58,7 @@ public class DataPackManager implements AutoCloseable {
         }
     }
 
-    private Map<String, DataLocator> contextMap = Map.ofEntries(
+    private final Map<String, DataLocator> contextMap = Map.ofEntries(
         Map.entry("mobs", new DataLocator(PackType.SERVER_DATA, ".json")),
         Map.entry("dialogs", new DataLocator(PackType.SERVER_DATA, ".json")),
         Map.entry("loot_tables", new DataLocator(PackType.SERVER_DATA, ".json")),
@@ -62,17 +68,23 @@ public class DataPackManager implements AutoCloseable {
     // trainer teams are not layered (in groups/single/default) and are therefore
     // handled a bit differently.
     private Map<ResourceLocation, PackResources> trainerTeams = new HashMap<>();
+    private PackType packType;
+
+    public DataPackManager(PackType packType) {
+        super(GSON, ModCommon.MOD_ID);
+        this.packType = packType;
+    }
 
     public void init(ResourceManager resourceManager) {
         this.clear();
 
         resourceManager.listPacks()
-            .filter(dp -> dp.getNamespaces(PackType.SERVER_DATA).contains(ModCommon.MOD_ID))
+            .filter(dp -> dp.getNamespaces(this.packType).contains(ModCommon.MOD_ID))
             .forEach(this::gather);
     }
 
     public void listTrainerTeams(ResourceOutput out) {
-        this.trainerTeams.forEach((k, v) -> out.accept(k, v.getResource(PackType.SERVER_DATA, k)));
+        this.trainerTeams.forEach((k, v) -> out.accept(k, v.getResource(this.packType, k)));
     }
 
     @Override
@@ -106,6 +118,11 @@ public class DataPackManager implements AutoCloseable {
 
     public Optional<ResourceLocation> findResource(String trainerId, String context) {
         var dl = contextMap.get(context);
+
+        if(dl == null) {
+            return Optional.empty();
+        }
+
         var singlePath = new ResourceLocation(ModCommon.MOD_ID, context + "/" + PATH_SINGLE + "/" + trainerId + dl.fileSuffix);
 
         if(dl.singleData.containsKey(singlePath)) {
@@ -118,14 +135,18 @@ public class DataPackManager implements AutoCloseable {
             }
         }
 
-        return Optional.of(dl.defaultData.getKey());
+        if(dl.defaultData != null) {
+            return Optional.of(dl.defaultData.getKey());
+        }
+
+        return Optional.empty();
     }
 
     public Optional<TrainerTeam> loadTrainerTeam(String trainerId) {
         var teamResource = new ResourceLocation(ModCommon.MOD_ID, PATH_TRAINERS + "/" + trainerId + ".json");
         
         if(trainerTeams.containsKey(teamResource)) {
-            return Optional.of(JsonUtils.loadFromOrThrow(trainerTeams.get(teamResource).getResource(PackType.SERVER_DATA, teamResource), TrainerTeam.class));
+            return Optional.of(JsonUtils.loadFromOrThrow(trainerTeams.get(teamResource).getResource(this.packType, teamResource), TrainerTeam.class));
         }
 
         return Optional.empty();
@@ -158,14 +179,14 @@ public class DataPackManager implements AutoCloseable {
             dpo.onLoad(this, trainerId, context);
         }
     }
-
+    
     private void gather(PackResources dataPack) {
         this.gatherTrainers(dataPack);
         this.gatherResources(dataPack);
     }
 
     private void gatherTrainers(PackResources dataPack) {
-        dataPack.listResources(PackType.SERVER_DATA, ModCommon.MOD_ID, PATH_TRAINERS, (rl, io) -> {
+        dataPack.listResources(this.packType, ModCommon.MOD_ID, PATH_TRAINERS, (rl, io) -> {
             this.trainerTeams.put(rl, dataPack);
         });
     }
@@ -203,5 +224,11 @@ public class DataPackManager implements AutoCloseable {
         }
 
         return null;
+    }
+
+    @Override
+    protected void apply(Map<ResourceLocation, JsonElement> object, ResourceManager resourceManager, ProfilerFiller profilerFiller) {
+        this.init(resourceManager);
+        this.close();
     }
 }

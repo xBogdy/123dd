@@ -18,10 +18,8 @@
 package com.gitlab.srcmc.rctmod.api.service;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Stream;
 
@@ -36,13 +34,11 @@ import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
-import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
 import net.minecraft.util.profiling.ProfilerFiller;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.biome.Biome;
 
 public class TrainerManager extends SimpleJsonResourceReloadListener {
     private final static Gson GSON = new Gson();
@@ -111,7 +107,7 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
 
     @Override
     protected void apply(Map<ResourceLocation, JsonElement> object, ResourceManager resourceManager, ProfilerFiller profilerFiller) {
-        var dpm = RCTMod.get().getDataPackManager();
+        var dpm = RCTMod.get().getServerDataManager();
         dpm.init(resourceManager);
         this.trainerMobs.clear();
 
@@ -121,15 +117,5 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
         });
 
         dpm.close();
-    }
-
-    // TODO: DRAFT
-    private Set<String> getSpawnableTrainerMobs(Player player, Holder<Biome> biome) {
-        Set<String> result = new HashSet<>();
-
-        for(var kv : trainerMobs.entrySet()) {
-        }
-
-        return result;
     }
 }

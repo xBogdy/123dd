@@ -41,7 +41,7 @@ public class ForgeEventBus {
 
     @SubscribeEvent
     static void onServerStarted(ServerStartedEvent event) {
-        RCTMod.get().getDataPackManager().listTrainerTeams(ForgeEventBus::addTrainer);
+        RCTMod.get().getServerDataManager().listTrainerTeams(ForgeEventBus::addTrainer);
     }
 
     @SubscribeEvent

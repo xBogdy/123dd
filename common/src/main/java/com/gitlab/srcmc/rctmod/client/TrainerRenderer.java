@@ -29,13 +29,15 @@ import net.minecraft.client.renderer.entity.HumanoidMobRenderer;
 import net.minecraft.resources.ResourceLocation;
 
 public class TrainerRenderer extends HumanoidMobRenderer<TrainerMob, HumanoidModel<TrainerMob>> {
+    private final ResourceLocation FALLBACK_TEXTURE = new ResourceLocation("textures/entity/player/wide/steve.png");
+
     public TrainerRenderer(EntityRendererProvider.Context pContext) {
         super(pContext, new HumanoidModel<>(pContext.bakeLayer(ModelLayers.PLAYER)), 1f);
     }
 
     @Override
     public ResourceLocation getTextureLocation(TrainerMob mob) {
-        return RCTMod.get().getTrainerManager().getData(mob).getTextureResource();
+        return RCTMod.get().getClientDataManager().findResource(mob.getTrainerId(), "textures").orElse(FALLBACK_TEXTURE);
     }
 
     @Override

@@ -29,16 +29,27 @@ import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.forge.ModRegistries;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import kotlin.Unit;
+import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLConstructModEvent;
 
 @Mod.EventBusSubscriber(modid = ModCommon.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModEventBus {
     @SubscribeEvent
-    static void onCommonSetup(FMLCommonSetupEvent event) {
+    static void onModConstruct(FMLConstructModEvent event) {
         RCTMod.init(ModRegistries.LootItemConditions.LEVEL_RANGE);
+    }
+
+    @SubscribeEvent
+    static void onRegisterClientReloadListener(RegisterClientReloadListenersEvent event) {
+        event.registerReloadListener(RCTMod.get().getClientDataManager());
+    }
+
+    @SubscribeEvent
+    static void onCommonSetup(FMLCommonSetupEvent event) {
         CobblemonEvents.BATTLE_VICTORY.subscribe(Priority.NORMAL, ModEventBus::handleBattleVictory);
         CobblemonEvents.EXPERIENCE_GAINED_EVENT_PRE.subscribe(Priority.HIGHEST, ModEventBus::handleExperienceGained);
     }
