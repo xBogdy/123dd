@@ -215,15 +215,19 @@ public class DataPackManager extends SimpleJsonResourceReloadListener implements
     }
 
     private ResourceLocation findGroupsKey(String trainerId, Map<ResourceLocation, PackResources> groups) {
+        ResourceLocation key = null;
+        var longestGroupId = "";
+
         for(var groupsEntry : groups.entrySet()) {
             var groupsId = PathUtils.filename(groupsEntry.getKey().getPath());
 
-            if(trainerId.equals(groupsId) || trainerId.startsWith(groupsId + "_")) {
-                return groupsEntry.getKey();
+            if(groupsId.length() > longestGroupId.length() && (trainerId.equals(groupsId) || trainerId.startsWith(groupsId + "_"))) {
+                key = groupsEntry.getKey();
+                longestGroupId = groupsId;
             }
         }
 
-        return null;
+        return key;
     }
 
     @Override
