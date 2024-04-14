@@ -20,6 +20,7 @@ package com.gitlab.srcmc.rctmod.world.entities;
 import java.util.UUID;
 
 import com.gitlab.srcmc.rctmod.api.RCTMod;
+import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData.Type;
 import com.gitlab.srcmc.rctmod.api.service.TrainerSpawner;
 import com.gitlab.srcmc.rctmod.api.utils.ChatUtils;
 import com.gitlab.srcmc.rctmod.world.entities.goals.LookAtPlayerAndWaitGoal;
@@ -103,9 +104,9 @@ public class TrainerMob extends PathfinderMob implements Npc {
             var trPlayer = RCTMod.get().getTrainerManager().getData(player);
             var trMob = RCTMod.get().getTrainerManager().getData(this);
 
-            return trPlayer.getBadges() >= trMob.getRequiredBadges()
-                && trPlayer.getBeatenE4() >= trMob.getRequiredBeatenE4()
-                && trPlayer.getBeatenChamps() >= trMob.getRequiredBeatenChamps()
+            return trPlayer.getDefeats(Type.LEADER) >= trMob.getRequiredBadges()
+                && trPlayer.getDefeats(Type.E4) >= trMob.getRequiredBeatenE4()
+                && trPlayer.getDefeats(Type.CHAMP) >= trMob.getRequiredBeatenChamps()
                 && trPlayer.getLevelCap() >= trMob.getRequiredLevelCap();
         }
 
@@ -117,11 +118,11 @@ public class TrainerMob extends PathfinderMob implements Npc {
             var trPlayer = RCTMod.get().getTrainerManager().getData(player);
             var trMob = RCTMod.get().getTrainerManager().getData(this);
 
-            if(trPlayer.getBadges() < trMob.getRequiredBadges()) {
+            if(trPlayer.getDefeats(Type.LEADER) < trMob.getRequiredBadges()) {
                 ChatUtils.reply(this, player, "missing_badges");
-            } else if(trPlayer.getBeatenE4() < trMob.getRequiredBeatenE4()) {
+            } else if(trPlayer.getDefeats(Type.E4) < trMob.getRequiredBeatenE4()) {
                 ChatUtils.reply(this, player, "missing_beaten_e4");
-            } else if(trPlayer.getBeatenChamps() < trMob.getRequiredBeatenChamps()) {
+            } else if(trPlayer.getDefeats(Type.CHAMP) < trMob.getRequiredBeatenChamps()) {
                 ChatUtils.reply(this, player, "missing_beaten_champs");
             } else if(trPlayer.getLevelCap() < trMob.getTeam().getMembers().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0)) {
                 ChatUtils.reply(this, player, "low_level_cap");

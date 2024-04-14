@@ -34,7 +34,6 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.commands.arguments.coordinates.BlockPosArgument;
-import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 
@@ -46,14 +45,14 @@ public class MobCommands {
             .requires(css -> css.hasPermission(1))
             .then(Commands.literal("mob")
                 .then(Commands.literal("spawn_for")
-                .requires(css -> css.hasPermission(2))
+                    .requires(css -> css.hasPermission(2))
                     .executes(MobCommands::mob_spawn_for)
                     .then(Commands.argument("target", EntityArgument.player())
                         .executes(MobCommands::mob_spawn_for_target)))
                 .then(Commands.literal("summon")
-                .requires(css -> css.hasPermission(2))
+                    .requires(css -> css.hasPermission(2))
                     .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainer", StringArgumentType.string())
-                    .suggests(MobCommands::get_trainer_suggestions)
+                        .suggests(MobCommands::get_trainer_suggestions)
                         .executes(MobCommands::mob_summon_trainer)
                         .then(Commands.argument("at", BlockPosArgument.blockPos())
                             .executes(MobCommands::mob_summon_trainer_at))))

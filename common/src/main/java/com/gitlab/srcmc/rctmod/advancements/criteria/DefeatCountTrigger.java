@@ -27,11 +27,13 @@ public class DefeatCountTrigger extends SimpleCriterionTrigger<DefeatCountTrigge
 
     @Override
     protected DefeatCountTriggerInstance createInstance(JsonObject jsonObject, ContextAwarePredicate player, DeserializationContext deserializationContext) {
-        var jsonTrainerId = jsonObject.get("trainer");
+        var jsonTrainerId = jsonObject.get("trainer_id");
+        var jsonTrainerType = jsonObject.get("trainer_type");
         var jsonCount = jsonObject.get("count");
         var trainerId = jsonTrainerId != null ? jsonTrainerId.getAsString() : null;
+        var trainerType = jsonTrainerType != null ? jsonTrainerType.getAsString() : null;
         var count = jsonCount != null ? jsonCount.getAsInt() : 1;
-        return new DefeatCountTriggerInstance(player, trainerId, count);
+        return new DefeatCountTriggerInstance(player, trainerId, trainerType, count);
     }
 
     public void trigger(ServerPlayer player, TrainerMob mob) {

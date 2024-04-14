@@ -19,7 +19,6 @@ package com.gitlab.srcmc.rctmod.api.data;
 
 import java.util.List;
 
-import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.advancements.criteria.DefeatCountTrigger;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
@@ -68,19 +67,7 @@ public class TrainerBattle {
                 var battleMem = tm.getBattleMemory(mob);
 
                 if(battleMem.getDefeatByCount(player) == 0) {
-                    switch (mobTr.getType()) {
-                        case LEADER:
-                            playerTr.addBadge();
-                            break;
-                        case E4:
-                            playerTr.addBeatenE4();
-                            break;
-                        case CHAMP:
-                            playerTr.addBeatenChamp();
-                            break;
-                        default:
-                            break;
-                    }
+                    playerTr.addDefeat(mobTr.getType());
                 }
 
                 playerTr.setLevelCap(Math.max(mobTr.getRewardLevelCap(), playerTr.getLevelCap()));
