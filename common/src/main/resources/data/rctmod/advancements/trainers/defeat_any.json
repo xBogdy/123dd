@@ -1,0 +1,28 @@
+{
+  "display": {
+    "title": {
+      "text": "Radical Trainers"
+    },
+    "description": {
+      "text": "The journey begins"
+    },
+    "icon": {
+      "item": "cobblemon:poke_ball"
+    },
+    "background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+    "announce_to_chat": false,
+    "show_toast": true,
+    "hidden": false,
+    "frame": "task"
+  },
+  "criteria": {
+    "first_defeat": {
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "requirements": [
+    [
+      "first_defeat"
+    ]
+  ]
+}

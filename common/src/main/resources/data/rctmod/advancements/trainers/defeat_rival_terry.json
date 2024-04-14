@@ -1,0 +1,45 @@
+{
+  "parent": "rctmod:trainers/defeat_leader_blaine",
+  "display": {
+    "title": {
+      "text": "Defeat Terry"
+    },
+    "description": {
+      "text": "It's time to put your rival in his place"
+    },
+    "icon": {
+      "item": "cobblemon:poke_ball"
+    },
+    "announce_to_chat": true,
+    "show_toast": true,
+    "hidden": true,
+    "frame": "challenge"
+  },
+  "criteria": {
+    "first_defeat_1": {
+      "conditions": {
+        "trainer_id": "rival_terry_18"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_2": {
+      "conditions": {
+        "trainer_id": "rival_terry_19"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_3": {
+      "conditions": {
+        "trainer_id": "rival_terry_20"
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "requirements": [
+    [
+      "first_defeat_1",
+      "first_defeat_2",
+      "first_defeat_3"
+    ]
+  ]
+}

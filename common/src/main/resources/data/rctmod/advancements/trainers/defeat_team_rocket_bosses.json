@@ -1,0 +1,49 @@
+{
+  "parent": "rctmod:trainers/defeat_leader_blaine",
+  "display": {
+    "title": {
+      "text": "Dismantle Team Rocket"
+    },
+    "description": {
+      "text": "Let's put an end to the schemes of Giovanni and his underlings"
+    },
+    "icon": {
+      "item": "cobblemon:poke_ball"
+    },
+    "announce_to_chat": true,
+    "show_toast": true,
+    "hidden": false,
+    "frame": "challenge"
+  },
+  "criteria": {
+    "first_defeat_giovanni": {
+      "conditions": {
+        "trainer_id": "joe_doe"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_archer": {
+      "conditions": {
+        "trainer_id": "youngster_lancere"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_ariana": {
+      "conditions": {
+        "trainer_id": "channeler_5"
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "requirements": [
+    [
+      "first_defeat_giovanni"
+    ],
+    [
+      "first_defeat_archer"
+    ],
+    [
+      "first_defeat_ariana"
+    ]
+  ]
+}

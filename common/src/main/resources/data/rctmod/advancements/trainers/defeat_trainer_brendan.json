@@ -1,0 +1,31 @@
+{
+  "parent": "rctmod:trainers/defeat_leader_blaine",
+  "display": {
+    "title": {
+      "text": "Defeat Brendan"
+    },
+    "description": {
+      "text": "Who will be victorious in this fierce battle?"
+    },
+    "icon": {
+      "item": "cobblemon:poke_ball"
+    },
+    "announce_to_chat": true,
+    "show_toast": true,
+    "hidden": true,
+    "frame": "challenge"
+  },
+  "criteria": {
+    "first_defeat": {
+      "conditions": {
+        "trainer_type": "trainer_brendan"
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "requirements": [
+    [
+      "first_defeat"
+    ]
+  ]
+}

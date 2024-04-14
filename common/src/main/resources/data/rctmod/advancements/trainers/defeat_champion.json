@@ -1,0 +1,31 @@
+{
+  "parent": "rctmod:trainers/defeat_elite_four",
+  "display": {
+    "title": {
+      "text": "Champion!"
+    },
+    "description": {
+      "text": "There will be always someone who is stronger"
+    },
+    "icon": {
+      "item": "cobblemon:poke_ball"
+    },
+    "announce_to_chat": true,
+    "show_toast": true,
+    "hidden": false,
+    "frame": "challenge"
+  },
+  "criteria": {
+    "first_defeat": {
+      "conditions": {
+        "trainer_type": "CHAMP"
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "requirements": [
+    [
+      "first_defeat"
+    ]
+  ]
+}

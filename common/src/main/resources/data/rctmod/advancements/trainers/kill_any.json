@@ -1,0 +1,33 @@
+{
+  "parent": "rctmod:trainers/defeat_any",
+  "display": {
+    "title": {
+      "text": "Wrong way to battle"
+    },
+    "description": {
+      "text": "Not like this!"
+    },
+    "icon": {
+      "item": "cobblemon:poke_ball"
+    },
+    "announce_to_chat": false,
+    "show_toast": true,
+    "hidden": true,
+    "frame": "task"
+  },
+  "criteria": {
+    "kill_trainer": {
+      "conditions": {
+        "entitiy": {
+          "type": "rctmod:trainer"
+        }
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "requirements": [
+    [
+      "kill_trainer"
+    ]
+  ]
+}

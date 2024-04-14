@@ -1,0 +1,470 @@
+{
+  "parent": "rctmod:trainers/defeat_team_rocket_bosses",
+  "display": {
+    "title": {
+      "text": "Cleanup duty"
+    },
+    "description": {
+      "text": "They didn't got the news"
+    },
+    "icon": {
+      "item": "cobblemon:poke_ball"
+    },
+    "announce_to_chat": true,
+    "show_toast": true,
+    "hidden": false,
+    "frame": "challenge"
+  },
+  "criteria": {
+    "first_defeat_giovanni": {
+      "conditions": {
+        "trainer_id": "boss_giovanni"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_giovanni_1": {
+      "conditions": {
+        "trainer_id": "boss_giovanni_1"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_giovanni_2": {
+      "conditions": {
+        "trainer_id": "boss_giovanni_2"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_archer": {
+      "conditions": {
+        "trainer_id": "rocket_admin_archer"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_archer_1": {
+      "conditions": {
+        "trainer_id": "rocket_admin_archer_1"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_archer_2": {
+      "conditions": {
+        "trainer_id": "rocket_admin_archer_2"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_archer_3": {
+      "conditions": {
+        "trainer_id": "rocket_admin_archer_3"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_ariana": {
+      "conditions": {
+        "trainer_id": "rocket_admin_ariana"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_ariana_1": {
+      "conditions": {
+        "trainer_id": "rocket_admin_ariana_1"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_ariana_2": {
+      "conditions": {
+        "trainer_id": "rocket_admin_ariana_2"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_admin": {
+      "conditions": {
+        "trainer_id": "team_rocket_admin"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_admin_1": {
+      "conditions": {
+        "trainer_id": "team_rocket_admin_1"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_1": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_1"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_2": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_2"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_3": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_3"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_4": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_4"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_5": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_5"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_6": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_6"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_7": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_7"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_8": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_8"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_9": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_9"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_10": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_10"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_11": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_11"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_12": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_12"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_13": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_13"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_14": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_14"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_15": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_15"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_16": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_16"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_17": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_17"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_18": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_18"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_19": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_19"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_20": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_20"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_21": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_21"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_22": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_22"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_23": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_23"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_24": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_24"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_25": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_25"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_26": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_26"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_27": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_27"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_28": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_28"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_29": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_29"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_30": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_30"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_31": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_31"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_32": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_32"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_33": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_33"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_34": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_34"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_35": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_35"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_36": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_36"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_37": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_37"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_38": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_38"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_39": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_39"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_40": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_40"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_41": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_41"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_42": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_42"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_43": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_43"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_44": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_44"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_45": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_45"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_46": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_46"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_47": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_47"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_48": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_48"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_49": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_49"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_50": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_50"
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_grunt_51": {
+      "conditions": {
+        "trainer_id": "team_rocket_grunt_51"
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "requirements": [
+    ["first_defeat_giovanni"],
+    ["first_defeat_giovanni_1"],
+    ["first_defeat_giovanni_2"],
+    ["first_defeat_archer"],
+    ["first_defeat_archer_1"],
+    ["first_defeat_archer_2"],
+    ["first_defeat_archer_3"],
+    ["first_defeat_ariana"],
+    ["first_defeat_ariana_1"],
+    ["first_defeat_ariana_2"],
+    ["first_defeat_admin"],
+    ["first_defeat_admin_1"],
+    ["first_defeat_grunt"],
+    ["first_defeat_grunt_1"],
+    ["first_defeat_grunt_2"],
+    ["first_defeat_grunt_3"],
+    ["first_defeat_grunt_4"],
+    ["first_defeat_grunt_5"],
+    ["first_defeat_grunt_6"],
+    ["first_defeat_grunt_7"],
+    ["first_defeat_grunt_8"],
+    ["first_defeat_grunt_9"],
+    ["first_defeat_grunt_10"],
+    ["first_defeat_grunt_11"],
+    ["first_defeat_grunt_12"],
+    ["first_defeat_grunt_13"],
+    ["first_defeat_grunt_14"],
+    ["first_defeat_grunt_15"],
+    ["first_defeat_grunt_16"],
+    ["first_defeat_grunt_17"],
+    ["first_defeat_grunt_18"],
+    ["first_defeat_grunt_19"],
+    ["first_defeat_grunt_20"],
+    ["first_defeat_grunt_21"],
+    ["first_defeat_grunt_22"],
+    ["first_defeat_grunt_23"],
+    ["first_defeat_grunt_24"],
+    ["first_defeat_grunt_25"],
+    ["first_defeat_grunt_26"],
+    ["first_defeat_grunt_27"],
+    ["first_defeat_grunt_28"],
+    ["first_defeat_grunt_29"],
+    ["first_defeat_grunt_30"],
+    ["first_defeat_grunt_31"],
+    ["first_defeat_grunt_32"],
+    ["first_defeat_grunt_33"],
+    ["first_defeat_grunt_34"],
+    ["first_defeat_grunt_35"],
+    ["first_defeat_grunt_36"],
+    ["first_defeat_grunt_37"],
+    ["first_defeat_grunt_38"],
+    ["first_defeat_grunt_39"],
+    ["first_defeat_grunt_40"],
+    ["first_defeat_grunt_41"],
+    ["first_defeat_grunt_42"],
+    ["first_defeat_grunt_43"],
+    ["first_defeat_grunt_44"],
+    ["first_defeat_grunt_45"],
+    ["first_defeat_grunt_46"],
+    ["first_defeat_grunt_47"],
+    ["first_defeat_grunt_48"],
+    ["first_defeat_grunt_49"],
+    ["first_defeat_grunt_50"],
+    ["first_defeat_grunt_51"]
+  ]
+}

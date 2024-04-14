@@ -1,0 +1,32 @@
+{
+  "parent": "rctmod:trainers/defeat_leader_blaine",
+  "display": {
+    "title": {
+      "text": "Elite 4"
+    },
+    "description": {
+      "text": "The elite amongst pokemon trainers"
+    },
+    "icon": {
+      "item": "cobblemon:poke_ball"
+    },
+    "announce_to_chat": true,
+    "show_toast": true,
+    "hidden": false,
+    "frame": "challenge"
+  },
+  "criteria": {
+    "first_defeat": {
+      "conditions": {
+        "trainer_type": "E4",
+        "count": 4
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "requirements": [
+    [
+      "first_defeat"
+    ]
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "parent": "rctmod:trainers/defeat_any",
+  "display": {
+    "title": {
+      "text": "Boulder Badge"
+    },
+    "description": {
+      "text": "Lets see how you handle a tough opponent"
+    },
+    "icon": {
+      "item": "cobblemon:poke_ball"
+    },
+    "announce_to_chat": true,
+    "show_toast": true,
+    "hidden": false,
+    "frame": "goal"
+  },
+  "criteria": {
+    "first_defeat": {
+      "conditions": {
+        "trainer_id": "leader_brock_1"
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "requirements": [
+    [
+      "first_defeat"
+    ]
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "parent": "rctmod:trainers/defeat_leader_erika_1",
+  "display": {
+    "title": {
+      "text": "Earth Badge"
+    },
+    "description": {
+      "text": "Quite the turn of events"
+    },
+    "icon": {
+      "item": "cobblemon:poke_ball"
+    },
+    "announce_to_chat": true,
+    "show_toast": true,
+    "hidden": false,
+    "frame": "goal"
+  },
+  "criteria": {
+    "first_defeat": {
+      "conditions": {
+        "trainer_id": "leader_giovanni"
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "requirements": [
+    [
+      "first_defeat"
+    ]
+  ]
+}
