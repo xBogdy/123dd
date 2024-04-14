@@ -50,15 +50,15 @@ public class DefeatCountTriggerInstance extends AbstractCriterionTriggerInstance
         var playerTr = RCTMod.get().getTrainerManager().getData(player);
 
         if(this.trainerId != null && mob.getTrainerId().equals(this.trainerId)) {
-            return battleMem.getDefeatByCount(player) == this.count;
+            return battleMem.getDefeatByCount(player) >= this.count;
         }
 
         if(this.trainerType != null && mobTr.getType().name().equals(this.trainerType)) {
-            return playerTr.getDefeats(mobTr.getType()) == this.count;
+            return playerTr.getDefeats(mobTr.getType()) >= this.count;
         }
 
         return this.trainerId == null && this.trainerType == null
-            && battleMem.getDefeatByCount(player) == this.count;
+            && battleMem.getDefeatByCount(player) >= this.count;
     }
 
     public void trigger(ServerPlayer player) {
