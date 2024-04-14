@@ -1,0 +1,15 @@
+{
+  "type": "NORMAL",
+  "rewardLevelCap": 0,
+  "requiredBadges": 8,
+  "requiredBeatenE4": 0,
+  "requiredBeatenChamps": 0,
+  "maxTrainerWins": 1,
+  "maxTrainerDefeats": 1,
+  "battleCooldownTicks": 2000,
+  "spawnChance": 0.75,
+  "biomeWhitelist": [],
+  "biomeBlacklist": [],
+  "dimensionWhitelist": [],
+  "dimensionBlacklist": []
+}
