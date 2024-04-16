@@ -37,44 +37,44 @@ import net.minecraft.commands.arguments.coordinates.BlockPosArgument;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 
-public class MobCommands {
-    private MobCommands() {}
+public class TrainerCommands {
+    private TrainerCommands() {}
 
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
         dispatcher.register(Commands.literal(ModCommon.MOD_ID)
             .requires(css -> css.hasPermission(1))
-            .then(Commands.literal("mob")
+            .then(Commands.literal("trainer")
                 .then(Commands.literal("spawn_for")
                     .requires(css -> css.hasPermission(2))
-                    .executes(MobCommands::mob_spawn_for)
+                    .executes(TrainerCommands::mob_spawn_for)
                     .then(Commands.argument("target", EntityArgument.player())
-                        .executes(MobCommands::mob_spawn_for_target)))
+                        .executes(TrainerCommands::mob_spawn_for_target)))
                 .then(Commands.literal("summon")
                     .requires(css -> css.hasPermission(2))
                     .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainer", StringArgumentType.string())
-                        .suggests(MobCommands::get_trainer_suggestions)
-                        .executes(MobCommands::mob_summon_trainer)
+                        .suggests(TrainerCommands::get_trainer_suggestions)
+                        .executes(TrainerCommands::mob_summon_trainer)
                         .then(Commands.argument("at", BlockPosArgument.blockPos())
-                            .executes(MobCommands::mob_summon_trainer_at))))
+                            .executes(TrainerCommands::mob_summon_trainer_at))))
                 .then(Commands.literal("get")
                     .then(Commands.literal("max_trainer_wins")
                         .then(Commands.argument("target", EntityArgument.entity())
-                            .executes(MobCommands::mob_get_max_trainer_wins_target)))
+                            .executes(TrainerCommands::mob_get_max_trainer_wins_target)))
                     .then(Commands.literal("max_trainer_defeats")
                         .then(Commands.argument("target", EntityArgument.entity())
-                            .executes(MobCommands::mob_get_max_trainer_defeats_target)))
+                            .executes(TrainerCommands::mob_get_max_trainer_defeats_target)))
                     .then(Commands.literal("required_level_cap")
                         .then(Commands.argument("target", EntityArgument.entity())
-                            .executes(MobCommands::mob_get_required_level_cap_target)))
+                            .executes(TrainerCommands::mob_get_required_level_cap_target)))
                     .then(Commands.literal("required_badges")
                         .then(Commands.argument("target", EntityArgument.entity())
-                            .executes(MobCommands::mob_get_required_badges_target)))
+                            .executes(TrainerCommands::mob_get_required_badges_target)))
                     .then(Commands.literal("required_beaten_e4")
                         .then(Commands.argument("target", EntityArgument.entity())
-                            .executes(MobCommands::mob_get_required_beaten_e4_target)))
+                            .executes(TrainerCommands::mob_get_required_beaten_e4_target)))
                     .then(Commands.literal("required_beaten_champs")
                         .then(Commands.argument("target", EntityArgument.entity())
-                            .executes(MobCommands::mob_get_required_beaten_champs_target))))));
+                            .executes(TrainerCommands::mob_get_required_beaten_champs_target))))));
     }
 
     private static CompletableFuture<Suggestions> get_trainer_suggestions(final CommandContext<CommandSourceStack> context, final SuggestionsBuilder builder) throws CommandSyntaxException {

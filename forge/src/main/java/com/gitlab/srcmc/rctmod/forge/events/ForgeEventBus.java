@@ -20,8 +20,8 @@ package com.gitlab.srcmc.rctmod.forge.events;
 import java.io.InputStream;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
-import com.gitlab.srcmc.rctmod.commands.MobCommands;
 import com.gitlab.srcmc.rctmod.commands.PlayerCommands;
+import com.gitlab.srcmc.rctmod.commands.TrainerCommands;
 import com.gitlab.srcmc.rctmod.forge.world.VolatileTrainer;
 import com.selfdot.cobblemontrainers.CobblemonTrainers;
 
@@ -61,7 +61,7 @@ public class ForgeEventBus {
 	@SubscribeEvent
 	static void onCommandRegistry(final RegisterCommandsEvent event) {
 		PlayerCommands.register(event.getDispatcher());
-        MobCommands.register(event.getDispatcher());
+        TrainerCommands.register(event.getDispatcher());
     }
 
     private static void addTrainer(ResourceLocation rl, IoSupplier<InputStream> io) {

@@ -79,7 +79,7 @@ Following commands are available:
         - Sets the current level cap of the given players to the specified value.
       - `defeats <trainerType> [<players>] <value>`
         - Sets the current number of defeats the given players have against the specified trainer type to the given value.
-  - `mob`
+  - `trainer`
     - `get` (Op Level: 1)
       - `required_level_cap <trainer>|<trainerId>`
         - Retrieves the required level cap to fight the given trainer mob or trainer mobs with the given trainer id.
