@@ -35,9 +35,6 @@ public class TrainerMobData implements IDataPackObject {
 
     private Type type = Type.NORMAL;
     private int rewardLevelCap;
-    // private int requiredBadges; // deprecated
-    // private int requiredBeatenE4; // deprecated
-    // private int requiredBeatenChamps; // deprecated
     private Map<Type, Integer> requiredDefeats = new HashMap<>();
 
     private int maxTrainerWins = 3;
@@ -62,9 +59,6 @@ public class TrainerMobData implements IDataPackObject {
     public TrainerMobData(TrainerMobData origin) {
         this.type = origin.type;
         this.rewardLevelCap = origin.rewardLevelCap;
-        // this.requiredBadges = origin.requiredBadges;
-        // this.requiredBeatenE4 = origin.requiredBeatenE4;
-        // this.requiredBeatenChamps = origin.requiredBeatenChamps;
         this.requiredDefeats = Map.copyOf(origin.requiredDefeats);
         this.maxTrainerWins = origin.maxTrainerWins;
         this.maxTrainerDefeats = origin.maxTrainerDefeats;
@@ -88,21 +82,6 @@ public class TrainerMobData implements IDataPackObject {
     public int getRequiredLevelCap() {
         return this.getTeam().getMembers().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0);
     }
-
-    // // deprecated
-    // public int getRequiredBadges() {
-    //     return this.requiredBadges;
-    // }
-
-    // // deprecated
-    // public int getRequiredBeatenE4() {
-    //     return this.requiredBeatenE4;
-    // }
-
-    // // deprecated
-    // public int getRequiredBeatenChamps() {
-    //     return this.requiredBeatenChamps;
-    // }
 
     public int getRequiredDefeats(Type type) {
         return this.requiredDefeats.getOrDefault(type, 0);
