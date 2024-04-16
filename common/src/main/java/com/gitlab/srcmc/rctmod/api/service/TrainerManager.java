@@ -70,17 +70,25 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
     }
 
     public TrainerMobData getData(TrainerMob mob) {
-        if(!trainerMobs.containsKey(mob.getTrainerId())) {
-            if(!mob.getTrainerId().isEmpty()) {
+        return this.getData(mob.getTrainerId(), mob.getDisplayName().getString());
+    }
+
+    public TrainerMobData getData(String trainerId) {
+        return this.getData(trainerId, trainerId);
+    }
+
+    private TrainerMobData getData(String trainerId, String trainerName) {
+        if(!trainerMobs.containsKey(trainerId)) {
+            if(!trainerId.isEmpty()) {
                 ModCommon.LOG.error(String.format(
-                    "Invalid trainer id '%s' for mob: %s",
-                    mob.getTrainerId(), mob.getDisplayName().getString()));
+                    "Invalid trainer id '%s' for mob: ???",
+                    trainerId, trainerName));
             }
 
             return new TrainerMobData();
         }
 
-        return trainerMobs.get(mob.getTrainerId());
+        return this.trainerMobs.get(trainerId);
     }
 
     public TrainerPlayerData getData(Player player) {

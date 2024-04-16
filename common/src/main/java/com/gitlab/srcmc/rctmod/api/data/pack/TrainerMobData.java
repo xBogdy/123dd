@@ -26,10 +26,7 @@ import java.util.Set;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.google.gson.reflect.TypeToken;
 
-import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.dimension.DimensionType;
 
 public class TrainerMobData implements IDataPackObject {
     public enum Type {
@@ -47,11 +44,9 @@ public class TrainerMobData implements IDataPackObject {
     private int battleCooldownTicks = 2000;
 
     private float spawnChance = 1F; // [0, 1]
-    private Set<String> biomeWhitelist = new HashSet<>();
-    private Set<String> biomeBlacklist = new HashSet<>();
-    private Set<String> dimensionWhitelist = new HashSet<>();
-    private Set<String> dimensionBlacklist = new HashSet<>();
-
+    private Set<String> biomeTagBlacklist = new HashSet<>();
+    private Set<String> biomeTagWhitelist = new HashSet<>();
+    
     private transient Map<String, String[]> dialog = new HashMap<>();
     private transient ResourceLocation textureResource;
     private transient ResourceLocation lootTableResource;
@@ -72,10 +67,8 @@ public class TrainerMobData implements IDataPackObject {
         this.maxTrainerWins = origin.maxTrainerWins;
         this.maxTrainerDefeats = origin.maxTrainerDefeats;
         this.battleCooldownTicks = origin.battleCooldownTicks;
-        this.biomeBlacklist = Set.copyOf(origin.biomeBlacklist);
-        this.biomeWhitelist = Set.copyOf(origin.biomeBlacklist);
-        this.dimensionBlacklist = Set.copyOf(origin.dimensionBlacklist);
-        this.dimensionWhitelist = Set.copyOf(origin.dimensionWhitelist);
+        this.biomeTagBlacklist = Set.copyOf(origin.biomeTagBlacklist);
+        this.biomeTagWhitelist = Set.copyOf(origin.biomeTagWhitelist);
         this.dialog = Map.copyOf(origin.dialog);
         this.textureResource = origin.textureResource;
         this.lootTableResource = origin.lootTableResource;
@@ -122,20 +115,12 @@ public class TrainerMobData implements IDataPackObject {
         return this.spawnChance;
     }
 
-    public Set<String> getBiomeBlacklist() {
-        return Collections.unmodifiableSet(this.biomeBlacklist);
+    public Set<String> getBiomeTagBlacklist() {
+        return Collections.unmodifiableSet(this.biomeTagBlacklist);
     }
 
-    public Set<String> getBiomeWhitelist() {
-        return Collections.unmodifiableSet(this.biomeWhitelist);
-    }
-
-    public Set<String> getDimensionBlacklist() {
-        return Collections.unmodifiableSet(this.dimensionBlacklist);
-    }
-
-    public Set<String> getDimensionWhitelist() {
-        return Collections.unmodifiableSet(this.dimensionWhitelist);
+    public Set<String> getBiomeTagWhitelist() {
+        return Collections.unmodifiableSet(this.biomeTagWhitelist);
     }
 
     public Map<String, String[]> getDialog() {
@@ -152,11 +137,6 @@ public class TrainerMobData implements IDataPackObject {
 
     public TrainerTeam getTeam() {
         return this.team;
-    }
-
-    public boolean canSpawnIn(DimensionType dimension, Holder<Biome> biome) {
-        // TODO
-        return false;
     }
 
     @Override
