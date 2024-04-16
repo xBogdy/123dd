@@ -22,6 +22,7 @@ The *greater* the difference inbetween versions the more likely it is for issues
   - loosely comparable to the wandering trader but with a significant smaller delay and a higher spawn cap by default
   - ensures uniqueness: Never will you see two trainers with the same name (unless cheated in)
   - matching spawns: trainers that spawn around a palyer will attempt to match the players strength
+  - different trainer types will spawn in different biomes
 - Custom trainer npc ai (e.g. trainers *stroll* towards players that can battle against them and will either despawn after some time or if beaten)
 - Player stats:
   - badge count: increases if a player beats a leader for their first time
@@ -31,6 +32,10 @@ The *greater* the difference inbetween versions the more likely it is for issues
 - Level cap system:
   - Pokemon at or above the level cap will not gain any exp
   - it is **alot** more likely for trainers around the level cap of a player to spawn
+- Advancements:
+  - keep track of your progress (e.g. badges) and become a champion
+  - some hidden and special advancements (more to come)
+  - custom critera trigger for data pack creators: `defeat_count`
 - Battle dependencies: Trainers might have requirements to be battled with (e.g. level cap, gym badge count, beaten elite 4, ...)
 - Battle reward system powered by loot tables:
   - custom condition for data pack creators: `level_range`
@@ -56,20 +61,42 @@ The balancing is based around the original game (Radical Red). Gym leaders must 
 | *Any Champion* | `94`             | 4 beaten Elite 4 members | Champion |
 | ???            | `100`            | 1 beaten Champion        | ???      |
 
-> There are some extra leaders that do not grant an increased level cap or badges. It is planned to have such leaders (and other special trainers) reward players with special loot.
+> There are some trainers labled as "Leader", "Elite 4" or "Champion" that do not account for the player progress. These are mostly additional trainers from different regions and serve no specific purpose other than beeing tough opponents. They might drop some special loot though.
 
 ## Commands
 
 Following commands are available:
 
-| Command                                                                                                  | Description                                                                                                               | Op Level |
-| -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `rctmod player get (level_cap/badges/beaten_e4/beaten_champs) [<player>]`                                | Retrieves either the level cap or the amount of badges, beaten elite 4 or champions from the given player.                | `1`      |
-| `rctmod player set (level_cap/badges/beaten_e4/beaten_champs) [<player>] <value>`                        | Sets either the level cap or the amount of badges, beaten elite 4 or champions from the given player to the given value.  | `2`      |
-| `rctmod mob get (required_level_cap/required_badges/required_beaten_e4/required_beaten_champs) <entity>` | Retrieves either the required level cap or the amount of required badges, beaten elite 4 or champions from the given mob. | `1`      |
-| `rctmod mob get (player_wins/player_defeats) <entity> [<player>]`                                        | Retrieves the amount of wins or defeats the given player has against the given mob.                                       | `1`      |
-| `rctmod mob spawn_for [<player>]`                                                                        | Attempts to spawn a trainer mob in the vicinity of the given player (uses natural spawning mechanics).                    | `2`      |
-| `rctmod mob summon <trainerId> [<position>]`                                                             | Summons a trainer mob at the given postion.                                                                               | `2`      |
+- `rctmod`
+  - `player`
+    - `get` (Op Level: 1)
+      - `level_cap [<player>]`
+        - Retrieves the current level cap of the given player.
+      - `defeats <trainerType> [<player>]`
+        - Retrieves the current number of defeats the given player has against the specified trainer type.
+    - `set` (Op Level: 2)
+      - `level_cap [<players>] <value>`
+        - Sets the current level cap of the given players to the specified value.
+      - `defeats <trainerType> [<players>] <value>`
+        - Sets the current number of defeats the given players have against the specified trainer type to the given value.
+  - `mob`
+    - `get` (Op Level: 1)
+      - `required_level_cap <trainer>|<trainerId>`
+        - Retrieves the required level cap to fight the given trainer mob or trainer mobs with the given trainer id.
+      - `required_badges <trainer>|<trainerId>`
+        - Retrieves the amount of required badges to fight the given trainer mob or trainer mobs with the given trainer id.
+      - `required_beaten_e4 <trainer>|<trainerId>`
+        - Retrieves the amount of required beaten e4 to fight the given trainer mob or trainer mobs with the given trainer id.
+      - `required_beaten_champs <trainer>|<trainerId>`
+        - Retrieves the amount of required beaten champs to fight the given trainer mob or trainer mobs with the given trainer id.
+      - `max_trainer_wins <trainer>|<trainerId>`
+        - Retrieves the max amount of wins the given trainer mob, or trainer mobs with the given trainer id, can have before it will not accept any more fights.
+      - `max_trainer_defeats <trainer>|<trainerId>`
+        - Retrieves the max amount of defeats the given trainer mob, or trainer mobs with the given trainer id, can have before it will not accept any more fights.
+    - `spawn_for [<player>]` (Op Level: 2)
+      - Attempts to spawn a trainer mob in the vicinity of the given player (using natural spawning mechanics).
+    - `summon <trainerId> [<position>]` (Op Level: 2)
+      - Summons the specified trainer mob at the given postion.
 
 ## Configuration
 
@@ -83,8 +110,8 @@ Almost all of the data is provided by an internal data pack. **Alot** can be con
 
 ## Planned features
 
-- Advancements
-- More user feedback in certain situations (e.g. when a player gains a badge)
+- ~~Advancements~~
+- ~~More user feedback in certain situations (e.g. when a player gains a badge)~~
 - More/Better/Fixed assets (Teams, Textures, Mobs, Dialogs, Loot tables, ...)
 - Some config options
 - ~~More commands~~
