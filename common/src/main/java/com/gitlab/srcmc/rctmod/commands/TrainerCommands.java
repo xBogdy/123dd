@@ -18,9 +18,11 @@
 package com.gitlab.srcmc.rctmod.commands;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
+import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData.Type;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
@@ -58,27 +60,32 @@ public class TrainerCommands {
                             .executes(TrainerCommands::mob_summon_trainer_at))))
                 .then(Commands.literal("get")
                     .then(Commands.literal("max_trainer_wins")
-                        .then(Commands.argument("target", EntityArgument.entity())
-                            .executes(TrainerCommands::mob_get_max_trainer_wins_target)))
+                        .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainer", StringArgumentType.string())
+                            .suggests(TrainerCommands::get_trainer_suggestions)
+                            .executes(TrainerCommands::mob_get_max_trainer_wins)))
                     .then(Commands.literal("max_trainer_defeats")
-                        .then(Commands.argument("target", EntityArgument.entity())
-                            .executes(TrainerCommands::mob_get_max_trainer_defeats_target)))
+                        .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainer", StringArgumentType.string())
+                            .suggests(TrainerCommands::get_trainer_suggestions)
+                            .executes(TrainerCommands::mob_get_max_trainer_defeats)))
                     .then(Commands.literal("required_level_cap")
-                        .then(Commands.argument("target", EntityArgument.entity())
-                            .executes(TrainerCommands::mob_get_required_level_cap_target)))
-                    .then(Commands.literal("required_badges")
-                        .then(Commands.argument("target", EntityArgument.entity())
-                            .executes(TrainerCommands::mob_get_required_badges_target)))
-                    .then(Commands.literal("required_beaten_e4")
-                        .then(Commands.argument("target", EntityArgument.entity())
-                            .executes(TrainerCommands::mob_get_required_beaten_e4_target)))
-                    .then(Commands.literal("required_beaten_champs")
-                        .then(Commands.argument("target", EntityArgument.entity())
-                            .executes(TrainerCommands::mob_get_required_beaten_champs_target))))));
+                        .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainer", StringArgumentType.string())
+                            .suggests(TrainerCommands::get_trainer_suggestions)
+                            .executes(TrainerCommands::mob_get_required_level_cap)))
+                    .then(Commands.literal("required_defeats")
+                        .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("type", StringArgumentType.string())
+                            .suggests(TrainerCommands::get_type_suggestions)
+                            .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainer", StringArgumentType.string())
+                                .suggests(TrainerCommands::get_trainer_suggestions)
+                                .executes(TrainerCommands::mob_get_required_defeats)))))));
     }
 
     private static CompletableFuture<Suggestions> get_trainer_suggestions(final CommandContext<CommandSourceStack> context, final SuggestionsBuilder builder) throws CommandSyntaxException {
         RCTMod.get().getTrainerManager().getAllData().map(e -> e.getKey()).forEach(builder::suggest);
+        return builder.buildFuture();
+    }
+
+    private static CompletableFuture<Suggestions> get_type_suggestions(final CommandContext<CommandSourceStack> context, final SuggestionsBuilder builder) throws CommandSyntaxException {
+        Stream.of(Type.values()).map(Type::name).forEach(builder::suggest);
         return builder.buildFuture();
     }
 
@@ -140,69 +147,39 @@ public class TrainerCommands {
         return -1;
     }
 
-    private static int mob_get_max_trainer_wins_target(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
-        if(EntityArgument.getEntity(context, "target") instanceof TrainerMob mob) {
-            var max_trainer_wins = RCTMod.get().getTrainerManager().getData(mob).getMaxTrainerWins();
-            context.getSource().sendSuccess(() -> Component.literal(String.valueOf(max_trainer_wins)), false);
-            return max_trainer_wins;
-        }
+    private static int mob_get_max_trainer_wins(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        var max_trainer_wins = RCTMod.get().getTrainerManager()
+            .getData(context.getArgument("trainer", String.class))
+            .getMaxTrainerWins();
 
-        context.getSource().sendFailure(Component.literal("target is not a trainer mob"));
-        return -1;
+        context.getSource().sendSuccess(() -> Component.literal(String.valueOf(max_trainer_wins)), false);
+        return max_trainer_wins;
     }
 
-    private static int mob_get_max_trainer_defeats_target(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
-        if(EntityArgument.getEntity(context, "target") instanceof TrainerMob mob) {
-            var max_trainer_defeats = RCTMod.get().getTrainerManager().getData(mob).getMaxTrainerDefeats();
-            context.getSource().sendSuccess(() -> Component.literal(String.valueOf(max_trainer_defeats)), false);
-            return max_trainer_defeats;
-        }
+    private static int mob_get_max_trainer_defeats(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        var max_trainer_defeats = RCTMod.get().getTrainerManager()
+            .getData(context.getArgument("trainer", String.class))
+            .getMaxTrainerDefeats();
 
-        context.getSource().sendFailure(Component.literal("target is not a trainer mob"));
-        return -1;
+        context.getSource().sendSuccess(() -> Component.literal(String.valueOf(max_trainer_defeats)), false);
+        return max_trainer_defeats;
     }
 
-    private static int mob_get_required_level_cap_target(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
-        if(EntityArgument.getEntity(context, "target") instanceof TrainerMob mob) {
-            var required_level_cap = RCTMod.get().getTrainerManager().getData(mob).getRequiredLevelCap();
-            context.getSource().sendSuccess(() -> Component.literal(String.valueOf(required_level_cap)), false);
-            return required_level_cap;
-        }
+    private static int mob_get_required_level_cap(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        var required_level_cap = RCTMod.get().getTrainerManager()
+            .getData(context.getArgument("trainer", String.class))
+            .getRewardLevelCap();
 
-        context.getSource().sendFailure(Component.literal("target is not a trainer mob"));
-        return -1;
+        context.getSource().sendSuccess(() -> Component.literal(String.valueOf(required_level_cap)), false);
+        return required_level_cap;
     }
 
-    private static int mob_get_required_badges_target(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
-        if(EntityArgument.getEntity(context, "target") instanceof TrainerMob mob) {
-            var required_badges = RCTMod.get().getTrainerManager().getData(mob).getRequiredBadges();
-            context.getSource().sendSuccess(() -> Component.literal(String.valueOf(required_badges)), false);
-            return required_badges;
-        }
+    private static int mob_get_required_defeats(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        var required_defeats = RCTMod.get().getTrainerManager()
+            .getData(context.getArgument("trainer", String.class))
+            .getRequiredDefeats(Type.valueOf(context.getArgument("type", String.class)));
 
-        context.getSource().sendFailure(Component.literal("target is not a trainer mob"));
-        return -1;
-    }
-
-    private static int mob_get_required_beaten_e4_target(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
-        if(EntityArgument.getEntity(context, "target") instanceof TrainerMob mob) {
-            var required_beaten_e4 = RCTMod.get().getTrainerManager().getData(mob).getRequiredBeatenE4();
-            context.getSource().sendSuccess(() -> Component.literal(String.valueOf(required_beaten_e4)), false);
-            return required_beaten_e4;
-        }
-
-        context.getSource().sendFailure(Component.literal("target is not a trainer mob"));
-        return -1;
-    }
-
-    private static int mob_get_required_beaten_champs_target(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
-        if(EntityArgument.getEntity(context, "target") instanceof TrainerMob mob) {
-            var required_beaten_champs = RCTMod.get().getTrainerManager().getData(mob).getRequiredBeatenChamps();
-            context.getSource().sendSuccess(() -> Component.literal(String.valueOf(required_beaten_champs)), false);
-            return required_beaten_champs;
-        }
-
-        context.getSource().sendFailure(Component.literal("target is not a trainer mob"));
-        return -1;
+        context.getSource().sendSuccess(() -> Component.literal(String.valueOf(required_defeats)), false);
+        return required_defeats;
     }
 }

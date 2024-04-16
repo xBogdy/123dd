@@ -1,9 +1,8 @@
 {
   "type": "TEAM_ROCKET",
-  "rewardLevelCap": 0,
-  "requiredBadges": 8,
-  "requiredBeatenE4": 0,
-  "requiredBeatenChamps": 0,
+  "requiredDefeats": {
+    "LEADER": 8
+  },
   "maxTrainerWins": 1,
   "maxTrainerDefeats": 1,
   "battleCooldownTicks": 2000,

@@ -81,18 +81,14 @@ Following commands are available:
         - Sets the current number of defeats the given players have against the specified trainer type to the given value.
   - `trainer`
     - `get` (Op Level: 1)
-      - `required_level_cap <trainer>|<trainerId>`
-        - Retrieves the required level cap to fight the given trainer mob or trainer mobs with the given trainer id.
-      - `required_badges <trainer>|<trainerId>`
-        - Retrieves the amount of required badges to fight the given trainer mob or trainer mobs with the given trainer id.
-      - `required_beaten_e4 <trainer>|<trainerId>`
-        - Retrieves the amount of required beaten e4 to fight the given trainer mob or trainer mobs with the given trainer id.
-      - `required_beaten_champs <trainer>|<trainerId>`
-        - Retrieves the amount of required beaten champs to fight the given trainer mob or trainer mobs with the given trainer id.
-      - `max_trainer_wins <trainer>|<trainerId>`
-        - Retrieves the max amount of wins the given trainer mob, or trainer mobs with the given trainer id, can have before it will not accept any more fights.
-      - `max_trainer_defeats <trainer>|<trainerId>`
-        - Retrieves the max amount of defeats the given trainer mob, or trainer mobs with the given trainer id, can have before it will not accept any more fights.
+      - `required_level_cap <trainerId>`
+        - Retrieves the required level cap to fight trainer mobs with the given trainer id.
+      - `required_defeats <trainerType> <trainerId>`
+        - Retrieves the amount of required defeats against trainers from the specified type to fight trainer mobs with the given trainer id.
+      - `max_trainer_wins <trainerId>`
+        - Retrieves the max amount of wins trainer mobs with the given trainer id can have before they will not accept any more fights.
+      - `max_trainer_defeats <trainerId>`
+        - Retrieves the max amount of defeats trainer mobs with the given trainer id can have before they will not accept any more fights.
     - `spawn_for [<player>]` (Op Level: 2)
       - Attempts to spawn a trainer mob in the vicinity of the given player (using natural spawning mechanics).
     - `summon <trainerId> [<position>]` (Op Level: 2)

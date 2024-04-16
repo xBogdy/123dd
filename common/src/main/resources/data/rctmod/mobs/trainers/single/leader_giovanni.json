@@ -1,9 +1,9 @@
 {
   "type": "LEADER",
   "rewardLevelCap": 59,
-  "requiredBadges": 4,
-  "requiredBeatenE4": 0,
-  "requiredBeatenChamps": 0,
+  "requiredDefeats": {
+    "LEADER": 4
+  },
   "maxTrainerWins": 2,
   "maxTrainerDefeats": 1,
   "battleCooldownTicks": 2000,

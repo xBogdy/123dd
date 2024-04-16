@@ -104,35 +104,46 @@ public class TrainerMob extends PathfinderMob implements Npc {
             var trPlayer = RCTMod.get().getTrainerManager().getData(player);
             var trMob = RCTMod.get().getTrainerManager().getData(this);
 
-            return trPlayer.getDefeats(Type.LEADER) >= trMob.getRequiredBadges()
-                && trPlayer.getDefeats(Type.E4) >= trMob.getRequiredBeatenE4()
-                && trPlayer.getDefeats(Type.CHAMP) >= trMob.getRequiredBeatenChamps()
-                && trPlayer.getLevelCap() >= trMob.getRequiredLevelCap();
+            if(trPlayer.getLevelCap() < trMob.getRequiredLevelCap()) {
+                return false;
+            }
+
+            for(var type : Type.values()) {
+                if(trPlayer.getDefeats(type) < trMob.getRequiredDefeats(type)) {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         return false;
     }
 
     public void startBattleWith(Player player) {
-        if(this.canBattle()) {
-            var trPlayer = RCTMod.get().getTrainerManager().getData(player);
-            var trMob = RCTMod.get().getTrainerManager().getData(this);
-
-            if(trPlayer.getDefeats(Type.LEADER) < trMob.getRequiredBadges()) {
-                ChatUtils.reply(this, player, "missing_badges");
-            } else if(trPlayer.getDefeats(Type.E4) < trMob.getRequiredBeatenE4()) {
-                ChatUtils.reply(this, player, "missing_beaten_e4");
-            } else if(trPlayer.getDefeats(Type.CHAMP) < trMob.getRequiredBeatenChamps()) {
-                ChatUtils.reply(this, player, "missing_beaten_champs");
-            } else if(trPlayer.getLevelCap() < trMob.getTeam().getMembers().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0)) {
-                ChatUtils.reply(this, player, "low_level_cap");
-            } else {
-                if(ChatUtils.makebattle(this, player)) {
-                    RCTMod.get().getTrainerManager().addBattle(player, this);
-                    ChatUtils.reply(this, player, "battle_start");
-                    this.setOpponent(player);
-                }
+        if(this.canBattleAgainst(player)) {
+            if(ChatUtils.makebattle(this, player)) {
+                RCTMod.get().getTrainerManager().addBattle(player, this);
+                ChatUtils.reply(this, player, "battle_start");
+                this.setOpponent(player);
             }
+        } else {
+            this.replyTo(player);
+        }
+    }
+
+    protected void replyTo(Player player) {
+        var trPlayer = RCTMod.get().getTrainerManager().getData(player);
+        var trMob = RCTMod.get().getTrainerManager().getData(this);
+
+        if(trPlayer.getDefeats(Type.LEADER) < trMob.getRequiredDefeats(Type.LEADER)) {
+            ChatUtils.reply(this, player, "missing_badges");
+        } else if(trPlayer.getDefeats(Type.E4) < trMob.getRequiredDefeats(Type.E4)) {
+            ChatUtils.reply(this, player, "missing_beaten_e4");
+        } else if(trPlayer.getDefeats(Type.CHAMP) < trMob.getRequiredDefeats(Type.CHAMP)) {
+            ChatUtils.reply(this, player, "missing_beaten_champs");
+        } else if(trPlayer.getLevelCap() < trMob.getTeam().getMembers().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0)) {
+            ChatUtils.reply(this, player, "low_level_cap");
         }
     }
 

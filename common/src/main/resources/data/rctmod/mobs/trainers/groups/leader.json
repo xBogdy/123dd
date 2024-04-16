@@ -1,9 +1,5 @@
 {
   "type": "NORMAL",
-  "rewardLevelCap": 0,
-  "requiredBadges": 0,
-  "requiredBeatenE4": 0,
-  "requiredBeatenChamps": 0,
   "maxTrainerWins": 2,
   "maxTrainerDefeats": 1,
   "battleCooldownTicks": 2000,
