@@ -8,8 +8,6 @@
   "maxTrainerDefeats": 1,
   "battleCooldownTicks": 2000,
   "spawnChance": 1.0,
-  "biomeWhitelist": [],
-  "biomeBlacklist": [],
-  "dimensionWhitelist": [],
-  "dimensionBlacklist": []
+  "biomeTagBlacklist": ["is_void", "is_water"],
+  "biomeTagWhitelist": ["is_nether", "is_badlands", "is_wasteland", "has_structure/end_city"]
 }

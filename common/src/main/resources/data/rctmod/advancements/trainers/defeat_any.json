@@ -1,4 +1,5 @@
 {
+  "parent": "cobblemon:root",
   "display": {
     "title": {
       "text": "Radical Trainers"
@@ -9,7 +10,6 @@
     "icon": {
       "item": "cobblemon:poke_ball"
     },
-    "background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
     "announce_to_chat": false,
     "show_toast": true,
     "hidden": false,

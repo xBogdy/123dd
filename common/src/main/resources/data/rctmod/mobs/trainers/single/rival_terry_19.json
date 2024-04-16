@@ -7,9 +7,7 @@
   "maxTrainerWins": 1,
   "maxTrainerDefeats": 1,
   "battleCooldownTicks": 2000,
-  "spawnChance": 0.75,
-  "biomeWhitelist": [],
-  "biomeBlacklist": [],
-  "dimensionWhitelist": [],
-  "dimensionBlacklist": []
+  "spawnChance": 0.5,
+  "biomeTagBlacklist": ["is_void"],
+  "biomeTagWhitelist": ["is_nether", "has_structure/end_city"]
 }
