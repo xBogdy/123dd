@@ -35,15 +35,6 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Player;
 
 public class TrainerSpawner {
-    private static final int MIN_DISTANCE_TO_PLAYERS = 30;
-    public static final int MAX_DISTANCE_TO_PLAYERS = 80;
-    private static final int MAX_VERTICAL_DISTAINCE_TO_PLAYERS = 30;
-    private static final int MAX_TRAINERS_PER_PLAYER = 3;
-    private static final int MAX_TRAINERS_TOTAL = 20;
-    private static final int MAX_LEVEL_DIFF = 25; // TODO: mod config
-    private static final int SPAWN_TICK_COOLDOWN = 20;
-    private static final int SPAWN_ATTEMPS = 3;
-
     private static class SpawnCandidate {
         public final String id;
         public final double weight;
@@ -92,8 +83,9 @@ public class TrainerSpawner {
 
     public void attemptSpawnFor(Player player) {
         // ModCommon.LOG.info("SPAWN ATTEMPT FOR: " + player.getName().getString());
+        var config = RCTMod.get().getServerConfig();
 
-        if(this.spawnedTotal.size() < MAX_TRAINERS_TOTAL) {
+        if(this.spawnedTotal.size() < config.maxTrainersTotal()) {
             var spawnedFor = this.spawnedFor.get(player.getUUID());
 
             if(spawnedFor == null) {
@@ -101,7 +93,7 @@ public class TrainerSpawner {
                 this.spawnedFor.put(player.getUUID(), spawnedFor);
             }
 
-            if(spawnedFor.size() < MAX_TRAINERS_PER_PLAYER) {
+            if(spawnedFor.size() < config.maxTrainersPerPlayer()) {
                 var pos = this.nextPos(player);
                 
                 if(pos != null) {
@@ -126,13 +118,14 @@ public class TrainerSpawner {
     }
 
     private BlockPos nextPos(Player player) {
+        var config = RCTMod.get().getServerConfig();
         var level = player.level();
         var rng = player.getRandom();
         
-        int d = MAX_DISTANCE_TO_PLAYERS - MIN_DISTANCE_TO_PLAYERS;
-        int dx = (MIN_DISTANCE_TO_PLAYERS + (Math.abs(rng.nextInt()) % d)) * (rng.nextInt() < 0 ? -1 : 1);
-        int dz = (MIN_DISTANCE_TO_PLAYERS + (Math.abs(rng.nextInt()) % d)) * (rng.nextInt() < 0 ? -1 : 1);
-        int dy = rng.nextInt() > 0 ? MAX_VERTICAL_DISTAINCE_TO_PLAYERS : -MAX_VERTICAL_DISTAINCE_TO_PLAYERS;
+        int d = config.maxHorizontalDistanceToPlayers() - config.minHorizontalDistanceToPlayers();
+        int dx = (config.minHorizontalDistanceToPlayers() + (Math.abs(rng.nextInt()) % d)) * (rng.nextInt() < 0 ? -1 : 1);
+        int dz = (config.minHorizontalDistanceToPlayers() + (Math.abs(rng.nextInt()) % d)) * (rng.nextInt() < 0 ? -1 : 1);
+        int dy = rng.nextInt() > 0 ? config.maxVerticalDistanceToPlayers() : -config.maxVerticalDistanceToPlayers();
 
         int x = player.getBlockX() + dx;
         int z = player.getBlockZ() + dz;
@@ -216,6 +209,7 @@ public class TrainerSpawner {
     }
 
     private double computeWeight(Player player, TrainerMobData mobTr) {
+        var config = RCTMod.get().getServerConfig();
         var playerTr = RCTMod.get()
             .getTrainerManager()
             .getData(player);
@@ -224,6 +218,6 @@ public class TrainerSpawner {
             .getMembers().stream().map(p -> p.getLevel())
             .max(Integer::compare).orElse(0);
 
-        return diff < 0 || diff > MAX_LEVEL_DIFF ? 0 : ((MAX_LEVEL_DIFF + 1) - diff)*mobTr.getSpawnChance();
+        return diff < 0 || diff > config.maxLevelDiff() ? 0 : ((config.maxLevelDiff() + 1) - diff)*mobTr.getSpawnChance();
     }
 }

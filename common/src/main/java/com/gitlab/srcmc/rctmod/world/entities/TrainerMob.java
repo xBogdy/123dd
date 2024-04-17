@@ -21,7 +21,6 @@ import java.util.UUID;
 
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData.Type;
-import com.gitlab.srcmc.rctmod.api.service.TrainerSpawner;
 import com.gitlab.srcmc.rctmod.api.utils.ChatUtils;
 import com.gitlab.srcmc.rctmod.world.entities.goals.LookAtPlayerAndWaitGoal;
 import com.gitlab.srcmc.rctmod.world.entities.goals.PokemonBattleGoal;
@@ -67,6 +66,7 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 
 public class TrainerMob extends PathfinderMob implements Npc {
+    private static final int DISCARD_DELAY = 100;
     private static final EntityDataAccessor<String> DATA_TRAINER_ID = SynchedEntityData.defineId(TrainerMob.class, EntityDataSerializers.STRING);
     private static final EntityDataAccessor<Integer> DATA_DEFEATS = SynchedEntityData.defineId(TrainerMob.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> DATA_WINS = SynchedEntityData.defineId(TrainerMob.class, EntityDataSerializers.INT);
@@ -75,10 +75,6 @@ public class TrainerMob extends PathfinderMob implements Npc {
         .canSpawnFarFromPlayer()
         .sized(0.6F, 1.95F).build("trainer");
 
-    private static final int DISCARD_DELAY = 100;
-    private static final int DESPAWN_DISTANCE = 128; // TODO: configurable despawn distance? (or based of render distance? how?)
-    private static final int DESPAWN_DELAY = 24000; // TODO: RCTMod.getConfig()... (default: ~24000 (20 min))
-
     private int despawnDelay, discardDelay;
     private BlockPos wanderTarget;
     private Player opponent;
@@ -86,7 +82,8 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
     protected TrainerMob(EntityType<? extends PathfinderMob> entityType, Level level) {
         super(entityType, level);
-        this.despawnDelay = DESPAWN_DELAY;
+        var config = RCTMod.get().getServerConfig();
+        this.despawnDelay = config.despawnDelayTicks();
         this.discardDelay = DISCARD_DELAY;
         this.udpateCustomName();
     }
@@ -330,9 +327,10 @@ public class TrainerMob extends PathfinderMob implements Npc {
     private void maybeDespawn() {
         if(!this.isInBattle()) {
             if(this.despawnDelay == 0 || (this.despawnDelay > 0 && --this.despawnDelay == 0) || !this.canBattle()) {
+                var config = RCTMod.get().getServerConfig();
                 var level = this.level();
 
-                if(level.getNearestPlayer(this, TrainerSpawner.MAX_DISTANCE_TO_PLAYERS) == null) {
+                if(level.getNearestPlayer(this, config.maxHorizontalDistanceToPlayers()) == null) {
                     if(this.discardDelay < 0 || --this.discardDelay < 0) {
                         this.discard();
                     }
@@ -422,7 +420,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
         this.goalSelector.addGoal(1, new AvoidEntityGoal<Zoglin>(this, Zoglin.class, 10.0F, 0.5, 0.5));
         this.goalSelector.addGoal(1, new PanicGoal(this, 0.5));
         this.goalSelector.addGoal(2, new LookAtPlayerAndWaitGoal(this, Player.class, 8.0F));
-        this.goalSelector.addGoal(4, new MoveTowardsTargetGoal(this, 0.35, 1.5F*TrainerSpawner.MAX_DISTANCE_TO_PLAYERS));
+        this.goalSelector.addGoal(4, new MoveTowardsTargetGoal(this, 0.35, 1.5F*RCTMod.get().getServerConfig().maxHorizontalDistanceToPlayers()));
         // this.goalSelector.addGoal(4, new MoveTowardsRestrictionGoal(this, 0.35));
         this.goalSelector.addGoal(8, new WaterAvoidingRandomStrollGoal(this, 0.35));
         // this.goalSelector.addGoal(9, new InteractGoal(this, Player.class, 3.0F, // 1.0F));

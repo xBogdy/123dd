@@ -27,6 +27,9 @@ import com.cobblemon.mod.common.api.events.pokemon.ExperienceGainedPreEvent;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.advancements.criteria.DefeatCountTrigger;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
+import com.gitlab.srcmc.rctmod.api.config.IClientConfig;
+import com.gitlab.srcmc.rctmod.api.config.ICommonConfig;
+import com.gitlab.srcmc.rctmod.config.ServerConfig;
 import com.gitlab.srcmc.rctmod.forge.ModRegistries;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import kotlin.Unit;
@@ -34,6 +37,7 @@ import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLConstructModEvent;
@@ -42,7 +46,9 @@ import net.minecraftforge.fml.event.lifecycle.FMLConstructModEvent;
 public class ModEventBus {
     @SubscribeEvent
     static void onModConstruct(FMLConstructModEvent event) {
-        RCTMod.init(ModRegistries.LootItemConditions.LEVEL_RANGE);
+        var serverConfig = new ServerConfig();
+        ModLoadingContext.get().registerConfig(serverConfig.getType(), serverConfig.getSpec());
+        RCTMod.init(ModRegistries.LootItemConditions.LEVEL_RANGE, new IClientConfig() {}, new ICommonConfig() {}, serverConfig);
     }
 
     @SubscribeEvent

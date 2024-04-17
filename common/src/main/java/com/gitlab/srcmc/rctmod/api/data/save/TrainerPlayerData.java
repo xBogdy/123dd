@@ -28,11 +28,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.saveddata.SavedData;
 
 public class TrainerPlayerData extends SavedData {
-    public static final int MAX_LEVEL_CAP = 100;
-    public static final int MAX_BADGES = 8;
-    public static final int MAX_BEATEN_E4 = 4;
-    public static final int MAX_BEATEN_CHAMPS = 1;
-
     private int levelCap;
     private Map<Type, Integer> defeats = new HashMap<>();
 

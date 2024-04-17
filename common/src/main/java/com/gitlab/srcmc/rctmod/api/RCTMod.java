@@ -19,6 +19,9 @@ package com.gitlab.srcmc.rctmod.api;
 
 import java.util.function.Supplier;
 
+import com.gitlab.srcmc.rctmod.api.config.IClientConfig;
+import com.gitlab.srcmc.rctmod.api.config.ICommonConfig;
+import com.gitlab.srcmc.rctmod.api.config.IServerConfig;
 import com.gitlab.srcmc.rctmod.api.data.pack.DataPackManager;
 import com.gitlab.srcmc.rctmod.api.service.TrainerManager;
 import com.gitlab.srcmc.rctmod.api.service.TrainerSpawner;
@@ -33,6 +36,10 @@ public final class RCTMod {
     private DataPackManager serverDataManager;
     private TrainerSpawner trainerSpawner;
 
+    private ICommonConfig commonConfig;
+    private IClientConfig clientConfig;
+    private IServerConfig serverConfig;
+
     private static Supplier<RCTMod> instance = () -> {
         throw new RuntimeException(RCTMod.class.getName() + " not initialized");
     };
@@ -41,17 +48,20 @@ public final class RCTMod {
         return instance.get();
     }
 
-    public static void init(Supplier<LootItemConditionType> levelRangeConditon) {
-        var local = new RCTMod();
+    public static void init(Supplier<LootItemConditionType> levelRangeConditon, IClientConfig clientConfig, ICommonConfig commonConfig, IServerConfig serverConfig) {
+        var local = new RCTMod(clientConfig, commonConfig, serverConfig);
         instance = () -> local;
         LevelRangeCondition.init(levelRangeConditon);
     }
 
-    private RCTMod() {
+    private RCTMod(IClientConfig clientConfig, ICommonConfig commonConfig, IServerConfig serverConfig) {
         this.trainerManager = new TrainerManager();
         this.clientDataManager = new DataPackManager(PackType.CLIENT_RESOURCES);
         this.serverDataManager = new DataPackManager(PackType.SERVER_DATA);
         this.trainerSpawner = new TrainerSpawner();
+        this.clientConfig = clientConfig;
+        this.commonConfig = commonConfig;
+        this.serverConfig = serverConfig;
     }
 
     public TrainerManager getTrainerManager() {
@@ -68,5 +78,17 @@ public final class RCTMod {
 
     public TrainerSpawner getTrainerSpawner() {
         return this.trainerSpawner;
+    }
+
+    public IClientConfig getClientConfig() {
+        return this.clientConfig;
+    }
+
+    public ICommonConfig getCommonConfig() {
+        return this.commonConfig;
+    }
+
+    public IServerConfig getServerConfig() {
+        return this.serverConfig;
     }
 }

@@ -15,19 +15,25 @@
  * You should have received a copy of the GNU Lesser General Public License along
  * with Radical Cobblemon Trainers. If not, see <http://www.gnu.org/licenses/lgpl>.
  */
-package com.gitlab.srcmc.rctmod.api.config;
+package com.gitlab.srcmc.rctmod.config;
 
-// TODO: DRAFT
-public interface IModConfig {
-    // levels
-    boolean levelCapLimitsExp();
+import net.minecraftforge.common.ForgeConfigSpec;
+import net.minecraftforge.fml.config.ModConfig;
 
-    // trainers
-    boolean weakDontFight();
+public abstract class ForgeConfig {
+    private ModConfig.Type type;
 
-    // spawning
-    int maxTrainersPerPlayer();
-    int maxTrainersTotal();
-    int spawnIntervalTicks();
-    int despawnDelay(); // -1 => no despawn until beaten
+    public ForgeConfig(ModConfig.Type type) {
+        this.type = type;
+    }
+
+    public abstract ForgeConfigSpec getSpec();
+
+    public ModConfig.Type getType() {
+        return this.type;
+    }
+
+    protected static ForgeConfigSpec.Builder createBuilder() {
+        return new ForgeConfigSpec.Builder();
+    }
 }
