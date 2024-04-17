@@ -25,6 +25,13 @@ license="${license}"
   ordering="NONE"
   side="BOTH"
 
+# [[dependencies.${mod_id}]]
+#   modId="forgeconfigapiport"
+#   mandatory=true
+#   versionRange="[${fcap_min_ver},${fcap_max_ver})"
+#   ordering="NONE"
+#   side="BOTH"
+
 [[dependencies.${mod_id}]]
   modId="cobblemon"
   mandatory=true

@@ -65,6 +65,11 @@ subprojects {
             name = 'Kotlin for Forge'
             url = 'https://thedarkcolour.github.io/KotlinForForge/'
         }
+
+        maven {
+            name = "Fuzs Mod Resources"
+            url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/"
+        }
     }
 
     tasks.withType(JavaCompile).configureEach {
