@@ -1,0 +1,135 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:max_potion"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:antidote"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:awakening"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:burn_heal"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:ice_heal"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:paralyze_heal"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:full_heal"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:elixir"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:max_ether"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:revive"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:x_attack"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:x_accuracy"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:x_defence"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:x_special_defence"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:x_special_attack"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:x_speed"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:guard_spec"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:dire_hit"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:hp_up"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:protein"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:iron"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:calcium"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:carbos"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:zinc"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:pp_up"
+        }
+      ]
+    }
+  ],
+  "random_sequence": "rctmod:generic/epic/medicine"
+}

@@ -1,0 +1,30 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:poke_ball"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:safari_ball"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:sport_ball"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:heal_ball"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:premier_ball"
+        }
+      ]
+    }
+  ],
+  "random_sequence": "rctmod:generic/uncommon/pokeballs"
+}

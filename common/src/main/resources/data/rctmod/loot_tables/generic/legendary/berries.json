@@ -1,0 +1,185 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:leppa_berry"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:figy_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:wiki_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:mago_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:aguav_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:iapapa_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:sitrus_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:enigma_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:lum_berry"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:micle_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:kee_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:salac_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:petaya_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:custap_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:maranga_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:ganlon_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:liechi_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:starf_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:lansat_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:apicot_berry"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:payapa_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:tanga_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:charti_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:haban_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:colbur_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:kasib_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:babiri_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:chilan_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:roseli_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:kebia_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:chople_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:rindo_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:yache_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:wacan_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:passho_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:occa_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:coba_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:shuca_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:jaboca_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:rowap_berry"
+        }
+      ]
+    }
+  ],
+  "random_sequence": "rctmod:generic/legendary/berries"
+}

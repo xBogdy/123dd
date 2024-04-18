@@ -1,0 +1,45 @@
+{
+    "pools": [
+      {
+        "rolls": 1,
+        "entries": [
+          {
+            "type": "minecraft:loot_table",
+            "name": "rctmod:generic/legendary/battle",
+            "weight": 1
+          },
+          {
+            "type": "minecraft:loot_table",
+            "name": "rctmod:generic/legendary/berries",
+            "weight": 1
+          },
+          {
+            "type": "minecraft:loot_table",
+            "name": "rctmod:generic/legendary/medicine",
+            "weight": 1
+          },
+          {
+            "type": "minecraft:loot_table",
+            "name": "rctmod:generic/legendary/nature",
+            "weight": 1
+          },
+          {
+            "type": "minecraft:loot_table",
+            "name": "rctmod:generic/legendary/pokeballs",
+            "weight": 1
+          },
+          {
+            "type": "minecraft:loot_table",
+            "name": "rctmod:generic/legendary/training",
+            "weight": 1
+          },
+          {
+            "type": "minecraft:loot_table",
+            "name": "rctmod:generic/legendary/vanilla",
+            "weight": 1
+          }
+        ]
+      }
+    ]
+  }
+  

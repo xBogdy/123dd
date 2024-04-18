@@ -1,0 +1,14 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:oran_berry"
+        }
+      ]
+    }
+  ],
+  "random_sequence": "rctmod:generic/common/berries"
+}

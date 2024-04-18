@@ -1,0 +1,77 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:fine_remedy"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:pep_up_flower"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:medicinal_leek"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:red_apricorn"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:white_apricorn"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:growth_mulch"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:rich_mulch"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:mulch_base"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:sandy_mulch"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:loamy_mulch"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:coarse_mulch"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:peat_mulch"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:humid_mulch"
+        }
+      ]
+    }
+  ],
+  "random_sequence": "rctmod:generic/uncommon/nature"
+}

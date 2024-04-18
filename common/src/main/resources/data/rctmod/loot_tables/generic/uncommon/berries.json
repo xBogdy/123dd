@@ -1,0 +1,47 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:berry_juice"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:oran_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:cheri_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:pecha_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:rawst_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:aspear_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:persim_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:touga_berry"
+        }
+      ]
+    }
+  ],
+  "random_sequence": "rctmod:generic/uncommon/berries"
+}

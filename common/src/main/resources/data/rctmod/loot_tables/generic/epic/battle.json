@@ -1,0 +1,54 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:assault_vest"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:kings_rock"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:rocky_helmet"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:heavy_duty_boots"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:focus_band"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:light_clay"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:lucky_egg"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:muscle_band"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:quick_claw"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:safety_goggles"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:wise_glasses"
+        }
+      ]
+    }
+  ],
+  "random_sequence": "rctmod:generic/epic/battle"
+}

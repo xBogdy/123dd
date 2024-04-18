@@ -1,0 +1,38 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:exp_share"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:power_weight"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:power_belt"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:power_bracer"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:power_lens"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:power_band"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:power_anklet"
+        }
+      ]
+    }
+  ],
+  "random_sequence": "rctmod:generic/legendary/training"
+}

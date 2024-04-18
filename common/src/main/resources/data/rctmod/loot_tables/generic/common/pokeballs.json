@@ -1,0 +1,38 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:poke_ball"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:citrine_ball"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:verdant_ball"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:azure_ball"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:roseate_ball"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:slate_ball"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:premier_ball"
+        }
+      ]
+    }
+  ],
+  "random_sequence": "rctmod:generic/common/pokeballs"
+}

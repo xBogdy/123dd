@@ -1,0 +1,100 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:ultra_ball"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:friend_ball"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:fast_ball"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:love_ball"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:moon_ball"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:heavy_ball"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:level_ball"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:lure_ball"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:premier_ball"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:nest_ball"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:park_ball"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:timer_ball"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:repeat_ball"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:park_ball"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:dusk_ball"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:quick_ball"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:dream_ball"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:dive_ball"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:net_ball"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:luxury_ball"
+        }
+      ]
+    }
+  ],
+  "random_sequence": "rctmod:generic/rare/pokeballs"
+}
