@@ -81,6 +81,12 @@ dependencies {
     // Cobblemon Trainers
     implementation fg.deobf("curse.maven:cobblemontrainers-959503:${cobblemontrainers_version}")
 
+    // Patchouli
+    runtimeOnly fg.deobf("curse.maven:patchouli-306770:${patchouli_version}")
+
+    // Cobblepedia
+    runtimeOnly fg.deobf("curse.maven:cobblepedia-850946:${cobblepedia_version}")
+
     // Configured
     runtimeOnly fg.deobf("curse.maven:configured-457570:${configured_version}")
 
