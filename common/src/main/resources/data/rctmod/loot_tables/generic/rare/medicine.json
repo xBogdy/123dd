@@ -5,7 +5,45 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "cobblemon:hyper_potion"
+          "name": "cobblemon:potion",
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "entity": "this",
+              "range": {
+                "min": 0,
+                "max": 15
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:super_potion",
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "entity": "this",
+              "range": {
+                "min": 15,
+                "max": 37
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:hyper_potion",
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "entity": "this",
+              "range": {
+                "min": 38,
+                "max": 100
+              }
+            }
+          ]
         }
       ]
     },

@@ -91,16 +91,13 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "cobblemon:luxury_ball"
-        }
-      ]
-    },
-    {
-      "rolls": 1,
-      "entries": [
+          "name": "cobblemon:luxury_ball",
+          "weight": 10
+        },
         {
           "type": "minecraft:item",
-          "name": "cobblemon:beast_ball"
+          "name": "cobblemon:beast_ball",
+          "weight": 1
         }
       ]
     }
