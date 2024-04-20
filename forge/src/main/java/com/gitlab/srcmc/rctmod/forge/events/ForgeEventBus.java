@@ -37,8 +37,6 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 
 @Mod.EventBusSubscriber(modid = ModCommon.MOD_ID, bus = Bus.FORGE)
 public class ForgeEventBus {
-    static int SPAWN_DELAY = 200; // TODO: config option (and longer by default ~ 6000 ticks = 5 min)
-
     @SubscribeEvent
     static void onServerStarted(ServerStartedEvent event) {
         RCTMod.get().getServerDataManager().listTrainerTeams(ForgeEventBus::addTrainer);
@@ -47,7 +45,9 @@ public class ForgeEventBus {
     @SubscribeEvent
     static void onPlayerTick(PlayerTickEvent event) {
         if(event.side.isServer()) {
-            if(SPAWN_DELAY == 0 || SPAWN_DELAY > 0 && event.player.tickCount % SPAWN_DELAY == 0) {
+            var interval = RCTMod.get().getServerConfig().spawnIntervalTicks();
+
+            if(interval == 0 || interval > 0 && event.player.tickCount % interval == 0) {
                 RCTMod.get().getTrainerSpawner().attemptSpawnFor(event.player);
             }
         }
