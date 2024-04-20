@@ -58,12 +58,7 @@
               }
             }
           ]
-        }
-      ]
-    },
-    {
-      "rolls": 1,
-      "entries": [
+        },
         {
           "type": "minecraft:item",
           "name": "cobblemon:antidote"
@@ -87,12 +82,7 @@
         {
           "type": "minecraft:item",
           "name": "cobblemon:full_heal"
-        }
-      ]
-    },
-    {
-      "rolls": 1,
-      "entries": [
+        },
         {
           "type": "minecraft:item",
           "name": "cobblemon:elixir"
@@ -100,21 +90,11 @@
         {
           "type": "minecraft:item",
           "name": "cobblemon:max_ether"
-        }
-      ]
-    },
-    {
-      "rolls": 1,
-      "entries": [
+        },
         {
           "type": "minecraft:item",
           "name": "cobblemon:revive"
-        }
-      ]
-    },
-    {
-      "rolls": 1,
-      "entries": [
+        },
         {
           "type": "minecraft:item",
           "name": "cobblemon:x_attack"
@@ -146,12 +126,7 @@
         {
           "type": "minecraft:item",
           "name": "cobblemon:dire_hit"
-        }
-      ]
-    },
-    {
-      "rolls": 1,
-      "entries": [
+        },
         {
           "type": "minecraft:item",
           "name": "cobblemon:hp_up",

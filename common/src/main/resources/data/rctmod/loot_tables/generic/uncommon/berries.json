@@ -6,12 +6,7 @@
         {
           "type": "minecraft:item",
           "name": "cobblemon:berry_juice"
-        }
-      ]
-    },
-    {
-      "rolls": 1,
-      "entries": [
+        },
         {
           "type": "minecraft:item",
           "name": "cobblemon:oran_berry",

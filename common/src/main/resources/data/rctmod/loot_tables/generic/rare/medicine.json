@@ -44,12 +44,7 @@
               }
             }
           ]
-        }
-      ]
-    },
-    {
-      "rolls": 1,
-      "entries": [
+        },
         {
           "type": "minecraft:item",
           "name": "cobblemon:antidote"
@@ -69,21 +64,11 @@
         {
           "type": "minecraft:item",
           "name": "cobblemon:paralyze_heal"
-        }
-      ]
-    },
-    {
-      "rolls": 1,
-      "entries": [
+        },
         {
           "type": "minecraft:item",
           "name": "cobblemon:revive"
-        }
-      ]
-    },
-    {
-      "rolls": 1,
-      "entries": [
+        },
         {
           "type": "minecraft:item",
           "name": "cobblemon:ether"

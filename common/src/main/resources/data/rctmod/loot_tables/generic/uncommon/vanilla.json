@@ -28,12 +28,7 @@
               }
             }
           ]
-        }
-      ]
-    },
-    {
-      "rolls": 1,
-      "entries": [
+        },
         {
           "type": "minecraft:item",
           "name": "minecraft:potion",
@@ -47,12 +42,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:honey_bottle"
-        }
-      ]
-    },
-    {
-      "rolls": 1,
-      "entries": [
+        },
         {
           "type": "minecraft:item",
           "name": "minecraft:iron_nugget",

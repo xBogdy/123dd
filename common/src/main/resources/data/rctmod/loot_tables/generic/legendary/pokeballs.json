@@ -38,12 +38,7 @@
         {
           "type": "minecraft:item",
           "name": "cobblemon:premier_ball"
-        }
-      ]
-    },
-    {
-      "rolls": 1,
-      "entries": [
+        },
         {
           "type": "minecraft:item",
           "name": "cobblemon:nest_ball"
@@ -83,12 +78,7 @@
         {
           "type": "minecraft:item",
           "name": "cobblemon:net_ball"
-        }
-      ]
-    },
-    {
-      "rolls": 1,
-      "entries": [
+        },
         {
           "type": "minecraft:item",
           "name": "cobblemon:luxury_ball",

@@ -44,12 +44,7 @@
               }
             }
           ]
-        }
-      ]
-    },
-    {
-      "rolls": 1,
-      "entries": [
+        },
         {
           "type": "minecraft:item",
           "name": "cobblemon:surprise_mulch"
@@ -57,12 +52,7 @@
         {
           "type": "minecraft:item",
           "name": "cobblemon:heal_powder"
-        }
-      ]
-    },
-    {
-      "rolls": 1,
-      "entries": [
+        },
         {
           "type": "minecraft:item",
           "name": "cobblemon:vivichoke"
@@ -70,12 +60,7 @@
         {
           "type": "minecraft:item",
           "name": "cobblemon:vivichoke_seeds"
-        }
-      ]
-    },
-    {
-      "rolls": 1,
-      "entries": [
+        },
         {
           "type": "minecraft:item",
           "name": "cobblemon:energy_root"
@@ -83,12 +68,7 @@
         {
           "type": "minecraft:item",
           "name": "cobblemon:big_root"
-        }
-      ]
-    },
-    {
-      "rolls": 1,
-      "entries": [
+        },
         {
           "type": "minecraft:item",
           "name": "cobblemon:red_mint_seeds"
@@ -112,12 +92,7 @@
         {
           "type": "minecraft:item",
           "name": "cobblemon:green_mint_seeds"
-        }
-      ]
-    },
-    {
-      "rolls": 1,
-      "entries": [
+        },
         {
           "type": "minecraft:item",
           "name": "cobblemon:pep_up_flower",
@@ -147,12 +122,7 @@
         {
           "type": "minecraft:item",
           "name": "cobblemon:revival_herb"
-        }
-      ]
-    },
-    {
-      "rolls": 1,
-      "entries": [
+        },
         {
           "type": "minecraft:item",
           "name": "cobblemon:red_apricorn_seed"
@@ -180,12 +150,7 @@
         {
           "type": "minecraft:item",
           "name": "cobblemon:white_apricorn_seed"
-        }
-      ]
-    },
-    {
-      "rolls": 1,
-      "entries": [
+        },
         {
           "type": "minecraft:item",
           "name": "cobblemon:mental_herb"
