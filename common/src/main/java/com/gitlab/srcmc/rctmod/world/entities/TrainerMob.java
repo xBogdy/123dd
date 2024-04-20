@@ -29,9 +29,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtUtils;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
@@ -67,15 +64,13 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 
 public class TrainerMob extends PathfinderMob implements Npc {
     private static final int DISCARD_DELAY = 100;
-    private static final EntityDataAccessor<String> DATA_TRAINER_ID = SynchedEntityData.defineId(TrainerMob.class, EntityDataSerializers.STRING);
-    private static final EntityDataAccessor<Integer> DATA_DEFEATS = SynchedEntityData.defineId(TrainerMob.class, EntityDataSerializers.INT);
-    private static final EntityDataAccessor<Integer> DATA_WINS = SynchedEntityData.defineId(TrainerMob.class, EntityDataSerializers.INT);
     private static final EntityType<TrainerMob> TYPE = EntityType.Builder
         .of(TrainerMob::new, MobCategory.MISC)
         .canSpawnFarFromPlayer()
         .sized(0.6F, 1.95F).build("trainer");
 
-    private int despawnDelay, discardDelay;
+    private String trainerId = "";
+    private int despawnDelay, discardDelay, cooldown, wins, defeats;
     private BlockPos wanderTarget;
     private Player opponent;
     private UUID originPlayer;
@@ -156,48 +151,19 @@ public class TrainerMob extends PathfinderMob implements Npc {
         return opponent != null;
     }
 
-    protected void updateBattleResult(boolean defeated) {
-        var level = this.level();
-
-        if(!level.isClientSide) {
-            if(defeated) {
-                var defeats = this.getDefeats();
-                this.entityData.set(DATA_DEFEATS, defeats < Integer.MAX_VALUE ? defeats + 1 : defeats);
-            } else {
-                var wins = this.getWins();
-                this.entityData.set(DATA_WINS, wins < Integer.MAX_VALUE ? wins + 1 : wins);
-            }
-        }
-    }
-
-    public void setDefeats(int defeats) {
-        var level = this.level();
-
-        if(!level.isClientSide) {
-            this.entityData.set(DATA_DEFEATS, defeats);
-        }
-    }
-
     public int getDefeats() {
-        return this.entityData.get(DATA_DEFEATS);
-    }
-
-    public void setWins(int wins) {
-        var level = this.level();
-
-        if(!level.isClientSide) {
-            this.entityData.set(DATA_WINS, wins);
-        }
+        return this.defeats;
     }
 
     public int getWins() {
-        return this.entityData.get(DATA_WINS);
+        return this.wins;
     }
 
     public boolean canBattle() {
         var mobTr = RCTMod.get().getTrainerManager().getData(this);
 
         return !this.isInBattle()
+            && this.getCooldown() == 0
             && this.getDefeats() < mobTr.getMaxTrainerDefeats()
             && this.getWins() < mobTr.getMaxTrainerWins();
     }
@@ -214,31 +180,34 @@ public class TrainerMob extends PathfinderMob implements Npc {
             var currentId = this.getTrainerId();
 
             if((currentId == null && trainerId != null) || !currentId.equals(trainerId)) {
-                RCTMod.get().getTrainerSpawner().unregisterMob(this);
-                this.entityData.set(DATA_TRAINER_ID, trainerId);
+                var spawner = RCTMod.get().getTrainerSpawner();
+                spawner.unregisterMob(this);
+                this.trainerId = trainerId;
                 this.udpateCustomName();
-                RCTMod.get().getTrainerSpawner().registerMob(this);
+                spawner.registerMob(this);
             }
         }
     }
 
     public String getTrainerId() {
-        return this.entityData.get(DATA_TRAINER_ID);
+        return this.trainerId;
     }
 
     public void finishBattle(boolean defeated) {
         var level = this.level();
 
         if(!level.isClientSide && isInBattle()) {
-            ChatUtils.reply(this, this.getOpponent(), defeated ? "battle_lost" : "battle_win");
-            this.updateBattleResult(defeated);
+            ChatUtils.reply(this, this.getOpponent(), defeated ? "battle_lost" : "battle_won");
+            var mobTr = RCTMod.get().getTrainerManager().getData(this);
+            this.cooldown = mobTr.getBattleCooldownTicks();
             this.setOpponent(null);
             this.setTarget(null);
 
             if(defeated) {
-                this.dropBattleLoot(RCTMod.get()
-                    .getTrainerManager().getData(this)
-                    .getLootTableResource());
+                this.defeats++;
+                this.dropBattleLoot(mobTr.getLootTableResource());
+            } else {
+                this.wins++;
             }
         }
     }
@@ -257,27 +226,42 @@ public class TrainerMob extends PathfinderMob implements Npc {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(DATA_TRAINER_ID, ""); // TODO: sync not required?
-        this.entityData.define(DATA_DEFEATS, 0); // TODO: sync not required?
-        this.entityData.define(DATA_WINS, 0); // TODO: sync not required?
+    public void tick() {
+        super.tick();
+        var level = this.level();
+
+        if(!level.isClientSide) {
+            if(this.cooldown > 0) {
+                this.cooldown--;
+            }
+        }
     }
 
     @Override
     public InteractionResult mobInteract(Player player, InteractionHand interactionHand) {
-        if(this.canBattle()) {
-            var level = this.level();
+        var level = this.level();
 
-            if(!level.isClientSide) {
+        if(!level.isClientSide) {
+            if(this.canBattle()) {
                 this.startBattleWith(player);
-            }
+            } else {
+                var mobTr = RCTMod.get().getTrainerManager().getData(this);
 
-            return InteractionResult.sidedSuccess(level.isClientSide);
-        } else {
-            // TODO: "defeated" or "busy/cooldown" response
-            return super.mobInteract(player, interactionHand);
+                if(this.isInBattle()) {
+                    ChatUtils.reply(this, player, "is_busy");
+                } else if(this.getDefeats() >= mobTr.getMaxTrainerDefeats()) {
+                    ChatUtils.reply(this, player, "done_looser");
+                } else if(this.getWins() >= mobTr.getMaxTrainerWins()) {
+                    ChatUtils.reply(this, player, "done_winner");
+                } else if(this.getCooldown() > 0) {
+                    ChatUtils.reply(this, player, "on_cooldown");
+                } else {
+                    ChatUtils.reply(this, player, "done_generic");
+                }
+            }
         }
+
+        return InteractionResult.sidedSuccess(level.isClientSide);
     }
 
     @Override
@@ -308,6 +292,10 @@ public class TrainerMob extends PathfinderMob implements Npc {
     @Override
     protected SoundEvent getDeathSound() {
         return SoundEvents.WANDERING_TRADER_DEATH;
+    }
+
+    public int getCooldown() {
+        return this.cooldown;
     }
 
     public int getDespawnDelay() {
@@ -367,6 +355,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
         compoundTag.putInt("DespawnDelay", this.getDespawnDelay());
         compoundTag.putInt("Defeats", this.getDefeats());
         compoundTag.putInt("Wins", this.getWins());
+        compoundTag.putInt("Cooldown", this.getCooldown());
         compoundTag.putString("TrainerId", this.getTrainerId());
 
         if(this.originPlayer != null) {
@@ -387,11 +376,15 @@ public class TrainerMob extends PathfinderMob implements Npc {
         }
 
         if(compoundTag.contains("Defeats")) {
-            this.setDefeats(compoundTag.getInt("Defeats"));
+            this.defeats = compoundTag.getInt("Defeats");
         }
 
         if(compoundTag.contains("Wins")) {
-            this.setWins(compoundTag.getInt("Wins"));
+            this.wins =  compoundTag.getInt("Wins");
+        }
+
+        if(compoundTag.contains("Cooldown")) {
+            this.cooldown = compoundTag.getInt("Cooldown");
         }
 
         if(compoundTag.contains("OriginPlayer")) {

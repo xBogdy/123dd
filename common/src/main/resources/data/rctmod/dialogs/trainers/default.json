@@ -539,5 +539,17 @@
     "I need to take it easy for a while.",
     "I'm too fatigued for a battle right now.",
     "Sorry, I need to let my pokemon rest."
+  ],
+  "is_busy": [
+    "Can't you see I'm busy?"
+  ],
+  "done_looser": [
+    "You got me good this time."
+  ],
+  "done_winner": [
+    "I hope you have learned from this lesson."
+  ],
+  "done_generic": [
+    "I'm done."
   ]
 }
