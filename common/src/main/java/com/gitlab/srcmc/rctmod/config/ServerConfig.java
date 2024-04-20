@@ -36,7 +36,7 @@ public class ServerConfig extends ForgeConfig implements IServerConfig {
     private ConfigValue<Integer> maxLevelDiffValue;
 
     // player
-    private ConfigValue<Integer> initialLevelCapValue;
+    private ConfigValue<Integer> initialLevelCapValue; // TODO: has currently no effect
 
     private ForgeConfigSpec spec;
 
