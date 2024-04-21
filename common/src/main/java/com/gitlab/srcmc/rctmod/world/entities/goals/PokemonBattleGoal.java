@@ -32,6 +32,7 @@ public class PokemonBattleGoal extends LookAtPlayerGoal {
         super(trainer, Mob.class, 8.0F, 1F, false);
         this.setFlags(EnumSet.of(Flag.LOOK, Flag.MOVE));
         this.trainer = trainer;
+        trainer.getNavigation().stop();
     }
 
     @Override

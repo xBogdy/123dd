@@ -23,6 +23,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 
+// TODO: deprecated
 public class LookAtPlayerAndWaitGoal extends LookAtPlayerGoal {
     public LookAtPlayerAndWaitGoal(Mob mob, Class<? extends LivingEntity> class_, float f) {
         this(mob, class_, f, 1F);
