@@ -17,6 +17,7 @@
  */
 package com.gitlab.srcmc.rctmod.api;
 
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 import com.gitlab.srcmc.rctmod.api.config.IClientConfig;
@@ -28,6 +29,7 @@ import com.gitlab.srcmc.rctmod.api.service.TrainerSpawner;
 import com.gitlab.srcmc.rctmod.world.loot.conditions.LevelRangeCondition;
 
 import net.minecraft.server.packs.PackType;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 
 public final class RCTMod {
@@ -48,14 +50,14 @@ public final class RCTMod {
         return instance.get();
     }
 
-    public static void init(Supplier<LootItemConditionType> levelRangeConditon, IClientConfig clientConfig, ICommonConfig commonConfig, IServerConfig serverConfig) {
-        var local = new RCTMod(clientConfig, commonConfig, serverConfig);
+    public static void init(Supplier<LootItemConditionType> levelRangeConditon, Function<Player, Integer> playerLevelSupplier, IClientConfig clientConfig, ICommonConfig commonConfig, IServerConfig serverConfig) {
+        var local = new RCTMod(playerLevelSupplier, clientConfig, commonConfig, serverConfig);
         instance = () -> local;
         LevelRangeCondition.init(levelRangeConditon);
     }
 
-    private RCTMod(IClientConfig clientConfig, ICommonConfig commonConfig, IServerConfig serverConfig) {
-        this.trainerManager = new TrainerManager();
+    private RCTMod(Function<Player, Integer> playerLevelSupplier, IClientConfig clientConfig, ICommonConfig commonConfig, IServerConfig serverConfig) {
+        this.trainerManager = new TrainerManager(playerLevelSupplier);
         this.clientDataManager = new DataPackManager(PackType.CLIENT_RESOURCES);
         this.serverDataManager = new DataPackManager(PackType.SERVER_DATA);
         this.trainerSpawner = new TrainerSpawner();

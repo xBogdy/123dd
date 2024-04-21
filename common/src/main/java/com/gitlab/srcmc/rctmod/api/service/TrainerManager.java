@@ -21,6 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.function.Function;
 import java.util.stream.Stream;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
@@ -45,9 +46,16 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
 
     private Map<String, TrainerMobData> trainerMobs = new HashMap<>();
     private Map<UUID, TrainerBattle> trainerBattles = new HashMap<>();
+    private Function<Player, Integer> playerLevelSupplier;
 
     public TrainerManager() {
         super(GSON, ModCommon.MOD_ID);
+        this.playerLevelSupplier = p -> TrainerManager.this.getData(p).getLevelCap();
+    }
+
+    public TrainerManager(Function<Player, Integer> playerLevelSupplier) {
+        super(GSON, ModCommon.MOD_ID);
+        this.playerLevelSupplier = playerLevelSupplier;
     }
 
     public void addBattle(Player initiator, TrainerMob opponent) {
@@ -89,6 +97,10 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
         }
 
         return this.trainerMobs.get(trainerId);
+    }
+
+    public int getPlayerLevel(Player player) {
+        return this.playerLevelSupplier.apply(player);
     }
 
     public TrainerPlayerData getData(Player player) {

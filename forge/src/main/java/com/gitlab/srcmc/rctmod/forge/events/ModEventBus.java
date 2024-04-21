@@ -19,6 +19,7 @@ package com.gitlab.srcmc.rctmod.forge.events;
 
 import java.util.List;
 
+import com.cobblemon.mod.common.Cobblemon;
 import com.cobblemon.mod.common.api.Priority;
 import com.cobblemon.mod.common.api.battles.model.actor.BattleActor;
 import com.cobblemon.mod.common.api.events.CobblemonEvents;
@@ -34,6 +35,8 @@ import com.gitlab.srcmc.rctmod.forge.ModRegistries;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import kotlin.Unit;
 import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -48,7 +51,7 @@ public class ModEventBus {
     static void onModConstruct(FMLConstructModEvent event) {
         var serverConfig = new ServerConfig();
         ModLoadingContext.get().registerConfig(serverConfig.getType(), serverConfig.getSpec());
-        RCTMod.init(ModRegistries.LootItemConditions.LEVEL_RANGE, new IClientConfig() {}, new ICommonConfig() {}, serverConfig);
+        RCTMod.init(ModRegistries.LootItemConditions.LEVEL_RANGE, ModEventBus::getPlayerLevel, new IClientConfig() {}, new ICommonConfig() {}, serverConfig);
     }
 
     @SubscribeEvent
@@ -100,5 +103,15 @@ public class ModEventBus {
         }
 
         return false;
+    }
+
+    private static int getPlayerLevel(Player player) {
+        int maxLevel = 0;
+
+        for(var pk : Cobblemon.INSTANCE.getStorage().getParty((ServerPlayer)player)) {
+            maxLevel = Math.max(maxLevel, pk.getLevel());
+        }
+
+        return maxLevel;
     }
 }

@@ -49,7 +49,6 @@ public class TrainerSpawner {
     private Set<String> spawnedTotal = new HashSet<>();
 
     public void registerMob(TrainerMob mob) {
-        // ModCommon.LOG.info("REGISTERING: " + mob.getDisplayName().getString());
         var originPlayer = mob.getOriginPlayer();
         var tmd = RCTMod.get().getTrainerManager().getData(mob);
         this.spawnedTotal.add(tmd.getTeam().getDisplayName());
@@ -67,7 +66,6 @@ public class TrainerSpawner {
     }
 
     public void unregisterMob(TrainerMob mob) {
-        // ModCommon.LOG.info("UNREGISTERING: " + mob.getDisplayName().getString());
         var originPlayer = mob.getOriginPlayer();
         var tmd = RCTMod.get().getTrainerManager().getData(mob);
         this.spawnedTotal.remove(tmd.getTeam().getDisplayName());
@@ -82,7 +80,6 @@ public class TrainerSpawner {
     }
 
     public void attemptSpawnFor(Player player) {
-        // ModCommon.LOG.info("SPAWN ATTEMPT FOR: " + player.getName().getString());
         var config = RCTMod.get().getServerConfig();
 
         if(this.spawnedTotal.size() < config.maxTrainersTotal()) {
@@ -210,11 +207,10 @@ public class TrainerSpawner {
 
     private double computeWeight(Player player, TrainerMobData mobTr) {
         var config = RCTMod.get().getServerConfig();
-        var playerTr = RCTMod.get()
-            .getTrainerManager()
-            .getData(player);
+        var tm = RCTMod.get().getTrainerManager();
+        var playerTr = tm.getData(player);
 
-        int diff = playerTr.getLevelCap() - mobTr.getTeam()
+        int diff = Math.min(tm.getPlayerLevel(player), playerTr.getLevelCap()) - mobTr.getTeam()
             .getMembers().stream().map(p -> p.getLevel())
             .max(Integer::compare).orElse(0);
 
