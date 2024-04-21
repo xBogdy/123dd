@@ -21,6 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
+import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData.Type;
 
 import net.minecraft.nbt.CompoundTag;
@@ -43,6 +44,10 @@ public class TrainerPlayerData extends SavedData {
         }
         
         return tpd;
+    }
+
+    public TrainerPlayerData() {
+        this.levelCap = RCTMod.get().getServerConfig().initialLevelCap();
     }
 
     public static String filePath(Player player) {
