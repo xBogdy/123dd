@@ -28,6 +28,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtUtils;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
@@ -65,12 +68,12 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 
 public class TrainerMob extends PathfinderMob implements Npc {
     private static final int DISCARD_DELAY = 100;
+    private static final EntityDataAccessor<String> DATA_TRAINER_ID = SynchedEntityData.defineId(TrainerMob.class, EntityDataSerializers.STRING);
     private static final EntityType<TrainerMob> TYPE = EntityType.Builder
         .of(TrainerMob::new, MobCategory.MISC)
         .canSpawnFarFromPlayer()
         .sized(0.6F, 1.95F).build("trainer");
 
-    private String trainerId = "";
     private int despawnDelay, discardDelay, cooldown, wins, defeats;
     private BlockPos wanderTarget;
     private Player opponent;
@@ -183,7 +186,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
             if((currentId == null && trainerId != null) || !currentId.equals(trainerId)) {
                 var spawner = RCTMod.get().getTrainerSpawner();
                 spawner.unregisterMob(this);
-                this.trainerId = trainerId;
+                this.entityData.set(DATA_TRAINER_ID, trainerId);
                 this.udpateCustomName();
                 spawner.registerMob(this);
             }
@@ -191,7 +194,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
     }
 
     public String getTrainerId() {
-        return this.trainerId;
+        return this.entityData.get(DATA_TRAINER_ID);
     }
 
     public void finishBattle(boolean defeated) {
@@ -224,6 +227,12 @@ public class TrainerMob extends PathfinderMob implements Npc {
         lootTable.getRandomItems(
             builder.create(LootContextParamSets.ENTITY),
             this.getLootTableSeed(), this::spawnAtLocation);
+    }
+
+    @Override
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+        this.entityData.define(DATA_TRAINER_ID, "");
     }
 
     @Override
