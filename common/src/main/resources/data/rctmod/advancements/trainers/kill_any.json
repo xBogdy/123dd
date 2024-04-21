@@ -8,7 +8,7 @@
       "text": "Not like this!"
     },
     "icon": {
-      "item": "cobblemon:poke_ball"
+      "item": "minecraft:iron_sword"
     },
     "announce_to_chat": false,
     "show_toast": true,
