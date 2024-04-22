@@ -8,6 +8,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -16,7 +17,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLConstructModEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegisterEvent;
 
 @Mod.EventBusSubscriber(modid = ModCommon.MOD_ID, bus = Bus.MOD)
 public class ModRegistries {
@@ -47,7 +47,7 @@ public class ModRegistries {
             public static final DeferredRegister<BlockEntityType<?>> REGISTRY;
 
             static {
-                REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, ModCommon.MOD_ID);
+                REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, ModCommon.MOD_ID);
             }
         }
     }
@@ -56,7 +56,7 @@ public class ModRegistries {
         public static final DeferredRegister<EntityType<?>> REGISTRY;
 
         static {
-            REGISTRY = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, ModCommon.MOD_ID);
+            REGISTRY = DeferredRegister.create(ForgeRegistries.ENTITIES, ModCommon.MOD_ID);
         }
     }
 
@@ -71,13 +71,11 @@ public class ModRegistries {
     }
 
     @SubscribeEvent
-    public static void onRegisterItems(final RegisterEvent event) {
-        if(event.getRegistryKey().equals(ForgeRegistries.Keys.ITEMS)) {
-            Blocks.REGISTRY.getEntries().stream()
-                .filter(bro -> true)
-                .forEach(bro -> event.register(
-                    ForgeRegistries.Keys.ITEMS, bro.getId(),
-                    () -> new BlockItem(bro.get(), new Item.Properties().tab(ModCreativeTab.get()))));
-        }
+    public static void onRegisterItems(final RegistryEvent.Register<Item> event) {
+        var registry = event.getRegistry();
+
+        Blocks.REGISTRY.getEntries().stream()
+            .filter(bro -> true)
+            .forEach(bro -> registry.register(new BlockItem(bro.get(), new Item.Properties().tab(ModCreativeTab.get()))));
     }
 }
