@@ -5,7 +5,7 @@
 # contained within the array. Aborts in case of merge conflicts.
 set -e
 
-branches=( "master" "1.19" "1.19.1" "1.19.2" "1.19.3" "1.19.4" "1.20" "1.20.1" "1.20.2" "1.20.3" "1.20.4" )
+branches=( "master" "1.18.2" "1.19" "1.19.1" "1.19.2" "1.19.3" "1.19.4" "1.20" "1.20.1" "1.20.2" "1.20.3" "1.20.4" )
 
 if [ -n "$(git status --porcelain)" ]; then
     echo "mergup: there are unstaged/uncommited changes"
