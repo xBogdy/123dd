@@ -21,18 +21,18 @@ import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import com.mojang.blaze3d.vertex.PoseStack;
 
-import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.HumanoidMobRenderer;
 import net.minecraft.resources.ResourceLocation;
 
-public class TrainerRenderer extends HumanoidMobRenderer<TrainerMob, HumanoidModel<TrainerMob>> {
+public class TrainerRenderer extends HumanoidMobRenderer<TrainerMob, PlayerModel<TrainerMob>> {
     private final ResourceLocation FALLBACK_TEXTURE = new ResourceLocation("textures/entity/player/wide/steve.png");
 
     public TrainerRenderer(EntityRendererProvider.Context pContext) {
-        super(pContext, new HumanoidModel<>(pContext.bakeLayer(ModelLayers.PLAYER)), 1f);
+        super(pContext, new PlayerModel<>(pContext.bakeLayer(ModelLayers.PLAYER), false), 1f);
     }
 
     @Override
