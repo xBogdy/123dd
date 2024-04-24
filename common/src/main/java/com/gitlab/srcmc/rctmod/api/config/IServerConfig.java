@@ -21,16 +21,16 @@ public interface IServerConfig {
     /**
      * A global factor that determines if a spawn attempt for a trainer is made.
      * 
-     * @range [0, 1]
-     * @default 0.25
+     * range [0, 1]
+     * default 0.25
      */
     default double globalSpawnChance() { return 0.25; }
 
     /**
      * The interval in ticks at which a spawn attempt is made per player.
      * 
-     * @range [1, inf]
-     * @default 3600
+     * range [1, inf]
+     * default 3600
      */
     default int spawnIntervalTicks() { return 3600; }
 
@@ -38,48 +38,48 @@ public interface IServerConfig {
      * Number of ticks after which a trainer will despawn if far away from players.
      * Trainers that cannot battle anymore will despawn immediately if far away.
      * 
-     * @range [1, inf]
-     * @default 24000
+     * range [1, inf]
+     * default 24000
      */
     default int despawnDelayTicks() { return 24000; }
 
     /**
      * The min horizontal distance a trainer can spawn from players.
      * 
-     * @range [1, inf]
-     * @default 30
+     * range [1, inf]
+     * default 30
      */
     default int minHorizontalDistanceToPlayers() { return 30; }
 
     /**
      * The max horizontal distance a trainer can spawn from players.
      * 
-     * @range [1, inf]
-     * @default 80
+     * range [1, inf]
+     * default 80
      */
     default int maxHorizontalDistanceToPlayers() { return 80; }
 
     /**
      * The max vertical distance a trainer can spawn from players.
      * 
-     * @range [1, inf]
-     * @default 30
+     * range [1, inf]
+     * default 30
      */
     default int maxVerticalDistanceToPlayers() { return 30; }
 
     /**
      * Spawn cap of trainers per player.
      * 
-     * @range [0, inf]
-     * @default 3
+     * range [0, inf]
+     * default 3
      */
     default int maxTrainersPerPlayer() { return 3; }
 
     /**
      * Total trainer spawn cap.
      * 
-     * @range [0, inf]
-     * @default 15
+     * range [0, inf]
+     * default 15
      */
     default int maxTrainersTotal() { return 15; }
 
@@ -88,8 +88,8 @@ public interface IServerConfig {
      * player and the strongest pokemon in the team of a trainer to spawn for that
      * player. Trainers will never have pokemon above the level cap of the player.
      * 
-     * @range [0, 100]
-     * @default 25
+     * range [0, 100]
+     * default 25
      */
     default int maxLevelDiff() { return 25; }
 
@@ -97,8 +97,8 @@ public interface IServerConfig {
      * Initial level cap of players. Pokemon will not gain any experience if at or
      * above the level.
      * 
-     * @range [1, 100]
-     * @default 15
+     * range [1, 100]
+     * default 15
      */
     default int initialLevelCap() { return 15; }
 }
