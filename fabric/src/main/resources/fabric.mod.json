@@ -16,7 +16,7 @@
     ]
   },
   "mixins": [
-    "mixins.${mod_id}.json"
+    "mixins.${mod_id}.fabric.json"
   ],
   "depends": {
     "fabricloader": ">=${fabric_loader_version}",

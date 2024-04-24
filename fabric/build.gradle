@@ -16,6 +16,27 @@ dependencies {
     // Common
     implementation project(":common")
 
+    // Architectury
+    modImplementation "curse.maven:architectury-api-419699:${architectury_fabric_version}"
+
+    // Forge Config API Port
+    modImplementation "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${fcap_version}"
+
+    // Cobblemon
+    modImplementation "curse.maven:cobblemon-687131:${cobblemon_fabric_version}"
+
+    // Cobblemon Trainers
+    modImplementation "curse.maven:cobblemontrainers-959503:${cobblemontrainers_fabric_version}"
+
+    // Patchouli (TODO: figure out error)
+    modRuntimeOnly "curse.maven:patchouli-fabric-393236:${patchouli_fabric_version}"
+
+    // Cobblepedia
+    modRuntimeOnly "curse.maven:cobblepedia-850946:${cobblepedia_fabric_version}"
+
+    // Configured
+    modRuntimeOnly "curse.maven:configured-457570:${configured_fabric_version}"
+
     // JEI
     modRuntimeOnly "mezz.jei:jei-${jei_mc_version}-fabric:${jei_version}"
 }
