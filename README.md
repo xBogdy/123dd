@@ -106,12 +106,12 @@ Almost all of the data is provided by an internal data pack. **Alot** can be con
 
 ## Planned features
 
+- More/Better/Fixed assets (Teams, Textures, Mobs, Dialogs, Loot tables, ...)
 - ~~Advancements~~
 - ~~More user feedback in certain situations (e.g. when a player gains a badge)~~
-- More/Better/Fixed assets (Teams, Textures, Mobs, Dialogs, Loot tables, ...)
 - ~~Some config options~~
 - ~~More commands~~
-- Fabric
+- ~~Fabric~~
 
 ## Dependencies
 
