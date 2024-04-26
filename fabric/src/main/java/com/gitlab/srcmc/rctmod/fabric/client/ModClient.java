@@ -20,13 +20,18 @@ package com.gitlab.srcmc.rctmod.fabric.client;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.client.TrainerRenderer;
 import com.gitlab.srcmc.rctmod.fabric.ModFabric;
-
+import com.gitlab.srcmc.rctmod.fabric.network.Packets;
 import dev.architectury.registry.ReloadListenerRegistry;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.minecraft.client.Minecraft;
 import net.minecraft.server.packs.PackType;
+import net.minecraft.world.level.Level;
 
 @Environment(EnvType.CLIENT)
 public class ModClient implements ClientModInitializer {
@@ -37,5 +42,14 @@ public class ModClient implements ClientModInitializer {
         });
 
         ReloadListenerRegistry.register(PackType.CLIENT_RESOURCES, RCTMod.get().getClientDataManager());
+        ClientTickEvents.START_WORLD_TICK.register(ModClient::handleClientWorldTick);
+    }
+
+    static void handleClientWorldTick(Level level) {
+        var mc = Minecraft.getInstance();
+
+        if(mc.player.tickCount % RCTMod.get().getServerConfig().spawnIntervalTicks() == 0) {
+            ClientPlayNetworking.send(Packets.PLAYER_PING, PacketByteBufs.empty());
+        }
     }
 }
