@@ -17,5 +17,5 @@
  */
 package com.gitlab.srcmc.rctmod.api.config;
 
-public interface IClientConfig {
+public interface IClientConfig extends IForgeConfig {
 }

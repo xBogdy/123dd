@@ -27,8 +27,6 @@ public abstract class ForgeConfig {
         this.type = type;
     }
 
-    public abstract ForgeConfigSpec getSpec();
-
     public ModConfig.Type getType() {
         return this.type;
     }
