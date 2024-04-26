@@ -28,6 +28,7 @@ dependencies {
 
     // Cobblemon Trainers
     modImplementation "curse.maven:cobblemontrainers-959503:${cobblemontrainers_fabric_version}"
+    modImplementation "com.selfdot:SelfdotModLibs-fabric:${selfdotlibs_version}"
 
     // Patchouli (TODO: figure out error Caused by: java.lang.ClassNotFoundException: io.github.fablabsmc.fablabs.api.fiber.v1.schema.type.derived.ConfigType)
     // modRuntimeOnly "curse.maven:patchouli-fabric-393236:${patchouli_fabric_version}"

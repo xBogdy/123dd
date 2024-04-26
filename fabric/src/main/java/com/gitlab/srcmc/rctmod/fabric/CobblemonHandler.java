@@ -36,7 +36,7 @@ import net.minecraft.world.entity.player.Player;
 
 public class CobblemonHandler {
     public static void registerTrainer(ResourceLocation rl, IoSupplier<InputStream> io) {
-        var trainerReg = CobblemonTrainers.INSTANCE.getTRAINER_REGISTRY();
+        var trainerReg = CobblemonTrainers.INSTANCE.getTrainerRegistry();
         var trainer = new VolatileTrainer(rl, io);
         trainerReg.addOrUpdateTrainer(trainer);
     }

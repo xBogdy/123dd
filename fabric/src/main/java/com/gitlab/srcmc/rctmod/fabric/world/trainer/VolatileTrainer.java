@@ -21,6 +21,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Set;
 
 import com.cobblemon.mod.common.pokemon.Pokemon;
 import com.cobblemon.mod.common.pokemon.Species;
@@ -43,7 +44,7 @@ public class VolatileTrainer extends Trainer {
 	}
 
 	@Override
-	public void addSpecies(Species species) {
+	public void addSpecies(Species species, Set<String> aspects) {
 	}
 
 	@Override

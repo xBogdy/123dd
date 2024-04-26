@@ -80,6 +80,7 @@ dependencies {
 
     // Cobblemon Trainers
     implementation fg.deobf("curse.maven:cobblemontrainers-959503:${cobblemontrainers_version}")
+    implementation fg.deobf("com.selfdot:SelfdotModLibs:${selfdotlibs_version}")
 
     // Patchouli
     runtimeOnly fg.deobf("curse.maven:patchouli-306770:${patchouli_version}")
