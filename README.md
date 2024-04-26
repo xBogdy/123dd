@@ -117,3 +117,4 @@ Almost all of the data is provided by an internal data pack. **Alot** can be con
 
 - [Cobblemon](https://www.curseforge.com/minecraft/mc-mods/cobblemon)
 - [CobblemonTrainers](https://www.curseforge.com/minecraft/mc-mods/cobblemontrainers)
+- [Forge Config API Port](https://www.curseforge.com/minecraft/mc-mods/forge-config-api-port-fabric) (only Fabric)
