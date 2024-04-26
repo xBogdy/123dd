@@ -210,10 +210,15 @@ public class TrainerSpawner {
         var tm = RCTMod.get().getTrainerManager();
         var playerTr = tm.getData(player);
 
-        int diff = Math.min(tm.getPlayerLevel(player), playerTr.getLevelCap()) - mobTr.getTeam()
-            .getMembers().stream().map(p -> p.getLevel())
+        var mobLevel = mobTr.getTeam().getMembers().stream()
+            .map(p -> p.getLevel())
             .max(Integer::compare).orElse(0);
 
-        return diff < 0 || diff > config.maxLevelDiff() ? 0 : ((config.maxLevelDiff() + 1) - diff)*mobTr.getSpawnChance();
+        if(mobLevel <= playerTr.getLevelCap()) {
+            int diff = Math.abs(Math.min(tm.getPlayerLevel(player), playerTr.getLevelCap()) - mobLevel);
+            return diff > config.maxLevelDiff() ? 0 : ((config.maxLevelDiff() + 1) - diff)*mobTr.getSpawnChance();
+        }
+
+        return 0;
     }
 }
