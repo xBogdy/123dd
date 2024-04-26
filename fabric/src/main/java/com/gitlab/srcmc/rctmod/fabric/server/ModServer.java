@@ -1,0 +1,47 @@
+/*
+ * This file is part of Radical Cobblemon Trainers.
+ * Copyright (c) 2024, HDainester, All rights reserved.
+ *
+ * Radical Cobblemon Trainers is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Radical Cobblemon Trainers is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for
+ * more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License along
+ * with Radical Cobblemon Trainers. If not, see <http://www.gnu.org/licenses/lgpl>.
+ */
+package com.gitlab.srcmc.rctmod.fabric.server;
+
+import com.gitlab.srcmc.rctmod.ModCommon;
+import com.gitlab.srcmc.rctmod.api.RCTMod;
+import com.gitlab.srcmc.rctmod.fabric.CobblemonHandler;
+
+import dev.architectury.registry.ReloadListenerRegistry;
+import fuzs.forgeconfigapiport.api.config.v2.ForgeConfigRegistry;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.packs.PackType;
+import net.minecraftforge.fml.config.ModConfig;
+
+public class ModServer {
+    public static void init() {
+        ServerLifecycleEvents.SERVER_STARTING.register(ModServer::onServerStarted);
+        ServerTickEvents.START_SERVER_TICK.register(ModServer::onServerTick);
+        ForgeConfigRegistry.INSTANCE.register(ModCommon.MOD_ID, ModConfig.Type.SERVER, RCTMod.get().getServerConfig().getSpec());
+        ReloadListenerRegistry.register(PackType.SERVER_DATA, RCTMod.get().getTrainerManager());
+    }
+
+    private static void onServerStarted(MinecraftServer server) {
+        RCTMod.get().getServerDataManager().listTrainerTeams(CobblemonHandler::registerTrainer);
+    }
+
+    private static void onServerTick(MinecraftServer server) {
+        // TODO: not needed atm
+    }
+}

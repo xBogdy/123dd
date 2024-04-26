@@ -17,16 +17,11 @@
  */
 package com.gitlab.srcmc.rctmod.forge.events;
 
-import java.io.InputStream;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.commands.PlayerCommands;
 import com.gitlab.srcmc.rctmod.commands.TrainerCommands;
-import com.gitlab.srcmc.rctmod.forge.world.VolatileTrainer;
-import com.selfdot.cobblemontrainers.CobblemonTrainers;
-
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.packs.resources.IoSupplier;
+import com.gitlab.srcmc.rctmod.forge.CobblemonHandler;
 import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.TickEvent.PlayerTickEvent;
@@ -39,7 +34,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 public class ForgeEventBus {
     @SubscribeEvent
     static void onServerStarted(ServerStartedEvent event) {
-        RCTMod.get().getServerDataManager().listTrainerTeams(ForgeEventBus::addTrainer);
+        RCTMod.get().getServerDataManager().listTrainerTeams(CobblemonHandler::registerTrainer);
     }
 
     @SubscribeEvent
@@ -62,11 +57,5 @@ public class ForgeEventBus {
 	static void onCommandRegistry(final RegisterCommandsEvent event) {
 		PlayerCommands.register(event.getDispatcher());
         TrainerCommands.register(event.getDispatcher());
-    }
-
-    private static void addTrainer(ResourceLocation rl, IoSupplier<InputStream> io) {
-        var trainerReg = CobblemonTrainers.INSTANCE.getTRAINER_REGISTRY();
-        var trainer = new VolatileTrainer(rl, io);
-        trainerReg.addOrUpdateTrainer(trainer);
     }
 }

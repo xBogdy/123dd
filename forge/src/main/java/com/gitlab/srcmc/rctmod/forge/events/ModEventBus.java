@@ -17,26 +17,16 @@
  */
 package com.gitlab.srcmc.rctmod.forge.events;
 
-import java.util.List;
-
-import com.cobblemon.mod.common.Cobblemon;
 import com.cobblemon.mod.common.api.Priority;
-import com.cobblemon.mod.common.api.battles.model.actor.BattleActor;
 import com.cobblemon.mod.common.api.events.CobblemonEvents;
-import com.cobblemon.mod.common.api.events.battles.BattleVictoryEvent;
-import com.cobblemon.mod.common.api.events.pokemon.ExperienceGainedPreEvent;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.advancements.criteria.DefeatCountTrigger;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
-import com.gitlab.srcmc.rctmod.api.config.IClientConfig;
-import com.gitlab.srcmc.rctmod.api.config.ICommonConfig;
 import com.gitlab.srcmc.rctmod.config.ServerConfig;
+import com.gitlab.srcmc.rctmod.forge.CobblemonHandler;
 import com.gitlab.srcmc.rctmod.forge.ModRegistries;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
-import kotlin.Unit;
 import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -51,7 +41,7 @@ public class ModEventBus {
     static void onModConstruct(FMLConstructModEvent event) {
         var serverConfig = new ServerConfig();
         ModLoadingContext.get().registerConfig(serverConfig.getType(), serverConfig.getSpec());
-        RCTMod.init(ModRegistries.LootItemConditions.LEVEL_RANGE, ModEventBus::getPlayerLevel, new IClientConfig() {}, new ICommonConfig() {}, serverConfig);
+        RCTMod.init(ModRegistries.LootItemConditions.LEVEL_RANGE, CobblemonHandler::getPlayerLevel, () -> null, () -> null, serverConfig);
     }
 
     @SubscribeEvent
@@ -61,57 +51,13 @@ public class ModEventBus {
 
     @SubscribeEvent
     static void onCommonSetup(FMLCommonSetupEvent event) {
-        CobblemonEvents.BATTLE_VICTORY.subscribe(Priority.NORMAL, ModEventBus::handleBattleVictory);
-        CobblemonEvents.EXPERIENCE_GAINED_EVENT_PRE.subscribe(Priority.HIGHEST, ModEventBus::handleExperienceGained);
+        CobblemonEvents.BATTLE_VICTORY.subscribe(Priority.NORMAL, CobblemonHandler::handleBattleVictory);
+        CobblemonEvents.EXPERIENCE_GAINED_EVENT_PRE.subscribe(Priority.HIGHEST, CobblemonHandler::handleExperienceGained);
         event.enqueueWork(() -> CriteriaTriggers.register(DefeatCountTrigger.get()));
     }
 
     @SubscribeEvent
     static void onEntityAttributeCreation(EntityAttributeCreationEvent event){
         event.put(ModRegistries.Entities.TRAINER.get(), TrainerMob.createAttributes().build());
-    }
-
-    private static Unit handleBattleVictory(BattleVictoryEvent event) {
-        if(!checkForTrainerBattle(event.getWinners(), true)) {
-            checkForTrainerBattle(event.getLosers(), false);
-        }
-
-        return Unit.INSTANCE;
-    }
-
-    private static Unit handleExperienceGained(ExperienceGainedPreEvent event) {
-        var owner = event.getPokemon().getOwnerPlayer();
-
-        if(owner != null) {
-            var playerTr = RCTMod.get().getTrainerManager().getData(owner);
-            var maxExp = event.getPokemon().getExperienceToLevel(playerTr.getLevelCap());
-            event.setExperience(Math.min(event.getExperience(), maxExp));
-        }
-
-        return Unit.INSTANCE;
-    }
-
-    private static boolean checkForTrainerBattle(List<BattleActor> actors, boolean winners) {
-        for(var actor : actors) {
-            var trainerBattle = RCTMod.get().getTrainerManager().getBattle(actor.getUuid());
-
-            if(trainerBattle.isPresent()) {
-                RCTMod.get().getTrainerManager().removeBattle(actor.getUuid());
-                trainerBattle.get().distributeRewards(winners);
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    private static int getPlayerLevel(Player player) {
-        int maxLevel = 0;
-
-        for(var pk : Cobblemon.INSTANCE.getStorage().getParty((ServerPlayer)player)) {
-            maxLevel = Math.max(maxLevel, pk.getLevel());
-        }
-
-        return maxLevel;
     }
 }
