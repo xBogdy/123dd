@@ -98,11 +98,11 @@ Following commands are available:
 
 Some global aspects of the mod (e.g. spawn interval or spawn cap) can be adjusted to fit a servers needs.
 
-> See `config/rctmod-server.toml` (farbic default) or `save/YOUR_WORLD/serverconfig/rctmod-server.toml` (forge and fabric).
+> See `config/rctmod-server.toml` (farbic default) or `saves/YOUR_WORLD/serverconfig/rctmod-server.toml` (forge and fabric).
 
 ## Datapack support
 
-Almost all of the data is provided by an internal data pack. **Alot** can be configured by *overshadowing* certain files with an own custom data pack. Please refer to the [wiki](todo.com) for more information.
+Almost all of the data is provided by an internal data pack. **Alot** can be configured by *overshadowing* certain files with an own custom data pack. Please refer to the [wiki](https://gitlab.com/srcmc/rct/mod/-/wikis/home) (wip) for more information.
 
 ## Planned features
 
