@@ -98,7 +98,7 @@ Following commands are available:
 
 Some global aspects of the mod (e.g. spawn interval or spawn cap) can be adjusted to fit a servers needs.
 
-**Currently not implemented**.
+> See `config/rctmod-server.toml` (farbic default) or `save/YOUR_WORLD/serverconfig/rctmod-server.toml` (forge and fabric).
 
 ## Datapack support
 
@@ -109,11 +109,11 @@ Almost all of the data is provided by an internal data pack. **Alot** can be con
 - ~~Advancements~~
 - ~~More user feedback in certain situations (e.g. when a player gains a badge)~~
 - More/Better/Fixed assets (Teams, Textures, Mobs, Dialogs, Loot tables, ...)
-- Some config options
+- ~~Some config options~~
 - ~~More commands~~
 - Fabric
 
 ## Dependencies
 
-- [Cobblemon](todo.com)
-- [CobblemonTrainers](todo.com)
+- [Cobblemon](https://www.curseforge.com/minecraft/mc-mods/cobblemon)
+- [CobblemonTrainers](https://www.curseforge.com/minecraft/mc-mods/cobblemontrainers)
