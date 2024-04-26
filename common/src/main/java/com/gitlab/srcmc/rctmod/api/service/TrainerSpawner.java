@@ -26,7 +26,6 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
@@ -98,7 +97,6 @@ public class TrainerSpawner {
                     
                     if(spawnCandidate != null) {
                         this.spawnFor(player, spawnCandidate.id, pos);
-                        ModCommon.LOG.info("SPAWNED: " + spawnCandidate.id + " at " + pos.toShortString());
                     }
                 }
             }
@@ -185,7 +183,6 @@ public class TrainerSpawner {
                 }
             });
 
-        ModCommon.LOG.info("SPAWN CANDIDATES: " + candidates.size());
         return candidates.size() > 0 ? this.selectRandom(player.getRandom(), candidates) : null;
     }
 
