@@ -24,6 +24,7 @@ import com.gitlab.srcmc.rctmod.commands.TrainerCommands;
 import com.gitlab.srcmc.rctmod.forge.CobblemonHandler;
 import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
+import net.minecraftforge.event.TickEvent.Phase;
 import net.minecraftforge.event.TickEvent.PlayerTickEvent;
 import net.minecraftforge.event.server.ServerStartedEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -39,7 +40,7 @@ public class ForgeEventBus {
 
     @SubscribeEvent
     static void onPlayerTick(PlayerTickEvent event) {
-        if(event.side.isServer()) {
+        if(event.side.isServer() && event.phase == Phase.START) {
             var interval = RCTMod.get().getServerConfig().spawnIntervalTicks();
 
             if(interval == 0 || interval > 0 && event.player.tickCount % interval == 0) {
