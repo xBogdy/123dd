@@ -11,7 +11,7 @@ set -e
 
 # config
 config_files=( "gradle.properties" )
-mod_loaders=( "fabric" ) # [common, forge, fabric]
+mod_loaders=( "forge" "fabric" ) # [common, forge, fabric]
 
 minecraft_version_key="minecraft_version"
 mod_version_key="mod_version"
