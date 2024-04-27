@@ -15,4 +15,5 @@ Initial release.
 - Data pack: advancement criteria `defeat_count`
 - Data/Resource pack support (textures, trainers, mobs, loot_tables, advancements, dialogs)
 - Level cap system (increase by defeating gym leaders)
-- Trainer spawning system
+- Trainer dialog system (different responses based of their situation)
+- Trainer spawning system (different trainer types spawn in different biomes + only trainers matching a players strength will spawn in their vicinity)
