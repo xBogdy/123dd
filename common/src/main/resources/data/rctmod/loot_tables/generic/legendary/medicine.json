@@ -25,7 +25,7 @@
               "condition": "rctmod:level_range",
               "entity": "this",
               "range": {
-                "min": 15,
+                "min": 16,
                 "max": 37
               }
             }
