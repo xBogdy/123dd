@@ -28,12 +28,12 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.IoSupplier;
 
 public class TrainerTeam {
-    public class Pokemon {
+    public static class Pokemon {
         public enum Gender {
             NONE, MALE, FEMALE
         };
 
-        public class Stats {
+        public static class Stats {
             private int hp;
             private int attack;
             private int defence;
@@ -58,8 +58,8 @@ public class TrainerTeam {
         private Stats ivs = new Stats();
         private Stats evs = new Stats();
         private boolean shiny = false;
-        private String heldItem = "";
-        
+        private String heldItem = "minecraft:air";
+
         public String getSpecies() { return this.species; }
         public Gender getGender() { return this.gender; }
         public int getLevel() { return this.level; }

@@ -86,7 +86,8 @@ public interface IServerConfig extends IForgeConfig {
     /**
      * The maximum level difference between the strongest pokemon in the team of a
      * player and the strongest pokemon in the team of a trainer to spawn for that
-     * player. Trainers will never have pokemon above the level cap of the player.
+     * player. The spawn weight decreases with a higher level difference. Trainers with
+     * pokemon above the level cap of a player are excluded.
      * 
      * range [0, 100]
      * default 25
@@ -95,7 +96,7 @@ public interface IServerConfig extends IForgeConfig {
 
     /**
      * Initial level cap of players. Pokemon will not gain any experience if at or
-     * above the level.
+     * above the level cap.
      * 
      * range [1, 100]
      * default 15

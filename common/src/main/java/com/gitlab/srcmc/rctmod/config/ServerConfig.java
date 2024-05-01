@@ -79,14 +79,14 @@ public class ServerConfig extends ForgeConfig implements IServerConfig {
             .defineInRange("maxTrainersTotalValue", IServerConfig.super.maxTrainersTotal(), 0, Integer.MAX_VALUE - 1);
 
         this.maxLevelDiffValue = builder
-            .comment("Total trainer spawn cap.")
+            .comment("The maximum level difference between the strongest pokemon in the team of a player and the strongest pokemon in the team of a trainer to spawn for that player. The spawn weight decreases with a higher level difference. Trainers with pokemon above the level cap of a player are excluded.")
             .defineInRange("maxTrainersTotalValue", IServerConfig.super.maxLevelDiff(), 0, 100);
         
         builder.pop();
         builder.push("Players");
 
         this.initialLevelCapValue = builder
-            .comment("Initial level cap of players. Pokemon will not gain any experience if at or above the level.")
+            .comment("Initial level cap of players. Pokemon will not gain any experience if at or above the level cap.")
             .defineInRange("initialLevelCap", IServerConfig.super.initialLevelCap(), 1, 100);
 
         this.spec = builder.build();

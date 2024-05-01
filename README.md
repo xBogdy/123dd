@@ -102,7 +102,7 @@ Some global aspects of the mod (e.g. spawn interval or spawn cap) can be adjuste
 
 ## Datapack support
 
-Almost all of the data is provided by an internal data pack. **Alot** can be configured by *overshadowing* certain files with an own custom data pack. Please refer to the [wiki](https://gitlab.com/srcmc/rct/mod/-/wikis/home) (wip) for more information.
+Almost all of the data is provided by an internal data pack. **Alot** can be configured by *overshadowing* certain files with an own custom data pack. Please refer to the [documentation](https://srcmc.gitlab.io/rct/docs/) for more information.
 
 ## Planned features
 
