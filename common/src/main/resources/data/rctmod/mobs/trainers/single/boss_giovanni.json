@@ -1,5 +1,5 @@
 {
-  "type": "TEAM_ROCKET",  "rewardLevelCap": 0,
+  "type": "TEAM_ROCKET",
   "requiredDefeats": {
     "LEADER": 8
   },
