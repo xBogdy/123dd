@@ -3,7 +3,7 @@
   "maxTrainerWins": 1,
   "maxTrainerDefeats": 1,
   "battleCooldownTicks": 2000,
-  "spawnChance": 0.25,
+  "spawnWeightFactor": 0.25,
   "biomeTagBlacklist": ["is_void", "is_nether", "is_end", "is_water", "is_underground"],
   "biomeTagWhitelist": ["is_plains", "is_beach"]
 }

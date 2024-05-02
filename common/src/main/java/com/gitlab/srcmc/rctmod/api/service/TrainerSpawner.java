@@ -217,7 +217,7 @@ public class TrainerSpawner {
 
         if(mobLevel <= playerTr.getLevelCap()) {
             int diff = Math.abs(Math.min(tm.getPlayerLevel(player), playerTr.getLevelCap()) - mobLevel);
-            return diff > config.maxLevelDiff() ? 0 : ((config.maxLevelDiff() + 1) - diff)*mobTr.getSpawnChance();
+            return diff > config.maxLevelDiff() ? 0 : ((config.maxLevelDiff() + 1) - diff)*mobTr.getSpawnWeightFactor();
         }
 
         return 0;
