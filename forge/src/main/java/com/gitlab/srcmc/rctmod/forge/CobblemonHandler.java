@@ -24,6 +24,7 @@ import com.cobblemon.mod.common.Cobblemon;
 import com.cobblemon.mod.common.api.battles.model.actor.BattleActor;
 import com.cobblemon.mod.common.api.events.battles.BattleVictoryEvent;
 import com.cobblemon.mod.common.api.events.pokemon.ExperienceGainedPreEvent;
+import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.forge.world.trainer.VolatileTrainer;
 import com.selfdot.cobblemontrainers.CobblemonTrainers;
@@ -49,6 +50,18 @@ public class CobblemonHandler {
         }
 
         return maxLevel;
+    }
+
+    public static int getActivePokemon(Player player) {
+        int count = 0;
+
+        for(var pk : Cobblemon.INSTANCE.getStorage().getParty((ServerPlayer)player)) {
+            if(!pk.isFainted()) {
+                count++;
+            }
+        }
+
+        return count;
     }
 
     public static Unit handleBattleVictory(BattleVictoryEvent event) {

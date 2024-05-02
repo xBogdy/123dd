@@ -551,5 +551,8 @@
   ],
   "done_generic": [
     "I'm done."
+  ],
+  "missing_pokemon": [
+    "You do not seem to have any pokemon capable fighting in your team."
   ]
 }

@@ -47,15 +47,18 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
     private Map<String, TrainerMobData> trainerMobs = new HashMap<>();
     private Map<UUID, TrainerBattle> trainerBattles = new HashMap<>();
     private Function<Player, Integer> playerLevelSupplier;
+    private Function<Player, Integer> avtivePokemonSupplier;
 
     public TrainerManager() {
         super(GSON, ModCommon.MOD_ID);
         this.playerLevelSupplier = p -> TrainerManager.this.getData(p).getLevelCap();
+        this.avtivePokemonSupplier = p -> 0;
     }
 
-    public TrainerManager(Function<Player, Integer> playerLevelSupplier) {
+    public TrainerManager(Function<Player, Integer> playerLevelSupplier, Function<Player, Integer> avtivePokemonSupplier) {
         super(GSON, ModCommon.MOD_ID);
         this.playerLevelSupplier = playerLevelSupplier;
+        this.avtivePokemonSupplier = avtivePokemonSupplier;
     }
 
     public void addBattle(Player initiator, TrainerMob opponent) {
@@ -101,6 +104,10 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
 
     public int getPlayerLevel(Player player) {
         return this.playerLevelSupplier.apply(player);
+    }
+
+    public int getActivePokemon(Player player) {
+        return this.avtivePokemonSupplier.apply(player);
     }
 
     public TrainerPlayerData getData(Player player) {

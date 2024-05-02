@@ -51,6 +51,18 @@ public class CobblemonHandler {
         return maxLevel;
     }
 
+    public static int getActivePokemon(Player player) {
+        int count = 0;
+
+        for(var pk : Cobblemon.INSTANCE.getStorage().getParty((ServerPlayer)player)) {
+            if(!pk.isFainted()) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
     public static Unit handleBattleVictory(BattleVictoryEvent event) {
         if(!checkForTrainerBattle(event.getWinners(), true)) {
             checkForTrainerBattle(event.getLosers(), false);

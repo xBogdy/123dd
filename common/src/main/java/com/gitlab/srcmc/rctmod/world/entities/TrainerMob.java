@@ -97,8 +97,14 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
     public boolean canBattleAgainst(Entity e) {
         if(e instanceof Player player) {
-            var trPlayer = RCTMod.get().getTrainerManager().getData(player);
-            var trMob = RCTMod.get().getTrainerManager().getData(this);
+            var tm = RCTMod.get().getTrainerManager();
+
+            if(tm.getActivePokemon(player) == 0) {
+                return false;
+            }
+
+            var trPlayer = tm.getData(player);
+            var trMob = tm.getData(this);
 
             if(trPlayer.getLevelCap() < trMob.getRequiredLevelCap()) {
                 return false;
@@ -129,8 +135,9 @@ public class TrainerMob extends PathfinderMob implements Npc {
     }
 
     protected void replyTo(Player player) {
-        var trPlayer = RCTMod.get().getTrainerManager().getData(player);
-        var trMob = RCTMod.get().getTrainerManager().getData(this);
+        var tm = RCTMod.get().getTrainerManager();
+        var trPlayer = tm.getData(player);
+        var trMob = tm.getData(this);
 
         if(trPlayer.getDefeats(Type.LEADER) < trMob.getRequiredDefeats(Type.LEADER)) {
             ChatUtils.reply(this, player, "missing_badges");
@@ -140,6 +147,8 @@ public class TrainerMob extends PathfinderMob implements Npc {
             ChatUtils.reply(this, player, "missing_beaten_champs");
         } else if(trPlayer.getLevelCap() < trMob.getTeam().getMembers().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0)) {
             ChatUtils.reply(this, player, "low_level_cap");
+        } else if(tm.getActivePokemon(player) == 0) {
+            ChatUtils.reply(this, player, "missing_pokemon");
         }
     }
 

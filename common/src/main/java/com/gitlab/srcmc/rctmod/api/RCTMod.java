@@ -50,14 +50,14 @@ public final class RCTMod {
         return instance.get();
     }
 
-    public static void init(Supplier<LootItemConditionType> levelRangeConditon, Function<Player, Integer> playerLevelSupplier, IClientConfig clientConfig, ICommonConfig commonConfig, IServerConfig serverConfig) {
-        var local = new RCTMod(playerLevelSupplier, clientConfig, commonConfig, serverConfig);
+    public static void init(Supplier<LootItemConditionType> levelRangeConditon, Function<Player, Integer> playerLevelSupplier, Function<Player, Integer> avtivePokemonSupplier, IClientConfig clientConfig, ICommonConfig commonConfig, IServerConfig serverConfig) {
+        var local = new RCTMod(playerLevelSupplier, avtivePokemonSupplier, clientConfig, commonConfig, serverConfig);
         instance = () -> local;
         LevelRangeCondition.init(levelRangeConditon);
     }
 
-    private RCTMod(Function<Player, Integer> playerLevelSupplier, IClientConfig clientConfig, ICommonConfig commonConfig, IServerConfig serverConfig) {
-        this.trainerManager = new TrainerManager(playerLevelSupplier);
+    private RCTMod(Function<Player, Integer> playerLevelSupplier, Function<Player, Integer> avtivePokemonSupplier, IClientConfig clientConfig, ICommonConfig commonConfig, IServerConfig serverConfig) {
+        this.trainerManager = new TrainerManager(playerLevelSupplier, avtivePokemonSupplier);
         this.clientDataManager = new DataPackManager(PackType.CLIENT_RESOURCES);
         this.serverDataManager = new DataPackManager(PackType.SERVER_DATA);
         this.trainerSpawner = new TrainerSpawner();
