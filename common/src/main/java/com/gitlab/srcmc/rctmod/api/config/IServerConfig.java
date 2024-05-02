@@ -22,9 +22,9 @@ public interface IServerConfig extends IForgeConfig {
      * A global factor that determines if a spawn attempt for a trainer is made.
      * 
      * range [0, 1]
-     * default 0.25
+     * default 1.0
      */
-    default double globalSpawnChance() { return 0.25; }
+    default double globalSpawnChance() { return 1.0; }
 
     /**
      * The interval in ticks at which a spawn attempt is made per player.

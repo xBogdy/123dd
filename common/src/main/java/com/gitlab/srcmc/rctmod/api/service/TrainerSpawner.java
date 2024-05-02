@@ -81,6 +81,10 @@ public class TrainerSpawner {
     public void attemptSpawnFor(Player player) {
         var config = RCTMod.get().getServerConfig();
 
+        if(config.globalSpawnChance() < player.getRandom().nextFloat()) {
+            return;
+        }
+
         if(this.spawnedTotal.size() < config.maxTrainersTotal()) {
             var spawnedFor = this.spawnedFor.get(player.getUUID());
 
