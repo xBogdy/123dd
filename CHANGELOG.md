@@ -1,6 +1,20 @@
 # Changelog
 
-Initial release.
+## [0.5.x-alpha] - 2024-05-01
+
+***Added***
+
+- New chat context 'missing_pokemon' -> player has no pokemon capable of fighting in his team
+
+***Changed***
+
+- Renamed trainer mobs `spawnChance` property to `spawnWeightFactor`
+
+***Fixed***
+
+- Trainers counting battles if right clicked without a team (or all pokemon defeated)
+- Trainers mobs sometimes not stopping movement at the start of a battle
+- `globalSpawnChance` config options not having any effect (changed default from `0.25` to `1.0`, **the config value from existing configs will not be changed**)
 
 ## [0.5.0-alpha] - 2024-04-26
 
