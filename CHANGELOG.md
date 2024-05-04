@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.0.0] - 2024-05-04
+
+***Added***
+
+- API: added RCTMod.makeBattle (battles are now started from code instead of by invoking the `trainers makebattle` command)
+
+***Changed***
+
+- API: deprecated ChatUtils.makebattle
+
+***Fixed***
+
+- Trainers not fighting in case of issues with configurations from CobblemonTrainers
+
 ## [0.5.1-alpha] - 2024-05-01
 
 ***Added***
