@@ -19,12 +19,9 @@ package com.gitlab.srcmc.rctmod.api.utils;
 
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-
 import net.minecraft.network.chat.ChatType;
 import net.minecraft.network.chat.OutgoingChatMessage;
 import net.minecraft.network.chat.PlayerChatMessage;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 
 public final class ChatUtils {
@@ -38,18 +35,11 @@ public final class ChatUtils {
             target.createCommandSourceStack().sendChatMessage(OutgoingChatMessage.create(message), false, ChatType.bind(ChatType.CHAT, source));
         }
     }
-
+    
+    /**
+     * @deprecated Use RCTMod.makeBattle instead
+     */
     public static boolean makebattle(TrainerMob source, Player target) {
-        try {
-            return target.getServer()
-                .getCommands().getDispatcher()
-                .execute(battleCommand(source, target, source.getTrainerId()), target.createCommandSourceStack()) != -1;
-        } catch(CommandSyntaxException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private static String battleCommand(Entity source, Player target, String trainer) {
-        return String.format("trainers makebattle @s '%s' %s", trainer, source.getUUID().toString());
+        return false;
     }
 }

@@ -41,7 +41,7 @@ public class ModEventBus {
     static void onModConstruct(FMLConstructModEvent event) {
         var serverConfig = new ServerConfig();
         ModLoadingContext.get().registerConfig(serverConfig.getType(), serverConfig.getSpec());
-        RCTMod.init(ModRegistries.LootItemConditions.LEVEL_RANGE, CobblemonHandler::getPlayerLevel, CobblemonHandler::getActivePokemon, () -> null, () -> null, serverConfig);
+        RCTMod.init(ModRegistries.LootItemConditions.LEVEL_RANGE, CobblemonHandler::getPlayerLevel, CobblemonHandler::getActivePokemon, CobblemonHandler::makeBattle, () -> null, () -> null, serverConfig);
     }
 
     @SubscribeEvent

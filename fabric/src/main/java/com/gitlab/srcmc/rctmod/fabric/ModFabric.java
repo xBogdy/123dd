@@ -45,7 +45,7 @@ public class ModFabric implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        RCTMod.init(() -> LEVEL_RANGE, CobblemonHandler::getPlayerLevel, CobblemonHandler::getActivePokemon, () -> null, () -> null, new ServerConfig());
+        RCTMod.init(() -> LEVEL_RANGE, CobblemonHandler::getPlayerLevel, CobblemonHandler::getActivePokemon, CobblemonHandler::makeBattle, () -> null, () -> null, new ServerConfig());
         registerEntityAttributes();
         registerCommands();
         registerAdvancementCriteria();

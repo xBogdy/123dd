@@ -24,10 +24,11 @@ import com.cobblemon.mod.common.Cobblemon;
 import com.cobblemon.mod.common.api.battles.model.actor.BattleActor;
 import com.cobblemon.mod.common.api.events.battles.BattleVictoryEvent;
 import com.cobblemon.mod.common.api.events.pokemon.ExperienceGainedPreEvent;
-import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.forge.world.trainer.VolatileTrainer;
+import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import com.selfdot.cobblemontrainers.CobblemonTrainers;
+import com.selfdot.cobblemontrainers.util.PokemonUtility;
 
 import kotlin.Unit;
 import net.minecraft.resources.ResourceLocation;
@@ -40,6 +41,10 @@ public class CobblemonHandler {
         var trainerReg = CobblemonTrainers.INSTANCE.getTrainerRegistry();
         var trainer = new VolatileTrainer(rl, io);
         trainerReg.addOrUpdateTrainer(trainer);
+    }
+
+    public static void makeBattle(TrainerMob source, Player target) {
+        PokemonUtility.startTrainerBattle((ServerPlayer)target, CobblemonTrainers.INSTANCE.getTrainerRegistry().getTrainer(source.getTrainerId()), source);
     }
 
     public static int getPlayerLevel(Player player) {

@@ -124,7 +124,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
     public void startBattleWith(Player player) {
         if(this.canBattleAgainst(player)) {
-            if(ChatUtils.makebattle(this, player)) {
+            if(RCTMod.get().makeBattle(this, player)) {
                 RCTMod.get().getTrainerManager().addBattle(player, this);
                 ChatUtils.reply(this, player, "battle_start");
                 this.setOpponent(player);

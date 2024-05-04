@@ -17,15 +17,18 @@
  */
 package com.gitlab.srcmc.rctmod.api;
 
+import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
+import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.config.IClientConfig;
 import com.gitlab.srcmc.rctmod.api.config.ICommonConfig;
 import com.gitlab.srcmc.rctmod.api.config.IServerConfig;
 import com.gitlab.srcmc.rctmod.api.data.pack.DataPackManager;
 import com.gitlab.srcmc.rctmod.api.service.TrainerManager;
 import com.gitlab.srcmc.rctmod.api.service.TrainerSpawner;
+import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import com.gitlab.srcmc.rctmod.world.loot.conditions.LevelRangeCondition;
 
 import net.minecraft.server.packs.PackType;
@@ -42,6 +45,8 @@ public final class RCTMod {
     private IClientConfig clientConfig;
     private IServerConfig serverConfig;
 
+    private BiConsumer<TrainerMob, Player> battleArgsConsumer = (m, p) -> {};
+
     private static Supplier<RCTMod> instance = () -> {
         throw new RuntimeException(RCTMod.class.getName() + " not initialized");
     };
@@ -50,17 +55,29 @@ public final class RCTMod {
         return instance.get();
     }
 
-    public static void init(Supplier<LootItemConditionType> levelRangeConditon, Function<Player, Integer> playerLevelSupplier, Function<Player, Integer> avtivePokemonSupplier, IClientConfig clientConfig, ICommonConfig commonConfig, IServerConfig serverConfig) {
-        var local = new RCTMod(playerLevelSupplier, avtivePokemonSupplier, clientConfig, commonConfig, serverConfig);
+    public static void init(
+        Supplier<LootItemConditionType> levelRangeConditon,
+        Function<Player, Integer> playerLevelSupplier,
+        Function<Player, Integer> avtivePokemonSupplier,
+        BiConsumer<TrainerMob, Player> battleArgsConsumer,
+        IClientConfig clientConfig, ICommonConfig commonConfig, IServerConfig serverConfig)
+    {
+        var local = new RCTMod(playerLevelSupplier, avtivePokemonSupplier, battleArgsConsumer, clientConfig, commonConfig, serverConfig);
         instance = () -> local;
         LevelRangeCondition.init(levelRangeConditon);
     }
 
-    private RCTMod(Function<Player, Integer> playerLevelSupplier, Function<Player, Integer> avtivePokemonSupplier, IClientConfig clientConfig, ICommonConfig commonConfig, IServerConfig serverConfig) {
+    private RCTMod(
+        Function<Player, Integer> playerLevelSupplier,
+        Function<Player, Integer> avtivePokemonSupplier,
+        BiConsumer<TrainerMob, Player> battleArgsConsumer,
+        IClientConfig clientConfig, ICommonConfig commonConfig, IServerConfig serverConfig)
+    {
         this.trainerManager = new TrainerManager(playerLevelSupplier, avtivePokemonSupplier);
         this.clientDataManager = new DataPackManager(PackType.CLIENT_RESOURCES);
         this.serverDataManager = new DataPackManager(PackType.SERVER_DATA);
         this.trainerSpawner = new TrainerSpawner();
+        this.battleArgsConsumer = battleArgsConsumer;
         this.clientConfig = clientConfig;
         this.commonConfig = commonConfig;
         this.serverConfig = serverConfig;
@@ -92,5 +109,16 @@ public final class RCTMod {
 
     public IServerConfig getServerConfig() {
         return this.serverConfig;
+    }
+
+    public boolean makeBattle(TrainerMob source, Player target) {
+        try {
+            this.battleArgsConsumer.accept(source, target);
+        } catch(Exception e) {
+            ModCommon.LOG.error(e.getMessage(), e);
+            return false;
+        }
+
+        return true;
     }
 }
