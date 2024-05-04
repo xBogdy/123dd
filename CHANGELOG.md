@@ -12,7 +12,7 @@
 
 ***Fixed***
 
-- Trainers not fighting in case of issues with configurations from CobblemonTrainers
+- Trainers refusing to battle in case of issues with configurations from CobblemonTrainers
 
 ## [0.5.1-alpha] - 2024-05-01
 
