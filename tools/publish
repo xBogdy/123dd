@@ -251,7 +251,7 @@ if [ "$answer" = "y" ]; then
             \"changelogType\": \"markdown\",
             \"gameVersions\": [$minecraft_version_ids],
             \"releaseType\": \"$release_type\",
-            \"modLoaderTypes\": \"$mod_loader\",
+            \"modLoaderType\": \"$mod_loader\",
             \"relations\":  $(cat publish/curseforge.$mod_loader.dependencies.json | tr -d "[:space:]")
         }"
 
