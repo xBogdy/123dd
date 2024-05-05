@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.0] - 2024-05-05
+
+***Fixed***
+
+- Trainer responses kicking players from servers in online-mode
+
 ## [0.5.2-alpha] - 2024-05-04
 
 ***Added***
