@@ -31,7 +31,7 @@ public final class ChatUtils {
         var messages = RCTMod.get().getTrainerManager().getData(source).getDialog().get(context);
 
         if(messages != null && messages.length > 0) {
-            var message = PlayerChatMessage.unsigned(target.getUUID(), messages[(target.getRandom().nextInt() & Integer.MAX_VALUE) % messages.length]);
+            var message = PlayerChatMessage.system(messages[(target.getRandom().nextInt() & Integer.MAX_VALUE) % messages.length]);
             target.createCommandSourceStack().sendChatMessage(OutgoingChatMessage.create(message), false, ChatType.bind(ChatType.CHAT, source));
         }
     }
