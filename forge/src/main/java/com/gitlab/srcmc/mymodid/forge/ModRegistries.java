@@ -75,7 +75,12 @@ public class ModRegistries {
         var registry = event.getRegistry();
 
         Blocks.REGISTRY.getEntries().stream()
-            .filter(bro -> true)
-            .forEach(bro -> registry.register(new BlockItem(bro.get(), new Item.Properties().tab(ModCreativeTab.get()))));
+            .filter(RegistryObject::isPresent)
+            .map(RegistryObject::get)
+            .forEach(block -> {
+                var bi = new BlockItem(block, new Item.Properties().tab(ModCreativeTab.get()));
+                bi.setRegistryName(block.getRegistryName());
+                registry.register(bi);
+            });
     }
 }
