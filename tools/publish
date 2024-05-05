@@ -252,7 +252,7 @@ if [ "$answer" = "y" ]; then
             \"gameVersions\": [$minecraft_version_ids],
             \"releaseType\": \"$release_type\",
             \"modLoaderType\": \"$mod_loader\"
-            \"relations\": $(<publish/curseforge.$mod_loader.dependencies.json)
+            \"relations\":  $(cat publish/curseforge.$mod_loader.dependencies.json | tr -d "[:space:]")
         }"
 
         mod_archive="./$mod_loader/build/libs/$mod_id-$mod_loader-$minecraft_version-$mod_version.jar"
@@ -283,7 +283,7 @@ if [ "$answer" = "y" ]; then
             \"name\": \"Version $mod_version\",
             \"version_number\": \"$mod_version\",
             \"changelog\": \"$(as_json "$(<CHANGELOG.md)")\",
-            \"dependencies\": $(<publish/modrinth.$mod_loader.dependencies.json),
+            \"dependencies\": $(cat publish/modrinth.$mod_loader.dependencies.json | tr -d "[:space:]"),
             \"game_versions\": [\"$minecraft_version\"],
             \"version_type\": \"$release_type\",
             \"loaders\": [\"$mod_loader\"],
