@@ -36,6 +36,9 @@ dependencies {
     // Cobblepedia
     // modRuntimeOnly "curse.maven:cobblepedia-850946:${cobblepedia_fabric_version}"
 
+    // Fabric Permission API
+    modRuntimeOnly "me.lucko:fabric-permissions-api:${fpapi_version}"
+
     // Configured
     modRuntimeOnly "curse.maven:configured-457570:${configured_fabric_version}"
 
@@ -45,7 +48,7 @@ dependencies {
 
 loom {
     runs {
-        client_1 {
+        runClient {
             client()
             programArg "--username Dev1"
             setConfigName("Fabric Client 1")
@@ -53,7 +56,7 @@ loom {
         }
 
         runClient2 {
-            inherit client_1
+            inherit runClient
             programArg "--username Dev2"
             setConfigName("Fabric Client 2")
             runDir("run/client_2")
