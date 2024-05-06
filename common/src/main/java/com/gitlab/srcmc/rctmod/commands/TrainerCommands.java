@@ -168,7 +168,7 @@ public class TrainerCommands {
     private static int mob_get_required_level_cap(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         var required_level_cap = RCTMod.get().getTrainerManager()
             .getData(context.getArgument("trainer", String.class))
-            .getRewardLevelCap();
+            .getRequiredLevelCap();
 
         context.getSource().sendSuccess(() -> Component.literal(String.valueOf(required_level_cap)), false);
         return required_level_cap;
