@@ -52,7 +52,7 @@ The balancing is based around the original game (Radical Red). Gym leaders must 
 | Brock          | `27`             |                          | Leader   |
 | Misty          | `34`             | 1 Badge                  | Leader   |
 | Lt. Surge      | `44`             | 2 Badges                 | Leader   |
-| Erika          | `47`             | 3 Badges                 | Leader   |
+| Erika          | `50`             | 3 Badges                 | Leader   |
 | Giovanni       | `59`             | 4 Badges                 | Leader   |
 | Sabrina        | `68`             | 5 Badges                 | Leader   |
 | Koga           | `76`             | 6 Badges                 | Leader   |
