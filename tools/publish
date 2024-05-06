@@ -246,13 +246,22 @@ done
 if [ "$answer" = "y" ]; then
     # upload archives to curseforge
     for mod_loader in "${mod_loaders[@]}"; do
+        # curseforge api has trouble with empty relations...
+        relations="$(cat publish/curseforge.$mod_loader.dependencies.json | tr -d "[:space:]")"
+
+        if [ "$relations" = "{}" ]; then
+            unset relations
+        else
+            relations="\"relations:\" $relations,"
+        fi
+
         metadata="{
+            $relations
             \"changelog\": \"$(as_json "$(<CHANGELOG.md)")\",
             \"changelogType\": \"markdown\",
             \"gameVersions\": [$minecraft_version_ids],
             \"releaseType\": \"$release_type\",
-            \"modLoaderType\": \"$mod_loader\",
-            \"relations\":  $(cat publish/curseforge.$mod_loader.dependencies.json | tr -d "[:space:]")
+            \"modLoaderTypes\": [\"$mod_loader\"]
         }"
 
         mod_archive="./$mod_loader/build/libs/$mod_id-$mod_loader-$minecraft_version-$mod_version.jar"
