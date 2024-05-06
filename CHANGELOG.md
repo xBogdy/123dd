@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.0] - 2024-05-06
+
+***Changed***
+
+- Increased reward level cap of Leader Erika from `47` to `50` (fixes softlock at Leader Giovanni)
+- Minor buff to team of Leader Giovanni
+
+***Fixed***
+
+- `trainer get required_level_cap` command returning reward level cap instead
+
 ## [0.5.3-alpha] - 2024-05-05
 
 ***Fixed***
