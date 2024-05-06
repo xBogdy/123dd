@@ -1,6 +1,6 @@
 {
   "type": "LEADER",
-  "rewardLevelCap": 47,
+  "rewardLevelCap": 50,
   "requiredDefeats": {
     "LEADER": 3
   },

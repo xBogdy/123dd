@@ -35,7 +35,7 @@
     {
       "species": "cobblemon:dugtrio",
       "gender": "FEMALE",
-      "level": 42,
+      "level": 46,
       "nature": "cobblemon:docile",
       "ability": "sandveil",
       "moveset": [
@@ -66,7 +66,7 @@
     {
       "species": "cobblemon:nidoqueen",
       "gender": "FEMALE",
-      "level": 44,
+      "level": 46,
       "nature": "cobblemon:sassy",
       "ability": "poisontouch",
       "moveset": [
@@ -97,7 +97,7 @@
     {
       "species": "cobblemon:nidoking",
       "gender": "MALE",
-      "level": 45,
+      "level": 48,
       "nature": "cobblemon:sassy",
       "ability": "poisontouch",
       "moveset": [
