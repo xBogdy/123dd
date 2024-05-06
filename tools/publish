@@ -252,7 +252,7 @@ if [ "$answer" = "y" ]; then
         if [ "$relations" = "{}" ]; then
             unset relations
         else
-            relations="\"relations:\" $relations,"
+            relations="\"relations\": $relations,"
         fi
 
         metadata="{
