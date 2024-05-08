@@ -17,7 +17,9 @@
  */
 package com.gitlab.srcmc.rctmod.fabric.client;
 
+import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
+import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.client.TrainerRenderer;
 import com.gitlab.srcmc.rctmod.fabric.ModFabric;
 import com.gitlab.srcmc.rctmod.fabric.network.Packets;
@@ -29,7 +31,10 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.fabricmc.fabric.api.networking.v1.PacketSender;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.ClientPacketListener;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.level.Level;
 
@@ -42,14 +47,22 @@ public class ModClient implements ClientModInitializer {
         });
 
         ReloadListenerRegistry.register(PackType.CLIENT_RESOURCES, RCTMod.get().getClientDataManager());
-        ClientTickEvents.START_WORLD_TICK.register(ModClient::handleClientWorldTick);
+        ClientTickEvents.START_WORLD_TICK.register(ModClient::onClientWorldTick);
+        ClientPlayNetworking.registerGlobalReceiver(Packets.PLAYER_STATE, null);
     }
 
-    static void handleClientWorldTick(Level level) {
+    static void onClientWorldTick(Level level) {
         var mc = Minecraft.getInstance();
 
         if(mc.player.tickCount % RCTMod.get().getServerConfig().spawnIntervalTicks() == 0) {
             ClientPlayNetworking.send(Packets.PLAYER_PING, PacketByteBufs.empty());
         }
+    }
+
+    static void handleReceivedPlayerState(Minecraft client, ClientPacketListener handler, FriendlyByteBuf buf, PacketSender responseSender) {
+        PlayerState.get(client.player).deserialize(buf.array());
+
+        var ps = PlayerState.get(client.player);
+        ModCommon.LOG.info("RECEIVED PS: " + buf.array().length + ", " + ps.getLevelCap() + ", " + ps.getTrainerDefeatCounts().size() + ", " + ps.getTypeDefeatCounts().size());
     }
 }

@@ -23,4 +23,5 @@ import net.minecraft.resources.ResourceLocation;
 
 public final class Packets {
     public final static ResourceLocation PLAYER_PING = new ResourceLocation(ModCommon.MOD_ID, "player_ping");
+    public final static ResourceLocation PLAYER_STATE = new ResourceLocation(ModCommon.MOD_ID, "player_state");
 }
