@@ -36,6 +36,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
 import net.minecraft.util.profiling.ProfilerFiller;
@@ -81,19 +82,13 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
     }
 
     public TrainerMobData getData(TrainerMob mob) {
-        return this.getData(mob.getTrainerId(), mob.getDisplayName().getString());
+        return this.getData(mob.getTrainerId());
     }
 
     public TrainerMobData getData(String trainerId) {
-        return this.getData(trainerId, trainerId);
-    }
-
-    private TrainerMobData getData(String trainerId, String trainerName) {
         if(!trainerMobs.containsKey(trainerId)) {
             if(!trainerId.isEmpty()) {
-                ModCommon.LOG.error(String.format(
-                    "Invalid trainer id '%s' for mob: ???",
-                    trainerId, trainerName));
+                ModCommon.LOG.error(String.format("Invalid trainer id '%s'", trainerId));
             }
 
             return new TrainerMobData();
@@ -111,9 +106,7 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
     }
 
     public TrainerPlayerData getData(Player player) {
-        var level = player.getServer().overworld();
-
-        return level.getDataStorage().computeIfAbsent(
+        return player.getServer().overworld().getDataStorage().computeIfAbsent(
             TrainerPlayerData::of,
             TrainerPlayerData::new,
             TrainerPlayerData.filePath(player));
@@ -124,12 +117,14 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
     }
 
     public TrainerBattleMemory getBattleMemory(TrainerMob mob) {
-        var level = mob.getServer().overworld();
+        return getBattleMemory(mob.getServer().overworld(), mob.getTrainerId());
+    }
 
+    public TrainerBattleMemory getBattleMemory(ServerLevel level ,String trainerId) {
         return level.getDataStorage().computeIfAbsent(
             TrainerBattleMemory::of,
             TrainerBattleMemory::new,
-            TrainerBattleMemory.filePath(mob));
+            TrainerBattleMemory.filePath(trainerId));
     }
 
     @Override

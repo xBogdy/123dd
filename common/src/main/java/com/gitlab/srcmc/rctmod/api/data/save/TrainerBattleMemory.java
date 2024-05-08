@@ -36,8 +36,15 @@ public class TrainerBattleMemory extends SavedData {
         return tbm;
     }
 
+    /**
+     * @deprecated
+     */
     public static String filePath(TrainerMob mob) {
         return String.format("%s.trainers.%s.mem", ModCommon.MOD_ID, mob.getTrainerId());
+    }
+
+    public static String filePath(String trainerId) {
+        return String.format("%s.trainers.%s.mem", ModCommon.MOD_ID, trainerId);
     }
 
     public void addDefeatedBy(Player player) {
