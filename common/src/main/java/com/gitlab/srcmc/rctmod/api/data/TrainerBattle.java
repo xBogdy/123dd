@@ -17,6 +17,7 @@
  */
 package com.gitlab.srcmc.rctmod.api.data;
 
+import java.util.Collections;
 import java.util.List;
 
 import com.gitlab.srcmc.rctmod.advancements.criteria.DefeatCountTrigger;
@@ -55,6 +56,22 @@ public class TrainerBattle {
         return this.initiatorSidePlayers.get(0);
     }
 
+    public List<Player> getInitiatorSidePlayers() {
+        return Collections.unmodifiableList(this.initiatorSidePlayers);
+    }
+
+    public List<TrainerMob> getInitiatorSideMobs() {
+        return Collections.unmodifiableList(this.initiatorSideMobs);
+    }
+
+    public List<Player> getTrainerSidePlayers() {
+        return Collections.unmodifiableList(this.trainerSidePlayers);
+    }
+
+    public List<TrainerMob> getTrainerSideMobs() {
+        return Collections.unmodifiableList(this.trainerSideMobs);
+    }
+
     public void distributeRewards(boolean initiatorWins) {
         var winnerPlayers = initiatorWins ? initiatorSidePlayers : trainerSidePlayers;
         var looserMobs = initiatorWins ? trainerSideMobs : initiatorSideMobs;
@@ -72,13 +89,13 @@ public class TrainerBattle {
 
                 playerTr.setLevelCap(Math.max(mobTr.getRewardLevelCap(), playerTr.getLevelCap()));
                 battleMem.addDefeatedBy(player);
-                mob.finishBattle(true);
+                mob.finishBattle(this, true);
                 DefeatCountTrigger.get().trigger((ServerPlayer)player, mob);
             }
         }
 
         for(var mob : initiatorWins ? initiatorSideMobs : trainerSideMobs) {
-            mob.finishBattle(false);
+            mob.finishBattle(this, false);
         }
     }
 }

@@ -20,14 +20,17 @@ package com.gitlab.srcmc.rctmod.world.entities;
 import java.util.UUID;
 
 import com.gitlab.srcmc.rctmod.api.RCTMod;
+import com.gitlab.srcmc.rctmod.api.data.TrainerBattle;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData.Type;
 import com.gitlab.srcmc.rctmod.api.utils.ChatUtils;
 import com.gitlab.srcmc.rctmod.world.entities.goals.PokemonBattleGoal;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtUtils;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -186,6 +189,37 @@ public class TrainerMob extends PathfinderMob implements Npc {
         this.setCustomName(Component.literal(tmd.getTeam().getDisplayName()));
     }
 
+    @Override
+    public Component getDisplayName() {
+        var tmd = RCTMod.get().getTrainerManager().getData(this);
+        var level = this.level();
+        var suffix = "";
+
+        if(level.isClientSide) {
+            // TODO
+            // var mc = Minecraft.getInstance();
+            // var ps = PlayerState.get(mc.player);
+            // // ModCommon.LOG.info("PS ON CLIENT: " + ps.getLevelCap() + ", " + ps.getTrainerDefeatCounts().size() + ", " + ps.getTrainerDefeatCounts().size());
+
+            // if(!this.wasDefeatedBy(mc.player)) {
+            //     suffix = "*";
+            // }
+        }
+
+        switch(tmd.getType()) {
+            case LEADER:
+                return this.getCustomName().copy().withStyle(Style.EMPTY.withColor(ChatFormatting.GREEN)).append(suffix);
+            case E4:
+                return this.getCustomName().copy().withStyle(Style.EMPTY.withColor(ChatFormatting.LIGHT_PURPLE)).append(suffix);
+            case CHAMP:
+                return this.getCustomName().copy().withStyle(Style.EMPTY.withColor(ChatFormatting.GOLD)).append(suffix);
+            case TEAM_ROCKET:
+                return this.getCustomName().copy().withStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)).append(suffix);
+            default:
+                return this.getCustomName().copy().append(suffix);
+        }
+    }
+
     public void setTrainerId(String trainerId) {
         var level = this.level();
 
@@ -206,19 +240,41 @@ public class TrainerMob extends PathfinderMob implements Npc {
         return this.entityData.get(DATA_TRAINER_ID);
     }
 
-    public void finishBattle(boolean defeated) {
+    public void finishBattle(TrainerBattle battle, boolean defeated) {
         var level = this.level();
 
-        if(!level.isClientSide && isInBattle()) {
-            ChatUtils.reply(this, this.getOpponent(), defeated ? "battle_lost" : "battle_won");
+        if(!level.isClientSide && this.isInBattle()) {
             var mobTr = RCTMod.get().getTrainerManager().getData(this);
             this.cooldown = mobTr.getBattleCooldownTicks();
             this.setOpponent(null);
             this.setTarget(null);
 
+            if(!battle.getInitiatorSideMobs().contains(this)) {
+                if(defeated) {
+                    battle.getInitiatorSidePlayers().forEach(player -> {
+                        ChatUtils.reply(this, player, "battle_lost");
+                    });
+
+                    this.dropBattleLoot(mobTr.getLootTableResource());
+                } else {
+                    battle.getTrainerSidePlayers().forEach(player -> {
+                        ChatUtils.reply(this, player, "battle_won");
+                    });
+                }
+            } else {
+                if(defeated) {
+                    battle.getTrainerSidePlayers().forEach(player -> {
+                        ChatUtils.reply(this, player, "battle_lost");
+                    });
+                } else {
+                    battle.getInitiatorSidePlayers().forEach(player -> {
+                        ChatUtils.reply(this, player, "battle_won");
+                    });
+                }
+            }
+
             if(defeated) {
                 this.defeats++;
-                this.dropBattleLoot(mobTr.getLootTableResource());
             } else {
                 this.wins++;
             }
