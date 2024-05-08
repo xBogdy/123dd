@@ -35,6 +35,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
 
 public class PlayerState implements Serializable {
+    public static final int SYNC_INTERVAL_TICKS = 60;
     private static final Map<UUID, PlayerState> remoteStates = new HashMap<>();
     private static final PlayerState localState = new PlayerState();
 
@@ -42,9 +43,9 @@ public class PlayerState implements Serializable {
     private Map<TrainerMobData.Type, Integer> typeDefeatCounts = new HashMap<>();
     private int levelCap;
 
-    private Player player;
-    private PlayerState updated;
-    private boolean hasChanges = true;
+    private transient Player player;
+    private transient PlayerState updated;
+    private transient boolean hasChanges = true;
 
     public static PlayerState get(Player player) {
         if(player.isLocalPlayer()) {
@@ -60,7 +61,7 @@ public class PlayerState implements Serializable {
         return remoteStates.computeIfAbsent(player.getUUID(), uuid -> new PlayerState(player));
     }
 
-    public byte[] serialize() {
+    public byte[] serializeUpdate() {
         if(!this.hasChanges) {
             return new byte[]{};
         }
@@ -77,7 +78,7 @@ public class PlayerState implements Serializable {
         }
     }
 
-    public void deserialize(byte[] bytes) {
+    public void deserializeUpdate(byte[] bytes) {
         var buf = new ByteArrayInputStream(bytes);
 
         try(var ois = new ObjectInputStream(buf)) {
@@ -105,12 +106,14 @@ public class PlayerState implements Serializable {
             this.updated.trainerDefeatCounts.put(trainerId, 1);
         } else {
             this.trainerDefeatCounts.compute(trainerId, (k, v) -> v + 1);
-            this.updated.trainerDefeatCounts.compute(trainerId, (k, v) -> v + 1);
+            this.updated.trainerDefeatCounts.put(trainerId, this.trainerDefeatCounts.get(trainerId));
         }
 
         var tm = RCTMod.get().getTrainerManager();
-        this.typeDefeatCounts.compute(tm.getData(trainerId).getType(), (k, v) -> v == null ? 1 : v + 1);
-        this.updated.typeDefeatCounts.compute(tm.getData(trainerId).getType(), (k, v) -> v == null ? 1 : v + 1);
+        var tt = tm.getData(trainerId).getType();
+
+        this.typeDefeatCounts.compute(tt, (k, v) -> v == null ? 1 : v + 1);
+        this.updated.typeDefeatCounts.put(tt, this.typeDefeatCounts.get(tt));
         this.hasChanges = true;
     }
 

@@ -21,6 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 import com.gitlab.srcmc.rctmod.ModCommon;
+import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 
 import net.minecraft.nbt.CompoundTag;
@@ -47,7 +48,7 @@ public class TrainerBattleMemory extends SavedData {
         return String.format("%s.trainers.%s.mem", ModCommon.MOD_ID, trainerId);
     }
 
-    public void addDefeatedBy(Player player) {
+    public void addDefeatedBy(String trainerId, Player player) {
         var count = this.defeatedBy.get(player.getUUID());
 
         if(count == null) {
@@ -55,6 +56,7 @@ public class TrainerBattleMemory extends SavedData {
         }
 
         if(count < Integer.MAX_VALUE) {
+            PlayerState.get(player).addDefeat(trainerId);
             this.defeatedBy.put(player.getUUID(), count + 1);
             this.setDirty();
         }

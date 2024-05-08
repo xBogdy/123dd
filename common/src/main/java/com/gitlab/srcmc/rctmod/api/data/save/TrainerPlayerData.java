@@ -23,6 +23,7 @@ import java.util.Map;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData.Type;
+import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.player.Player;
@@ -30,6 +31,8 @@ import net.minecraft.world.level.saveddata.SavedData;
 
 public class TrainerPlayerData extends SavedData {
     private int levelCap;
+
+    // TODO: deprecated (info can be retrieved with PlayerState)
     private Map<Type, Integer> defeats = new HashMap<>();
 
     public static TrainerPlayerData of(CompoundTag tag) {
@@ -62,8 +65,9 @@ public class TrainerPlayerData extends SavedData {
         return this.defeats.getOrDefault(type, 0);
     }
 
-    public void setLevelCap(int levelCap) {
+    public void setLevelCap(Player player, int levelCap) {
         if(this.levelCap != levelCap) {
+            PlayerState.get(player).setLevelCap(levelCap);
             this.levelCap = levelCap;
             setDirty();
         }

@@ -46,19 +46,16 @@ public class ModServer {
         ServerPlayNetworking.registerGlobalReceiver(Packets.PLAYER_PING, ModServer::handleReceivedPlayerPing);
     }
 
-    private static void onServerStarted(MinecraftServer server) {
+    static void onServerStarted(MinecraftServer server) {
         RCTMod.get().getServerDataManager().listTrainerTeams(CobblemonHandler::registerTrainer);
     }
 
-    private static void onServerWorldTick(ServerLevel level) {
+    static void onServerWorldTick(ServerLevel level) {
         level.players().forEach(player -> {
-            if(player.tickCount % 200 == 0) {
-                var bytes = PlayerState.get(player).serialize();
+            if(player.tickCount % PlayerState.SYNC_INTERVAL_TICKS == 0) {
+                var bytes = PlayerState.get(player).serializeUpdate();
 
                 if(bytes.length > 0) {
-                    var ps = PlayerState.get(player);
-                    ModCommon.LOG.info("SENDING PS: " + bytes.length + ", " + ps.getLevelCap() + ", " + ps.getTrainerDefeatCounts().size() + ", " + ps.getTypeDefeatCounts().size());
-
                     var buf = PacketByteBufs.create();
                     buf.writeBytes(bytes);
                     ServerPlayNetworking.send(player, Packets.PLAYER_STATE, buf);
@@ -67,7 +64,7 @@ public class ModServer {
         });
     }
 
-    private static void handleReceivedPlayerPing(MinecraftServer server, ServerPlayer player, ServerGamePacketListenerImpl handler, FriendlyByteBuf buf, PacketSender responseSender) {
+    static void handleReceivedPlayerPing(MinecraftServer server, ServerPlayer player, ServerGamePacketListenerImpl handler, FriendlyByteBuf buf, PacketSender responseSender) {
         RCTMod.get().getTrainerSpawner().attemptSpawnFor(player);
     }
 }

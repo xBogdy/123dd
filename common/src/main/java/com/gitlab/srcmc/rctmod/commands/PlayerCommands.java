@@ -130,7 +130,7 @@ public final class PlayerCommands {
     private static int player_set_level_cap_value(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         if(context.getSource().getEntity() instanceof Player player) {
             var level_cap = IntegerArgumentType.getInteger(context, "value");
-            RCTMod.get().getTrainerManager().getData(player).setLevelCap(level_cap);
+            RCTMod.get().getTrainerManager().getData(player).setLevelCap(player, level_cap);
             return level_cap;
         }
         
@@ -144,7 +144,7 @@ public final class PlayerCommands {
         var tm = RCTMod.get().getTrainerManager();
 
         for(var player : targets) {
-            tm.getData(player).setLevelCap(level_cap);
+            tm.getData(player).setLevelCap(player, level_cap);
         }
         
         return level_cap;

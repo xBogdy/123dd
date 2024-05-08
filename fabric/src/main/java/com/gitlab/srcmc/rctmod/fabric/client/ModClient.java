@@ -48,7 +48,7 @@ public class ModClient implements ClientModInitializer {
 
         ReloadListenerRegistry.register(PackType.CLIENT_RESOURCES, RCTMod.get().getClientDataManager());
         ClientTickEvents.START_WORLD_TICK.register(ModClient::onClientWorldTick);
-        ClientPlayNetworking.registerGlobalReceiver(Packets.PLAYER_STATE, null);
+        ClientPlayNetworking.registerGlobalReceiver(Packets.PLAYER_STATE, ModClient::handleReceivedPlayerState);
     }
 
     static void onClientWorldTick(Level level) {
@@ -60,9 +60,6 @@ public class ModClient implements ClientModInitializer {
     }
 
     static void handleReceivedPlayerState(Minecraft client, ClientPacketListener handler, FriendlyByteBuf buf, PacketSender responseSender) {
-        PlayerState.get(client.player).deserialize(buf.array());
-
-        var ps = PlayerState.get(client.player);
-        ModCommon.LOG.info("RECEIVED PS: " + buf.array().length + ", " + ps.getLevelCap() + ", " + ps.getTrainerDefeatCounts().size() + ", " + ps.getTypeDefeatCounts().size());
+        PlayerState.get(client.player).deserializeUpdate(buf.array());
     }
 }
