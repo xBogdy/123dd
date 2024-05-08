@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.6.x-alpha] - 2024-05-07
+
+***Added***
+
+- Client configuration
+- Indicator in the names of trainers shown to players that hasn't beaten them
+- Trainer names colored based of their type: NORMAL=white, LEADER=green, E4=purple, TEAM_ROCKET=gray (optional symbols that can be enabled in the client configuration)
+
 ## [0.5.4-alpha] - 2024-05-06
 
 ***Changed***
