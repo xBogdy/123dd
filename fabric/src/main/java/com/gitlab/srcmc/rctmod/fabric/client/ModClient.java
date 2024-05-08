@@ -17,7 +17,6 @@
  */
 package com.gitlab.srcmc.rctmod.fabric.client;
 
-import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.client.TrainerRenderer;
