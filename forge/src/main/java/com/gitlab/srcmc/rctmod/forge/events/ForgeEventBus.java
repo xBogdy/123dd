@@ -19,9 +19,14 @@ package com.gitlab.srcmc.rctmod.forge.events;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
+import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.commands.PlayerCommands;
 import com.gitlab.srcmc.rctmod.commands.TrainerCommands;
 import com.gitlab.srcmc.rctmod.forge.CobblemonHandler;
+import com.gitlab.srcmc.rctmod.forge.network.NetworkManager;
+import com.gitlab.srcmc.rctmod.forge.network.packets.S2CPlayerState;
+
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.TickEvent.Phase;
@@ -30,6 +35,7 @@ import net.minecraftforge.event.server.ServerStartedEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
+import net.minecraftforge.network.PacketDistributor;
 
 @Mod.EventBusSubscriber(modid = ModCommon.MOD_ID, bus = Bus.FORGE)
 public class ForgeEventBus {
@@ -45,6 +51,14 @@ public class ForgeEventBus {
 
             if(interval == 0 || interval > 0 && event.player.tickCount % interval == 0) {
                 RCTMod.get().getTrainerSpawner().attemptSpawnFor(event.player);
+            }
+
+            if(event.player.tickCount % PlayerState.SYNC_INTERVAL_TICKS == 0) {
+                var bytes = PlayerState.get(event.player).serializeUpdate();
+
+                if(bytes.length > 0) {
+                    NetworkManager.INSTANCE.send(PacketDistributor.PLAYER.with(() -> (ServerPlayer)event.player), new S2CPlayerState(bytes));
+                }
             }
         }
     }
