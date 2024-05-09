@@ -36,6 +36,7 @@ import net.minecraft.world.entity.player.Player;
 
 public class PlayerState implements Serializable {
     public static final int SYNC_INTERVAL_TICKS = 60;
+    private static final long serialVersionUID = 0;
     private static final Map<UUID, PlayerState> remoteStates = new HashMap<>();
     private static final PlayerState localState = new PlayerState();
 
