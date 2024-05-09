@@ -26,13 +26,11 @@ import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.api.utils.ChatUtils;
 import com.gitlab.srcmc.rctmod.world.entities.goals.PokemonBattleGoal;
 
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtUtils;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.Style;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -73,6 +71,7 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 
 public class TrainerMob extends PathfinderMob implements Npc {
     private static final int DISCARD_DELAY = 100;
+
     private static final EntityDataAccessor<String> DATA_TRAINER_ID = SynchedEntityData.defineId(TrainerMob.class, EntityDataSerializers.STRING);
     private static final EntityType<TrainerMob> TYPE = EntityType.Builder
         .of(TrainerMob::new, MobCategory.MISC)
@@ -194,34 +193,32 @@ public class TrainerMob extends PathfinderMob implements Npc {
     @Override
     public Component getDisplayName() {
         var tmd = RCTMod.get().getTrainerManager().getData(this);
+        var suffix = new StringBuilder();
+        var cmp = this.getCustomName().copy();
         var level = this.level();
-        var typeSuffix = "";
-        var suffix = "";
-
+        
         if(level.isClientSide) {
+            var cfg = RCTMod.get().getClientConfig();
             var mc = Minecraft.getInstance();
 
+            if(cfg.showTrainerTypeSymbols()) {
+                var sym = tmd.getType().toString();
+                
+                if(sym.length() > 0) {
+                    suffix.append(' ').append(sym);
+                }
+            }
+            
+            if(cfg.showTrainerTypeColors()) {
+                cmp.setStyle(cmp.getStyle().withColor(tmd.getType().toColor()));
+            }
+
             if(PlayerState.get(mc.player).getTrainerDefeatCount(this.getTrainerId()) == 0) {
-                suffix = "⊘"; // see also https://coolsymbol.com/latin-characters-language-symbols.html
+                cmp.setStyle(cmp.getStyle().withItalic(true));
             }
         }
 
-        switch(tmd.getType()) {
-            case LEADER:
-                typeSuffix = "Ⓛ";
-                return this.getCustomName().copy().withStyle(Style.EMPTY.withColor(ChatFormatting.GREEN)).append(typeSuffix).append(suffix);
-            case E4:
-                typeSuffix = "Ⓔ";
-                return this.getCustomName().copy().withStyle(Style.EMPTY.withColor(ChatFormatting.LIGHT_PURPLE)).append(typeSuffix).append(suffix);
-            case CHAMP:
-                typeSuffix = "Ⓒ";
-                return this.getCustomName().copy().withStyle(Style.EMPTY.withColor(ChatFormatting.GOLD)).append(typeSuffix).append(suffix);
-            case TEAM_ROCKET:
-                typeSuffix = "Ⓡ";
-                return this.getCustomName().copy().withStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)).append(typeSuffix).append(suffix);
-            default:
-                return this.getCustomName().copy().append(suffix);
-        }
+        return cmp.append(suffix.toString());
     }
 
     public void setTrainerId(String trainerId) {

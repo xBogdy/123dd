@@ -22,6 +22,7 @@ import com.cobblemon.mod.common.api.events.CobblemonEvents;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.advancements.criteria.DefeatCountTrigger;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
+import com.gitlab.srcmc.rctmod.config.ClientConfig;
 import com.gitlab.srcmc.rctmod.config.ServerConfig;
 import com.gitlab.srcmc.rctmod.forge.CobblemonHandler;
 import com.gitlab.srcmc.rctmod.forge.ModRegistries;
@@ -40,8 +41,12 @@ public class ModEventBus {
     @SubscribeEvent
     static void onModConstruct(FMLConstructModEvent event) {
         var serverConfig = new ServerConfig();
-        ModLoadingContext.get().registerConfig(serverConfig.getType(), serverConfig.getSpec());
-        RCTMod.init(ModRegistries.LootItemConditions.LEVEL_RANGE, CobblemonHandler::getPlayerLevel, CobblemonHandler::getActivePokemon, CobblemonHandler::makeBattle, () -> null, () -> null, serverConfig);
+        var clientConfig = new ClientConfig();
+        var mlx = ModLoadingContext.get();
+
+        mlx.registerConfig(serverConfig.getType(), serverConfig.getSpec());
+        mlx.registerConfig(clientConfig.getType(), clientConfig.getSpec());
+        RCTMod.init(ModRegistries.LootItemConditions.LEVEL_RANGE, CobblemonHandler::getPlayerLevel, CobblemonHandler::getActivePokemon, CobblemonHandler::makeBattle, clientConfig, () -> null, serverConfig);
     }
 
     @SubscribeEvent

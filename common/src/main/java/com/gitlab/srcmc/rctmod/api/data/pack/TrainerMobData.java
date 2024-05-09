@@ -26,11 +26,34 @@ import java.util.Set;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.google.gson.reflect.TypeToken;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.resources.ResourceLocation;
 
 public class TrainerMobData implements IDataPackObject {
     public enum Type {
-        NORMAL, LEADER, E4, CHAMP, TEAM_ROCKET
+        NORMAL, LEADER, E4, CHAMP, TEAM_ROCKET;
+
+        private static final Map<Type, String> symbols = Map.of(
+            LEADER, "[L]",
+            E4, "[E]",
+            CHAMP, "[C]",
+            TEAM_ROCKET, "[R]"
+        );
+
+        private static final Map<Type, Integer> colors = Map.of(
+            LEADER, ChatFormatting.GREEN.getColor(),
+            E4, ChatFormatting.LIGHT_PURPLE.getColor(),
+            CHAMP, ChatFormatting.GOLD.getColor(),
+            TEAM_ROCKET, ChatFormatting.DARK_GRAY.getColor()
+        );
+
+        public String toString() {
+            return symbols.getOrDefault(this, "");
+        }
+
+        public int toColor() {
+            return colors.getOrDefault(this, ChatFormatting.WHITE.getColor());
+        }
     }
 
     private Type type = Type.NORMAL;

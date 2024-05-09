@@ -18,4 +18,19 @@
 package com.gitlab.srcmc.rctmod.api.config;
 
 public interface IClientConfig extends IForgeConfig {
+    /**
+     * Determines if symbols for trainer types are shown next to trainer names.
+     * 
+     * range [true or false]
+     * default false
+     */
+    default boolean showTrainerTypeSymbols() { return false; }
+
+    /**
+     * Determines if trainer names are colored based of their type.
+     * 
+     * range [true or false]
+     * default true
+     */
+    default boolean showTrainerTypeColors() { return true; }
 }
