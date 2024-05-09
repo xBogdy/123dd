@@ -25,7 +25,6 @@ import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.config.ServerConfig;
 import com.gitlab.srcmc.rctmod.forge.CobblemonHandler;
 import com.gitlab.srcmc.rctmod.forge.ModRegistries;
-import com.gitlab.srcmc.rctmod.forge.network.NetworkManager;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
