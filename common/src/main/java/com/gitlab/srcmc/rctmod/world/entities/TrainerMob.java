@@ -80,7 +80,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
     private int despawnDelay, discardDelay, cooldown, wins, defeats;
     private BlockPos wanderTarget;
-    private Player opponent;
+    private Player opponent; // TODO: not really required anymore
     private UUID originPlayer;
 
     protected TrainerMob(EntityType<? extends PathfinderMob> entityType, Level level) {
@@ -107,7 +107,13 @@ public class TrainerMob extends PathfinderMob implements Npc {
                 return false;
             }
 
+            var cfg = RCTMod.get().getServerConfig();
             var trPlayer = tm.getData(player);
+
+            if(tm.getPlayerLevel(player) > (trPlayer.getLevelCap() + cfg.maxOverLevelCap())) {
+                return false;
+            }
+
             var trMob = tm.getData(this);
 
             if(trPlayer.getLevelCap() < trMob.getRequiredLevelCap()) {
@@ -140,6 +146,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
     protected void replyTo(Player player) {
         var tm = RCTMod.get().getTrainerManager();
+        var cfg = RCTMod.get().getServerConfig();
         var trPlayer = tm.getData(player);
         var trMob = tm.getData(this);
 
@@ -151,6 +158,8 @@ public class TrainerMob extends PathfinderMob implements Npc {
             ChatUtils.reply(this, player, "missing_beaten_champs");
         } else if(trPlayer.getLevelCap() < trMob.getTeam().getMembers().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0)) {
             ChatUtils.reply(this, player, "low_level_cap");
+        } else if(tm.getPlayerLevel(player) > (trPlayer.getLevelCap() + cfg.maxOverLevelCap())) {
+            ChatUtils.reply(this, player, "over_level_cap");
         } else if(tm.getActivePokemon(player) == 0) {
             ChatUtils.reply(this, player, "missing_pokemon");
         }
@@ -160,6 +169,9 @@ public class TrainerMob extends PathfinderMob implements Npc {
         this.opponent = player;
     }
 
+    /**
+     * @deprecated
+     */
     public Player getOpponent() {
         return this.opponent;
     }
@@ -208,7 +220,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
                     suffix.append(' ').append(sym);
                 }
             }
-            
+
             if(cfg.showTrainerTypeColors()) {
                 cmp.setStyle(cmp.getStyle().withColor(tmd.getType().toColor()));
             }

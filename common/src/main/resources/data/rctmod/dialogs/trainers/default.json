@@ -195,6 +195,11 @@
     "You must overcome a champion to face me.",
     "Prove yourself against a champion first."
   ],
+  "missing_pokemon": [
+    "You do not seem to have any pokemon capable fighting in your team.",
+    "Are your pokemon fainted?",
+    "If you want a battle bring your pokemon."
+  ],
   "low_level_cap": [
     "You still need to train more.",
     "Your pokemon are too weak.",
@@ -256,6 +261,11 @@
     "Level up your pokemon some more.",
     "Your team lacks the strength to face me.",
     "Train your pokemon more before challenging me."
+  ],
+  "over_level_cap": [
+    "Some of your pokemon do not seem to fully respect you.",
+    "Your pokemon do not trust. Maybe aquire more badges to prove your worth?",
+    "You do not seem to be ready to fight with pokemon of that level."
   ],
   "battle_start": [
     "I hope you have prepared yourself.",
@@ -551,8 +561,5 @@
   ],
   "done_generic": [
     "I'm done."
-  ],
-  "missing_pokemon": [
-    "You do not seem to have any pokemon capable fighting in your team."
   ]
 }

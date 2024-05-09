@@ -102,4 +102,13 @@ public interface IServerConfig extends IForgeConfig {
      * default 15
      */
     default int initialLevelCap() { return 15; }
+
+    /**
+     * Trainers will refuse to battle players that have pokemon in their party with a
+     * level greater than the set value + the level cap of the player. This value can
+     * also be negative.
+     * 
+     * default 0
+     */
+    default int maxOverLevelCap() { return 0; }
 }

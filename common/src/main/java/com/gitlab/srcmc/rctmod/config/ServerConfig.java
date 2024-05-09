@@ -25,7 +25,7 @@ import net.minecraftforge.fml.config.ModConfig;
 
 public class ServerConfig extends ForgeConfig implements IServerConfig {
     // spawning
-    private ConfigValue<Double> globalSpawnChanceValue; // TODO: has currently no effect
+    private ConfigValue<Double> globalSpawnChanceValue;
     private ConfigValue<Integer> despawnDelayTicksValue;
     private ConfigValue<Integer> spawnIntervalTicksValue;
     private ConfigValue<Integer> maxHorizontalDistanceToPlayersValue;
@@ -35,8 +35,9 @@ public class ServerConfig extends ForgeConfig implements IServerConfig {
     private ConfigValue<Integer> maxTrainersTotalValue;
     private ConfigValue<Integer> maxLevelDiffValue;
 
-    // player
-    private ConfigValue<Integer> initialLevelCapValue; // TODO: has currently no effect
+    // players
+    private ConfigValue<Integer> initialLevelCapValue;
+    private ConfigValue<Integer> maxOverLevelCapValue;
 
     private ForgeConfigSpec spec;
 
@@ -88,6 +89,10 @@ public class ServerConfig extends ForgeConfig implements IServerConfig {
         this.initialLevelCapValue = builder
             .comment("Initial level cap of players. Pokemon will not gain any experience if at or above the level cap.")
             .defineInRange("initialLevelCap", IServerConfig.super.initialLevelCap(), 1, 100);
+
+        this.maxOverLevelCapValue = builder
+            .comment("Trainers will refuse to battle players that have pokemon in their party with a level greater than the set value + the level cap of the player. This value can also be negative.")
+            .define("maxOverLevelCap", IServerConfig.super.maxOverLevelCap());
 
         this.spec = builder.build();
     }
@@ -145,5 +150,10 @@ public class ServerConfig extends ForgeConfig implements IServerConfig {
     @Override
     public int initialLevelCap() {
         return this.initialLevelCapValue.get();
+    }
+
+    @Override
+    public int maxOverLevelCap() {
+        return this.maxOverLevelCapValue.get();
     }
 }
