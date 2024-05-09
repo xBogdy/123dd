@@ -24,6 +24,7 @@ import com.gitlab.srcmc.rctmod.advancements.criteria.DefeatCountTrigger;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.commands.PlayerCommands;
 import com.gitlab.srcmc.rctmod.commands.TrainerCommands;
+import com.gitlab.srcmc.rctmod.config.ClientConfig;
 import com.gitlab.srcmc.rctmod.config.ServerConfig;
 import com.gitlab.srcmc.rctmod.fabric.server.ModServer;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
@@ -45,7 +46,7 @@ public class ModFabric implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        RCTMod.init(() -> LEVEL_RANGE, CobblemonHandler::getPlayerLevel, CobblemonHandler::getActivePokemon, CobblemonHandler::makeBattle, () -> null, () -> null, new ServerConfig());
+        RCTMod.init(() -> LEVEL_RANGE, CobblemonHandler::getPlayerLevel, CobblemonHandler::getActivePokemon, CobblemonHandler::makeBattle, new ClientConfig(), () -> null, new ServerConfig());
         registerEntityAttributes();
         registerCommands();
         registerAdvancementCriteria();

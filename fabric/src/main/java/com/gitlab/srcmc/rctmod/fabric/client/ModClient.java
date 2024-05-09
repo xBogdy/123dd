@@ -19,12 +19,14 @@ package com.gitlab.srcmc.rctmod.fabric.client;
 
 import java.util.Optional;
 
+import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.client.TrainerRenderer;
 import com.gitlab.srcmc.rctmod.fabric.ModFabric;
 import com.gitlab.srcmc.rctmod.fabric.network.Packets;
 import dev.architectury.registry.ReloadListenerRegistry;
+import fuzs.forgeconfigapiport.api.config.v2.ForgeConfigRegistry;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -39,6 +41,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.fml.config.ModConfig;
 
 @Environment(EnvType.CLIENT)
 public class ModClient extends com.gitlab.srcmc.rctmod.client.ModClient implements ClientModInitializer {
@@ -50,6 +53,7 @@ public class ModClient extends com.gitlab.srcmc.rctmod.client.ModClient implemen
 
         ReloadListenerRegistry.register(PackType.CLIENT_RESOURCES, RCTMod.get().getClientDataManager());
         ClientTickEvents.START_WORLD_TICK.register(ModClient::onClientWorldTick);
+        ForgeConfigRegistry.INSTANCE.register(ModCommon.MOD_ID, ModConfig.Type.CLIENT, RCTMod.get().getClientConfig().getSpec());
         ClientPlayNetworking.registerGlobalReceiver(Packets.PLAYER_STATE, ModClient::handleReceivedPlayerState);
         com.gitlab.srcmc.rctmod.client.ModClient.init(this);
     }
@@ -69,6 +73,6 @@ public class ModClient extends com.gitlab.srcmc.rctmod.client.ModClient implemen
     }
 
     static void handleReceivedPlayerState(Minecraft client, ClientPacketListener handler, FriendlyByteBuf buf, PacketSender responseSender) {
-        PlayerState.get(client.player).deserializeUpdate(buf.array());
+        PlayerState.get(client.player).deserializeUpdate(buf.readByteArray());
     }
 }

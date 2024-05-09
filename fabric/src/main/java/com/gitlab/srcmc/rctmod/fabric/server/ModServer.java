@@ -56,9 +56,7 @@ public class ModServer {
                 var bytes = PlayerState.get(player).serializeUpdate();
 
                 if(bytes.length > 0) {
-                    var buf = PacketByteBufs.create();
-                    buf.writeBytes(bytes);
-                    ServerPlayNetworking.send(player, Packets.PLAYER_STATE, buf);
+                    ServerPlayNetworking.send(player, Packets.PLAYER_STATE, PacketByteBufs.create().writeByteArray(bytes));
                 }
             }
         });
