@@ -30,14 +30,14 @@ dependencies {
     modImplementation "curse.maven:cobblemontrainers-959503:${cobblemontrainers_fabric_version}"
     modImplementation "com.selfdot:SelfdotModLibs-fabric:${selfdotlibs_version}"
 
+    // Fabric Permission API
+    modImplementation "me.lucko:fabric-permissions-api:${fpapi_version}"
+
     // Patchouli (TODO: figure out error Caused by: java.lang.ClassNotFoundException: io.github.fablabsmc.fablabs.api.fiber.v1.schema.type.derived.ConfigType)
     // modRuntimeOnly "curse.maven:patchouli-fabric-393236:${patchouli_fabric_version}"
 
     // Cobblepedia
     // modRuntimeOnly "curse.maven:cobblepedia-850946:${cobblepedia_fabric_version}"
-
-    // Fabric Permission API
-    // modRuntimeOnly "me.lucko:fabric-permissions-api:${fpapi_version}"
 
     // Configured
     modRuntimeOnly "curse.maven:configured-457570:${configured_fabric_version}"
