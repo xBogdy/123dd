@@ -45,7 +45,7 @@ public class NetworkManager {
         INSTANCE.messageBuilder(S2CPlayerState.class, id++)
             .encoder(S2CPlayerState::encoder)
             .decoder(S2CPlayerState::decoder)
-            .consumerMainThread(S2CPlayerState.Handler::handle)
+            .consumerMainThread(S2CPlayerState::handle)
             .add();
     }
 }

@@ -20,10 +20,8 @@ package com.gitlab.srcmc.rctmod.forge.network.packets;
 import java.util.function.Supplier;
 
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
-import net.minecraft.client.Minecraft;
+import com.gitlab.srcmc.rctmod.client.ModClient;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.network.NetworkEvent;
 
 public class S2CPlayerState {
@@ -31,6 +29,10 @@ public class S2CPlayerState {
 
     public S2CPlayerState(byte[] bytes) {
         this.bytes = bytes;
+    }
+
+    public byte[] getBytes() {
+        return this.bytes;
     }
 
     public static void encoder(S2CPlayerState msg, FriendlyByteBuf buffer) {
@@ -41,14 +43,7 @@ public class S2CPlayerState {
         return new S2CPlayerState(buffer.readByteArray());
     }
 
-    public static class Handler {
-        public static void handle(S2CPlayerState msg, Supplier<NetworkEvent.Context> ctx) {
-            DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> handleOnClient(msg, ctx));
-        }
-    }
-
-    private static void handleOnClient(S2CPlayerState msg, Supplier<NetworkEvent.Context> ctx) {
-        var mc = Minecraft.getInstance();
-        PlayerState.get(mc.player).deserializeUpdate(msg.bytes);
+    public static void handle(S2CPlayerState msg, Supplier<NetworkEvent.Context> ctx) {
+        PlayerState.get(ModClient.get().getLocalPlayer().get()).deserializeUpdate(msg.getBytes());
     }
 }

@@ -30,8 +30,8 @@ import java.util.UUID;
 
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
+import com.gitlab.srcmc.rctmod.client.ModClient;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
 
 public class PlayerState implements Serializable {
@@ -136,11 +136,7 @@ public class PlayerState implements Serializable {
     }
 
     private PlayerState() {
-        var mc = Minecraft.getInstance();
-
-        if(mc.player != null) {
-            this.player = mc.player;
-        }
+        this.player = ModClient.get().getLocalPlayer().orElse(null);
     }
 
     private PlayerState(Player player) {

@@ -20,14 +20,21 @@ package com.gitlab.srcmc.rctmod.forge.events;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.client.TrainerRenderer;
 import com.gitlab.srcmc.rctmod.forge.ModRegistries;
+import com.gitlab.srcmc.rctmod.forge.client.ModClient;
 
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 @Mod.EventBusSubscriber(modid = ModCommon.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ModClientBus {
+    @SubscribeEvent
+    static void onClientSetup(FMLClientSetupEvent event) {
+        ModClient.init(new ModClient());
+    }
+
     @SubscribeEvent
     static void onRegisterRenderer(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(ModRegistries.Entities.TRAINER.get(), TrainerRenderer::new);

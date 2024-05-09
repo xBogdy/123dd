@@ -24,9 +24,9 @@ import com.gitlab.srcmc.rctmod.api.data.TrainerBattle;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData.Type;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.api.utils.ChatUtils;
+import com.gitlab.srcmc.rctmod.client.ModClient;
 import com.gitlab.srcmc.rctmod.world.entities.goals.PokemonBattleGoal;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtUtils;
@@ -207,11 +207,11 @@ public class TrainerMob extends PathfinderMob implements Npc {
         var tmd = RCTMod.get().getTrainerManager().getData(this);
         var suffix = new StringBuilder();
         var cmp = this.getCustomName().copy();
-        var level = this.level();
+        var localPlayer = ModClient.get().getLocalPlayer();
         
-        if(level.isClientSide) {
+        if(localPlayer.isPresent()) {
             var cfg = RCTMod.get().getClientConfig();
-            var mc = Minecraft.getInstance();
+            var player = localPlayer.get();
 
             if(cfg.showTrainerTypeSymbols()) {
                 var sym = tmd.getType().toString();
@@ -225,7 +225,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
                 cmp.setStyle(cmp.getStyle().withColor(tmd.getType().toColor()));
             }
 
-            if(PlayerState.get(mc.player).getTrainerDefeatCount(this.getTrainerId()) == 0) {
+            if(PlayerState.get(player).getTrainerDefeatCount(this.getTrainerId()) == 0) {
                 cmp.setStyle(cmp.getStyle().withItalic(true));
             }
         }

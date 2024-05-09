@@ -17,6 +17,8 @@
  */
 package com.gitlab.srcmc.rctmod.fabric.client;
 
+import java.util.Optional;
+
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.client.TrainerRenderer;
@@ -35,10 +37,11 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientPacketListener;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.packs.PackType;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
 @Environment(EnvType.CLIENT)
-public class ModClient implements ClientModInitializer {
+public class ModClient extends com.gitlab.srcmc.rctmod.client.ModClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         EntityRendererRegistry.register(ModFabric.TRAINER, (context) -> {
@@ -48,6 +51,13 @@ public class ModClient implements ClientModInitializer {
         ReloadListenerRegistry.register(PackType.CLIENT_RESOURCES, RCTMod.get().getClientDataManager());
         ClientTickEvents.START_WORLD_TICK.register(ModClient::onClientWorldTick);
         ClientPlayNetworking.registerGlobalReceiver(Packets.PLAYER_STATE, ModClient::handleReceivedPlayerState);
+        com.gitlab.srcmc.rctmod.client.ModClient.init(this);
+    }
+
+    @Override
+    public Optional<Player> getLocalPlayer() {
+        var mc = Minecraft.getInstance();
+        return Optional.of(mc.player);
     }
 
     static void onClientWorldTick(Level level) {
