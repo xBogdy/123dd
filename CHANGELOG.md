@@ -1,12 +1,17 @@
 # Changelog
 
-## [0.6.x-alpha] - 2024-05-07
+## [0.6.x-alpha] - 2024-05-09
 
 ***Added***
 
-- Client configuration
-- Indicator in the names of trainers shown to players that hasn't beaten them
-- Trainer names colored based of their type: NORMAL=white, LEADER=green, E4=purple, TEAM_ROCKET=gray (optional symbols that can be enabled in the client configuration)
+- Client configuration located at `config/rctmod-client.toml`. Options: `showTrainerTypeSymbols = false`, `showTrainerTypeColors = true`
+- Server config option `maxOverLevelCap`: Trainers will refuse to battle players that have pokemon in their party with a level greater than the set value + the level cap of the player (default `0`)
+
+***Changed***
+
+- Small adjustments to trainer mob ai: They are now more likely to stop and look at players nearby
+- Trainer names are now colored based of their trainer type, i.e. LEADER: green, E4: light purple, CHAMP: golden, TEAM_ROCKET: dark gray, others: white (optional symbols that are appended to the trainer names can be enabled in the **client config**)
+- Trainer names are now shown *emphasized* to players that never have beaten them
 
 ## [0.5.4-alpha] - 2024-05-06
 
