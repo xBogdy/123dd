@@ -52,7 +52,6 @@ public class ModEventBus {
 
     @SubscribeEvent
     static void onCommonSetup(FMLCommonSetupEvent event) {
-        NetworkManager.init();
         CobblemonEvents.BATTLE_VICTORY.subscribe(Priority.NORMAL, CobblemonHandler::handleBattleVictory);
         CobblemonEvents.EXPERIENCE_GAINED_EVENT_PRE.subscribe(Priority.HIGHEST, CobblemonHandler::handleExperienceGained);
         event.enqueueWork(() -> CriteriaTriggers.register(DefeatCountTrigger.get()));

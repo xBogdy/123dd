@@ -35,6 +35,7 @@ import net.minecraftforge.event.server.ServerStartedEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
+import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.PacketDistributor;
 
 @Mod.EventBusSubscriber(modid = ModCommon.MOD_ID, bus = Bus.FORGE)
@@ -57,7 +58,7 @@ public class ForgeEventBus {
                 var bytes = PlayerState.get(event.player).serializeUpdate();
 
                 if(bytes.length > 0) {
-                    NetworkManager.INSTANCE.send(PacketDistributor.PLAYER.with(() -> (ServerPlayer)event.player), new S2CPlayerState(bytes));
+                    NetworkManager.INSTANCE.sendTo(new S2CPlayerState(bytes), ((ServerPlayer)event.player).connection.connection, NetworkDirection.PLAY_TO_CLIENT);
                 }
             }
         }

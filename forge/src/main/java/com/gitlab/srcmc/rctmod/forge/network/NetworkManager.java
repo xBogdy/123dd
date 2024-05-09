@@ -21,9 +21,14 @@ import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.forge.network.packets.S2CPlayerState;
 
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.simple.SimpleChannel;
 
+@Mod.EventBusSubscriber(modid = ModCommon.MOD_ID, bus = Bus.MOD)
 public class NetworkManager {
     private static final String PROTOCOL_VERSION = "1";
 
@@ -33,13 +38,14 @@ public class NetworkManager {
         PROTOCOL_VERSION::equals,
         PROTOCOL_VERSION::equals);
 
-    public static void init() {
+    @SubscribeEvent
+	static void register(FMLCommonSetupEvent event) {
         int id = 0;
 
         INSTANCE.messageBuilder(S2CPlayerState.class, id++)
             .encoder(S2CPlayerState::encoder)
             .decoder(S2CPlayerState::decoder)
-            .consumerMainThread(S2CPlayerState::handle)
+            .consumerMainThread(S2CPlayerState.Handler::handle)
             .add();
     }
 }
