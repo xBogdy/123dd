@@ -22,10 +22,12 @@ import java.util.UUID;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.TrainerBattle;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData.Type;
+import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.api.utils.ChatUtils;
 import com.gitlab.srcmc.rctmod.world.entities.goals.PokemonBattleGoal;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtUtils;
@@ -193,28 +195,30 @@ public class TrainerMob extends PathfinderMob implements Npc {
     public Component getDisplayName() {
         var tmd = RCTMod.get().getTrainerManager().getData(this);
         var level = this.level();
+        var typeSuffix = "";
         var suffix = "";
 
         if(level.isClientSide) {
-            // TODO
-            // var mc = Minecraft.getInstance();
-            // var ps = PlayerState.get(mc.player);
-            // // ModCommon.LOG.info("PS ON CLIENT: " + ps.getLevelCap() + ", " + ps.getTrainerDefeatCounts().size() + ", " + ps.getTrainerDefeatCounts().size());
+            var mc = Minecraft.getInstance();
 
-            // if(!this.wasDefeatedBy(mc.player)) {
-            //     suffix = "*";
-            // }
+            if(PlayerState.get(mc.player).getTrainerDefeatCount(this.getTrainerId()) == 0) {
+                suffix = "⊘"; // see also https://coolsymbol.com/latin-characters-language-symbols.html
+            }
         }
 
         switch(tmd.getType()) {
             case LEADER:
-                return this.getCustomName().copy().withStyle(Style.EMPTY.withColor(ChatFormatting.GREEN)).append(suffix);
+                typeSuffix = "Ⓛ";
+                return this.getCustomName().copy().withStyle(Style.EMPTY.withColor(ChatFormatting.GREEN)).append(typeSuffix).append(suffix);
             case E4:
-                return this.getCustomName().copy().withStyle(Style.EMPTY.withColor(ChatFormatting.LIGHT_PURPLE)).append(suffix);
+                typeSuffix = "Ⓔ";
+                return this.getCustomName().copy().withStyle(Style.EMPTY.withColor(ChatFormatting.LIGHT_PURPLE)).append(typeSuffix).append(suffix);
             case CHAMP:
-                return this.getCustomName().copy().withStyle(Style.EMPTY.withColor(ChatFormatting.GOLD)).append(suffix);
+                typeSuffix = "Ⓒ";
+                return this.getCustomName().copy().withStyle(Style.EMPTY.withColor(ChatFormatting.GOLD)).append(typeSuffix).append(suffix);
             case TEAM_ROCKET:
-                return this.getCustomName().copy().withStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)).append(suffix);
+                typeSuffix = "Ⓡ";
+                return this.getCustomName().copy().withStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)).append(typeSuffix).append(suffix);
             default:
                 return this.getCustomName().copy().append(suffix);
         }
