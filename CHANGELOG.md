@@ -15,7 +15,8 @@
 
 ***Fixed***
 
-- Issue with data packs not beeing correctly synced to players that entered servers without ever have entered a singleplayer world before
+- Issue with data packs not beeing correctly synced to players that entered servers without ever having entered a singleplayer world before
+- Trainers getting softlocked in battles if player logs out or dies (now counts as trainer win)
 
 ## [0.5.4-alpha] - 2024-05-06
 
