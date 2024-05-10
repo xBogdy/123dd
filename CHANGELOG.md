@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.6.x-alpha] - 2024-05-09
+## [0.6.x-alpha] - 2024-05-11
 
 ***Added***
 
@@ -9,7 +9,7 @@
 
 ***Changed***
 
-- Small adjustments to trainer mob ai: They are now more likely to stop and look at players nearby
+- Small adjustments to trainer mob ai: They'll now eventually stop wandering when close to players
 - Trainer names are now colored based of their trainer type, i.e. LEADER: green, E4: light purple, CHAMP: golden, TEAM_ROCKET: dark gray, others: white (optional symbols that are appended to the trainer names can be enabled in the **client config**)
 - Trainer names are now shown *emphasized* to players that never have beaten them
 
