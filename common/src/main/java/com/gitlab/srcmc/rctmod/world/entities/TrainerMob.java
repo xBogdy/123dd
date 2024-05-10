@@ -25,6 +25,7 @@ import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData.Type;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.api.utils.ChatUtils;
 import com.gitlab.srcmc.rctmod.client.ModClient;
+import com.gitlab.srcmc.rctmod.world.entities.goals.LookAtPlayerAndWaitGoal;
 import com.gitlab.srcmc.rctmod.world.entities.goals.PokemonBattleGoal;
 
 import net.minecraft.core.BlockPos;
@@ -50,7 +51,6 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
-import net.minecraft.world.entity.ai.goal.InteractGoal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.MoveTowardsTargetGoal;
 import net.minecraft.world.entity.ai.goal.PanicGoal;
@@ -500,9 +500,10 @@ public class TrainerMob extends PathfinderMob implements Npc {
         this.goalSelector.addGoal(1, new AvoidEntityGoal<Illusioner>(this, Illusioner.class, 12.0F, 0.5, 0.5));
         this.goalSelector.addGoal(1, new AvoidEntityGoal<Zoglin>(this, Zoglin.class, 10.0F, 0.5, 0.5));
         this.goalSelector.addGoal(1, new PanicGoal(this, 0.5));
-        this.goalSelector.addGoal(2, new LookAtPlayerGoal(this, Player.class, 8.0F));
-        this.goalSelector.addGoal(4, new MoveTowardsTargetGoal(this, 0.35, 1.5F*RCTMod.get().getServerConfig().maxHorizontalDistanceToPlayers()));
-        this.goalSelector.addGoal(8, new WaterAvoidingRandomStrollGoal(this, 0.35));
-        this.goalSelector.addGoal(9, new InteractGoal(this, Player.class, 3.0F, 1.0F));
+        this.goalSelector.addGoal(2, new LookAtPlayerAndWaitGoal(this, Player.class, 2.0F, 0.04F, 160, 320));
+        this.goalSelector.addGoal(2, new LookAtPlayerAndWaitGoal(this, Player.class, 4.0F));
+        this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, Player.class, 8.0F));
+        this.goalSelector.addGoal(8, new MoveTowardsTargetGoal(this, 0.35, 1.5F*RCTMod.get().getServerConfig().maxHorizontalDistanceToPlayers()));
+        this.goalSelector.addGoal(9, new WaterAvoidingRandomStrollGoal(this, 0.35));
     }
 }

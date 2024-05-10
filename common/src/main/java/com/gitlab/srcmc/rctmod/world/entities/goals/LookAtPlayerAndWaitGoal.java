@@ -23,18 +23,49 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 
-// TODO: deprecated
 public class LookAtPlayerAndWaitGoal extends LookAtPlayerGoal {
-    public LookAtPlayerAndWaitGoal(Mob mob, Class<? extends LivingEntity> class_, float f) {
-        this(mob, class_, f, 1F);
+    private int minLookTime, maxLookTime, lookTime;
+
+    public LookAtPlayerAndWaitGoal(Mob mob, Class<? extends LivingEntity> class_, float distance) {
+        this(mob, class_, distance, 0.02F, 80, 160);
     }
 
-    public LookAtPlayerAndWaitGoal(Mob mob, Class<? extends LivingEntity> class_, float f, float g) {
-        this(mob, class_, f, g, false);
-    }
-
-    public LookAtPlayerAndWaitGoal(Mob mob, Class<? extends LivingEntity> class_, float f, float g, boolean bl) {
-        super(mob, class_, f, g, bl);
+    public LookAtPlayerAndWaitGoal(Mob mob, Class<? extends LivingEntity> class_, float distance, float propability, int minLookTime, int maxLookTime) {
+        super(mob, class_, distance, propability);
         this.setFlags(EnumSet.of(Flag.LOOK, Flag.MOVE));
+        this.minLookTime = minLookTime;
+        this.maxLookTime = maxLookTime;
+    }
+
+    @Override
+    public void start() {
+        this.lookTime = this.adjustedTickDelay(this.minLookTime + this.mob.getRandom().nextInt(this.maxLookTime - this.minLookTime));
+        this.mob.getNavigation().stop();
+        super.start();
+    }
+
+    @Override
+    public void stop() {
+        super.stop();
+    }
+
+    @Override
+    public boolean canContinueToUse() {
+        if (!this.lookAt.isAlive()) {
+            return false;
+        } else if (this.mob.distanceToSqr(this.lookAt) > (double) 2*(this.lookDistance*this.lookDistance)) {
+            return false;
+        } else {
+            return this.lookTime > 0;
+        }
+    }
+
+    @Override
+    public void tick() {
+        if (this.lookAt.isAlive()) {
+            var d = this.lookAt.getEyeY();
+            this.mob.getLookControl().setLookAt(this.lookAt.getX(), d, this.lookAt.getZ());
+            this.lookTime--;
+        }
     }
 }
