@@ -52,6 +52,7 @@ public class ModClient extends com.gitlab.srcmc.rctmod.client.ModClient implemen
         });
 
         ReloadListenerRegistry.register(PackType.CLIENT_RESOURCES, RCTMod.get().getClientDataManager());
+        ReloadListenerRegistry.register(PackType.CLIENT_RESOURCES, RCTMod.get().getTrainerManager());
         ClientTickEvents.START_WORLD_TICK.register(ModClient::onClientWorldTick);
         ForgeConfigRegistry.INSTANCE.register(ModCommon.MOD_ID, ModConfig.Type.CLIENT, RCTMod.get().getClientConfig().getSpec());
         ClientPlayNetworking.registerGlobalReceiver(Packets.PLAYER_STATE, ModClient::handleReceivedPlayerState);

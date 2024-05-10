@@ -13,6 +13,10 @@
 - Trainer names are now colored based of their trainer type, i.e. LEADER: green, E4: light purple, CHAMP: golden, TEAM_ROCKET: dark gray, others: white (optional symbols that are appended to the trainer names can be enabled in the **client config**)
 - Trainer names are now shown *emphasized* to players that never have beaten them
 
+***Fixed***
+
+- Issue with data packs not beeing correctly synced to players that entered servers without ever have entered a singleplayer world before
+
 ## [0.5.4-alpha] - 2024-05-06
 
 ***Changed***

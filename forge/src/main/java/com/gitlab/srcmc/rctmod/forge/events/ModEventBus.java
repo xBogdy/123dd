@@ -52,6 +52,7 @@ public class ModEventBus {
     @SubscribeEvent
     static void onRegisterClientReloadListener(RegisterClientReloadListenersEvent event) {
         event.registerReloadListener(RCTMod.get().getClientDataManager());
+        event.registerReloadListener(RCTMod.get().getTrainerManager());
     }
 
     @SubscribeEvent
