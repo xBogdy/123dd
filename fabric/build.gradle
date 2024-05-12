@@ -1,6 +1,6 @@
 plugins {
-    id 'fabric-loom' version '1.6-SNAPSHOT'
-    id "org.jetbrains.kotlin.jvm" version "1.9.23" // 1.8.10 (suggested by NickImpact)
+    id 'fabric-loom' version "${loom_version}"
+    id "org.jetbrains.kotlin.jvm" version "${kotlin_version}"
 }
 
 archivesBaseName = "${mod_id}-fabric-${minecraft_version}-${mod_version}"

@@ -1,6 +1,6 @@
 plugins {
-    id 'net.minecraftforge.gradle' version '6.0.+'
-    id 'org.spongepowered.mixin' version '0.7.+'
+    id 'net.minecraftforge.gradle' version "${forge_gradle_version}"
+    id 'org.spongepowered.mixin' version "${sponge_mixin_version}"
 }
 
 archivesBaseName = "${mod_id}-forge-${minecraft_version}-${mod_version}"
