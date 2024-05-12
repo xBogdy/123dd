@@ -81,6 +81,11 @@ subprojects {
             name = "SelfdotModLibs"
             url = "https://oss.sonatype.org/content/repositories/snapshots"
         }
+        
+        maven {
+            name = "Cobblemon"
+            url = "https://maven.impactdev.net/repository/development/"
+        }
     }
 
     tasks.withType(JavaCompile).configureEach {
