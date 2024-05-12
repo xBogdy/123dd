@@ -19,6 +19,7 @@ package com.gitlab.srcmc.rctmod.forge;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
+import com.gitlab.srcmc.rctmod.world.items.TrainerCard;
 import com.gitlab.srcmc.rctmod.world.loot.conditions.LevelRangeCondition;
 
 import net.minecraft.core.registries.Registries;
@@ -56,9 +57,11 @@ public class ModRegistries {
 
     public static class Items {
         public static final DeferredRegister<Item> REGISTRY;
+        public static final RegistryObject<Item> TRAINER_CARD;
 
         static {
             REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, ModCommon.MOD_ID);
+            TRAINER_CARD = REGISTRY.register("trainer_card", TrainerCard::new);
         }
     }
 
