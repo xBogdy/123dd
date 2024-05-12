@@ -76,7 +76,7 @@ dependencies {
     implementation fg.deobf("thedarkcolour:kotlinforforge:${kotlin_for_forge_version}")
 
     // Cobblemon
-    implementation fg.deobf("curse.maven:cobblemon-687131:${cobblemon_version}")
+    implementation fg.deobf("com.cobblemon:forge:${cobblemon_version}")
 
     // Cobblemon Trainers
     implementation fg.deobf("curse.maven:cobblemontrainers-959503:${cobblemontrainers_version}")

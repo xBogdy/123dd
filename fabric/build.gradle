@@ -24,7 +24,7 @@ dependencies {
     modImplementation "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${fcap_version}"
 
     // Cobblemon
-    modImplementation "curse.maven:cobblemon-687131:${cobblemon_fabric_version}"
+    modImplementation "com.cobblemon:fabric:${cobblemon_version}"
 
     // Cobblemon Trainers
     modImplementation "curse.maven:cobblemontrainers-959503:${cobblemontrainers_fabric_version}"
