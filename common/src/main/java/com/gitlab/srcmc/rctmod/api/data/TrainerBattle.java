@@ -89,9 +89,12 @@ public class TrainerBattle {
 
                 playerTr.setLevelCap(player, Math.max(mobTr.getRewardLevelCap(), playerTr.getLevelCap()));
                 battleMem.addDefeatedBy(mob.getTrainerId(), player);
-                mob.finishBattle(this, true);
                 DefeatCountTrigger.get().trigger((ServerPlayer)player, mob);
             }
+        }
+
+        for(var mob : looserMobs) {
+            mob.finishBattle(this, true);
         }
 
         for(var mob : initiatorWins ? initiatorSideMobs : trainerSideMobs) {
