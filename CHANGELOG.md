@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.7.x-alpha] - 2024-05-13
+
+***Fixed***
+
+- Trainers not responding after a battle win
+
 ## [0.7.0-alpha] - 2024-05-12
 
 ***Added***

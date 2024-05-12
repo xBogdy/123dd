@@ -262,33 +262,31 @@ public class TrainerMob extends PathfinderMob implements Npc {
             this.setOpponent(null);
             this.setTarget(null);
 
-            if(!battle.getInitiatorSideMobs().contains(this)) {
-                if(defeated) {
+            if(defeated) {
+                if(battle.getInitiatorSideMobs().contains(this)) {
+                    battle.getTrainerSidePlayers().forEach(player -> {
+                        ChatUtils.reply(this, player, "battle_lost");
+                    });
+                } else {
                     battle.getInitiatorSidePlayers().forEach(player -> {
                         ChatUtils.reply(this, player, "battle_lost");
                     });
 
                     this.dropBattleLoot(mobTr.getLootTableResource());
-                } else {
+                }
+
+                this.defeats++;
+            } else {
+                if(battle.getInitiatorSideMobs().contains(this)) {
                     battle.getTrainerSidePlayers().forEach(player -> {
                         ChatUtils.reply(this, player, "battle_won");
-                    });
-                }
-            } else {
-                if(defeated) {
-                    battle.getTrainerSidePlayers().forEach(player -> {
-                        ChatUtils.reply(this, player, "battle_lost");
                     });
                 } else {
                     battle.getInitiatorSidePlayers().forEach(player -> {
                         ChatUtils.reply(this, player, "battle_won");
                     });
                 }
-            }
 
-            if(defeated) {
-                this.defeats++;
-            } else {
                 this.wins++;
             }
         }
