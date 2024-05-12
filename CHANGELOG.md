@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.7.x-alpha] - 2024-05-12
+
+***Added***
+
+- Support for Cobblemon 1.5.0
+
 ## [0.6.0-alpha] - 2024-05-11
 
 ***Added***
