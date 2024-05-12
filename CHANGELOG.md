@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.x-alpha] - 2024-05-11
+
+***Added***
+
+- Command: `trainer get reward_level_cap <trainerId>`
+- Command: `trainer get type <trainerId>`
+
 ## [0.6.0-alpha] - 2024-05-11
 
 ***Added***
