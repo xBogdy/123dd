@@ -38,7 +38,8 @@ public class PlayerState implements Serializable {
     public static final int SYNC_INTERVAL_TICKS = 60;
     private static final long serialVersionUID = 0;
     private static final Map<UUID, PlayerState> remoteStates = new HashMap<>();
-    private static final PlayerState localState = new PlayerState();
+    // private static final PlayerState localState = new PlayerState();
+    private static PlayerState localState;
 
     private Map<String, Integer> trainerDefeatCounts = new HashMap<>();
     private Map<TrainerMobData.Type, Integer> typeDefeatCounts = new HashMap<>();
@@ -50,7 +51,7 @@ public class PlayerState implements Serializable {
 
     public static PlayerState get(Player player) {
         if(player.isLocalPlayer()) {
-            return localState;
+            return localState == null ? (localState = new PlayerState(player)) : localState;
         }
 
         var level = player.level();
@@ -136,9 +137,9 @@ public class PlayerState implements Serializable {
         return Collections.unmodifiableMap(this.typeDefeatCounts);
     }
 
-    private PlayerState() {
-        this.player = ModClient.get().getLocalPlayer().orElse(null);
-    }
+    // private PlayerState() {
+    //     this.player = ModClient.get().getLocalPlayer().orElse(null);
+    // }
 
     private PlayerState(Player player) {
         this.player = player;
