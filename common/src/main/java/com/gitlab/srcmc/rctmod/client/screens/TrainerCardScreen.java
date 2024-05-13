@@ -2,8 +2,6 @@ package com.gitlab.srcmc.rctmod.client.screens;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.client.screens.widgets.PlayerInfoWidget;
-import com.gitlab.srcmc.rctmod.client.screens.widgets.TrainerListWidget;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
@@ -15,6 +13,8 @@ public class TrainerCardScreen extends Screen {
 
     public TrainerCardScreen() {
         super(Component.literal("Trainer Card"));
+        var mc = Minecraft.getInstance();
+        this.font = mc.font;
     }
 
     @Override
