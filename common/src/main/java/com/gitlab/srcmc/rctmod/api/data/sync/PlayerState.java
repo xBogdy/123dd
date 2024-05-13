@@ -30,15 +30,12 @@ import java.util.UUID;
 
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
-import com.gitlab.srcmc.rctmod.client.ModClient;
-
 import net.minecraft.world.entity.player.Player;
 
 public class PlayerState implements Serializable {
     public static final int SYNC_INTERVAL_TICKS = 60;
     private static final long serialVersionUID = 0;
     private static final Map<UUID, PlayerState> remoteStates = new HashMap<>();
-    // private static final PlayerState localState = new PlayerState();
     private static PlayerState localState;
 
     private Map<String, Integer> trainerDefeatCounts = new HashMap<>();
@@ -50,13 +47,13 @@ public class PlayerState implements Serializable {
     private transient boolean hasChanges = true;
 
     public static PlayerState get(Player player) {
-        if(player.isLocalPlayer()) {
-            return localState == null ? (localState = new PlayerState(player)) : localState;
-        }
-
         var level = player.level();
 
         if(level.isClientSide) {
+            if(player.isLocalPlayer()) {
+                return localState == null ? (localState = new PlayerState(player)) : localState;
+            }
+
             throw new IllegalArgumentException("Cannot retrieve player state of other players on this client");
         }
 
@@ -136,10 +133,6 @@ public class PlayerState implements Serializable {
     public Map<TrainerMobData.Type, Integer> getTypeDefeatCounts() {
         return Collections.unmodifiableMap(this.typeDefeatCounts);
     }
-
-    // private PlayerState() {
-    //     this.player = ModClient.get().getLocalPlayer().orElse(null);
-    // }
 
     private PlayerState(Player player) {
         this.player = player;
