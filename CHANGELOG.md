@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.7.x-alpha] - 2024-05-13
+
+***Fixed***
+
+- Incompatibility with some optimization mods on fabric in ssp (e.g. Sodium)
+
 ## [0.7.1-alpha] - 2024-05-13
 
 ***Fixed***
