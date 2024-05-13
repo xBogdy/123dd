@@ -7,6 +7,12 @@
 - Command: `trainer get reward_level_cap <trainerId>`
 - Command: `trainer get type <trainerId>`
 
+## [0.7.1-alpha] - 2024-05-13
+
+***Fixed***
+
+- Trainers not responding after a battle win
+
 ## [0.7.0-alpha] - 2024-05-12
 
 ***Added***
