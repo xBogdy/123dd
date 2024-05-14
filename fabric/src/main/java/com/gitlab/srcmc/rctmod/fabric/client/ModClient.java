@@ -18,6 +18,8 @@
 package com.gitlab.srcmc.rctmod.fabric.client;
 
 import java.util.Optional;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedDeque;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
@@ -45,6 +47,8 @@ import net.minecraftforge.fml.config.ModConfig;
 
 @Environment(EnvType.CLIENT)
 public class ModClient extends com.gitlab.srcmc.rctmod.client.ModClient implements ClientModInitializer {
+    private static Queue<byte[]> playerStateUpdates = new ConcurrentLinkedDeque<>();
+
     @Override
     public void onInitializeClient() {
         EntityRendererRegistry.register(ModFabric.TRAINER, (context) -> {
@@ -67,6 +71,11 @@ public class ModClient extends com.gitlab.srcmc.rctmod.client.ModClient implemen
 
     static void onClientWorldTick(Level level) {
         var mc = Minecraft.getInstance();
+        var psu = playerStateUpdates.poll();
+
+        if(psu != null) {
+            PlayerState.get(mc.player).deserializeUpdate(psu);
+        }
 
         if(mc.player.tickCount % RCTMod.get().getServerConfig().spawnIntervalTicks() == 0) {
             ClientPlayNetworking.send(Packets.PLAYER_PING, PacketByteBufs.empty());
@@ -74,6 +83,8 @@ public class ModClient extends com.gitlab.srcmc.rctmod.client.ModClient implemen
     }
 
     static void handleReceivedPlayerState(Minecraft client, ClientPacketListener handler, FriendlyByteBuf buf, PacketSender responseSender) {
-        PlayerState.get(client.player).deserializeUpdate(buf.readByteArray());
+        if(!playerStateUpdates.offer(buf.readByteArray())) {
+            throw new IllegalStateException("Failed to store player state updates");
+        }
     }
 }

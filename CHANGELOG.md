@@ -7,6 +7,12 @@
 - Command: `trainer get reward_level_cap <trainerId>`
 - Command: `trainer get type <trainerId>`
 
+## [0.7.2-alpha] - 2024-05-13
+
+***Fixed***
+
+- Incompatibility with some optimization mods on fabric in ssp (e.g. Sodium)
+
 ## [0.7.1-alpha] - 2024-05-13
 
 ***Fixed***
