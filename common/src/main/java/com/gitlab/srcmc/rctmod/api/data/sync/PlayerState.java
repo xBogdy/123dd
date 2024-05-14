@@ -159,8 +159,12 @@ public class PlayerState implements Serializable {
             this.levelCap = tm.getData(player).getLevelCap();
 
             tm.getAllData().forEach(entry -> {
-                this.trainerDefeatCounts.put(entry.getKey(), tm.getBattleMemory(overworld, entry.getKey()).getDefeatByCount(player));
-                this.typeDefeatCounts.compute(entry.getValue().getType(), (k, v) -> v == null ? 1 : v + 1);
+                var defCount = tm.getBattleMemory(overworld, entry.getKey()).getDefeatByCount(player);
+                this.trainerDefeatCounts.put(entry.getKey(), defCount);
+
+                if(defCount > 0) {
+                    this.typeDefeatCounts.compute(entry.getValue().getType(), (k, v) -> v == null ? 1 : v + 1);
+                }
             });
         }
     }
