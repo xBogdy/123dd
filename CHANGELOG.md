@@ -7,6 +7,14 @@
 - Command: `trainer get reward_level_cap <trainerId>`
 - Command: `trainer get type <trainerId>`
 
+## [0.7.3-alpha] - 2024-05-16
+
+***Fixed***
+
+- Config option `maxTrainersTotalValue` setting a different config value `maxLevelDiff`
+- Missing config option `maxTrainersTotal` (this time actually)
+- Wrongly named config options: Removed "Value" suffixes. **Old config values with wrong names will be reverted to their default values with the changed name. Either remove the "Value" suffixes manually before updating or adjust the configs afterwards (if any changes where made).**
+
 ## [0.7.2-alpha] - 2024-05-13
 
 ***Fixed***

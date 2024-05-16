@@ -49,39 +49,39 @@ public class ServerConfig extends ForgeConfig implements IServerConfig {
 
         this.globalSpawnChanceValue = builder
             .comment("A global factor that determines if a spawn attempt for a trainer is made.")
-            .defineInRange("globalSpawnChanceValue", IServerConfig.super.globalSpawnChance(), 0, 1);
+            .defineInRange("globalSpawnChance", IServerConfig.super.globalSpawnChance(), 0, 1);
 
         this.despawnDelayTicksValue = builder
             .comment("Number of ticks after which a trainer will despawn if far away from players. Trainers that cannot battle anymore will despawn immediately if far away.")
-            .defineInRange("despawnDelayTicksValue", IServerConfig.super.despawnDelayTicks(), 1, Integer.MAX_VALUE - 1);
+            .defineInRange("despawnDelayTicks", IServerConfig.super.despawnDelayTicks(), 1, Integer.MAX_VALUE - 1);
 
         this.spawnIntervalTicksValue = builder
             .comment("The interval in ticks at which a spawn attempt is made per player.")
-            .defineInRange("spawnIntervalTicksValue", IServerConfig.super.spawnIntervalTicks(), 1, Integer.MAX_VALUE - 1);
+            .defineInRange("spawnIntervalTicks", IServerConfig.super.spawnIntervalTicks(), 1, Integer.MAX_VALUE - 1);
 
         this.maxHorizontalDistanceToPlayersValue = builder
             .comment("The max horizontal distance a trainer can spawn from players.")
-            .defineInRange("maxHorizontalDistanceToPlayersValue", IServerConfig.super.maxHorizontalDistanceToPlayers(), 1, Integer.MAX_VALUE - 1);
+            .defineInRange("maxHorizontalDistanceToPlayers", IServerConfig.super.maxHorizontalDistanceToPlayers(), 1, Integer.MAX_VALUE - 1);
 
         this.minHorizontalDistanceToPlayersValue = builder
             .comment("The min horizontal distance a trainer can spawn from players.")
-            .defineInRange("minHorizontalDistanceToPlayersValue", IServerConfig.super.minHorizontalDistanceToPlayers(), 1, Integer.MAX_VALUE - 1);
+            .defineInRange("minHorizontalDistanceToPlayers", IServerConfig.super.minHorizontalDistanceToPlayers(), 1, Integer.MAX_VALUE - 1);
 
         this.maxVerticalDistanceToPlayersValue = builder
             .comment("The max vertical distance a trainer can spawn from players.")
-            .defineInRange("maxVerticalDistanceToPlayersValue", IServerConfig.super.maxVerticalDistanceToPlayers(), 1, Integer.MAX_VALUE - 1);
+            .defineInRange("maxVerticalDistanceToPlayers", IServerConfig.super.maxVerticalDistanceToPlayers(), 1, Integer.MAX_VALUE - 1);
 
         this.maxTrainersPerPlayerValue = builder
             .comment("Spawn cap of trainers per player.")
-            .defineInRange("maxTrainersPerPlayerValue", IServerConfig.super.maxTrainersPerPlayer(), 0, Integer.MAX_VALUE - 1);
+            .defineInRange("maxTrainersPerPlayer", IServerConfig.super.maxTrainersPerPlayer(), 0, Integer.MAX_VALUE - 1);
 
         this.maxTrainersTotalValue = builder
             .comment("Total trainer spawn cap.")
-            .defineInRange("maxTrainersTotalValue", IServerConfig.super.maxTrainersTotal(), 0, Integer.MAX_VALUE - 1);
+            .defineInRange("maxTrainersTotal", IServerConfig.super.maxTrainersTotal(), 0, Integer.MAX_VALUE - 1);
 
         this.maxLevelDiffValue = builder
             .comment("The maximum level difference between the strongest pokemon in the team of a player and the strongest pokemon in the team of a trainer to spawn for that player. The spawn weight decreases with a higher level difference. Trainers with pokemon above the level cap of a player are excluded.")
-            .defineInRange("maxTrainersTotalValue", IServerConfig.super.maxLevelDiff(), 0, 100);
+            .defineInRange("maxLevelDiff", IServerConfig.super.maxLevelDiff(), 0, 100);
         
         builder.pop();
         builder.push("Players");
