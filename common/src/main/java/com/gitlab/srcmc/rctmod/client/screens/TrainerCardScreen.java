@@ -87,6 +87,8 @@ public class TrainerCardScreen extends Screen {
 
         this.trainerList.setShowAllTypes(showAllTypes);
         this.trainerList.setShowUndefeated(showUndefeated);
+
+        this.playerInfo.tick();
         this.trainerList.tick();
     }
 
