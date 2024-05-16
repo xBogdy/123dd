@@ -104,14 +104,14 @@ public class PlayerState implements Serializable {
             this.trainerDefeatCounts.put(trainerId, 1);
             this.updated.trainerDefeatCounts.put(trainerId, 1);
         } else {
-            this.trainerDefeatCounts.compute(trainerId, (k, v) -> v + 1);
+            this.trainerDefeatCounts.compute(trainerId, (k, v) -> v == Integer.MAX_VALUE ? v : v + 1);
             this.updated.trainerDefeatCounts.put(trainerId, this.trainerDefeatCounts.get(trainerId));
         }
 
         var tm = RCTMod.get().getTrainerManager();
         var tt = tm.getData(trainerId).getType();
 
-        this.typeDefeatCounts.compute(tt, (k, v) -> v == null ? 1 : v + 1);
+        this.typeDefeatCounts.compute(tt, (k, v) -> v == null ? 1 : v == Integer.MAX_VALUE ? v : v + 1);
         this.updated.typeDefeatCounts.put(tt, this.typeDefeatCounts.get(tt));
         this.hasChanges = true;
     }
