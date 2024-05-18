@@ -89,8 +89,25 @@ public class TrainerCardScreen extends Screen {
 
     @Override
     public boolean keyPressed(int key, int scancode, int mods) {
-        Minecraft.getInstance().setScreen(null);
-        return false;
+        var mc = Minecraft.getInstance();
+
+        if(mc.options.keyInventory.matches(key, scancode)) {
+            mc.setScreen(null);
+            return true;
+        }
+
+        return super.keyPressed(key, scancode, mods);
+    }
+
+    @Override
+    public boolean mouseClicked(double d, double e, int i) {
+        if(i == 1) {
+            var mc = Minecraft.getInstance();
+            mc.setScreen(null);
+            return true;
+        }
+
+        return super.mouseClicked(d, e, i);
     }
 
     @Override
