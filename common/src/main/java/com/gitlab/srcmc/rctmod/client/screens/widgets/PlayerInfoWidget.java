@@ -1,6 +1,11 @@
 package com.gitlab.srcmc.rctmod.client.screens.widgets;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
+
 import com.gitlab.srcmc.rctmod.ModCommon;
+import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.client.ModClient;
@@ -8,70 +13,180 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractWidget;
+import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.components.Checkbox;
+import net.minecraft.client.gui.components.CycleButton;
 import net.minecraft.client.gui.components.PlayerFaceRenderer;
+import net.minecraft.client.gui.components.StringWidget;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
 public class PlayerInfoWidget extends AbstractWidget {
-    private static int X = 8;
-    private static int Y = 8;
-    private static int W = 224;
-    private static int H = 128;
+    private static final ResourceLocation TRAINER_CARD_IMAGE_LOCATION = new ResourceLocation(ModCommon.MOD_ID, "textures/gui/trainer_card.png");
+    private static final int TRAINER_CARD_IMAGE_X = 0;
+    private static final int TRAINER_CARD_IMAGE_Y = 0;
+    private static final int TRAINER_CARD_IMAGE_W = 224;
+    private static final int TRAINER_CARD_IMAGE_H = 128;
 
-    private static final Component LEVEL_CAP_LABEL = Component.literal("Level Cap");
-    private static final Component TOTAL_DEFEATS_LABEL = Component.literal("Total");
+    private static final int SKIN_X = 13;
+    private static final int SKIN_Y = 32;
+    private static final int SKIN_SIZE = 72;
 
+    private static final int DISPLAY_NAME_X = 8;
+    private static final int DISPLAY_NAME_Y = 8;
+    private static final int DISPLAY_NAME_W = 82;
+    private static final int DISPLAY_NAME_H = 16;
+
+    private static final int LEVEL_CAP_X = 8;
+    private static final int LEVEL_CAP_Y = 104;
+    private static final int LEVEL_CAP_W = 82;
+    private static final int LEVEL_CAP_H = 16;
+    private static final int LEVEL_CAP_PADDING = 4;
+
+    private static final int TOTAL_DEFEATS_X = 96;
+    private static final int TOTAL_DEFEATS_Y = 104;
+    private static final int TOTAL_DEFEATS_W = 88;
+    private static final int TOTAL_DEFEATS_H = 16;
+    private static final int TOTAL_DEFEATS_PADDING = 4;
+
+    private static final int TRAINER_LIST_X = 96;
+    private static final int TRAINER_LIST_Y = 32;
+    private static final int TRAINER_LIST_W = 112;
+    private static final int TRAINER_LIST_H = 72;
+
+    private static final int TYPE_BUTTON_X = 96;
+    private static final int TYPE_BUTTON_Y = 8;
+    private static final int TYPE_BUTTON_W = 100;
+    private static final int TYPE_BUTTON_H = 16;
+
+    private static final int CHECKBOX_X = 196;
+    private static final int CHECKBOX_Y = 8;
+    private static final int CHECKBOX_W = 20; // min
+    private static final int CHECKBOX_H = 16;
+
+    private static final int NEXT_PAGE_BUTTON_X = 200;
+    private static final int NEXT_PAGE_BUTTON_Y = 104;
+    private static final int NEXT_PAGE_BUTTON_SIZE = 16;
+
+    private static final String ALL_TRAINER_TYPES_STR = "ALL";
+
+    private final StringWidget displayName;
+    private final StringWidget levelCapLabel;
+    private final StringWidget levelCapValue;
+    private final StringWidget totalDefeatsLabel;
+    private final StringWidget totalDefeatsValue;
+
+    private final TrainerListWidget trainerList;
+    private final CycleButton<String> trainerTypeButton;
+    private final Button nextPageButton;
+    private final Button prevPageButton;
+    private final Checkbox showUndefeated;
+
+    private ResourceLocation skinLocation = new ResourceLocation(ModCommon.MOD_ID, "textures/trainers/default.png");
     private Font font;
-    private TrainerMobData.Type trainerType;
-    private boolean allTypes = true;
-    private Component displayName = Component.literal("Trainer").withStyle(ChatFormatting.OBFUSCATED);
-    private Component levelCap = Component.literal("100").withStyle(ChatFormatting.OBFUSCATED);
-    private Component totalDefeats = Component.literal("100").withStyle(ChatFormatting.OBFUSCATED);
-    private ResourceLocation skinLocation = new ResourceLocation("textures/entity/player/wide/steve.png");
 
-    public PlayerInfoWidget(Font font) {
-        super(X, Y, W, H, Component.empty());
-        this.font = font;
+    public PlayerInfoWidget(int x, int y, int w, int h, Font font) {
+        super(x, y, w, h, Component.empty());
         this.active = false;
+        this.font = font;
+
+        this.displayName = new StringWidget(x + DISPLAY_NAME_X, y + DISPLAY_NAME_Y, DISPLAY_NAME_W, DISPLAY_NAME_H, Component.literal("Steve").withStyle(ChatFormatting.OBFUSCATED).withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.WHITE), this.font);
+        this.levelCapLabel = new StringWidget(x + LEVEL_CAP_X + LEVEL_CAP_PADDING, y + LEVEL_CAP_Y, LEVEL_CAP_W, LEVEL_CAP_H, Component.literal("Level Cap").withStyle(ChatFormatting.WHITE), this.font).alignLeft();
+        this.levelCapValue = new StringWidget(x + LEVEL_CAP_X, y + LEVEL_CAP_Y, LEVEL_CAP_W - LEVEL_CAP_PADDING, LEVEL_CAP_H, Component.literal("xxx").withStyle(ChatFormatting.OBFUSCATED).withStyle(ChatFormatting.WHITE), this.font).alignRight();
+        this.totalDefeatsLabel = new StringWidget(x + TOTAL_DEFEATS_X + TOTAL_DEFEATS_PADDING, y + TOTAL_DEFEATS_Y, TOTAL_DEFEATS_W, TOTAL_DEFEATS_H, Component.literal("Total").withStyle(ChatFormatting.WHITE), this.font).alignLeft();
+        this.totalDefeatsValue = new StringWidget(x + TOTAL_DEFEATS_X, y + TOTAL_DEFEATS_Y, TOTAL_DEFEATS_W - TOTAL_DEFEATS_PADDING, TOTAL_DEFEATS_H, Component.literal("xxx").withStyle(ChatFormatting.OBFUSCATED).withStyle(ChatFormatting.WHITE), this.font).alignRight();
+        this.trainerList = new TrainerListWidget(x + TRAINER_LIST_X, y + TRAINER_LIST_Y, TRAINER_LIST_W, TRAINER_LIST_H, font, sortedTrainerIds());
+
+        var types = new ArrayList<String>();
+        types.add(ALL_TRAINER_TYPES_STR);
+        types.addAll(Stream.of(TrainerMobData.Type.values()).map(type -> type.name()).toList());
+
+        this.showUndefeated = new Checkbox(x + CHECKBOX_X, y + CHECKBOX_Y, CHECKBOX_W, CHECKBOX_H, Component.empty(), true);
+        this.trainerTypeButton = CycleButton.<String>builder(t -> Component.literal(t))
+            .withValues(types).withInitialValue(ALL_TRAINER_TYPES_STR)
+            .create(x + TYPE_BUTTON_X, y + TYPE_BUTTON_Y, TYPE_BUTTON_W, TYPE_BUTTON_H, Component.empty());
+        
+        this.nextPageButton = Button
+            .builder(Component.literal(">"), this::onNextPage)
+            .pos(x + NEXT_PAGE_BUTTON_X, y + NEXT_PAGE_BUTTON_Y)
+            .size(NEXT_PAGE_BUTTON_SIZE, NEXT_PAGE_BUTTON_SIZE).build();
+
+        this.prevPageButton = Button
+            .builder(Component.literal("<"), this::onPrevPage)
+            .pos(x + NEXT_PAGE_BUTTON_X - NEXT_PAGE_BUTTON_SIZE, y + NEXT_PAGE_BUTTON_Y)
+            .size(NEXT_PAGE_BUTTON_SIZE, NEXT_PAGE_BUTTON_SIZE).build();
+    }
+
+    public AbstractWidget[] getRenderableWidgets() {
+        return new AbstractWidget[] {
+            this.trainerList,
+            this.trainerTypeButton,
+            this.showUndefeated,
+            this.prevPageButton,
+            this.nextPageButton
+        };
+    }
+
+    public AbstractWidget[] getRenderableOnlies() {
+        return new AbstractWidget[] {
+            this.displayName,
+            this.levelCapLabel,
+            this.levelCapValue,
+            this.totalDefeatsLabel,
+            this.totalDefeatsValue,
+        };
     }
 
     public void tick() {
         var localPlayer = (LocalPlayer)ModClient.get().getLocalPlayer().get();
         var playerState = PlayerState.get(localPlayer);
-        this.displayName = Component.literal(localPlayer.getDisplayName().getString()).withStyle(ChatFormatting.ITALIC);
-        this.levelCap = Component.literal(String.valueOf(playerState.getLevelCap()));
-        this.totalDefeats = Component.literal(String.valueOf(String.format("%9d", this.getTotalDefeats())));
+
+        this.displayName.setMessage(Component.literal(localPlayer.getDisplayName().getString()).withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.WHITE));
+        this.levelCapValue.setMessage(Component.literal(String.valueOf(playerState.getLevelCap())).withStyle(ChatFormatting.WHITE));
+        this.totalDefeatsValue.setMessage(Component.literal(String.valueOf(this.getTotalDefeats())).withStyle(ChatFormatting.WHITE));
         this.skinLocation = localPlayer.getSkinTextureLocation();
+
+        this.nextPageButton.active = this.trainerList.getPage() < this.trainerList.getMaxPage();
+        this.prevPageButton.active = this.trainerList.getPage() > 0;
+
+        var trainerTypeStr = this.trainerTypeButton.getValue();
+        var showUndefeated = this.showUndefeated.selected();
+        var showAllTypes = trainerTypeStr.equals(ALL_TRAINER_TYPES_STR);
+
+        if(!showAllTypes) {
+            var trainerType = TrainerMobData.Type.valueOf(trainerTypeStr);
+            this.trainerList.setTrainerType(trainerType);
+        }
+
+        this.trainerList.setShowAllTypes(showAllTypes);
+        this.trainerList.setShowUndefeated(showUndefeated);
+        this.trainerList.tick();
     }
 
     @Override
     protected void renderWidget(GuiGraphics guiGraphics, int i, int j, float f) {
-        guiGraphics.blit(new ResourceLocation(ModCommon.MOD_ID, "textures/gui/trainer_card.png"), this.getX(), this.getY(), 0, 0, 224, 128);
-        guiGraphics.drawString(this.font, this.displayName, this.getX() + 12, this.getY() + 12, 16);
-        guiGraphics.drawString(this.font, LEVEL_CAP_LABEL, this.getX() + 12, this.getY() + 108, 16);
-        guiGraphics.drawString(this.font, this.levelCap, this.getX() + 72, this.getY() + 108, 16);
-        guiGraphics.drawString(this.font, TOTAL_DEFEATS_LABEL, this.getX() + 100, this.getY() + 108, 16);
-        guiGraphics.drawString(this.font, this.totalDefeats, this.getX() + 116, this.getY() + 108, 16);
-        PlayerFaceRenderer.draw(guiGraphics, this.skinLocation, this.getX() + 8 + 4, this.getY() + 32, 72);
-    }
-
-    public void setTrainerType(TrainerMobData.Type trainerType) {
-        this.trainerType = trainerType;
-    }
-
-    public void setAllTypes(boolean allTypes) {
-        this.allTypes = allTypes;
+        guiGraphics.blit(TRAINER_CARD_IMAGE_LOCATION, this.getX(), this.getY(), TRAINER_CARD_IMAGE_X, TRAINER_CARD_IMAGE_Y, TRAINER_CARD_IMAGE_W, TRAINER_CARD_IMAGE_H);
+        PlayerFaceRenderer.draw(guiGraphics, this.skinLocation, this.getX() + SKIN_X, this.getY() + SKIN_Y, SKIN_SIZE);
     }
 
     @Override
     protected void updateWidgetNarration(NarrationElementOutput narrationElementOutput) {
+        // TODO
+    }
+
+    private void onNextPage(Button button) {
+        this.trainerList.setPage(this.trainerList.getPage() + 1);
+    }
+
+    private void onPrevPage(Button button) {
+        this.trainerList.setPage(this.trainerList.getPage() - 1);
     }
 
     private long getTotalDefeats() {
-        if(!this.allTypes) {
-            return this.getTotalDefeats(this.trainerType);
+        if(!this.trainerList.getShowAllTypes()) {
+            return this.getTotalDefeats(this.trainerList.getTrainerType());
         }
 
         var localPlayer = (LocalPlayer)ModClient.get().getLocalPlayer().get();
@@ -83,5 +198,26 @@ public class PlayerInfoWidget extends AbstractWidget {
         var localPlayer = (LocalPlayer)ModClient.get().getLocalPlayer().get();
         var playerState = PlayerState.get(localPlayer);
         return playerState.getTypeDefeatCount(type);
+    }
+
+    private static List<String> sortedTrainerIds() {
+        var tdm = RCTMod.get().getTrainerManager();
+
+        return tdm.getAllData().map(entry -> entry.getKey()).sorted((k1, k2) -> {
+            var t1 = tdm.getData(k1);
+            var t2 = tdm.getData(k2);
+            var c = t1.getTeam().getMembers().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0)
+                  - t2.getTeam().getMembers().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0);
+            
+            if(c == 0) {
+                c = t1.getTeam().getDisplayName().compareTo(t2.getTeam().getDisplayName());
+
+                if(c == 0) {
+                    c = k1.compareTo(k2);
+                }
+            }
+
+            return c;
+        }).toList();
     }
 }

@@ -16,17 +16,12 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractScrollWidget;
-import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.StringWidget;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 
 public class TrainerListWidget extends AbstractScrollWidget {
-    private static final int X = 96;
-    private static final int Y = 32;
-    private static final int W = 112;
-    private static final int H = 72;
     private static final float INNER_SCALE = 0.65f;
     private static final int UPDATES_PER_TICK = 100;
     private static final int ENTRIES_PER_PAGE = 100;
@@ -121,12 +116,12 @@ public class TrainerListWidget extends AbstractScrollWidget {
     private Map<Integer, List<Entry>> pages = new HashMap<>();
     private UpdateState updateState;
     private int page, maxPage;
-
-    public TrainerListWidget(AbstractWidget parent, Font font, List<String> trainerIds) {
-        super(parent.getX() + X, parent.getY() + Y, W, H, Component.empty());
+    
+    public TrainerListWidget(int x, int y, int w, int h, Font font, List<String> trainerIds) {
+        super(x, y, w, h, Component.empty());
         this.font = font;
         this.trainerIds = new ArrayList<>(trainerIds);
-        this.innerHeight = parent.getHeight() - this.totalInnerPadding();
+        this.innerHeight = this.getHeight() - this.totalInnerPadding();
         this.entryHeight = this.getHeight()/8;
         this.updateState = new UpdateState(this.pages);
     }
