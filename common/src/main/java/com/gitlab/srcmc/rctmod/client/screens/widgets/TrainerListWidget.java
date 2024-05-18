@@ -126,7 +126,6 @@ public class TrainerListWidget extends AbstractScrollWidget {
         super(parent.getX() + X, parent.getY() + Y, W, H, Component.empty());
         this.font = font;
         this.trainerIds = new ArrayList<>(trainerIds);
-        for(int i = 0; i < 50; i++) for(int j = 0; j < 100; j++) this.trainerIds.add(trainerIds.get(j));
         this.innerHeight = parent.getHeight() - this.totalInnerPadding();
         this.entryHeight = this.getHeight()/8;
         this.updateState = new UpdateState(this.pages);
