@@ -8,7 +8,7 @@
       "nature": "cobblemon:naive",
       "ability": "leafguard",
       "moveset": [
-        "uturn",
+        "bugbite",
         "worryseed",
         "gigadrain",
         "bounce"
@@ -41,7 +41,7 @@
       "moveset": [
         "ragepowder",
         "cottonspore",
-        "uturn",
+        "bugbite",
         "worryseed"
       ],
       "ivs": {

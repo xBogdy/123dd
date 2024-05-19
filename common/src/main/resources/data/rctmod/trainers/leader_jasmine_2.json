@@ -102,7 +102,7 @@
       "ability": "magnetpull",
       "moveset": [
         "thunderbolt",
-        "voltswitch",
+        "spark",
         "flashcannon",
         "bodypress"
       ],
@@ -132,7 +132,7 @@
       "nature": "cobblemon:adamant",
       "ability": "technician",
       "moveset": [
-        "uturn",
+        "bugbite",
         "dualwingbeat",
         "bulletpunch",
         "superpower"

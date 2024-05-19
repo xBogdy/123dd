@@ -9,7 +9,7 @@
       "ability": "aerilate",
       "moveset": [
         "boomburst",
-        "uturn"
+        "bugbite"
       ],
       "ivs": {
         "hp": 0,
@@ -38,7 +38,7 @@
       "ability": "sheerforce",
       "moveset": [
         "bugbuzz",
-        "uturn",
+        "bugbite",
         "focusblast",
         "sludgebomb"
       ],
@@ -131,7 +131,7 @@
         "shadowball",
         "flamethrower",
         "dragonpulse",
-        "uturn"
+        "bugbite"
       ],
       "ivs": {
         "hp": 0,
@@ -159,7 +159,7 @@
       "nature": "cobblemon:timid",
       "ability": "plus",
       "moveset": [
-        "voltswitch",
+        "spark",
         "boomburst",
         "sludgebomb",
         "overdrive"
