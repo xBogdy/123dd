@@ -108,20 +108,20 @@ public class TrainerMob extends PathfinderMob implements Npc {
             }
 
             var cfg = RCTMod.get().getServerConfig();
-            var trPlayer = tm.getData(player);
+            var playerState = PlayerState.get(player);
 
-            if(tm.getPlayerLevel(player) > (trPlayer.getLevelCap() + cfg.maxOverLevelCap())) {
+            if(tm.getPlayerLevel(player) > (playerState.getLevelCap() + cfg.maxOverLevelCap())) {
                 return false;
             }
 
             var trMob = tm.getData(this);
 
-            if(trPlayer.getLevelCap() < trMob.getRequiredLevelCap()) {
+            if(playerState.getLevelCap() < trMob.getRequiredLevelCap()) {
                 return false;
             }
 
             for(var type : Type.values()) {
-                if(trPlayer.getDefeats(type) < trMob.getRequiredDefeats(type)) {
+                if(playerState.getTypeDefeatCount(type) < trMob.getRequiredDefeats(type)) {
                     return false;
                 }
             }
@@ -147,18 +147,18 @@ public class TrainerMob extends PathfinderMob implements Npc {
     protected void replyTo(Player player) {
         var tm = RCTMod.get().getTrainerManager();
         var cfg = RCTMod.get().getServerConfig();
-        var trPlayer = tm.getData(player);
+        var playerState = PlayerState.get(player);
         var trMob = tm.getData(this);
 
-        if(trPlayer.getDefeats(Type.LEADER) < trMob.getRequiredDefeats(Type.LEADER)) {
+        if(playerState.getTypeDefeatCount(Type.LEADER) < trMob.getRequiredDefeats(Type.LEADER)) {
             ChatUtils.reply(this, player, "missing_badges");
-        } else if(trPlayer.getDefeats(Type.E4) < trMob.getRequiredDefeats(Type.E4)) {
+        } else if(playerState.getTypeDefeatCount(Type.E4) < trMob.getRequiredDefeats(Type.E4)) {
             ChatUtils.reply(this, player, "missing_beaten_e4");
-        } else if(trPlayer.getDefeats(Type.CHAMP) < trMob.getRequiredDefeats(Type.CHAMP)) {
+        } else if(playerState.getTypeDefeatCount(Type.CHAMP) < trMob.getRequiredDefeats(Type.CHAMP)) {
             ChatUtils.reply(this, player, "missing_beaten_champs");
-        } else if(trPlayer.getLevelCap() < trMob.getTeam().getMembers().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0)) {
+        } else if(playerState.getLevelCap() < trMob.getTeam().getMembers().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0)) {
             ChatUtils.reply(this, player, "low_level_cap");
-        } else if(tm.getPlayerLevel(player) > (trPlayer.getLevelCap() + cfg.maxOverLevelCap())) {
+        } else if(tm.getPlayerLevel(player) > (playerState.getLevelCap() + cfg.maxOverLevelCap())) {
             ChatUtils.reply(this, player, "over_level_cap");
         } else if(tm.getActivePokemon(player) == 0) {
             ChatUtils.reply(this, player, "missing_pokemon");

@@ -23,6 +23,7 @@ import java.util.stream.Stream;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData.Type;
+import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
@@ -64,14 +65,15 @@ public final class PlayerCommands {
                         .then(Commands.argument("targets", EntityArgument.players())
                             .then(Commands.argument("value", IntegerArgumentType.integer(0))
                                 .executes(PlayerCommands::player_set_level_cap_targets_value))))
-                    .then(Commands.literal("defeats")
-                        .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("type", StringArgumentType.string())
-                            .suggests(PlayerCommands::get_type_suggestions)
-                            .then(Commands.argument("value", IntegerArgumentType.integer(0))
-                                .executes(PlayerCommands::player_set_defeats_type_value))
-                            .then(Commands.argument("targets", EntityArgument.players())
-                                .then(Commands.argument("value", IntegerArgumentType.integer(0))
-                                    .executes(PlayerCommands::player_set_defeats_type_targets_value))))))));
+                    // .then(Commands.literal("defeats")
+                    //     .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("type", StringArgumentType.string())
+                    //         .suggests(PlayerCommands::get_type_suggestions)
+                    //         .then(Commands.argument("value", IntegerArgumentType.integer(0))
+                    //             .executes(PlayerCommands::player_set_defeats_type_value))
+                    //         .then(Commands.argument("targets", EntityArgument.players())
+                    //             .then(Commands.argument("value", IntegerArgumentType.integer(0))
+                    //                 .executes(PlayerCommands::player_set_defeats_type_targets_value)))))
+                )));
     }
 
     private static CompletableFuture<Suggestions> get_type_suggestions(final CommandContext<CommandSourceStack> context, final SuggestionsBuilder builder) throws CommandSyntaxException {
@@ -101,7 +103,7 @@ public final class PlayerCommands {
         if(context.getSource().getEntity() instanceof Player player) {
             try {
                 var type = Type.valueOf(context.getArgument("type", String.class));
-                var count = RCTMod.get().getTrainerManager().getData(player).getDefeats(type);
+                var count = PlayerState.get(player).getTypeDefeatCount(type);
                 context.getSource().sendSuccess(() -> Component.literal(String.valueOf(count)), false);
                 return count;
             } catch(IllegalArgumentException e) {
@@ -118,7 +120,7 @@ public final class PlayerCommands {
         try {
             var type = Type.valueOf(context.getArgument("type", String.class));
             var player = EntityArgument.getPlayer(context, "target");
-            var count = RCTMod.get().getTrainerManager().getData(player).getDefeats(type);
+            var count = PlayerState.get(player).getTypeDefeatCount(type);;
             context.getSource().sendSuccess(() -> Component.literal(String.valueOf(count)), false);
             return count;
         } catch(IllegalArgumentException e) {
@@ -150,38 +152,38 @@ public final class PlayerCommands {
         return level_cap;
     }
 
-    private static int player_set_defeats_type_value(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
-        if(context.getSource().getEntity() instanceof Player player) {
-            try {
-                var type = Type.valueOf(context.getArgument("type", String.class));
-                var count = IntegerArgumentType.getInteger(context, "value");
-                RCTMod.get().getTrainerManager().getData(player).setDefeats(type, count);
-                return count;
-            } catch(IllegalArgumentException e) {
-                context.getSource().sendFailure(Component.literal(e.getMessage()));
-            }
-        } else {
-            context.getSource().sendFailure(Component.literal("caller is not a player"));
-        }
+    // private static int player_set_defeats_type_value(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+    //     if(context.getSource().getEntity() instanceof Player player) {
+    //         try {
+    //             var type = Type.valueOf(context.getArgument("type", String.class));
+    //             var count = IntegerArgumentType.getInteger(context, "value");
+    //             RCTMod.get().getTrainerManager().getData(player).setDefeats(type, count);
+    //             return count;
+    //         } catch(IllegalArgumentException e) {
+    //             context.getSource().sendFailure(Component.literal(e.getMessage()));
+    //         }
+    //     } else {
+    //         context.getSource().sendFailure(Component.literal("caller is not a player"));
+    //     }
 
-        return -1;
-    }
+    //     return -1;
+    // }
 
-    private static int player_set_defeats_type_targets_value(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
-        try {
-            var type = Type.valueOf(context.getArgument("type", String.class));
-            var targets = EntityArgument.getPlayers(context, "targets");
-            var count = IntegerArgumentType.getInteger(context, "value");
-            var tm = RCTMod.get().getTrainerManager();
+    // private static int player_set_defeats_type_targets_value(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+    //     try {
+    //         var type = Type.valueOf(context.getArgument("type", String.class));
+    //         var targets = EntityArgument.getPlayers(context, "targets");
+    //         var count = IntegerArgumentType.getInteger(context, "value");
+    //         var tm = RCTMod.get().getTrainerManager();
 
-            for(var player : targets) {
-                tm.getData(player).setDefeats(type, count);
-            }
+    //         for(var player : targets) {
+    //             tm.getData(player).setDefeats(type, count);
+    //         }
             
-            return count;
-        } catch(IllegalArgumentException e) {
-            context.getSource().sendFailure(Component.literal(e.getMessage()));
-            return -1;
-        }
-    }
+    //         return count;
+    //     } catch(IllegalArgumentException e) {
+    //         context.getSource().sendFailure(Component.literal(e.getMessage()));
+    //         return -1;
+    //     }
+    // }
 }

@@ -82,11 +82,6 @@ public class TrainerBattle {
                 var mobTr = tm.getData(mob);
                 var playerTr = tm.getData(player);
                 var battleMem = tm.getBattleMemory(mob);
-
-                if(battleMem.getDefeatByCount(player) == 0) {
-                    playerTr.addDefeat(mobTr.getType());
-                }
-
                 playerTr.setLevelCap(player, Math.max(mobTr.getRewardLevelCap(), playerTr.getLevelCap()));
                 battleMem.addDefeatedBy(mob.getTrainerId(), player);
                 DefeatCountTrigger.get().trigger((ServerPlayer)player, mob);

@@ -163,7 +163,7 @@ public class PlayerState implements Serializable {
                 this.trainerDefeatCounts.put(entry.getKey(), defCount);
 
                 if(defCount > 0) {
-                    this.typeDefeatCounts.compute(entry.getValue().getType(), (k, v) -> v == null ? 1 : v + 1);
+                    this.typeDefeatCounts.compute(entry.getValue().getType(), (k, v) -> v == null ? defCount : v + defCount);
                 }
             });
         }

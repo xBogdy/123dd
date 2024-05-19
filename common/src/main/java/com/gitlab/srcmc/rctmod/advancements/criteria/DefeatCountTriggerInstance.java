@@ -19,6 +19,7 @@ package com.gitlab.srcmc.rctmod.advancements.criteria;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
+import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import com.google.gson.JsonObject;
 
@@ -64,14 +65,14 @@ public class DefeatCountTriggerInstance extends AbstractCriterionTriggerInstance
     public boolean matches(ServerPlayer player, TrainerMob mob) {
         var battleMem = RCTMod.get().getTrainerManager().getBattleMemory(mob);
         var mobTr = RCTMod.get().getTrainerManager().getData(mob);
-        var playerTr = RCTMod.get().getTrainerManager().getData(player);
+        var playerState = PlayerState.get(player);
 
         if(this.trainerId != null && mob.getTrainerId().equals(this.trainerId)) {
             return battleMem.getDefeatByCount(player) >= this.count;
         }
 
         if(this.trainerType != null && mobTr.getType().name().equals(this.trainerType)) {
-            return playerTr.getDefeats(mobTr.getType()) >= this.count;
+            return playerState.getTypeDefeatCount(mobTr.getType()) >= this.count;
         }
 
         return this.trainerId == null && this.trainerType == null
