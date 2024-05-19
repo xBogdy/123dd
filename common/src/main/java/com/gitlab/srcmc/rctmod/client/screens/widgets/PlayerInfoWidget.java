@@ -84,7 +84,7 @@ public class PlayerInfoWidget extends AbstractWidget {
     private final Button prevPageButton;
     private final Checkbox showUndefeated;
 
-    private ResourceLocation skinLocation = new ResourceLocation(ModCommon.MOD_ID, "textures/trainers/default.png");
+    private ResourceLocation skinLocation;
     private Font font;
 
     public PlayerInfoWidget(int x, int y, int w, int h, Font font) {
@@ -92,11 +92,11 @@ public class PlayerInfoWidget extends AbstractWidget {
         this.active = false;
         this.font = font;
 
-        this.displayName = new StringWidget(x + DISPLAY_NAME_X, y + DISPLAY_NAME_Y, DISPLAY_NAME_W, DISPLAY_NAME_H, Component.literal("Steve").withStyle(ChatFormatting.OBFUSCATED).withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.WHITE), this.font);
+        this.displayName = new StringWidget(x + DISPLAY_NAME_X, y + DISPLAY_NAME_Y, DISPLAY_NAME_W, DISPLAY_NAME_H, Component.empty(), this.font).alignLeft();
         this.levelCapLabel = new StringWidget(x + LEVEL_CAP_X + LEVEL_CAP_PADDING, y + LEVEL_CAP_Y, LEVEL_CAP_W, LEVEL_CAP_H, Component.literal("Level Cap").withStyle(ChatFormatting.WHITE), this.font).alignLeft();
-        this.levelCapValue = new StringWidget(x + LEVEL_CAP_X, y + LEVEL_CAP_Y, LEVEL_CAP_W - LEVEL_CAP_PADDING, LEVEL_CAP_H, Component.literal("xxx").withStyle(ChatFormatting.OBFUSCATED).withStyle(ChatFormatting.WHITE), this.font).alignRight();
+        this.levelCapValue = new StringWidget(x + LEVEL_CAP_X, y + LEVEL_CAP_Y, LEVEL_CAP_W - LEVEL_CAP_PADDING, LEVEL_CAP_H, Component.empty(), this.font).alignRight();
         this.totalDefeatsLabel = new StringWidget(x + TOTAL_DEFEATS_X + TOTAL_DEFEATS_PADDING, y + TOTAL_DEFEATS_Y, TOTAL_DEFEATS_W, TOTAL_DEFEATS_H, Component.literal("Total").withStyle(ChatFormatting.WHITE), this.font).alignLeft();
-        this.totalDefeatsValue = new StringWidget(x + TOTAL_DEFEATS_X, y + TOTAL_DEFEATS_Y, TOTAL_DEFEATS_W - TOTAL_DEFEATS_PADDING, TOTAL_DEFEATS_H, Component.literal("xxx").withStyle(ChatFormatting.OBFUSCATED).withStyle(ChatFormatting.WHITE), this.font).alignRight();
+        this.totalDefeatsValue = new StringWidget(x + TOTAL_DEFEATS_X, y + TOTAL_DEFEATS_Y, TOTAL_DEFEATS_W - TOTAL_DEFEATS_PADDING, TOTAL_DEFEATS_H, Component.empty(), this.font).alignRight();
         this.trainerList = new TrainerListWidget(x + TRAINER_LIST_X, y + TRAINER_LIST_Y, TRAINER_LIST_W, TRAINER_LIST_H, font, sortedTrainerIds());
 
         var types = new ArrayList<String>();
@@ -168,7 +168,10 @@ public class PlayerInfoWidget extends AbstractWidget {
     @Override
     protected void renderWidget(GuiGraphics guiGraphics, int i, int j, float f) {
         guiGraphics.blit(TRAINER_CARD_IMAGE_LOCATION, this.getX(), this.getY(), TRAINER_CARD_IMAGE_X, TRAINER_CARD_IMAGE_Y, TRAINER_CARD_IMAGE_W, TRAINER_CARD_IMAGE_H);
-        PlayerFaceRenderer.draw(guiGraphics, this.skinLocation, this.getX() + SKIN_X, this.getY() + SKIN_Y, SKIN_SIZE);
+
+        if(this.skinLocation != null) {
+            PlayerFaceRenderer.draw(guiGraphics, this.skinLocation, this.getX() + SKIN_X, this.getY() + SKIN_Y, SKIN_SIZE);
+        }
     }
 
     @Override
