@@ -1,8 +1,8 @@
 package com.gitlab.srcmc.rctmod.world.items;
 
-import com.gitlab.srcmc.rctmod.client.ModClient;
-import com.gitlab.srcmc.rctmod.client.screens.ScreenType;
+import com.gitlab.srcmc.rctmod.client.screens.TrainerCardScreen;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
@@ -18,7 +18,7 @@ public class TrainerCard extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
         if(level.isClientSide) {
-            ModClient.get().openScreen(ScreenType.TRAINER_CARD_SCREEN);
+            Minecraft.getInstance().setScreen(new TrainerCardScreen());
         }
 
         return InteractionResultHolder.pass(player.getItemInHand(interactionHand));

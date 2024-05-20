@@ -19,8 +19,6 @@ package com.gitlab.srcmc.rctmod.client;
 
 import java.util.Optional;
 
-import com.gitlab.srcmc.rctmod.client.screens.ScreenType;
-import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
 
 public class ModClient {
@@ -36,9 +34,5 @@ public class ModClient {
 
     public Optional<Player> getLocalPlayer() {
         return Optional.empty();
-    }
-
-    public void openScreen(ScreenType screenType) {
-        Minecraft.getInstance().setScreen(screenType.getScreen());
     }
 }
