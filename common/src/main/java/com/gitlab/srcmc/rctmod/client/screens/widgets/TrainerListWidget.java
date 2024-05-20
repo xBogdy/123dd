@@ -19,6 +19,7 @@ import net.minecraft.client.gui.components.StringWidget;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.util.Mth;
 
 public class TrainerListWidget extends AbstractScrollWidget {
     private static final float INNER_SCALE = 0.65f;
@@ -202,6 +203,34 @@ public class TrainerListWidget extends AbstractScrollWidget {
         this.pages.clear();
         this.page = this.maxPage = 0;
         this.updateState = new UpdateState(this.pages);
+    }
+
+    @Override
+    protected void renderBackground(GuiGraphics guiGraphics) {
+        if(this.scrollbarVisible()) {
+           super.renderBackground(guiGraphics);
+        } else {
+           this.renderBorder(guiGraphics, this.getX(), this.getY(), this.getWidth(), this.getHeight());
+           this.renderFullScrollBar(guiGraphics);
+        }
+    }
+    
+    private int getContentHeight() {
+        return this.getInnerHeight() + 4;
+    }
+
+    private int getScrollBarHeight() {
+        return Mth.clamp((int)((float)(this.height * this.height) / (float)this.getContentHeight()), 32, this.height);
+    }
+
+    private void renderFullScrollBar(GuiGraphics guiGraphics) {
+        int i = this.getScrollBarHeight();
+        int j = this.getX() + this.width;
+        int k = this.getX() + this.width + 8;
+        int l = this.getY() + this.height - i;
+        int m = l + i;
+        guiGraphics.fill(j, l, k, m, -8355712);
+        guiGraphics.fill(j, l, k - 1, m - 1, -4144960);
     }
 
     @Override
