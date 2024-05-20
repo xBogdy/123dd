@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.algorithm.IAlgorithm;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
@@ -25,6 +24,7 @@ public class TrainerListWidget extends AbstractScrollWidget {
     private static final float INNER_SCALE = 0.65f;
     private static final int UPDATES_PER_TICK = 100;
     private static final int ENTRIES_PER_PAGE = 100;
+    private static final int MAX_NAME_LENGTH = 20;
 
     private class Entry {
         public final StringWidget name;
@@ -77,13 +77,16 @@ public class TrainerListWidget extends AbstractScrollWidget {
                         this.y = r * this.h;
 
                         var name = count > 0 ? this.tdm.getData(trainerId).getTeam().getDisplayName() : "???";
-                        name = String.format("%04d: %s", this.i + 1, name);
 
-                        var nameWidget = new StringWidget(this.x, this.y, this.w, this.h, toComponent(name), font).alignLeft();
+                        if(name.length() > MAX_NAME_LENGTH) {
+                            name = name.substring(0, MAX_NAME_LENGTH - 3) + "...";
+                        }
+
+                        var nameWidget = new StringWidget(this.x, this.y, (int)(this.w*0.8f), this.h, toComponent(String.format("%04d: %s", this.i + 1, name)), font).alignLeft();
                         var countWidget = new StringWidget(this.x, this.y, this.w, this.h,
-                            count > 9000 ? toComponent(">9k") :
-                            count > 999 ? toComponent((count/1000) + "k") :
-                            toComponent(count), font).alignRight();
+                            count > 9000 ? toComponent(" >9k") :
+                            count > 999 ? toComponent(((count % 1000) != 0 ? " >" : " ") + (count/1000) + "k") :
+                            toComponent(" " + count), font).alignRight();
 
                         this.pages.computeIfAbsent(p, ArrayList::new).add(new Entry(nameWidget, countWidget));
                         this.c++;
