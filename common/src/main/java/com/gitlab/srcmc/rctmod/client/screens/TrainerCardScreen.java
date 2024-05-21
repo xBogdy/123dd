@@ -1,15 +1,14 @@
 package com.gitlab.srcmc.rctmod.client.screens;
 
+import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.client.screens.widgets.PlayerInfoWidget;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 
 public class TrainerCardScreen extends Screen {
-    private static final int SCREEN_X = 8;
-    private static final int SCREEN_Y = 8;
-    private static final int SCREEN_W = 224;
-    private static final int SCREEN_H = 128;
+    private static final int CARD_W = 224;
+    private static final int CARD_H = 128;
 
     private PlayerInfoWidget playerInfo;
 
@@ -22,10 +21,17 @@ public class TrainerCardScreen extends Screen {
     @Override
     protected void init() {
         super.init();
+
         var window = Minecraft.getInstance().getWindow();
-        this.width = window.getWidth();
-        this.height = window.getHeight();
-        this.playerInfo = new PlayerInfoWidget(SCREEN_X, SCREEN_Y, SCREEN_W, SCREEN_H, this.font);
+        this.width = window.getGuiScaledWidth();
+        this.height = window.getGuiScaledHeight();
+        
+        var cfg = RCTMod.get().getClientConfig();
+        var pad = cfg.trainerCardPadding();
+        var card_x = pad + (int)((this.width - (CARD_W + 2*pad))*cfg.trainerCardAlignmentX());
+        var card_y = pad + (int)((this.height - (CARD_H + 2*pad))*cfg.trainerCardAlignmentY());
+
+        this.playerInfo = new PlayerInfoWidget(card_x, card_y, CARD_W, CARD_H, this.font);
         this.addRenderableOnly(this.playerInfo);
         for(var r : this.playerInfo.getRenderableOnlies()) this.addRenderableOnly(r);
         for(var w : this.playerInfo.getRenderableWidgets()) this.addRenderableWidget(w);
