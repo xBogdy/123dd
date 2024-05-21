@@ -1,11 +1,22 @@
 # Changelog
 
-## [0.7.x-alpha] - 2024-05-11
+## [0.8.x-alpha] - 2024-05-21
 
 ***Added***
 
-- Command: `trainer get reward_level_cap <trainerId>`
-- Command: `trainer get type <trainerId>`
+- Command: `player get defeats [<player>] <trainerId>` (TODO)
+- Command: `player set defeats [<player>] <trainerId> <value>` (TODO)
+- Command: `trainer get reward_level_cap <trainerId>` (TODO)
+- Command: `trainer get type <trainerId>` (TODO)
+- Item: Trainer Card (open trainer stats gui with right click, can be crafted)
+
+***Changed***
+
+- Command: `player get defeat_types [<player>] <trainerType>` (former `player get defeats ...`) (TODO)
+
+***Removed***
+
+- Command: `player set defeats [<player>] <trainerType>` (TODO)
 
 ## [0.7.4-alpha] - 2024-05-19
 
