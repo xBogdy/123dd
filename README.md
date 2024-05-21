@@ -47,7 +47,7 @@ The *greater* the difference inbetween versions the more likely it is for issues
 
 ## Balancing
 
-The balancing is based around the original game (Radical Red). Gym leaders must be defeated to increase a players level cap and gain badges. The initial level cap is `15`:
+The balancing is based around the original game (Radical Red). Gym leaders must be defeated to increase a players level cap and *gain* badges. The initial level cap is `15`:
 
 | Trainer        | Reward Level Cap | Requirements             | Type     |
 | -------------- | ---------------- | ------------------------ | -------- |
