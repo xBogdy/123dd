@@ -7,6 +7,12 @@
 - Command: `trainer get reward_level_cap <trainerId>`
 - Command: `trainer get type <trainerId>`
 
+## [0.7.4-alpha] - 2024-05-19
+
+***Fixed***
+
+- **Temporarily** replaced *switching moves* with alternatives (since they cause a crash with Cobblemon 1.5.0 + CobblemonTrainers when switched pokemon get send back out again): uturn -> bugbite, voltswitch -> spark, flipturn -> bubble, teleport -> amnesia, partingshot -> amnesia, batonpass -> amnesia
+
 ## [0.7.3-alpha] - 2024-05-16
 
 ***Fixed***

@@ -9,7 +9,7 @@
       "ability": "torrent",
       "moveset": [
         "stealthrock",
-        "flipturn",
+        "bubble",
         "liquidation",
         "earthquake"
       ],
@@ -41,7 +41,7 @@
       "moveset": [
         "surf",
         "hurricane",
-        "uturn",
+        "bugbite",
         "roost"
       ],
       "ivs": {
@@ -71,7 +71,7 @@
       "ability": "technician",
       "moveset": [
         "swordsdance",
-        "uturn",
+        "bugbite",
         "bulletpunch",
         "superpower"
       ],
@@ -134,7 +134,7 @@
       "moveset": [
         "fishiousrend",
         "megahorn",
-        "flipturn"
+        "bubble"
       ],
       "ivs": {
         "hp": 0,
@@ -165,7 +165,7 @@
         "liquidation",
         "earthquake",
         "icepunch",
-        "flipturn"
+        "bubble"
       ],
       "ivs": {
         "hp": 0,
