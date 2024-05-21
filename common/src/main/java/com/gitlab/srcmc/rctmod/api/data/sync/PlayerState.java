@@ -116,6 +116,24 @@ public class PlayerState implements Serializable {
         this.hasChanges = true;
     }
 
+    public void setDefeats(String trainerId, int defeats) {
+        var currentDefeats = this.trainerDefeatCounts.computeIfAbsent(trainerId, key -> 0);
+
+        if(defeats != currentDefeats) {
+            this.trainerDefeatCounts.put(trainerId, defeats);
+            this.updated.trainerDefeatCounts.put(trainerId, defeats);
+
+            var tm = RCTMod.get().getTrainerManager();
+            var tt = tm.getData(trainerId).getType();
+            var typeDefeats = this.typeDefeatCounts.computeIfAbsent(tt, key -> 0);
+            var newTypeDefeats = typeDefeats + (defeats - currentDefeats);
+            
+            this.typeDefeatCounts.put(tt, newTypeDefeats);
+            this.updated.typeDefeatCounts.put(tt, newTypeDefeats);
+            this.hasChanges = true;
+        }
+    }
+
     public int getTrainerDefeatCount(String trainerId) {
         var count = this.trainerDefeatCounts.get(trainerId);
         return count == null ? 0 : count;
