@@ -59,6 +59,10 @@ public class TrainerCommands {
                         .then(Commands.argument("at", BlockPosArgument.blockPos())
                             .executes(TrainerCommands::mob_summon_trainer_at))))
                 .then(Commands.literal("get")
+                    .then(Commands.literal("type")
+                        .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainer", StringArgumentType.string())
+                            .suggests(TrainerCommands::get_trainer_suggestions)
+                            .executes(TrainerCommands::mob_get_type)))
                     .then(Commands.literal("max_trainer_wins")
                         .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainer", StringArgumentType.string())
                             .suggests(TrainerCommands::get_trainer_suggestions)
@@ -67,6 +71,10 @@ public class TrainerCommands {
                         .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainer", StringArgumentType.string())
                             .suggests(TrainerCommands::get_trainer_suggestions)
                             .executes(TrainerCommands::mob_get_max_trainer_defeats)))
+                    .then(Commands.literal("reward_level_cap")
+                        .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainer", StringArgumentType.string())
+                            .suggests(TrainerCommands::get_trainer_suggestions)
+                            .executes(TrainerCommands::mob_get_reward_level_cap)))
                     .then(Commands.literal("required_level_cap")
                         .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainer", StringArgumentType.string())
                             .suggests(TrainerCommands::get_trainer_suggestions)
@@ -147,6 +155,15 @@ public class TrainerCommands {
         return -1;
     }
 
+    private static int mob_get_type(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        var type = RCTMod.get().getTrainerManager()
+            .getData(context.getArgument("trainer", String.class))
+            .getType().name();
+
+        context.getSource().sendSuccess(() -> Component.literal(type), false);
+        return 0;
+    }
+
     private static int mob_get_max_trainer_wins(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         var max_trainer_wins = RCTMod.get().getTrainerManager()
             .getData(context.getArgument("trainer", String.class))
@@ -163,6 +180,15 @@ public class TrainerCommands {
 
         context.getSource().sendSuccess(() -> Component.literal(String.valueOf(max_trainer_defeats)), false);
         return max_trainer_defeats;
+    }
+
+    private static int mob_get_reward_level_cap(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        var reward_level_cap = RCTMod.get().getTrainerManager()
+            .getData(context.getArgument("trainer", String.class))
+            .getRewardLevelCap();
+
+        context.getSource().sendSuccess(() -> Component.literal(String.valueOf(reward_level_cap)), false);
+        return reward_level_cap;
     }
 
     private static int mob_get_required_level_cap(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
