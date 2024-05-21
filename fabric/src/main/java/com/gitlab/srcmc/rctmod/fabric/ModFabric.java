@@ -28,21 +28,33 @@ import com.gitlab.srcmc.rctmod.config.ClientConfig;
 import com.gitlab.srcmc.rctmod.config.ServerConfig;
 import com.gitlab.srcmc.rctmod.fabric.server.ModServer;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
+import com.gitlab.srcmc.rctmod.world.items.TrainerCard;
 import com.gitlab.srcmc.rctmod.world.loot.conditions.LevelRangeCondition;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 
 public class ModFabric implements ModInitializer {
     public static final EntityType<TrainerMob> TRAINER = Registry.register(BuiltInRegistries.ENTITY_TYPE, new ResourceLocation(ModCommon.MOD_ID, "trainer"), TrainerMob.getEntityType());
     public static final LootItemConditionType LEVEL_RANGE = Registry.register(BuiltInRegistries.LOOT_CONDITION_TYPE, new ResourceLocation(ModCommon.MOD_ID, "level_range"), new LootItemConditionType(new LevelRangeCondition.Serializer()));
+    public static final Item TRAINER_CARD = Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(ModCommon.MOD_ID, "trainer_card"), new TrainerCard());
+    public static final CreativeModeTab CREATIVE_TAB = Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, new ResourceLocation(ModCommon.MOD_ID), FabricItemGroup.builder()
+    	.icon(() -> new ItemStack(TRAINER_CARD))
+    	.title(Component.translatable("itemGroup." + ModCommon.MOD_ID))
+        .displayItems((context, entries) -> entries.accept(TRAINER_CARD))
+    	.build());
 
     @Override
     public void onInitialize() {

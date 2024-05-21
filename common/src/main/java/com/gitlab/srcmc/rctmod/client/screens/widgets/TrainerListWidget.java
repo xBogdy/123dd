@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.algorithm.IAlgorithm;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
@@ -20,11 +19,13 @@ import net.minecraft.client.gui.components.StringWidget;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.util.Mth;
 
 public class TrainerListWidget extends AbstractScrollWidget {
     private static final float INNER_SCALE = 0.65f;
     private static final int UPDATES_PER_TICK = 100;
     private static final int ENTRIES_PER_PAGE = 100;
+    private static final int MAX_NAME_LENGTH = 20;
 
     private class Entry {
         public final StringWidget name;
@@ -77,13 +78,16 @@ public class TrainerListWidget extends AbstractScrollWidget {
                         this.y = r * this.h;
 
                         var name = count > 0 ? this.tdm.getData(trainerId).getTeam().getDisplayName() : "???";
-                        name = String.format("%04d: %s", this.i + 1, name);
 
-                        var nameWidget = new StringWidget(this.x, this.y, this.w, this.h, toComponent(name), font).alignLeft();
+                        if(name.length() > MAX_NAME_LENGTH) {
+                            name = name.substring(0, MAX_NAME_LENGTH - 3) + "...";
+                        }
+
+                        var nameWidget = new StringWidget(this.x, this.y, (int)(this.w*0.8f), this.h, toComponent(String.format("%04d: %s", this.i + 1, name)), font).alignLeft();
                         var countWidget = new StringWidget(this.x, this.y, this.w, this.h,
-                            count > 9000 ? toComponent(">9k") :
-                            count > 999 ? toComponent((count/1000) + "k") :
-                            toComponent(count), font).alignRight();
+                            count > 9000 ? toComponent(" >9k") :
+                            count > 999 ? toComponent(((count % 1000) != 0 ? " >" : " ") + (count/1000) + "k") :
+                            toComponent(" " + count), font).alignRight();
 
                         this.pages.computeIfAbsent(p, ArrayList::new).add(new Entry(nameWidget, countWidget));
                         this.c++;
@@ -199,6 +203,34 @@ public class TrainerListWidget extends AbstractScrollWidget {
         this.pages.clear();
         this.page = this.maxPage = 0;
         this.updateState = new UpdateState(this.pages);
+    }
+
+    @Override
+    protected void renderBackground(GuiGraphics guiGraphics) {
+        if(this.scrollbarVisible()) {
+           super.renderBackground(guiGraphics);
+        } else {
+           this.renderBorder(guiGraphics, this.getX(), this.getY(), this.getWidth(), this.getHeight());
+           this.renderFullScrollBar(guiGraphics);
+        }
+    }
+    
+    private int getContentHeight() {
+        return this.getInnerHeight() + 4;
+    }
+
+    private int getScrollBarHeight() {
+        return Mth.clamp((int)((float)(this.height * this.height) / (float)this.getContentHeight()), 32, this.height);
+    }
+
+    private void renderFullScrollBar(GuiGraphics guiGraphics) {
+        int i = this.getScrollBarHeight();
+        int j = this.getX() + this.width;
+        int k = this.getX() + this.width + 8;
+        int l = this.getY() + this.height - i;
+        int m = l + i;
+        guiGraphics.fill(j, l, k, m, -8355712);
+        guiGraphics.fill(j, l, k - 1, m - 1, -4144960);
     }
 
     @Override

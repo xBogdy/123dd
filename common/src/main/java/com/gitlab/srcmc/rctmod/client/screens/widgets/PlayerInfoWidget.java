@@ -34,9 +34,9 @@ public class PlayerInfoWidget extends AbstractWidget {
     private static final int SKIN_Y = 32;
     private static final int SKIN_SIZE = 72;
 
-    private static final int DISPLAY_NAME_X = 8;
+    private static final int DISPLAY_NAME_X = 8 + 8;
     private static final int DISPLAY_NAME_Y = 8;
-    private static final int DISPLAY_NAME_W = 82;
+    private static final int DISPLAY_NAME_W = 82 - 16;
     private static final int DISPLAY_NAME_H = 16;
 
     private static final int LEVEL_CAP_X = 8;
@@ -92,11 +92,11 @@ public class PlayerInfoWidget extends AbstractWidget {
         this.active = false;
         this.font = font;
 
-        this.displayName = new StringWidget(x + DISPLAY_NAME_X, y + DISPLAY_NAME_Y, DISPLAY_NAME_W, DISPLAY_NAME_H, Component.empty(), this.font).alignLeft();
-        this.levelCapLabel = new StringWidget(x + LEVEL_CAP_X + LEVEL_CAP_PADDING, y + LEVEL_CAP_Y, LEVEL_CAP_W, LEVEL_CAP_H, Component.literal("Level Cap").withStyle(ChatFormatting.WHITE), this.font).alignLeft();
-        this.levelCapValue = new StringWidget(x + LEVEL_CAP_X, y + LEVEL_CAP_Y, LEVEL_CAP_W - LEVEL_CAP_PADDING, LEVEL_CAP_H, Component.empty(), this.font).alignRight();
-        this.totalDefeatsLabel = new StringWidget(x + TOTAL_DEFEATS_X + TOTAL_DEFEATS_PADDING, y + TOTAL_DEFEATS_Y, TOTAL_DEFEATS_W, TOTAL_DEFEATS_H, Component.literal("Total").withStyle(ChatFormatting.WHITE), this.font).alignLeft();
-        this.totalDefeatsValue = new StringWidget(x + TOTAL_DEFEATS_X, y + TOTAL_DEFEATS_Y, TOTAL_DEFEATS_W - TOTAL_DEFEATS_PADDING, TOTAL_DEFEATS_H, Component.empty(), this.font).alignRight();
+        this.displayName = new CustomStringWidget(x + DISPLAY_NAME_X, y + DISPLAY_NAME_Y, DISPLAY_NAME_W, DISPLAY_NAME_H, Component.empty(), this.font).alignCenter().fitting(true);
+        this.levelCapLabel = new StringWidget(x + LEVEL_CAP_X + LEVEL_CAP_PADDING, y + LEVEL_CAP_Y + LEVEL_CAP_H/8, LEVEL_CAP_W, LEVEL_CAP_H, Component.literal("Level Cap").withStyle(ChatFormatting.WHITE), this.font).alignLeft();
+        this.levelCapValue = new StringWidget(x + LEVEL_CAP_X, y + LEVEL_CAP_Y + LEVEL_CAP_H/8, LEVEL_CAP_W - LEVEL_CAP_PADDING, LEVEL_CAP_H, Component.empty(), this.font).alignRight();
+        this.totalDefeatsLabel = new StringWidget(x + TOTAL_DEFEATS_X + TOTAL_DEFEATS_PADDING, y + TOTAL_DEFEATS_Y + TOTAL_DEFEATS_H/8, TOTAL_DEFEATS_W, TOTAL_DEFEATS_H, Component.literal("Total").withStyle(ChatFormatting.WHITE), this.font).alignLeft();
+        this.totalDefeatsValue = new StringWidget(x + TOTAL_DEFEATS_X, y + TOTAL_DEFEATS_Y + TOTAL_DEFEATS_H/8, TOTAL_DEFEATS_W - TOTAL_DEFEATS_PADDING, TOTAL_DEFEATS_H, Component.empty(), this.font).alignRight();
         this.trainerList = new TrainerListWidget(x + TRAINER_LIST_X, y + TRAINER_LIST_Y, TRAINER_LIST_W, TRAINER_LIST_H, font, sortedTrainerIds());
 
         var types = new ArrayList<String>();
@@ -142,11 +142,17 @@ public class PlayerInfoWidget extends AbstractWidget {
     public void tick() {
         var localPlayer = (LocalPlayer)ModClient.get().getLocalPlayer().get();
         var playerState = PlayerState.get(localPlayer);
+        var totalDefeats = this.getTotalDefeats();
+        var levelCap = playerState.getLevelCap();
 
-        this.displayName.setMessage(Component.literal(localPlayer.getDisplayName().getString()).withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.WHITE));
-        this.levelCapValue.setMessage(Component.literal(String.valueOf(playerState.getLevelCap())).withStyle(ChatFormatting.WHITE));
-        this.totalDefeatsValue.setMessage(Component.literal(String.valueOf(this.getTotalDefeats())).withStyle(ChatFormatting.WHITE));
         this.skinLocation = localPlayer.getSkinTextureLocation();
+        this.displayName.setMessage(Component.literal(localPlayer.getDisplayName().getString()).withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.WHITE));
+        this.levelCapValue.setMessage(levelCap <= 100
+            ? Component.literal(String.valueOf(levelCap)).withStyle(ChatFormatting.WHITE)
+            : Component.literal("000").withStyle(ChatFormatting.OBFUSCATED).withStyle(ChatFormatting.WHITE));
+        this.totalDefeatsValue.setMessage(totalDefeats < 1000000
+            ? Component.literal(String.valueOf(totalDefeats)).withStyle(ChatFormatting.WHITE)
+            : Component.literal("1000000").withStyle(ChatFormatting.OBFUSCATED).withStyle(ChatFormatting.WHITE));
 
         this.nextPageButton.active = this.trainerList.getPage() < this.trainerList.getMaxPage();
         this.prevPageButton.active = this.trainerList.getPage() > 0;

@@ -126,7 +126,7 @@ public class ModRegistries {
             event.register(Registries.CREATIVE_MODE_TAB, registerHelper ->
                 registerHelper.register(modCreativeTab,
                     CreativeModeTab.builder().title(Component.translatable("itemGroup." + ModCommon.MOD_ID))
-                        .icon(() -> net.minecraft.world.item.Items.END_CRYSTAL.getDefaultInstance())
+                        .icon(() -> Items.TRAINER_CARD.get().getDefaultInstance())
                         .displayItems((params, output) -> {
                             ModRegistries.Items.REGISTRY.getEntries()
                                 .stream().filter(iro -> true) // all items by default
