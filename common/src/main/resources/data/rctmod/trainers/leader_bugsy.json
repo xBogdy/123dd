@@ -42,7 +42,7 @@
         "drainpunch",
         "icepunch",
         "machpunch",
-        "bugbite"
+        "uturn"
       ],
       "ivs": {
         "hp": 0,
@@ -102,7 +102,7 @@
       "ability": "technician",
       "moveset": [
         "bulletpunch",
-        "bugbite",
+        "uturn",
         "aerialace",
         "roost"
       ],

@@ -71,7 +71,7 @@
       "ability": "trace",
       "moveset": [
         "trickroom",
-        "amnesia",
+        "teleport",
         "icebeam",
         "thunderbolt"
       ],

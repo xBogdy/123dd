@@ -73,7 +73,7 @@
         "paraboliccharge",
         "dragonpulse",
         "focusblast",
-        "spark"
+        "voltswitch"
       ],
       "ivs": {
         "hp": 0,
@@ -135,7 +135,7 @@
         "wickedblow",
         "closecombat",
         "poisonjab",
-        "bugbite"
+        "uturn"
       ],
       "ivs": {
         "hp": 0,

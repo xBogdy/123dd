@@ -10,7 +10,7 @@
       "moveset": [
         "bravebird",
         "closecombat",
-        "bugbite",
+        "uturn",
         "quickattack"
       ],
       "ivs": {
@@ -42,7 +42,7 @@
         "flareblitz",
         "rockslide",
         "earthquake",
-        "bugbite"
+        "uturn"
       ],
       "ivs": {
         "hp": 0,

@@ -70,7 +70,7 @@
       "nature": "cobblemon:timid",
       "ability": "lightningrod",
       "moveset": [
-        "spark",
+        "voltswitch",
         "thunderbolt",
         "overheat",
         "switcheroo"

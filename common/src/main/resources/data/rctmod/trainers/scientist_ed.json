@@ -11,7 +11,7 @@
         "bugbuzz",
         "gigadrain",
         "sludgebomb",
-        "bugbite"
+        "uturn"
       ],
       "ivs": {
         "hp": 0,
@@ -42,7 +42,7 @@
         "thunderbolt",
         "hypervoice",
         "grassknot",
-        "spark"
+        "voltswitch"
       ],
       "ivs": {
         "hp": 0,

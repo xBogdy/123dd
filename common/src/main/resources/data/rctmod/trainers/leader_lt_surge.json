@@ -11,7 +11,7 @@
         "reflect",
         "lightscreen",
         "nuzzle",
-        "bugbite"
+        "uturn"
       ],
       "ivs": {
         "hp": 0,
@@ -71,7 +71,7 @@
       "ability": "electricsurge",
       "moveset": [
         "risingvoltage",
-        "spark",
+        "voltswitch",
         "dazzlinggleam",
         "grassknot"
       ],
@@ -101,7 +101,7 @@
       "nature": "cobblemon:timid",
       "ability": "intimidate",
       "moveset": [
-        "spark",
+        "voltswitch",
         "risingvoltage",
         "flamethrower",
         "hiddenpower"

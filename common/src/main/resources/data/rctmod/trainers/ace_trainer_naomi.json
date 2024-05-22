@@ -11,7 +11,7 @@
         "fakeout",
         "tailslap",
         "armthrust",
-        "bugbite"
+        "uturn"
       ],
       "ivs": {
         "hp": 0,
@@ -72,7 +72,7 @@
         "bugbuzz",
         "thunder",
         "gigadrain",
-        "spark"
+        "voltswitch"
       ],
       "ivs": {
         "hp": 0,

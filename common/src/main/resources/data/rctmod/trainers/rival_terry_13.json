@@ -100,7 +100,7 @@
       "nature": "cobblemon:bashful",
       "ability": "innerfocus",
       "moveset": [
-        "amnesia",
+        "teleport",
         "confusion",
         "hiddenpower",
         "disable"

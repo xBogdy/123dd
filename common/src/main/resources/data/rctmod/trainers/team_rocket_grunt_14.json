@@ -39,7 +39,7 @@
       "nature": "cobblemon:quiet",
       "ability": "guts",
       "moveset": [
-        "amnesia",
+        "partingshot",
         "takedown",
         "scaryface",
         "counter"

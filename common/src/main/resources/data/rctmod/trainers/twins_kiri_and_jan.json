@@ -39,7 +39,7 @@
       "nature": "cobblemon:mild",
       "ability": "torrent",
       "moveset": [
-        "bugbite",
+        "uturn",
         "liquidation",
         "soak",
         "raindance"

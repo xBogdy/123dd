@@ -10,7 +10,7 @@
       "moveset": [
         "icepunch",
         "rocktomb",
-        "bubble",
+        "flipturn",
         "grassknot"
       ],
       "ivs": {
@@ -40,7 +40,7 @@
       "ability": "technician",
       "moveset": [
         "waterpulse",
-        "bubble",
+        "flipturn",
         "icywind",
         "hiddenpower"
       ],
