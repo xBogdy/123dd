@@ -183,6 +183,7 @@ public class DataPackManager extends SimpleJsonResourceReloadListener implements
     private void gather(PackResources dataPack) {
         this.gatherTrainers(dataPack);
         this.gatherResources(dataPack);
+        ModCommon.LOG.info("Data pack initialized: " + dataPack.packId());
     }
 
     private void gatherTrainers(PackResources dataPack) {

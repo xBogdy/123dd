@@ -18,6 +18,7 @@
 package com.gitlab.srcmc.rctmod.forge;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.cobblemon.mod.common.Cobblemon;
@@ -38,12 +39,21 @@ import net.minecraft.server.packs.resources.IoSupplier;
 import net.minecraft.world.entity.player.Player;
 
 public class CobblemonHandler {
-    public static void registerTrainer(ResourceLocation rl, IoSupplier<InputStream> io) {
+    private static List<ResourceLocation> registered = new ArrayList<>();
+
+    public static void registerTrainers() {
+        registered.clear();
+        RCTMod.get().getServerDataManager().listTrainerTeams(CobblemonHandler::registerTrainer);
+        ModCommon.LOG.info(String.format("Registered %d trainers", registered.size()));
+    }
+
+    private static void registerTrainer(ResourceLocation rl, IoSupplier<InputStream> io) {
         var trainerReg = CobblemonTrainers.INSTANCE.getTrainerRegistry();
 
         try {
             var trainer = new VolatileTrainer(rl, io);
             trainerReg.addOrUpdateTrainer(trainer);
+            registered.add(rl);
         } catch(Exception e) {
             ModCommon.LOG.error("Failed to register trainer: " + rl.getPath(), e);
         }

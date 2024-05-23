@@ -41,7 +41,7 @@ import net.minecraftforge.network.NetworkDirection;
 public class ForgeEventBus {
     @SubscribeEvent
     static void onServerStarted(ServerStartedEvent event) {
-        RCTMod.get().getServerDataManager().listTrainerTeams(CobblemonHandler::registerTrainer);
+        CobblemonHandler.registerTrainers();
     }
 
     @SubscribeEvent

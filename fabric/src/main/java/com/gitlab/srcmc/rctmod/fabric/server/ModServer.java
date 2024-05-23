@@ -47,7 +47,7 @@ public class ModServer {
     }
 
     static void onServerStarted(MinecraftServer server) {
-        RCTMod.get().getServerDataManager().listTrainerTeams(CobblemonHandler::registerTrainer);
+        CobblemonHandler.registerTrainers();
     }
 
     static void onServerWorldTick(ServerLevel level) {
