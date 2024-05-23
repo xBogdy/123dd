@@ -25,10 +25,13 @@ import java.util.Set;
 
 import com.cobblemon.mod.common.pokemon.Pokemon;
 import com.cobblemon.mod.common.pokemon.Species;
+import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.utils.PathUtils;
 import com.google.gson.JsonParser;
 import com.selfdot.cobblemontrainers.CobblemonTrainers;
 import com.selfdot.cobblemontrainers.trainer.Trainer;
+import com.selfdot.cobblemontrainers.trainer.TrainerPokemon;
+
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.IoSupplier;
 
@@ -45,34 +48,73 @@ public class VolatileTrainer extends Trainer {
 
 	@Override
 	public void addSpecies(Species species, Set<String> aspects) {
+		ModCommon.LOG.error("Trainers from this mod may not be modified! A data pack can be used to overwrite trainers.");
 	}
 
 	@Override
 	public void setName(String name) {
+		ModCommon.LOG.error("Trainers from this mod may not be modified! A data pack can be used to overwrite trainers.");
 	}
 
 	@Override
 	public void setWinCommand(String winCommand) {
+		ModCommon.LOG.error("Trainers from this mod may not be modified! A data pack can be used to overwrite trainers.");
 	}
 
 	@Override
 	public void setGroup(String group) {
+		ModCommon.LOG.error("Trainers from this mod may not be modified! A data pack can be used to overwrite trainers.");
 	}
 
 	@Override
 	public void setLossCommand(String lossCommand) {
+		ModCommon.LOG.error("Trainers from this mod may not be modified! A data pack can be used to overwrite trainers.");
 	}
 
 	@Override
 	public void setCanOnlyBeatOnce(boolean canOnlyBeatOnce) {
+		ModCommon.LOG.error("Trainers from this mod may not be modified! A data pack can be used to overwrite trainers.");
 	}
 
 	@Override
 	public void setCooldownSeconds(long cooldownSeconds) {
+		ModCommon.LOG.error("Trainers from this mod may not be modified! A data pack can be used to overwrite trainers.");
 	}
 
 	@Override
 	public void addPokemon(Pokemon pokemon) {
+		ModCommon.LOG.error("Trainers from this mod may not be modified! A data pack can be used to overwrite trainers.");
+	}
+
+	@Override
+	public void updateLocation(String oldLocation) {
+		ModCommon.LOG.error("Trainers from this mod may not be modified! A data pack can be used to overwrite trainers.");
+	}
+
+	@Override
+	public void addDefeatRequirement(String defeatRequirement) {
+		ModCommon.LOG.error("Trainers from this mod may not be modified! A data pack can be used to overwrite trainers.");
+	}
+
+	@Override
+	public boolean removeDefeatRequirement(String defeatRequirement) {
+		ModCommon.LOG.error("Trainers from this mod may not be modified! A data pack can be used to overwrite trainers.");
+		return false;
+	}
+
+	@Override
+	public void removeTrainerPokemon(TrainerPokemon trainerPokemon) {
+		ModCommon.LOG.error("Trainers from this mod may not be modified! A data pack can be used to overwrite trainers.");
+	}
+
+	@Override
+	public void setPartyMaximumLevel(int partyMaximumLevel) {
+		ModCommon.LOG.error("Trainers from this mod may not be modified! A data pack can be used to overwrite trainers.");
+	}
+
+	@Override
+	public void swap(int i, int j) {
+		ModCommon.LOG.error("Trainers from this mod may not be modified! A data pack can be used to overwrite trainers.");
 	}
 
 	@Override
@@ -81,9 +123,5 @@ public class VolatileTrainer extends Trainer {
 
 	@Override
 	public void load() {
-	}
-
-	@Override
-	public void updateLocation(String oldLocation) {
 	}
 }
