@@ -13,6 +13,7 @@
 ***Changed***
 
 - Command: Renamed former `player get defeats ...` to `player get type_defeats <type> [<player>]`
+- Trainer id system (now with proper unique ids). Saved data from previous versions will automatically migrate to the new system (this may leave a few *trash files* in the `<WORLD>/data` directory). **Any trainers or trainer related data that has been modified with a data- or resource pack must be migrated manually**. This can simply be achieved by changing the *trainer part* of the name from an asset file (***groups* stay the same**). The documentaion contains a list of [all changed ids](https://srcmc.gitlab.io/rct/docs/configuration/legacy/).
 
 ***Removed***
 
