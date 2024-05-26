@@ -4,7 +4,7 @@
     {
       "species": "cobblemon:gengar",
       "gender": "FEMALE",
-      "level": 54,
+      "level": 81,
       "nature": "cobblemon:lax",
       "ability": "levitate",
       "moveset": [
@@ -35,7 +35,7 @@
     {
       "species": "cobblemon:golbat",
       "gender": "FEMALE",
-      "level": 54,
+      "level": 81,
       "nature": "cobblemon:docile",
       "ability": "infiltrator",
       "moveset": [
@@ -66,7 +66,7 @@
     {
       "species": "cobblemon:haunter",
       "gender": "MALE",
-      "level": 53,
+      "level": 80,
       "nature": "cobblemon:naive",
       "ability": "levitate",
       "moveset": [
@@ -97,7 +97,7 @@
     {
       "species": "cobblemon:arbok",
       "gender": "FEMALE",
-      "level": 56,
+      "level": 83,
       "nature": "cobblemon:calm",
       "ability": "intimidate",
       "moveset": [
@@ -128,7 +128,7 @@
     {
       "species": "cobblemon:gengar",
       "gender": "FEMALE",
-      "level": 58,
+      "level": 85,
       "nature": "cobblemon:serious",
       "ability": "levitate",
       "moveset": [

@@ -4,7 +4,7 @@
     {
       "species": "cobblemon:gengar",
       "gender": "FEMALE",
-      "level": 66,
+      "level": 81,
       "nature": "cobblemon:lax",
       "ability": "levitate",
       "moveset": [
@@ -35,7 +35,7 @@
     {
       "species": "cobblemon:crobat",
       "gender": "FEMALE",
-      "level": 66,
+      "level": 81,
       "nature": "cobblemon:bashful",
       "ability": "infiltrator",
       "moveset": [
@@ -66,7 +66,7 @@
     {
       "species": "cobblemon:misdreavus",
       "gender": "MALE",
-      "level": 65,
+      "level": 80,
       "nature": "cobblemon:docile",
       "ability": "levitate",
       "moveset": [
@@ -97,7 +97,7 @@
     {
       "species": "cobblemon:arbok",
       "gender": "FEMALE",
-      "level": 68,
+      "level": 83,
       "nature": "cobblemon:serious",
       "ability": "intimidate",
       "moveset": [
@@ -128,7 +128,7 @@
     {
       "species": "cobblemon:gengar",
       "gender": "FEMALE",
-      "level": 70,
+      "level": 85,
       "nature": "cobblemon:naughty",
       "ability": "levitate",
       "moveset": [

@@ -13,7 +13,10 @@
 
 ***Changed***
 
+- Beating a champ now grants a level cap of 100
+- Buffed weaker versions of key trainers
 - Command: Renamed former `player get defeats ...` to `player get type_defeats <type> [<player>]`
+- Removed battle restrictions for some trainer
 - Trainer id system (now with proper unique ids). Saved data from previous versions will automatically migrate to the new system. **Any trainers or trainer related data that has been modified with a data- or resource pack must be migrated manually, this is also the case for any (command block) commands that refer to trainers by their old ids**. This can simply be achieved by changing the *trainer part* of the name from an asset file (***groups* stay the same**). The documentaion contains a list of [all changed ids](https://srcmc.gitlab.io/rct/docs/configuration/legacy/).
 
 ***Fixed***

@@ -4,7 +4,7 @@
     {
       "species": "cobblemon:gyarados",
       "gender": "MALE",
-      "level": 68,
+      "level": 81,
       "nature": "cobblemon:quirky",
       "ability": "intimidate",
       "moveset": [
@@ -35,7 +35,7 @@
     {
       "species": "cobblemon:dragonite",
       "gender": "MALE",
-      "level": 66,
+      "level": 79,
       "nature": "cobblemon:jolly",
       "ability": "innerfocus",
       "moveset": [
@@ -66,7 +66,7 @@
     {
       "species": "cobblemon:kingdra",
       "gender": "FEMALE",
-      "level": 66,
+      "level": 79,
       "nature": "cobblemon:hardy",
       "ability": "sniper",
       "moveset": [
@@ -97,7 +97,7 @@
     {
       "species": "cobblemon:aerodactyl",
       "gender": "FEMALE",
-      "level": 70,
+      "level": 83,
       "nature": "cobblemon:hasty",
       "ability": "pressure",
       "moveset": [
@@ -128,7 +128,7 @@
     {
       "species": "cobblemon:dragonite",
       "gender": "MALE",
-      "level": 72,
+      "level": 85,
       "nature": "cobblemon:hardy",
       "ability": "innerfocus",
       "moveset": [

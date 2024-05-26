@@ -4,7 +4,7 @@
     {
       "species": "cobblemon:dewgong",
       "gender": "FEMALE",
-      "level": 64,
+      "level": 83,
       "nature": "cobblemon:naughty",
       "ability": "icescales",
       "moveset": [
@@ -35,7 +35,7 @@
     {
       "species": "cobblemon:cloyster",
       "gender": "FEMALE",
-      "level": 63,
+      "level": 82,
       "nature": "cobblemon:bold",
       "ability": "skilllink",
       "moveset": [
@@ -66,7 +66,7 @@
     {
       "species": "cobblemon:piloswine",
       "gender": "FEMALE",
-      "level": 63,
+      "level": 82,
       "nature": "cobblemon:quirky",
       "ability": "snowcloak",
       "moveset": [
@@ -97,7 +97,7 @@
     {
       "species": "cobblemon:jynx",
       "gender": "FEMALE",
-      "level": 66,
+      "level": 85,
       "nature": "cobblemon:relaxed",
       "ability": "forewarn",
       "moveset": [
@@ -128,7 +128,7 @@
     {
       "species": "cobblemon:lapras",
       "gender": "FEMALE",
-      "level": 66,
+      "level": 85,
       "nature": "cobblemon:naive",
       "ability": "hydration",
       "moveset": [
