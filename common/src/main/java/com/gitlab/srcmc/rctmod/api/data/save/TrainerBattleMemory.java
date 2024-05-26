@@ -29,6 +29,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.saveddata.SavedData;
 
 public class TrainerBattleMemory extends SavedData {
+    public static final int VERSION = 0;
+    
     private Map<UUID, Integer> defeatedBy = new HashMap<>();
 
     public static TrainerBattleMemory of(CompoundTag tag) {

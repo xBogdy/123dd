@@ -120,10 +120,12 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
         return getBattleMemory(mob.getServer().overworld(), mob.getTrainerId());
     }
 
-    public TrainerBattleMemory getBattleMemory(ServerLevel level ,String trainerId) {
-        return level.getDataStorage().computeIfAbsent(
+    public TrainerBattleMemory getBattleMemory(ServerLevel level, String trainerId) {
+        var ds = level.getDataStorage();
+
+        return ds.computeIfAbsent(
             TrainerBattleMemory::of,
-            TrainerBattleMemory::new,
+            TrainerBattleMemoryLegacy.builder(trainerId, ds)::build,
             TrainerBattleMemory.filePath(trainerId));
     }
 
