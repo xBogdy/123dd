@@ -1,0 +1,133 @@
+{
+  "displayName": "Leader Falkner",
+  "team": [
+    {
+      "species": "cobblemon:pidgeot",
+      "gender": "MALE",
+      "level": 97,
+      "nature": "cobblemon:timid",
+      "ability": "tangledfeet",
+      "moveset": [
+        "hurricane",
+        "heatwave",
+        "focusblast",
+        "uturn"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:pidgeotite"
+    },
+    {
+      "species": "cobblemon:yanmega",
+      "gender": "FEMALE",
+      "level": 97,
+      "nature": "cobblemon:timid",
+      "ability": "frisk",
+      "moveset": [
+        "bugbuzz",
+        "airslash",
+        "gigadrain",
+        "uturn"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:choice_specs"
+    },
+    {
+      "species": "cobblemon:enamorus",
+      "gender": "FEMALE",
+      "level": 95,
+      "nature": "cobblemon:jolly",
+      "ability": "contrary",
+      "moveset": [
+        "superpower",
+        "acrobatics",
+        "playrough",
+        "knockoff"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:flying_gem"
+    },
+    {
+      "species": "cobblemon:gyarados",
+      "gender": "FEMALE",
+      "level": 95,
+      "nature": "cobblemon:jolly",
+      "ability": "moxie",
+      "moveset": [
+        "dragondance",
+        "waterfall",
+        "earthquake",
+        "bounce"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 0,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:flyinium_z"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

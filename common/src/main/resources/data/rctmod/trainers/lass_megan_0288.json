@@ -14,7 +14,7 @@
         "whirlwind"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 5,
         "attack": 5,
         "defence": 5,
         "special_attack": 5,
@@ -45,7 +45,7 @@
         "zenheadbutt"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 5,
         "attack": 5,
         "defence": 5,
         "special_attack": 5,
@@ -76,7 +76,7 @@
         "hornattack"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 5,
         "attack": 5,
         "defence": 5,
         "special_attack": 5,
@@ -107,7 +107,7 @@
         "screech"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 5,
         "attack": 5,
         "defence": 5,
         "special_attack": 5,
@@ -138,7 +138,7 @@
         "feint"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 5,
         "attack": 5,
         "defence": 5,
         "special_attack": 5,

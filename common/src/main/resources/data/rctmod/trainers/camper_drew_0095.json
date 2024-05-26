@@ -14,7 +14,7 @@
         "uproar"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 5,
         "attack": 5,
         "defence": 5,
         "special_attack": 5,
@@ -45,7 +45,7 @@
         "toxic"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 5,
         "attack": 5,
         "defence": 5,
         "special_attack": 5,
@@ -76,7 +76,7 @@
         "suckerpunch"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 5,
         "attack": 5,
         "defence": 5,
         "special_attack": 5,

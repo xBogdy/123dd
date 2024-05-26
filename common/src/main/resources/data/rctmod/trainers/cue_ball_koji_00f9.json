@@ -1,0 +1,71 @@
+{
+  "displayName": "Cue Ball Koji",
+  "team": [
+    {
+      "species": "cobblemon:kingler",
+      "gender": "FEMALE",
+      "level": 89,
+      "nature": "cobblemon:jolly",
+      "ability": "sheerforce",
+      "moveset": [
+        "liquidation",
+        "meteormash",
+        "closecombat",
+        "aquajet"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 252,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 4,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:life_orb"
+    },
+    {
+      "species": "cobblemon:dracozolt",
+      "gender": "GENDERLESS",
+      "level": 92,
+      "nature": "cobblemon:jolly",
+      "ability": "sandrush",
+      "moveset": [
+        "boltbeak",
+        "dragonclaw",
+        "earthquake",
+        "fireblast"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 252,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 4,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:magnet"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

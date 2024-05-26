@@ -6,7 +6,7 @@
       "gender": "MALE",
       "level": 46,
       "nature": "cobblemon:sassy",
-      "ability": "runaway",
+      "ability": "sharpness",
       "moveset": [
         "knockoff",
         "defog",
@@ -14,7 +14,7 @@
         "swordsdance"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 15,
         "attack": 15,
         "defence": 15,
         "special_attack": 15,

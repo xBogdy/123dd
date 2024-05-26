@@ -14,7 +14,7 @@
         "hornattack"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 5,
         "attack": 5,
         "defence": 5,
         "special_attack": 5,
@@ -45,7 +45,7 @@
         "megapunch"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 5,
         "attack": 5,
         "defence": 5,
         "special_attack": 5,

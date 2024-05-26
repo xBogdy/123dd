@@ -1,0 +1,102 @@
+{
+  "displayName": "Team Rocket Grunt",
+  "team": [
+    {
+      "species": "cobblemon:golbat",
+      "gender": "MALE",
+      "level": 90,
+      "nature": "cobblemon:naive",
+      "ability": "sniper",
+      "moveset": [
+        "megadrain",
+        "crosspoison",
+        "aircutter",
+        "hiddenpower"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 30,
+        "defence": 31,
+        "special_attack": 30,
+        "special_defence": 31,
+        "speed": 30
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:eviolite"
+    },
+    {
+      "species": "cobblemon:raticate",
+      "gender": "FEMALE",
+      "level": 89,
+      "nature": "cobblemon:jolly",
+      "ability": "hustle",
+      "moveset": [
+        "hyperfang",
+        "stompingtantrum",
+        "throatchop",
+        "uturn"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 30,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:silk_scarf"
+    },
+    {
+      "species": "cobblemon:octillery",
+      "gender": "FEMALE",
+      "level": 92,
+      "nature": "cobblemon:rash",
+      "ability": "skilllink",
+      "moveset": [
+        "bulletseed",
+        "rockblast",
+        "waterpulse",
+        "icywind"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:rindo_berry"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

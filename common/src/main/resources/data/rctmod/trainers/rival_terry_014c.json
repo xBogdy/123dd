@@ -6,14 +6,14 @@
       "gender": "MALE",
       "level": 19,
       "nature": "cobblemon:bashful",
-      "ability": "synchronize",
+      "ability": "trace",
       "moveset": [
         "confusion",
         "disarmingvoice",
         "magicalleaf"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 31,
         "attack": 31,
         "defence": 31,
         "special_attack": 31,
@@ -21,7 +21,7 @@
         "speed": 31
       },
       "evs": {
-        "hp": 0,
+        "hp": 4,
         "attack": 0,
         "defence": 0,
         "special_attack": 0,
@@ -42,7 +42,7 @@
         "quickattack"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 31,
         "attack": 31,
         "defence": 31,
         "special_attack": 31,
@@ -50,7 +50,7 @@
         "speed": 31
       },
       "evs": {
-        "hp": 0,
+        "hp": 4,
         "attack": 0,
         "defence": 0,
         "special_attack": 0,
@@ -72,7 +72,7 @@
         "howl"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 31,
         "attack": 31,
         "defence": 31,
         "special_attack": 31,
@@ -80,7 +80,7 @@
         "speed": 31
       },
       "evs": {
-        "hp": 0,
+        "hp": 4,
         "attack": 0,
         "defence": 0,
         "special_attack": 0,
@@ -101,7 +101,7 @@
         "bite"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 31,
         "attack": 31,
         "defence": 31,
         "special_attack": 31,
@@ -109,7 +109,7 @@
         "speed": 31
       },
       "evs": {
-        "hp": 0,
+        "hp": 24,
         "attack": 16,
         "defence": 0,
         "special_attack": 40,

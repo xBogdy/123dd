@@ -14,7 +14,7 @@
         "sandstorm"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 20,
         "attack": 20,
         "defence": 20,
         "special_attack": 20,
@@ -45,7 +45,7 @@
         "refresh"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 20,
         "attack": 20,
         "defence": 20,
         "special_attack": 20,
@@ -76,7 +76,7 @@
         "thrash"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 20,
         "attack": 20,
         "defence": 20,
         "special_attack": 20,

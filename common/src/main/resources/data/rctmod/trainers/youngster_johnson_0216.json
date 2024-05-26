@@ -14,7 +14,7 @@
         "gunkshot"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 5,
         "attack": 5,
         "defence": 5,
         "special_attack": 5,
@@ -45,7 +45,7 @@
         "hammerarm"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 5,
         "attack": 5,
         "defence": 5,
         "special_attack": 5,
@@ -76,7 +76,7 @@
         "wickedblow"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 5,
         "attack": 5,
         "defence": 5,
         "special_attack": 5,

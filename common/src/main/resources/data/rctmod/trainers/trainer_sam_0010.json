@@ -14,7 +14,7 @@
         "icebeam"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 31,
         "attack": 31,
         "defence": 31,
         "special_attack": 31,
@@ -22,7 +22,7 @@
         "speed": 31
       },
       "evs": {
-        "hp": 0,
+        "hp": 6,
         "attack": 0,
         "defence": 0,
         "special_attack": 252,
@@ -45,7 +45,7 @@
         "suckerpunch"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 31,
         "attack": 31,
         "defence": 31,
         "special_attack": 31,
@@ -53,7 +53,7 @@
         "speed": 31
       },
       "evs": {
-        "hp": 0,
+        "hp": 6,
         "attack": 128,
         "defence": 0,
         "special_attack": 128,
@@ -68,7 +68,7 @@
       "gender": "FEMALE",
       "level": 44,
       "nature": "cobblemon:jolly",
-      "ability": "runaway",
+      "ability": "sharpness",
       "moveset": [
         "bravebird",
         "sacredsword",
@@ -76,7 +76,7 @@
         "nightslash"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 31,
         "attack": 31,
         "defence": 31,
         "special_attack": 31,
@@ -84,7 +84,7 @@
         "speed": 31
       },
       "evs": {
-        "hp": 0,
+        "hp": 6,
         "attack": 252,
         "defence": 0,
         "special_attack": 0,

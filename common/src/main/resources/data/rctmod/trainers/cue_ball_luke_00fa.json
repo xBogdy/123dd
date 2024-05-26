@@ -1,0 +1,71 @@
+{
+  "displayName": "Cue Ball Luke",
+  "team": [
+    {
+      "species": "cobblemon:dugtrio",
+      "gender": "MALE",
+      "level": 91,
+      "nature": "cobblemon:jolly",
+      "ability": "arenatrap",
+      "moveset": [
+        "earthquake",
+        "stoneedge",
+        "aerialace",
+        "suckerpunch"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 252,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 4,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:life_orb"
+    },
+    {
+      "species": "cobblemon:hariyama",
+      "gender": "FEMALE",
+      "level": 89,
+      "nature": "cobblemon:careful",
+      "ability": "thickfat",
+      "moveset": [
+        "fakeout",
+        "knockoff",
+        "drainpunch",
+        "heavyslam"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 252,
+        "attack": 252,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 4,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:assault_vest"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

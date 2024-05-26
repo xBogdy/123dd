@@ -14,7 +14,7 @@
         "feintattack"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 25,
         "attack": 25,
         "defence": 25,
         "special_attack": 25,
@@ -45,7 +45,7 @@
         "grudge"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 25,
         "attack": 25,
         "defence": 25,
         "special_attack": 25,
@@ -76,7 +76,7 @@
         "agility"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 25,
         "attack": 25,
         "defence": 25,
         "special_attack": 25,
@@ -107,7 +107,7 @@
         "quickattack"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 25,
         "attack": 25,
         "defence": 25,
         "special_attack": 25,
@@ -138,7 +138,7 @@
         "doubleteam"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 25,
         "attack": 25,
         "defence": 25,
         "special_attack": 25,

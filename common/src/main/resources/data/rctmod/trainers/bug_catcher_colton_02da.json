@@ -14,7 +14,7 @@
         "aircutter"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 1,
         "attack": 1,
         "defence": 1,
         "special_attack": 1,
@@ -43,7 +43,7 @@
         "bugbite"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 1,
         "attack": 1,
         "defence": 1,
         "special_attack": 1,
@@ -74,7 +74,7 @@
         "aircutter"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 1,
         "attack": 1,
         "defence": 1,
         "special_attack": 1,

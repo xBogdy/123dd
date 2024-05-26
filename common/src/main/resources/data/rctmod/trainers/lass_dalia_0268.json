@@ -14,7 +14,7 @@
         "bounce"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 5,
         "attack": 5,
         "defence": 5,
         "special_attack": 5,
@@ -45,7 +45,7 @@
         "bounce"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 5,
         "attack": 5,
         "defence": 5,
         "special_attack": 5,
@@ -76,7 +76,7 @@
         "uturn"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 5,
         "attack": 5,
         "defence": 5,
         "special_attack": 5,
@@ -107,7 +107,7 @@
         "worryseed"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 5,
         "attack": 5,
         "defence": 5,
         "special_attack": 5,

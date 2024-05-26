@@ -5,5 +5,5 @@
   "battleCooldownTicks": 2000,
   "spawnWeightFactor": 0.25,
   "biomeTagBlacklist": ["is_void", "is_water"],
-  "biomeTagWhitelist": ["is_overworld", "is_nether", "has_structure/end_city"]
+  "biomeTagWhitelist": ["is_overworld"]
 }

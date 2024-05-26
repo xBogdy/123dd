@@ -14,7 +14,7 @@
         "mysticalfire"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 31,
         "attack": 0,
         "defence": 31,
         "special_attack": 31,
@@ -22,7 +22,7 @@
         "speed": 0
       },
       "evs": {
-        "hp": 0,
+        "hp": 252,
         "attack": 0,
         "defence": 4,
         "special_attack": 252,
@@ -45,7 +45,7 @@
         "brickbreak"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 31,
         "attack": 31,
         "defence": 31,
         "special_attack": 31,
@@ -53,7 +53,7 @@
         "speed": 0
       },
       "evs": {
-        "hp": 0,
+        "hp": 252,
         "attack": 252,
         "defence": 4,
         "special_attack": 0,
@@ -76,7 +76,7 @@
         "thunderbolt"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 31,
         "attack": 0,
         "defence": 31,
         "special_attack": 31,
@@ -84,7 +84,7 @@
         "speed": 0
       },
       "evs": {
-        "hp": 0,
+        "hp": 252,
         "attack": 0,
         "defence": 252,
         "special_attack": 0,
@@ -107,7 +107,7 @@
         "crunch"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 31,
         "attack": 31,
         "defence": 31,
         "special_attack": 31,
@@ -115,7 +115,7 @@
         "speed": 0
       },
       "evs": {
-        "hp": 0,
+        "hp": 252,
         "attack": 252,
         "defence": 4,
         "special_attack": 0,
@@ -138,7 +138,7 @@
         "trickroom"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 31,
         "attack": 0,
         "defence": 31,
         "special_attack": 31,
@@ -146,7 +146,7 @@
         "speed": 0
       },
       "evs": {
-        "hp": 0,
+        "hp": 252,
         "attack": 0,
         "defence": 4,
         "special_attack": 252,

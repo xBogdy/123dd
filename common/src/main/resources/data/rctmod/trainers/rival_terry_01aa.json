@@ -14,7 +14,7 @@
         "whirlwind"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 31,
         "attack": 31,
         "defence": 31,
         "special_attack": 31,
@@ -45,7 +45,7 @@
         "roar"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 31,
         "attack": 31,
         "defence": 31,
         "special_attack": 31,
@@ -76,7 +76,7 @@
         "calmmind"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 31,
         "attack": 31,
         "defence": 31,
         "special_attack": 31,
@@ -107,7 +107,7 @@
         "detect"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 31,
         "attack": 31,
         "defence": 31,
         "special_attack": 31,

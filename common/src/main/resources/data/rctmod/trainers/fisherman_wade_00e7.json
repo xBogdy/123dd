@@ -13,7 +13,7 @@
         "flail"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 10,
         "attack": 10,
         "defence": 10,
         "special_attack": 10,
@@ -43,7 +43,7 @@
         "flail"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 10,
         "attack": 10,
         "defence": 10,
         "special_attack": 10,
@@ -74,7 +74,7 @@
         "hyperbeam"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 10,
         "attack": 10,
         "defence": 10,
         "special_attack": 10,
@@ -105,7 +105,7 @@
         "raindance"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 10,
         "attack": 10,
         "defence": 10,
         "special_attack": 10,
@@ -136,7 +136,7 @@
         "wideguard"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 10,
         "attack": 10,
         "defence": 10,
         "special_attack": 10,
@@ -167,7 +167,7 @@
         "safeguard"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 10,
         "attack": 10,
         "defence": 10,
         "special_attack": 10,

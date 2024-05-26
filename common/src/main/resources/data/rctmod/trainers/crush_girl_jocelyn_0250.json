@@ -1,0 +1,133 @@
+{
+  "displayName": "Crush Girl Jocelyn",
+  "team": [
+    {
+      "species": "cobblemon:dunsparce",
+      "gender": "MALE",
+      "level": 93,
+      "nature": "cobblemon:adamant",
+      "ability": "serenegrace",
+      "moveset": [
+        "bodyslam",
+        "glare",
+        "headbutt",
+        "zenheadbutt"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 252,
+        "attack": 252,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 4
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:chople_berry"
+    },
+    {
+      "species": "cobblemon:archeops",
+      "gender": "FEMALE",
+      "level": 91,
+      "nature": "cobblemon:jolly",
+      "ability": "defeatist",
+      "moveset": [
+        "rockslide",
+        "bravebird",
+        "uturn",
+        "roost"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 252,
+        "defence": 4,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:mystic_water"
+    },
+    {
+      "species": "cobblemon:togekiss",
+      "gender": "FEMALE",
+      "level": 92,
+      "nature": "cobblemon:jolly",
+      "ability": "serenegrace",
+      "moveset": [
+        "thunderwave",
+        "airslash",
+        "extrasensory",
+        "flamethrower"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 252,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:leftovers"
+    },
+    {
+      "species": "cobblemon:huntail",
+      "gender": "FEMALE",
+      "level": 91,
+      "nature": "cobblemon:naughty",
+      "ability": "intimidate",
+      "moveset": [
+        "shellsmash",
+        "waterfall",
+        "psychicfangs",
+        "icebeam"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 252,
+        "defence": 0,
+        "special_attack": 4,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:white_herb"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

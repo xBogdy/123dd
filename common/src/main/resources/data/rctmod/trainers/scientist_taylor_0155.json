@@ -11,7 +11,7 @@
         "explosion"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 15,
         "attack": 15,
         "defence": 15,
         "special_attack": 15,
@@ -39,7 +39,7 @@
         "explosion"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 15,
         "attack": 15,
         "defence": 15,
         "special_attack": 15,
@@ -70,7 +70,7 @@
         "calmmind"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 15,
         "attack": 15,
         "defence": 15,
         "special_attack": 15,
@@ -100,7 +100,7 @@
         "sludgebomb"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 15,
         "attack": 15,
         "defence": 15,
         "special_attack": 15,
@@ -130,7 +130,7 @@
         "swordsdance"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 15,
         "attack": 15,
         "defence": 15,
         "special_attack": 15,

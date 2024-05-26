@@ -6,7 +6,7 @@
       "gender": "FEMALE",
       "level": 38,
       "nature": "cobblemon:adamant",
-      "ability": "runaway",
+      "ability": "sharpness",
       "moveset": [
         "retaliate",
         "slash",
@@ -14,7 +14,7 @@
         "nightslash"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 10,
         "attack": 10,
         "defence": 10,
         "special_attack": 10,

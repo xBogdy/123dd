@@ -14,7 +14,7 @@
         "leechseed"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 25,
         "attack": 25,
         "defence": 25,
         "special_attack": 25,
@@ -45,7 +45,7 @@
         "rockblast"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 25,
         "attack": 25,
         "defence": 25,
         "special_attack": 25,
@@ -76,7 +76,7 @@
         "ingrain"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 25,
         "attack": 25,
         "defence": 25,
         "special_attack": 25,
@@ -107,7 +107,7 @@
         "scald"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 25,
         "attack": 25,
         "defence": 25,
         "special_attack": 25,
@@ -138,7 +138,7 @@
         "knockoff"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 25,
         "attack": 25,
         "defence": 25,
         "special_attack": 25,

@@ -14,7 +14,7 @@
         "rocktomb"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 31,
         "attack": 31,
         "defence": 31,
         "special_attack": 31,
@@ -45,7 +45,7 @@
         "reflect"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 31,
         "attack": 31,
         "defence": 31,
         "special_attack": 31,
@@ -76,7 +76,7 @@
         "aerialace"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 31,
         "attack": 31,
         "defence": 31,
         "special_attack": 31,
@@ -107,7 +107,7 @@
         "hyperbeam"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 31,
         "attack": 31,
         "defence": 31,
         "special_attack": 31,
@@ -138,7 +138,7 @@
         "irontail"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 31,
         "attack": 31,
         "defence": 31,
         "special_attack": 31,
@@ -169,7 +169,7 @@
         "sunnyday"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 31,
         "attack": 31,
         "defence": 31,
         "special_attack": 31,

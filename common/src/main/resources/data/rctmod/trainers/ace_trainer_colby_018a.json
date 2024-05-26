@@ -9,11 +9,12 @@
       "ability": "strongjaw",
       "moveset": [
         "dragondance",
+        "liquidation",
         "icefang",
         "jawlock"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 31,
         "attack": 31,
         "defence": 31,
         "special_attack": 31,
@@ -21,7 +22,7 @@
         "speed": 31
       },
       "evs": {
-        "hp": 0,
+        "hp": 6,
         "attack": 252,
         "defence": 0,
         "special_attack": 0,
@@ -43,7 +44,7 @@
         "icebeam"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 31,
         "attack": 31,
         "defence": 31,
         "special_attack": 31,
@@ -51,7 +52,7 @@
         "speed": 31
       },
       "evs": {
-        "hp": 0,
+        "hp": 6,
         "attack": 0,
         "defence": 0,
         "special_attack": 252,
@@ -74,7 +75,7 @@
         "icebeam"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 31,
         "attack": 31,
         "defence": 31,
         "special_attack": 31,
@@ -82,7 +83,7 @@
         "speed": 31
       },
       "evs": {
-        "hp": 0,
+        "hp": 252,
         "attack": 0,
         "defence": 128,
         "special_attack": 0,
@@ -101,10 +102,11 @@
       "moveset": [
         "crunch",
         "icefang",
-        "aquajet"
+        "aquajet",
+        "liquidation"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 31,
         "attack": 31,
         "defence": 31,
         "special_attack": 31,
@@ -112,7 +114,7 @@
         "speed": 31
       },
       "evs": {
-        "hp": 0,
+        "hp": 6,
         "attack": 252,
         "defence": 0,
         "special_attack": 0,
@@ -135,7 +137,7 @@
         "sleeptalk"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 31,
         "attack": 31,
         "defence": 31,
         "special_attack": 31,
@@ -143,7 +145,7 @@
         "speed": 31
       },
       "evs": {
-        "hp": 0,
+        "hp": 252,
         "attack": 0,
         "defence": 252,
         "special_attack": 0,

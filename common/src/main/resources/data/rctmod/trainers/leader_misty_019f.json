@@ -14,7 +14,7 @@
         "grassknot"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 31,
         "attack": 31,
         "defence": 31,
         "special_attack": 31,
@@ -22,7 +22,7 @@
         "speed": 31
       },
       "evs": {
-        "hp": 0,
+        "hp": 100,
         "attack": 40,
         "defence": 0,
         "special_attack": 40,
@@ -45,7 +45,7 @@
         "hiddenpower"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 31,
         "attack": 30,
         "defence": 31,
         "special_attack": 30,
@@ -76,7 +76,7 @@
         "aurorabeam"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 31,
         "attack": 31,
         "defence": 31,
         "special_attack": 31,
@@ -107,7 +107,7 @@
         "hiddenpower"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 31,
         "attack": 30,
         "defence": 31,
         "special_attack": 30,

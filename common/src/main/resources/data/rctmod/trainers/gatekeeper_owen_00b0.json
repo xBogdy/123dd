@@ -1,0 +1,71 @@
+{
+  "displayName": "Gatekeeper Owen",
+  "team": [
+    {
+      "species": "cobblemon:mew",
+      "gender": "GENDERLESS",
+      "level": 93,
+      "nature": "cobblemon:timid",
+      "ability": "synchronize",
+      "moveset": [
+        "psychic",
+        "flamethrower",
+        "aurasphere",
+        "icebeam"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 4,
+        "special_attack": 252,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:mewnium_z"
+    },
+    {
+      "species": "cobblemon:kingler",
+      "gender": "FEMALE",
+      "level": 92,
+      "nature": "cobblemon:jolly",
+      "ability": "hypercutter",
+      "moveset": [
+        "crabhammer",
+        "ironhead",
+        "aquajet",
+        "closecombat"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 252,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:kinglerite"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

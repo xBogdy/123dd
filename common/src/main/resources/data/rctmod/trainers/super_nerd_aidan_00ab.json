@@ -14,7 +14,7 @@
         "spark"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 15,
         "attack": 15,
         "defence": 15,
         "special_attack": 15,
@@ -45,7 +45,7 @@
         "sludge"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 15,
         "attack": 15,
         "defence": 15,
         "special_attack": 15,
@@ -76,7 +76,7 @@
         "charge"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 15,
         "attack": 15,
         "defence": 15,
         "special_attack": 15,
@@ -106,7 +106,7 @@
         "headbutt"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 15,
         "attack": 15,
         "defence": 15,
         "special_attack": 15,

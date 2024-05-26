@@ -14,7 +14,7 @@
         "sonicboom"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 15,
         "attack": 15,
         "defence": 15,
         "special_attack": 15,
@@ -45,7 +45,7 @@
         "charge"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 15,
         "attack": 15,
         "defence": 15,
         "special_attack": 15,
@@ -76,7 +76,7 @@
         "thunderwave"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 15,
         "attack": 15,
         "defence": 15,
         "special_attack": 15,
@@ -107,7 +107,7 @@
         "sonicboom"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 15,
         "attack": 15,
         "defence": 15,
         "special_attack": 15,
@@ -133,11 +133,12 @@
       "ability": "trace",
       "moveset": [
         "triattack",
+        "shadowball",
         "recover",
         "psybeam"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 15,
         "attack": 15,
         "defence": 15,
         "special_attack": 15,

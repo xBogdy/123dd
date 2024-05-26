@@ -6,14 +6,14 @@
       "gender": "MALE",
       "level": 35,
       "nature": "cobblemon:hasty",
-      "ability": "runaway",
+      "ability": "sharpness",
       "moveset": [
         "magnitude",
         "gyroball",
         "shadowball"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 10,
         "attack": 10,
         "defence": 10,
         "special_attack": 10,
@@ -44,7 +44,7 @@
         "feintattack"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 10,
         "attack": 10,
         "defence": 10,
         "special_attack": 10,

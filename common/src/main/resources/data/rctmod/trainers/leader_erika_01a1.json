@@ -14,7 +14,7 @@
         "drainpunch"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 31,
         "attack": 31,
         "defence": 31,
         "special_attack": 31,
@@ -23,7 +23,7 @@
       },
       "evs": {
         "hp": 0,
-        "attack": 0,
+        "attack": 252,
         "defence": 4,
         "special_attack": 0,
         "special_defence": 0,
@@ -45,7 +45,7 @@
         "dragonpulse"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 31,
         "attack": 30,
         "defence": 31,
         "special_attack": 30,
@@ -55,7 +55,7 @@
       "evs": {
         "hp": 0,
         "attack": 0,
-        "defence": 0,
+        "defence": 4,
         "special_attack": 252,
         "special_defence": 0,
         "speed": 252
@@ -76,7 +76,7 @@
         "earthpower"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 31,
         "attack": 31,
         "defence": 31,
         "special_attack": 31,
@@ -84,7 +84,7 @@
         "speed": 31
       },
       "evs": {
-        "hp": 0,
+        "hp": 252,
         "attack": 0,
         "defence": 4,
         "special_attack": 252,
@@ -107,7 +107,7 @@
         "hiddenpower"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 31,
         "attack": 30,
         "defence": 31,
         "special_attack": 30,
@@ -115,7 +115,7 @@
         "speed": 30
       },
       "evs": {
-        "hp": 0,
+        "hp": 252,
         "attack": 0,
         "defence": 4,
         "special_attack": 252,

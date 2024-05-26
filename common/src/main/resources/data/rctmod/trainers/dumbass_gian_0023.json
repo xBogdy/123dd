@@ -1,0 +1,40 @@
+{
+  "displayName": "Dumbass Gian",
+  "team": [
+    {
+      "species": "cobblemon:swampert",
+      "gender": "FEMALE",
+      "level": 91,
+      "nature": "cobblemon:jolly",
+      "ability": "damp",
+      "moveset": [
+        "highhorsepower",
+        "icepunch",
+        "waterfall",
+        "flipturn"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 252,
+        "defence": 4,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:swampertite"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

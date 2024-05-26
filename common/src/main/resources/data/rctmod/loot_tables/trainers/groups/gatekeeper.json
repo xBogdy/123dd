@@ -1,0 +1,163 @@
+{
+  "pools": [
+    {
+      "rolls": {
+        "type": "minecraft:binomial",
+        "n": 3,
+        "p": 0.35
+      },
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/common/medicine",
+          "weight": 1000,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "entity": "this",
+              "range": {
+                "min": 0,
+                "max": 100
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/common/pokeballs",
+          "weight": 1000,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "entity": "this",
+              "range": {
+                "min": 0,
+                "max": 100
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/uncommon/medicine",
+          "weight": 500,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "entity": "this",
+              "range": {
+                "min": 16,
+                "max": 100
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/uncommon/pokeballs",
+          "weight": 500,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "entity": "this",
+              "range": {
+                "min": 16,
+                "max": 100
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/rare/medicine",
+          "weight": 200,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "entity": "this",
+              "range": {
+                "min": 38,
+                "max": 100
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/rare/pokeballs",
+          "weight": 200,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "entity": "this",
+              "range": {
+                "min": 38,
+                "max": 100
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/epic/medicine",
+          "weight": 50,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "entity": "this",
+              "range": {
+                "min": 50,
+                "max": 100
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/epic/pokeballs",
+          "weight": 50,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "entity": "this",
+              "range": {
+                "min": 50,
+                "max": 100
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/legendary/medicine",
+          "weight": 1,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "entity": "this",
+              "range": {
+                "min": 70,
+                "max": 100
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/legendary/pokeballs",
+          "weight": 1,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "entity": "this",
+              "range": {
+                "min": 70,
+                "max": 100
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

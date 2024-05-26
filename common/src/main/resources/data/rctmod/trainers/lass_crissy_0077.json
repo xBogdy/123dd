@@ -8,12 +8,13 @@
       "nature": "cobblemon:rash",
       "ability": "effectspore",
       "moveset": [
+        "sappyseed",
         "crabhammer",
         "aromatherapy",
         "ragepowder"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 5,
         "attack": 5,
         "defence": 5,
         "special_attack": 5,
@@ -44,7 +45,7 @@
         "ragepowder"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 5,
         "attack": 5,
         "defence": 5,
         "special_attack": 5,
@@ -75,7 +76,7 @@
         "sacredsword"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 5,
         "attack": 5,
         "defence": 5,
         "special_attack": 5,

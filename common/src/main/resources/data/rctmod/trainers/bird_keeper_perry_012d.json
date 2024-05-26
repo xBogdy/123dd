@@ -1,0 +1,164 @@
+{
+  "displayName": "Bird Keeper Perry",
+  "team": [
+    {
+      "species": "cobblemon:rhyperior",
+      "gender": "FEMALE",
+      "level": 90,
+      "nature": "cobblemon:careful",
+      "ability": "solidrock",
+      "moveset": [
+        "stealthrock",
+        "stoneedge",
+        "earthquake",
+        "firepunch"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 252,
+        "attack": 252,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 4,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:rindo_berry"
+    },
+    {
+      "species": "cobblemon:sunflora",
+      "gender": "MALE",
+      "level": 91,
+      "nature": "cobblemon:calm",
+      "ability": "solarpower",
+      "moveset": [
+        "solarbeam",
+        "fierydance",
+        "earthpower",
+        "sludgebomb"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 252,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 252,
+        "special_defence": 4,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:assault_vest"
+    },
+    {
+      "species": "cobblemon:gardevoir",
+      "gender": "MALE",
+      "level": 89,
+      "nature": "cobblemon:timid",
+      "ability": "trace",
+      "moveset": [
+        "calmmind",
+        "psychic",
+        "moonblast",
+        "mysticalfire"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 4,
+        "special_attack": 252,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:lum_berry"
+    },
+    {
+      "species": "cobblemon:rapidash",
+      "gender": "FEMALE",
+      "level": 92,
+      "nature": "cobblemon:jolly",
+      "ability": "flashfire",
+      "moveset": [
+        "firelash",
+        "solarblade",
+        "jumpkick",
+        "highhorsepower"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 252,
+        "defence": 4,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:charcoal"
+    },
+    {
+      "species": "cobblemon:dragapult",
+      "gender": "FEMALE",
+      "level": 92,
+      "nature": "cobblemon:naive",
+      "ability": "cursedbody",
+      "moveset": [
+        "shadowball",
+        "dragondarts",
+        "fireblast",
+        "uturn"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 4,
+        "defence": 0,
+        "special_attack": 252,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:spell_tag"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

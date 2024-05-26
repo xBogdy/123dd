@@ -14,7 +14,7 @@
         "wish"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 15,
         "attack": 15,
         "defence": 15,
         "special_attack": 15,
@@ -45,7 +45,7 @@
         "yawn"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 15,
         "attack": 15,
         "defence": 15,
         "special_attack": 15,
@@ -76,7 +76,7 @@
         "reflect"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 15,
         "attack": 15,
         "defence": 15,
         "special_attack": 15,

@@ -14,7 +14,7 @@
         "courtchange"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 10,
         "attack": 10,
         "defence": 10,
         "special_attack": 10,
@@ -45,7 +45,7 @@
         "outrage"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 10,
         "attack": 10,
         "defence": 10,
         "special_attack": 10,
@@ -76,7 +76,7 @@
         "energyball"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 10,
         "attack": 10,
         "defence": 10,
         "special_attack": 10,
@@ -107,7 +107,7 @@
         "toxicthread"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 10,
         "attack": 10,
         "defence": 10,
         "special_attack": 10,

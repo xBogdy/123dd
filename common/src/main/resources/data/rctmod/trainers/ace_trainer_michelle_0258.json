@@ -14,7 +14,7 @@
         "bite"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 25,
         "attack": 25,
         "defence": 25,
         "special_attack": 25,
@@ -45,7 +45,7 @@
         "growl"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 25,
         "attack": 25,
         "defence": 25,
         "special_attack": 25,
@@ -76,7 +76,7 @@
         "grudge"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 25,
         "attack": 25,
         "defence": 25,
         "special_attack": 25,
@@ -107,7 +107,7 @@
         "takedown"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 25,
         "attack": 25,
         "defence": 25,
         "special_attack": 25,
@@ -138,7 +138,7 @@
         "odorsleuth"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 25,
         "attack": 25,
         "defence": 25,
         "special_attack": 25,

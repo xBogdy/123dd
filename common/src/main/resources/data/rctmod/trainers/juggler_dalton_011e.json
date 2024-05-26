@@ -14,7 +14,7 @@
         "futuresight"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 10,
         "attack": 10,
         "defence": 10,
         "special_attack": 10,
@@ -45,7 +45,7 @@
         "roleplay"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 10,
         "attack": 10,
         "defence": 10,
         "special_attack": 10,

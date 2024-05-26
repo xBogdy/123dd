@@ -14,7 +14,7 @@
         "psychic"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 15,
         "attack": 15,
         "defence": 15,
         "special_attack": 15,
@@ -37,7 +37,7 @@
       "gender": "MALE",
       "level": 53,
       "nature": "cobblemon:modest",
-      "ability": "runaway",
+      "ability": "cursedbody",
       "moveset": [
         "imprison",
         "suckerpunch",
@@ -45,7 +45,7 @@
         "quickguard"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 15,
         "attack": 15,
         "defence": 15,
         "special_attack": 15,
@@ -76,7 +76,7 @@
         "closecombat"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 15,
         "attack": 15,
         "defence": 15,
         "special_attack": 15,
@@ -107,7 +107,7 @@
         "powerswap"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 15,
         "attack": 15,
         "defence": 15,
         "special_attack": 15,

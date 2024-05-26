@@ -1,0 +1,133 @@
+{
+  "displayName": "Biker Hideo",
+  "team": [
+    {
+      "species": "cobblemon:stunfisk",
+      "gender": "FEMALE",
+      "level": 89,
+      "nature": "cobblemon:calm",
+      "ability": "sandveil",
+      "moveset": [
+        "stealthrock",
+        "thunderwave",
+        "earthpower",
+        "voltswitch"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 252,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 252,
+        "special_defence": 4,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:focus_sash"
+    },
+    {
+      "species": "cobblemon:dracovish",
+      "gender": "GENDERLESS",
+      "level": 88,
+      "nature": "cobblemon:jolly",
+      "ability": "sandrush",
+      "moveset": [
+        "fishiousrend",
+        "dragonclaw",
+        "psychicfangs",
+        "crunch"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 252,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 4,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:mystic_water"
+    },
+    {
+      "species": "cobblemon:beedrill",
+      "gender": "MALE",
+      "level": 90,
+      "nature": "cobblemon:jolly",
+      "ability": "swarm",
+      "moveset": [
+        "uturn",
+        "drillrun",
+        "poisonjab",
+        "pursuit"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 252,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 4,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:beedrillite"
+    },
+    {
+      "species": "cobblemon:greninja",
+      "gender": "FEMALE",
+      "level": 88,
+      "nature": "cobblemon:naive",
+      "ability": "protean",
+      "moveset": [
+        "uturn",
+        "hydropump",
+        "gunkshot",
+        "icebeam"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 252,
+        "special_defence": 4,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:life_orb"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

@@ -4,6 +4,7 @@
 
 ***Added***
 
+- **79** new (endgame) trainers, which brings the total number up to **735**
 - Command: `player get defeats <trainerId> [<player>]`
 - Command: `player set defeats <trainerId> [<players>] <value>`
 - Command: `trainer get reward_level_cap <trainerId>`
@@ -13,7 +14,11 @@
 ***Changed***
 
 - Command: Renamed former `player get defeats ...` to `player get type_defeats <type> [<player>]`
-- Trainer id system (now with proper unique ids). Saved data from previous versions will automatically migrate to the new system (this may leave a few *trash files* in the `<WORLD>/data` directory). **Any trainers or trainer related data that has been modified with a data- or resource pack must be migrated manually**. This can simply be achieved by changing the *trainer part* of the name from an asset file (***groups* stay the same**). The documentaion contains a list of [all changed ids](https://srcmc.gitlab.io/rct/docs/configuration/legacy/).
+- Trainer id system (now with proper unique ids). Saved data from previous versions will automatically migrate to the new system. **Any trainers or trainer related data that has been modified with a data- or resource pack must be migrated manually, this is also the case for any (command block) commands that refer to trainers by their old ids**. This can simply be achieved by changing the *trainer part* of the name from an asset file (***groups* stay the same**). The documentaion contains a list of [all changed ids](https://srcmc.gitlab.io/rct/docs/configuration/legacy/).
+
+***Fixed***
+
+- Some missing ivs/evs, moves, abilities, etc. for most of the trainers
 
 ***Removed***
 

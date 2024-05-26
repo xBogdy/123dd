@@ -1,0 +1,71 @@
+{
+  "displayName": "Black Belt Shea",
+  "team": [
+    {
+      "species": "cobblemon:probopass",
+      "gender": "MALE",
+      "level": 91,
+      "nature": "cobblemon:bold",
+      "ability": "levitate",
+      "moveset": [
+        "thunderwave",
+        "voltswitch",
+        "flashcannon",
+        "powergem"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 252,
+        "attack": 0,
+        "defence": 252,
+        "special_attack": 4,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:leftovers"
+    },
+    {
+      "species": "cobblemon:conkeldurr",
+      "gender": "FEMALE",
+      "level": 91,
+      "nature": "cobblemon:adamant",
+      "ability": "guts",
+      "moveset": [
+        "facade",
+        "drainpunch",
+        "knockoff",
+        "machpunch"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 252,
+        "attack": 252,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 4
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:flame_orb"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

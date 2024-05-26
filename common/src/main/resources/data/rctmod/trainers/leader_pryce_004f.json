@@ -1,0 +1,133 @@
+{
+  "displayName": "Leader Pryce",
+  "team": [
+    {
+      "species": "cobblemon:abomasnow",
+      "gender": "FEMALE",
+      "level": 95,
+      "nature": "cobblemon:quiet",
+      "ability": "soundproof",
+      "moveset": [
+        "earthpower",
+        "blizzard",
+        "woodhammer",
+        "hiddenpower"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 0
+      },
+      "evs": {
+        "hp": 248,
+        "attack": 8,
+        "defence": 0,
+        "special_attack": 252,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:abomasite"
+    },
+    {
+      "species": "cobblemon:kyurem",
+      "gender": "GENDERLESS",
+      "level": 95,
+      "nature": "cobblemon:quiet",
+      "ability": "pressure",
+      "moveset": [
+        "blizzard",
+        "dracometeor",
+        "earthpower",
+        "freezedry"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 0
+      },
+      "evs": {
+        "hp": 248,
+        "attack": 0,
+        "defence": 8,
+        "special_attack": 252,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:icium_z"
+    },
+    {
+      "species": "cobblemon:donphan",
+      "gender": "FEMALE",
+      "level": 97,
+      "nature": "cobblemon:brave",
+      "ability": "technician",
+      "moveset": [
+        "iceshard",
+        "rocktomb",
+        "bonemerang",
+        "knockoff"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 0,
+        "special_defence": 31,
+        "speed": 0
+      },
+      "evs": {
+        "hp": 252,
+        "attack": 252,
+        "defence": 4,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:lum_berry"
+    },
+    {
+      "species": "cobblemon:heracross",
+      "gender": "FEMALE",
+      "level": 95,
+      "nature": "cobblemon:brave",
+      "ability": "moxie",
+      "moveset": [
+        "armthrust",
+        "bulletseed",
+        "pinmissile",
+        "rockblast"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 0,
+        "special_defence": 31,
+        "speed": 0
+      },
+      "evs": {
+        "hp": 252,
+        "attack": 252,
+        "defence": 4,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:heracronite"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

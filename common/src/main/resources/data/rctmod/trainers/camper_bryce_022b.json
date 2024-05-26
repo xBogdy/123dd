@@ -1,0 +1,164 @@
+{
+  "displayName": "Camper Bryce",
+  "team": [
+    {
+      "species": "cobblemon:bisharp",
+      "gender": "FEMALE",
+      "level": 90,
+      "nature": "cobblemon:jolly",
+      "ability": "defiant",
+      "moveset": [
+        "suckerpunch",
+        "psychocut",
+        "ironhead",
+        "swordsdance"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 252,
+        "defence": 4,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:focus_sash"
+    },
+    {
+      "species": "cobblemon:floatzel",
+      "gender": "FEMALE",
+      "level": 93,
+      "nature": "cobblemon:naive",
+      "ability": "technician",
+      "moveset": [
+        "fakeout",
+        "surgingstrikes",
+        "icywind",
+        "rocksmash"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 252,
+        "defence": 4,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:mystic_water"
+    },
+    {
+      "species": "cobblemon:butterfree",
+      "gender": "MALE",
+      "level": 91,
+      "nature": "cobblemon:jolly",
+      "ability": "compoundeyes",
+      "moveset": [
+        "bugbuzz",
+        "sleeppowder",
+        "hurricane",
+        "uturn"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 36,
+        "attack": 0,
+        "defence": 56,
+        "special_attack": 252,
+        "special_defence": 0,
+        "speed": 164
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:butterfrite"
+    },
+    {
+      "species": "cobblemon:magnezone",
+      "gender": "GENDERLESS",
+      "level": 91,
+      "nature": "cobblemon:jolly",
+      "ability": "magnetpull",
+      "moveset": [
+        "thunderbolt",
+        "steelbeam",
+        "voltswitch",
+        "bodypress"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 48,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 252,
+        "special_defence": 0,
+        "speed": 208
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:magnet"
+    },
+    {
+      "species": "cobblemon:delphox",
+      "gender": "FEMALE",
+      "level": 92,
+      "nature": "cobblemon:timid",
+      "ability": "magicguard",
+      "moveset": [
+        "mindblown",
+        "psychic",
+        "heatwave",
+        "foulplay"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 0,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 4,
+        "special_attack": 252,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:life_orb"
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

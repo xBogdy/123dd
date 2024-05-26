@@ -6,7 +6,7 @@
       "gender": "FEMALE",
       "level": 45,
       "nature": "cobblemon:brave",
-      "ability": "runaway",
+      "ability": "sharpness",
       "moveset": [
         "endure",
         "aquajet",
@@ -14,7 +14,7 @@
         "metalsound"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 15,
         "attack": 15,
         "defence": 15,
         "special_attack": 15,
@@ -45,7 +45,7 @@
         "meteorbeam"
       ],
       "ivs": {
-        "hp": 0,
+        "hp": 15,
         "attack": 15,
         "defence": 15,
         "special_attack": 15,
