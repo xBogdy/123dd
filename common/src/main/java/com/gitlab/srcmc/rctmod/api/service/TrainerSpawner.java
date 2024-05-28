@@ -34,6 +34,8 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Player;
 
 public class TrainerSpawner {
+    private static float KEY_TRAINER_SPAWN_WEIGHT_FACTOR = 60;
+
     private static class SpawnCandidate {
         public final String id;
         public final double weight;
@@ -216,8 +218,17 @@ public class TrainerSpawner {
             .max(Integer::compare).orElse(0);
 
         if(mobLevel <= playerTr.getLevelCap()) {
-            int diff = Math.abs(Math.min(tm.getPlayerLevel(player), playerTr.getLevelCap()) - mobLevel);
-            return diff > config.maxLevelDiff() ? 0 : ((config.maxLevelDiff() + 1) - diff)*mobTr.getSpawnWeightFactor();
+            var playerLevel = tm.getPlayerLevel(player);
+            var keyTrainerFactor = 1f;
+
+            if(mobTr.getRewardLevelCap() > playerTr.getLevelCap()) {
+                var a = (10 - Math.min(9, playerTr.getLevelCap()/10))/2f;
+                var b = Math.max(0, playerTr.getLevelCap() - playerLevel)*a + 1;
+                keyTrainerFactor = KEY_TRAINER_SPAWN_WEIGHT_FACTOR/b;
+            }
+
+            int diff = Math.abs(Math.min(playerLevel, playerTr.getLevelCap()) - mobLevel);
+            return diff > config.maxLevelDiff() ? 0 : ((config.maxLevelDiff() + 1) - diff)*mobTr.getSpawnWeightFactor()*keyTrainerFactor;
         }
 
         return 0;
