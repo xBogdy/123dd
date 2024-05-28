@@ -17,7 +17,7 @@ The *greater* the difference inbetween versions the more likely it is for issues
 
 ## Key Features
 
-- Over **650** unique and challenging trainer teams for all level ranges (including gym leaders, elite 4 members, champions and some special ones)
+- Over **700** unique and challenging trainer teams for all level ranges (including gym leaders, elite 4 members, champions and some special ones)
 - Custom trainer npc natural spawning system:
   - loosely comparable to the wandering trader but with a significant smaller delay and a higher spawn cap by default
   - ensures uniqueness: Never will you see two trainers with the same name (unless cheated in)
@@ -43,7 +43,7 @@ The *greater* the difference inbetween versions the more likely it is for issues
 - Trainers talk: Based of the context trainers will give different responses in the chat
 - And probably some other things that I can't think of right now...
 
-> The mod itself does not provide any badge items but rather counts the wins agains *leaders*. When a leader is beaten for the first time an advancement for the badge is granted.
+> The mod itself does not provide any badge items but rather counts the wins against *leaders*. When a leader is beaten for the first time an advancement for the badge is granted.
 
 ## Balancing
 
@@ -60,8 +60,7 @@ The balancing is based around the original game (Radical Red). Gym leaders must 
 | Koga           | `76`             | 6 Badges                 | Leader   |
 | Blaine         | `85`             | 7 Badges                 | Leader   |
 | *Any Elite 4*  |                  | 8 Badges                 | Elite 4  |
-| *Any Champion* | `94`             | 4 beaten Elite 4 members | Champion |
-| ???            | `100`            | 1 beaten Champion        | ???      |
+| *Any Champion* | `100`            | 4 beaten Elite 4 members | Champion |
 
 > There are some trainers labled as "Leader", "Elite 4" or "Champion" that do not account for the player progress. These are mostly additional trainers from different regions and serve no specific purpose other than beeing tough opponents. They might drop some special loot though.
 
@@ -88,7 +87,7 @@ Following commands are available:
         - Retrieves the current level cap of the given player.
       - `defeats <trainerId> [<player>]`
         - Retrieves the current number of defeats the given player has against the specified trainer.
-      - `defeats <trainerType> [<player>]`
+      - `type_defeats <trainerType> [<player>]`
         - Retrieves the current number of defeats the given player has against the specified trainer type.
     - `set` (Op Level: 2)
       - `level_cap [<players>] <value>`
