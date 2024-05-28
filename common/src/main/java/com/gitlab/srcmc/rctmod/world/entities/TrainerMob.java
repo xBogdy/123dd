@@ -19,6 +19,7 @@ package com.gitlab.srcmc.rctmod.world.entities;
 
 import java.util.UUID;
 
+import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.TrainerBattle;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData.Type;
@@ -245,6 +246,10 @@ public class TrainerMob extends PathfinderMob implements Npc {
                 this.entityData.set(DATA_TRAINER_ID, trainerId);
                 this.udpateCustomName();
                 spawner.registerMob(this);
+
+                if(!RCTMod.get().getTrainerManager().isValidId(trainerId)) {
+                    ModCommon.LOG.error(String.format("Invalid trainer id '%s'", trainerId));
+                }
             }
         }
     }

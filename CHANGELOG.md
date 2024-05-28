@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.8.x-alpha] - 2024-05-28
+## [0.8.x-alpha] - 2024-05-29
 
 ***Added***
 
@@ -25,6 +25,7 @@
 ***Fixed***
 
 - Many missing team members with different forms (e.g. 'alola')
+- Potential log spam for mobs with an invalid trainer id
 - Some missing ivs/evs, moves, abilities, etc. for most of the trainers
 
 ***Removed***
