@@ -2,6 +2,40 @@
   "displayName": "Leader Pryce",
   "team": [
     {
+      "species": "cobblemon:ninetales",
+      "gender": "MALE",
+      "level": 62,
+      "nature": "cobblemon:timid",
+      "ability": "snowwarning",
+      "moveset": [
+        "auroraveil",
+        "freezedry",
+        "blizzard",
+        "moonblast"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 6,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 252,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:icy_rock",
+      "aspects": [
+        "alola"
+      ]
+    },
+    {
       "species": "cobblemon:arctozolt",
       "gender": "GENDERLESS",
       "level": 62,
@@ -62,6 +96,40 @@
       },
       "shiny": false,
       "heldItem": "cobblemon:leftovers"
+    },
+    {
+      "species": "cobblemon:sandslash",
+      "gender": "MALE",
+      "level": 62,
+      "nature": "cobblemon:adamant",
+      "ability": "icescales",
+      "moveset": [
+        "earthquake",
+        "iciclecrash",
+        "ironhead",
+        "iceshard"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 252,
+        "attack": 252,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 6
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:assault_vest",
+      "aspects": [
+        "alola"
+      ]
     },
     {
       "species": "cobblemon:beartic",

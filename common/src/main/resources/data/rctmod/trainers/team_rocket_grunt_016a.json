@@ -1,48 +1,17 @@
 {
-  "displayName": "Young Couple Gia \u0026 Jes",
+  "displayName": "Team Rocket Grunt",
   "team": [
     {
-      "species": "cobblemon:toxtricity",
+      "species": "cobblemon:muk",
       "gender": "MALE",
-      "level": 38,
-      "nature": "cobblemon:lonely",
-      "ability": "plus",
-      "moveset": [
-        "screech",
-        "swagger",
-        "toxic",
-        "discharge"
-      ],
-      "ivs": {
-        "hp": 15,
-        "attack": 15,
-        "defence": 15,
-        "special_attack": 15,
-        "special_defence": 15,
-        "speed": 15
-      },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
-    },
-    {
-      "species": "cobblemon:toxtricity",
-      "gender": "MALE",
-      "level": 38,
+      "level": 40,
       "nature": "cobblemon:naive",
-      "ability": "minus",
+      "ability": "gluttony",
       "moveset": [
-        "screech",
-        "swagger",
-        "toxic",
-        "discharge"
+        "minimize",
+        "harden",
+        "disable",
+        "sludge"
       ],
       "ivs": {
         "hp": 15,
@@ -63,7 +32,41 @@
       "shiny": false,
       "heldItem": "cobblemon:none",
       "aspects": [
-        "low_key"
+        "alola"
+      ]
+    },
+    {
+      "species": "cobblemon:weezing",
+      "gender": "MALE",
+      "level": 42,
+      "nature": "cobblemon:bold",
+      "ability": "neutralizinggas",
+      "moveset": [
+        "sludge",
+        "smog",
+        "tackle",
+        "poisongas"
+      ],
+      "ivs": {
+        "hp": 15,
+        "attack": 15,
+        "defence": 15,
+        "special_attack": 15,
+        "special_defence": 15,
+        "speed": 15
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none",
+      "aspects": [
+        "galar"
       ]
     }
   ],

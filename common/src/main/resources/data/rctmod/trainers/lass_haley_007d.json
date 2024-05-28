@@ -33,6 +33,40 @@
       "heldItem": "cobblemon:none"
     },
     {
+      "species": "cobblemon:slowpoke",
+      "gender": "MALE",
+      "level": 19,
+      "nature": "cobblemon:docile",
+      "ability": "owntempo",
+      "moveset": [
+        "yawn",
+        "confusion",
+        "disable",
+        "waterpulse"
+      ],
+      "ivs": {
+        "hp": 5,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none",
+      "aspects": [
+        "galar"
+      ]
+    },
+    {
       "species": "cobblemon:audino",
       "gender": "FEMALE",
       "level": 18,

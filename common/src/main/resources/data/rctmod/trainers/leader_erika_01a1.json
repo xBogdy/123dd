@@ -124,6 +124,40 @@
       },
       "shiny": false,
       "heldItem": "cobblemon:grassy_seed"
+    },
+    {
+      "species": "cobblemon:electrode",
+      "gender": "GENDERLESS",
+      "level": 44,
+      "nature": "cobblemon:naive",
+      "ability": "reckless",
+      "moveset": [
+        "thunderbolt",
+        "chloroblast",
+        "hiddenpower",
+        "explosion"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 30,
+        "defence": 30,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 4,
+        "special_attack": 252,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:life_orb",
+      "aspects": [
+        "hisui"
+      ]
     }
   ],
   "winCommand": "",

@@ -95,6 +95,40 @@
       "heldItem": "cobblemon:white_herb"
     },
     {
+      "species": "cobblemon:necrozma",
+      "gender": "GENDERLESS",
+      "level": 85,
+      "nature": "cobblemon:adamant",
+      "ability": "prismarmor",
+      "moveset": [
+        "dragondance",
+        "photongeyser",
+        "earthquake",
+        "heatwave"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 252,
+        "attack": 252,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 6
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:weaknesspol",
+      "aspects": [
+        "dusk_mane"
+      ]
+    },
+    {
       "species": "cobblemon:machamp",
       "gender": "FEMALE",
       "level": 85,
@@ -124,6 +158,40 @@
       },
       "shiny": false,
       "heldItem": "cobblemon:machampite"
+    },
+    {
+      "species": "cobblemon:hoopa",
+      "gender": "GENDERLESS",
+      "level": 85,
+      "nature": "cobblemon:timid",
+      "ability": "magician",
+      "moveset": [
+        "nastyplot",
+        "darkpulse",
+        "psychic",
+        "focusblast"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 6,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 252,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:fightinium_z",
+      "aspects": [
+        "unbound"
+      ]
     }
   ],
   "winCommand": "",

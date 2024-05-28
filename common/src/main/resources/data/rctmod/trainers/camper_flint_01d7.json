@@ -2,6 +2,40 @@
   "displayName": "Camper Flint",
   "team": [
     {
+      "species": "cobblemon:farfetchd",
+      "gender": "MALE",
+      "level": 18,
+      "nature": "cobblemon:bashful",
+      "ability": "steadfast",
+      "moveset": [
+        "peck",
+        "leer",
+        "furycutter",
+        "rocksmash"
+      ],
+      "ivs": {
+        "hp": 5,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none",
+      "aspects": [
+        "galar"
+      ]
+    },
+    {
       "species": "cobblemon:skwovet",
       "gender": "MALE",
       "level": 20,

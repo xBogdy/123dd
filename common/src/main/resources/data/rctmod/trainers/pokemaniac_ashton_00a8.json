@@ -1,48 +1,17 @@
 {
-  "displayName": "Hiker Franklin",
+  "displayName": "Pokémaniac Ashton",
   "team": [
     {
-      "species": "cobblemon:timburr",
+      "species": "cobblemon:mrmime",
       "gender": "FEMALE",
-      "level": 18,
-      "nature": "cobblemon:serious",
-      "ability": "guts",
+      "level": 32,
+      "nature": "cobblemon:naive",
+      "ability": "screencleaner",
       "moveset": [
-        "focusenergy",
-        "bide",
-        "lowkick",
-        "rockthrow"
-      ],
-      "ivs": {
-        "hp": 10,
-        "attack": 10,
-        "defence": 10,
-        "special_attack": 10,
-        "special_defence": 10,
-        "speed": 10
-      },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
-    },
-    {
-      "species": "cobblemon:geodude",
-      "gender": "FEMALE",
-      "level": 19,
-      "nature": "cobblemon:docile",
-      "ability": "rockhead",
-      "moveset": [
-        "rollout",
-        "spark",
-        "rockthrow",
-        "smackdown"
+        "icywind",
+        "doublekick",
+        "psybeam",
+        "hypnosis"
       ],
       "ivs": {
         "hp": 10,
@@ -63,7 +32,41 @@
       "shiny": false,
       "heldItem": "cobblemon:none",
       "aspects": [
-        "alola"
+        "galar"
+      ]
+    },
+    {
+      "species": "cobblemon:farfetchd",
+      "gender": "FEMALE",
+      "level": 32,
+      "nature": "cobblemon:hardy",
+      "ability": "steadfast",
+      "moveset": [
+        "rocksmash",
+        "brutalswing",
+        "detect",
+        "knockoff"
+      ],
+      "ivs": {
+        "hp": 10,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none",
+      "aspects": [
+        "galar"
       ]
     }
   ],

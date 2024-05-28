@@ -155,6 +155,40 @@
       },
       "shiny": false,
       "heldItem": "cobblemon:machampite"
+    },
+    {
+      "species": "cobblemon:hoopa",
+      "gender": "GENDERLESS",
+      "level": 60,
+      "nature": "cobblemon:jolly",
+      "ability": "magician",
+      "moveset": [
+        "hyperspacefury",
+        "drainpunch",
+        "firepunch",
+        "gunkshot"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 6,
+        "attack": 252,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:choice_band",
+      "aspects": [
+        "unbound"
+      ]
     }
   ],
   "winCommand": "",

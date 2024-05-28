@@ -95,6 +95,71 @@
       "heldItem": "cobblemon:choice_scarf"
     },
     {
+      "species": "cobblemon:kommoo",
+      "gender": "MALE",
+      "level": 85,
+      "nature": "cobblemon:timid",
+      "ability": "overcoat",
+      "moveset": [
+        "clangingscales",
+        "clangoroussoul",
+        "aurasphere",
+        "flashcannon"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 6,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 252,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:throat_spray"
+    },
+    {
+      "species": "cobblemon:zacian",
+      "gender": "GENDERLESS",
+      "level": 85,
+      "nature": "cobblemon:jolly",
+      "ability": "intrepidsword",
+      "moveset": [
+        "swordsdance",
+        "behemothblade",
+        "closecombat",
+        "crunch"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 6,
+        "attack": 252,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:rusty_sword",
+      "aspects": [
+        "crowned"
+      ]
+    },
+    {
       "species": "cobblemon:lucario",
       "gender": "FEMALE",
       "level": 85,

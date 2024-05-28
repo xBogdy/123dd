@@ -64,6 +64,40 @@
       "heldItem": "cobblemon:galladite"
     },
     {
+      "species": "cobblemon:darmanitan",
+      "gender": "FEMALE",
+      "level": 93,
+      "nature": "cobblemon:jolly",
+      "ability": "zenmode",
+      "moveset": [
+        "flareblitz",
+        "iciclecrash",
+        "uturn",
+        "earthquake"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 252,
+        "defence": 4,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:charcoal",
+      "aspects": [
+        "galar"
+      ]
+    },
+    {
       "species": "cobblemon:nidoking",
       "gender": "MALE",
       "level": 91,

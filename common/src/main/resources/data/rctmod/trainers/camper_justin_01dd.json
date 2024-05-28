@@ -2,6 +2,74 @@
   "displayName": "Camper Justin",
   "team": [
     {
+      "species": "cobblemon:darmanitan",
+      "gender": "FEMALE",
+      "level": 92,
+      "nature": "cobblemon:jolly",
+      "ability": "zenmode",
+      "moveset": [
+        "uturn",
+        "flareblitz",
+        "iciclecrash",
+        "earthquake"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 252,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 4,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:charti_berry",
+      "aspects": [
+        "galar"
+      ]
+    },
+    {
+      "species": "cobblemon:sandslash",
+      "gender": "MALE",
+      "level": 93,
+      "nature": "cobblemon:jolly",
+      "ability": "slushrush",
+      "moveset": [
+        "swordsdance",
+        "earthquake",
+        "ironhead",
+        "iciclecrash"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 252,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 4,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:focus_sash",
+      "aspects": [
+        "alola"
+      ]
+    },
+    {
       "species": "cobblemon:conkeldurr",
       "gender": "MALE",
       "level": 88,

@@ -126,6 +126,40 @@
       "heldItem": "cobblemon:applite"
     },
     {
+      "species": "cobblemon:kyurem",
+      "gender": "GENDERLESS",
+      "level": 96,
+      "nature": "cobblemon:jolly",
+      "ability": "teravolt",
+      "moveset": [
+        "dragondance",
+        "dragonhammer",
+        "fusionbolt",
+        "icehammer"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 252,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 4,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:lum_berry",
+      "aspects": [
+        "black"
+      ]
+    },
+    {
       "species": "cobblemon:genesect",
       "gender": "GENDERLESS",
       "level": 97,

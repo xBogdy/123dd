@@ -2,6 +2,40 @@
   "displayName": "Camper Drew",
   "team": [
     {
+      "species": "cobblemon:persian",
+      "gender": "FEMALE",
+      "level": 28,
+      "nature": "cobblemon:serious",
+      "ability": "furcoat",
+      "moveset": [
+        "furyswipes",
+        "screech",
+        "feintattack",
+        "taunt"
+      ],
+      "ivs": {
+        "hp": 5,
+        "attack": 5,
+        "defence": 5,
+        "special_attack": 5,
+        "special_defence": 5,
+        "speed": 5
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none",
+      "aspects": [
+        "alola"
+      ]
+    },
+    {
       "species": "cobblemon:palpitoad",
       "gender": "FEMALE",
       "level": 27,

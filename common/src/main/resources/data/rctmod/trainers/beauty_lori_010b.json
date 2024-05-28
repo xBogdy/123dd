@@ -1,0 +1,43 @@
+{
+  "displayName": "Beauty Lori",
+  "team": [
+    {
+      "species": "cobblemon:exeggutor",
+      "gender": "FEMALE",
+      "level": 36,
+      "nature": "cobblemon:calm",
+      "ability": "chlorophyll",
+      "moveset": [
+        "hypnosis",
+        "confusion",
+        "psyshock",
+        "eggbomb"
+      ],
+      "ivs": {
+        "hp": 10,
+        "attack": 10,
+        "defence": 10,
+        "special_attack": 10,
+        "special_defence": 10,
+        "speed": 10
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:none",
+      "aspects": [
+        "alola"
+      ]
+    }
+  ],
+  "winCommand": "",
+  "lossCommand": "",
+  "canOnlyBeatOnce": false,
+  "cooldownSeconds": 0
+}

@@ -2,6 +2,40 @@
   "displayName": "Gatekeeper Owen",
   "team": [
     {
+      "species": "cobblemon:meloetta",
+      "gender": "GENDERLESS",
+      "level": 92,
+      "nature": "cobblemon:jolly",
+      "ability": "serenegrace",
+      "moveset": [
+        "uturn",
+        "bodyslam",
+        "closecombat",
+        "rockslide"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 252,
+        "defence": 4,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:life_orb",
+      "aspects": [
+        "pirouette"
+      ]
+    },
+    {
       "species": "cobblemon:mew",
       "gender": "GENDERLESS",
       "level": 93,
@@ -62,6 +96,108 @@
       },
       "shiny": false,
       "heldItem": "cobblemon:kinglerite"
+    },
+    {
+      "species": "cobblemon:giratina",
+      "gender": "GENDERLESS",
+      "level": 93,
+      "nature": "cobblemon:quiet",
+      "ability": "levitate",
+      "moveset": [
+        "hex",
+        "dracometeor",
+        "shadowsneak",
+        "thunderwave"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 244,
+        "attack": 12,
+        "defence": 0,
+        "special_attack": 252,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:griseous_orb",
+      "aspects": [
+        "origin"
+      ]
+    },
+    {
+      "species": "cobblemon:enamorus",
+      "gender": "FEMALE",
+      "level": 93,
+      "nature": "cobblemon:modest",
+      "ability": "overcoat",
+      "moveset": [
+        "moonblast",
+        "uturn",
+        "focusblast",
+        "psychic"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 252,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 252,
+        "special_defence": 4,
+        "speed": 0
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:assault_vest",
+      "aspects": [
+        "therian"
+      ]
+    },
+    {
+      "species": "cobblemon:zebstrika",
+      "gender": "FEMALE",
+      "level": 93,
+      "nature": "cobblemon:timid",
+      "ability": "illuminate",
+      "moveset": [
+        "blizzard",
+        "thunder",
+        "voltswitch",
+        "freezedry"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 252,
+        "special_defence": 4,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:life_orb",
+      "aspects": [
+        "sevii"
+      ]
     }
   ],
   "winCommand": "",

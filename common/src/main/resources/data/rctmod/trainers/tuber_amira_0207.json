@@ -64,6 +64,40 @@
       "heldItem": "cobblemon:focus_sash"
     },
     {
+      "species": "cobblemon:mantine",
+      "gender": "MALE",
+      "level": 93,
+      "nature": "cobblemon:timid",
+      "ability": "hydration",
+      "moveset": [
+        "thunderbolt",
+        "sludgewave",
+        "icebeam",
+        "scald"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 0,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 252,
+        "special_defence": 4,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:poisonium_z",
+      "aspects": [
+        "sevii"
+      ]
+    },
+    {
       "species": "cobblemon:swanna",
       "gender": "MALE",
       "level": 91,

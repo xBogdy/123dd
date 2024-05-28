@@ -64,6 +64,74 @@
       "heldItem": "cobblemon:reaper_cloth"
     },
     {
+      "species": "cobblemon:zoroark",
+      "gender": "FEMALE",
+      "level": 96,
+      "nature": "cobblemon:timid",
+      "ability": "illusion",
+      "moveset": [
+        "hypervoice",
+        "shadowball",
+        "flamethrower",
+        "nastyplot"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 4,
+        "special_attack": 252,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:colbur_berry",
+      "aspects": [
+        "sevii"
+      ]
+    },
+    {
+      "species": "cobblemon:typhlosion",
+      "gender": "FEMALE",
+      "level": 96,
+      "nature": "cobblemon:timid",
+      "ability": "flashfire",
+      "moveset": [
+        "flamethrower",
+        "infernalparade",
+        "focusblast",
+        "hiddenpower"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 30,
+        "defence": 31,
+        "special_attack": 30,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 4,
+        "special_attack": 252,
+        "special_defence": 0,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:charcoal",
+      "aspects": [
+        "hisui"
+      ]
+    },
+    {
       "species": "cobblemon:gengar",
       "gender": "FEMALE",
       "level": 94,

@@ -64,6 +64,40 @@
       "heldItem": "cobblemon:sitrus_berry"
     },
     {
+      "species": "cobblemon:ursaring",
+      "gender": "FEMALE",
+      "level": 93,
+      "nature": "cobblemon:adamant",
+      "ability": "guts",
+      "moveset": [
+        "drainpunch",
+        "shadowpunch",
+        "shadowsneak",
+        "playrough"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 252,
+        "attack": 252,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 4
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:flame_orb",
+      "aspects": [
+        "sevii"
+      ]
+    },
+    {
       "species": "cobblemon:tauros",
       "gender": "MALE",
       "level": 91,

@@ -2,6 +2,40 @@
   "displayName": "Rocker Luca",
   "team": [
     {
+      "species": "cobblemon:rotom",
+      "gender": "GENDERLESS",
+      "level": 93,
+      "nature": "cobblemon:timid",
+      "ability": "levitate",
+      "moveset": [
+        "blizzard",
+        "voltswitch",
+        "thunderwave",
+        "thunderbolt"
+      ],
+      "ivs": {
+        "hp": 31,
+        "attack": 31,
+        "defence": 31,
+        "special_attack": 31,
+        "special_defence": 31,
+        "speed": 31
+      },
+      "evs": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 252,
+        "special_defence": 4,
+        "speed": 252
+      },
+      "shiny": false,
+      "heldItem": "cobblemon:nevermeltice",
+      "aspects": [
+        "frost"
+      ]
+    },
+    {
       "species": "cobblemon:heliolisk",
       "gender": "FEMALE",
       "level": 89,
