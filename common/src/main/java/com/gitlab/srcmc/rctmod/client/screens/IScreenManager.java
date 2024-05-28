@@ -15,27 +15,8 @@
  * You should have received a copy of the GNU Lesser General Public License along
  * with Radical Cobblemon Trainers. If not, see <http://www.gnu.org/licenses/lgpl>.
  */
-package com.gitlab.srcmc.rctmod.world.items;
+package com.gitlab.srcmc.rctmod.client.screens;
 
-import com.gitlab.srcmc.rctmod.ModCommon;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-
-public class TrainerCard extends Item {
-    public TrainerCard() {
-        super(new Properties().stacksTo(1));
-    }
-
-    @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
-        if(level.isClientSide) {
-            ModCommon.SCREENS.openTrainerCardScreen();
-        }
-
-        return InteractionResultHolder.pass(player.getItemInHand(interactionHand));
-    }
+public interface IScreenManager {
+    default void openTrainerCardScreen() {}
 }

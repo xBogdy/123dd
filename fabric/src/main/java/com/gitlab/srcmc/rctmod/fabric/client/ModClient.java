@@ -25,6 +25,7 @@ import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.client.TrainerRenderer;
+import com.gitlab.srcmc.rctmod.client.screens.ScreenManager;
 import com.gitlab.srcmc.rctmod.fabric.ModFabric;
 import com.gitlab.srcmc.rctmod.fabric.network.Packets;
 import dev.architectury.registry.ReloadListenerRegistry;
@@ -61,6 +62,7 @@ public class ModClient extends com.gitlab.srcmc.rctmod.client.ModClient implemen
         ForgeConfigRegistry.INSTANCE.register(ModCommon.MOD_ID, ModConfig.Type.CLIENT, RCTMod.get().getClientConfig().getSpec());
         ClientPlayNetworking.registerGlobalReceiver(Packets.PLAYER_STATE, ModClient::handleReceivedPlayerState);
         com.gitlab.srcmc.rctmod.client.ModClient.init(this);
+        ModCommon.SCREENS = new ScreenManager();
     }
 
     @Override

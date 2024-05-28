@@ -20,8 +20,11 @@ package com.gitlab.srcmc.rctmod;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.gitlab.srcmc.rctmod.client.screens.IScreenManager;
+
 public class ModCommon {
-    public static final String MOD_ID = "rctmod"; // must match mod_id
-    public static final String MOD_NAME = "Radical Cobblemon Trainers"; // should match mod_name
+    public static final String MOD_ID = "rctmod";
+    public static final String MOD_NAME = "Radical Cobblemon Trainers";
     public static final Logger LOG = LoggerFactory.getLogger(MOD_NAME);
+    public static IScreenManager SCREENS = new IScreenManager() {}; // needs to be set on client side
 }
