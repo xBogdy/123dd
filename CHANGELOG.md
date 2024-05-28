@@ -4,7 +4,7 @@
 
 ***Added***
 
-- **79** new (endgame) trainers, which brings the total number up to **735**
+- **84** new (endgame) trainers, which brings the total number up to **740**
 - Command: `player get defeats <trainerId> [<player>]`
 - Command: `player set defeats <trainerId> [<players>] <value>`
 - Command: `trainer get reward_level_cap <trainerId>`
@@ -13,14 +13,17 @@
 
 ***Changed***
 
-- Beating a champ now grants a level cap of 100
-- Buffed weaker versions of key trainers
+- Beating a champ now grants a level cap of `100`
+- Buffed weaker versions of key trainers (elite 4/champs)
 - Command: Renamed former `player get defeats ...` to `player get type_defeats <type> [<player>]`
-- Removed battle restrictions for some trainer
-- Trainer id system (now with proper unique ids). Saved data from previous versions will automatically migrate to the new system. **Any trainers or trainer related data that has been modified with a data- or resource pack must be migrated manually, this is also the case for any (command block) commands that refer to trainers by their old ids**. This can simply be achieved by changing the *trainer part* of the name from an asset file (***groups* stay the same**). The documentaion contains a list of [all changed ids](https://srcmc.gitlab.io/rct/docs/configuration/legacy/).
+- Increased spawn cap per player from `3` to `4`, decreased spawn interval from `3600` to `2400` and decreased despawn delay from `24000` to `5000`, in short higher spawn rates by default (TODO)
+- Removed battle restrictions for some trainers
+- Spawn rates increased for key trainers not beaten by players (the closer a player gets to the level cap the higher the chance) (TODO)
+- Trainer id system (now with proper unique ids). Saved data from previous versions will automatically migrate to the new system. **Any trainers or trainer related data that has been modified with a data- or resource pack must be migrated manually, this is also the case for any (command block) commands that refer to trainers by their old ids**. This can simply be achieved by changing the *trainer part* of the name from an asset file (***groups* stay the same**). The documentation contains a list of [all changed ids](https://srcmc.gitlab.io/rct/docs/configuration/legacy/).
 
 ***Fixed***
 
+- Many missing team members with different forms (e.g. 'alola')
 - Some missing ivs/evs, moves, abilities, etc. for most of the trainers
 
 ***Removed***
