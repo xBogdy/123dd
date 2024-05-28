@@ -30,18 +30,18 @@ public interface IServerConfig extends IForgeConfig {
      * The interval in ticks at which a spawn attempt is made per player.
      * 
      * range [1, inf]
-     * default 3600
+     * default 2400
      */
-    default int spawnIntervalTicks() { return 3600; }
+    default int spawnIntervalTicks() { return 2400; }
 
     /**
      * Number of ticks after which a trainer will despawn if far away from players.
      * Trainers that cannot battle anymore will despawn immediately if far away.
      * 
      * range [1, inf]
-     * default 24000
+     * default 5000
      */
-    default int despawnDelayTicks() { return 24000; }
+    default int despawnDelayTicks() { return 5000; }
 
     /**
      * The min horizontal distance a trainer can spawn from players.
@@ -71,9 +71,9 @@ public interface IServerConfig extends IForgeConfig {
      * Spawn cap of trainers per player.
      * 
      * range [0, inf]
-     * default 3
+     * default 4
      */
-    default int maxTrainersPerPlayer() { return 3; }
+    default int maxTrainersPerPlayer() { return 4; }
 
     /**
      * Total trainer spawn cap.
