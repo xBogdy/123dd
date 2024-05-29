@@ -8,7 +8,7 @@
       "nature": "cobblemon:jolly",
       "ability": "intimidate",
       "moveset": [
-        "uturn",
+        "bugbite",
         "doubleedge",
         "bravebird",
         "closecombat"
@@ -71,7 +71,7 @@
       "ability": "sheerforce",
       "moveset": [
         "flareblitz",
-        "uturn",
+        "bugbite",
         "rockslide",
         "earthquake"
       ],

@@ -9,7 +9,7 @@
       "ability": "grassysurge",
       "moveset": [
         "grassyglide",
-        "uturn",
+        "bugbite",
         "knockoff",
         "woodhammer"
       ],
@@ -73,7 +73,7 @@
         "blizzard",
         "thunder",
         "freezedry",
-        "voltswitch"
+        "spark"
       ],
       "ivs": {
         "hp": 31,

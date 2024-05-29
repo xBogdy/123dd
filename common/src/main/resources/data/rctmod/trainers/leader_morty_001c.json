@@ -73,7 +73,7 @@
         "thunderwave",
         "multiattack",
         "flamethrower",
-        "partingshot"
+        "amnesia"
       ],
       "ivs": {
         "hp": 31,
@@ -104,7 +104,7 @@
       "nature": "cobblemon:jolly",
       "ability": "unseenfist",
       "moveset": [
-        "uturn",
+        "bugbite",
         "closecombat",
         "wickedblow",
         "suckerpunch"
@@ -166,7 +166,7 @@
       "nature": "cobblemon:jolly",
       "ability": "leafguard",
       "moveset": [
-        "uturn",
+        "bugbite",
         "powerwhip",
         "knockoff",
         "closecombat"

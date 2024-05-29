@@ -42,7 +42,7 @@
         "bravebird",
         "headsmash",
         "earthquake",
-        "uturn"
+        "bugbite"
       ],
       "ivs": {
         "hp": 31,
@@ -101,7 +101,7 @@
       "nature": "cobblemon:timid",
       "ability": "voltabsorb",
       "moveset": [
-        "voltswitch",
+        "spark",
         "thunderbolt",
         "weatherball",
         "hiddenpower"

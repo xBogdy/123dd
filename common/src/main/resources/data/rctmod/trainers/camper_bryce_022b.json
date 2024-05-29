@@ -73,7 +73,7 @@
         "bugbuzz",
         "sleeppowder",
         "hurricane",
-        "uturn"
+        "bugbite"
       ],
       "ivs": {
         "hp": 31,
@@ -103,7 +103,7 @@
       "moveset": [
         "thunderbolt",
         "steelbeam",
-        "voltswitch",
+        "spark",
         "bodypress"
       ],
       "ivs": {
