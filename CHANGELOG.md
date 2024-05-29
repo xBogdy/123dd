@@ -20,11 +20,7 @@
 - Increased spawn cap per player from `3` to `4`, decreased spawn interval from `3600` to `2400` ticks and decreased despawn delay from `24000` to `5000` ticks, in short higher spawn rates by default (**changed default values will not be applied to existing configs**)
 - Removed battle restrictions for some trainers
 - Spawn rates increased for key trainers not beaten by players (the closer a player gets to the level cap the higher the chance to spawn)
-- Trainer id system (now with proper unique ids). Saved data from previous versions will automatically migrate to the new system. **Important notes for migration:**
-  - Any trainers or trainer related data that has been modified with a data- or resource pack must be migrated manually (***groups* stay the same**) by changing the file names to the new ids
-  - Any (command block) commands that refer to trainers by their old ids must be migrated manually by changing the commands to use the new ids
-  - Any trainer npcs from a previous version will have an invalid id, you can let them either despawn, get rid of them otherwise or change the `TrainerId` tag manually using the `data` command
-  - A list of all id changes can be found in the [documentation](https://srcmc.gitlab.io/rct/docs/configuration/legacy/).
+- Trainer id system (now with proper unique ids). Saved data from previous versions will automatically migrate to the new system. **Important notes for migration:** Any trainers or trainer related data that has been modified with a **data- or resource pack** must be migrated manually (***groups* stay the same**) by changing the file names to the new ids. Any (**command block**) **commands** that refer to trainers by their old ids must be migrated manually by changing the commands to use the new ids. Any **trainer npcs** from a previous version will have an invalid id, you can let them either despawn, get rid of them otherwise or change the `TrainerId` tag manually using the `data` command. A list of all id changes can be found in the [documentation](https://srcmc.gitlab.io/rct/docs/configuration/legacy/).
 
 ***Fixed***
 
