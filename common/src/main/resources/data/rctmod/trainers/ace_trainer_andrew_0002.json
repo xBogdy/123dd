@@ -104,7 +104,7 @@
         "closecombat",
         "flareblitz",
         "knockoff",
-        "bugbite"
+        "uturn"
       ],
       "ivs": {
         "hp": 31,
@@ -135,7 +135,7 @@
         "hydrocannon",
         "darkpulse",
         "icebeam",
-        "bugbite"
+        "uturn"
       ],
       "ivs": {
         "hp": 31,
@@ -166,7 +166,7 @@
         "snipeshot",
         "icebeam",
         "hiddenpower",
-        "bugbite"
+        "uturn"
       ],
       "ivs": {
         "hp": 31,

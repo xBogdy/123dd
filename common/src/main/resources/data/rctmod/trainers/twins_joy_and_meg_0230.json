@@ -135,7 +135,7 @@
         "extremespeed",
         "knockoff",
         "facade",
-        "spark"
+        "voltswitch"
       ],
       "ivs": {
         "hp": 31,
@@ -166,7 +166,7 @@
         "thunderbolt",
         "surf",
         "hiddenpower",
-        "spark"
+        "voltswitch"
       ],
       "ivs": {
         "hp": 31,

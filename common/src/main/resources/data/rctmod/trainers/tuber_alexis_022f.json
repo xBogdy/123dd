@@ -104,7 +104,7 @@
         "hydropump",
         "blizzard",
         "thunder",
-        "spark"
+        "voltswitch"
       ],
       "ivs": {
         "hp": 31,

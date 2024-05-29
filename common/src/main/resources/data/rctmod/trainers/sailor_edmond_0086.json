@@ -42,7 +42,7 @@
         "scald",
         "icebeam",
         "hiddenpower",
-        "bubblebeam"
+        "flipturn"
       ],
       "ivs": {
         "hp": 31,

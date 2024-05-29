@@ -11,7 +11,7 @@
         "hurricane",
         "heatwave",
         "focusblast",
-        "bugbite"
+        "uturn"
       ],
       "ivs": {
         "hp": 31,
@@ -42,7 +42,7 @@
         "bugbuzz",
         "airslash",
         "gigadrain",
-        "bugbite"
+        "uturn"
       ],
       "ivs": {
         "hp": 31,

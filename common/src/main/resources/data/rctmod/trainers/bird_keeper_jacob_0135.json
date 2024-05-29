@@ -39,7 +39,7 @@
       "nature": "cobblemon:naive",
       "ability": "tintedlens",
       "moveset": [
-        "bugbite",
+        "uturn",
         "hurricane",
         "spiritshackle",
         "leafblade"
@@ -73,7 +73,7 @@
         "thunder",
         "icebeam",
         "foulplay",
-        "amnesia"
+        "teleport"
       ],
       "ivs": {
         "hp": 31,
@@ -103,7 +103,7 @@
       "moveset": [
         "hydropump",
         "icebeam",
-        "bubblebeam",
+        "flipturn",
         "shadowball"
       ],
       "ivs": {

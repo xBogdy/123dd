@@ -11,7 +11,7 @@
         "fakeout",
         "closecombat",
         "knockoff",
-        "bugbite"
+        "uturn"
       ],
       "ivs": {
         "hp": 31,
@@ -39,7 +39,7 @@
       "nature": "cobblemon:timid",
       "ability": "sandveil",
       "moveset": [
-        "spark",
+        "voltswitch",
         "boomburst",
         "weatherball",
         "surf"

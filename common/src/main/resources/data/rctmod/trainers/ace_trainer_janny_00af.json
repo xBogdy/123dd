@@ -10,7 +10,7 @@
       "moveset": [
         "scald",
         "roost",
-        "bugbite",
+        "uturn",
         "hurricane"
       ],
       "ivs": {
@@ -104,7 +104,7 @@
         "hurricane",
         "freezingglare",
         "weatherball",
-        "bugbite"
+        "uturn"
       ],
       "ivs": {
         "hp": 31,
@@ -138,7 +138,7 @@
         "liquidation",
         "closecombat",
         "aquajet",
-        "bubblebeam"
+        "flipturn"
       ],
       "ivs": {
         "hp": 31,

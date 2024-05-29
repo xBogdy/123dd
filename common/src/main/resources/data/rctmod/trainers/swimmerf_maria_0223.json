@@ -10,7 +10,7 @@
       "moveset": [
         "snipeshot",
         "icebeam",
-        "bugbite",
+        "uturn",
         "hiddenpower"
       ],
       "ivs": {
@@ -41,7 +41,7 @@
       "moveset": [
         "dracometeor",
         "sludgewave",
-        "bubblebeam",
+        "flipturn",
         "scald"
       ],
       "ivs": {
@@ -104,7 +104,7 @@
         "hydropump",
         "shadowball",
         "icebeam",
-        "bubblebeam"
+        "flipturn"
       ],
       "ivs": {
         "hp": 31,

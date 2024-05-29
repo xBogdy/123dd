@@ -10,7 +10,7 @@
       "moveset": [
         "snarl",
         "waterpulse",
-        "amnesia",
+        "partingshot",
         "shockwave"
       ],
       "ivs": {
@@ -76,7 +76,7 @@
         "hyperfang",
         "stompingtantrum",
         "throatchop",
-        "bugbite"
+        "uturn"
       ],
       "ivs": {
         "hp": 31,

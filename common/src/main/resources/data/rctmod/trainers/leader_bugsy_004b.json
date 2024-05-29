@@ -10,7 +10,7 @@
       "moveset": [
         "closecombat",
         "icebeam",
-        "bugbite",
+        "uturn",
         "drillrun"
       ],
       "ivs": {
@@ -73,7 +73,7 @@
       "nature": "cobblemon:naive",
       "ability": "download",
       "moveset": [
-        "bugbite",
+        "uturn",
         "technoblast",
         "thunderbolt",
         "icebeam"
@@ -109,7 +109,7 @@
       "moveset": [
         "thunderbolt",
         "flashcannon",
-        "spark",
+        "voltswitch",
         "hiddenpower"
       ],
       "ivs": {

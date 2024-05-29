@@ -11,7 +11,7 @@
         "surgingstrikes",
         "closecombat",
         "aquajet",
-        "bugbite"
+        "uturn"
       ],
       "ivs": {
         "hp": 31,
@@ -44,7 +44,7 @@
       "moveset": [
         "bulletpunch",
         "superpower",
-        "bugbite",
+        "uturn",
         "swordsdance"
       ],
       "ivs": {
