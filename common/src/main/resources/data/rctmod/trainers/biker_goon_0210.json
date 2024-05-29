@@ -41,7 +41,7 @@
       "moveset": [
         "headlongrush",
         "dragonclaw",
-        "bugbite",
+        "uturn",
         "firepunch"
       ],
       "ivs": {
@@ -71,7 +71,7 @@
       "ability": "technician",
       "moveset": [
         "accelerock",
-        "bugbite",
+        "uturn",
         "closecombat",
         "stoneedge"
       ],

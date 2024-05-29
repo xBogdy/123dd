@@ -9,7 +9,7 @@
       "ability": "damp",
       "moveset": [
         "stealthrock",
-        "bubblebeam",
+        "flipturn",
         "earthquake",
         "yawn"
       ],
@@ -42,7 +42,7 @@
         "dualwingbeat",
         "stoneedge",
         "earthquake",
-        "bugbite"
+        "uturn"
       ],
       "ivs": {
         "hp": 31,
@@ -70,7 +70,7 @@
       "nature": "cobblemon:adamant",
       "ability": "swarm",
       "moveset": [
-        "bugbite",
+        "uturn",
         "bulletpunch",
         "rocksmash",
         "knockoff"

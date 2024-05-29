@@ -11,7 +11,7 @@
         "bravebird",
         "quickattack",
         "closecombat",
-        "bugbite"
+        "uturn"
       ],
       "ivs": {
         "hp": 31,
@@ -39,7 +39,7 @@
       "nature": "cobblemon:jolly",
       "ability": "ironfist",
       "moveset": [
-        "spark",
+        "voltswitch",
         "machpunch",
         "closecombat",
         "icepunch"
@@ -72,7 +72,7 @@
       "moveset": [
         "flareblitz",
         "rockslide",
-        "bugbite",
+        "uturn",
         "earthquake"
       ],
       "ivs": {

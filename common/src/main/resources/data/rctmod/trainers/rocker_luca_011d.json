@@ -9,7 +9,7 @@
       "ability": "levitate",
       "moveset": [
         "blizzard",
-        "spark",
+        "voltswitch",
         "thunderwave",
         "thunderbolt"
       ],
@@ -45,7 +45,7 @@
         "boomburst",
         "surf",
         "weatherball",
-        "spark"
+        "voltswitch"
       ],
       "ivs": {
         "hp": 31,
@@ -106,7 +106,7 @@
       "moveset": [
         "bugbuzz",
         "airslash",
-        "bugbite",
+        "uturn",
         "gigadrain"
       ],
       "ivs": {

@@ -8,7 +8,7 @@
       "nature": "cobblemon:modest",
       "ability": "electricsurge",
       "moveset": [
-        "spark",
+        "voltswitch",
         "scald",
         "discharge",
         "hiddenpower"
@@ -40,7 +40,7 @@
       "ability": "surgesurfer",
       "moveset": [
         "psyshock",
-        "spark",
+        "voltswitch",
         "nastyplot",
         "grassknot"
       ],
@@ -73,7 +73,7 @@
       "nature": "cobblemon:modest",
       "ability": "levitate",
       "moveset": [
-        "spark",
+        "voltswitch",
         "bugbuzz",
         "energyball",
         "roost"
@@ -106,7 +106,7 @@
       "moveset": [
         "chargebeam",
         "flameburst",
-        "spark",
+        "voltswitch",
         "hiddenpower"
       ],
       "ivs": {

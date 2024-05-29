@@ -10,7 +10,7 @@
       "moveset": [
         "stealthrock",
         "rockblast",
-        "bugbite",
+        "uturn",
         "bulldoze"
       ],
       "ivs": {
@@ -41,7 +41,7 @@
       "moveset": [
         "bulletpunch",
         "dualwingbeat",
-        "bugbite",
+        "uturn",
         "rocksmash"
       ],
       "ivs": {
@@ -165,7 +165,7 @@
       "moveset": [
         "thunder",
         "bugbuzz",
-        "spark",
+        "voltswitch",
         "energyball"
       ],
       "ivs": {

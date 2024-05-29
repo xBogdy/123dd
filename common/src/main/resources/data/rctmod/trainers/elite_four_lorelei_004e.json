@@ -11,7 +11,7 @@
         "scald",
         "raindance",
         "haze",
-        "bubblebeam"
+        "flipturn"
       ],
       "ivs": {
         "hp": 31,
@@ -39,7 +39,7 @@
       "nature": "cobblemon:adamant",
       "ability": "waterabsorb",
       "moveset": [
-        "bubblebeam",
+        "flipturn",
         "closecombat",
         "icepunch",
         "surgingstrikes"

@@ -134,7 +134,7 @@
       "moveset": [
         "dragonpulse",
         "discharge",
-        "spark",
+        "voltswitch",
         "focusblast"
       ],
       "ivs": {

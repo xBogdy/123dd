@@ -40,7 +40,7 @@
       "ability": "solarpower",
       "moveset": [
         "hypervoice",
-        "spark",
+        "voltswitch",
         "thunderbolt",
         "grassknot"
       ],

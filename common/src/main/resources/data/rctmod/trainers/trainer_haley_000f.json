@@ -8,7 +8,7 @@
       "nature": "cobblemon:timid",
       "ability": "sturdy",
       "moveset": [
-        "spark",
+        "voltswitch",
         "flashcannon",
         "hiddenpower",
         "thunderbolt"

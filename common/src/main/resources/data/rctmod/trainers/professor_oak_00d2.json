@@ -11,7 +11,7 @@
         "hurricane",
         "heatwave",
         "focusblast",
-        "bugbite"
+        "uturn"
       ],
       "ivs": {
         "hp": 31,
@@ -103,7 +103,7 @@
       "moveset": [
         "boltbeak",
         "bravebird",
-        "bugbite",
+        "uturn",
         "hiddenpower"
       ],
       "ivs": {

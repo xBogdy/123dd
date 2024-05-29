@@ -73,7 +73,7 @@
         "weatherball",
         "icebeam",
         "bouncybubble",
-        "bubblebeam"
+        "flipturn"
       ],
       "ivs": {
         "hp": 31,
