@@ -68,11 +68,11 @@ The balancing is based around the original game (Radical Red). Gym leaders must 
 
 Keep track of your progress:
 
-[!trainer_card](trainer_card_image.png)
+![trainer_card](https://cdn.modrinth.com/data/lRwTUnD7/images/9c8e29b5c111999f5f5af29b0b4488d48232d9c5.png)
 
 > Trainers are sorted by strength (weaker first) > name > trainer id (not shown).
 
-[!trainer_card](trainer_card_recipe.png)
+![trainer_card](https://cdn.modrinth.com/data/lRwTUnD7/images/4a9a661d330053281fb6dd846df75b2c20e61b07.png)
 
 > **The item itself does not store any information, hence any player will see their own stats with any trainer card.** This *might* be something to be added in future versions.
 
