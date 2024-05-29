@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.y-alpha] - 2024-05-29
+
+***Changed***
+
+- Reeneblad temporarily replaced switching moves (like uturn)
+- Update to Cobblemon 1.5.2 and CobblemonTrainers 1.1.7
+
 ## [0.8.x-alpha] - 2024-05-29
 
 ***Added***
