@@ -137,6 +137,6 @@ Almost all of the data is provided by an internal data pack. **Alot** can be con
 
 ## Dependencies
 
-- [Cobblemon](https://www.curseforge.com/minecraft/mc-mods/cobblemon)
-- [CobblemonTrainers](https://www.curseforge.com/minecraft/mc-mods/cobblemontrainers)
-- [Forge Config API Port](https://www.curseforge.com/minecraft/mc-mods/forge-config-api-port-fabric) (only Fabric)
+- [Cobblemon](https://modrinth.com/mod/cobblemon)
+- [CobblemonTrainers](https://modrinth.com/mod/cobblemontrainers)
+- [Forge Config API Port](https://modrinth.com/mod/forge-config-api-port)
