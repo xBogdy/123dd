@@ -9,7 +9,7 @@
       "ability": "technician",
       "moveset": [
         "bulletpunch",
-        "uturn",
+        "bugbite",
         "rocksmash",
         "dualwingbeat"
       ],
@@ -101,7 +101,7 @@
       "nature": "cobblemon:timid",
       "ability": "intimidate",
       "moveset": [
-        "voltswitch",
+        "spark",
         "hiddenpower",
         "flamethrower",
         "thunderbolt"

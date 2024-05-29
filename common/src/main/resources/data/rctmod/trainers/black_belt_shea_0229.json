@@ -43,7 +43,7 @@
       "ability": "levitate",
       "moveset": [
         "thunderwave",
-        "voltswitch",
+        "spark",
         "flashcannon",
         "powergem"
       ],
@@ -106,7 +106,7 @@
       "moveset": [
         "flareblitz",
         "earthquake",
-        "uturn",
+        "bugbite",
         "bravebird"
       ],
       "ivs": {

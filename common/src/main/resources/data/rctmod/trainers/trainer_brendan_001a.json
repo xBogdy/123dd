@@ -43,7 +43,7 @@
       "ability": "serenegrace",
       "moveset": [
         "ironhead",
-        "uturn",
+        "bugbite",
         "thunderpunch",
         "zenheadbutt"
       ],
@@ -106,7 +106,7 @@
       "moveset": [
         "bravebird",
         "closecombat",
-        "uturn",
+        "bugbite",
         "blazekick"
       ],
       "ivs": {

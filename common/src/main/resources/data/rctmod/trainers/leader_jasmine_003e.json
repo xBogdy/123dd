@@ -11,7 +11,7 @@
         "stealthrock",
         "explosion",
         "spikes",
-        "voltswitch"
+        "spark"
       ],
       "ivs": {
         "hp": 31,
@@ -101,7 +101,7 @@
       "nature": "cobblemon:modest",
       "ability": "magnetpull",
       "moveset": [
-        "voltswitch",
+        "spark",
         "thunderbolt",
         "flashcannon",
         "bodypress"

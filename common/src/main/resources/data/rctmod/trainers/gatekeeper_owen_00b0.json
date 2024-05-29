@@ -8,7 +8,7 @@
       "nature": "cobblemon:jolly",
       "ability": "serenegrace",
       "moveset": [
-        "uturn",
+        "bugbite",
         "bodyslam",
         "closecombat",
         "rockslide"
@@ -139,7 +139,7 @@
       "ability": "overcoat",
       "moveset": [
         "moonblast",
-        "uturn",
+        "bugbite",
         "focusblast",
         "psychic"
       ],
@@ -174,7 +174,7 @@
       "moveset": [
         "blizzard",
         "thunder",
-        "voltswitch",
+        "spark",
         "freezedry"
       ],
       "ivs": {

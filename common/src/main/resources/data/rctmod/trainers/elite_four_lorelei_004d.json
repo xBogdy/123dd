@@ -73,7 +73,7 @@
       "nature": "cobblemon:timid",
       "ability": "levitate",
       "moveset": [
-        "voltswitch",
+        "spark",
         "scald",
         "hail",
         "thunderwave"

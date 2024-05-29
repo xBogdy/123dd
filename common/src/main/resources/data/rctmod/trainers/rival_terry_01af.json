@@ -100,7 +100,7 @@
       "nature": "cobblemon:careful",
       "ability": "innerfocus",
       "moveset": [
-        "teleport",
+        "amnesia",
         "confusion",
         "hiddenpower",
         "disable"

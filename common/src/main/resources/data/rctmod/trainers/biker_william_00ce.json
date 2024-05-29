@@ -9,7 +9,7 @@
       "ability": "sturdy",
       "moveset": [
         "thunder",
-        "voltswitch",
+        "spark",
         "explosion",
         "bodypress"
       ],
@@ -132,7 +132,7 @@
       "nature": "cobblemon:timid",
       "ability": "analytic",
       "moveset": [
-        "flipturn",
+        "bubblebeam",
         "hydropump",
         "thunder",
         "psychic"

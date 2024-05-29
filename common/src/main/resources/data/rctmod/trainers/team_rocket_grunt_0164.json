@@ -70,7 +70,7 @@
       "nature": "cobblemon:careful",
       "ability": "ironbarbs",
       "moveset": [
-        "uturn",
+        "bugbite",
         "zippyzap",
         "ironhead",
         "nuzzle"

@@ -8,7 +8,7 @@
       "nature": "cobblemon:sassy",
       "ability": "leafguard",
       "moveset": [
-        "uturn",
+        "bugbite",
         "worryseed",
         "gigadrain",
         "bounce"
@@ -39,7 +39,7 @@
       "nature": "cobblemon:rash",
       "ability": "leafguard",
       "moveset": [
-        "uturn",
+        "bugbite",
         "worryseed",
         "gigadrain",
         "bounce"
@@ -73,7 +73,7 @@
         "acrobatics",
         "ragepowder",
         "cottonspore",
-        "uturn"
+        "bugbite"
       ],
       "ivs": {
         "hp": 5,
@@ -103,7 +103,7 @@
       "moveset": [
         "ragepowder",
         "cottonspore",
-        "uturn",
+        "bugbite",
         "worryseed"
       ],
       "ivs": {
