@@ -237,7 +237,8 @@ public class TrainerListWidget extends AbstractScrollWidget {
     }
 
     private int getScrollBarHeight() {
-        return Mth.clamp((int)((float)(this.height * this.height) / (float)this.getContentHeight()), 32, this.height);
+        var contentHeight = this.getContentHeight();
+        return contentHeight > 0 ? Mth.clamp((int)((float)(this.height * this.height) / (float)contentHeight), 32, this.height) : 0;
     }
 
     private void renderFullScrollBar(GuiGraphics guiGraphics) {
