@@ -294,6 +294,10 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
                 this.wins++;
             }
+
+            if(!this.canBattle()) {
+                RCTMod.get().getTrainerSpawner().detachMobFromOrigin(this);
+            }
         }
     }
 

@@ -67,9 +67,14 @@ public class TrainerSpawner {
     }
 
     public void unregisterMob(TrainerMob mob) {
-        var originPlayer = mob.getOriginPlayer();
         var tmd = RCTMod.get().getTrainerManager().getData(mob);
         this.spawnedTotal.remove(tmd.getTeam().getDisplayName());
+        this.detachMobFromOrigin(mob);
+    }
+
+    public void detachMobFromOrigin(TrainerMob mob) {
+        var originPlayer = mob.getOriginPlayer();
+        var tmd = RCTMod.get().getTrainerManager().getData(mob);
 
         if(originPlayer != null) {
             var spawnedFor = this.spawnedFor.get(originPlayer);
