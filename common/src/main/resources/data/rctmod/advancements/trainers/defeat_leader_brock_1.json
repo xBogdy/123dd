@@ -18,7 +18,7 @@
   "criteria": {
     "first_defeat": {
       "conditions": {
-        "trainer_id": "leader_brock_1"
+        "trainer_id": "leader_brock_019e"
       },
       "trigger": "rctmod:defeat_count"
     }

@@ -18,7 +18,7 @@
   "criteria": {
     "first_defeat": {
       "conditions": {
-        "trainer_id": "leader_sabrina"
+        "trainer_id": "leader_sabrina_01a4"
       },
       "trigger": "rctmod:defeat_count"
     }

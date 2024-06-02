@@ -18,7 +18,7 @@
   "criteria": {
     "first_defeat": {
       "conditions": {
-        "trainer_id": "leader_misty_1"
+        "trainer_id": "leader_misty_019f"
       },
       "trigger": "rctmod:defeat_count"
     }

@@ -18,7 +18,7 @@
   "criteria": {
     "first_defeat": {
       "conditions": {
-        "trainer_id": "leader_koga"
+        "trainer_id": "leader_koga_01a2"
       },
       "trigger": "rctmod:defeat_count"
     }

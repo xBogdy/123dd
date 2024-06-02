@@ -18,7 +18,7 @@
   "criteria": {
     "first_defeat": {
       "conditions": {
-        "trainer_id": "leader_lt_surge_1"
+        "trainer_id": "leader_lt_surge_01a0"
       },
       "trigger": "rctmod:defeat_count"
     }
