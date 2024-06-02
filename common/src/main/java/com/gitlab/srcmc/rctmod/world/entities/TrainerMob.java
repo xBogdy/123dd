@@ -416,7 +416,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
                 var config = RCTMod.get().getServerConfig();
                 var level = this.level();
 
-                if(level.getNearestPlayer(this, config.maxHorizontalDistanceToPlayers()) == null) {
+                if(level.getNearestPlayer(this, config.minHorizontalDistanceToPlayers()) == null) {
                     if(this.discardDelay < 0 || --this.discardDelay < 0) {
                         this.discard();
                     }
