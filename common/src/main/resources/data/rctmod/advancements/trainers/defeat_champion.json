@@ -2,10 +2,10 @@
   "parent": "rctmod:trainers/defeat_elite_four",
   "display": {
     "title": {
-      "text": "Champion!"
+      "text": "Champion"
     },
     "description": {
-      "text": "There will be always someone who is stronger"
+      "text": "Defeat a Champion Terry"
     },
     "icon": {
       "item": "cobblemon:poke_ball"

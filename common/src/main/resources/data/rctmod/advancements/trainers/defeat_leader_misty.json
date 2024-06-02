@@ -1,11 +1,11 @@
 {
-  "parent": "rctmod:trainers/defeat_leader_brock_1",
+  "parent": "rctmod:trainers/defeat_leader_brock",
   "display": {
     "title": {
-      "text": "Cascade Badge "
+      "text": "Cascade Badge"
     },
     "description": {
-      "text": "You'll have to get your feet wet for this one"
+      "text": "Defeat Leader Misty"
     },
     "icon": {
       "item": "cobblemon:poke_ball"

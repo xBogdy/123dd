@@ -1,11 +1,11 @@
 {
-  "parent": "rctmod:trainers/defeat_leader_misty_1",
+  "parent": "rctmod:trainers/defeat_leader_misty",
   "display": {
     "title": {
       "text": "Thunder Badge"
     },
     "description": {
-      "text": "Better stay grounded"
+      "text": "Defeat Leader Lt. Surge"
     },
     "icon": {
       "item": "cobblemon:poke_ball"

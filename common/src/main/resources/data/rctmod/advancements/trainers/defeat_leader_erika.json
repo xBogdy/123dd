@@ -1,11 +1,11 @@
 {
-  "parent": "rctmod:trainers/defeat_leader_lt_surge_1",
+  "parent": "rctmod:trainers/defeat_leader_lt_surge",
   "display": {
     "title": {
       "text": "Rainbow Badge"
     },
     "description": {
-      "text": "Fire should be useful. Right?"
+      "text": "Defeat Leader Erika"
     },
     "icon": {
       "item": "cobblemon:poke_ball"

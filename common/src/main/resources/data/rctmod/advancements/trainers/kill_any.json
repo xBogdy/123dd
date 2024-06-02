@@ -5,7 +5,7 @@
       "text": "Wrong way to battle"
     },
     "description": {
-      "text": "Not like this!"
+      "text": "'Defeat' any Trainer"
     },
     "icon": {
       "item": "minecraft:iron_sword"
@@ -18,7 +18,7 @@
   "criteria": {
     "kill_trainer": {
       "conditions": {
-        "entitiy": {
+        "entity": {
           "type": "rctmod:trainer"
         }
       },

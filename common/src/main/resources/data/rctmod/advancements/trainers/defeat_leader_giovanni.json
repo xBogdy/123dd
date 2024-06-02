@@ -1,11 +1,11 @@
 {
-  "parent": "rctmod:trainers/defeat_leader_erika_1",
+  "parent": "rctmod:trainers/defeat_leader_erika",
   "display": {
     "title": {
       "text": "Earth Badge"
     },
     "description": {
-      "text": "Quite the turn of events"
+      "text": "Defeat Leader Giovanni"
     },
     "icon": {
       "item": "cobblemon:poke_ball"
