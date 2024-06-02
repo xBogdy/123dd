@@ -1,0 +1,32 @@
+{
+  "parent": "rctmod:trainers/defeat_rival_terry",
+  "display": {
+    "title": {
+      "text": "Only one"
+    },
+    "description": {
+      "text": "Defeat all versions of Rival Terry"
+    },
+    "icon": {
+      "item": "cobblemon:poke_ball"
+    },
+    "announce_to_chat": true,
+    "show_toast": true,
+    "hidden": true,
+    "frame": "challenge"
+  },
+  "criteria": {
+    "first_defeat": {
+      "conditions": {
+        "trainer_type": "RIVAL",
+        "count": 21
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "requirements": [
+    [
+      "first_defeat"
+    ]
+  ]
+}

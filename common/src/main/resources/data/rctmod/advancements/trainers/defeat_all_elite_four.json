@@ -1,0 +1,32 @@
+{
+  "parent": "rctmod:trainers/defeat_elite_four",
+  "display": {
+    "title": {
+      "text": "Elite Trainer"
+    },
+    "description": {
+      "text": "Defeat all verions of Elite 4 Trainers"
+    },
+    "icon": {
+      "item": "cobblemon:poke_ball"
+    },
+    "announce_to_chat": true,
+    "show_toast": true,
+    "hidden": true,
+    "frame": "challenge"
+  },
+  "criteria": {
+    "first_defeat": {
+      "conditions": {
+        "trainer_type": "E4",
+        "count": 16
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "requirements": [
+    [
+      "first_defeat"
+    ]
+  ]
+}

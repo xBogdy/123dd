@@ -1,0 +1,32 @@
+{
+  "parent": "rctmod:trainers/defeat_team_rocket",
+  "display": {
+    "title": {
+      "text": "Wrong side of the tracks"
+    },
+    "description": {
+      "text": "Defeat all members of Team Rocket"
+    },
+    "icon": {
+      "item": "cobblemon:poke_ball"
+    },
+    "announce_to_chat": true,
+    "show_toast": true,
+    "hidden": true,
+    "frame": "challenge"
+  },
+  "criteria": {
+    "first_defeat": {
+      "conditions": {
+        "trainer_type": "TEAM_ROCKET",
+        "count": 67
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "requirements": [
+    [
+      "first_defeat"
+    ]
+  ]
+}

@@ -1,11 +1,11 @@
 {
-  "parent": "rctmod:trainers/defeat_leader_blaine",
+  "parent": "rctmod:trainers/defeat_trainer",
   "display": {
     "title": {
-      "text": "Defeat Brendan"
+      "text": "..."
     },
     "description": {
-      "text": "Who will be victorious in this fierce battle?"
+      "text": "Defeat Trainer Red"
     },
     "icon": {
       "item": "cobblemon:poke_ball"
@@ -18,7 +18,7 @@
   "criteria": {
     "first_defeat": {
       "conditions": {
-        "trainer_type": "trainer_brendan"
+        "trainer_id": "trainer_red_0003"
       },
       "trigger": "rctmod:defeat_count"
     }

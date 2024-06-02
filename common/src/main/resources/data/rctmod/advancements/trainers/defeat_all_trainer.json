@@ -1,0 +1,32 @@
+{
+  "parent": "rctmod:trainers/defeat_trainer_red",
+  "display": {
+    "title": {
+      "text": "Who's the protagonist?"
+    },
+    "description": {
+      "text": "Defeat all 'story' Trainers"
+    },
+    "icon": {
+      "item": "cobblemon:poke_ball"
+    },
+    "announce_to_chat": true,
+    "show_toast": true,
+    "hidden": true,
+    "frame": "challenge"
+  },
+  "criteria": {
+    "first_defeat": {
+      "conditions": {
+        "trainer_type": "TRAINER",
+        "count": 13
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "requirements": [
+    [
+      "first_defeat"
+    ]
+  ]
+}
