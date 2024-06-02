@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.8.x-alpha] - 2024-05-31
+
+***Added***
+
+- Trainer types `RIVAL` and `TRAINER`
+
+***Changed***
+
+- Advancements have been reworked, some have been removed, some have been added, some have changed. Advancements will be granted again if a player repeats an action (e.g. beats a previous Leader again). They can also be granted manually with the vanilla `advancement` command.
+- Decreased minimum despawn distance (now equal to *spawning config* `minHorizontalDistanceToPlayers` which is `30` by default)
+- Trainers that cannot battle anymore now don't count towards a players spawn cap (they still count towards the global spawn cap)
+
+***Fixed***
+
+- "Wrong way to battle" advancement beeing granted for any npc
+- Advancements not beeing granted
+
 ## [0.8.1-alpha] - 2024-05-29
 
 ***Changed***
