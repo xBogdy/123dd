@@ -295,7 +295,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
                 this.wins++;
             }
 
-            if(!this.canBattle()) {
+            if(this.getDefeats() >= mobTr.getMaxTrainerDefeats() || this.getWins() >= mobTr.getMaxTrainerWins()) {
                 RCTMod.get().getTrainerSpawner().detachMobFromOrigin(this);
             }
         }
