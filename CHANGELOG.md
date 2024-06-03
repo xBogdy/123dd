@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.8.x-alpha] - 2024-06-03
+
+***Fixed***
+
+- Trainers on cooldown not beeing counted towards a palyers spawn cap
+
 ## [0.8.2-alpha] - 2024-05-31
 
 ***Added***
