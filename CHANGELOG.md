@@ -6,6 +6,10 @@
 
 - Spawn caps are now per dimensions (fixes issue with trainers in different dimensions filling spawn caps)
 
+***Fixed***
+
+- Potential crash if debugging is enabled in the server config
+
 ## [0.8.4-alpha] - 2024-06-10
 
 ***Added***

@@ -78,16 +78,18 @@ public class TrainerSpawner {
 
             if(this.getSpawnedFor(originPlayer, dim).remove(trainer)) {
                 var config = RCTMod.get().getServerConfig();
-
+                
                 if(config.logSpawning()) {
+                    var player = mob.level().getPlayerByUUID(originPlayer);
+
                     ModCommon.LOG.info(String.format("Detached Trainer: %s\n - Target Player: %s\n - Dimension: %s\n - Local Spawn Cap: %d/%d\n - Global Spawn Cap: %d/%d",
                         mob.getTrainerId(),
-                        mob.level().getPlayerByUUID(originPlayer).getDisplayName().getString(),
+                        player != null ? player.getDisplayName().getString() : originPlayer.toString(),
+                        dim.location().getPath(),
                         this.getSpawnedFor(originPlayer, dim).size(),
                         config.maxTrainersPerPlayer(),
                         this.getSpawnedTotal(dim).size(),
-                        config.maxTrainersTotal(),
-                        dim.location().getPath()));
+                        config.maxTrainersTotal()));
                 }
             }
         }

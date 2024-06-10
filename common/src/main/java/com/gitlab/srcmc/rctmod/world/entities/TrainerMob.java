@@ -425,9 +425,11 @@ public class TrainerMob extends PathfinderMob implements Npc {
                         this.discard();
 
                         if(config.logSpawning()) {
+                            var player = level.getPlayerByUUID(this.originPlayer);
+                            
                             ModCommon.LOG.info(String.format("Despawning Trainer: %s (targeted at %s)",
                                 this.getTrainerId(),
-                                level.getPlayerByUUID(this.originPlayer).getDisplayName().getString()));
+                                player != null ? player.getDisplayName().getString() : originPlayer.toString()));
                         }
                     }
                 } else {
