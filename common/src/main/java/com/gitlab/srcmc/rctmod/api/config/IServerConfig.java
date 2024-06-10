@@ -97,24 +97,6 @@ public interface IServerConfig extends IForgeConfig {
     default int maxLevelDiff() { return 25; }
 
     /**
-     * Initial level cap of players. Pokemon will not gain any experience if at or
-     * above the level cap.
-     * 
-     * range [1, 100]
-     * default 15
-     */
-    default int initialLevelCap() { return 15; }
-
-    /**
-     * Trainers will refuse to battle players that have pokemon in their party with a
-     * level greater than the set value + the level cap of the player. This value can
-     * also be negative.
-     * 
-     * default 0
-     */
-    default int maxOverLevelCap() { return 0; }
-    
-    /**
      * A comma separated list of biome tags (e.g. ["is_overworld", "is_forest"]). A
      * biome may not have any of the given tags attached to it, for a trainer to spawn
      * in that biome. Trainers may also have additional tags defined by a data pack.
@@ -132,6 +114,24 @@ public interface IServerConfig extends IForgeConfig {
      * default: []
      */
     default List<? extends String> biomeTagWhitelist() { return List.of(); }
+
+    /**
+     * Initial level cap of players. Pokemon will not gain any experience if at or
+     * above the level cap.
+     * 
+     * range [1, 100]
+     * default 15
+     */
+    default int initialLevelCap() { return 15; }
+
+    /**
+     * Trainers will refuse to battle players that have pokemon in their party with a
+     * level greater than the set value + the level cap of the player. This value can
+     * also be negative.
+     * 
+     * default 0
+     */
+    default int maxOverLevelCap() { return 0; }
 
     /**
      * If enabled additional information are printed to the log whenever a trainer

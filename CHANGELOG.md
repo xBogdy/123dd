@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.8.x] - 2024-06-10
+
+***Changed***
+
+- Spawn caps are now per dimensions (fixes issue with trainers in different dimensions filling spawn caps)
+
 ## [0.8.4-alpha] - 2024-06-10
 
 ***Added***

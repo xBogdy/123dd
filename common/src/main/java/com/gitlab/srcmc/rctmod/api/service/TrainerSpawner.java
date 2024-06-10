@@ -31,8 +31,10 @@ import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 
 public class TrainerSpawner {
     private static float KEY_TRAINER_SPAWN_WEIGHT_FACTOR = 60;
@@ -47,51 +49,45 @@ public class TrainerSpawner {
         }
     }
     
-    private Map<UUID, Set<String>> spawnedFor = new HashMap<>();
-    private Set<String> spawnedTotal = new HashSet<>();
+    private Map<ResourceKey<Level>, Map<UUID, Set<String>>> spawnedFor = new HashMap<>();
+    private Map<ResourceKey<Level>, Set<String>> spawnedTotal = new HashMap<>();
 
     public void registerMob(TrainerMob mob) {
         var originPlayer = mob.getOriginPlayer();
-        var tmd = RCTMod.get().getTrainerManager().getData(mob);
-        this.spawnedTotal.add(tmd.getTeam().getDisplayName());
+        var trainer = RCTMod.get().getTrainerManager().getData(mob).getTeam().getDisplayName();
+        var dim = mob.level().dimension();
+        this.getSpawnedTotal(dim).add(trainer);
 
         if(originPlayer != null) {
-            var spawnedFor = this.spawnedFor.get(originPlayer);
-
-            if(spawnedFor == null) {
-                spawnedFor = new HashSet<>();
-                this.spawnedFor.put(originPlayer, spawnedFor);
-            }
-
-            spawnedFor.add(tmd.getTeam().getDisplayName());
+            this.getSpawnedFor(originPlayer, dim).add(trainer);
         }
     }
 
     public void unregisterMob(TrainerMob mob) {
-        var tmd = RCTMod.get().getTrainerManager().getData(mob);
-        this.spawnedTotal.remove(tmd.getTeam().getDisplayName());
+        var trainer = RCTMod.get().getTrainerManager().getData(mob).getTeam().getDisplayName();
+        this.getSpawnedTotal(mob.level().dimension()).remove(trainer);
         this.detachMobFromOrigin(mob);
     }
 
     public void detachMobFromOrigin(TrainerMob mob) {
         var originPlayer = mob.getOriginPlayer();
-        var tmd = RCTMod.get().getTrainerManager().getData(mob);
-
+        
         if(originPlayer != null) {
-            var spawnedFor = this.spawnedFor.get(originPlayer);
+            var trainer = RCTMod.get().getTrainerManager().getData(mob).getTeam().getDisplayName();
+            var dim = mob.level().dimension();
 
-            if(spawnedFor != null) {
-                spawnedFor.remove(tmd.getTeam().getDisplayName());
+            if(this.getSpawnedFor(originPlayer, dim).remove(trainer)) {
                 var config = RCTMod.get().getServerConfig();
 
                 if(config.logSpawning()) {
-                    ModCommon.LOG.info(String.format("Detached Trainer: %s\n - Target Player: %s\n - Local Spawn Cap: %d/%d\n - Global Spawn Cap: %d/%d",
+                    ModCommon.LOG.info(String.format("Detached Trainer: %s\n - Target Player: %s\n - Dimension: %s\n - Local Spawn Cap: %d/%d\n - Global Spawn Cap: %d/%d",
                         mob.getTrainerId(),
                         mob.level().getPlayerByUUID(originPlayer).getDisplayName().getString(),
-                        spawnedFor.size(),
+                        this.getSpawnedFor(originPlayer, dim).size(),
                         config.maxTrainersPerPlayer(),
-                        this.spawnedTotal.size(),
-                        config.maxTrainersTotal()));
+                        this.getSpawnedTotal(dim).size(),
+                        config.maxTrainersTotal(),
+                        dim.location().getPath()));
                 }
             }
         }
@@ -104,13 +100,11 @@ public class TrainerSpawner {
             return;
         }
 
-        if(this.spawnedTotal.size() < config.maxTrainersTotal()) {
-            var spawnedFor = this.spawnedFor.get(player.getUUID());
+        var dim = player.level().dimension();
+        var spawnedTotal = this.getSpawnedTotal(dim);
 
-            if(spawnedFor == null) {
-                spawnedFor = new HashSet<>();
-                this.spawnedFor.put(player.getUUID(), spawnedFor);
-            }
+        if(spawnedTotal.size() < config.maxTrainersTotal()) {
+            var spawnedFor = this.getSpawnedFor(player.getUUID(), dim);
 
             if(spawnedFor.size() < config.maxTrainersPerPlayer()) {
                 var pos = this.nextPos(player);
@@ -126,6 +120,16 @@ public class TrainerSpawner {
         }
     }
 
+    private Set<String> getSpawnedFor(UUID originPlayer, ResourceKey<Level> dim) {
+        return this.spawnedFor
+            .computeIfAbsent(dim, key -> new HashMap<>())
+            .computeIfAbsent(originPlayer, key -> new HashSet<>());
+    }
+
+    private Set<String> getSpawnedTotal(ResourceKey<Level> dim) {
+        return this.spawnedTotal.computeIfAbsent(dim, key -> new HashSet<>());
+    }
+
     private void spawnFor(Player player, String trainerId, BlockPos pos) {
         var config = RCTMod.get().getServerConfig();
         var level = player.level();
@@ -137,16 +141,18 @@ public class TrainerSpawner {
 
         if(config.logSpawning()) {
             var biome = level.getBiome(mob.blockPosition());
+            var dim = level.dimension();
 
-            ModCommon.LOG.info(String.format("Spawned Trainer: %s\n - Location: (%d, %d, %d)\n - Target Player: %s\n - Local Spawn Cap: %d/%d\n - Global Spawn Cap: %d/%d\n - Biome Tags:%s",
+            ModCommon.LOG.info(String.format("Spawned Trainer: %s\n - Location: (%d, %d, %d)\n - Target Player: %s\n - Dimension: %s\n - Local Spawn Cap: %d/%d\n - Global Spawn Cap: %d/%d\n - Biome Tags:%s",
                 mob.getTrainerId(),
                 mob.blockPosition().getX(),
                 mob.blockPosition().getY(),
                 mob.blockPosition().getZ(),
                 player.getDisplayName().getString(),
-                this.spawnedFor.get(player.getUUID()).size(),
+                dim.location().getPath(),
+                this.getSpawnedFor(player.getUUID(), dim).size(),
                 config.maxTrainersPerPlayer(),
-                this.spawnedTotal.size(),
+                this.getSpawnedTotal(dim).size(),
                 config.maxTrainersTotal(),
                 biome.tags().map(t -> t.location().getPath()).reduce("", (t1, t2) -> t1 + " " + t2)));
         }
@@ -216,7 +222,7 @@ public class TrainerSpawner {
         if(config.biomeTagBlacklist().stream().noneMatch(tags::contains)
         && (config.biomeTagWhitelist().isEmpty() || config.biomeTagWhitelist().stream().anyMatch(tags::contains))) {
             RCTMod.get().getTrainerManager().getAllData()
-                .filter(e -> !this.spawnedTotal.contains(e.getValue().getTeam().getDisplayName())
+                .filter(e -> this.spawnedTotal.values().stream().noneMatch(set -> set.contains(e.getValue().getTeam().getDisplayName()))
                     && e.getValue().getBiomeTagBlacklist().stream().noneMatch(tags::contains)
                     && (e.getValue().getBiomeTagWhitelist().isEmpty() || e.getValue().getBiomeTagWhitelist().stream().anyMatch(tags::contains)))
                 .forEach(e -> {
