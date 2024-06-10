@@ -17,6 +17,8 @@
  */
 package com.gitlab.srcmc.rctmod.config;
 
+import java.util.List;
+
 import com.gitlab.srcmc.rctmod.api.config.IServerConfig;
 
 import net.minecraftforge.common.ForgeConfigSpec;
@@ -34,6 +36,8 @@ public class ServerConfig extends ForgeConfig implements IServerConfig {
     private ConfigValue<Integer> maxTrainersPerPlayerValue;
     private ConfigValue<Integer> maxTrainersTotalValue;
     private ConfigValue<Integer> maxLevelDiffValue;
+    private ConfigValue<List<? extends String>> biomeTagBlacklistValue;
+    private ConfigValue<List<? extends String>> biomeTagWhitelistValue;
 
     // players
     private ConfigValue<Integer> initialLevelCapValue;
@@ -85,7 +89,15 @@ public class ServerConfig extends ForgeConfig implements IServerConfig {
         this.maxLevelDiffValue = builder
             .comment("The maximum level difference between the strongest pokemon in the team of a player and the strongest pokemon in the team of a trainer to spawn for that player. The spawn weight decreases with a higher level difference. Trainers with pokemon above the level cap of a player are excluded.")
             .defineInRange("maxLevelDiff", IServerConfig.super.maxLevelDiff(), 0, 100);
-        
+
+        this.biomeTagBlacklistValue = builder
+            .comment("A comma separated list of biome tags (e.g. [\"is_overworld\", \"is_forest\"]). A biome may not have any of the given tags attached to it, for a trainer to spawn in that biome. Trainers may also have additional tags defined by a data pack.")
+            .defineList("biomeTagBlacklist", IServerConfig.super.biomeTagBlacklist(), element -> true);
+
+        this.biomeTagWhitelistValue = builder
+            .comment("A comma separated list of biome tags (e.g. [\"is_overworld\", \"is_forest\"]). A biome must have atleast one of the given tags attached to it, for a trainer to spawn in that biome (unless the list is empty). Trainers may also have additional tags defined by a data pack.")
+            .defineList("biomeTagWhitelist", IServerConfig.super.biomeTagWhitelist(), element -> true);
+
         builder.pop();
         builder.push("Players");
 
@@ -155,6 +167,16 @@ public class ServerConfig extends ForgeConfig implements IServerConfig {
     @Override
     public int maxLevelDiff() {
         return this.maxLevelDiffValue.get();
+    }
+
+    @Override
+    public List<? extends String> biomeTagBlacklist() {
+        return this.biomeTagBlacklistValue.get();
+    }
+
+    @Override
+    public List<? extends String> biomeTagWhitelist() {
+        return this.biomeTagWhitelistValue.get();
     }
 
     @Override

@@ -5,6 +5,7 @@
 ***Added***
 
 - Server Config `logSpawning`: Debugging option to log information about trainer (de)spawning (disabled by default)
+- Server Config options `biomeTagBlackList` and `biomeTagWhitelist` as global options for all trainers (in addition to the tags defined per trainer (group) with data packs)
 
 ***Fixed***
 

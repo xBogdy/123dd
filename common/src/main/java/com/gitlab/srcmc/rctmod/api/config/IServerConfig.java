@@ -17,6 +17,8 @@
  */
 package com.gitlab.srcmc.rctmod.api.config;
 
+import java.util.List;
+
 public interface IServerConfig extends IForgeConfig {
     /**
      * A global factor that determines if a spawn attempt for a trainer is made.
@@ -111,6 +113,25 @@ public interface IServerConfig extends IForgeConfig {
      * default 0
      */
     default int maxOverLevelCap() { return 0; }
+    
+    /**
+     * A comma separated list of biome tags (e.g. ["is_overworld", "is_forest"]). A
+     * biome may not have any of the given tags attached to it, for a trainer to spawn
+     * in that biome. Trainers may also have additional tags defined by a data pack.
+     * 
+     * default: []
+     */
+    default List<? extends String> biomeTagBlacklist() { return List.of(); }
+
+    /**
+     * A comma separated list of biome tags (e.g. ["is_overworld", "is_forest"]). A
+     * biome must have atleast one of the given tags attached to it, for a trainer to
+     * spawn in that biome (unless the list is empty). Trainers may also have
+     * additional tags defined by a data pack.
+     * 
+     * default: []
+     */
+    default List<? extends String> biomeTagWhitelist() { return List.of(); }
 
     /**
      * If enabled additional information are printed to the log whenever a trainer

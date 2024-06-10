@@ -211,17 +211,22 @@ public class TrainerSpawner {
             .map(t -> t.location().getPath())
             .forEach(t -> tags.add(t));
 
-        RCTMod.get().getTrainerManager().getAllData()
-            .filter(e -> !this.spawnedTotal.contains(e.getValue().getTeam().getDisplayName())
-                && e.getValue().getBiomeTagBlacklist().stream().noneMatch(tags::contains)
-                && (e.getValue().getBiomeTagWhitelist().isEmpty() || e.getValue().getBiomeTagWhitelist().stream().anyMatch(tags::contains)))
-            .forEach(e -> {
-                var weight = this.computeWeight(player, e.getValue());
+        var config = RCTMod.get().getServerConfig();
 
-                if(weight > 0) {
-                    candidates.add(new SpawnCandidate(e.getKey(), weight));
-                }
-            });
+        if(config.biomeTagBlacklist().stream().noneMatch(tags::contains)
+        && (config.biomeTagWhitelist().isEmpty() || config.biomeTagWhitelist().stream().anyMatch(tags::contains))) {
+            RCTMod.get().getTrainerManager().getAllData()
+                .filter(e -> !this.spawnedTotal.contains(e.getValue().getTeam().getDisplayName())
+                    && e.getValue().getBiomeTagBlacklist().stream().noneMatch(tags::contains)
+                    && (e.getValue().getBiomeTagWhitelist().isEmpty() || e.getValue().getBiomeTagWhitelist().stream().anyMatch(tags::contains)))
+                .forEach(e -> {
+                    var weight = this.computeWeight(player, e.getValue());
+
+                    if(weight > 0) {
+                        candidates.add(new SpawnCandidate(e.getKey(), weight));
+                    }
+                });
+        }
 
         return candidates.size() > 0 ? this.selectRandom(player.getRandom(), candidates) : null;
     }
