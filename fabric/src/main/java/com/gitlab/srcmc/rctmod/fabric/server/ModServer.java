@@ -63,6 +63,6 @@ public class ModServer {
     }
 
     static void handleReceivedPlayerPing(MinecraftServer server, ServerPlayer player, ServerGamePacketListenerImpl handler, FriendlyByteBuf buf, PacketSender responseSender) {
-        RCTMod.get().getTrainerSpawner().attemptSpawnFor(player);
+        server.execute(() -> RCTMod.get().getTrainerSpawner().attemptSpawnFor(player));
     }
 }

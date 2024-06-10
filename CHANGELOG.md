@@ -6,6 +6,10 @@
 
 - Server Config `logSpawning`: Debugging option to log information about trainer (de)spawning (disabled by default)
 
+***Fixed***
+
+- Trainers spawning causing a crash with c2me on fabric
+
 ## [0.8.3-alpha] - 2024-06-03
 
 ***Fixed***
