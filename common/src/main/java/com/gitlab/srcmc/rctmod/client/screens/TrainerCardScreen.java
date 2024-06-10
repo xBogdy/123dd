@@ -32,7 +32,7 @@ public class TrainerCardScreen extends Screen {
     public TrainerCardScreen() {
         super(Component.literal("Trainer Card"));
         var mc = Minecraft.getInstance();
-        this.font = mc.font;        
+        this.font = mc.font;
     }
 
     @Override

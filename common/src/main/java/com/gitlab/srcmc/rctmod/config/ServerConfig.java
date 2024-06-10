@@ -39,6 +39,9 @@ public class ServerConfig extends ForgeConfig implements IServerConfig {
     private ConfigValue<Integer> initialLevelCapValue;
     private ConfigValue<Integer> maxOverLevelCapValue;
 
+    // debug
+    private ConfigValue<Boolean> logSpawningValue;
+
     private ForgeConfigSpec spec;
 
     public ServerConfig() {
@@ -93,6 +96,13 @@ public class ServerConfig extends ForgeConfig implements IServerConfig {
         this.maxOverLevelCapValue = builder
             .comment("Trainers will refuse to battle players that have pokemon in their party with a level greater than the set value + the level cap of the player. This value can also be negative.")
             .define("maxOverLevelCap", IServerConfig.super.maxOverLevelCap());
+
+        builder.pop();
+        builder.push("Debug");
+
+        this.logSpawningValue = builder
+            .comment("If enabled additional information are printed to the log whenever a trainer spawns or despawns.")
+            .define("logSpawning", IServerConfig.super.logSpawning());
 
         this.spec = builder.build();
     }
@@ -155,5 +165,10 @@ public class ServerConfig extends ForgeConfig implements IServerConfig {
     @Override
     public int maxOverLevelCap() {
         return this.maxOverLevelCapValue.get();
+    }
+
+    @Override
+    public boolean logSpawning() {
+        return this.logSpawningValue.get();
     }
 }

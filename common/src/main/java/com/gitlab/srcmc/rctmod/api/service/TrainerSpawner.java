@@ -26,6 +26,7 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
@@ -81,6 +82,17 @@ public class TrainerSpawner {
 
             if(spawnedFor != null) {
                 spawnedFor.remove(tmd.getTeam().getDisplayName());
+                var config = RCTMod.get().getServerConfig();
+
+                if(config.logSpawning()) {
+                    ModCommon.LOG.info(String.format("Detached Trainer: %s\n - Target Player: %s\n - Local Spawn Cap: %d/%d\n - Global Spawn Cap: %d/%d",
+                        mob.getTrainerId(),
+                        mob.level().getPlayerByUUID(originPlayer).getDisplayName().getString(),
+                        spawnedFor.size(),
+                        config.maxTrainersPerPlayer(),
+                        this.spawnedTotal.size(),
+                        config.maxTrainersTotal()));
+                }
             }
         }
     }
@@ -115,12 +127,29 @@ public class TrainerSpawner {
     }
 
     private void spawnFor(Player player, String trainerId, BlockPos pos) {
+        var config = RCTMod.get().getServerConfig();
         var level = player.level();
         var mob = TrainerMob.getEntityType().create(level);
         mob.setPos(pos.getCenter().add(0, -0.5, 0));
         mob.setTrainerId(trainerId);
         mob.setOriginPlayer(player.getUUID());
         level.addFreshEntity(mob);
+
+        if(config.logSpawning()) {
+            var biome = level.getBiome(mob.blockPosition());
+
+            ModCommon.LOG.info(String.format("Spawned Trainer: %s\n - Location: (%d, %d, %d)\n - Target Player: %s\n - Local Spawn Cap: %d/%d\n - Global Spawn Cap: %d/%d\n - Biome Tags:%s",
+                mob.getTrainerId(),
+                mob.blockPosition().getX(),
+                mob.blockPosition().getY(),
+                mob.blockPosition().getZ(),
+                player.getDisplayName().getString(),
+                this.spawnedFor.get(player.getUUID()).size(),
+                config.maxTrainersPerPlayer(),
+                this.spawnedTotal.size(),
+                config.maxTrainersTotal(),
+                biome.tags().map(t -> t.location().getPath()).reduce("", (t1, t2) -> t1 + " " + t2)));
+        }
     }
 
     private BlockPos nextPos(Player player) {

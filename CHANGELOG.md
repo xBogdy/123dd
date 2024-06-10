@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.8.x] - 2024-06-10
+
+***Added***
+
+- Server Config `logSpawning`: Debugging option to log information about trainer (de)spawning (disabled by default)
+
 ## [0.8.3-alpha] - 2024-06-03
 
 ***Fixed***

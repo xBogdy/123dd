@@ -423,6 +423,12 @@ public class TrainerMob extends PathfinderMob implements Npc {
                 if(level.getNearestPlayer(this, config.minHorizontalDistanceToPlayers()) == null) {
                     if(this.discardDelay < 0 || --this.discardDelay < 0) {
                         this.discard();
+
+                        if(config.logSpawning()) {
+                            ModCommon.LOG.info(String.format("Despawning Trainer: %s (targeted at %s)",
+                                this.getTrainerId(),
+                                level.getPlayerByUUID(this.originPlayer).getDisplayName().getString()));
+                        }
                     }
                 } else {
                     this.discardDelay = DISCARD_DELAY;

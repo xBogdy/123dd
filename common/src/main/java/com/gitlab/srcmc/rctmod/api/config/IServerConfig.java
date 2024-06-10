@@ -111,4 +111,12 @@ public interface IServerConfig extends IForgeConfig {
      * default 0
      */
     default int maxOverLevelCap() { return 0; }
+
+    /**
+     * If enabled additional information are printed to the log whenever a trainer
+     * spawns or despawns.
+     * 
+     * default false
+     */
+    default boolean logSpawning() { return false; }
 }
