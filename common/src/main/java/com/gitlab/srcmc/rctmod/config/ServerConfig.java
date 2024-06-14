@@ -28,7 +28,6 @@ import net.minecraftforge.fml.config.ModConfig;
 public class ServerConfig extends ForgeConfig implements IServerConfig {
     // spawning
     private ConfigValue<Double> globalSpawnChanceValue;
-    private ConfigValue<Integer> despawnDelayTicksValue;
     private ConfigValue<Integer> spawnIntervalTicksValue;
     private ConfigValue<Integer> maxHorizontalDistanceToPlayersValue;
     private ConfigValue<Integer> minHorizontalDistanceToPlayersValue;
