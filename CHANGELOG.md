@@ -1,14 +1,23 @@
 # Changelog
 
-## [0.8.x] - 2024-06-10
+## [0.9.x] - 2024-06-14
+
+***Added***
+
+- `Persistent` tag for trainers (`0` (disabled) by default). Persistent trainers will **never** despawn. Care must be taken when enabling this tag for trainers since other trainers will not spawn as long as another trainer with the same name exists. **If a persistent trainer happens to be lost (e.g. ends up somewhere in an unloaded section of your world and you don't know where that is) there is no way to remove such a trainer!**
 
 ***Changed***
 
-- Spawn caps are now per dimensions (fixes issue with trainers in different dimensions filling spawn caps)
+- Reformatted (spawner) debugging output
+- Reworked spawner system: Trainers now despawn when far away/beeing unloaded (similar to hostile mobs)
 
 ***Fixed***
 
 - Potential crash if debugging is enabled in the server config
+
+***Removed***
+
+- Config option `despawnDelayTicks`
 
 ## [0.8.4-alpha] - 2024-06-10
 

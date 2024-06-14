@@ -105,6 +105,7 @@ public class TrainerCommands {
                 mob.setPos(player.blockPosition().above().getCenter().add(0, -0.5, 0));
                 mob.setTrainerId(context.getArgument("trainer", String.class));
                 level.addFreshEntity(mob);
+                RCTMod.get().getTrainerSpawner().register(mob);
             } catch(Exception e) {
                 ModCommon.LOG.error(e.getMessage(), e);
             }
@@ -122,6 +123,7 @@ public class TrainerCommands {
         mob.setPos(BlockPosArgument.getSpawnablePos(context, "at").getCenter().add(0, -0.5, 0));
         mob.setTrainerId(context.getArgument("trainer", String.class));
         level.addFreshEntity(mob);
+        RCTMod.get().getTrainerSpawner().register(mob);
         return 0;
     }
 

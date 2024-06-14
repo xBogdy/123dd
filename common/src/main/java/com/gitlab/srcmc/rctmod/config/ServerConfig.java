@@ -58,10 +58,6 @@ public class ServerConfig extends ForgeConfig implements IServerConfig {
             .comment("A global factor that determines if a spawn attempt for a trainer is made.")
             .defineInRange("globalSpawnChance", IServerConfig.super.globalSpawnChance(), 0, 1);
 
-        this.despawnDelayTicksValue = builder
-            .comment("Number of ticks after which a trainer will despawn if far away from players. Trainers that cannot battle anymore will despawn immediately if far away.")
-            .defineInRange("despawnDelayTicks", IServerConfig.super.despawnDelayTicks(), 1, Integer.MAX_VALUE - 1);
-
         this.spawnIntervalTicksValue = builder
             .comment("The interval in ticks at which a spawn attempt is made per player.")
             .defineInRange("spawnIntervalTicks", IServerConfig.super.spawnIntervalTicks(), 1, Integer.MAX_VALUE - 1);
@@ -127,11 +123,6 @@ public class ServerConfig extends ForgeConfig implements IServerConfig {
     @Override
     public double globalSpawnChance() {
         return this.globalSpawnChanceValue.get();
-    }
-
-    @Override
-    public int despawnDelayTicks() {
-        return this.despawnDelayTicksValue.get();
     }
 
     @Override

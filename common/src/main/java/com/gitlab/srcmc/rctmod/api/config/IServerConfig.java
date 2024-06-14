@@ -37,15 +37,6 @@ public interface IServerConfig extends IForgeConfig {
     default int spawnIntervalTicks() { return 2400; }
 
     /**
-     * Number of ticks after which a trainer will despawn if far away from players.
-     * Trainers that cannot battle anymore will despawn immediately if far away.
-     * 
-     * range [1, inf]
-     * default 5000
-     */
-    default int despawnDelayTicks() { return 5000; }
-
-    /**
      * The min horizontal distance a trainer can spawn from players.
      * 
      * range [1, inf]

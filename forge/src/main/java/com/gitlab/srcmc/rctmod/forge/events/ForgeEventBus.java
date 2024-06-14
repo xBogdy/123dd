@@ -29,6 +29,7 @@ import com.gitlab.srcmc.rctmod.forge.network.packets.S2CPlayerState;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.TickEvent.Phase;
 import net.minecraftforge.event.TickEvent.PlayerTickEvent;
 import net.minecraftforge.event.server.ServerStartedEvent;
@@ -42,6 +43,7 @@ public class ForgeEventBus {
     @SubscribeEvent
     static void onServerStarted(ServerStartedEvent event) {
         CobblemonHandler.registerTrainers();
+        RCTMod.get().getTrainerSpawner().init(event.getServer().overworld());
     }
 
     @SubscribeEvent

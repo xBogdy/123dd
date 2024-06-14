@@ -19,27 +19,25 @@ package com.gitlab.srcmc.rctmod.api.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
+import com.gitlab.srcmc.rctmod.api.data.save.collection.SavedStringIntegerMap;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
 
 public class TrainerSpawner {
     private static float KEY_TRAINER_SPAWN_WEIGHT_FACTOR = 60;
 
-    private static class SpawnCandidate {
+    private class SpawnCandidate {
         public final String id;
         public final double weight;
 
@@ -48,51 +46,151 @@ public class TrainerSpawner {
             this.weight = weight;
         }
     }
+
+    private Map<String, Integer> spawns = new HashMap<>();
+    private Map<String, Integer> names = new HashMap<>();
+    private Map<String, Integer> playerSpawns = new HashMap<>();
     
-    private Map<ResourceKey<Level>, Map<UUID, Set<String>>> spawnedFor = new HashMap<>();
-    private Map<ResourceKey<Level>, Set<String>> spawnedTotal = new HashMap<>();
+    private Map<String, Integer> persistentSpawns;
+    private Map<String, Integer> persistentNames;
+    private Map<String, Integer> persistentPlayerSpawns;
 
-    public void registerMob(TrainerMob mob) {
-        var originPlayer = mob.getOriginPlayer();
-        var trainer = RCTMod.get().getTrainerManager().getData(mob).getTeam().getDisplayName();
-        var dim = mob.level().dimension();
-        this.getSpawnedTotal(dim).add(trainer);
+    public void init(ServerLevel level) {
+        this.spawns.clear();
+        this.names.clear();
+        this.playerSpawns.clear();
+        
+        this.persistentSpawns = level.getDataStorage().computeIfAbsent(
+            SavedStringIntegerMap::of,
+            SavedStringIntegerMap::new,
+            SavedStringIntegerMap.filePath("spawn.uuids"));
 
-        if(originPlayer != null) {
-            this.getSpawnedFor(originPlayer, dim).add(trainer);
+        this.persistentNames = level.getDataStorage().computeIfAbsent(
+            SavedStringIntegerMap::of,
+            SavedStringIntegerMap::new,
+            SavedStringIntegerMap.filePath("spawn.names"));
+
+        this.persistentPlayerSpawns = level.getDataStorage().computeIfAbsent(
+            SavedStringIntegerMap::of,
+            SavedStringIntegerMap::new,
+            SavedStringIntegerMap.filePath("spawn.counts"));
+
+        if(RCTMod.get().getServerConfig().logSpawning()) {
+            ModCommon.LOG.info("Initialized trainer spawner" + this.persistentSpawns.keySet().stream().reduce(" ", (u1, u2) -> u1 + " " + u2));
         }
     }
 
-    public void unregisterMob(TrainerMob mob) {
-        var trainer = RCTMod.get().getTrainerManager().getData(mob).getTeam().getDisplayName();
-        this.getSpawnedTotal(mob.level().dimension()).remove(trainer);
-        this.detachMobFromOrigin(mob);
-    }
+    public void register(TrainerMob mob) {
+        var spawns = mob.isPersistenceRequired() ? this.persistentSpawns : this.spawns;
 
-    public void detachMobFromOrigin(TrainerMob mob) {
-        var originPlayer = mob.getOriginPlayer();
-        
-        if(originPlayer != null) {
-            var trainer = RCTMod.get().getTrainerManager().getData(mob).getTeam().getDisplayName();
-            var dim = mob.level().dimension();
+        if(!spawns.containsKey(mob.getStringUUID())) {
+            var name = RCTMod.get().getTrainerManager().getData(mob).getTeam().getDisplayName();
+            var names = mob.isPersistenceRequired() ? this.persistentNames : this.names;
+            var originPlayer = mob.getOriginPlayer();
+            var playerSpawns = mob.isPersistenceRequired() ? this.persistentPlayerSpawns : this.playerSpawns;
 
-            if(this.getSpawnedFor(originPlayer, dim).remove(trainer)) {
-                var config = RCTMod.get().getServerConfig();
-                
-                if(config.logSpawning()) {
-                    var player = mob.level().getPlayerByUUID(originPlayer);
+            if(originPlayer != null) {
+                playerSpawns.compute(originPlayer.toString(), (key, value) -> value == null ? 1 : value + 1);
+            }
 
-                    ModCommon.LOG.info(String.format("Detached Trainer: %s\n - Target Player: %s\n - Dimension: %s\n - Local Spawn Cap: %d/%d\n - Global Spawn Cap: %d/%d",
-                        mob.getTrainerId(),
-                        player != null ? player.getDisplayName().getString() : originPlayer.toString(),
-                        dim.location().getPath(),
-                        this.getSpawnedFor(originPlayer, dim).size(),
-                        config.maxTrainersPerPlayer(),
-                        this.getSpawnedTotal(dim).size(),
-                        config.maxTrainersTotal()));
-                }
+            names.compute(name, (key, value) -> value == null ? 1 : value + 1);
+            spawns.put(mob.getStringUUID(), 0);
+
+            var config = RCTMod.get().getServerConfig();
+
+            if(config.logSpawning()) {
+                ModCommon.LOG.info(String.format("Registered%strainer '%s' (%s) to spawner, attached to %s (%d/%d), (%d/%d)",
+                    mob.isPersistenceRequired() ? " persistent " : " ",
+                    mob.getTrainerId(), mob.getStringUUID(), originPlayer,
+                    this.getSpawnCount(originPlayer), config.maxTrainersPerPlayer(),
+                    this.getSpawnCount(), config.maxTrainersTotal()));
             }
         }
+    }
+
+    public void unregister(TrainerMob mob) {
+        var spawns = mob.isPersistenceRequired() ? this.persistentSpawns : this.spawns;
+
+        if(spawns.containsKey(mob.getStringUUID())) {
+            var name = RCTMod.get().getTrainerManager().getData(mob).getTeam().getDisplayName();
+            var names = mob.isPersistenceRequired() ? this.persistentNames : this.names;
+            var originPlayer = mob.getOriginPlayer();
+            var playerSpawns = mob.isPersistenceRequired() ? this.persistentPlayerSpawns : this.playerSpawns;
+
+            if(originPlayer != null) {
+                playerSpawns.compute(originPlayer.toString(), (key, value) -> value == 1 ? null : value - 1);
+            }
+
+            names.compute(name, (key, value) -> value == 1 ? null : value - 1);
+            spawns.remove(mob.getStringUUID());
+
+            var config = RCTMod.get().getServerConfig();
+
+            if(config.logSpawning()) {
+                ModCommon.LOG.info(String.format("Unregistered%strainer '%s' (%s) from spawner, attached to %s (%d/%d), (%d/%d)",
+                    mob.isPersistenceRequired() ? " persistent " : " ",
+                    mob.getTrainerId(), mob.getStringUUID(), originPlayer,
+                    this.getSpawnCount(originPlayer), config.maxTrainersPerPlayer(),
+                    this.getSpawnCount(), config.maxTrainersTotal()));
+            }
+        }
+    }
+
+    public boolean isRegistered(TrainerMob mob) {
+        return this.spawns.containsKey(mob.getStringUUID());
+    }
+
+    public void notifyChangeTrainerId(TrainerMob mob, String newTrainerId) {
+        var spawns = mob.isPersistenceRequired() ? this.persistentSpawns : this.spawns;
+
+        if(spawns.containsKey(mob.getStringUUID())) {
+            ModCommon.LOG.info(String.format("Changing trainer id '%s' -> '%s' (%s)", mob.getTrainerId(), newTrainerId, mob.getStringUUID()));
+
+            var name = RCTMod.get().getTrainerManager().getData(mob).getTeam().getDisplayName();
+            var newName = RCTMod.get().getTrainerManager().getData(newTrainerId).getTeam().getDisplayName();
+            var names = mob.isPersistenceRequired() ? this.persistentNames : this.names;
+            names.compute(name, (key, value) -> value == 1 ? null : value - 1);
+            names.compute(newName, (key, value) -> value == null ? 1 : value + 1);
+        }
+    }
+
+    public void notifyChangeOriginPlayer(TrainerMob mob, UUID newOriginPlayer) {
+        var spawns = mob.isPersistenceRequired() ? this.persistentSpawns : this.spawns;
+
+        if(spawns.containsKey(mob.getStringUUID())) {
+            ModCommon.LOG.info(String.format("Changing origin player '%s' -> '%s' (%s)", mob.getOriginPlayer(), newOriginPlayer, mob.getStringUUID()));
+
+            var originPlayer = mob.getOriginPlayer();
+            var playerSpawns = mob.isPersistenceRequired() ? this.persistentPlayerSpawns : this.playerSpawns;
+
+            if(originPlayer != null) {
+                playerSpawns.compute(originPlayer.toString(), (key, value) -> value == 1 ? null : value - 1);
+            }
+
+            if(newOriginPlayer != null) {
+                playerSpawns.compute(newOriginPlayer.toString(), (key, value) -> value == null ? 1 : value + 1);
+            }
+        }
+    }
+
+    public void notifyChangePersistence(TrainerMob mob, boolean newPersistence) {
+        if(this.spawns.containsKey(mob.getStringUUID())) {
+            this.unregister(mob);
+            mob.setPersistent(newPersistence);
+            this.register(mob);
+        }
+    }
+
+    public int getSpawnCount() {
+        return this.spawns.size() + this.persistentSpawns.size();
+    }
+
+    public int getSpawnCount(UUID playerId) {
+        if(playerId != null) {
+            return this.playerSpawns.getOrDefault(playerId.toString(), 0) + this.persistentPlayerSpawns.getOrDefault(playerId, 0);
+        }
+
+        return 0;
     }
 
     public void attemptSpawnFor(Player player) {
@@ -102,13 +200,8 @@ public class TrainerSpawner {
             return;
         }
 
-        var dim = player.level().dimension();
-        var spawnedTotal = this.getSpawnedTotal(dim);
-
-        if(spawnedTotal.size() < config.maxTrainersTotal()) {
-            var spawnedFor = this.getSpawnedFor(player.getUUID(), dim);
-
-            if(spawnedFor.size() < config.maxTrainersPerPlayer()) {
+        if(this.getSpawnCount() < config.maxTrainersTotal()) {
+            if(this.getSpawnCount(player.getUUID()) < config.maxTrainersPerPlayer()) {
                 var pos = this.nextPos(player);
                 
                 if(pos != null) {
@@ -122,14 +215,8 @@ public class TrainerSpawner {
         }
     }
 
-    private Set<String> getSpawnedFor(UUID originPlayer, ResourceKey<Level> dim) {
-        return this.spawnedFor
-            .computeIfAbsent(dim, key -> new HashMap<>())
-            .computeIfAbsent(originPlayer, key -> new HashSet<>());
-    }
-
-    private Set<String> getSpawnedTotal(ResourceKey<Level> dim) {
-        return this.spawnedTotal.computeIfAbsent(dim, key -> new HashSet<>());
+    private boolean isUnique(String name) {
+        return !this.names.containsKey(name) && !this.persistentNames.containsKey(name);
     }
 
     private void spawnFor(Player player, String trainerId, BlockPos pos) {
@@ -140,22 +227,19 @@ public class TrainerSpawner {
         mob.setTrainerId(trainerId);
         mob.setOriginPlayer(player.getUUID());
         level.addFreshEntity(mob);
+        this.register(mob);
 
         if(config.logSpawning()) {
+            var trainer = RCTMod.get().getTrainerManager().getData(mob).getTeam().getDisplayName();
             var biome = level.getBiome(mob.blockPosition());
             var dim = level.dimension();
 
-            ModCommon.LOG.info(String.format("Spawned Trainer: %s\n - Location: (%d, %d, %d)\n - Target Player: %s\n - Dimension: %s\n - Local Spawn Cap: %d/%d\n - Global Spawn Cap: %d/%d\n - Biome Tags:%s",
-                mob.getTrainerId(),
+            ModCommon.LOG.info(String.format("Spawned trainer '%s' (%s) at (%d, %d, %d), %s:%s",
+                trainer, mob.getTrainerId(),
                 mob.blockPosition().getX(),
                 mob.blockPosition().getY(),
                 mob.blockPosition().getZ(),
-                player.getDisplayName().getString(),
                 dim.location().getPath(),
-                this.getSpawnedFor(player.getUUID(), dim).size(),
-                config.maxTrainersPerPlayer(),
-                this.getSpawnedTotal(dim).size(),
-                config.maxTrainersTotal(),
                 biome.tags().map(t -> t.location().getPath()).reduce("", (t1, t2) -> t1 + " " + t2)));
         }
     }
@@ -214,7 +298,7 @@ public class TrainerSpawner {
             .map(t -> t.location().getNamespace() + ":" + t.location().getPath())
             .collect(Collectors.toSet());
 
-        // given tags without namespace match with from any namespace
+        // given tags without namespace match with any namespace
         level.getBiome(pos).tags()
             .map(t -> t.location().getPath())
             .forEach(t -> tags.add(t));
@@ -224,7 +308,7 @@ public class TrainerSpawner {
         if(config.biomeTagBlacklist().stream().noneMatch(tags::contains)
         && (config.biomeTagWhitelist().isEmpty() || config.biomeTagWhitelist().stream().anyMatch(tags::contains))) {
             RCTMod.get().getTrainerManager().getAllData()
-                .filter(e -> this.spawnedTotal.values().stream().noneMatch(set -> set.contains(e.getValue().getTeam().getDisplayName()))
+                .filter(e -> this.isUnique(e.getKey())
                     && e.getValue().getBiomeTagBlacklist().stream().noneMatch(tags::contains)
                     && (e.getValue().getBiomeTagWhitelist().isEmpty() || e.getValue().getBiomeTagWhitelist().stream().anyMatch(tags::contains)))
                 .forEach(e -> {

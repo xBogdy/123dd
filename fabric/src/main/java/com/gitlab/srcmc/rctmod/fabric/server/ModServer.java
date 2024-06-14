@@ -48,6 +48,7 @@ public class ModServer {
 
     static void onServerStarted(MinecraftServer server) {
         CobblemonHandler.registerTrainers();
+        RCTMod.get().getTrainerSpawner().init(server.overworld());
     }
 
     static void onServerWorldTick(ServerLevel level) {

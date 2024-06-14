@@ -18,7 +18,6 @@
 package com.gitlab.srcmc.rctmod.world.entities;
 
 import java.util.UUID;
-
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.TrainerBattle;
@@ -71,24 +70,20 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 
 public class TrainerMob extends PathfinderMob implements Npc {
-    private static final int DISCARD_DELAY = 100;
-
     private static final EntityDataAccessor<String> DATA_TRAINER_ID = SynchedEntityData.defineId(TrainerMob.class, EntityDataSerializers.STRING);
     private static final EntityType<TrainerMob> TYPE = EntityType.Builder
         .of(TrainerMob::new, MobCategory.MISC)
         .canSpawnFarFromPlayer()
         .sized(0.6F, 1.95F).build("trainer");
 
-    private int despawnDelay, discardDelay, cooldown, wins, defeats;
+    private int cooldown, wins, defeats;
     private BlockPos wanderTarget;
     private Player opponent; // TODO: not really required anymore
     private UUID originPlayer;
+    private boolean persistent;
 
     protected TrainerMob(EntityType<? extends PathfinderMob> entityType, Level level) {
         super(entityType, level);
-        var config = RCTMod.get().getServerConfig();
-        this.despawnDelay = config.despawnDelayTicks();
-        this.discardDelay = DISCARD_DELAY;
         this.udpateCustomName();
     }
 
@@ -241,14 +236,12 @@ public class TrainerMob extends PathfinderMob implements Npc {
             var currentId = this.getTrainerId();
 
             if((currentId == null && trainerId != null) || !currentId.equals(trainerId)) {
-                var spawner = RCTMod.get().getTrainerSpawner();
-                spawner.unregisterMob(this);
+                RCTMod.get().getTrainerSpawner().notifyChangeTrainerId(this, trainerId);
                 this.entityData.set(DATA_TRAINER_ID, trainerId);
                 this.udpateCustomName();
-                spawner.registerMob(this);
 
                 if(!RCTMod.get().getTrainerManager().isValidId(trainerId)) {
-                    ModCommon.LOG.error(String.format("Invalid trainer id '%s'", trainerId));
+                    ModCommon.LOG.error(String.format("Invalid trainer id '%s' (%s)", trainerId, this.getStringUUID()));
                 }
             }
         }
@@ -296,7 +289,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
             }
 
             if(this.getDefeats() >= mobTr.getMaxTrainerDefeats() || this.getWins() >= mobTr.getMaxTrainerWins()) {
-                RCTMod.get().getTrainerSpawner().detachMobFromOrigin(this);
+                this.setOriginPlayer(null);
             }
         }
     }
@@ -317,7 +310,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
-        this.entityData.define(DATA_TRAINER_ID, "");
+        this.entityData.define(DATA_TRAINER_ID, "invalid");
     }
 
     @Override
@@ -335,6 +328,14 @@ public class TrainerMob extends PathfinderMob implements Npc {
                     this.setOpponent(null);
                     this.wins++;
                 }
+            }
+
+            if(this.isPersistenceRequired() && !RCTMod.get().getTrainerSpawner().isRegistered(this)) {
+                this.setPersistent(false);
+
+                ModCommon.LOG.error(String.format(
+                    "Disabled persistence of unregistered trainer '%s' (%s)",
+                    this.getTrainerId(), this.getStringUUID()));
             }
         }
     }
@@ -368,7 +369,14 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
     @Override
     public void remove(RemovalReason reason) {
-        RCTMod.get().getTrainerSpawner().unregisterMob(this);
+        if(RCTMod.get().getServerConfig().logSpawning()) {
+            ModCommon.LOG.info(String.format("Removed trainer '%s' (%s): %s", this.getTrainerId(), this.getStringUUID(), reason.toString()));
+        }
+
+        if(reason == RemovalReason.DISCARDED || reason == RemovalReason.KILLED) {
+            RCTMod.get().getTrainerSpawner().unregister(this);
+        }
+
         super.remove(reason);
     }
 
@@ -381,8 +389,43 @@ public class TrainerMob extends PathfinderMob implements Npc {
         }
     }
 
+    public void setPersistent(boolean persistent) {
+        if(this.persistent != persistent) {
+            var spawner = RCTMod.get().getTrainerSpawner();
+
+            if(!persistent || spawner.isRegistered(this)) {
+                RCTMod.get().getTrainerSpawner().notifyChangePersistence(this, persistent);
+                this.persistent = persistent;
+            } else {
+                ModCommon.LOG.error(String.format("Cannot change persistence of unregistered trainer '%s' (%s)",
+                    this.getTrainerId(),
+                    this.getStringUUID()));
+            }
+        }
+    }
+
+    @Override
+    public boolean isPersistenceRequired() {
+        return this.persistent;
+    }
+
+    @Override
+    public boolean shouldBeSaved() {
+        return this.isPersistenceRequired();
+    }
+
+    @Override
+    public boolean isAlwaysTicking() {
+        return true;
+    }
+
     @Override
     public boolean removeWhenFarAway(double d) {
+        return true;
+    }
+
+    @Override
+    public boolean canChangeDimensions() {
         return false;
     }
 
@@ -400,50 +443,10 @@ public class TrainerMob extends PathfinderMob implements Npc {
         return this.cooldown;
     }
 
-    public int getDespawnDelay() {
-        return this.despawnDelay;
-    }
-
-    @Override
-    public void aiStep() {
-        super.aiStep();
-        var level = this.level();
-
-        if(!level.isClientSide) {
-            this.maybeDespawn();
-        }
-    }
-
-    private void maybeDespawn() {
-        if(!this.isInBattle()) {
-            if(this.despawnDelay == 0 || (this.despawnDelay > 0 && --this.despawnDelay == 0) || !this.canBattle()) {
-                var config = RCTMod.get().getServerConfig();
-                var level = this.level();
-
-                if(level.getNearestPlayer(this, config.minHorizontalDistanceToPlayers()) == null) {
-                    if(this.discardDelay < 0 || --this.discardDelay < 0) {
-                        this.discard();
-
-                        if(config.logSpawning()) {
-                            var player = level.getPlayerByUUID(this.originPlayer);
-                            
-                            ModCommon.LOG.info(String.format("Despawning Trainer: %s (targeted at %s)",
-                                this.getTrainerId(),
-                                player != null ? player.getDisplayName().getString() : originPlayer.toString()));
-                        }
-                    }
-                } else {
-                    this.discardDelay = DISCARD_DELAY;
-                }
-            }
-        }
-    }
-
     public void setOriginPlayer(UUID originPlayer) {
         if((this.originPlayer == null && originPlayer != null) || !this.originPlayer.equals(originPlayer)) {
-            RCTMod.get().getTrainerSpawner().unregisterMob(this);
+            RCTMod.get().getTrainerSpawner().notifyChangeOriginPlayer(this, originPlayer);
             this.originPlayer = originPlayer;
-            RCTMod.get().getTrainerSpawner().registerMob(this);
         }
     }
 
@@ -462,11 +465,11 @@ public class TrainerMob extends PathfinderMob implements Npc {
     @Override
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
-        compoundTag.putInt("DespawnDelay", this.getDespawnDelay());
         compoundTag.putInt("Defeats", this.getDefeats());
         compoundTag.putInt("Wins", this.getWins());
         compoundTag.putInt("Cooldown", this.getCooldown());
         compoundTag.putString("TrainerId", this.getTrainerId());
+        compoundTag.putBoolean("Persistent", this.isPersistenceRequired());
 
         if(this.originPlayer != null) {
             compoundTag.putUUID("OriginPlayer", this.originPlayer);
@@ -481,10 +484,6 @@ public class TrainerMob extends PathfinderMob implements Npc {
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
 
-        if(compoundTag.contains("DespawnDelay", 99)) {
-            this.despawnDelay = compoundTag.getInt("DespawnDelay");
-        }
-
         if(compoundTag.contains("Defeats")) {
             this.defeats = compoundTag.getInt("Defeats");
         }
@@ -497,16 +496,20 @@ public class TrainerMob extends PathfinderMob implements Npc {
             this.cooldown = compoundTag.getInt("Cooldown");
         }
 
-        if(compoundTag.contains("OriginPlayer")) {
-            this.setOriginPlayer(compoundTag.getUUID("OriginPlayer"));
-        }
-
         if(compoundTag.contains("WanderTarget")) {
             this.wanderTarget = NbtUtils.readBlockPos(compoundTag.getCompound("WanderTarget"));
         }
 
         if(compoundTag.contains("TrainerId")) {
             this.setTrainerId(compoundTag.getString("TrainerId"));
+        }
+
+        if(compoundTag.contains("OriginPlayer")) {
+            this.setOriginPlayer(compoundTag.getUUID("OriginPlayer"));
+        }
+
+        if(compoundTag.contains("Persistent")) {
+            this.setPersistent(compoundTag.getBoolean("Persistent"));
         }
     }
 
