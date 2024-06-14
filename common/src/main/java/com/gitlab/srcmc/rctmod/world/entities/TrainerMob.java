@@ -189,8 +189,8 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
         return !this.isInBattle()
             && this.getCooldown() == 0
-            && this.getDefeats() < mobTr.getMaxTrainerDefeats()
-            && this.getWins() < mobTr.getMaxTrainerWins();
+            && mobTr.getMaxTrainerDefeats() > 0 && this.getDefeats() < mobTr.getMaxTrainerDefeats()
+            && mobTr.getMaxTrainerWins() > 0 && this.getWins() < mobTr.getMaxTrainerWins();
     }
 
     private void udpateCustomName() {
