@@ -39,7 +39,7 @@ import net.minecraftforge.fml.config.ModConfig;
 
 public class ModServer {
     public static void init() {
-        ServerLifecycleEvents.SERVER_STARTING.register(ModServer::onServerStarted);
+        ServerLifecycleEvents.SERVER_STARTED.register(ModServer::onServerStarted);
         ServerTickEvents.START_WORLD_TICK.register(ModServer::onServerWorldTick);
         ServerTickEvents.START_SERVER_TICK.register(ModServer::onServerTick);
         ForgeConfigRegistry.INSTANCE.register(ModCommon.MOD_ID, ModConfig.Type.SERVER, RCTMod.get().getServerConfig().getSpec());
