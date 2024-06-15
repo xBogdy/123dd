@@ -212,13 +212,12 @@ public class TrainerSpawner {
     }
 
     public int getSpawnCount() {
-        return this.spawns.size() + this.persistentSpawns.size();
+        return this.spawns.size();
     }
 
     public int getSpawnCount(UUID playerId) {
         if(playerId != null) {
-            return this.playerSpawns.getOrDefault(playerId.toString(), 0)
-                + this.persistentPlayerSpawns.getOrDefault(playerId.toString(), 0);
+            return this.playerSpawns.getOrDefault(playerId.toString(), 0);
         }
 
         return 0;

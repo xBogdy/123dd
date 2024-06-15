@@ -7,7 +7,7 @@
 - Command `unregister_persistent`: Emergency command for server administrators to unregister persistent trainers manually
 - Data pack option for trainers to win/loose an infinite amount of times (set `maxTrainerWins` and/or `maxTrainerDefeats` to `0`)
 - Defeat count loot condition for data packs
-- `Persistent` tag for trainers (`0` (disabled) by default). Persistent trainers will **never** despawn. Care must be taken when enabling this tag for trainers since other trainers will not spawn as long as another trainer with the same name exists.
+- `Persistent` tag for trainers (`0` (disabled) by default). Persistent trainers will **never** despawn and do not count towards the spawn caps. Care must be taken when enabling this tag for trainers since other trainers will not spawn as long as another trainer with the same name exists.
 
 ***Changed***
 
