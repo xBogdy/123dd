@@ -14,7 +14,6 @@
           "conditions": [
             {
               "condition": "rctmod:level_range",
-              "entity": "this",
               "range": {
                 "min": 0,
                 "max": 100
@@ -29,7 +28,6 @@
           "conditions": [
             {
               "condition": "rctmod:level_range",
-              "entity": "this",
               "range": {
                 "min": 0,
                 "max": 100
@@ -44,7 +42,6 @@
           "conditions": [
             {
               "condition": "rctmod:level_range",
-              "entity": "this",
               "range": {
                 "min": 16,
                 "max": 100
@@ -59,7 +56,6 @@
           "conditions": [
             {
               "condition": "rctmod:level_range",
-              "entity": "this",
               "range": {
                 "min": 16,
                 "max": 100
@@ -74,7 +70,6 @@
           "conditions": [
             {
               "condition": "rctmod:level_range",
-              "entity": "this",
               "range": {
                 "min": 38,
                 "max": 100
@@ -89,7 +84,6 @@
           "conditions": [
             {
               "condition": "rctmod:level_range",
-              "entity": "this",
               "range": {
                 "min": 38,
                 "max": 100
@@ -104,7 +98,6 @@
           "conditions": [
             {
               "condition": "rctmod:level_range",
-              "entity": "this",
               "range": {
                 "min": 50,
                 "max": 100
@@ -119,7 +112,6 @@
           "conditions": [
             {
               "condition": "rctmod:level_range",
-              "entity": "this",
               "range": {
                 "min": 50,
                 "max": 100
@@ -134,7 +126,6 @@
           "conditions": [
             {
               "condition": "rctmod:level_range",
-              "entity": "this",
               "range": {
                 "min": 70,
                 "max": 100
@@ -149,7 +140,6 @@
           "conditions": [
             {
               "condition": "rctmod:level_range",
-              "entity": "this",
               "range": {
                 "min": 70,
                 "max": 100

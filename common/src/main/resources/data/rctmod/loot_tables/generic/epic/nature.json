@@ -9,7 +9,6 @@
           "conditions": [
             {
               "condition": "rctmod:level_range",
-              "entity": "this",
               "range": {
                 "min": 0,
                 "max": 23
@@ -23,7 +22,6 @@
           "conditions": [
             {
               "condition": "rctmod:level_range",
-              "entity": "this",
               "range": {
                 "min": 24,
                 "max": 43
@@ -37,7 +35,6 @@
           "conditions": [
             {
               "condition": "rctmod:level_range",
-              "entity": "this",
               "range": {
                 "min": 44,
                 "max": 100
