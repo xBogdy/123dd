@@ -32,25 +32,25 @@ public interface IServerConfig extends IForgeConfig {
      * The interval in ticks at which a spawn attempt is made per player.
      * 
      * range [1, inf]
-     * default 2400
+     * default 1200
      */
-    default int spawnIntervalTicks() { return 2400; }
+    default int spawnIntervalTicks() { return 1200; }
 
     /**
      * The min horizontal distance a trainer can spawn from players.
      * 
      * range [1, inf]
-     * default 30
+     * default 25
      */
-    default int minHorizontalDistanceToPlayers() { return 30; }
+    default int minHorizontalDistanceToPlayers() { return 25; }
 
     /**
      * The max horizontal distance a trainer can spawn from players.
      * 
      * range [1, inf]
-     * default 80
+     * default 70
      */
-    default int maxHorizontalDistanceToPlayers() { return 80; }
+    default int maxHorizontalDistanceToPlayers() { return 70; }
 
     /**
      * The max vertical distance a trainer can spawn from players.
@@ -72,9 +72,9 @@ public interface IServerConfig extends IForgeConfig {
      * Total trainer spawn cap.
      * 
      * range [0, inf]
-     * default 15
+     * default 20
      */
-    default int maxTrainersTotal() { return 15; }
+    default int maxTrainersTotal() { return 20; }
 
     /**
      * The maximum level difference between the strongest pokemon in the team of a

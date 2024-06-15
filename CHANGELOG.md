@@ -4,16 +4,20 @@
 
 ***Added***
 
-- Command `unregister_persistent`: Emergency command for server administrators to unregister persistent trainers manually
+- Command `unregister_persistent`: Utility command for server administrators to unregister persistent trainers manually
 - Data pack option for trainers to win/loose an infinite amount of times (set `maxTrainerWins` and/or `maxTrainerDefeats` to `0`)
-- Defeat count loot condition for data packs
-- `Persistent` tag for trainers (`0` (disabled) by default). Persistent trainers will **never** despawn and do not count towards the spawn caps. Care must be taken when enabling this tag for trainers since other trainers will not spawn as long as another trainer with the same name exists.
+- Defeat count loot condition for data packs (e.g. have trainers drop special loot on first defeat)
+- `Persistent` tag for trainers (`0/false` by default). Persistent trainers will **never** despawn and do not count towards the spawn caps. Care must be taken when enabling this tag for trainers since other trainers will not spawn as long as another trainer with the same name exists.
 
 ***Changed***
 
 - Reformatted (spawner) debugging output
 - Removed redundant `"this"` property of defeat count condition for achievements
 - Reworked spawner system: Trainers now despawn when far away/beeing unloaded (similar to hostile mobs)
+- Server config: Lowered default `maxHorizontalDistanceToPlayers` from `80` to `70`
+- Server config: Lowered default `minHorizontalDistanceToPlayers` from `30` to `25`
+- Server config: Lowered default `spawnIntervalTicks` from `2400` to `1200` (1 min)
+- Server config: Raised default `maxTrainersTotal` from `15` to `20`
 
 ***Fixed***
 
