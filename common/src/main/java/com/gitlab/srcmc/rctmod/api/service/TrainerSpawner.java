@@ -137,7 +137,7 @@ public class TrainerSpawner {
     }
 
     public boolean isRegistered(TrainerMob mob) {
-        return this.spawns.containsKey(mob.getStringUUID());
+        return this.spawns.containsKey(mob.getStringUUID()) || this.persistentSpawns.containsKey(mob.getStringUUID());
     }
 
     public void notifyChangeTrainerId(TrainerMob mob, String newTrainerId) {
