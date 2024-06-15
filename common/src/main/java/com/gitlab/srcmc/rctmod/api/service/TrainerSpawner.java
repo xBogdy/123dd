@@ -76,7 +76,7 @@ public class TrainerSpawner {
             SavedStringIntegerMap.filePath("spawn.counts"));
 
         if(RCTMod.get().getServerConfig().logSpawning()) {
-            ModCommon.LOG.info("Initialized trainer spawner" + this.persistentSpawns.keySet().stream().reduce(" ", (u1, u2) -> u1 + " " + u2));
+            ModCommon.LOG.info("Initialized trainer spawner" + this.persistentSpawns.keySet().stream().reduce("", (u1, u2) -> u1 + " " + u2));
         }
     }
 
@@ -136,6 +136,12 @@ public class TrainerSpawner {
         }
     }
 
+    public void unregisterPersistent(String mobUUID) {
+        this.persistentNames.remove(mobUUID);
+        this.persistentSpawns.remove(mobUUID);
+        this.persistentPlayerSpawns.remove(mobUUID);
+    }
+
     public boolean isRegistered(TrainerMob mob) {
         return this.spawns.containsKey(mob.getStringUUID()) || this.persistentSpawns.containsKey(mob.getStringUUID());
     }
@@ -187,7 +193,8 @@ public class TrainerSpawner {
 
     public int getSpawnCount(UUID playerId) {
         if(playerId != null) {
-            return this.playerSpawns.getOrDefault(playerId.toString(), 0) + this.persistentPlayerSpawns.getOrDefault(playerId, 0);
+            return this.playerSpawns.getOrDefault(playerId.toString(), 0)
+                + this.persistentPlayerSpawns.getOrDefault(playerId.toString(), 0);
         }
 
         return 0;

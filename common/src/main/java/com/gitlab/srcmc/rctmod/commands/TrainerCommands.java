@@ -46,6 +46,10 @@ public class TrainerCommands {
         dispatcher.register(Commands.literal(ModCommon.MOD_ID)
             .requires(css -> css.hasPermission(1))
             .then(Commands.literal("trainer")
+                .then(Commands.literal("unregister_persistent")
+                    .requires(css -> css.hasPermission(2))
+                    .then(Commands.argument("mobUUID", StringArgumentType.string())
+                        .executes(TrainerCommands::mob_unregister_persistent)))
                 .then(Commands.literal("spawn_for")
                     .requires(css -> css.hasPermission(2))
                     .executes(TrainerCommands::mob_spawn_for)
@@ -209,5 +213,10 @@ public class TrainerCommands {
 
         context.getSource().sendSuccess(() -> Component.literal(String.valueOf(required_defeats)), false);
         return required_defeats;
+    }
+
+    private static int mob_unregister_persistent(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        RCTMod.get().getTrainerSpawner().unregisterPersistent(context.getArgument("mobUUID", String.class));
+        return 0;
     }
 }
