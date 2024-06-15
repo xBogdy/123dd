@@ -1,12 +1,13 @@
 # Changelog
 
-## [0.9.x] - 2024-06-14
+## [0.9.x] - 2024-06-15
 
 ***Added***
 
+- Command `unregister_persistent`: Emergency command for server administrators to unregister persistent trainers manually
 - Data pack option for trainers to win/loose an infinite amount of times (set `maxTrainerWins` and/or `maxTrainerDefeats` to `0`)
 - Defeat count loot condition for data packs
-- `Persistent` tag for trainers (`0` (disabled) by default). Persistent trainers will **never** despawn. Care must be taken when enabling this tag for trainers since other trainers will not spawn as long as another trainer with the same name exists. **If a persistent trainer happens to be lost (e.g. ends up somewhere in an unloaded section of your world and you don't know where that is) there is no way to remove such a trainer!**
+- `Persistent` tag for trainers (`0` (disabled) by default). Persistent trainers will **never** despawn. Care must be taken when enabling this tag for trainers since other trainers will not spawn as long as another trainer with the same name exists.
 
 ***Changed***
 
