@@ -32,6 +32,7 @@ import net.minecraft.util.GsonHelper;
 import net.minecraft.world.level.storage.loot.IntRange;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParam;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 
@@ -46,23 +47,19 @@ public class LevelRangeCondition implements LootItemCondition {
         public Serializer() {
         }
 
-        public void serialize(JsonObject jsonObject, LevelRangeCondition LevelRangeCondition, JsonSerializationContext jsonSerializationContext) {
-            jsonObject.add("entity", jsonSerializationContext.serialize(LevelRangeCondition.entityTarget));
-            jsonObject.add("range", jsonSerializationContext.serialize(LevelRangeCondition.range));
+        public void serialize(JsonObject jsonObject, LevelRangeCondition levelRangeCondition, JsonSerializationContext jsonSerializationContext) {
+            jsonObject.add("range", jsonSerializationContext.serialize(levelRangeCondition.range));
         }
 
         public LevelRangeCondition deserialize(JsonObject jsonObject, JsonDeserializationContext jsonDeserializationContext) {
-            var entityTarget = (LootContext.EntityTarget)GsonHelper.getAsObject(jsonObject, "entity", jsonDeserializationContext, LootContext.EntityTarget.class);
             var intRange = (IntRange) GsonHelper.getAsObject(jsonObject, "range", jsonDeserializationContext, IntRange.class);
-            return new LevelRangeCondition(entityTarget, intRange);
+            return new LevelRangeCondition(intRange);
         }
     }
 
-    final LootContext.EntityTarget entityTarget;
     final IntRange range;
 
-    LevelRangeCondition(LootContext.EntityTarget entityTarget, IntRange intRange) {
-        this.entityTarget = entityTarget;
+    LevelRangeCondition(IntRange intRange) {
         this.range = intRange;
     }
 
@@ -71,13 +68,11 @@ public class LevelRangeCondition implements LootItemCondition {
     }
 
     public Set<LootContextParam<?>> getReferencedContextParams() {
-        var params = new HashSet<>(this.range.getReferencedContextParams());
-        params.add(this.entityTarget.getParam());
-        return Collections.unmodifiableSet(params);
+        return Collections.unmodifiableSet(new HashSet<>(this.range.getReferencedContextParams()));
     }
 
     public boolean test(LootContext lootContext) {
-        if(lootContext.getParamOrNull(this.entityTarget.getParam()) instanceof TrainerMob mob) {
+        if(lootContext.getParamOrNull(LootContextParams.THIS_ENTITY) instanceof TrainerMob mob) {
             var teamLevel = RCTMod.get().getTrainerManager()
                 .getData(mob).getTeam().getMembers().stream()
                 .map(p -> p.getLevel()).max(Integer::compare).orElse(0);
@@ -88,9 +83,9 @@ public class LevelRangeCondition implements LootItemCondition {
         return false;
     }
 
-    public static LootItemCondition.Builder hasValue(LootContext.EntityTarget entityTarget, IntRange intRange) {
+    public static LootItemCondition.Builder hasValue(IntRange intRange) {
         return () -> {
-            return new LevelRangeCondition(entityTarget, intRange);
+            return new LevelRangeCondition(intRange);
         };
     }
 
