@@ -41,6 +41,7 @@ public class ModServer {
     public static void init() {
         ServerLifecycleEvents.SERVER_STARTING.register(ModServer::onServerStarted);
         ServerTickEvents.START_WORLD_TICK.register(ModServer::onServerWorldTick);
+        ServerTickEvents.START_SERVER_TICK.register(ModServer::onServerTick);
         ForgeConfigRegistry.INSTANCE.register(ModCommon.MOD_ID, ModConfig.Type.SERVER, RCTMod.get().getServerConfig().getSpec());
         ReloadListenerRegistry.register(PackType.SERVER_DATA, RCTMod.get().getTrainerManager());
         ServerPlayNetworking.registerGlobalReceiver(Packets.PLAYER_PING, ModServer::handleReceivedPlayerPing);
@@ -49,6 +50,10 @@ public class ModServer {
     static void onServerStarted(MinecraftServer server) {
         CobblemonHandler.registerTrainers();
         RCTMod.get().getTrainerSpawner().init(server.overworld());
+    }
+
+    static void onServerTick(MinecraftServer server) {
+        RCTMod.get().getTrainerSpawner().checkDespawns();
     }
 
     static void onServerWorldTick(ServerLevel level) {

@@ -19,8 +19,10 @@ package com.gitlab.srcmc.rctmod.api.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -55,10 +57,13 @@ public class TrainerSpawner {
     private Map<String, Integer> persistentNames;
     private Map<String, Integer> persistentPlayerSpawns;
 
+    private Set<TrainerMob> mobs = new HashSet<>();
+
     public void init(ServerLevel level) {
         this.spawns.clear();
         this.names.clear();
         this.playerSpawns.clear();
+        this.mobs.clear();
         
         this.persistentSpawns = level.getDataStorage().computeIfAbsent(
             SavedStringIntegerMap::of,
@@ -80,6 +85,21 @@ public class TrainerSpawner {
         }
     }
 
+    public void checkDespawns() {
+        var it = this.mobs.iterator();
+
+        while(it.hasNext()) {
+            var mob = it.next();
+
+            if(mob.isRemoved()) {
+                it.remove();
+            } else if(!mob.level().isLoaded(mob.blockPosition())) {
+                it.remove();
+                mob.discard();
+            }
+        }
+    }
+
     public void register(TrainerMob mob) {
         var spawns = mob.isPersistenceRequired() ? this.persistentSpawns : this.spawns;
 
@@ -95,6 +115,10 @@ public class TrainerSpawner {
 
             names.compute(name, (key, value) -> value == null ? 1 : value + 1);
             spawns.put(mob.getStringUUID(), 0);
+
+            if(!mob.isPersistenceRequired()) {
+                this.mobs.add(mob);
+            }
 
             var config = RCTMod.get().getServerConfig();
 

@@ -31,6 +31,7 @@ import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.TickEvent.Phase;
 import net.minecraftforge.event.TickEvent.PlayerTickEvent;
+import net.minecraftforge.event.TickEvent.ServerTickEvent;
 import net.minecraftforge.event.server.ServerStartedEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -43,6 +44,11 @@ public class ForgeEventBus {
     static void onServerStarted(ServerStartedEvent event) {
         CobblemonHandler.registerTrainers();
         RCTMod.get().getTrainerSpawner().init(event.getServer().overworld());
+    }
+
+    @SubscribeEvent
+    static void onServerTick(ServerTickEvent event) {
+        RCTMod.get().getTrainerSpawner().checkDespawns();
     }
 
     @SubscribeEvent
