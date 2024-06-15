@@ -391,16 +391,8 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
     public void setPersistent(boolean persistent) {
         if(this.persistent != persistent) {
-            var spawner = RCTMod.get().getTrainerSpawner();
-
-            if(!persistent || spawner.isRegistered(this)) {
-                RCTMod.get().getTrainerSpawner().notifyChangePersistence(this, persistent);
-                this.persistent = persistent;
-            } else {
-                ModCommon.LOG.error(String.format("Cannot change persistence of unregistered trainer '%s' (%s)",
-                    this.getTrainerId(),
-                    this.getStringUUID()));
-            }
+            RCTMod.get().getTrainerSpawner().notifyChangePersistence(this, persistent);
+            this.persistent = persistent;
         }
     }
 
