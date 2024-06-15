@@ -266,11 +266,18 @@ public class TrainerMob extends PathfinderMob implements Npc {
                         ChatUtils.reply(this, player, "battle_lost");
                     });
                 } else {
-                    battle.getInitiatorSidePlayers().forEach(player -> {
-                        ChatUtils.reply(this, player, "battle_lost");
-                    });
+                    var tm = RCTMod.get().getTrainerManager();
+                    var initiatorSidePlayer = battle.getInitiatorSidePlayers();
+                    Player minWinsPlayer = null;
 
-                    this.dropBattleLoot(mobTr.getLootTableResource());
+                    for(var player : initiatorSidePlayer) {
+                        ChatUtils.reply(this, player, "battle_lost");
+                        minWinsPlayer = minWinsPlayer == null || tm.getBattleMemory(this).getDefeatByCount(player) < tm.getBattleMemory(this).getDefeatByCount(player) ? player : minWinsPlayer;
+                    }
+
+                    if(minWinsPlayer != null) {
+                        this.dropBattleLoot(mobTr.getLootTableResource(), minWinsPlayer);
+                    }
                 }
 
                 this.defeats++;
@@ -294,13 +301,13 @@ public class TrainerMob extends PathfinderMob implements Npc {
         }
     }
 
-    protected void dropBattleLoot(ResourceLocation lootTableResource) {
+    protected void dropBattleLoot(ResourceLocation lootTableResource, Player player) {
         var level = this.level();
         var lootTable = level.getServer().getLootData().getLootTable(lootTableResource);
         var builder = (new LootParams.Builder((ServerLevel)level))
             .withParameter(LootContextParams.THIS_ENTITY, this)
-            .withParameter(LootContextParams.DAMAGE_SOURCE, this.getLastDamageSource())
-            .withParameter(LootContextParams.ORIGIN, this.position());
+            .withParameter(LootContextParams.ORIGIN, this.position())
+            .withParameter(LootContextParams.LAST_DAMAGE_PLAYER, player);
 
         lootTable.getRandomItems(
             builder.create(LootContextParamSets.ENTITY),
