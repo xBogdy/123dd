@@ -67,11 +67,11 @@ public class DefeatCountTriggerInstance extends AbstractCriterionTriggerInstance
         var mobTr = RCTMod.get().getTrainerManager().getData(mob);
         var playerState = PlayerState.get(player);
 
-        if(this.trainerId != null && mob.getTrainerId().equals(this.trainerId)) {
+        if(this.trainerId != null && this.trainerId.equals(mob.getTrainerId())) {
             return battleMem.getDefeatByCount(player) >= this.count;
         }
 
-        if(this.trainerType != null && mobTr.getType().name().equals(this.trainerType)) {
+        if(this.trainerType != null && this.trainerType.equals(mobTr.getType().name())) {
             return playerState.getTypeDefeatCount(mobTr.getType()) >= this.count;
         }
 

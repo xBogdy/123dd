@@ -76,7 +76,7 @@ public class SavedStringIntegerMap extends SavedData implements Map<String, Inte
     public Integer put(String key, Integer value) {
         var prev = this.map.put(key, value);
 
-        if(prev == null && value != null || !prev.equals(value)) {
+        if((prev == null && value != null) || (prev != null && !prev.equals(value))) {
             this.setDirty();
         }
 

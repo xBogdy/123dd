@@ -235,7 +235,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
         if(!level.isClientSide) {
             var currentId = this.getTrainerId();
 
-            if((currentId == null && trainerId != null) || !currentId.equals(trainerId)) {
+            if((currentId == null && trainerId != null) || (currentId != null && !currentId.equals(trainerId))) {
                 RCTMod.get().getTrainerSpawner().notifyChangeTrainerId(this, trainerId);
                 this.entityData.set(DATA_TRAINER_ID, trainerId);
                 this.udpateCustomName();
@@ -444,7 +444,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
     }
 
     public void setOriginPlayer(UUID originPlayer) {
-        if((this.originPlayer == null && originPlayer != null) || !this.originPlayer.equals(originPlayer)) {
+        if((this.originPlayer == null && originPlayer != null) || (this.originPlayer != null && !this.originPlayer.equals(originPlayer))) {
             RCTMod.get().getTrainerSpawner().notifyChangeOriginPlayer(this, originPlayer);
             this.originPlayer = originPlayer;
         }
