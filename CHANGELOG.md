@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.9.x] - 2024-06-16
+
+***Fixed***
+
+- Hotifx: Potential crash caused by trainer battles
+
 ## [0.9.0-alpha] - 2024-06-15
 
 ***Added***
