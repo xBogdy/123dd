@@ -23,7 +23,7 @@ The *greater* the difference inbetween versions the more likely it is for issues
   - ensures uniqueness: Never will you see two trainers with the same name (unless cheated in)
   - matching spawns: trainers that spawn around a palyer will attempt to match the players strength
   - different trainer types will spawn in different biomes
-- Custom trainer npc ai (e.g. trainers *stroll* towards players that can battle against them and will either despawn after some time or if beaten)
+- Custom trainer npc ai (e.g. trainers *stroll* towards players that can battle against them and will despawn when far away/unloaded)
 - Player stats:
   - badge count*: increases if a player beats a leader for their first time
   - beaten elite 4 count: increases if a player beats an elite 4 member for their first time
@@ -37,17 +37,18 @@ The *greater* the difference inbetween versions the more likely it is for issues
   - some hidden and special advancements (more to come)
   - custom critera trigger for data pack creators: `defeat_count`
 - Battle dependencies: Trainers might have requirements to be battled with (e.g. level cap, gym badge count, beaten elite 4, ...)
+- Pokemon do not obey: Trainers will refuse to battle players that have pokemon above their level cap in their team
 - Battle reward system powered by loot tables:
   - custom condition for data pack creators: `level_range`
-  - custom condition for data pack creators: `defeat_count` (not yet implemented)
+  - custom condition for data pack creators: `defeat_count`
 - Trainers talk: Based of the context trainers will give different responses in the chat
 - And probably some other things that I can't think of right now...
 
 > The mod itself does not provide any badge items but rather counts the wins against *leaders*. When a leader is beaten for the first time an advancement for the badge is granted.
 
-## Balancing
+## Progression
 
-The balancing is based around the original game (Radical Red). Gym leaders must be defeated to increase a players level cap and *gain* badges. The initial level cap is `15`:
+The mod forces players to follow a certain progression, which is based of the original game (Radical Red). Gym leaders must be defeated to increase a players level cap and *gain badges*. The initial level cap is `15`:
 
 | Trainer        | Reward Level Cap | Requirements             | Type     |
 | -------------- | ---------------- | ------------------------ | -------- |
@@ -60,7 +61,7 @@ The balancing is based around the original game (Radical Red). Gym leaders must 
 | Koga           | `76`             | 6 Badges                 | Leader   |
 | Blaine         | `85`             | 7 Badges                 | Leader   |
 | *Any Elite 4*  |                  | 8 Badges                 | Elite 4  |
-| *Any Champion* | `100`            | 4 beaten Elite 4 members | Champion |
+| Champion Terry | `100`            | 4 beaten Elite 4 members | Champion |
 
 > There are some trainers labled as "Leader", "Elite 4" or "Champion" that do not account for the player progress. These are mostly additional trainers from different regions and serve no specific purpose other than beeing tough opponents. They might drop some special loot though.
 
@@ -112,23 +113,29 @@ Following commands are available:
       - Attempts to spawn a trainer mob in the vicinity of the given player (using the custom natural spawning mechanics).
     - `summon <trainerId> [<position>]` (Op Level: 2)
       - Summons the specified trainer mob at the given postion.
+    - `unregister_persistent <entityId>`
+      - Utility command for server administrators to unregister persistent trainers manually.
 
 ## Configuration
 
-This mod provides many config options - "initial level cap" and "max over level cap" or "spawn interval" and "spawn cap" just to name a few. The [doumentation](https://srcmc.gitlab.io/rct/docs/configuration/0_server_config/) contains a table of all available config options.
+This mod provides many config options - "initial level cap" and "max over level cap" or "spawn interval" and "spawn cap" just to name a few. The [doumentation](https://srcmc.gitlab.io/rct/docs/configuration/server_config/) contains a table of all available config options.
 
 ## Datapack support
 
-Almost all of the data is provided by an internal data pack. **Alot** can be configured by *overshadowing* certain files with an own custom data pack. Please refer to the [documentation](https://srcmc.gitlab.io/rct/docs/configuration/1_fallback_data_system/) for more information.
+Almost all of the data is provided by an internal data pack. **Alot** can be configured by *overshadowing* certain files with an own custom data pack. Please refer to the [documentation](https://srcmc.gitlab.io/rct/docs/configuration/data_pack/fallback_data_system/) for more information.
+
+## FAQ
+
+Unsure about how some of the mods mechanics work? Check out the [FAQ](https://srcmc.gitlab.io/rct/docs/faq/) in the documention, there is a good chance your questions have already been answered.
 
 ## Planned features
 
 - More/Better/Fixed assets (Teams, Textures, Mobs, Dialogs, Loot tables, ...)
 - More config and datapack options to allow trainers beeing used in advancement like scenarios:
-  - disable despawning
+  - ~~disable despawning~~
   - max trainer defeats/wins per player
-  - infinite trainer defeats/wins (e.g. by setting (global) max wins/defeats to `0`)
-  - loot condition for n'th (e.g. 1st) defeat (`defeat_count`)
+  - ~~infinite trainer defeats/wins (e.g. by setting (global) max wins/defeats to `0`)~~
+  - ~~loot condition for n'th (e.g. 1st) defeat (`defeat_count`)~~
 - ~~Advancements~~
 - ~~More user feedback in certain situations (e.g. when a player gains a badge)~~
 - ~~Some config options~~
