@@ -118,7 +118,7 @@ Following commands are available:
 
 ## Configuration
 
-This mod provides many config options - "initial level cap" and "max over level cap" or "spawn interval" and "spawn cap" just to name a few. The [doumentation](https://srcmc.gitlab.io/rct/docs/configuration/server_config/) contains a table of all available config options.
+This mod provides many config options - "initial level cap" and "max over level cap" or "spawn interval" and "spawn cap" just to name a few. The [documentation](https://srcmc.gitlab.io/rct/docs/configuration/server_config/) contains a table of all available config options.
 
 ## Datapack support
 
