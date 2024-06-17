@@ -189,8 +189,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
         return !this.isInBattle()
             && this.getCooldown() == 0
-            && mobTr.getMaxTrainerDefeats() > 0 && this.getDefeats() < mobTr.getMaxTrainerDefeats()
-            && mobTr.getMaxTrainerWins() > 0 && this.getWins() < mobTr.getMaxTrainerWins();
+            && (this.isPersistenceRequired() || (mobTr.getMaxTrainerDefeats() > 0 && this.getDefeats() < mobTr.getMaxTrainerDefeats() && mobTr.getMaxTrainerWins() > 0 && this.getWins() < mobTr.getMaxTrainerWins()));
     }
 
     private void udpateCustomName() {
@@ -360,9 +359,9 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
                 if(this.isInBattle()) {
                     ChatUtils.reply(this, player, "is_busy");
-                } else if(this.getDefeats() >= mobTr.getMaxTrainerDefeats()) {
+                } else if(!this.isPersistenceRequired() && this.getDefeats() >= mobTr.getMaxTrainerDefeats()) {
                     ChatUtils.reply(this, player, "done_looser");
-                } else if(this.getWins() >= mobTr.getMaxTrainerWins()) {
+                } else if(!this.isPersistenceRequired() && this.getWins() >= mobTr.getMaxTrainerWins()) {
                     ChatUtils.reply(this, player, "done_winner");
                 } else if(this.getCooldown() > 0) {
                     ChatUtils.reply(this, player, "on_cooldown");

@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.9.x] - 2024-06-17
+
+***Changed***
+
+- Removed battle count restriction (max wins/losses) for persistent trainers
+
 ## [0.9.1-alpha] - 2024-06-16
 
 ***Fixed***
