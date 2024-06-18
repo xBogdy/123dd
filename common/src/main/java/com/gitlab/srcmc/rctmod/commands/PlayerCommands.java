@@ -37,6 +37,7 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
 
 public final class PlayerCommands {
@@ -198,7 +199,7 @@ public final class PlayerCommands {
             try {
                 var trainerId = context.getArgument("trainerId", String.class);
                 var count = IntegerArgumentType.getInteger(context, "value");
-                PlayerState.get(player).setDefeats(trainerId, count);
+                RCTMod.get().getTrainerManager().getBattleMemory((ServerLevel)player.level(), trainerId).setDefeatedBy(trainerId, player, count);
                 return count;
             } catch(IllegalArgumentException e) {
                 context.getSource().sendFailure(Component.literal(e.getMessage()));
@@ -215,9 +216,10 @@ public final class PlayerCommands {
             var trainerId = context.getArgument("trainerId", String.class);
             var targets = EntityArgument.getPlayers(context, "targets");
             var count = IntegerArgumentType.getInteger(context, "value");
+            var tm = RCTMod.get().getTrainerManager();
 
             for(var player : targets) {
-                PlayerState.get(player).setDefeats(trainerId, count);
+                tm.getBattleMemory((ServerLevel)player.level(), trainerId).setDefeatedBy(trainerId, player, count);
             }
             
             return count;
