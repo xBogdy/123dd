@@ -2,6 +2,10 @@
 
 ## [0.9.x] - 2024-06-18
 
+***Added***
+
+- Loot tables for (placeholder) badge items (see the [source repo](https://gitlab.com/srcmc/rct/mod/-/tree/1.20.1/common/src/main/resources/data/rctmod/loot_tables/trainers/single?ref_type=heads) for the loot tables, they can be overwritten with a data pack)
+
 ***Fixed***
 
 - `defeat_count` loot condition not beeing registered
