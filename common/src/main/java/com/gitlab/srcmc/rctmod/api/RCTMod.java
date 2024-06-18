@@ -29,6 +29,7 @@ import com.gitlab.srcmc.rctmod.api.data.pack.DataPackManager;
 import com.gitlab.srcmc.rctmod.api.service.TrainerManager;
 import com.gitlab.srcmc.rctmod.api.service.TrainerSpawner;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
+import com.gitlab.srcmc.rctmod.world.loot.conditions.DefeatCountCondition;
 import com.gitlab.srcmc.rctmod.world.loot.conditions.LevelRangeCondition;
 
 import net.minecraft.server.packs.PackType;
@@ -57,6 +58,7 @@ public final class RCTMod {
 
     public static void init(
         Supplier<LootItemConditionType> levelRangeConditon,
+        Supplier<LootItemConditionType> defeatCountConditon,
         Function<Player, Integer> playerLevelSupplier,
         Function<Player, Integer> avtivePokemonSupplier,
         BiConsumer<TrainerMob, Player> battleArgsConsumer,
@@ -65,6 +67,7 @@ public final class RCTMod {
         var local = new RCTMod(playerLevelSupplier, avtivePokemonSupplier, battleArgsConsumer, clientConfig, commonConfig, serverConfig);
         instance = () -> local;
         LevelRangeCondition.init(levelRangeConditon);
+        DefeatCountCondition.init(defeatCountConditon);
     }
 
     private RCTMod(

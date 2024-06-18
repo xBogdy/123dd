@@ -29,6 +29,7 @@ import com.gitlab.srcmc.rctmod.config.ServerConfig;
 import com.gitlab.srcmc.rctmod.fabric.server.ModServer;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import com.gitlab.srcmc.rctmod.world.items.TrainerCard;
+import com.gitlab.srcmc.rctmod.world.loot.conditions.DefeatCountCondition;
 import com.gitlab.srcmc.rctmod.world.loot.conditions.LevelRangeCondition;
 
 import net.fabricmc.api.ModInitializer;
@@ -49,6 +50,7 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 public class ModFabric implements ModInitializer {
     public static final EntityType<TrainerMob> TRAINER = Registry.register(BuiltInRegistries.ENTITY_TYPE, new ResourceLocation(ModCommon.MOD_ID, "trainer"), TrainerMob.getEntityType());
     public static final LootItemConditionType LEVEL_RANGE = Registry.register(BuiltInRegistries.LOOT_CONDITION_TYPE, new ResourceLocation(ModCommon.MOD_ID, "level_range"), new LootItemConditionType(new LevelRangeCondition.Serializer()));
+    public static final LootItemConditionType DEFEAT_COUNT = Registry.register(BuiltInRegistries.LOOT_CONDITION_TYPE, new ResourceLocation(ModCommon.MOD_ID, "defeat_count"), new LootItemConditionType(new DefeatCountCondition.Serializer()));
     public static final Item TRAINER_CARD = Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(ModCommon.MOD_ID, "trainer_card"), new TrainerCard());
     public static final CreativeModeTab CREATIVE_TAB = Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, new ResourceLocation(ModCommon.MOD_ID), FabricItemGroup.builder()
     	.icon(() -> new ItemStack(TRAINER_CARD))
@@ -58,7 +60,7 @@ public class ModFabric implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        RCTMod.init(() -> LEVEL_RANGE, CobblemonHandler::getPlayerLevel, CobblemonHandler::getActivePokemon, CobblemonHandler::makeBattle, new ClientConfig(), () -> null, new ServerConfig());
+        RCTMod.init(() -> LEVEL_RANGE, () -> DEFEAT_COUNT, CobblemonHandler::getPlayerLevel, CobblemonHandler::getActivePokemon, CobblemonHandler::makeBattle, new ClientConfig(), () -> null, new ServerConfig());
         registerEntityAttributes();
         registerCommands();
         registerAdvancementCriteria();

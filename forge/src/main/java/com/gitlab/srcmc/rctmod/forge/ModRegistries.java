@@ -20,6 +20,7 @@ package com.gitlab.srcmc.rctmod.forge;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import com.gitlab.srcmc.rctmod.world.items.TrainerCard;
+import com.gitlab.srcmc.rctmod.world.loot.conditions.DefeatCountCondition;
 import com.gitlab.srcmc.rctmod.world.loot.conditions.LevelRangeCondition;
 
 import net.minecraft.core.registries.Registries;
@@ -94,10 +95,12 @@ public class ModRegistries {
     public static class LootItemConditions {
         public static final DeferredRegister<LootItemConditionType> REGISTRY;
         public static final RegistryObject<LootItemConditionType> LEVEL_RANGE;
+        public static final RegistryObject<LootItemConditionType> DEFEAT_COUNT;
 
         static {
             REGISTRY = DeferredRegister.create(Registries.LOOT_CONDITION_TYPE, ModCommon.MOD_ID);
             LEVEL_RANGE = REGISTRY.register("level_range", () -> new LootItemConditionType(new LevelRangeCondition.Serializer()));
+            DEFEAT_COUNT = REGISTRY.register("defeat_count", () -> new LootItemConditionType(new DefeatCountCondition.Serializer()));
         }
     }
 
