@@ -1,10 +1,10 @@
 {
-  "displayName": "Elite Four Agatha",
+  "displayName": "Agatha",
   "team": [
     {
       "species": "cobblemon:gengar",
       "gender": "FEMALE",
-      "level": 81,
+      "level": 54,
       "nature": "cobblemon:lax",
       "ability": "levitate",
       "moveset": [
@@ -35,7 +35,7 @@
     {
       "species": "cobblemon:golbat",
       "gender": "FEMALE",
-      "level": 81,
+      "level": 54,
       "nature": "cobblemon:docile",
       "ability": "infiltrator",
       "moveset": [
@@ -66,7 +66,7 @@
     {
       "species": "cobblemon:haunter",
       "gender": "MALE",
-      "level": 80,
+      "level": 53,
       "nature": "cobblemon:naive",
       "ability": "levitate",
       "moveset": [
@@ -97,7 +97,7 @@
     {
       "species": "cobblemon:arbok",
       "gender": "FEMALE",
-      "level": 83,
+      "level": 56,
       "nature": "cobblemon:calm",
       "ability": "intimidate",
       "moveset": [
@@ -128,7 +128,7 @@
     {
       "species": "cobblemon:gengar",
       "gender": "FEMALE",
-      "level": 85,
+      "level": 58,
       "nature": "cobblemon:serious",
       "ability": "levitate",
       "moveset": [

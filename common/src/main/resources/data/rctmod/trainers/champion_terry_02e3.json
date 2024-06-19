@@ -1,10 +1,10 @@
 {
-  "displayName": "Champion Terry",
+  "displayName": "Rival Terry",
   "team": [
     {
       "species": "cobblemon:heracross",
       "gender": "MALE",
-      "level": 82,
+      "level": 72,
       "nature": "cobblemon:careful",
       "ability": "guts",
       "moveset": [
@@ -35,7 +35,7 @@
     {
       "species": "cobblemon:alakazam",
       "gender": "FEMALE",
-      "level": 83,
+      "level": 73,
       "nature": "cobblemon:lax",
       "ability": "innerfocus",
       "moveset": [
@@ -66,7 +66,7 @@
     {
       "species": "cobblemon:tyranitar",
       "gender": "FEMALE",
-      "level": 82,
+      "level": 72,
       "nature": "cobblemon:bashful",
       "ability": "sandstream",
       "moveset": [
@@ -97,7 +97,7 @@
     {
       "species": "cobblemon:arcanine",
       "gender": "FEMALE",
-      "level": 83,
+      "level": 73,
       "nature": "cobblemon:relaxed",
       "ability": "flashfire",
       "moveset": [
@@ -128,7 +128,7 @@
     {
       "species": "cobblemon:exeggutor",
       "gender": "MALE",
-      "level": 83,
+      "level": 73,
       "nature": "cobblemon:lonely",
       "ability": "chlorophyll",
       "moveset": [
@@ -159,7 +159,7 @@
     {
       "species": "cobblemon:blastoise",
       "gender": "FEMALE",
-      "level": 85,
+      "level": 75,
       "nature": "cobblemon:mild",
       "ability": "torrent",
       "moveset": [

@@ -1,10 +1,10 @@
 {
-  "displayName": "Elite Four Bruno",
+  "displayName": "Bruno",
   "team": [
     {
       "species": "cobblemon:steelix",
       "gender": "MALE",
-      "level": 82,
+      "level": 65,
       "nature": "cobblemon:hasty",
       "ability": "sturdy",
       "moveset": [
@@ -35,7 +35,7 @@
     {
       "species": "cobblemon:hitmonchan",
       "gender": "MALE",
-      "level": 82,
+      "level": 65,
       "nature": "cobblemon:naughty",
       "ability": "ironfist",
       "moveset": [
@@ -66,7 +66,7 @@
     {
       "species": "cobblemon:hitmonlee",
       "gender": "MALE",
-      "level": 82,
+      "level": 65,
       "nature": "cobblemon:quiet",
       "ability": "reckless",
       "moveset": [
@@ -97,7 +97,7 @@
     {
       "species": "cobblemon:steelix",
       "gender": "MALE",
-      "level": 83,
+      "level": 66,
       "nature": "cobblemon:serious",
       "ability": "sturdy",
       "moveset": [
@@ -128,7 +128,7 @@
     {
       "species": "cobblemon:machamp",
       "gender": "FEMALE",
-      "level": 85,
+      "level": 68,
       "nature": "cobblemon:naive",
       "ability": "noguard",
       "moveset": [

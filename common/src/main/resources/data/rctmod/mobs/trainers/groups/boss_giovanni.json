@@ -1,9 +1,0 @@
-{
-  "type": "TEAM_ROCKET",
-  "maxTrainerWins": 1,
-  "maxTrainerDefeats": 1,
-  "battleCooldownTicks": 600,
-  "spawnWeightFactor": 0.5,
-  "biomeTagBlacklist": ["is_void"],
-  "biomeTagWhitelist": ["is_nether", "has_structure/end_city", "is_badlands", "is_wasteland", "is_peak"]
-}

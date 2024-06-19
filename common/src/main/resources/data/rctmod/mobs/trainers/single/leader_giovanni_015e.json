@@ -1,5 +1,5 @@
 {
-  "type": "RIVAL",
+  "type": "TEAM_ROCKET",
   "maxTrainerWins": 2,
   "maxTrainerDefeats": 1,
   "battleCooldownTicks": 600,

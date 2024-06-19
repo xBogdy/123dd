@@ -50,29 +50,27 @@ The *greater* the difference inbetween versions the more likely it is for issues
 
 The mod forces players to follow a certain progression, which is based of the original game (Radical Red). Key trainers (like gym leaders and bosses) must be defeated to increase a players level cap and gain badges. You can see the required progression in the following table but you can also get an idea of what to expect next by **checking your advancement tab ingame**. The initial level cap is `15`:
 
-| Trainer        | Reward Level Cap | Requirements             | Type     |
-| -------------- | ---------------- | ------------------------ | -------- |
-| Brock          | `27`             |                          | Leader   |
-| Misty          | `34`             | 1 Badge                  | Leader   |
-| Lt. Surge      | `44`             | 2 Badges                 | Leader   |
-| Erika          | `47`             | 3 Badges                 | Leader   |
-| Giovanni       | `56`             | 4 Badges                 | Boss     |
-| Archer         |                  | 4 Badges + 1 Boss        | Boss     |
-| Ariana         | `57`             | 4 Badges + 2 Bosses      | Boss     |
-| Giovanni       | `59`             | 4 Badges + 3 Bosses      | Boss     |
-| Sabrina        | `68`             | 4 Badges + 4 Bosses      | Leader   |
-| Koga           | `73`             | 5 Badges                 | Leader   |
-| May            | `76`             | 6 Badges                 | Boss     |
-| Blaine         | `79`             | 6 Badges + 5 Bosses      | Leader   |
-| Archer         |                  | 7 Badges + 5 Boss        | Boss     |
-| Ariana         | `80`             | 7 Badges + 6 Bosses      | Boss     |
-| Giovanni       | `81`             | 7 Badges + 7 Bosses      | Boss     |
-| Clair          | `82`             | 7 Badges + 8 Bosses      | Leader   |
-| Brendan        | `85`             | 8 Badges + 8 Bosses      | Boss     |
-| *Any Elite 4*  |                  | 8 Badges + 9 Bosses      | Elite 4  |
-| Champion Terry | `100`            | 4 beaten Elite 4 members | Champion |
-
-> There are some trainers labled as "Leader", "Elite 4" or "Champion" that do not account for the player progress. These are mostly additional trainers from different regions and serve no specific purpose other than beeing tough opponents. They might drop some special loot though.
+| Trainer        | Reward Level Cap | Requirements             | Type       |
+| -------------- | ---------------- | ------------------------ | ---------- |
+| Brock          | `27`             |                          | `LEADER`   |
+| Misty          | `34`             | 1 Badge                  | `LEADER`   |
+| Lt. Surge      | `44`             | 2 Badges                 | `LEADER`   |
+| Erika          | `47`             | 3 Badges                 | `LEADER`   |
+| Giovanni       | `56`             | 4 Badges                 | `BOSS`     |
+| Archer         |                  | 4 Badges + 1 Boss        | `BOSS`     |
+| Ariana         | `57`             | 4 Badges + 2 Bosses      | `BOSS`     |
+| Giovanni       | `59`             | 4 Badges + 3 Bosses      | `BOSS`     |
+| Sabrina        | `68`             | 4 Badges + 4 Bosses      | `LEADER`   |
+| Koga           | `73`             | 5 Badges                 | `LEADER`   |
+| May            | `76`             | 6 Badges                 | `BOSS`     |
+| Blaine         | `79`             | 6 Badges + 5 Bosses      | `LEADER`   |
+| Archer         |                  | 7 Badges + 5 Boss        | `BOSS`     |
+| Ariana         | `80`             | 7 Badges + 6 Bosses      | `BOSS`     |
+| Giovanni       | `81`             | 7 Badges + 7 Bosses      | `BOSS`     |
+| Clair          | `82`             | 7 Badges + 8 Bosses      | `LEADER`   |
+| Brendan        | `85`             | 8 Badges + 8 Bosses      | `BOSS`     |
+| *Any Elite 4*  |                  | 8 Badges + 9 Bosses      | `E4`       |
+| Champion Terry | `100`            | 4 beaten Elite 4 members | `CHAMPION` |
 
 The names of trainers are colored based of they type, to be able to easily recognize key trainers (names of trainers that have not been beaten are *emphasized*):
 

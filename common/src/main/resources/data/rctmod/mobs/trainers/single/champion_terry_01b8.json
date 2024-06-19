@@ -1,0 +1,13 @@
+{
+  "type": "CHAMP",
+  "rewardLevelCap": 100,
+  "requiredDefeats": {
+    "E4": 4
+  },
+  "maxTrainerWins": 1,
+  "maxTrainerDefeats": 1,
+  "battleCooldownTicks": 600,
+  "spawnWeightFactor": 0.25,
+  "biomeTagBlacklist": ["is_void"],
+  "biomeTagWhitelist": ["has_structure/end_city", "is_rare"]
+}

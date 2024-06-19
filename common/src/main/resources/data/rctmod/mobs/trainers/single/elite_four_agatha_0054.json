@@ -1,6 +1,10 @@
 {
-  "type": "NORMAL",
-  "maxTrainerWins": 2,
+  "type": "E4",
+  "requiredDefeats": {
+    "LEADER": 8,
+    "BOSS": 9
+  },
+  "maxTrainerWins": 1,
   "maxTrainerDefeats": 1,
   "battleCooldownTicks": 600,
   "spawnWeightFactor": 0.25,

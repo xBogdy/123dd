@@ -1,10 +1,10 @@
 {
-  "displayName": "Elite Four Lorelei",
+  "displayName": "Lorelei",
   "team": [
     {
       "species": "cobblemon:dewgong",
       "gender": "FEMALE",
-      "level": 83,
+      "level": 52,
       "nature": "cobblemon:naughty",
       "ability": "icescales",
       "moveset": [
@@ -35,7 +35,7 @@
     {
       "species": "cobblemon:cloyster",
       "gender": "FEMALE",
-      "level": 82,
+      "level": 51,
       "nature": "cobblemon:bold",
       "ability": "skilllink",
       "moveset": [
@@ -66,7 +66,7 @@
     {
       "species": "cobblemon:slowbro",
       "gender": "FEMALE",
-      "level": 83,
+      "level": 52,
       "nature": "cobblemon:sassy",
       "ability": "owntempo",
       "moveset": [
@@ -97,7 +97,7 @@
     {
       "species": "cobblemon:jynx",
       "gender": "FEMALE",
-      "level": 85,
+      "level": 54,
       "nature": "cobblemon:bold",
       "ability": "forewarn",
       "moveset": [
@@ -128,7 +128,7 @@
     {
       "species": "cobblemon:lapras",
       "gender": "FEMALE",
-      "level": 85,
+      "level": 54,
       "nature": "cobblemon:serious",
       "ability": "hydration",
       "moveset": [
