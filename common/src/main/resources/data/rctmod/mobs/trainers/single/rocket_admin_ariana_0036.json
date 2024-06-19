@@ -1,9 +1,9 @@
 {
-  "type": "LEADER",
-  "rewardLevelCap": 68,
+  "type": "BOSS",
+  "rewardLevelCap": 57,
   "requiredDefeats": {
     "LEADER": 4,
-    "BOSS": 4
+    "BOSS": 2
   },
   "maxTrainerWins": 2,
   "maxTrainerDefeats": 1,

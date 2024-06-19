@@ -1,11 +1,11 @@
 {
-  "parent": "rctmod:trainers/defeat_leader_erika",
+  "parent": "rctmod:trainers/defeat_rocket_admin_archer_2",
   "display": {
     "title": {
-      "text": "Earth Badge"
+      "text": "Alpha"
     },
     "description": {
-      "text": "Defeat Leader Giovanni"
+      "text": "Defeat Rocket Admin Ariana in the final encounter"
     },
     "icon": {
       "item": "cobblemon:poke_ball"
@@ -18,7 +18,7 @@
   "criteria": {
     "first_defeat": {
       "conditions": {
-        "trainer_id": "leader_giovanni_015e"
+        "trainer_id": "rocket_admin_ariana_0044"
       },
       "trigger": "rctmod:defeat_count"
     }

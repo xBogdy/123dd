@@ -17,8 +17,8 @@
               "function": "minecraft:set_name",
               "target": "item_name",
               "name": {
-                "text": "Earth Badge",
-                "color": "#663300",
+                "text": "Rising Badge",
+                "color": "black",
                 "font": "minecraft:default",
                 "italic": true
               }

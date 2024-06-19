@@ -19,7 +19,7 @@
     "first_defeat": {
       "conditions": {
         "trainer_type": "TEAM_ROCKET",
-        "count": 67
+        "count": 60
       },
       "trigger": "rctmod:defeat_count"
     }

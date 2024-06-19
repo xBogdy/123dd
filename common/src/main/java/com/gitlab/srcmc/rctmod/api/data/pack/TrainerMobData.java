@@ -31,21 +31,22 @@ import net.minecraft.resources.ResourceLocation;
 
 public class TrainerMobData implements IDataPackObject {
     public enum Type {
-        NORMAL, LEADER, E4, CHAMP, TEAM_ROCKET, RIVAL, TRAINER;
+        NORMAL, LEADER, BOSS, E4, CHAMP, TEAM_ROCKET, RIVAL;
 
         private static final Map<Type, String> symbols = Map.of(
             LEADER, "[L]",
+            BOSS, "[B]",
             E4, "[E]",
             CHAMP, "[C]",
-            TEAM_ROCKET, "[R]",
-            RIVAL, "[A]",
-            TRAINER, "[T]"
+            TEAM_ROCKET, "[T]",
+            RIVAL, "[R]"
         );
 
         private static final Map<Type, Integer> colors = Map.of(
             LEADER, ChatFormatting.GREEN.getColor(),
-            E4, ChatFormatting.LIGHT_PURPLE.getColor(),
-            CHAMP, ChatFormatting.GOLD.getColor(),
+            BOSS, ChatFormatting.GOLD.getColor(),
+            E4, ChatFormatting.BLUE.getColor(),
+            CHAMP, ChatFormatting.LIGHT_PURPLE.getColor(),
             TEAM_ROCKET, ChatFormatting.DARK_GRAY.getColor()
         );
 

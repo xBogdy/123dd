@@ -1,5 +1,5 @@
 {
-  "parent": "rctmod:trainers/defeat_trainer",
+  "parent": "rctmod:trainers/defeat_champion",
   "display": {
     "title": {
       "text": "..."

@@ -1,5 +1,5 @@
 {
-  "parent": "rctmod:trainers/defeat_any",
+  "parent": "rctmod:trainers/defeat_leader_clair",
   "display": {
     "title": {
       "text": "Visitor"

@@ -1,11 +1,11 @@
 {
-  "parent": "rctmod:trainers/defeat_leader_clair",
+  "parent": "rctmod:trainers/defeat_leader_koga",
   "display": {
     "title": {
-      "text": "Elite 4"
+      "text": "A different path"
     },
     "description": {
-      "text": "Defeat 4 members of the Elite 4"
+      "text": "Defeat Trainer May"
     },
     "icon": {
       "item": "cobblemon:poke_ball"
@@ -13,13 +13,12 @@
     "announce_to_chat": true,
     "show_toast": true,
     "hidden": false,
-    "frame": "challenge"
+    "frame": "goal"
   },
   "criteria": {
     "first_defeat": {
       "conditions": {
-        "trainer_type": "E4",
-        "count": 4
+        "trainer_id": "trainer_may_003d"
       },
       "trigger": "rctmod:defeat_count"
     }

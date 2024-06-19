@@ -1,24 +1,24 @@
 {
-  "parent": "rctmod:trainers/defeat_any",
+  "parent": "rctmod:trainers/defeat_rocket_admin_ariana_2",
   "display": {
     "title": {
-      "text": "VIP"
+      "text": "Head of the snake"
     },
     "description": {
-      "text": "Defeat any 'story' Trainer"
+      "text": "Defeat Boss Giovanni in the final encounter"
     },
     "icon": {
       "item": "cobblemon:poke_ball"
     },
-    "announce_to_chat": false,
+    "announce_to_chat": true,
     "show_toast": true,
     "hidden": false,
-    "frame": "task"
+    "frame": "challenge"
   },
   "criteria": {
     "first_defeat": {
       "conditions": {
-        "trainer_type": "TRAINER"
+        "trainer_id": "boss_giovanni_0045"
       },
       "trigger": "rctmod:defeat_count"
     }

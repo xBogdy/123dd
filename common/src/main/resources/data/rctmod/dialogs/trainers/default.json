@@ -195,6 +195,13 @@
     "You must overcome a champion to face me.",
     "Prove yourself against a champion first."
   ],
+  "missing_beaten_boss": [
+    "There is someone that you should face first.",
+    "Someone out there needs your attention more than me right now.",
+    "Isn't there something else that you should take care of first?",
+    "Come back when you've finished your businesse.",
+    "Somebody else is looking for you."
+  ],
   "missing_pokemon": [
     "You do not seem to have any pokemon capable fighting in your team.",
     "Are your pokemon fainted?",
@@ -264,6 +271,7 @@
   ],
   "over_level_cap": [
     "Some of your pokemon do not seem to fully respect you.",
+    "Some Pokemon in your team appear to be to strong for you to handle.",
     "Your pokemon do not trust you. Maybe acquire more badges to prove them your worth?",
     "You do not seem to be ready to fight with pokemon of that level."
   ],

@@ -1,5 +1,8 @@
 {
   "type": "NORMAL",
+  "requiredDefeats": {
+    "LEADER": 8
+  },
   "maxTrainerWins": 2,
   "maxTrainerDefeats": 1,
   "battleCooldownTicks": 600,

@@ -1,7 +1,8 @@
 {
   "type": "E4",
   "requiredDefeats": {
-    "LEADER": 8
+    "LEADER": 8,
+    "BOSS": 9
   },
   "maxTrainerWins": 1,
   "maxTrainerDefeats": 1,
