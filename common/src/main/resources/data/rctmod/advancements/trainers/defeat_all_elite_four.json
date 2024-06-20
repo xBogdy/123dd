@@ -19,7 +19,7 @@
     "first_defeat": {
       "conditions": {
         "trainer_type": "E4",
-        "count": 16
+        "count": 8
       },
       "trigger": "rctmod:defeat_count"
     }

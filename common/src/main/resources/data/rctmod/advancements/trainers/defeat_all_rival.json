@@ -19,7 +19,7 @@
     "first_defeat": {
       "conditions": {
         "trainer_type": "RIVAL",
-        "count": 21
+        "count": 24
       },
       "trigger": "rctmod:defeat_count"
     }

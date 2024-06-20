@@ -19,7 +19,7 @@
     "first_defeat": {
       "conditions": {
         "trainer_type": "CHAMP",
-        "count": 6
+        "count": 3
       },
       "trigger": "rctmod:defeat_count"
     }
