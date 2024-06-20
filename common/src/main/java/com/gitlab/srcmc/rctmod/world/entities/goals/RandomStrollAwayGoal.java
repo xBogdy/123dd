@@ -41,28 +41,28 @@ public class RandomStrollAwayGoal extends RandomStrollGoal {
 
         switch(rng.nextInt(4)) {
             case 0:
-                direction = new int[]{1, 0}; // north
+                direction = new int[]{100, 0}; // north
                 break;
             case 1:
-                direction = new int[]{1, 1}; // north east
+                direction = new int[]{100, 100}; // north east
                 break;
             case 2:
-                direction = new int[]{0, 1}; // east
+                direction = new int[]{0, 100}; // east
                 break;
             case 3:
-                direction = new int[]{-1, 1}; // south east
+                direction = new int[]{-100, 100}; // south east
                 break;
             case 4:
-                direction = new int[]{-1, 0}; // south
+                direction = new int[]{-100, 0}; // south
                 break;
             case 5:
-                direction = new int[]{-1, -1}; // south west
+                direction = new int[]{-100, -100}; // south west
                 break;
             case 6:
-                direction = new int[]{0, -1}; // west
+                direction = new int[]{0, -100}; // west
                 break;
             case 7:
-                direction = new int[]{1, -1}; // north west
+                direction = new int[]{100, -100}; // north west
                 break;
         }
     }

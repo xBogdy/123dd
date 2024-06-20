@@ -47,6 +47,7 @@ public class MoveCloseToTargetGoal extends MoveTowardsTargetGoal {
     }
 
     private boolean isNearbyTarget() {
-        return this.mob.getTarget().distanceToSqr(this.mob) < this.minDistanceSquared;
+        var target = this.mob.getTarget();
+        return target != null && target.distanceToSqr(this.mob) < this.minDistanceSquared;
     }
 }
