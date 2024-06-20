@@ -79,7 +79,6 @@ public class TrainerMob extends PathfinderMob implements Npc {
         .sized(0.6F, 1.95F).build("trainer");
 
     private int cooldown, wins, defeats;
-    private BlockPos wanderTarget;
     private Player opponent; // TODO: not really required anymore
     private UUID originPlayer;
     private boolean persistent;
@@ -454,15 +453,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
     public UUID getOriginPlayer() {
         return this.originPlayer;
     }
-
-    public void setWanderTarget(BlockPos blockPos) {
-        this.wanderTarget = blockPos;
-    }
-
-    public BlockPos getWanderTarget() {
-        return this.wanderTarget;
-    }
-
+    
     @Override
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
@@ -474,10 +465,6 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
         if(this.originPlayer != null) {
             compoundTag.putUUID("OriginPlayer", this.originPlayer);
-        }
-
-        if(this.wanderTarget != null) {
-            compoundTag.put("WanderTarget", NbtUtils.writeBlockPos(this.wanderTarget));
         }
     }
 
@@ -495,10 +482,6 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
         if(compoundTag.contains("Cooldown")) {
             this.cooldown = compoundTag.getInt("Cooldown");
-        }
-
-        if(compoundTag.contains("WanderTarget")) {
-            this.wanderTarget = NbtUtils.readBlockPos(compoundTag.getCompound("WanderTarget"));
         }
 
         if(compoundTag.contains("TrainerId")) {
