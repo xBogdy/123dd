@@ -30,6 +30,7 @@ import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
 import com.gitlab.srcmc.rctmod.api.data.save.collection.SavedStringIntegerMap;
+import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -37,7 +38,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Player;
 
 public class TrainerSpawner {
-    private static float KEY_TRAINER_SPAWN_WEIGHT_FACTOR = 60;
+    private static float KEY_TRAINER_SPAWN_WEIGHT_FACTOR = 120;
 
     private class SpawnCandidate {
         public final String id;
@@ -342,7 +343,7 @@ public class TrainerSpawner {
                     && e.getValue().getBiomeTagBlacklist().stream().noneMatch(tags::contains)
                     && (e.getValue().getBiomeTagWhitelist().isEmpty() || e.getValue().getBiomeTagWhitelist().stream().anyMatch(tags::contains)))
                 .forEach(e -> {
-                    var weight = this.computeWeight(player, e.getValue());
+                    var weight = this.computeWeight(player, e.getKey(), e.getValue());
 
                     if(weight > 0) {
                         candidates.add(new SpawnCandidate(e.getKey(), weight));
@@ -369,7 +370,7 @@ public class TrainerSpawner {
         return candidates.get(i);
     }
 
-    private double computeWeight(Player player, TrainerMobData mobTr) {
+    private double computeWeight(Player player, String trainerId, TrainerMobData mobTr) {
         var config = RCTMod.get().getServerConfig();
         var tm = RCTMod.get().getTrainerManager();
         var playerTr = tm.getData(player);
@@ -379,10 +380,22 @@ public class TrainerSpawner {
             .max(Integer::compare).orElse(0);
 
         if(mobLevel <= playerTr.getLevelCap()) {
+            for(var type : TrainerMobData.Type.values()) {
+                if(PlayerState.get(player).getTypeDefeatCount(type) < mobTr.getRequiredDefeats(type)) {
+                    return 0;
+                }
+            }
+
             var playerLevel = tm.getPlayerLevel(player);
             var keyTrainerFactor = 1f;
 
-            if(mobTr.getRewardLevelCap() > playerTr.getLevelCap()) {
+            if(mobTr.getRewardLevelCap() > playerTr.getLevelCap()
+            || ((mobTr.getType() == TrainerMobData.Type.LEADER
+                || mobTr.getType() == TrainerMobData.Type.E4
+                || mobTr.getType() == TrainerMobData.Type.CHAMP
+                || mobTr.getType() == TrainerMobData.Type.BOSS)
+                && tm.getBattleMemory((ServerLevel)player.level(), trainerId).getDefeatByCount(player) == 0)
+            ) {
                 var a = (10 - Math.min(9, playerTr.getLevelCap()/10))/2f;
                 var b = Math.max(0, playerTr.getLevelCap() - playerLevel)*a + 1;
                 keyTrainerFactor = KEY_TRAINER_SPAWN_WEIGHT_FACTOR/b;

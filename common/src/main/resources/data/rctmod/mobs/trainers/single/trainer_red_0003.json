@@ -6,7 +6,7 @@
   "maxTrainerWins": 1,
   "maxTrainerDefeats": 1,
   "battleCooldownTicks": 600,
-  "spawnWeightFactor": 0.25,
+  "spawnWeightFactor": 0.025,
   "biomeTagBlacklist": ["is_void"],
   "biomeTagWhitelist": ["is_overworld", "is_nether", "has_structure/end_city"]
 }

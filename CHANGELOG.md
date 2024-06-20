@@ -6,12 +6,18 @@
 
 - Adjusted name colors of trainer types: `LEADER`=green, `E4`=blue, `CHAMP`=light_purple, `TEAM_ROCKET`=dark_gray, `BOSS`=gold
 - Advancements have been slightly adjusted to reflect the latest changes in the progression (e.g. removed "Earth Badge" and added "Rising Badge")
+- Increased spawn chance for (undefeated) key trainers
 - Level cap progression now mostly mirrors the progression of the original game (Radical Red): There are now 9 additional bosses that have to be defeated to raise the level cap (refer to your advancement tab for a hint of what to expect next or check the table in the [mod description](https://modrinth.com/mod/rctmod))
 - Removed "Leader Giovanni" from his duty as 5th gym leader. Now "Leader Clair" grants the 8th badge
 - Removed (misleading) `TRAINER` trainer type and added `BOSS` trainer type
 - Removed misleading labels (e.g. "Leader") from trainers that do not actually count towards a players progression
 - Removed previously given *buff* for some trainers that do not account for the progression anymore
 - Repurposed some weaker versions of key trainers as trainers of different *types*
+
+***Fixed***
+
+- Some key trainers (e.g. elite 4, bosses) not having an increased spawn chance when needed
+- Some key trainers beeing able to spawn before they could actually be battled with
 
 ## [0.9.3-alpha] - 2024-06-18
 
