@@ -13,6 +13,7 @@
 - Removed misleading labels (e.g. "Leader") from trainers that do not actually count towards a players progression
 - Removed previously given *buff* for some trainers that do not account for the progression anymore
 - Repurposed some weaker versions of key trainers as trainers of different *types*
+- Slight adjustments to trainer ai behaviour (they now respect personal space a bit more, have a high tendency to hang around in villages and walk away once done battling)
 
 ***Fixed***
 

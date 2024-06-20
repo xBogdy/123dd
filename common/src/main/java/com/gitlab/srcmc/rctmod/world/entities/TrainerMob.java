@@ -26,6 +26,7 @@ import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.api.utils.ChatUtils;
 import com.gitlab.srcmc.rctmod.client.ModClient;
 import com.gitlab.srcmc.rctmod.world.entities.goals.LookAtPlayerAndWaitGoal;
+import com.gitlab.srcmc.rctmod.world.entities.goals.MoveCloseToTargetGoal;
 import com.gitlab.srcmc.rctmod.world.entities.goals.PokemonBattleGoal;
 import com.gitlab.srcmc.rctmod.world.entities.goals.RandomStrollAwayGoal;
 
@@ -51,7 +52,6 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.MoveTowardsTargetGoal;
 import net.minecraft.world.entity.ai.goal.PanicGoal;
 import net.minecraft.world.entity.ai.goal.StrollThroughVillageGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
@@ -511,7 +511,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
         this.goalSelector.addGoal(2, new LookAtPlayerAndWaitGoal(this, Player.class, 4.0F, this.getTarget() == null ? 0.004F : 0.02F, 80, 160));
         this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(8, new StrollThroughVillageGoal(this, 600));
-        this.goalSelector.addGoal(8, new MoveTowardsTargetGoal(this, 0.35, 1.5F*RCTMod.get().getServerConfig().maxHorizontalDistanceToPlayers()));
+        this.goalSelector.addGoal(8, new MoveCloseToTargetGoal(this, 0.35, 1.5F*RCTMod.get().getServerConfig().maxHorizontalDistanceToPlayers()));
         this.goalSelector.addGoal(9, new RandomStrollAwayGoal(this, 0.35));
         this.goalSelector.addGoal(10, new WaterAvoidingRandomStrollGoal(this, 0.35));
     }
