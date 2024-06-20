@@ -31,7 +31,7 @@
 ***Fixed***
 
 - `defeat_count` loot condition not beeing registered
-- `player set defeats` command not changing values on the server side (therefore changes where only visual)
+- `player set defeats` command not changing values on the server side
 
 ## [0.9.2-alpha] - 2024-06-17
 

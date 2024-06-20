@@ -67,7 +67,7 @@ public class TrainerBattleMemory extends SavedData {
     public void setDefeatedBy(String trainerId, Player player, int count) {
         var prevCount = this.defeatedBy.put(player.getUUID(), count);
 
-        if(prevCount != count) {
+        if(prevCount == null || prevCount != count) {
             PlayerState.get(player).setDefeats(trainerId, count);
             this.setDirty();
         }
