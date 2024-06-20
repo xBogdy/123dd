@@ -13,7 +13,7 @@
     "announce_to_chat": true,
     "show_toast": true,
     "hidden": false,
-    "frame": "goal"
+    "frame": "challenge"
   },
   "criteria": {
     "first_defeat": {
