@@ -29,9 +29,7 @@ import com.gitlab.srcmc.rctmod.world.entities.goals.LookAtPlayerAndWaitGoal;
 import com.gitlab.srcmc.rctmod.world.entities.goals.PokemonBattleGoal;
 import com.gitlab.srcmc.rctmod.world.entities.goals.RandomStrollAwayGoal;
 
-import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtUtils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
