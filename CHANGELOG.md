@@ -22,7 +22,7 @@ Due to the changes in the gameplay progression aswell as to some advancements it
 
 - Some key trainers (e.g. elite 4, bosses) not having an increased spawn chance when needed
 - Some key trainers beeing able to spawn before they could actually be battled with
-- `player set defeats` command failure when used for trainers that have never been interacted with (TODO)
+- `player set defeats` command failure when used for trainers that have never been interacted with
 
 ## [0.9.3-alpha] - 2024-06-18
 
