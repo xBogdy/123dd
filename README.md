@@ -44,11 +44,11 @@ The *greater* the difference inbetween versions the more likely it is for issues
 - Trainers talk: Based of the context trainers will give different responses in the chat
 - And probably some other things that I can't think of right now...
 
-> The mod itself does not provide any badge items but rather counts the wins against *leaders*. When a leader is beaten for the first time an advancement for the badge is granted.
-
 ## Progression
 
-The mod forces players to follow a certain progression, which is based of the original game (Radical Red). Key trainers (like gym leaders and bosses) must be defeated to increase a players level cap and gain badges. You can see the required progression in the following table but you can also get an idea of what to expect next by **checking your advancement tab ingame**. The initial level cap is `15`:
+The mod **forces** players to follow a certain progression, which is based of the original game (Radical Red). Key trainers (like gym leaders and bosses) must be defeated to increase a players level cap and gain badges. **Pokemon that are at or above the level cap of a player will not gain any exp while in that players party. In addition trainers will refuse to battle players that have pokemon above their level cap in their party.**
+
+You can see the required progression in the following table but you can also get an idea of what to expect next by **checking your advancement tab ingame**. The initial level cap is `15`:
 
 | Trainer        | Reward Level Cap | Requirements             | Type       |
 | -------------- | ---------------- | ------------------------ | ---------- |
@@ -166,3 +166,8 @@ Unsure about how some of the mods mechanics work? Check out the [FAQ](https://sr
 - [Cobblemon](https://modrinth.com/mod/cobblemon)
 - [CobblemonTrainers](https://modrinth.com/mod/cobblemontrainers)
 - [Forge Config API Port](https://modrinth.com/mod/forge-config-api-port)
+
+## Known Issues
+
+- Trainers fail to spawn with 'Convenient Decors' installed
+- I've had reports that some `Persistent` trainers randomly stopped accepting battles after a while (I could not reproduce this on my side yet, if you have any more information feel free to reach out to me in the [Discord channel](https://discord.com/channels/934267676354834442/1234121411275133031) of this mod (in the [Cobblemon Discord Server](https://discord.gg/cobblemon))).
