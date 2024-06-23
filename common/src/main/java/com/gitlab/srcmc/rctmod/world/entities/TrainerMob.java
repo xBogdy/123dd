@@ -340,7 +340,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
                 this.setPersistent(false);
 
                 ModCommon.LOG.error(String.format(
-                    "Disabled persistence of unregistered trainer '%s' (%s)",
+                    "Disabled persistence for unregistered trainer '%s' (%s)",
                     this.getTrainerId(), this.getStringUUID()));
             }
         }
@@ -419,7 +419,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
     @Override
     public boolean removeWhenFarAway(double d) {
-        return true;
+        return !this.isPersistenceRequired();
     }
 
     @Override

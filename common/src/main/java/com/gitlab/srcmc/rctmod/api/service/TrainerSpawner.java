@@ -92,7 +92,7 @@ public class TrainerSpawner {
         while(it.hasNext()) {
             var mob = it.next();
 
-            if(mob.isRemoved()) {
+            if(mob.isRemoved() || mob.isPersistenceRequired()) {
                 it.remove();
             } else if(!mob.level().isLoaded(mob.blockPosition())) {
                 it.remove();
