@@ -9,9 +9,17 @@ Due to the changes in the gameplay progression aswell as to some advancements in
 - Command `summon_persistent`: As the name suggests summons a trainer with the `Persistent` tag already set
 - Trainer `identity` can now be set per trainer with a data pack and is used instead of the `displayName` to determine if different trainers refer to the same person (if not defined falls back to `displayName`)
 
+***Changed***
+
+- Repurposed 'Champion Lance' as regular trainer
+
 ***Fixed***
 
 - `Persistent` trainers despawning on servers
+
+***Removed***
+
+- Hidden advancement for 'Champion Lance' as he is less of a challenge than his elite 4 version
 
 ## [0.10.0-alpha] - 2024-06-19
 
