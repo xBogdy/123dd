@@ -72,7 +72,7 @@ public class TrainerTeam {
         public String getHeldItem() { return this.heldItem; }
     }
 
-    private String displayName = "Trainer";
+    private String displayName = "Trainer", identity;
     private List<Pokemon> team = new ArrayList<>();
     private transient ResourceLocation resourceLocation;
 
@@ -84,6 +84,10 @@ public class TrainerTeam {
 
     public String getDisplayName() {
         return this.displayName;
+    }
+
+    public String getIdentity() {
+        return this.identity != null ? this.identity : this.displayName;
     }
 
     public List<Pokemon> getMembers() {

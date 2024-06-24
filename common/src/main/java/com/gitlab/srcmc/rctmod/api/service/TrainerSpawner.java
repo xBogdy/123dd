@@ -51,7 +51,7 @@ public class TrainerSpawner {
     }
 
     private Map<String, Integer> spawns = new HashMap<>();
-    private Map<String, Integer> names = new HashMap<>();
+    private Map<String, Integer> identities = new HashMap<>();
     private Map<String, Integer> playerSpawns = new HashMap<>();
     
     private Map<String, Integer> persistentSpawns;
@@ -62,7 +62,7 @@ public class TrainerSpawner {
 
     public void init(ServerLevel level) {
         this.spawns.clear();
-        this.names.clear();
+        this.identities.clear();
         this.playerSpawns.clear();
         this.mobs.clear();
         
@@ -105,8 +105,8 @@ public class TrainerSpawner {
         var spawns = mob.isPersistenceRequired() ? this.persistentSpawns : this.spawns;
 
         if(!spawns.containsKey(mob.getStringUUID())) {
-            var name = RCTMod.get().getTrainerManager().getData(mob).getTeam().getDisplayName();
-            var names = mob.isPersistenceRequired() ? this.persistentNames : this.names;
+            var identity = RCTMod.get().getTrainerManager().getData(mob).getTeam().getIdentity();
+            var identities = mob.isPersistenceRequired() ? this.persistentNames : this.identities;
             var originPlayer = mob.getOriginPlayer();
             var playerSpawns = mob.isPersistenceRequired() ? this.persistentPlayerSpawns : this.playerSpawns;
 
@@ -114,7 +114,7 @@ public class TrainerSpawner {
                 playerSpawns.compute(originPlayer.toString(), (key, value) -> value == null ? 1 : value + 1);
             }
 
-            names.compute(name, (key, value) -> value == null ? 1 : value + 1);
+            identities.compute(identity, (key, value) -> value == null ? 1 : value + 1);
             spawns.put(mob.getStringUUID(), 0);
 
             if(!mob.isPersistenceRequired()) {
@@ -137,8 +137,8 @@ public class TrainerSpawner {
         var spawns = mob.isPersistenceRequired() ? this.persistentSpawns : this.spawns;
 
         if(spawns.containsKey(mob.getStringUUID())) {
-            var name = RCTMod.get().getTrainerManager().getData(mob).getTeam().getDisplayName();
-            var names = mob.isPersistenceRequired() ? this.persistentNames : this.names;
+            var identity = RCTMod.get().getTrainerManager().getData(mob).getTeam().getIdentity();
+            var identities = mob.isPersistenceRequired() ? this.persistentNames : this.identities;
             var originPlayer = mob.getOriginPlayer();
             var playerSpawns = mob.isPersistenceRequired() ? this.persistentPlayerSpawns : this.playerSpawns;
 
@@ -146,7 +146,7 @@ public class TrainerSpawner {
                 playerSpawns.compute(originPlayer.toString(), (key, value) -> value == 1 ? null : value - 1);
             }
 
-            names.compute(name, (key, value) -> value == 1 ? null : value - 1);
+            identities.compute(identity, (key, value) -> value == 1 ? null : value - 1);
             spawns.remove(mob.getStringUUID());
 
             var config = RCTMod.get().getServerConfig();
@@ -177,11 +177,11 @@ public class TrainerSpawner {
         if(spawns.containsKey(mob.getStringUUID())) {
             ModCommon.LOG.info(String.format("Changing trainer id '%s' -> '%s' (%s)", mob.getTrainerId(), newTrainerId, mob.getStringUUID()));
 
-            var name = RCTMod.get().getTrainerManager().getData(mob).getTeam().getDisplayName();
-            var newName = RCTMod.get().getTrainerManager().getData(newTrainerId).getTeam().getDisplayName();
-            var names = mob.isPersistenceRequired() ? this.persistentNames : this.names;
-            names.compute(name, (key, value) -> value == 1 ? null : value - 1);
-            names.compute(newName, (key, value) -> value == null ? 1 : value + 1);
+            var identity = RCTMod.get().getTrainerManager().getData(mob).getTeam().getIdentity();
+            var newIdentity = RCTMod.get().getTrainerManager().getData(newTrainerId).getTeam().getIdentity();
+            var identities = mob.isPersistenceRequired() ? this.persistentNames : this.identities;
+            identities.compute(identity, (key, value) -> value == 1 ? null : value - 1);
+            identities.compute(newIdentity, (key, value) -> value == null ? 1 : value + 1);
         }
     }
 
@@ -246,8 +246,8 @@ public class TrainerSpawner {
         }
     }
 
-    private boolean isUnique(String name) {
-        return !this.names.containsKey(name) && !this.persistentNames.containsKey(name);
+    private boolean isUnique(String identity) {
+        return !this.identities.containsKey(identity) && !this.persistentNames.containsKey(identity);
     }
 
     private void spawnFor(Player player, String trainerId, BlockPos pos) {
@@ -339,7 +339,7 @@ public class TrainerSpawner {
         if(config.biomeTagBlacklist().stream().noneMatch(tags::contains)
         && (config.biomeTagWhitelist().isEmpty() || config.biomeTagWhitelist().stream().anyMatch(tags::contains))) {
             RCTMod.get().getTrainerManager().getAllData()
-                .filter(e -> this.isUnique(e.getValue().getTeam().getDisplayName())
+                .filter(e -> this.isUnique(e.getValue().getTeam().getIdentity())
                     && e.getValue().getBiomeTagBlacklist().stream().noneMatch(tags::contains)
                     && (e.getValue().getBiomeTagWhitelist().isEmpty() || e.getValue().getBiomeTagWhitelist().stream().anyMatch(tags::contains)))
                 .forEach(e -> {
