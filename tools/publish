@@ -257,7 +257,7 @@ if [ "$answer" = "y" ]; then
 
         metadata="{
             $relations
-            \"changelog\": \"$(as_json "$(<CHANGELOG.md)")\",
+            \"changelog\": \"$(as_json "$(changelog --cat)")\",
             \"changelogType\": \"markdown\",
             \"gameVersions\": [$minecraft_version_ids],
             \"releaseType\": \"$release_type\",
@@ -291,7 +291,7 @@ if [ "$answer" = "y" ]; then
         metadata="{
             \"name\": \"Version $mod_version\",
             \"version_number\": \"$mod_version\",
-            \"changelog\": \"$(as_json "$(<CHANGELOG.md)")\",
+            \"changelog\": \"$(as_json "$(changelog --cat 1)")\",
             \"dependencies\": $(cat publish/modrinth.$mod_loader.dependencies.json | tr -d "[:space:]"),
             \"game_versions\": [\"$minecraft_version\"],
             \"version_type\": \"$release_type\",
