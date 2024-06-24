@@ -62,6 +62,13 @@ public class TrainerCommands {
                         .executes(TrainerCommands::mob_summon_trainer)
                         .then(Commands.argument("at", BlockPosArgument.blockPos())
                             .executes(TrainerCommands::mob_summon_trainer_at))))
+                .then(Commands.literal("summon_persistent")
+                    .requires(css -> css.hasPermission(2))
+                    .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainer", StringArgumentType.string())
+                        .suggests(TrainerCommands::get_trainer_suggestions)
+                        .executes(TrainerCommands::mob_summon_persistent_trainer)
+                        .then(Commands.argument("at", BlockPosArgument.blockPos())
+                            .executes(TrainerCommands::mob_summon_persistent_trainer_at))))
                 .then(Commands.literal("get")
                     .then(Commands.literal("type")
                         .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainer", StringArgumentType.string())
@@ -126,6 +133,38 @@ public class TrainerCommands {
         var mob = TrainerMob.getEntityType().create(level);
         mob.setPos(BlockPosArgument.getSpawnablePos(context, "at").getCenter().add(0, -0.5, 0));
         mob.setTrainerId(context.getArgument("trainer", String.class));
+        level.addFreshEntity(mob);
+        RCTMod.get().getTrainerSpawner().register(mob);
+        return 0;
+    }
+
+    private static int mob_summon_persistent_trainer(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        if(context.getSource().getEntity() instanceof Player player) {
+            try {
+                var level = player.level();
+                var mob = TrainerMob.getEntityType().create(level);
+                mob.setPos(player.blockPosition().above().getCenter().add(0, -0.5, 0));
+                mob.setTrainerId(context.getArgument("trainer", String.class));
+                mob.setPersistent(true);
+                level.addFreshEntity(mob);
+                RCTMod.get().getTrainerSpawner().register(mob);
+            } catch(Exception e) {
+                ModCommon.LOG.error(e.getMessage(), e);
+            }
+
+            return 0;
+        }
+        
+        context.getSource().sendFailure(Component.literal("caller is not a player"));
+        return -1;
+    }
+
+    private static int mob_summon_persistent_trainer_at(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        var level = context.getSource().getLevel();
+        var mob = TrainerMob.getEntityType().create(level);
+        mob.setPos(BlockPosArgument.getSpawnablePos(context, "at").getCenter().add(0, -0.5, 0));
+        mob.setTrainerId(context.getArgument("trainer", String.class));
+        mob.setPersistent(true);
         level.addFreshEntity(mob);
         RCTMod.get().getTrainerSpawner().register(mob);
         return 0;

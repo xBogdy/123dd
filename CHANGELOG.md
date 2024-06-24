@@ -4,6 +4,10 @@ Due to the changes in the gameplay progression aswell as to some advancements in
 
 ## [0.10.x-alpha] - 2024-06-24
 
+***Added***
+
+- Command `summon_persistent`: As the name suggests summons a trainer with the `Persistent` tag already set
+
 ***Fixed***
 
 - `Persistent` trainers despawning on servers
