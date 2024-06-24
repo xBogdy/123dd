@@ -171,7 +171,7 @@ echo "- mod version: '$mod_version'"
 echo "- mod loaders: $(echo ${mod_loaders[@]} | sed 's/ /, /g')"
 read -p "Press <enter> to review the changelog..."
 echo "========================"
-cat CHANGELOG.md
+changelog --cat 1
 echo "========================"
 read -p "Type 'confirm' to continue: " answer
 
