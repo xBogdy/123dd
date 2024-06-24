@@ -1,5 +1,6 @@
 {
   "displayName": "Player Red",
+  "identity": "Trainer Red",
   "team": [
     {
       "species": "cobblemon:ekans",
