@@ -73,6 +73,10 @@ public class CobblemonHandler {
         return maxLevel;
     }
 
+    public static boolean isInBattle(Player player) {
+        return Cobblemon.INSTANCE.getBattleRegistry().getBattleByParticipatingPlayerId(player.getUUID()) != null;
+    }
+
     public static int getActivePokemon(Player player) {
         int count = 0;
 

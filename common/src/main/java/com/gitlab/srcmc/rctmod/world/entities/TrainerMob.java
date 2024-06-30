@@ -96,6 +96,10 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
     public boolean canBattleAgainst(Entity e) {
         if(e instanceof Player player) {
+            if(RCTMod.get().isInBattle(player)) {
+                return false;
+            }
+
             var tm = RCTMod.get().getTrainerManager();
 
             if(tm.getActivePokemon(player) == 0) {
@@ -145,7 +149,9 @@ public class TrainerMob extends PathfinderMob implements Npc {
         var playerState = PlayerState.get(player);
         var trMob = tm.getData(this);
 
-        if(playerState.getTypeDefeatCount(Type.LEADER) < trMob.getRequiredDefeats(Type.LEADER)) {
+        if(RCTMod.get().isInBattle(player)) {
+            ChatUtils.reply(this, player, "player_busy");
+        } else if(playerState.getTypeDefeatCount(Type.LEADER) < trMob.getRequiredDefeats(Type.LEADER)) {
             ChatUtils.reply(this, player, "missing_badges");
         } else if(playerState.getTypeDefeatCount(Type.E4) < trMob.getRequiredDefeats(Type.E4)) {
             ChatUtils.reply(this, player, "missing_beaten_e4");
@@ -157,6 +163,8 @@ public class TrainerMob extends PathfinderMob implements Npc {
             ChatUtils.reply(this, player, "over_level_cap");
         } else if(tm.getActivePokemon(player) == 0) {
             ChatUtils.reply(this, player, "missing_pokemon");
+        } else {
+            ChatUtils.reply(this, player, "done_generic");
         }
     }
 

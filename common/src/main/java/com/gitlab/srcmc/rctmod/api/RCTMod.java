@@ -47,6 +47,7 @@ public final class RCTMod {
     private IServerConfig serverConfig;
 
     private BiConsumer<TrainerMob, Player> battleArgsConsumer = (m, p) -> {};
+    private Function<Player, Boolean> battleStateSupplier = p -> false;
 
     private static Supplier<RCTMod> instance = () -> {
         throw new RuntimeException(RCTMod.class.getName() + " not initialized");
@@ -61,10 +62,11 @@ public final class RCTMod {
         Supplier<LootItemConditionType> defeatCountConditon,
         Function<Player, Integer> playerLevelSupplier,
         Function<Player, Integer> avtivePokemonSupplier,
+        Function<Player, Boolean> battleStateSupplier,
         BiConsumer<TrainerMob, Player> battleArgsConsumer,
         IClientConfig clientConfig, ICommonConfig commonConfig, IServerConfig serverConfig)
     {
-        var local = new RCTMod(playerLevelSupplier, avtivePokemonSupplier, battleArgsConsumer, clientConfig, commonConfig, serverConfig);
+        var local = new RCTMod(playerLevelSupplier, avtivePokemonSupplier, battleStateSupplier, battleArgsConsumer, clientConfig, commonConfig, serverConfig);
         instance = () -> local;
         LevelRangeCondition.init(levelRangeConditon);
         DefeatCountCondition.init(defeatCountConditon);
@@ -73,6 +75,7 @@ public final class RCTMod {
     private RCTMod(
         Function<Player, Integer> playerLevelSupplier,
         Function<Player, Integer> avtivePokemonSupplier,
+        Function<Player, Boolean> battleStateSupplier,
         BiConsumer<TrainerMob, Player> battleArgsConsumer,
         IClientConfig clientConfig, ICommonConfig commonConfig, IServerConfig serverConfig)
     {
@@ -80,6 +83,7 @@ public final class RCTMod {
         this.clientDataManager = new DataPackManager(PackType.CLIENT_RESOURCES);
         this.serverDataManager = new DataPackManager(PackType.SERVER_DATA);
         this.trainerSpawner = new TrainerSpawner();
+        this.battleStateSupplier = battleStateSupplier;
         this.battleArgsConsumer = battleArgsConsumer;
         this.clientConfig = clientConfig;
         this.commonConfig = commonConfig;
@@ -123,5 +127,9 @@ public final class RCTMod {
         }
 
         return true;
+    }
+
+    public boolean isInBattle(Player player) {
+        return this.battleStateSupplier.apply(player);
     }
 }
