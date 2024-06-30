@@ -32,9 +32,9 @@ public interface IServerConfig extends IForgeConfig {
      * The interval in ticks at which a spawn attempt is made per player.
      * 
      * range [1, inf]
-     * default 1200
+     * default 600
      */
-    default int spawnIntervalTicks() { return 1200; }
+    default int spawnIntervalTicks() { return 600; }
 
     /**
      * The min horizontal distance a trainer can spawn from players.

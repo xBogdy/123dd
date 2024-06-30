@@ -9,6 +9,10 @@ Due to the changes in the gameplay progression aswell as to some advancements in
 - A bunch more trainer chatter
 - Notification above the hotbar when pokemon at or above the level cap attempt to gain experience
 
+***Changed***
+
+- Server Config: Decreased default `spawnIntervalTicks` from `1200` to `600` (30 sec.) (you may remove the setting from the config file or delete the complete file to update)
+
 ***Fixed***
 
 - Fixed trainers *accepting* battles against players that are already in another battle
