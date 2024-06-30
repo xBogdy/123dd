@@ -7,6 +7,7 @@ Due to the changes in the gameplay progression aswell as to some advancements in
 ***Added***
 
 - A bunch more trainer chatter
+- Notification above the hotbar when pokemon at or above the level cap attempt to gain experience
 
 ***Fixed***
 
