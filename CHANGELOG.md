@@ -12,6 +12,8 @@ Due to the changes in the gameplay progression aswell as to some advancements in
 ***Changed***
 
 - Server Config: Decreased default `spawnIntervalTicks` from `1200` to `600` (30 sec.) (you may remove the setting from the config file or delete the complete file to update)
+- Server Config: Increased default `maxTrainersPerPlayer` from `4` to `6` (you may remove the setting from the config file or delete the complete file to update)
+- Trainers capable of fighting now don't despawn unless really far away (i.e. completely unloaded)
 
 ***Fixed***
 

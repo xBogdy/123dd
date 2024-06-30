@@ -66,7 +66,7 @@ public interface IServerConfig extends IForgeConfig {
      * range [0, inf]
      * default 4
      */
-    default int maxTrainersPerPlayer() { return 4; }
+    default int maxTrainersPerPlayer() { return 6; }
 
     /**
      * Total trainer spawn cap.

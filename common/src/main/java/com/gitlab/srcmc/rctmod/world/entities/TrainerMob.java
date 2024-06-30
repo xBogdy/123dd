@@ -427,7 +427,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
     @Override
     public boolean removeWhenFarAway(double d) {
-        return !this.isPersistenceRequired();
+        return !this.isPersistenceRequired() && !this.canBattle() && this.getCooldown() == 0;
     }
 
     @Override
