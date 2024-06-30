@@ -4,6 +4,12 @@ Due to the changes in the gameplay progression aswell as to some advancements in
 
 ## [0.10.x-alpha] - 2024-06-30
 
+***Added***
+
+- A bunch more trainer chatter
+
+## [0.10.x-alpha] - 2024-06-30
+
 ***Fixed***
 
 - Fixed trainers *accepting* battles against players that are already in another battle
