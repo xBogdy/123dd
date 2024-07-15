@@ -4,6 +4,10 @@ Due to the changes in the gameplay progression aswell as to some advancements in
 
 ## [0.10.x-alpha] - 2024-07-15
 
+***Changed***
+
+- The death of a trainer will now end a battle immediately
+
 ***Fixed***
 
 - Possibility of trainers despawning while in battle

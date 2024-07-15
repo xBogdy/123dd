@@ -63,6 +63,20 @@ public class CobblemonHandler {
         PokemonUtility.startTrainerBattle((ServerPlayer)target, CobblemonTrainers.INSTANCE.getTrainerRegistry().getTrainer(source.getTrainerId()), source);
     }
 
+    public static void stopBattle(TrainerMob mob) {
+        var opp = (ServerPlayer)mob.getOpponent();
+
+        if(opp != null) {
+            var battle = Cobblemon.INSTANCE.getBattleRegistry().getBattleByParticipatingPlayer(opp);
+
+            if(battle == null) {
+                ModCommon.LOG.info("Player not part of a battle: " + opp.getStringUUID());
+            } else {
+                battle.stop();
+            }
+        }
+    }
+
     public static int getPlayerLevel(Player player) {
         int maxLevel = 0;
 

@@ -18,6 +18,7 @@
 package com.gitlab.srcmc.rctmod.api;
 
 import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -48,6 +49,7 @@ public final class RCTMod {
 
     private BiConsumer<TrainerMob, Player> battleArgsConsumer = (m, p) -> {};
     private Function<Player, Boolean> battleStateSupplier = p -> false;
+    private Consumer<TrainerMob> battleStopAction = t -> {};
 
     private static Supplier<RCTMod> instance = () -> {
         throw new RuntimeException(RCTMod.class.getName() + " not initialized");
@@ -64,9 +66,10 @@ public final class RCTMod {
         Function<Player, Integer> avtivePokemonSupplier,
         Function<Player, Boolean> battleStateSupplier,
         BiConsumer<TrainerMob, Player> battleArgsConsumer,
+        Consumer<TrainerMob> battleStopAction,
         IClientConfig clientConfig, ICommonConfig commonConfig, IServerConfig serverConfig)
     {
-        var local = new RCTMod(playerLevelSupplier, avtivePokemonSupplier, battleStateSupplier, battleArgsConsumer, clientConfig, commonConfig, serverConfig);
+        var local = new RCTMod(playerLevelSupplier, avtivePokemonSupplier, battleStateSupplier, battleArgsConsumer, battleStopAction, clientConfig, commonConfig, serverConfig);
         instance = () -> local;
         LevelRangeCondition.init(levelRangeConditon);
         DefeatCountCondition.init(defeatCountConditon);
@@ -77,6 +80,7 @@ public final class RCTMod {
         Function<Player, Integer> avtivePokemonSupplier,
         Function<Player, Boolean> battleStateSupplier,
         BiConsumer<TrainerMob, Player> battleArgsConsumer,
+        Consumer<TrainerMob> battleStopAction,
         IClientConfig clientConfig, ICommonConfig commonConfig, IServerConfig serverConfig)
     {
         this.trainerManager = new TrainerManager(playerLevelSupplier, avtivePokemonSupplier);
@@ -85,6 +89,7 @@ public final class RCTMod {
         this.trainerSpawner = new TrainerSpawner();
         this.battleStateSupplier = battleStateSupplier;
         this.battleArgsConsumer = battleArgsConsumer;
+        this.battleStopAction = battleStopAction;
         this.clientConfig = clientConfig;
         this.commonConfig = commonConfig;
         this.serverConfig = serverConfig;
@@ -127,6 +132,10 @@ public final class RCTMod {
         }
 
         return true;
+    }
+
+    public void stopBattle(TrainerMob mob) {
+        this.battleStopAction.accept(mob);
     }
 
     public boolean isInBattle(Player player) {

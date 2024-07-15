@@ -46,7 +46,7 @@ public class ModEventBus {
 
         mlx.registerConfig(serverConfig.getType(), serverConfig.getSpec());
         mlx.registerConfig(clientConfig.getType(), clientConfig.getSpec());
-        RCTMod.init(ModRegistries.LootItemConditions.LEVEL_RANGE, ModRegistries.LootItemConditions.DEFEAT_COUNT, CobblemonHandler::getPlayerLevel, CobblemonHandler::getActivePokemon, CobblemonHandler::isInBattle, CobblemonHandler::makeBattle, clientConfig, () -> null, serverConfig);
+        RCTMod.init(ModRegistries.LootItemConditions.LEVEL_RANGE, ModRegistries.LootItemConditions.DEFEAT_COUNT, CobblemonHandler::getPlayerLevel, CobblemonHandler::getActivePokemon, CobblemonHandler::isInBattle, CobblemonHandler::makeBattle, CobblemonHandler::stopBattle, clientConfig, () -> null, serverConfig);
     }
 
     @SubscribeEvent

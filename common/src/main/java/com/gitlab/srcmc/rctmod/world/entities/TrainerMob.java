@@ -177,9 +177,6 @@ public class TrainerMob extends PathfinderMob implements Npc {
         this.opponent = player;
     }
 
-    /**
-     * @deprecated
-     */
     public Player getOpponent() {
         return this.opponent;
     }
@@ -394,6 +391,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
         if(reason == RemovalReason.DISCARDED || reason == RemovalReason.KILLED) {
             RCTMod.get().getTrainerSpawner().unregister(this);
+            RCTMod.get().stopBattle(this);
         }
 
         super.remove(reason);
