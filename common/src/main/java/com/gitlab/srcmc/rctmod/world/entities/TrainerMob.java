@@ -76,10 +76,15 @@ public class TrainerMob extends PathfinderMob implements Npc {
         .canSpawnFarFromPlayer()
         .sized(0.6F, 1.95F).build("trainer");
 
+    private final int TICKS_TO_DESPAWN = 600;
+    private final int DESPAWN_TICK_SCALE = 20;
+    private final int DESPAWN_DISTANCE = 80;
+
     private int cooldown, wins, defeats;
     private Player opponent; // TODO: not really required anymore
     private UUID originPlayer;
     private boolean persistent;
+    private int despawnTicks;
 
     protected TrainerMob(EntityType<? extends PathfinderMob> entityType, Level level) {
         super(entityType, level);
@@ -427,11 +432,23 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
     @Override
     public boolean removeWhenFarAway(double d) {
-        return !this.isPersistenceRequired() && !this.canBattle() && this.getCooldown() == 0;
+        return false;
     }
 
     @Override
     public boolean canChangeDimensions() {
+        return false;
+    }
+
+    public boolean shouldDespawn() {
+        if(++this.despawnTicks % DESPAWN_TICK_SCALE == 0) {
+            if(!this.isInBattle() && this.level().getNearestPlayer(this, Math.max(DESPAWN_DISTANCE, RCTMod.get().getServerConfig().maxHorizontalDistanceToPlayers())) == null) {
+                return this.despawnTicks >= TICKS_TO_DESPAWN;
+            }
+
+            this.despawnTicks = 0;
+        }
+
         return false;
     }
 

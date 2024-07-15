@@ -94,7 +94,7 @@ public class TrainerSpawner {
 
             if(mob.isRemoved() || mob.isPersistenceRequired()) {
                 it.remove();
-            } else if(!mob.level().isLoaded(mob.blockPosition())) {
+            } else if(mob.shouldDespawn()) {
                 it.remove();
                 mob.discard();
             }
