@@ -309,6 +309,14 @@ public class TrainerMob extends PathfinderMob implements Npc {
         }
     }
 
+    public void cancelBattle() {
+        if(this.opponent != null) {
+            RCTMod.get().getTrainerManager().removeBattle(this.opponent.getUUID());
+            RCTMod.get().stopBattle(this);
+            this.setOpponent(null);
+        }
+    }
+
     protected void dropBattleLoot(ResourceLocation lootTableResource, Player player) {
         var level = this.level();
         var lootTable = level.getServer().getLootData().getLootTable(lootTableResource);
@@ -391,7 +399,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
         if(reason == RemovalReason.DISCARDED || reason == RemovalReason.KILLED) {
             RCTMod.get().getTrainerSpawner().unregister(this);
-            RCTMod.get().stopBattle(this);
+            this.cancelBattle();
         }
 
         super.remove(reason);
