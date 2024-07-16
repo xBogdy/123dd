@@ -2,7 +2,7 @@
 
 Due to the changes in the gameplay progression aswell as to some advancements in **0.10.0** it is likely that there will be indescrepencies with the current state of players **that are past Erika** from earlier versions. I've included a small [guide](https://srcmc.gitlab.io/rct/docs/guides/reset_states/) in the documentation that goes into detail how the states of players can be modified/reverted without starting a new world. The current state of the gameplay progression is considered final and I am moving my thoughts towards setting milestones for the beta :).
 
-## [0.10.x-alpha] - 2024-07-17
+## [0.10.4-alpha] - 2024-07-17
 
 ***Fixed***
 
