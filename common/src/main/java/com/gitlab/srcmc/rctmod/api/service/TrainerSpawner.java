@@ -33,12 +33,16 @@ import com.gitlab.srcmc.rctmod.api.data.save.collection.SavedStringIntegerMap;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.material.Fluids;
 
 public class TrainerSpawner {
     private static float KEY_TRAINER_SPAWN_WEIGHT_FACTOR = 120;
+    private static final int SPAWN_RETRIES = 4;
 
     private class SpawnCandidate {
         public final String id;
@@ -233,13 +237,17 @@ public class TrainerSpawner {
 
         if(this.getSpawnCount() < config.maxTrainersTotal()) {
             if(this.getSpawnCount(player.getUUID()) < config.maxTrainersPerPlayer()) {
-                var pos = this.nextPos(player);
-                
-                if(pos != null) {
-                    var spawnCandidate = this.nextSpawnCandidate(player, pos);
-                    
-                    if(spawnCandidate != null) {
-                        this.spawnFor(player, spawnCandidate.id, pos);
+                for(int i = 0; i < SPAWN_RETRIES; i++) {
+                    var pos = this.nextPos(player);
+
+                    if(pos != null) {
+                        var spawnCandidate = this.nextSpawnCandidate(player, pos);
+                        
+                        if(spawnCandidate != null) {
+                            this.spawnFor(player, spawnCandidate.id, pos);
+                        }
+
+                        break;
                     }
                 }
             }
@@ -291,30 +299,59 @@ public class TrainerSpawner {
 
         int yEnd = dy > 0 ? -(dy + 1) : -(dy - 1);
         int yAdd = dy > 0 ? -1 : 1;
-        int air = 0, solid = 0;
+        
+        int prevState = 0; // 0: air, 1: water, 2: solid
+        int validCount = 0;
         
         for(int i = dy; i != yEnd; i += yAdd) {
             var pos = new BlockPos(x, y + i, z);
             var bs = level.getBlockState(pos);
 
-            if(bs.isValidSpawn(level, pos, TrainerMob.getEntityType())) {
-                solid++;
-
+            if(bs.isFaceSturdy(level, pos, Direction.UP) || bs.is(Blocks.SNOW)) {
                 if(dy < 0) {
-                    air = 0;
+                    validCount = 1;
+                } else {
+                    if(prevState == 0 || prevState == 1) {
+                        validCount++;
+                    } else {
+                        validCount = 0;
+                    }
                 }
-            } else if(bs.isAir()) {
-                air++;
 
-                if(dy > 0) {
-                    solid = 0;
+                prevState = 2;
+            } else if(bs.isAir()) {
+                if(dy < 0) {
+                    validCount++;
+                } else {
+                    if(prevState == 0) {
+                        if(validCount < 2) {
+                            validCount++;
+                        }
+                    } else {
+                        validCount = 1;
+                    }
                 }
+
+                prevState = 0;
+            } else if(bs.getFluidState().is(Fluids.WATER)) {
+                if(dy < 0) {
+                    if(prevState == 2) {
+                        validCount++;
+                    }
+                } else {
+                    if(prevState == 0) {
+                        validCount++;
+                    } else {
+                        validCount = 0;
+                    }
+                }
+
+                prevState = 1;
             } else {
-                solid = 0;
-                air = 0;
+                prevState = validCount = 0;
             }
 
-            if(solid > 0 && air > 1) {
+            if(validCount > 2) {
                 return dy < 0 ? pos.below() : pos.above();
             }
         }

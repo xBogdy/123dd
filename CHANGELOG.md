@@ -4,6 +4,10 @@ Due to the changes in the gameplay progression aswell as to some advancements in
 
 ## [x.x.x] - 2024-07-29
 
+***Changed***
+
+- Trainers can now spawn on (layered) snow blocks and in shallow water (1 block deep)
+
 ***Fixed***
 
 - Potential desync of player states when switching between worlds (single-/multiplayer) in the same play session
