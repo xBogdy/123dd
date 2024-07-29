@@ -51,13 +51,13 @@ public class PlayerState implements Serializable {
 
         if(level.isClientSide) {
             if(player.isLocalPlayer()) {
-                return localState == null ? (localState = new PlayerState(player)) : localState;
+                return (localState == null || localState.player != player) ? (localState = new PlayerState(player)) : localState;
             }
 
             throw new IllegalArgumentException("Cannot retrieve player state of other players on this client");
         }
 
-        return remoteStates.computeIfAbsent(player.getUUID(), uuid -> new PlayerState(player));
+        return remoteStates.compute(player.getUUID(), (key, ps) -> ps == null || ps.player != player ? new PlayerState(player) : ps);
     }
 
     public byte[] serializeUpdate() {
