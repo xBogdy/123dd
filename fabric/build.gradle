@@ -28,7 +28,6 @@ dependencies {
 
     // Cobblemon Trainers
     modImplementation "curse.maven:cobblemontrainers-959503:${cobblemontrainers_fabric_version}"
-    modImplementation "com.selfdot:SelfdotModLibs-fabric:${selfdotlibs_version}"
 
     // Fabric Permission API
     modImplementation "me.lucko:fabric-permissions-api:${fpapi_version}"
