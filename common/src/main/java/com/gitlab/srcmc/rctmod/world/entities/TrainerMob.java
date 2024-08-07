@@ -21,6 +21,7 @@ import java.util.UUID;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.TrainerBattle;
+import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData.Type;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.api.utils.ChatUtils;
@@ -29,6 +30,7 @@ import com.gitlab.srcmc.rctmod.world.entities.goals.LookAtPlayerAndWaitGoal;
 import com.gitlab.srcmc.rctmod.world.entities.goals.MoveCloseToTargetGoal;
 import com.gitlab.srcmc.rctmod.world.entities.goals.PokemonBattleGoal;
 import com.gitlab.srcmc.rctmod.world.entities.goals.RandomStrollAwayGoal;
+import com.gitlab.srcmc.rctmod.world.entities.goals.RandomStrollThroughVillageGoal;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -44,6 +46,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.PathfinderMob;
@@ -53,8 +56,8 @@ import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.PanicGoal;
-import net.minecraft.world.entity.ai.goal.StrollThroughVillageGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
+import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.monster.Evoker;
 import net.minecraft.world.entity.monster.Illusioner;
 import net.minecraft.world.entity.monster.Pillager;
@@ -78,7 +81,8 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
     private final int TICKS_TO_DESPAWN = 600;
     private final int DESPAWN_TICK_SCALE = 20;
-    private final int DESPAWN_DISTANCE = 80;
+    private final int DESPAWN_DISTANCE = 128;
+    private final int MAX_PLAYER_TRACKING_RANGE = 128;
 
     private int cooldown, wins, defeats;
     private Player opponent; // TODO: not really required anymore
@@ -352,6 +356,8 @@ public class TrainerMob extends PathfinderMob implements Npc {
                     this.setOpponent(null);
                     this.wins++;
                 }
+            } else {
+                this.updateTarget();
             }
 
             if(this.isPersistenceRequired() && !RCTMod.get().getTrainerSpawner().isRegistered(this)) {
@@ -405,12 +411,23 @@ public class TrainerMob extends PathfinderMob implements Npc {
         super.remove(reason);
     }
 
-    @Override
-    public void onPathfindingStart() {
-        if(this.canBattle()) {
-            var level = this.level();
-            var target = level.getNearestPlayer(this.getX(), this.getY(), this.getZ(), 128, this::canBattleAgainst);
-            this.setTarget(target);
+    private void updateTarget() {
+        if(this.tickCount % 60 == 0) {
+            if(this.canBattle()) {
+                var tm = RCTMod.get().getTrainerManager();
+                int trLevel = tm.getData(this).getTeam().getMembers().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0);
+
+                this.setTarget(this.level().getNearbyPlayers(
+                    TargetingConditions
+                        .forNonCombat()
+                        .ignoreLineOfSight()
+                        .selector(p -> PlayerState.get((Player)p).getLevelCap() >= trLevel),
+                    this, this.getBoundingBox().deflate(MAX_PLAYER_TRACKING_RANGE)).stream()
+                        .sorted((p1, p2) -> Integer.compare(Math.abs(tm.getPlayerLevel(p1) - trLevel), Math.abs(tm.getPlayerLevel(p2) - trLevel)))
+                        .findFirst().orElse(null));
+            } else {
+                this.setTarget(null);
+            }
         }
     }
 
@@ -528,22 +545,40 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
     @Override
     protected void registerGoals() {
+        this.getNavigation().setCanFloat(true);
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(0, new PokemonBattleGoal(this));
-        this.goalSelector.addGoal(1, new AvoidEntityGoal<Zombie>(this, Zombie.class, 8.0F, 0.5, 0.5));
-        this.goalSelector.addGoal(1, new AvoidEntityGoal<Evoker>(this, Evoker.class, 12.0F, 0.5, 0.5));
-        this.goalSelector.addGoal(1, new AvoidEntityGoal<Vindicator>(this, Vindicator.class, 8.0F, 0.5, 0.5));
-        this.goalSelector.addGoal(1, new AvoidEntityGoal<Vex>(this, Vex.class, 8.0F, 0.5, 0.5));
-        this.goalSelector.addGoal(1, new AvoidEntityGoal<Pillager>(this, Pillager.class, 15.0F, 0.5, 0.5));
-        this.goalSelector.addGoal(1, new AvoidEntityGoal<Illusioner>(this, Illusioner.class, 12.0F, 0.5, 0.5));
-        this.goalSelector.addGoal(1, new AvoidEntityGoal<Zoglin>(this, Zoglin.class, 10.0F, 0.5, 0.5));
-        this.goalSelector.addGoal(1, new PanicGoal(this, 0.5));
-        this.goalSelector.addGoal(2, new LookAtPlayerAndWaitGoal(this, Player.class, 2.0F, 0.04F, 160, 320));
-        this.goalSelector.addGoal(2, new LookAtPlayerAndWaitGoal(this, Player.class, 4.0F, this.getTarget() == null ? 0.004F : 0.02F, 80, 160));
-        this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, Player.class, 8.0F));
-        this.goalSelector.addGoal(8, new StrollThroughVillageGoal(this, 600));
-        this.goalSelector.addGoal(8, new MoveCloseToTargetGoal(this, 0.35, 1.5F*RCTMod.get().getServerConfig().maxHorizontalDistanceToPlayers()));
-        this.goalSelector.addGoal(9, new RandomStrollAwayGoal(this, 0.35));
-        this.goalSelector.addGoal(10, new WaterAvoidingRandomStrollGoal(this, 0.35));
+        this.goalSelector.addGoal(2, new AvoidEntityGoal<Zombie>(this, Zombie.class, 8.0F, 0.5, 0.5));
+        this.goalSelector.addGoal(2, new AvoidEntityGoal<Evoker>(this, Evoker.class, 12.0F, 0.5, 0.5));
+        this.goalSelector.addGoal(2, new AvoidEntityGoal<Vindicator>(this, Vindicator.class, 8.0F, 0.5, 0.5));
+        this.goalSelector.addGoal(2, new AvoidEntityGoal<Vex>(this, Vex.class, 8.0F, 0.5, 0.5));
+        this.goalSelector.addGoal(2, new AvoidEntityGoal<Pillager>(this, Pillager.class, 15.0F, 0.5, 0.5));
+        this.goalSelector.addGoal(2, new AvoidEntityGoal<Illusioner>(this, Illusioner.class, 12.0F, 0.5, 0.5));
+        this.goalSelector.addGoal(2, new AvoidEntityGoal<Zoglin>(this, Zoglin.class, 10.0F, 0.5, 0.5));
+        this.goalSelector.addGoal(2, new PanicGoal(this, 0.5));
+        this.goalSelector.addGoal(4, new LookAtPlayerAndWaitGoal(this, LivingEntity.class, 2.0F, 0.04F, 160, 320));
+        this.goalSelector.addGoal(4, new LookAtPlayerAndWaitGoal(this, LivingEntity.class, 4.0F, 0.004F, 80, 160));
+        this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, LivingEntity.class, 8.0F));
+        this.goalSelector.addGoal(6, new RandomStrollAwayGoal(this, 0.35, () -> 0.0025f, m -> { var tr = (TrainerMob)m; return !tr.canBattle() && tr.getCooldown() == 0; }));
+        this.goalSelector.addGoal(8, new MoveCloseToTargetGoal(this, 0.35, () -> this.requiredBy(this.getTarget()) ? 0.25f : 0.0025f, 2*RCTMod.get().getServerConfig().maxHorizontalDistanceToPlayers()));
+        this.goalSelector.addGoal(10, new RandomStrollThroughVillageGoal(this, 0.35F, () -> 0.0025f));
+        this.goalSelector.addGoal(12, new WaterAvoidingRandomStrollGoal(this, 0.35));
+    }
+
+    public boolean requiredBy(LivingEntity entity) {
+        if(entity instanceof Player player) {
+            var plState = PlayerState.get(player);
+            var trMob = RCTMod.get().getTrainerManager().getData(this);
+            var type = trMob.getType();
+
+            return (type == TrainerMobData.Type.BOSS
+                || type == TrainerMobData.Type.LEADER
+                || type == TrainerMobData.Type.E4
+                || type == TrainerMobData.Type.CHAMP
+                || trMob.getRewardLevelCap() > plState.getLevelCap())
+                && plState.getTrainerDefeatCount(this.getTrainerId()) == 0;
+        }
+
+        return false;
     }
 }

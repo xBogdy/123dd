@@ -17,37 +17,53 @@
  */
 package com.gitlab.srcmc.rctmod.world.entities.goals;
 
+import java.util.function.Supplier;
+
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.MoveTowardsTargetGoal;
 
 public class MoveCloseToTargetGoal extends MoveTowardsTargetGoal {
-    private static final int DEFAULT_SOCIAL_DISTANCING = 16;
+    private static final int DEFAULT_SOCIAL_DISTANCING = 24;
 
     private PathfinderMob mob;
     private double minDistanceSquared;
+    private double speedModifier;
+    private Supplier<Float> probability;
 
-    public MoveCloseToTargetGoal(PathfinderMob pathfinderMob, double d, float f) {
-        this(pathfinderMob, d, f, DEFAULT_SOCIAL_DISTANCING);
+    public MoveCloseToTargetGoal(PathfinderMob pathfinderMob, double d, Supplier<Float> p, float f) {
+        this(pathfinderMob, d, p, f, DEFAULT_SOCIAL_DISTANCING);
     }
 
-    public MoveCloseToTargetGoal(PathfinderMob pathfinderMob, double d, float f, float g) {
+    public MoveCloseToTargetGoal(PathfinderMob pathfinderMob, double d, Supplier<Float> p, float f, float g) {
         super(pathfinderMob, d, f);
         this.mob = pathfinderMob;
+        this.probability = p;
         this.minDistanceSquared = g*g;
+        this.speedModifier = d;
     }
 
     @Override
     public boolean canUse() {
-        return super.canUse() && !this.isNearbyTarget();
+        return this.mob.getRandom().nextFloat() < this.probability.get() && super.canUse() && !this.isNearbyTarget();
     }
 
     @Override
     public boolean canContinueToUse() {
+        if(!this.mob.isInWater() && !this.mob.isInLava() && this.mob.getRandom().nextInt(600) == 0) {
+            return false;
+        }
+
         return super.canContinueToUse() && !this.isNearbyTarget();
     }
 
     private boolean isNearbyTarget() {
         var target = this.mob.getTarget();
         return target != null && target.distanceToSqr(this.mob) < this.minDistanceSquared;
+    }
+    
+    @Override
+    public void tick() {
+        this.mob.getNavigation().setSpeedModifier(this.mob.isInWater() || this.mob.isInLava() ? 1 : this.speedModifier);
+        super.tick();
     }
 }

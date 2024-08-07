@@ -17,7 +17,8 @@
  */
 package com.gitlab.srcmc.rctmod.world.entities.goals;
 
-import java.util.Random;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
@@ -25,21 +26,22 @@ import net.minecraft.world.entity.ai.util.LandRandomPos;
 import net.minecraft.world.phys.Vec3;
 
 public class RandomStrollAwayGoal extends RandomStrollGoal {
-    public static final float PROBABILITY = 0.001F;
-    protected final float probability;
-    private int[] direction;
+    private static final float STORLL_CHANCE = 0.0015f;
 
-    public RandomStrollAwayGoal(PathfinderMob pathfinderMob, double d) {
-        this(pathfinderMob, d, 0.001F);
+    private int[] direction;
+    private Supplier<Float> probability;
+    private Function<PathfinderMob, Boolean> predicate;
+
+    public RandomStrollAwayGoal(PathfinderMob pathfinderMob, double d, Supplier<Float> p) {
+        this(pathfinderMob, d, p, m -> true);
     }
 
-    public RandomStrollAwayGoal(PathfinderMob pathfinderMob, double d, float f) {
+    public RandomStrollAwayGoal(PathfinderMob pathfinderMob, double d, Supplier<Float> p, Function<PathfinderMob, Boolean> predicate) {
         super(pathfinderMob, d);
-        this.probability = f;
+        this.probability = p;
+        this.predicate = predicate;
 
-        var rng = new Random(pathfinderMob.getId());
-
-        switch(rng.nextInt(4)) {
+        switch(pathfinderMob.getRandom().nextInt(4)) {
             case 0:
                 direction = new int[]{100, 0}; // north
                 break;
@@ -67,14 +69,34 @@ public class RandomStrollAwayGoal extends RandomStrollGoal {
         }
     }
 
+    @Override
+    public boolean canUse() {
+        return this.mob.getRandom().nextFloat() < this.probability.get() && this.predicate.apply(this.mob);
+    }
+
+    @Override
+    public boolean canContinueToUse() {
+        if(!this.mob.isInWater() && !this.mob.isInLava() && this.mob.getRandom().nextInt(600) == 0) {
+            return false;
+        }
+
+        return super.canContinueToUse();
+    }
+
     protected Vec3 getPosition() {
-        if(this.mob.isInWaterOrBubble()) {
+        if(this.mob.isInWaterOrBubble() || this.mob.isInLava()) {
             Vec3 vec3 = LandRandomPos.getPosTowards(this.mob, 15, 7, this.mob.getPosition(1F).add(this.direction[0], 0, this.direction[1]));
             return vec3 == null ? super.getPosition() : vec3;
         } else {
-            return this.mob.getRandom().nextFloat() >= this.probability
+            return this.mob.getRandom().nextFloat() > STORLL_CHANCE
                 ? LandRandomPos.getPosTowards(this.mob, 10, 7, this.mob.getPosition(1F).add(this.direction[0], 0, this.direction[1]))
                 : super.getPosition();
         }
+    }
+    
+    @Override
+    public void tick() {
+        this.mob.getNavigation().setSpeedModifier(this.mob.isInWater() || this.mob.isInLava() ? 1 : this.speedModifier);
+        super.tick();
     }
 }

@@ -30,8 +30,8 @@ public class PokemonBattleGoal extends LookAtPlayerGoal {
 
     public PokemonBattleGoal(TrainerMob trainer) {
         super(trainer, Mob.class, 8.0F, 1F, false);
-        this.setFlags(EnumSet.of(Flag.LOOK, Flag.MOVE));
         this.trainer = trainer;
+        this.setFlags(EnumSet.of(Flag.LOOK, Flag.MOVE));
     }
 
     @Override
@@ -45,7 +45,7 @@ public class PokemonBattleGoal extends LookAtPlayerGoal {
                     this.lookAtContext, this.mob, this.mob.getX(), this.mob.getEyeY(), this.mob.getZ());
             }
 
-            if(this.lookAt == null || this.mob.getRandom().nextFloat() < 0.02) {
+            if(this.lookAt == null || this.mob.getRandom().nextFloat() < 0.02f) {
                 this.lookAtPlayer = !this.lookAtPlayer;
             }
 
@@ -62,14 +62,14 @@ public class PokemonBattleGoal extends LookAtPlayerGoal {
 
     @Override
     public void start() {
-        trainer.getNavigation().stop();
+        this.trainer.getNavigation().stop();
     }
 
     @Override
     public void stop() {
         this.lookAt = null;
     }
-
+    
     @Override
     public void tick() {
         if(this.lookAt != null && this.lookAt.isAlive()) {

@@ -6,6 +6,7 @@ Due to the changes in the gameplay progression aswell as to some advancements in
 
 ***Changed***
 
+- Adjustments to trainer behavior (AI): Only undefeated key trainers (e.g. leaders) will seek out players that can fight them, also trainers are now much stronger drawn towards villages and in general will mind they own businesse much more
 - Trainers can now spawn on (layered) snow blocks
 
 ***Fixed***
