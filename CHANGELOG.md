@@ -6,7 +6,7 @@ Due to the changes in the gameplay progression aswell as to some advancements in
 
 ***Changed***
 
-- Adjustments to trainer behavior (AI): Only undefeated key trainers (e.g. leaders) will seek out players that can fight them, also trainers are now much stronger drawn towards villages and in general will mind they own businesse much more
+- Adjustments to trainer behavior (AI): Only undefeated key trainers (e.g. leaders) have a high chance to seek out players that can fight them (small chance for others), also trainers are now much stronger drawn towards villages in general and will most of the time mind own businesse (rather than stalking the player)
 - Server Config: Increasd default `maxTrainersPerPlayer` from `4` to `8` and `maxTrainersTotal` from `20` to `24` (since trainers should be more spread out due to the changes in they behaviour)
 - Trainers can now spawn on (layered) snow blocks
 
