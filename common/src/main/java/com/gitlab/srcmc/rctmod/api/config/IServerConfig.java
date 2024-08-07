@@ -64,17 +64,17 @@ public interface IServerConfig extends IForgeConfig {
      * Spawn cap of trainers per player.
      * 
      * range [0, inf]
-     * default 4
+     * default 8
      */
-    default int maxTrainersPerPlayer() { return 6; }
+    default int maxTrainersPerPlayer() { return 8; }
 
     /**
      * Total trainer spawn cap.
      * 
      * range [0, inf]
-     * default 20
+     * default 24
      */
-    default int maxTrainersTotal() { return 20; }
+    default int maxTrainersTotal() { return 24; }
 
     /**
      * The maximum level difference between the strongest pokemon in the team of a
