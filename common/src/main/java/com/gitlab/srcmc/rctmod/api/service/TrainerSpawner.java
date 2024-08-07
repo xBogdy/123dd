@@ -43,6 +43,7 @@ import net.minecraft.world.level.material.Fluids;
 public class TrainerSpawner {
     private static float KEY_TRAINER_SPAWN_WEIGHT_FACTOR = 120;
     private static final int SPAWN_RETRIES = 4;
+    private static final boolean CAN_SPAWN_IN_WATER = false; // experimental
 
     private class SpawnCandidate {
         public final String id;
@@ -231,7 +232,7 @@ public class TrainerSpawner {
     public void attemptSpawnFor(Player player) {
         var config = RCTMod.get().getServerConfig();
 
-        if(config.globalSpawnChance() < player.getRandom().nextFloat()) {
+        if(config.globalSpawnChance() < player.getRandom().nextFloat() || RCTMod.get().getTrainerManager().getPlayerLevel(player) == 0) {
             return;
         }
 
@@ -283,6 +284,7 @@ public class TrainerSpawner {
         }
     }
 
+    @SuppressWarnings("unused")
     private BlockPos nextPos(Player player) {
         var config = RCTMod.get().getServerConfig();
         var level = player.level();
@@ -300,14 +302,30 @@ public class TrainerSpawner {
         int yEnd = dy > 0 ? -(dy + 1) : -(dy - 1);
         int yAdd = dy > 0 ? -1 : 1;
         
-        int prevState = 0; // 0: air, 1: water, 2: solid
+        int prevState = -1; // 0: air, 1: water, 2: snow, 3: solid
         int validCount = 0;
         
         for(int i = dy; i != yEnd; i += yAdd) {
             var pos = new BlockPos(x, y + i, z);
             var bs = level.getBlockState(pos);
 
-            if(bs.isFaceSturdy(level, pos, Direction.UP) || bs.is(Blocks.SNOW)) {
+            if(bs.is(Blocks.SNOW)) {
+                if(dy < 0) {
+                    if(prevState == 3) {
+                        validCount = 1;
+                    } else {
+                        validCount = 0;
+                    }
+                } else {
+                    if(prevState == 0) {
+                        validCount++;
+                    } else {
+                        validCount = 0;
+                    }
+                }
+
+                prevState = 2;
+            } else if(bs.isFaceSturdy(level, pos, Direction.UP)) {
                 if(dy < 0) {
                     validCount = 1;
                 } else {
@@ -318,37 +336,30 @@ public class TrainerSpawner {
                     }
                 }
 
-                prevState = 2;
+                prevState = 3;
             } else if(bs.isAir()) {
                 if(dy < 0) {
-                    validCount++;
-                } else {
-                    if(prevState == 0) {
-                        if(validCount < 2) {
-                            validCount++;
-                        }
-                    } else {
-                        validCount = 1;
+                    if(validCount > 0) {
+                        validCount++;
                     }
+                } else {
+                    validCount = Math.min(2, validCount + 1);
                 }
 
                 prevState = 0;
-            } else if(bs.getFluidState().is(Fluids.WATER)) {
+            } else if(CAN_SPAWN_IN_WATER && bs.getFluidState().is(Fluids.WATER)) {
                 if(dy < 0) {
-                    if(prevState == 2) {
+                    if(validCount > 0) {
                         validCount++;
                     }
                 } else {
-                    if(prevState == 0) {
-                        validCount++;
-                    } else {
-                        validCount = 0;
-                    }
+                    validCount = Math.min(2, validCount + 1);
                 }
 
                 prevState = 1;
             } else {
-                prevState = validCount = 0;
+                prevState = -1;
+                validCount = 0;
             }
 
             if(validCount > 2) {

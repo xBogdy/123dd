@@ -6,7 +6,7 @@ Due to the changes in the gameplay progression aswell as to some advancements in
 
 ***Changed***
 
-- Trainers can now spawn on (layered) snow blocks and in shallow water (1 block deep)
+- Trainers can now spawn on (layered) snow blocks
 
 ***Fixed***
 
