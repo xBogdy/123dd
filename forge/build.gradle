@@ -76,14 +76,11 @@ dependencies {
     // compileOnly fg.deobf("mezz.jei:jei-${jei_mc_version}-common-api:${jei_version}")
     runtimeOnly fg.deobf("mezz.jei:jei-${jei_mc_version}-forge:${jei_version}")
 
-    // CraftTweaker
-    runtimeOnly(fg.deobf("com.blamejared.crafttweaker:CraftTweaker-forge-${crafttweaker_mc_version}:${crafttweaker_version}"))
+    // Charging Gadgets
+    runtimeOnly fg.deobf("curse.maven:charging-gadgets-399757:${charging_gadgets_version}")
 
-    // Mekanism
-    // runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_mc_version}-${mekanism_version}") // core
-    // runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_mc_version}-${mekanism_version}:additions") // Mekanism: Additions
-    // runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_mc_version}-${mekanism_version}:generators") // Mekanism: Generators
-    // runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_mc_version}-${mekanism_version}:tools") // Mekanism: Tools
+    // Building Gadgets
+    runtimeOnly fg.deobf("curse.maven:building-gadgets-298187:${building_gadgets_version}")
 }
 
 mixin {
