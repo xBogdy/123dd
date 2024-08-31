@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.11.x-alpha] - 2024-08-31
+
+***Fixed***
+
+- Potential battle error for some players caused by missing 'damage source' for battle loot tables
+
 ## [0.11.0-alpha] - 2024-08-07
 
 ***Changed***

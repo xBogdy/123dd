@@ -327,7 +327,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
         var builder = (new LootParams.Builder((ServerLevel)level))
             .withParameter(LootContextParams.THIS_ENTITY, this)
             .withParameter(LootContextParams.ORIGIN, this.position())
-            .withParameter(LootContextParams.DAMAGE_SOURCE, this.getLastDamageSource())
+            .withParameter(LootContextParams.DAMAGE_SOURCE, level.damageSources().generic())
             .withParameter(LootContextParams.LAST_DAMAGE_PLAYER, player);
 
         lootTable.getRandomItems(
