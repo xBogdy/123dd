@@ -14,7 +14,9 @@ dependencies {
     implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
 
     // Common
-    implementation project(":common")
+    compileOnly(project(path: ":common")) {
+        transitive = false
+    }
 
     // JEI
     modRuntimeOnly "mezz.jei:jei-${jei_mc_version}-fabric:${jei_version}"
