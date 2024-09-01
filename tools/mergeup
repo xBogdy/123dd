@@ -5,6 +5,16 @@
 # contained within the array. Aborts in case of merge conflicts.
 set -e
 
+for arg in "$@"; do
+    case $arg in
+        -p|--push)
+            PUSH=1 ;;
+        *)
+            echo "unknown argument '$arg'"
+            exit 1 ;;
+    esac
+done
+
 branches=( "master" "1.18.2" "1.19" "1.19.1" "1.19.2" "1.19.3" "1.19.4" "1.20" "1.20.1" "1.20.2" "1.20.3" "1.20.4" )
 
 if [ -n "$(git status --porcelain)" ]; then
@@ -34,6 +44,10 @@ for branch in "${target_branches[@]}"; do
     if git checkout "$branch" --no-guess; then
         git merge "$current_branch"
         current_branch="$branch"
+
+        if [ -n "$PUSH" ]; then
+            git push
+        fi
     fi
 done
 
