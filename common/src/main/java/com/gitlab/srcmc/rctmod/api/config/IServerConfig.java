@@ -131,11 +131,9 @@ public interface IServerConfig extends IForgeConfig {
      * make this mod easier a negative value harder.
      * 
      * On a side note, trainers will also take this value into account when determining
-     * the required level cap to fight them. In practice this matters only for negative
-     * values as the required level cap will never be above the level of the strongest
-     * pokemon of a trainer. For example if we assume bonusLevelCap=-3: A trainer with
-     * a strongest pokemon at level 15 would usually require a level cap of 15, now a
-     * level cap of 15-3=12 is required.
+     * the required level cap to fight them. For example if we assume bonusLevelCap=-3:
+     * A trainer with a strongest pokemon at level 15 would usually require a level cap
+     * of 15, now a level cap of 15-3=12 is required.
      * 
      * default: 0
      */

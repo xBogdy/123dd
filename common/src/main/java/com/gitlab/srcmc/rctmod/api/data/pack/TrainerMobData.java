@@ -108,8 +108,7 @@ public class TrainerMobData implements IDataPackObject {
 
     public int getRequiredLevelCap() {
         var bonus = RCTMod.get().getServerConfig().bonusLevelCap();
-        bonus = bonus > 0 ? 0 : bonus;
-        return this.getTeam().getMembers().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0) + bonus;
+        return Math.max(0, Math.min(100, this.getTeam().getMembers().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0) + bonus));
     }
 
     public int getRequiredDefeats(Type type) {
