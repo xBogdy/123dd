@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.12.x-beta] - 2024-09-10
+
+***Changed***
+
+- Drastically increased spawn chances for *undefeated* trainers and lowered the bonus spawn chance of key trainers (e.g. leaders) gained by players reaching their level cap
+
 ## [0.11.1-alpha] - 2024-08-31
 
 ***Fixed***

@@ -42,6 +42,7 @@ import net.minecraft.world.level.material.Fluids;
 
 public class TrainerSpawner {
     private static float KEY_TRAINER_SPAWN_WEIGHT_FACTOR = 120;
+    private static float UNDEFEATED_WEIGHT_FACTOR = 8;
     private static final int SPAWN_RETRIES = 4;
     private static final boolean CAN_SPAWN_IN_WATER = false; // experimental
 
@@ -428,8 +429,10 @@ public class TrainerSpawner {
             .max(Integer::compare).orElse(0);
 
         if(mobLevel <= playerTr.getLevelCap()) {
+            var ps = PlayerState.get(player);
+
             for(var type : TrainerMobData.Type.values()) {
-                if(PlayerState.get(player).getTypeDefeatCount(type) < mobTr.getRequiredDefeats(type)) {
+                if(ps.getTypeDefeatCount(type) < mobTr.getRequiredDefeats(type)) {
                     return 0;
                 }
             }
@@ -449,8 +452,9 @@ public class TrainerSpawner {
                 keyTrainerFactor = KEY_TRAINER_SPAWN_WEIGHT_FACTOR/b;
             }
 
+            var undefeatedFactor = ps.getTrainerDefeatCount(trainerId) == 0 ? UNDEFEATED_WEIGHT_FACTOR : 1f;
             int diff = Math.abs(Math.min(playerLevel, playerTr.getLevelCap()) - mobLevel);
-            return diff > config.maxLevelDiff() ? 0 : ((config.maxLevelDiff() + 1) - diff)*mobTr.getSpawnWeightFactor()*keyTrainerFactor;
+            return diff > config.maxLevelDiff() ? 0 : ((config.maxLevelDiff() + 1) - diff)*mobTr.getSpawnWeightFactor()*undefeatedFactor*keyTrainerFactor;
         }
 
         return 0;
