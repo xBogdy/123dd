@@ -166,7 +166,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
             ChatUtils.reply(this, player, "missing_beaten_e4");
         } else if(playerState.getTypeDefeatCount(Type.CHAMP) < trMob.getRequiredDefeats(Type.CHAMP)) {
             ChatUtils.reply(this, player, "missing_beaten_champs");
-        } else if(playerState.getLevelCap() < trMob.getTeam().getMembers().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0)) {
+        } else if(playerState.getLevelCap() < trMob.getRequiredLevelCap()) {
             ChatUtils.reply(this, player, "low_level_cap");
         } else if(tm.getPlayerLevel(player) > (playerState.getLevelCap() + cfg.maxOverLevelCap())) {
             ChatUtils.reply(this, player, "over_level_cap");
@@ -415,15 +415,15 @@ public class TrainerMob extends PathfinderMob implements Npc {
         if(this.tickCount % 60 == 0) {
             if(this.canBattle()) {
                 var tm = RCTMod.get().getTrainerManager();
-                int trLevel = tm.getData(this).getTeam().getMembers().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0);
+                int reqLevelCap = tm.getData(this).getRequiredLevelCap();
 
                 this.setTarget(this.level().getNearbyPlayers(
                     TargetingConditions
                         .forNonCombat()
                         .ignoreLineOfSight()
-                        .selector(p -> PlayerState.get((Player)p).getLevelCap() >= trLevel),
+                        .selector(p -> PlayerState.get((Player)p).getLevelCap() >= reqLevelCap),
                     this, this.getBoundingBox().deflate(MAX_PLAYER_TRACKING_RANGE)).stream()
-                        .sorted((p1, p2) -> Integer.compare(Math.abs(tm.getPlayerLevel(p1) - trLevel), Math.abs(tm.getPlayerLevel(p2) - trLevel)))
+                        .sorted((p1, p2) -> Integer.compare(Math.abs(tm.getPlayerLevel(p1) - reqLevelCap), Math.abs(tm.getPlayerLevel(p2) - reqLevelCap)))
                         .findFirst().orElse(null));
             } else {
                 this.setTarget(null);

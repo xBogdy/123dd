@@ -423,12 +423,9 @@ public class TrainerSpawner {
         var config = RCTMod.get().getServerConfig();
         var tm = RCTMod.get().getTrainerManager();
         var playerTr = tm.getData(player);
+        var reqLevelCap = mobTr.getRequiredLevelCap();
 
-        var mobLevel = mobTr.getTeam().getMembers().stream()
-            .map(p -> p.getLevel())
-            .max(Integer::compare).orElse(0);
-
-        if(mobLevel <= playerTr.getLevelCap()) {
+        if(reqLevelCap <= playerTr.getLevelCap()) {
             var ps = PlayerState.get(player);
 
             for(var type : TrainerMobData.Type.values()) {
@@ -453,7 +450,7 @@ public class TrainerSpawner {
             }
 
             var undefeatedFactor = ps.getTrainerDefeatCount(trainerId) == 0 ? UNDEFEATED_WEIGHT_FACTOR : 1f;
-            int diff = Math.abs(Math.min(playerLevel, playerTr.getLevelCap()) - mobLevel);
+            int diff = Math.abs(Math.min(playerLevel, playerTr.getLevelCap()) - reqLevelCap);
             return diff > config.maxLevelDiff() ? 0 : ((config.maxLevelDiff() + 1) - diff)*mobTr.getSpawnWeightFactor()*undefeatedFactor*keyTrainerFactor;
         }
 

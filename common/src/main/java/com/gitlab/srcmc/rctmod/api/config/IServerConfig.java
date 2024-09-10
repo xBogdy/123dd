@@ -125,6 +125,23 @@ public interface IServerConfig extends IForgeConfig {
     default int maxOverLevelCap() { return 0; }
 
     /**
+     * This is your one stop difficulty setting. The 'bonusLevelCap' is added to the
+     * 'initialLevelCap' aswell as any increased level cap rewarded by trainers (except
+     * of trainers that reward a level cap of 100). In short, a positive value will
+     * make this mod easier a negative value harder.
+     * 
+     * On a side note, trainers will also take this value into account when determining
+     * the required level cap to fight them. In practice this matters only for negative
+     * values as the required level cap will never be above the level of the strongest
+     * pokemon of a trainer. For example if we assume bonusLevelCap=-3: A trainer with
+     * a strongest pokemon at level 15 would usually require a level cap of 15, now a
+     * level cap of 15-3=12 is required.
+     * 
+     * default: 0
+     */
+    default int bonusLevelCap() { return 0; }
+
+    /**
      * If enabled additional information are printed to the log whenever a trainer
      * spawns or despawns.
      * 

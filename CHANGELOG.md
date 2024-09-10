@@ -2,6 +2,10 @@
 
 ## [0.12.x-beta] - 2024-09-10
 
+***Added***
+
+- Server Config `bonusLevelCap`: Adjust difficulty with a single value
+
 ***Changed***
 
 - Drastically increased spawn chances for *undefeated* trainers and lowered the bonus spawn chance of key trainers (e.g. leaders) gained by players reaching their level cap

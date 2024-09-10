@@ -24,6 +24,7 @@ import java.util.Map;
 import java.util.Set;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
+import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.google.gson.reflect.TypeToken;
 
 import net.minecraft.ChatFormatting;
@@ -102,11 +103,12 @@ public class TrainerMobData implements IDataPackObject {
     }
 
     public int getRewardLevelCap() {
-        return this.rewardLevelCap;
+        return this.rewardLevelCap + RCTMod.get().getServerConfig().bonusLevelCap();
     }
 
     public int getRequiredLevelCap() {
-        return this.getTeam().getMembers().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0);
+        var bonus = RCTMod.get().getServerConfig().bonusLevelCap();
+        return this.getTeam().getMembers().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0) + bonus;
     }
 
     public int getRequiredDefeats(Type type) {

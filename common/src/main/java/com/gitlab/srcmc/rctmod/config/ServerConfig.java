@@ -41,6 +41,7 @@ public class ServerConfig extends ForgeConfig implements IServerConfig {
     // players
     private ConfigValue<Integer> initialLevelCapValue;
     private ConfigValue<Integer> maxOverLevelCapValue;
+    private ConfigValue<Integer> bonusLevelCapValue;
 
     // debug
     private ConfigValue<Boolean> logSpawningValue;
@@ -103,6 +104,10 @@ public class ServerConfig extends ForgeConfig implements IServerConfig {
         this.maxOverLevelCapValue = builder
             .comment("Trainers will refuse to battle players that have pokemon in their party with a level greater than the set value + the level cap of the player. This value can also be negative.")
             .define("maxOverLevelCap", IServerConfig.super.maxOverLevelCap());
+
+        this.bonusLevelCapValue = builder
+            .comment("This is your one stop difficulty setting. The 'bonusLevelCap' is added to the 'initialLevelCap' aswell as any increased level cap rewarded by trainers (except of trainers that reward a level cap of 100). In short, a positive value will make this mod easier a negative value harder. On a side note, trainers will also take this value into account when determining the required level cap to fight them. In practice this matters only for negative values as the required level cap will never be above the level of the strongest pokemon of a trainer. For example if we assume bonusLevelCap=-3: A trainer with a strongest pokemon at level 15 would usually require a level cap of 15, now a level cap of 15-3=12 is required.")
+            .define("bonusLevelCap", IServerConfig.super.bonusLevelCap());
 
         builder.pop();
         builder.push("Debug");
@@ -177,6 +182,11 @@ public class ServerConfig extends ForgeConfig implements IServerConfig {
     @Override
     public int maxOverLevelCap() {
         return this.maxOverLevelCapValue.get();
+    }
+
+    @Override
+    public int bonusLevelCap() {
+        return this.bonusLevelCapValue.get();
     }
 
     @Override
