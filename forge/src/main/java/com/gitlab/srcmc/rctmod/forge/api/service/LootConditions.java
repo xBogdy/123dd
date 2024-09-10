@@ -15,12 +15,21 @@
  * You should have received a copy of the GNU Lesser General Public License along
  * with Radical Cobblemon Trainers. If not, see <http://www.gnu.org/licenses/lgpl>.
  */
-package com.gitlab.srcmc.rctmod.forge;
+package com.gitlab.srcmc.rctmod.forge.api.service;
 
-import com.gitlab.srcmc.rctmod.ModCommon;
+import com.gitlab.srcmc.rctmod.api.service.ILootConditions;
+import com.gitlab.srcmc.rctmod.forge.ModRegistries;
 
-import net.minecraftforge.fml.common.Mod;
+import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 
-@Mod(ModCommon.MOD_ID)
-public class ModForge {
+public class LootConditions implements ILootConditions {
+    @Override
+    public LootItemConditionType levelRangeConditon() {
+        return ModRegistries.LootItemConditions.LEVEL_RANGE.get();
+    }
+
+    @Override
+    public LootItemConditionType defeatCountConditon() {
+        return ModRegistries.LootItemConditions.DEFEAT_COUNT.get();
+    }
 }

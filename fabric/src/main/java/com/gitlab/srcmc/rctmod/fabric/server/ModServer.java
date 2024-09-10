@@ -20,7 +20,7 @@ package com.gitlab.srcmc.rctmod.fabric.server;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
-import com.gitlab.srcmc.rctmod.fabric.CobblemonHandler;
+import com.gitlab.srcmc.rctmod.fabric.CobblemonTrainersRegistry;
 import com.gitlab.srcmc.rctmod.fabric.network.Packets;
 import dev.architectury.registry.ReloadListenerRegistry;
 import fuzs.forgeconfigapiport.api.config.v2.ForgeConfigRegistry;
@@ -48,7 +48,7 @@ public class ModServer {
     }
 
     static void onServerStarted(MinecraftServer server) {
-        CobblemonHandler.registerTrainers();
+        CobblemonTrainersRegistry.registerTrainers();
         RCTMod.get().getTrainerSpawner().init(server.overworld());
     }
 

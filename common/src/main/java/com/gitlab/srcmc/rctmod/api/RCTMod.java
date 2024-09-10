@@ -17,9 +17,6 @@
  */
 package com.gitlab.srcmc.rctmod.api;
 
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Function;
 import java.util.function.Supplier;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
@@ -27,6 +24,9 @@ import com.gitlab.srcmc.rctmod.api.config.IClientConfig;
 import com.gitlab.srcmc.rctmod.api.config.ICommonConfig;
 import com.gitlab.srcmc.rctmod.api.config.IServerConfig;
 import com.gitlab.srcmc.rctmod.api.data.pack.DataPackManager;
+import com.gitlab.srcmc.rctmod.api.service.IConfigs;
+import com.gitlab.srcmc.rctmod.api.service.ILootConditions;
+import com.gitlab.srcmc.rctmod.api.service.IPlayerController;
 import com.gitlab.srcmc.rctmod.api.service.TrainerManager;
 import com.gitlab.srcmc.rctmod.api.service.TrainerSpawner;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
@@ -35,21 +35,14 @@ import com.gitlab.srcmc.rctmod.world.loot.conditions.LevelRangeCondition;
 
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 
 public final class RCTMod {
     private TrainerManager trainerManager;
     private DataPackManager clientDataManager;
     private DataPackManager serverDataManager;
     private TrainerSpawner trainerSpawner;
-
-    private ICommonConfig commonConfig;
-    private IClientConfig clientConfig;
-    private IServerConfig serverConfig;
-
-    private BiConsumer<TrainerMob, Player> battleArgsConsumer = (m, p) -> {};
-    private Function<Player, Boolean> battleStateSupplier = p -> false;
-    private Consumer<TrainerMob> battleStopAction = t -> {};
+    private IPlayerController playerController;
+    private IConfigs configs;
 
     private static Supplier<RCTMod> instance = () -> {
         throw new RuntimeException(RCTMod.class.getName() + " not initialized");
@@ -59,40 +52,20 @@ public final class RCTMod {
         return instance.get();
     }
 
-    public static void init(
-        Supplier<LootItemConditionType> levelRangeConditon,
-        Supplier<LootItemConditionType> defeatCountConditon,
-        Function<Player, Integer> playerLevelSupplier,
-        Function<Player, Integer> avtivePokemonSupplier,
-        Function<Player, Boolean> battleStateSupplier,
-        BiConsumer<TrainerMob, Player> battleArgsConsumer,
-        Consumer<TrainerMob> battleStopAction,
-        IClientConfig clientConfig, ICommonConfig commonConfig, IServerConfig serverConfig)
-    {
-        var local = new RCTMod(playerLevelSupplier, avtivePokemonSupplier, battleStateSupplier, battleArgsConsumer, battleStopAction, clientConfig, commonConfig, serverConfig);
+    public static void init(IPlayerController playerController, ILootConditions lootConditions, IConfigs configs) {
+        LevelRangeCondition.init(lootConditions::levelRangeConditon);
+        DefeatCountCondition.init(lootConditions::defeatCountConditon);
+        var local = new RCTMod(playerController, configs);
         instance = () -> local;
-        LevelRangeCondition.init(levelRangeConditon);
-        DefeatCountCondition.init(defeatCountConditon);
     }
 
-    private RCTMod(
-        Function<Player, Integer> playerLevelSupplier,
-        Function<Player, Integer> avtivePokemonSupplier,
-        Function<Player, Boolean> battleStateSupplier,
-        BiConsumer<TrainerMob, Player> battleArgsConsumer,
-        Consumer<TrainerMob> battleStopAction,
-        IClientConfig clientConfig, ICommonConfig commonConfig, IServerConfig serverConfig)
-    {
-        this.trainerManager = new TrainerManager(playerLevelSupplier, avtivePokemonSupplier);
+    private RCTMod(IPlayerController playerController, IConfigs configs) {
+        this.trainerManager = new TrainerManager(playerController::getPlayerLevel, playerController::getActivePokemonCount);
         this.clientDataManager = new DataPackManager(PackType.CLIENT_RESOURCES);
         this.serverDataManager = new DataPackManager(PackType.SERVER_DATA);
         this.trainerSpawner = new TrainerSpawner();
-        this.battleStateSupplier = battleStateSupplier;
-        this.battleArgsConsumer = battleArgsConsumer;
-        this.battleStopAction = battleStopAction;
-        this.clientConfig = clientConfig;
-        this.commonConfig = commonConfig;
-        this.serverConfig = serverConfig;
+        this.playerController = playerController;
+        this.configs = configs;
     }
 
     public TrainerManager getTrainerManager() {
@@ -112,20 +85,20 @@ public final class RCTMod {
     }
 
     public IClientConfig getClientConfig() {
-        return this.clientConfig;
+        return this.configs.clientConfig();
     }
 
     public ICommonConfig getCommonConfig() {
-        return this.commonConfig;
+        return this.configs.commonConfig();
     }
 
     public IServerConfig getServerConfig() {
-        return this.serverConfig;
+        return this.configs.serverConfig();
     }
 
     public boolean makeBattle(TrainerMob source, Player target) {
         try {
-            this.battleArgsConsumer.accept(source, target);
+            this.playerController.startBattle(source, target);
         } catch(Exception e) {
             ModCommon.LOG.error(e.getMessage(), e);
             return false;
@@ -135,10 +108,10 @@ public final class RCTMod {
     }
 
     public void stopBattle(TrainerMob mob) {
-        this.battleStopAction.accept(mob);
+        this.playerController.stopBattle(mob);
     }
 
     public boolean isInBattle(Player player) {
-        return this.battleStateSupplier.apply(player);
+        return this.playerController.isInBattle(player);
     }
 }

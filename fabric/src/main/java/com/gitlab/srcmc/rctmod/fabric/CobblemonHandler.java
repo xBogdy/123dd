@@ -17,92 +17,16 @@
  */
 package com.gitlab.srcmc.rctmod.fabric;
 
-import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
 
-import com.cobblemon.mod.common.Cobblemon;
 import com.cobblemon.mod.common.api.battles.model.actor.BattleActor;
 import com.cobblemon.mod.common.api.events.battles.BattleVictoryEvent;
 import com.cobblemon.mod.common.api.events.pokemon.ExperienceGainedPreEvent;
-import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
-import com.gitlab.srcmc.rctmod.fabric.world.trainer.VolatileTrainer;
-import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
-import com.selfdot.cobblemontrainers.CobblemonTrainers;
-import com.selfdot.cobblemontrainers.util.PokemonUtility;
 
 import kotlin.Unit;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.packs.resources.IoSupplier;
-import net.minecraft.world.entity.player.Player;
 
 public class CobblemonHandler {
-    private static List<ResourceLocation> registered = new ArrayList<>();
-
-    public static void registerTrainers() {
-        registered.clear();
-        RCTMod.get().getServerDataManager().listTrainerTeams(CobblemonHandler::registerTrainer);
-        ModCommon.LOG.info(String.format("Registered %d trainers", registered.size()));
-    }
-
-    private static void registerTrainer(ResourceLocation rl, IoSupplier<InputStream> io) {
-        var trainerReg = CobblemonTrainers.INSTANCE.getTrainerRegistry();
-
-        try {
-            var trainer = new VolatileTrainer(rl, io);
-            trainerReg.addOrUpdateTrainer(trainer);
-            registered.add(rl);
-        } catch(Exception e) {
-            ModCommon.LOG.error("Failed to register trainer: " + rl.getPath(), e);
-        }
-    }
-
-    public static void makeBattle(TrainerMob source, Player target) {
-        PokemonUtility.startTrainerBattle((ServerPlayer)target, CobblemonTrainers.INSTANCE.getTrainerRegistry().getTrainer(source.getTrainerId()), source);
-    }
-
-    public static void stopBattle(TrainerMob mob) {
-        var opp = (ServerPlayer)mob.getOpponent();
-
-        if(opp != null) {
-            var battle = Cobblemon.INSTANCE.getBattleRegistry().getBattleByParticipatingPlayer(opp);
-
-            if(battle == null) {
-                ModCommon.LOG.info("Player not part of a battle: " + opp.getStringUUID());
-            } else {
-                battle.stop();
-            }
-        }
-    }
-
-    public static int getPlayerLevel(Player player) {
-        int maxLevel = 0;
-
-        for(var pk : Cobblemon.INSTANCE.getStorage().getParty((ServerPlayer)player)) {
-            maxLevel = Math.max(maxLevel, pk.getLevel());
-        }
-
-        return maxLevel;
-    }
-
-    public static boolean isInBattle(Player player) {
-        return Cobblemon.INSTANCE.getBattleRegistry().getBattleByParticipatingPlayerId(player.getUUID()) != null;
-    }
-
-    public static int getActivePokemon(Player player) {
-        int count = 0;
-
-        for(var pk : Cobblemon.INSTANCE.getStorage().getParty((ServerPlayer)player)) {
-            if(!pk.isFainted()) {
-                count++;
-            }
-        }
-
-        return count;
-    }
-
     public static Unit handleBattleVictory(BattleVictoryEvent event) {
         if(!checkForTrainerBattle(event.getWinners(), true)) {
             checkForTrainerBattle(event.getLosers(), false);

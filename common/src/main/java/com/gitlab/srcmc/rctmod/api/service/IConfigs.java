@@ -15,12 +15,14 @@
  * You should have received a copy of the GNU Lesser General Public License along
  * with Radical Cobblemon Trainers. If not, see <http://www.gnu.org/licenses/lgpl>.
  */
-package com.gitlab.srcmc.rctmod.forge;
+package com.gitlab.srcmc.rctmod.api.service;
 
-import com.gitlab.srcmc.rctmod.ModCommon;
+import com.gitlab.srcmc.rctmod.api.config.IClientConfig;
+import com.gitlab.srcmc.rctmod.api.config.ICommonConfig;
+import com.gitlab.srcmc.rctmod.api.config.IServerConfig;
 
-import net.minecraftforge.fml.common.Mod;
-
-@Mod(ModCommon.MOD_ID)
-public class ModForge {
+public interface IConfigs {
+    IClientConfig clientConfig();
+    ICommonConfig commonConfig();
+    IServerConfig serverConfig();
 }

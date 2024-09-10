@@ -22,7 +22,7 @@ import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.commands.PlayerCommands;
 import com.gitlab.srcmc.rctmod.commands.TrainerCommands;
-import com.gitlab.srcmc.rctmod.forge.CobblemonHandler;
+import com.gitlab.srcmc.rctmod.forge.CobblemonTrainersRegistry;
 import com.gitlab.srcmc.rctmod.forge.network.NetworkManager;
 import com.gitlab.srcmc.rctmod.forge.network.packets.S2CPlayerState;
 
@@ -42,7 +42,7 @@ import net.minecraftforge.network.NetworkDirection;
 public class ForgeEventBus {
     @SubscribeEvent
     static void onServerStarted(ServerStartedEvent event) {
-        CobblemonHandler.registerTrainers();
+        CobblemonTrainersRegistry.registerTrainers();
         RCTMod.get().getTrainerSpawner().init(event.getServer().overworld());
     }
 

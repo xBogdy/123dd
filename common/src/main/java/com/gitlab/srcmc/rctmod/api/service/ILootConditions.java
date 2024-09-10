@@ -15,8 +15,11 @@
  * You should have received a copy of the GNU Lesser General Public License along
  * with Radical Cobblemon Trainers. If not, see <http://www.gnu.org/licenses/lgpl>.
  */
-package com.gitlab.srcmc.rctmod.forge;
+package com.gitlab.srcmc.rctmod.api.service;
 
-public class ModCapabilities {
-    // public static final Capability<IMyCapabilityInterface> CAPABILITY_NAME = CapabilityManager.get(new CapabilityToken<>() {});
+import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
+
+public interface ILootConditions {
+    LootItemConditionType levelRangeConditon();
+    LootItemConditionType defeatCountConditon();
 }

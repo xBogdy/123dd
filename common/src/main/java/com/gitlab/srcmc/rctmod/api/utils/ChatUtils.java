@@ -17,6 +17,7 @@
  */
 package com.gitlab.srcmc.rctmod.api.utils;
 
+import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import net.minecraft.network.chat.ChatType;
@@ -30,16 +31,11 @@ public final class ChatUtils {
     public static void reply(TrainerMob source, Player target, String context) {
         var messages = RCTMod.get().getTrainerManager().getData(source).getDialog().get(context);
 
-        if(messages != null && messages.length > 0) {
+        if(messages == null) {
+            ModCommon.LOG.error(String.format("Invalid dialog context '%s'", context));
+        } else if(messages.length > 0) {
             var message = PlayerChatMessage.system(messages[(target.getRandom().nextInt() & Integer.MAX_VALUE) % messages.length]);
             target.createCommandSourceStack().sendChatMessage(OutgoingChatMessage.create(message), false, ChatType.bind(ChatType.CHAT, source));
         }
-    }
-    
-    /**
-     * @deprecated Use RCTMod.makeBattle instead
-     */
-    public static boolean makebattle(TrainerMob source, Player target) {
-        return false;
     }
 }

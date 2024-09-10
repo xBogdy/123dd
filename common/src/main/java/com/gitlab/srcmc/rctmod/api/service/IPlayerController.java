@@ -15,12 +15,16 @@
  * You should have received a copy of the GNU Lesser General Public License along
  * with Radical Cobblemon Trainers. If not, see <http://www.gnu.org/licenses/lgpl>.
  */
-package com.gitlab.srcmc.rctmod.forge;
+package com.gitlab.srcmc.rctmod.api.service;
 
-import com.gitlab.srcmc.rctmod.ModCommon;
+import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 
-import net.minecraftforge.fml.common.Mod;
+import net.minecraft.world.entity.player.Player;
 
-@Mod(ModCommon.MOD_ID)
-public class ModForge {
+public interface IPlayerController {
+    int getPlayerLevel(Player player);
+    int getActivePokemonCount(Player player);
+    boolean isInBattle(Player player);
+    void startBattle(TrainerMob trainer, Player player);
+    void stopBattle(TrainerMob trainer);
 }

@@ -26,6 +26,9 @@ import com.gitlab.srcmc.rctmod.commands.PlayerCommands;
 import com.gitlab.srcmc.rctmod.commands.TrainerCommands;
 import com.gitlab.srcmc.rctmod.config.ClientConfig;
 import com.gitlab.srcmc.rctmod.config.ServerConfig;
+import com.gitlab.srcmc.rctmod.fabric.api.services.Configs;
+import com.gitlab.srcmc.rctmod.fabric.api.services.LootConditions;
+import com.gitlab.srcmc.rctmod.fabric.api.services.PlayerController;
 import com.gitlab.srcmc.rctmod.fabric.server.ModServer;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import com.gitlab.srcmc.rctmod.world.items.TrainerCard;
@@ -60,7 +63,7 @@ public class ModFabric implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        RCTMod.init(() -> LEVEL_RANGE, () -> DEFEAT_COUNT, CobblemonHandler::getPlayerLevel, CobblemonHandler::getActivePokemon, CobblemonHandler::isInBattle, CobblemonHandler::makeBattle, CobblemonHandler::stopBattle, new ClientConfig(), () -> null, new ServerConfig());
+        RCTMod.init(new PlayerController(), new LootConditions(), new Configs(new ClientConfig(), new ServerConfig(), null));
         registerEntityAttributes();
         registerCommands();
         registerAdvancementCriteria();

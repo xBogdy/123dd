@@ -22,8 +22,6 @@ import java.util.Map;
 import java.util.UUID;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
-import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
-
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.saveddata.SavedData;
@@ -37,13 +35,6 @@ public class TrainerBattleMemory extends SavedData {
         var tbm = new TrainerBattleMemory();
         tag.getAllKeys().forEach(key -> tbm.defeatedBy.put(UUID.fromString(key), tag.getInt(key)));
         return tbm;
-    }
-
-    /**
-     * @deprecated
-     */
-    public static String filePath(TrainerMob mob) {
-        return String.format("%s.trainers.%s.mem", ModCommon.MOD_ID, mob.getTrainerId());
     }
 
     public static String filePath(String trainerId) {

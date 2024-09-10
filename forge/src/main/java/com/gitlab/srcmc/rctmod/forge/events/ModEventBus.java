@@ -26,6 +26,9 @@ import com.gitlab.srcmc.rctmod.config.ClientConfig;
 import com.gitlab.srcmc.rctmod.config.ServerConfig;
 import com.gitlab.srcmc.rctmod.forge.CobblemonHandler;
 import com.gitlab.srcmc.rctmod.forge.ModRegistries;
+import com.gitlab.srcmc.rctmod.forge.api.service.Configs;
+import com.gitlab.srcmc.rctmod.forge.api.service.LootConditions;
+import com.gitlab.srcmc.rctmod.forge.api.service.PlayerController;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
@@ -46,7 +49,7 @@ public class ModEventBus {
 
         mlx.registerConfig(serverConfig.getType(), serverConfig.getSpec());
         mlx.registerConfig(clientConfig.getType(), clientConfig.getSpec());
-        RCTMod.init(ModRegistries.LootItemConditions.LEVEL_RANGE, ModRegistries.LootItemConditions.DEFEAT_COUNT, CobblemonHandler::getPlayerLevel, CobblemonHandler::getActivePokemon, CobblemonHandler::isInBattle, CobblemonHandler::makeBattle, CobblemonHandler::stopBattle, clientConfig, () -> null, serverConfig);
+        RCTMod.init(new PlayerController(), new LootConditions(), new Configs(clientConfig, serverConfig, null));
     }
 
     @SubscribeEvent
