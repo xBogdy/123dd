@@ -18,8 +18,11 @@
 package com.gitlab.srcmc.rctmod.world.items;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
+import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
+
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -28,6 +31,42 @@ import net.minecraft.world.level.Level;
 public class TrainerCard extends Item {
     public TrainerCard() {
         super(new Properties().stacksTo(1));
+    }
+
+    public void setFoil(ItemStack stack, boolean foil) {
+        if(foil) {
+            var tag = stack.getOrCreateTag();
+            tag.putBoolean("foil", true);
+            stack.setTag(tag);
+        } else if(stack.hasTag()) {
+            var tag = stack.getTag();
+            tag.remove("foil");
+            stack.setTag(tag);
+        }
+    }
+
+    @Override
+    public boolean isFoil(ItemStack stack) {
+        return super.isFoil(stack) || (stack.hasTag() && stack.getTag().getBoolean("foil"));
+    }
+
+    @Override
+    public void inventoryTick(ItemStack stack, Level level, Entity entity, int i, boolean bl) {
+        if(level.isClientSide) {
+            if(entity instanceof Player player) {
+                var target = PlayerState.get(player).getTarget();
+
+                if(target != null) {
+                    this.setFoil(stack, true);
+                } else {
+                    this.setFoil(stack, false);
+                }
+            } else {
+                this.setFoil(stack, false);
+            }
+        }
+
+        super.inventoryTick(stack, level, entity, i, bl);
     }
 
     @Override

@@ -30,6 +30,7 @@ import java.util.UUID;
 
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 
 public class PlayerState implements Serializable {
@@ -40,6 +41,7 @@ public class PlayerState implements Serializable {
 
     private Map<String, Integer> trainerDefeatCounts = new HashMap<>();
     private Map<TrainerMobData.Type, Integer> typeDefeatCounts = new HashMap<>();
+    private int targetEntity = -1;
     private int levelCap;
 
     private transient Player player;
@@ -85,6 +87,30 @@ public class PlayerState implements Serializable {
         } catch(IOException | ClassNotFoundException e) {
             throw new IllegalStateException(e);
         }
+    }
+
+    public void setTarget(Entity entity) {
+        this.setTarget(entity.getId());
+    }
+
+    public void setTarget(int targetId) {
+        if(targetId != this.targetEntity) {
+            this.targetEntity = targetId;
+            this.updated.targetEntity = targetId;
+            this.hasChanges = true;
+        }
+    }
+
+    public Entity getTarget() {
+        if(this.targetEntity >= 0 && this.player != null) {
+            return this.player.level().getEntity(this.targetEntity);
+        }
+
+        return null;
+    }
+
+    public int getTargetId() {
+        return this.targetEntity;
     }
 
     public void setLevelCap(int levelCap) {
@@ -165,6 +191,7 @@ public class PlayerState implements Serializable {
     private void update(PlayerState updated) {
         this.trainerDefeatCounts.putAll(updated.trainerDefeatCounts);
         this.typeDefeatCounts.putAll(updated.typeDefeatCounts);
+        this.targetEntity = updated.targetEntity;
         this.levelCap = updated.levelCap;
     }
 

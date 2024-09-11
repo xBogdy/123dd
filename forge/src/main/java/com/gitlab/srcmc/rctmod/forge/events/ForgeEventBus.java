@@ -53,18 +53,26 @@ public class ForgeEventBus {
 
     @SubscribeEvent
     static void onPlayerTick(PlayerTickEvent event) {
-        if(event.side.isServer() && event.phase == Phase.START) {
-            var interval = RCTMod.get().getServerConfig().spawnIntervalTicks();
+        if(event.phase == Phase.START) {
+            if(event.side.isServer()) {
+                var interval = RCTMod.get().getServerConfig().spawnIntervalTicks();
 
-            if(interval == 0 || interval > 0 && event.player.tickCount % interval == 0) {
-                RCTMod.get().getTrainerSpawner().attemptSpawnFor(event.player);
-            }
+                if(interval == 0 || interval > 0 && event.player.tickCount % interval == 0) {
+                    RCTMod.get().getTrainerSpawner().attemptSpawnFor(event.player);
+                }
 
-            if(event.player.tickCount % PlayerState.SYNC_INTERVAL_TICKS == 0) {
-                var bytes = PlayerState.get(event.player).serializeUpdate();
+                if(event.player.tickCount % PlayerState.SYNC_INTERVAL_TICKS == 0) {
+                    var bytes = PlayerState.get(event.player).serializeUpdate();
 
-                if(bytes.length > 0) {
-                    NetworkManager.INSTANCE.sendTo(new S2CPlayerState(bytes), ((ServerPlayer)event.player).connection.connection, NetworkDirection.PLAY_TO_CLIENT);
+                    if(bytes.length > 0) {
+                        NetworkManager.INSTANCE.sendTo(new S2CPlayerState(bytes), ((ServerPlayer)event.player).connection.connection, NetworkDirection.PLAY_TO_CLIENT);
+                    }
+                }
+            } else {
+                if(event.player.tickCount % 60 == 0) {
+                    var targetId = PlayerState.get(event.player).getTargetId();
+                    var target = PlayerState.get(event.player).getTarget();
+                    ModCommon.LOG.info(String.format("target: %d, %s", targetId, target == null ? "null" : (target.getDisplayName().getString() + ": " + target.getPosition(1f).subtract(event.player.position()).toString())));
                 }
             }
         }

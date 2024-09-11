@@ -118,6 +118,7 @@ public class TrainerSpawner {
 
             if(originPlayer != null) {
                 playerSpawns.compute(originPlayer.toString(), (key, value) -> value == null ? 1 : value + 1);
+                this.track(mob, originPlayer);
             }
 
             identities.compute(identity, (key, value) -> value == null ? 1 : value + 1);
@@ -150,6 +151,7 @@ public class TrainerSpawner {
 
             if(originPlayer != null) {
                 playerSpawns.compute(originPlayer.toString(), (key, value) -> value == 1 ? null : value - 1);
+                this.untrack(mob, originPlayer);
             }
 
             identities.compute(identity, (key, value) -> value == 1 ? null : value - 1);
@@ -202,10 +204,12 @@ public class TrainerSpawner {
 
             if(originPlayer != null) {
                 playerSpawns.compute(originPlayer.toString(), (key, value) -> value == 1 ? null : value - 1);
+                this.untrack(mob, originPlayer);
             }
 
             if(newOriginPlayer != null) {
                 playerSpawns.compute(newOriginPlayer.toString(), (key, value) -> value == null ? 1 : value + 1);
+                this.track(mob, newOriginPlayer);
             }
         }
     }
@@ -271,7 +275,7 @@ public class TrainerSpawner {
         this.register(mob);
 
         if(config.logSpawning()) {
-            var trainer = RCTMod.get().getTrainerManager().getData(mob).getTeam().getDisplayName();
+            var trainer = RCTMod.get().getTrainerManager().getData(trainerId).getTeam().getDisplayName();
             var biome = level.getBiome(mob.blockPosition());
             var dim = level.dimension();
 
@@ -455,5 +459,35 @@ public class TrainerSpawner {
         }
 
         return 0;
+    }
+
+    private static Map<UUID, Integer> tracked = new HashMap<>();
+
+    private void track(TrainerMob trainer, UUID playerUUID) {
+        if(playerUUID != null) {
+            var player = trainer.level().getPlayerByUUID(playerUUID);
+
+            if(player != null) {
+                var tm = RCTMod.get().getTrainerManager();
+                var trMob = tm.getData(trainer);
+                
+                if(trMob.getRewardLevelCap() > tm.getData(player).getLevelCap()) {
+                    PlayerState.get(player).setTarget(trainer.getId());
+                    tracked.put(playerUUID, trainer.getId());
+                }
+            }
+        }
+    }
+    
+    private void untrack(TrainerMob trainer, UUID playerUUID) {
+        var id = tracked.remove(playerUUID);
+
+        if(id != null && trainer.getId() == id) {
+            var player = trainer.level().getPlayerByUUID(playerUUID);
+
+            if(player != null) {
+                PlayerState.get(player).setTarget(-1);
+            }
+        }
     }
 }
