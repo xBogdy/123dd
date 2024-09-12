@@ -65,6 +65,7 @@ public class TrainerSpawner {
     private Map<String, Integer> persistentPlayerSpawns;
 
     private Set<TrainerMob> mobs = new HashSet<>();
+    private Map<UUID, Integer> tracked = new HashMap<>();
 
     public void init(ServerLevel level) {
         this.spawns.clear();
@@ -461,8 +462,6 @@ public class TrainerSpawner {
         return 0;
     }
 
-    private static Map<UUID, Integer> tracked = new HashMap<>();
-
     private void track(TrainerMob trainer, UUID playerUUID) {
         if(playerUUID != null) {
             var player = trainer.level().getPlayerByUUID(playerUUID);
@@ -473,17 +472,18 @@ public class TrainerSpawner {
                 
                 if(trMob.getRewardLevelCap() > tm.getData(player).getLevelCap()) {
                     PlayerState.get(player).setTarget(trainer.getId());
-                    tracked.put(playerUUID, trainer.getId());
+                    this.tracked.put(playerUUID, trainer.getId());
                 }
             }
         }
     }
     
     private void untrack(TrainerMob trainer, UUID playerUUID) {
-        var id = tracked.remove(playerUUID);
+        var id = this.tracked.get(playerUUID);
 
         if(id != null && trainer.getId() == id) {
             var player = trainer.level().getPlayerByUUID(playerUUID);
+            this.tracked.remove(playerUUID);
 
             if(player != null) {
                 PlayerState.get(player).setTarget(-1);

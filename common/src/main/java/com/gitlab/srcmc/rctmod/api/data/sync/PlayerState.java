@@ -185,6 +185,7 @@ public class PlayerState implements Serializable {
     }
 
     private PlayerState(PlayerState template) {
+        this.targetEntity = template.targetEntity;
         this.levelCap = template.levelCap;
     }
 
