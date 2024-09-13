@@ -29,6 +29,7 @@ import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.api.service.TrainerManager;
 import com.gitlab.srcmc.rctmod.client.ModClient;
+import com.gitlab.srcmc.rctmod.client.screens.widgets.text.MultiStyleStringWidget;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.Font;
@@ -156,7 +157,7 @@ public class TrainerListWidget extends AbstractScrollWidget {
             if(name.length() > MAX_NAME_LENGTH) {
                 name = name.substring(0, MAX_NAME_LENGTH - 3) + "...";
             }
-            
+
             var nameComponent = isKeyTrainer ? toComponent(name).withStyle(ChatFormatting.OBFUSCATED) : toComponent(name);
             var numberWidget = new MultiStyleStringWidget(this.x, this.y, this.w, this.h, toComponent(String.format("%04d: ", this.i + 1)), font).addStyle(Style.EMPTY.withColor(ChatFormatting.RED)).alignLeft();
             var nameWidget = new MultiStyleStringWidget((int)(this.x + this.w*0.18), this.y, (int)(this.w*0.62), this.h, nameComponent, font).addStyle(Style.EMPTY.withColor(ChatFormatting.RED)).alignLeft();
