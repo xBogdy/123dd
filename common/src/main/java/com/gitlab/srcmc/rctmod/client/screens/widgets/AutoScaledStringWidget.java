@@ -22,20 +22,20 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.StringWidget;
 import net.minecraft.network.chat.Component;
 
-public class CustomStringWidget extends StringWidget {
+public class AutoScaledStringWidget extends StringWidget {
     private float scale = 1f, autoScale = 1f;
     private float halign, valign = 0.5f;
     private boolean clip, fit;
 
-    public CustomStringWidget(Component component, Font font) {
+    public AutoScaledStringWidget(Component component, Font font) {
         super(component, font);
     }
 
-    public CustomStringWidget(int i, int j, Component component, Font font) {
+    public AutoScaledStringWidget(int i, int j, Component component, Font font) {
         super(i, j, component, font);
     }
 
-    public CustomStringWidget(int i, int j, int k, int l, Component component, Font font) {
+    public AutoScaledStringWidget(int i, int j, int k, int l, Component component, Font font) {
         super(i, j, k, l, component, font);
     }
 
@@ -89,43 +89,43 @@ public class CustomStringWidget extends StringWidget {
         this.valign = valign;
     }
 
-    public CustomStringWidget clipped(boolean clip) {
+    public AutoScaledStringWidget clipped(boolean clip) {
         this.setClip(clip);
         return this;
     }
 
-    public CustomStringWidget fitting(boolean fit) {
+    public AutoScaledStringWidget fitting(boolean fit) {
         this.setFit(fit);
         return this;
     }
 
-    public CustomStringWidget scaled(float scale) {
+    public AutoScaledStringWidget scaled(float scale) {
         this.setScale(scale);
         return this;
     }
 
-    public CustomStringWidget alignCenter() {
+    public AutoScaledStringWidget alignCenter() {
         this.halign = 0.5f;
         this.valign = 0.5f;
         return this;
     }
 
-    public CustomStringWidget alignLeft() {
+    public AutoScaledStringWidget alignLeft() {
         this.halign = 0f;
         return this;
     }
 
-    public CustomStringWidget alignRight() {
+    public AutoScaledStringWidget alignRight() {
         this.halign = 1f;
         return this;
     }
 
-    public CustomStringWidget alignTop() {
+    public AutoScaledStringWidget alignTop() {
         this.valign = 0f;
         return this;
     }
 
-    public CustomStringWidget alignBottom() {
+    public AutoScaledStringWidget alignBottom() {
         this.valign = 1f;
         return this;
     }
