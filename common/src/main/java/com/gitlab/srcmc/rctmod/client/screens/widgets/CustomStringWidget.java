@@ -145,13 +145,9 @@ public class CustomStringWidget extends StringWidget {
 
         guiGraphics.pose().pushPose();
         guiGraphics.pose().translate(x + (w - this.getFont().width(this.getMessage())*scale)*halign, y + (h - this.getFont().lineHeight*scale)*valign, 0);
-        guiGraphics.pose().pushPose();
         guiGraphics.pose().scale(scale, scale, 1f);
-        guiGraphics.pose().pushPose();
         guiGraphics.pose().translate(-x, -y, 0);
         guiGraphics.drawString(this.getFont(), this.getMessage(), x, y, this.getColor());
-        guiGraphics.pose().popPose();
-        guiGraphics.pose().popPose();
         guiGraphics.pose().popPose();
 
         if(clip) {

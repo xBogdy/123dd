@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.algorithm.IAlgorithm;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
@@ -32,30 +34,60 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractScrollWidget;
-import net.minecraft.client.gui.components.StringWidget;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.Style;
 import net.minecraft.util.Mth;
 
 public class TrainerListWidget extends AbstractScrollWidget {
-    private static final float INNER_SCALE = 0.65f;
+    public static final float INNER_SCALE = 0.65f;
     private static final int UPDATES_PER_TICK = 100;
     private static final int ENTRIES_PER_PAGE = 100;
     private static final int MAX_NAME_LENGTH = 20;
 
     private class Entry {
-        public final StringWidget name;
-        public final StringWidget count;
+        public final String trainerId;
+        public final MultiStyleStringWidget number;
+        public final MultiStyleStringWidget name;
+        public final MultiStyleStringWidget count;
 
-        public Entry(StringWidget name, StringWidget count) {
+        public Entry(String trainerId, MultiStyleStringWidget number, MultiStyleStringWidget name, MultiStyleStringWidget count) {
+            this.trainerId = trainerId;
+            this.number = number;
             this.name = name;
             this.count = count;
+            this.number.active = true;
+            this.name.active = true;
+            this.count.active = true;
         }
 
         public void render(GuiGraphics guiGraphics, int x, int y, float f) {
+            if(this.isMouseOver(localX(x), localY(y))) {
+                this.number.setStyle(1);
+                this.name.setStyle(1);
+                this.count.setStyle(1);
+            } else {
+                this.number.setStyle(0);
+                this.name.setStyle(0);
+                this.count.setStyle(0);
+            }
+
+            this.number.render(guiGraphics, x, y, f);
             this.name.render(guiGraphics, x, y, f);
             this.count.render(guiGraphics, x, y, f);
+        }
+
+        public boolean mouseClicked(double localX, double localY, int i) {
+            return this.number.mouseClicked(localX, localY, i)
+                || this.name.mouseClicked(localX, localY, i)
+                || this.count.mouseClicked(localX, localY, i);
+        }
+
+        public boolean isMouseOver(double localX, double localY) {
+            return this.number.isMouseOver(localX, localY)
+                || this.name.isMouseOver(localX, localY)
+                || this.count.isMouseOver(localX, localY);
         }
     }
 
@@ -88,28 +120,18 @@ public class TrainerListWidget extends AbstractScrollWidget {
 
                 if(showAllTypes || this.tdm.getData(trainerId).getType() == trainerType) {
                     var count = this.playerState.getTrainerDefeatCount(trainerId);
+                    var trMob = this.tdm.getData(trainerId);
+                    var isKeyTrainer = this.playerState.getLevelCap() < trMob.getRewardLevelCap()
+                        && this.playerState.getLevelCap() >= trMob.getRequiredLevelCap();
 
-                    if(showUndefeated || count > 0) {
+                    if(showUndefeated || isKeyTrainer || count > 0) {
                         p = this.c / ENTRIES_PER_PAGE;
                         r = this.c % ENTRIES_PER_PAGE;
                         this.y = r * this.h;
-
-                        var name = count > 0 ? this.tdm.getData(trainerId).getTeam().getDisplayName() : "???";
-
-                        if(name.length() > MAX_NAME_LENGTH) {
-                            name = name.substring(0, MAX_NAME_LENGTH - 3) + "...";
-                        }
-
-                        var nameWidget = new StringWidget(this.x, this.y, (int)(this.w*0.8f), this.h, toComponent(String.format("%04d: %s", this.i + 1, name)), font).alignLeft();
-                        var countWidget = new StringWidget(this.x, this.y, this.w, this.h,
-                            count > 9000 ? toComponent(" >9k") :
-                            count > 999 ? toComponent(((count % 1000) != 0 ? " >" : " ") + (count/1000) + "k") :
-                            toComponent(" " + count), font).alignRight();
-
-                        this.pages.computeIfAbsent(p, ArrayList::new).add(new Entry(nameWidget, countWidget));
                         this.c++;
+                        this.pages.computeIfAbsent(p, ArrayList::new).add(this.createEntry(trainerId, trMob, count, isKeyTrainer));
 
-                        if(realtime) {
+                        if(this.realtime) {
                             TrainerListWidget.this.maxPage = p;
                         }
                     }
@@ -126,6 +148,25 @@ public class TrainerListWidget extends AbstractScrollWidget {
         @Override
         public boolean finished() {
             return this.i >= TrainerListWidget.this.trainerIds.size();
+        }
+
+        private Entry createEntry(String trainerId, TrainerMobData trMob, int defeatCount, boolean isKeyTrainer) {
+            var name = isKeyTrainer || defeatCount > 0 ? trMob.getTeam().getDisplayName() : "???";
+
+            if(name.length() > MAX_NAME_LENGTH) {
+                name = name.substring(0, MAX_NAME_LENGTH - 3) + "...";
+            }
+            
+            var nameComponent = isKeyTrainer ? toComponent(name).withStyle(ChatFormatting.OBFUSCATED) : toComponent(name);
+            var numberWidget = new MultiStyleStringWidget(this.x, this.y, this.w, this.h, toComponent(String.format("%04d: ", this.i + 1)), font).addStyle(Style.EMPTY.withColor(ChatFormatting.RED)).alignLeft();
+            var nameWidget = new MultiStyleStringWidget((int)(this.x + this.w*0.18), this.y, (int)(this.w*0.62), this.h, nameComponent, font).addStyle(Style.EMPTY.withColor(ChatFormatting.RED)).alignLeft();
+            var countWidget = new MultiStyleStringWidget(this.x, this.y, this.w, this.h,
+                    defeatCount > 9000 ? toComponent(" >9k") :
+                    defeatCount > 999 ? toComponent(((defeatCount % 1000) != 0 ? " >" : " ") + (defeatCount/1000) + "k") :
+                    toComponent(" " + defeatCount), font)
+                .addStyle(Style.EMPTY.withColor(ChatFormatting.RED)).alignRight();
+
+            return new Entry(trainerId, numberWidget, nameWidget, countWidget);
         }
     }
 
@@ -215,6 +256,25 @@ public class TrainerListWidget extends AbstractScrollWidget {
         }
     }
 
+    @Override
+    public boolean mouseClicked(double x, double y, int i) {
+        if(super.mouseClicked(x, y, i)) {
+            x = localX(x);
+            y = localY(y);
+
+            for(var entry : this.pages.getOrDefault(this.page, List.of())) {
+                if(entry.mouseClicked(x, y, i)) {
+                    ModCommon.LOG.info(String.format("CLICKED AT (%.2f, %.2f): %s", x, y, entry.trainerId));
+                    break;
+                }
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
     private void updateEntries() {
         this.setScrollAmount(0);
         this.pages.clear();
@@ -254,11 +314,17 @@ public class TrainerListWidget extends AbstractScrollWidget {
     protected void renderContents(GuiGraphics guiGraphics, int x, int y, float f) {
         guiGraphics.pose().pushPose();
         guiGraphics.pose().translate((float) (this.getX() + this.innerPadding()), (float) (this.getY() + this.innerPadding()), 0.0F);
-        guiGraphics.pose().pushPose();
         guiGraphics.pose().scale(INNER_SCALE, INNER_SCALE, 1f);
         this.renderEntries(guiGraphics, x, y, f);
         guiGraphics.pose().popPose();
-        guiGraphics.pose().popPose();
+    }
+
+    protected double localX(double x) {
+        return (x - this.getX()) / INNER_SCALE - this.innerPadding();
+    }
+
+    protected double localY(double y) {
+        return (y - this.getY() + this.scrollAmount()) / INNER_SCALE - this.innerPadding();
     }
 
     @Override

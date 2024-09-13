@@ -101,6 +101,9 @@ public class PlayerInfoWidget extends AbstractWidget {
     private final Button prevPageButton;
     private final Checkbox showUndefeated;
 
+    private final AbstractWidget[] renderableWidgets;
+    private final AbstractWidget[] renderableOnlies;
+
     private ResourceLocation skinLocation;
     private Font font;
 
@@ -134,26 +137,30 @@ public class PlayerInfoWidget extends AbstractWidget {
             .builder(Component.literal("<"), this::onPrevPage)
             .pos(x + NEXT_PAGE_BUTTON_X - NEXT_PAGE_BUTTON_SIZE, y + NEXT_PAGE_BUTTON_Y)
             .size(NEXT_PAGE_BUTTON_SIZE, NEXT_PAGE_BUTTON_SIZE).build();
-    }
 
-    public AbstractWidget[] getRenderableWidgets() {
-        return new AbstractWidget[] {
+        this.renderableWidgets = new AbstractWidget[] {
             this.trainerList,
             this.trainerTypeButton,
             this.showUndefeated,
             this.prevPageButton,
             this.nextPageButton
         };
-    }
 
-    public AbstractWidget[] getRenderableOnlies() {
-        return new AbstractWidget[] {
+        this.renderableOnlies = new AbstractWidget[] {
             this.displayName,
             this.levelCapLabel,
             this.levelCapValue,
             this.totalDefeatsLabel,
             this.totalDefeatsValue,
         };
+    }
+
+    public AbstractWidget[] getRenderableWidgets() {
+        return this.renderableWidgets;
+    }
+
+    public AbstractWidget[] getRenderableOnlies() {
+        return this.renderableOnlies;
     }
 
     public void tick() {
@@ -229,9 +236,11 @@ public class PlayerInfoWidget extends AbstractWidget {
     private static List<String> sortedTrainerIds() {
         var tdm = RCTMod.get().getTrainerManager();
 
-        return tdm.getAllData().map(entry -> entry.getKey()).sorted((k1, k2) -> {
-            var t1 = tdm.getData(k1);
-            var t2 = tdm.getData(k2);
+        return tdm.getAllData().sorted((e1, e2) -> {
+            var k1 = e1.getKey();
+            var k2 = e2.getKey();
+            var t1 = e1.getValue();
+            var t2 = e1.getValue();
             var c = t1.getTeam().getMembers().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0)
                   - t2.getTeam().getMembers().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0);
             
@@ -244,6 +253,6 @@ public class PlayerInfoWidget extends AbstractWidget {
             }
 
             return c;
-        }).toList();
+        }).map(entry -> entry.getKey()).toList();
     }
 }

@@ -70,9 +70,10 @@ public class ForgeEventBus {
                 }
             } else {
                 if(event.player.tickCount % 60 == 0) {
-                    var targetId = PlayerState.get(event.player).getTargetId();
-                    var target = PlayerState.get(event.player).getTarget();
-                    ModCommon.LOG.info(String.format("target: %d, %s", targetId, target == null ? "null" : (target.getDisplayName().getString() + ": " + target.getPosition(1f).subtract(event.player.position()).toString())));
+                    // TODO: render arrow towards target
+                    // var targetId = PlayerState.get(event.player).getTargetId();
+                    // var target = PlayerState.get(event.player).getTarget();
+                    // ModCommon.LOG.info(String.format("target: %d, %s", targetId, target == null ? "null" : (target.getDisplayName().getString() + ": " + target.getPosition(1f).subtract(event.player.position()).toString())));
                 }
             }
         }
