@@ -21,8 +21,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.algorithm.IAlgorithm;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
@@ -34,26 +32,26 @@ import com.gitlab.srcmc.rctmod.client.screens.widgets.text.MultiStyleStringWidge
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.AbstractScrollWidget;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
-import net.minecraft.util.Mth;
 
-public class TrainerListWidget extends AbstractScrollWidget {
-    public static final float INNER_SCALE = 0.65f;
+public class TrainerListWidget extends TrainerDataWidget {
+    public enum EntryState {UNKNOWN, HIDDEN, DISCOVERED}
+
     private static final int UPDATES_PER_TICK = 100;
     private static final int ENTRIES_PER_PAGE = 100;
     private static final int MAX_NAME_LENGTH = 20;
 
     private class Entry {
+        public final EntryState state;
+        public final int trainerNr;
         public final String trainerId;
         public final MultiStyleStringWidget number;
         public final MultiStyleStringWidget name;
         public final MultiStyleStringWidget count;
 
-        public Entry(String trainerId, MultiStyleStringWidget number, MultiStyleStringWidget name, MultiStyleStringWidget count) {
+        public Entry(int trainerNr, String trainerId, EntryState state, MultiStyleStringWidget number, MultiStyleStringWidget name, MultiStyleStringWidget count) {
+            this.state = state;
+            this.trainerNr = trainerNr;
             this.trainerId = trainerId;
             this.number = number;
             this.name = name;
@@ -77,12 +75,6 @@ public class TrainerListWidget extends AbstractScrollWidget {
             this.number.render(guiGraphics, x, y, f);
             this.name.render(guiGraphics, x, y, f);
             this.count.render(guiGraphics, x, y, f);
-        }
-
-        public boolean mouseClicked(double localX, double localY, int i) {
-            return this.number.mouseClicked(localX, localY, i)
-                || this.name.mouseClicked(localX, localY, i)
-                || this.count.mouseClicked(localX, localY, i);
         }
 
         public boolean isMouseOver(double localX, double localY) {
@@ -130,10 +122,15 @@ public class TrainerListWidget extends AbstractScrollWidget {
                         r = this.c % ENTRIES_PER_PAGE;
                         this.y = r * this.h;
                         this.c++;
-                        this.pages.computeIfAbsent(p, ArrayList::new).add(this.createEntry(trainerId, trMob, count, isKeyTrainer));
+
+                        this.pages.computeIfAbsent(p, ArrayList::new).add(this.createEntry(
+                            this.i + 1, trainerId,
+                            count > 0 ? EntryState.DISCOVERED : isKeyTrainer ? EntryState.HIDDEN : EntryState.UNKNOWN,
+                            trMob, count, isKeyTrainer));
 
                         if(this.realtime) {
                             TrainerListWidget.this.maxPage = p;
+                            updateInnerHeight();
                         }
                     }
                 }
@@ -143,6 +140,7 @@ public class TrainerListWidget extends AbstractScrollWidget {
                 TrainerListWidget.this.pages = pages;
                 TrainerListWidget.this.maxPage = p;
                 TrainerListWidget.this.page = Math.max(0, Math.min(p, TrainerListWidget.this.page));
+                updateInnerHeight();
             }
         }
 
@@ -151,7 +149,7 @@ public class TrainerListWidget extends AbstractScrollWidget {
             return this.i >= TrainerListWidget.this.trainerIds.size();
         }
 
-        private Entry createEntry(String trainerId, TrainerMobData trMob, int defeatCount, boolean isKeyTrainer) {
+        private Entry createEntry(int trainerNr, String trainerId, EntryState entryState, TrainerMobData trMob, int defeatCount, boolean isKeyTrainer) {
             var name = isKeyTrainer || defeatCount > 0 ? trMob.getTeam().getDisplayName() : "???";
 
             if(name.length() > MAX_NAME_LENGTH) {
@@ -159,7 +157,7 @@ public class TrainerListWidget extends AbstractScrollWidget {
             }
 
             var nameComponent = isKeyTrainer ? toComponent(name).withStyle(ChatFormatting.OBFUSCATED) : toComponent(name);
-            var numberWidget = new MultiStyleStringWidget(this.x, this.y, this.w, this.h, toComponent(String.format("%04d: ", this.i + 1)), font).addStyle(Style.EMPTY.withColor(ChatFormatting.RED)).alignLeft();
+            var numberWidget = new MultiStyleStringWidget(this.x, this.y, this.w, this.h, toComponent(String.format("%04d: ", trainerNr)), font).addStyle(Style.EMPTY.withColor(ChatFormatting.RED)).alignLeft();
             var nameWidget = new MultiStyleStringWidget((int)(this.x + this.w*0.18), this.y, (int)(this.w*0.62), this.h, nameComponent, font).addStyle(Style.EMPTY.withColor(ChatFormatting.RED)).alignLeft();
             var countWidget = new MultiStyleStringWidget(this.x, this.y, this.w, this.h,
                     defeatCount > 9000 ? toComponent(" >9k") :
@@ -167,52 +165,54 @@ public class TrainerListWidget extends AbstractScrollWidget {
                     toComponent(" " + defeatCount), font)
                 .addStyle(Style.EMPTY.withColor(ChatFormatting.RED)).alignRight();
 
-            return new Entry(trainerId, numberWidget, nameWidget, countWidget);
+            return new Entry(trainerNr, trainerId, entryState, numberWidget, nameWidget, countWidget);
         }
     }
 
-    private Font font;
+    public interface TrainerClickedConsumer {
+        void accept(int trainerNr, String trainerId, EntryState entryState);
+    }
+
     private int innerHeight, entryHeight;
     private List<String> trainerIds;
     private boolean showUndefeated, showAllTypes = true;
     private TrainerMobData.Type trainerType;
     private Map<Integer, List<Entry>> pages = new HashMap<>();
+    private TrainerClickedConsumer trainerClickedHandler;
     private UpdateState updateState;
     private int page, maxPage;
     
     public TrainerListWidget(int x, int y, int w, int h, Font font, List<String> trainerIds) {
-        super(x, y, w, h, Component.empty());
-        this.font = font;
+        super(x, y, w, h, font);
         this.trainerIds = new ArrayList<>(trainerIds);
-        this.innerHeight = this.getHeight() - this.totalInnerPadding();
         this.entryHeight = this.getHeight()/8;
         this.updateState = new UpdateState(this.pages);
+        this.updateInnerHeight();
     }
 
-    public void tick() {
-        if(this.updateState.finished()) {
-            this.updateState = new UpdateState();
-        } else {
-            this.updateState.tick();
-        }
-
-        this.innerHeight = Math.max(
-            getHeight() - totalInnerPadding(),
-            this.pages.getOrDefault(this.page, List.of()).size()*this.entryHeight);
+    public int size() {
+        return this.pages.values().stream().map(p -> p.size()).reduce(0, (s1, s2) -> s1 + s2);
     }
 
-    private void renderEntries(GuiGraphics guiGraphics, int x, int y, float f) {
-        for(var entry : this.pages.getOrDefault(this.page, List.of())) {
-            entry.render(guiGraphics, x, y, f);
-        }
-    }
-
+    @Override
     public int getPage() {
         return this.page;
     }
 
+    @Override
     public int getMaxPage() {
         return this.maxPage;
+    }
+
+    @Override
+    public void setPage(int page) {
+        var nextPage = Math.max(0, Math.min(this.maxPage, page));
+
+        if(nextPage != this.page) {
+            this.page = nextPage;
+            this.setScrollAmount(0);
+            this.updateInnerHeight();
+        }
     }
 
     public boolean getShowUndefeated() {
@@ -225,15 +225,6 @@ public class TrainerListWidget extends AbstractScrollWidget {
 
     public boolean getShowAllTypes() {
         return this.showAllTypes;
-    }
-
-    public void setPage(int page) {
-        var nextPage = Math.max(0, Math.min(this.maxPage, page));
-
-        if(nextPage != this.page) {
-            this.page = nextPage;
-            this.setScrollAmount(0);
-        }
     }
 
     public void setShowUndefeated(boolean showUndefeated) {
@@ -257,16 +248,48 @@ public class TrainerListWidget extends AbstractScrollWidget {
         }
     }
 
+    public void setOnTrainerClicked(TrainerClickedConsumer trainerClickedHandler) {
+        this.trainerClickedHandler = trainerClickedHandler;
+    }
+
+    public void tick() {
+        if(this.updateState.finished()) {
+            this.updateState = new UpdateState();
+        } else {
+            this.updateState.tick();
+        }
+    }
+
+    @Override
+    protected int getInnerHeight() {
+        return (int)(this.innerHeight*INNER_SCALE);
+    }
+
+    private void updateInnerHeight() {
+        this.innerHeight = Math.max(
+            this.getHeight() - this.totalInnerPadding(),
+            this.pages.getOrDefault(this.page, List.of()).size()*this.entryHeight);
+    }
+
+    @Override
+    protected void renderPage(GuiGraphics guiGraphics, int x, int y, float f) {
+        for(var entry : this.pages.getOrDefault(this.page, List.of())) {
+            entry.render(guiGraphics, x, y, f);
+        }
+    }
+
     @Override
     public boolean mouseClicked(double x, double y, int i) {
         if(super.mouseClicked(x, y, i)) {
-            x = localX(x);
-            y = localY(y);
+            if(this.trainerClickedHandler != null) {
+                x = localX(x);
+                y = localY(y);
 
-            for(var entry : this.pages.getOrDefault(this.page, List.of())) {
-                if(entry.mouseClicked(x, y, i)) {
-                    ModCommon.LOG.info(String.format("CLICKED AT (%.2f, %.2f): %s", x, y, entry.trainerId));
-                    break;
+                for(var entry : this.pages.getOrDefault(this.page, List.of())) {
+                    if(entry.isMouseOver(x, y)) {
+                        this.trainerClickedHandler.accept(entry.trainerNr, entry.trainerId, entry.state);
+                        break;
+                    }
                 }
             }
 
@@ -281,69 +304,5 @@ public class TrainerListWidget extends AbstractScrollWidget {
         this.pages.clear();
         this.page = this.maxPage = 0;
         this.updateState = new UpdateState(this.pages);
-    }
-
-    @Override
-    protected void renderBackground(GuiGraphics guiGraphics) {
-        if(this.scrollbarVisible()) {
-           super.renderBackground(guiGraphics);
-        } else {
-           this.renderBorder(guiGraphics, this.getX(), this.getY(), this.getWidth(), this.getHeight());
-           this.renderFullScrollBar(guiGraphics);
-        }
-    }
-    
-    private int getContentHeight() {
-        return this.getInnerHeight() + 4;
-    }
-
-    private int getScrollBarHeight() {
-        return Mth.clamp((int)((float)(this.height * this.height) / (float)this.getContentHeight()), 32, this.height);
-    }
-
-    private void renderFullScrollBar(GuiGraphics guiGraphics) {
-        int i = this.getScrollBarHeight();
-        int j = this.getX() + this.width;
-        int k = this.getX() + this.width + 8;
-        int l = this.getY() + this.height - i;
-        int m = l + i;
-        guiGraphics.fill(j, l, k, m, -8355712);
-        guiGraphics.fill(j, l, k - 1, m - 1, -4144960);
-    }
-
-    @Override
-    protected void renderContents(GuiGraphics guiGraphics, int x, int y, float f) {
-        guiGraphics.pose().pushPose();
-        guiGraphics.pose().translate((float) (this.getX() + this.innerPadding()), (float) (this.getY() + this.innerPadding()), 0.0F);
-        guiGraphics.pose().scale(INNER_SCALE, INNER_SCALE, 1f);
-        this.renderEntries(guiGraphics, x, y, f);
-        guiGraphics.pose().popPose();
-    }
-
-    protected double localX(double x) {
-        return (x - this.getX()) / INNER_SCALE - this.innerPadding();
-    }
-
-    protected double localY(double y) {
-        return (y - this.getY() + this.scrollAmount()) / INNER_SCALE - this.innerPadding();
-    }
-
-    @Override
-    protected int getInnerHeight() {
-        return (int)(this.innerHeight*INNER_SCALE);
-    }
-
-    @Override
-    protected double scrollRate() {
-        return 9.0;
-    }
-
-    @Override
-    protected void updateWidgetNarration(NarrationElementOutput narrationElementOutput) {
-        // TODO
-    }
-
-    private static<T> MutableComponent toComponent(T value) {
-        return Component.literal(String.valueOf(value)).withStyle(ChatFormatting.GREEN);
     }
 }

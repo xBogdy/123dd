@@ -43,6 +43,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
 public class PlayerInfoWidget extends AbstractWidget {
+    public enum Display { TRAINER_LIST, TRAINER_INFO }
+
     private static final ResourceLocation TRAINER_CARD_IMAGE_LOCATION = new ResourceLocation(ModCommon.MOD_ID, "textures/gui/trainer_card.png");
     private static final int TRAINER_CARD_IMAGE_X = 0;
     private static final int TRAINER_CARD_IMAGE_Y = 0;
@@ -98,6 +100,7 @@ public class PlayerInfoWidget extends AbstractWidget {
     private final StringWidget totalDefeatsValue;
 
     private final TrainerListWidget trainerList;
+    private final TrainerInfoWidget trainerInfo;
     private final CycleButton<String> trainerTypeButton;
     private final Button nextPageButton;
     private final Button prevPageButton;
@@ -105,6 +108,9 @@ public class PlayerInfoWidget extends AbstractWidget {
 
     private final AbstractWidget[] renderableWidgets;
     private final AbstractWidget[] renderableOnlies;
+
+    private Boolean trainerListShowUndefeated;
+    private Component trainerListType;
 
     private ResourceLocation skinLocation;
     private Font font;
@@ -120,6 +126,7 @@ public class PlayerInfoWidget extends AbstractWidget {
         this.totalDefeatsLabel = new StringWidget(x + TOTAL_DEFEATS_X + TOTAL_DEFEATS_PADDING, y + TOTAL_DEFEATS_Y + TOTAL_DEFEATS_H/8, TOTAL_DEFEATS_W, TOTAL_DEFEATS_H, Component.literal("Total").withStyle(ChatFormatting.WHITE), this.font).alignLeft();
         this.totalDefeatsValue = new StringWidget(x + TOTAL_DEFEATS_X, y + TOTAL_DEFEATS_Y + TOTAL_DEFEATS_H/8, TOTAL_DEFEATS_W - TOTAL_DEFEATS_PADDING, TOTAL_DEFEATS_H, Component.empty(), this.font).alignRight();
         this.trainerList = new TrainerListWidget(x + TRAINER_LIST_X, y + TRAINER_LIST_Y, TRAINER_LIST_W, TRAINER_LIST_H, font, sortedTrainerIds());
+        this.trainerInfo = new TrainerInfoWidget(x + TRAINER_LIST_X, y + TRAINER_LIST_Y, TRAINER_LIST_W, TRAINER_LIST_H, font);
 
         var types = new ArrayList<String>();
         types.add(ALL_TRAINER_TYPES_STR);
@@ -142,6 +149,7 @@ public class PlayerInfoWidget extends AbstractWidget {
 
         this.renderableWidgets = new AbstractWidget[] {
             this.trainerList,
+            this.trainerInfo,
             this.trainerTypeButton,
             this.showUndefeated,
             this.prevPageButton,
@@ -155,6 +163,15 @@ public class PlayerInfoWidget extends AbstractWidget {
             this.totalDefeatsLabel,
             this.totalDefeatsValue,
         };
+
+        this.trainerList.setOnTrainerClicked((trainerNr, trainerId, entryState) -> {
+            this.trainerInfo.initTrainerInfo(trainerNr, trainerId, entryState);
+            this.trainerInfo.setPage(0);
+            this.setDisplay(Display.TRAINER_INFO);
+        });
+
+        this.trainerInfo.setOnBackClicked(i -> this.setDisplay(Display.TRAINER_LIST));
+        this.setDisplay(Display.TRAINER_LIST);
     }
 
     public AbstractWidget[] getRenderableWidgets() {
@@ -165,10 +182,53 @@ public class PlayerInfoWidget extends AbstractWidget {
         return this.renderableOnlies;
     }
 
+    public void setDisplay(Display display) {
+        switch (display) {
+            case TRAINER_LIST:
+                this.trainerInfo.visible = this.trainerInfo.active = false;
+                this.trainerList.visible = this.trainerList.active = true;
+                this.showUndefeated.active = true;
+                this.trainerTypeButton.active = true;
+
+                if(this.trainerListShowUndefeated != null) {
+                    if(this.trainerListShowUndefeated != this.showUndefeated.selected()) {
+                        this.showUndefeated.onPress();
+                    }
+
+                    this.trainerListShowUndefeated = null;
+                }
+
+                if(this.trainerListType != null) {
+                    this.trainerTypeButton.setMessage(this.trainerListType);
+                    this.trainerListType = null;
+                }
+
+                break;
+            case TRAINER_INFO:
+                if(this.trainerListShowUndefeated == null) {
+                    this.trainerListShowUndefeated = this.showUndefeated.selected();
+                }
+
+                if(this.trainerListType == null) {
+                    this.trainerListType = this.trainerTypeButton.getMessage();
+                }
+
+                if(this.showUndefeated.selected()) {
+                    this.showUndefeated.onPress();
+                }
+
+                this.trainerInfo.visible = this.trainerInfo.active = true;
+                this.trainerList.visible = this.trainerList.active = false;
+                this.showUndefeated.active = false;
+                this.trainerTypeButton.active = false;
+                this.trainerTypeButton.setMessage(this.trainerInfo.getPageContent(this.trainerInfo.getPage()).title);
+                break;
+        }
+    }
+
     public void tick() {
         var localPlayer = (LocalPlayer)ModClient.get().getLocalPlayer().get();
         var playerState = PlayerState.get(localPlayer);
-        var totalDefeats = this.getTotalDefeats();
         var levelCap = playerState.getLevelCap();
 
         this.skinLocation = localPlayer.getSkinTextureLocation();
@@ -176,25 +236,37 @@ public class PlayerInfoWidget extends AbstractWidget {
         this.levelCapValue.setMessage(levelCap <= 100
             ? Component.literal(String.valueOf(levelCap)).withStyle(ChatFormatting.WHITE)
             : Component.literal("000").withStyle(ChatFormatting.OBFUSCATED).withStyle(ChatFormatting.WHITE));
-        this.totalDefeatsValue.setMessage(totalDefeats < 1000000
-            ? Component.literal(String.valueOf(totalDefeats)).withStyle(ChatFormatting.WHITE)
-            : Component.literal("1000000").withStyle(ChatFormatting.OBFUSCATED).withStyle(ChatFormatting.WHITE));
+            
+        if(this.trainerList.active) {
+            var totalDefeats = this.getTotalDefeats();
+            this.totalDefeatsValue.setMessage(totalDefeats < 1000000
+                ? Component.literal(String.valueOf(totalDefeats)).withStyle(ChatFormatting.WHITE)
+                : Component.literal("1000000").withStyle(ChatFormatting.OBFUSCATED).withStyle(ChatFormatting.WHITE));
 
-        this.nextPageButton.active = this.trainerList.getPage() < this.trainerList.getMaxPage();
-        this.prevPageButton.active = this.trainerList.getPage() > 0;
+            this.nextPageButton.active = this.trainerList.getPage() < this.trainerList.getMaxPage();
+            this.prevPageButton.active = this.trainerList.getPage() > 0;
 
-        var trainerTypeStr = this.trainerTypeButton.getValue();
-        var showUndefeated = this.showUndefeated.selected();
-        var showAllTypes = trainerTypeStr.equals(ALL_TRAINER_TYPES_STR);
+            var trainerTypeStr = this.trainerTypeButton.getValue();
+            var showUndefeated = this.showUndefeated.selected();
+            var showAllTypes = trainerTypeStr.equals(ALL_TRAINER_TYPES_STR);
 
-        if(!showAllTypes) {
-            var trainerType = TrainerMobData.Type.valueOf(trainerTypeStr);
-            this.trainerList.setTrainerType(trainerType);
+            if(!showAllTypes) {
+                var trainerType = TrainerMobData.Type.valueOf(trainerTypeStr);
+                this.trainerList.setTrainerType(trainerType);
+            }
+
+            this.trainerList.setShowAllTypes(showAllTypes);
+            this.trainerList.setShowUndefeated(showUndefeated);
+            this.trainerList.tick();
+        } else if(this.trainerInfo.active) {
+            var defeats = this.getDefeats(this.trainerInfo.getTrainerId());
+            this.totalDefeatsValue.setMessage(defeats < 1000000
+                ? Component.literal(String.valueOf(defeats)).withStyle(ChatFormatting.WHITE)
+                : Component.literal("1000000").withStyle(ChatFormatting.OBFUSCATED).withStyle(ChatFormatting.WHITE));
+
+            this.nextPageButton.active = this.trainerInfo.getPage() < this.trainerInfo.getMaxPage();
+            this.prevPageButton.active = this.trainerInfo.getPage() > 0;
         }
-
-        this.trainerList.setShowAllTypes(showAllTypes);
-        this.trainerList.setShowUndefeated(showUndefeated);
-        this.trainerList.tick();
     }
 
     @Override
@@ -212,21 +284,39 @@ public class PlayerInfoWidget extends AbstractWidget {
     }
 
     private void onNextPage(Button button) {
-        this.trainerList.setPage(this.trainerList.getPage() + 1);
+        if(this.trainerList.active) {
+            this.trainerList.setPage(this.trainerList.getPage() + 1);
+        }
+
+        if(this.trainerInfo.active) {
+            this.trainerInfo.setPage(this.trainerInfo.getPage() + 1);
+            this.trainerTypeButton.setMessage(this.trainerInfo.getPageContent(this.trainerInfo.getPage()).title);
+        }
     }
 
     private void onPrevPage(Button button) {
-        this.trainerList.setPage(this.trainerList.getPage() - 1);
+        if(this.trainerList.active) {
+            this.trainerList.setPage(this.trainerList.getPage() - 1);
+        }
+
+        if(this.trainerInfo.active) {
+            this.trainerInfo.setPage(this.trainerInfo.getPage() - 1);
+            this.trainerTypeButton.setMessage(this.trainerInfo.getPageContent(this.trainerInfo.getPage()).title);
+        }
     }
 
     private long getTotalDefeats() {
+        if(!this.showUndefeated.selected()) {
+            return this.trainerList.size();
+        }
+
         if(!this.trainerList.getShowAllTypes()) {
             return this.getTotalDefeats(this.trainerList.getTrainerType());
         }
 
         var localPlayer = (LocalPlayer)ModClient.get().getLocalPlayer().get();
         var playerState = PlayerState.get(localPlayer);
-        return playerState.getTypeDefeatCounts().values().stream().mapToLong(i -> i).reduce(0, Math::addExact);
+        return playerState.getTrainerDefeatCount();
     }
 
     private long getTotalDefeats(TrainerMobData.Type type) {
@@ -235,14 +325,18 @@ public class PlayerInfoWidget extends AbstractWidget {
         return playerState.getTypeDefeatCount(type);
     }
 
+    private int getDefeats(String trainerId) {
+        var localPlayer = (LocalPlayer)ModClient.get().getLocalPlayer().get();
+        var playerState = PlayerState.get(localPlayer);
+        return playerState.getTrainerDefeatCount(trainerId);
+    }
+
     private static List<String> sortedTrainerIds() {
         var tdm = RCTMod.get().getTrainerManager();
 
-        return tdm.getAllData().sorted((e1, e2) -> {
-            var k1 = e1.getKey();
-            var k2 = e2.getKey();
-            var t1 = e1.getValue();
-            var t2 = e1.getValue();
+        return tdm.getAllData().map(entry -> entry.getKey()).sorted((k1, k2) -> {
+            var t1 = tdm.getData(k1);
+            var t2 = tdm.getData(k2);
             var c = t1.getTeam().getMembers().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0)
                   - t2.getTeam().getMembers().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0);
             
@@ -255,6 +349,6 @@ public class PlayerInfoWidget extends AbstractWidget {
             }
 
             return c;
-        }).map(entry -> entry.getKey()).toList();
+        }).toList();
     }
 }
