@@ -19,7 +19,9 @@ package com.gitlab.srcmc.rctmod.client.screens.widgets;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.PriorityQueue;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
@@ -27,10 +29,12 @@ import com.gitlab.srcmc.rctmod.client.screens.widgets.TrainerListWidget.EntrySta
 import com.gitlab.srcmc.rctmod.client.screens.widgets.text.MultiStyleStringWidget;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Renderable;
 import net.minecraft.client.gui.components.StringWidget;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 
@@ -40,6 +44,7 @@ public class TrainerInfoWidget extends TrainerDataWidget {
     public class PageContent {
         public final Component title;
         public final List<Renderable> renderables = new ArrayList<>();
+        protected int height;
 
         private PageContent(String title, Renderable... renderables) {
             this.title = Component.literal(title);
@@ -56,6 +61,7 @@ public class TrainerInfoWidget extends TrainerDataWidget {
 
     private TrainerMobData trainer;
     private EntryState entryState;
+    private int innerHeight;
     private int w, h, y;
 
     private List<PageContent> contents = new ArrayList<>();
@@ -86,18 +92,19 @@ public class TrainerInfoWidget extends TrainerDataWidget {
             identity = identity.substring(0, MAX_NAME_LENGTH - 3) + "...";
         }
 
+        var backX = (int)(this.w*0.92);
         this.back = new HoverElement<>(
-            new MultiStyleStringWidget((int)(this.w*0.92), this.y, (int)(this.w*0.08), h, toComponent("[X]"), this.font).addStyle(Style.EMPTY.withColor(ChatFormatting.RED)).alignRight(),
+            new MultiStyleStringWidget(backX, this.y, this.w - backX, h, toComponent("[X]"), this.font).addStyle(Style.EMPTY.withColor(ChatFormatting.RED)).alignRight(),
             msw -> msw.setStyle(1), msw -> msw.setStyle(0));
 
         this.number = new StringWidget(0, this.y, this.w, this.h, toComponent(String.format("%04d: ", trainerNr)), this.font).alignLeft();
-        this.name = new StringWidget((int)(this.w*0.18), this.y, (int)(this.w*0.72), this.h, entryState == EntryState.HIDDEN ? toComponent(displayName).withStyle(ChatFormatting.OBFUSCATED) : toComponent(displayName).withStyle(ChatFormatting.UNDERLINE), this.font).alignLeft();
+        this.name = new StringWidget((int)(this.w*0.18), this.y, (int)(this.w*0.72), this.h, entryState == EntryState.HIDDEN ? toComponent(displayName).withStyle(ChatFormatting.OBFUSCATED) : toComponent(displayName), this.font).alignLeft();
 
         if(entryState != EntryState.DISCOVERED || identity.equals(displayName)) {
             this.aka = this.identity = null;
         } else {
             this.aka = new StringWidget(0, this.y += this.h, this.w, this.h, toComponent("aka"), this.font).alignLeft();
-            this.identity = identity.equals(displayName) ? null : new StringWidget((int)(this.w*0.18), this.y, this.w, this.h, entryState == EntryState.HIDDEN ? toComponent(identity).withStyle(ChatFormatting.OBFUSCATED) : toComponent(identity), this.font).alignLeft();
+            this.identity = new StringWidget((int)(this.w*0.18), this.y, this.w, this.h, entryState == EntryState.HIDDEN ? toComponent(identity).withStyle(ChatFormatting.OBFUSCATED) : toComponent(identity), this.font).alignLeft();
         }
 
         this.back.element.active = true;
@@ -112,6 +119,8 @@ public class TrainerInfoWidget extends TrainerDataWidget {
             this.contents.add(initTeamPage());
             this.contents.add(initLootPage());
         }
+
+        this.updateInnerHeight();
     }
 
     private PageContent initPage(String title) {
@@ -127,6 +136,7 @@ public class TrainerInfoWidget extends TrainerDataWidget {
 
     private PageContent initOverviewPage() {
         var pc = initPage("Overview");
+        this.y = this.identity == null ? 0 : this.h;
 
         pc.renderables.add(new StringWidget(8, this.y += this.h, this.w, this.h, toComponent("Type: "), this.font).alignLeft());
         pc.renderables.add(new StringWidget(8, this.y, (int)(this.w*0.9), this.h, toComponent(this.trainer.getType().name()), this.font).alignRight());
@@ -146,21 +156,58 @@ public class TrainerInfoWidget extends TrainerDataWidget {
             }
         }
 
+        pc.height = this.y + this.h;
         return pc;
     }
 
     private PageContent initSpawningPage() {
         var pc = initPage("Spawning");
+        var mc = Minecraft.getInstance();
+        var reg = mc.level.registryAccess().registryOrThrow(Registries.BIOME);
+        var config = RCTMod.get().getServerConfig();
+        var biomes = new PriorityQueue<String>();
+        this.y = this.identity == null ? 0 : this.h;
+
+        reg.holders().forEach(holder -> {
+            var tags = holder.tags()
+                .map(t -> t.location().getNamespace() + ":" + t.location().getPath())
+                .collect(Collectors.toSet());
+
+            // given tags without namespace match with any namespace
+            holder.tags()
+                .map(t -> t.location().getPath())
+                .forEach(t -> tags.add(t));
+
+            if(config.biomeTagBlacklist().stream().noneMatch(tags::contains)
+            && this.trainer.getBiomeTagBlacklist().stream().noneMatch(tags::contains)
+            && (config.biomeTagWhitelist().isEmpty() || config.biomeTagWhitelist().stream().anyMatch(tags::contains))
+            && (this.trainer.getBiomeTagWhitelist().isEmpty() || this.trainer.getBiomeTagWhitelist().stream().anyMatch(tags::contains))) {
+                // see DebugScreenOverlay#printBiome
+                biomes.add(Component.translatable((String)holder.unwrap().map(
+                    r -> r.location().toString(),
+                    b -> "[unregistered " + b + "]")).getString());
+            }
+        });
+
+        while(!biomes.isEmpty()) {
+            pc.renderables.add(new StringWidget(8, this.y += this.h , this.w, this.h, toComponent(biomes.poll()), this.font).alignLeft());
+        }
+
+        pc.height = this.y + this.h;
         return pc;
     }
 
     private PageContent initTeamPage() {
         var pc = initPage("Team");
+        this.y = this.identity == null ? 0 : this.h;
+        pc.height = this.y + this.h;
         return pc;
     }
 
     private PageContent initLootPage() {
         var pc = initPage("Loot");
+        this.y = this.identity == null ? 0 : this.h;
+        pc.height = this.y + this.h;
         return pc;
     }
 
@@ -191,11 +238,24 @@ public class TrainerInfoWidget extends TrainerDataWidget {
 
     @Override
     public void setPage(int page) {
-        this.page = Math.max(0, Math.min(this.contents.size() - 1, page));
+        if(page != this.page) {
+            this.page = Math.max(0, Math.min(this.contents.size() - 1, page));
+            this.updateInnerHeight();
+            this.setScrollAmount(0);
+        }
     }
 
     public void setOnBackClicked(Consumer<Integer> backClickedHandler) {
         this.backClickedHandler = backClickedHandler;
+    }
+
+    @Override
+    protected int getInnerHeight() {
+        return (int)(this.innerHeight*INNER_SCALE);
+    }
+
+    private void updateInnerHeight() {
+        this.innerHeight = Math.max(this.getHeight() - this.totalInnerPadding(), this.getPageContent(this.getPage()).height);
     }
 
     @Override
