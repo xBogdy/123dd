@@ -146,16 +146,27 @@ public class PlayerState implements Serializable {
         var currentDefeats = this.trainerDefeatCounts.computeIfAbsent(trainerId, key -> 0);
 
         if(defeats != currentDefeats) {
-            this.trainerDefeatCounts.put(trainerId, defeats);
-            this.updated.trainerDefeatCounts.put(trainerId, defeats);
+            if(defeats == 0) {
+                this.trainerDefeatCounts.remove(trainerId);
+                this.updated.trainerDefeatCounts.remove(trainerId);
+            } else {
+                this.trainerDefeatCounts.put(trainerId, defeats);
+                this.updated.trainerDefeatCounts.put(trainerId, defeats);
+            }
 
             var tm = RCTMod.get().getTrainerManager();
             var tt = tm.getData(trainerId).getType();
             var typeDefeats = this.typeDefeatCounts.computeIfAbsent(tt, key -> 0);
             var newTypeDefeats = typeDefeats + (defeats - currentDefeats);
             
-            this.typeDefeatCounts.put(tt, newTypeDefeats);
-            this.updated.typeDefeatCounts.put(tt, newTypeDefeats);
+            if(newTypeDefeats == 0) {
+                this.typeDefeatCounts.remove(tt);
+                this.updated.typeDefeatCounts.remove(tt);
+            } else {
+                this.typeDefeatCounts.put(tt, newTypeDefeats);
+                this.updated.typeDefeatCounts.put(tt, newTypeDefeats);
+            }
+
             this.hasChanges = true;
         }
     }
@@ -170,11 +181,23 @@ public class PlayerState implements Serializable {
         return count == null ? 0 : count;
     }
 
-    public Map<String, Integer> getTrainerDefeatCounts() {
+    public long getTrainerDefeatCount() {
+        return this.getTrainerDefeatCount(false);
+    }
+
+    public long getTrainerDefeatCount(boolean distinct) {
+        if(distinct) {
+            return this.trainerDefeatCounts.size();
+        } else {
+            return this.typeDefeatCounts.values().stream().mapToLong(i -> i).reduce(0, (i, j) -> i + j);
+        }
+    }
+
+    protected Map<String, Integer> getTrainerDefeatCounts() {
         return Collections.unmodifiableMap(this.trainerDefeatCounts);
     }
 
-    public Map<TrainerMobData.Type, Integer> getTypeDefeatCounts() {
+    protected Map<TrainerMobData.Type, Integer> getTypeDefeatCounts() {
         return Collections.unmodifiableMap(this.typeDefeatCounts);
     }
 
