@@ -120,6 +120,7 @@ public class TrainerInfoWidget extends TrainerDataWidget {
             // this.contents.add(initLootPage()); // TODO: maybe
         }
 
+        this.setPage(0);
         this.updateInnerHeight();
     }
 
