@@ -117,7 +117,7 @@ public class TrainerInfoWidget extends TrainerDataWidget {
 
         if(entryState == EntryState.DISCOVERED) {
             this.contents.add(initTeamPage());
-            this.contents.add(initLootPage());
+            // this.contents.add(initLootPage()); // TODO: maybe
         }
 
         this.updateInnerHeight();
