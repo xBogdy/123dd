@@ -156,7 +156,7 @@ public class TrainerListWidget extends TrainerDataWidget {
                 name = name.substring(0, MAX_NAME_LENGTH - 3) + "...";
             }
 
-            var nameComponent = isKeyTrainer ? toComponent(name).withStyle(ChatFormatting.OBFUSCATED) : toComponent(name);
+            var nameComponent = (defeatCount == 0 && isKeyTrainer) ? toComponent(name).withStyle(ChatFormatting.OBFUSCATED) : toComponent(name);
             var numberWidget = new MultiStyleStringWidget(this.x, this.y, this.w, this.h, toComponent(String.format("%04d: ", trainerNr)), font).addStyle(Style.EMPTY.withColor(ChatFormatting.RED)).alignLeft();
             var nameWidget = new MultiStyleStringWidget((int)(this.x + this.w*0.18), this.y, (int)(this.w*0.62), this.h, nameComponent, font).addStyle(Style.EMPTY.withColor(ChatFormatting.RED)).alignLeft();
             var countWidget = new MultiStyleStringWidget(this.x, this.y, this.w, this.h,
