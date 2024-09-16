@@ -37,6 +37,7 @@ import net.minecraft.client.gui.components.StringWidget;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
+import net.minecraft.resources.ResourceLocation;
 
 public class TrainerInfoWidget extends TrainerDataWidget {
     private static final int MAX_NAME_LENGTH = 20;
@@ -164,7 +165,7 @@ public class TrainerInfoWidget extends TrainerDataWidget {
         var mc = Minecraft.getInstance();
         var reg = mc.level.registryAccess().registryOrThrow(Registries.BIOME);
         var config = RCTMod.get().getServerConfig();
-        var biomes = new PriorityQueue<String>();
+        var biomes = new PriorityQueue<ResourceLocation>();
         this.y = this.identity == null ? 0 : this.h;
 
         reg.holders().forEach(holder -> {
@@ -182,14 +183,22 @@ public class TrainerInfoWidget extends TrainerDataWidget {
             && (config.biomeTagWhitelist().isEmpty() || config.biomeTagWhitelist().stream().anyMatch(tags::contains))
             && (this.trainer.getBiomeTagWhitelist().isEmpty() || this.trainer.getBiomeTagWhitelist().stream().anyMatch(tags::contains))) {
                 // see DebugScreenOverlay#printBiome
-                biomes.add(Component.translatable((String)holder.unwrap().map(
-                    r -> r.location().toString(),
-                    b -> "[unregistered " + b + "]")).getString());
+                biomes.add((ResourceLocation)holder.unwrap().map(
+                    r -> r.location(), b -> new ResourceLocation("", "[unregistered " + b + "]")));
             }
         });
 
+        var namespace = "";
+
         while(!biomes.isEmpty()) {
-            pc.renderables.add(new StringWidget(8, this.y += this.h , this.w, this.h, toComponent(biomes.poll()), this.font).alignLeft());
+            var rs = biomes.poll();
+
+            if(!namespace.equals(rs.getNamespace())) {
+                pc.renderables.add(new StringWidget(8, this.y += this.h , this.w, this.h, toComponent(rs.getNamespace()), this.font).alignLeft());
+                namespace = rs.getNamespace();
+            }
+
+            pc.renderables.add(new StringWidget(16, this.y += this.h , this.w, this.h, toComponent(rs.getPath()), this.font).alignLeft());
         }
 
         pc.height = this.y + this.h;
@@ -202,7 +211,7 @@ public class TrainerInfoWidget extends TrainerDataWidget {
         pc.height = this.y + this.h;
 
         this.trainer.getTeam().getMembers().forEach(poke -> {
-            var species = poke.getSpecies();
+            var species = poke.getSpecies().split(":")[1];
 
             if(species.length() > MAX_NAME_LENGTH) {
                 species = species.substring(0, MAX_NAME_LENGTH - 3) + "...";

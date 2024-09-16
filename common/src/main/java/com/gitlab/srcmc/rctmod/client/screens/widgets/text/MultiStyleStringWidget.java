@@ -53,10 +53,6 @@ public class MultiStyleStringWidget extends StringWidget {
       this.setMessage(this.styles.get(Math.max(0, Math.min(this.styles.size() - 1, i))));
    }
 
-   public void renderScrolling(GuiGraphics g, Font f, int x, int y) {
-      super.renderScrollingString(g, f, x, y);
-   }
-
    @Override
    public MultiStyleStringWidget alignRight() {
       super.alignRight();
