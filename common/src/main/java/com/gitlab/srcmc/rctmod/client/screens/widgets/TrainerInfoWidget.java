@@ -60,7 +60,6 @@ public class TrainerInfoWidget extends TrainerDataWidget {
     private int page;
 
     private TrainerMobData trainer;
-    private EntryState entryState;
     private int innerHeight;
     private int w, h, y;
 
@@ -75,7 +74,6 @@ public class TrainerInfoWidget extends TrainerDataWidget {
     public void initTrainerInfo(int trainerNr, String trainerId, EntryState entryState) {
         this.trainer = RCTMod.get().getTrainerManager().getData(trainerId);
         this.trainerId = trainerId;
-        this.entryState = entryState;
 
         this.w = (int)((this.getWidth() - this.totalInnerPadding())/INNER_SCALE);
         this.h = this.getHeight() / 6;
@@ -202,6 +200,18 @@ public class TrainerInfoWidget extends TrainerDataWidget {
         var pc = initPage("Team");
         this.y = this.identity == null ? 0 : this.h;
         pc.height = this.y + this.h;
+
+        this.trainer.getTeam().getMembers().forEach(poke -> {
+            var species = poke.getSpecies();
+
+            if(species.length() > MAX_NAME_LENGTH) {
+                species = species.substring(0, MAX_NAME_LENGTH - 3) + "...";
+            }
+
+            pc.renderables.add(new StringWidget(8, this.y += this.h , this.w, this.h, toComponent(species), this.font).alignLeft());
+            pc.renderables.add(new StringWidget(8, this.y, (int)(this.w*0.9), this.h, toComponent(poke.getLevel()), this.font).alignRight());
+        });
+
         return pc;
     }
 
