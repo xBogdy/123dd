@@ -146,14 +146,6 @@ public class PlayerState implements Serializable {
         var currentDefeats = this.trainerDefeatCounts.computeIfAbsent(trainerId, key -> 0);
 
         if(defeats != currentDefeats) {
-            if(defeats == 0) {
-                this.trainerDefeatCounts.remove(trainerId);
-                this.updated.trainerDefeatCounts.remove(trainerId);
-            } else {
-                this.trainerDefeatCounts.put(trainerId, defeats);
-                this.updated.trainerDefeatCounts.put(trainerId, defeats);
-            }
-
             var tm = RCTMod.get().getTrainerManager();
             var tt = tm.getData(trainerId).getType();
             var typeDefeats = this.typeDefeatCounts.computeIfAbsent(tt, key -> 0);
@@ -161,12 +153,18 @@ public class PlayerState implements Serializable {
             
             if(newTypeDefeats == 0) {
                 this.typeDefeatCounts.remove(tt);
-                this.updated.typeDefeatCounts.remove(tt);
             } else {
                 this.typeDefeatCounts.put(tt, newTypeDefeats);
-                this.updated.typeDefeatCounts.put(tt, newTypeDefeats);
             }
 
+            if(defeats == 0) {
+                this.trainerDefeatCounts.remove(trainerId);
+            } else {
+                this.trainerDefeatCounts.put(trainerId, defeats);
+            }
+
+            this.updated.trainerDefeatCounts.put(trainerId, defeats);            
+            this.updated.typeDefeatCounts.put(tt, newTypeDefeats);
             this.hasChanges = true;
         }
     }
@@ -213,8 +211,22 @@ public class PlayerState implements Serializable {
     }
 
     private void update(PlayerState updated) {
-        this.trainerDefeatCounts.putAll(updated.trainerDefeatCounts);
-        this.typeDefeatCounts.putAll(updated.typeDefeatCounts);
+        updated.trainerDefeatCounts.forEach((trainerId, count) -> {
+            if(count == 0) {
+                this.trainerDefeatCounts.remove(trainerId);
+            } else {
+                this.trainerDefeatCounts.put(trainerId, count);
+            }
+        });
+
+        updated.typeDefeatCounts.forEach((type, count) -> {
+            if(count == 0) {
+                this.typeDefeatCounts.remove(type);
+            } else {
+                this.typeDefeatCounts.put(type, count);
+            }
+        });
+        
         this.targetEntity = updated.targetEntity;
         this.levelCap = updated.levelCap;
     }
