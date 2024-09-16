@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.StringWidget;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
