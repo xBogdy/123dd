@@ -66,6 +66,7 @@ public class TrainerListWidget extends TrainerDataWidget {
                 this.number.setStyle(1);
                 this.name.setStyle(1);
                 this.count.setStyle(1);
+                hovered = this;
             } else {
                 this.number.setStyle(0);
                 this.name.setStyle(0);
@@ -181,6 +182,7 @@ public class TrainerListWidget extends TrainerDataWidget {
     private TrainerClickedConsumer trainerClickedHandler;
     private UpdateState updateState;
     private int page, maxPage;
+    private Entry hovered, selected;
     
     public TrainerListWidget(int x, int y, int w, int h, Font font, List<String> trainerIds) {
         super(x, y, w, h, font);
@@ -273,24 +275,22 @@ public class TrainerListWidget extends TrainerDataWidget {
 
     @Override
     protected void renderPage(GuiGraphics guiGraphics, int x, int y, float f) {
+        this.hovered = null;
+
         for(var entry : this.pages.getOrDefault(this.page, List.of())) {
             entry.render(guiGraphics, x, y, f);
+        }
+
+        if(this.hovered != this.selected) {
+            this.selected = this.hovered;
         }
     }
 
     @Override
     public boolean mouseClicked(double x, double y, int i) {
         if(super.mouseClicked(x, y, i)) {
-            if(this.trainerClickedHandler != null) {
-                x = localX(x);
-                y = localY(y);
-
-                for(var entry : this.pages.getOrDefault(this.page, List.of())) {
-                    if(entry.isMouseOver(x, y)) {
-                        this.trainerClickedHandler.accept(entry.trainerNr, entry.trainerId, entry.state);
-                        break;
-                    }
-                }
+            if(this.trainerClickedHandler != null && this.selected != null) {
+                this.trainerClickedHandler.accept(this.selected.trainerNr, this.selected.trainerId, this.selected.state);
             }
 
             return true;
