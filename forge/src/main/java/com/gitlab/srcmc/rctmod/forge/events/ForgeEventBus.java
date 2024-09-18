@@ -20,13 +20,17 @@ package com.gitlab.srcmc.rctmod.forge.events;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
+import com.gitlab.srcmc.rctmod.client.renderer.TargetArrowRenderer;
 import com.gitlab.srcmc.rctmod.commands.PlayerCommands;
 import com.gitlab.srcmc.rctmod.commands.TrainerCommands;
 import com.gitlab.srcmc.rctmod.forge.CobblemonTrainersRegistry;
+import com.gitlab.srcmc.rctmod.forge.ModRegistries.Items;
 import com.gitlab.srcmc.rctmod.forge.network.NetworkManager;
 import com.gitlab.srcmc.rctmod.forge.network.packets.S2CPlayerState;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraftforge.client.event.RenderHandEvent;
 import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.TickEvent.Phase;
@@ -88,5 +92,22 @@ public class ForgeEventBus {
 	static void onCommandRegistry(final RegisterCommandsEvent event) {
 		PlayerCommands.register(event.getDispatcher());
         TrainerCommands.register(event.getDispatcher());
+    }
+
+    @SubscribeEvent
+    static void onRenderHand(RenderHandEvent event) {
+        if(event.getItemStack().is(Items.TRAINER_CARD.get())) {
+            var mc = Minecraft.getInstance();
+            var player = mc.player;
+
+            if(player != null) {
+                var ps = PlayerState.get(player);
+                var target = ps.getTarget();
+
+                if(target != null) {
+                    TargetArrowRenderer.render(event.getPoseStack(), target.position().subtract(player.position()), event.getPartialTick());
+                }
+            }
+        }
     }
 }
