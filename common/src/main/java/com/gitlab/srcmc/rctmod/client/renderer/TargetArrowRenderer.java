@@ -97,5 +97,5 @@ public final class TargetArrowRenderer {
         }
     }
 
-    private ArrowRenderer() {}
+    private TargetArrowRenderer() {}
 }
