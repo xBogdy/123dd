@@ -27,6 +27,7 @@ import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
 import com.gitlab.srcmc.rctmod.client.screens.widgets.TrainerListWidget.EntryState;
 import com.gitlab.srcmc.rctmod.client.screens.widgets.text.MultiStyleStringWidget;
+import com.gitlab.srcmc.rctmod.client.screens.widgets.text.TextUtils;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
@@ -41,6 +42,8 @@ import net.minecraft.resources.ResourceLocation;
 
 public class TrainerInfoWidget extends TrainerDataWidget {
     private static final int MAX_NAME_LENGTH = 20;
+    private static final int MAX_SPECIES_LENGTH = 28;
+    private static final int MAX_BIOME_LENGTH = 28;
 
     public class PageContent {
         public final Component title;
@@ -80,18 +83,10 @@ public class TrainerInfoWidget extends TrainerDataWidget {
         this.h = this.getHeight() / 6;
         this.y = 0;
 
-        var displayName = entryState == EntryState.UNKNOWN ? "???" : trainer.getTeam().getDisplayName();
-        var identity = entryState == EntryState.UNKNOWN ? "???" : trainer.getTeam().getIdentity();
-
-        if(displayName.length() > MAX_NAME_LENGTH) {
-            displayName = displayName.substring(0, MAX_NAME_LENGTH - 3) + "...";
-        }
-
-        if(identity.length() > MAX_NAME_LENGTH) {
-            identity = identity.substring(0, MAX_NAME_LENGTH - 3) + "...";
-        }
-
+        var displayName = TextUtils.trim(entryState == EntryState.UNKNOWN ? "???" : trainer.getTeam().getDisplayName(), MAX_NAME_LENGTH);
+        var identity = TextUtils.trim(entryState == EntryState.UNKNOWN ? "???" : trainer.getTeam().getIdentity(), MAX_NAME_LENGTH);
         var backX = (int)(this.w*0.92);
+
         this.back = new HoverElement<>(
             new MultiStyleStringWidget(backX, this.y, this.w - backX, h, toComponent("[X]"), this.font).addStyle(Style.EMPTY.withColor(ChatFormatting.RED)).alignRight(),
             msw -> msw.setStyle(1), msw -> msw.setStyle(0));
@@ -194,11 +189,11 @@ public class TrainerInfoWidget extends TrainerDataWidget {
             var rs = biomes.poll();
 
             if(!namespace.equals(rs.getNamespace())) {
-                pc.renderables.add(new StringWidget(8, this.y += this.h , this.w, this.h, toComponent(rs.getNamespace()), this.font).alignLeft());
+                pc.renderables.add(new StringWidget(8, this.y += this.h , this.w, this.h, toComponent(TextUtils.trim(rs.getNamespace(), MAX_BIOME_LENGTH)), this.font).alignLeft());
                 namespace = rs.getNamespace();
             }
 
-            pc.renderables.add(new StringWidget(16, this.y += this.h , this.w, this.h, toComponent(rs.getPath()), this.font).alignLeft());
+            pc.renderables.add(new StringWidget(16, this.y += this.h , this.w, this.h, toComponent(TextUtils.trim(rs.getPath(), MAX_BIOME_LENGTH)), this.font).alignLeft());
         }
 
         pc.height = this.y + this.h;
@@ -211,25 +206,19 @@ public class TrainerInfoWidget extends TrainerDataWidget {
         pc.height = this.y + this.h;
 
         this.trainer.getTeam().getMembers().forEach(poke -> {
-            var species = poke.getSpecies().split(":")[1];
-
-            if(species.length() > MAX_NAME_LENGTH) {
-                species = species.substring(0, MAX_NAME_LENGTH - 3) + "...";
-            }
-
-            pc.renderables.add(new StringWidget(8, this.y += this.h , this.w, this.h, toComponent(species), this.font).alignLeft());
+            pc.renderables.add(new StringWidget(8, this.y += this.h , this.w, this.h, toComponent(TextUtils.trim(poke.getSpecies().split(":")[1], MAX_SPECIES_LENGTH)), this.font).alignLeft());
             pc.renderables.add(new StringWidget(8, this.y, (int)(this.w*0.9), this.h, toComponent(poke.getLevel()), this.font).alignRight());
         });
 
         return pc;
     }
 
-    private PageContent initLootPage() {
-        var pc = initPage("Loot");
-        this.y = this.identity == null ? 0 : this.h;
-        pc.height = this.y + this.h;
-        return pc;
-    }
+    // private PageContent initLootPage() {
+    //     var pc = initPage("Loot");
+    //     this.y = this.identity == null ? 0 : this.h;
+    //     pc.height = this.y + this.h;
+    //     return pc;
+    // }
 
     public String getTrainerId() {
         return this.trainerId;
