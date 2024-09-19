@@ -30,6 +30,7 @@ import com.gitlab.srcmc.rctmod.forge.network.packets.S2CPlayerState;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
 import net.minecraftforge.client.event.RenderHandEvent;
 import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
@@ -91,13 +92,17 @@ public class ForgeEventBus {
 
     @SubscribeEvent
     static void onRenderHand(RenderHandEvent event) {
-        if(event.getItemStack().is(Items.TRAINER_CARD.get())) {
+        if(event.getHand() == InteractionHand.MAIN_HAND) {
             var mc = Minecraft.getInstance();
             var player = mc.player;
 
-            if(player != null) {
-                var ps = PlayerState.get(player);
-                TargetArrowRenderer.setTarget(player, ps.getTarget());
+            if(player != null)  {
+                if(event.getItemStack().is(Items.TRAINER_CARD.get())) {
+                    TargetArrowRenderer.setTarget(player, PlayerState.get(player).getTarget());
+                } else {
+                    TargetArrowRenderer.setTarget(player, null);
+                }
+
                 TargetArrowRenderer.render(event.getPoseStack(), event.getPartialTick());
             }
         }
