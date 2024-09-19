@@ -73,12 +73,7 @@ public class ForgeEventBus {
                     }
                 }
             } else {
-                if(event.player.tickCount % 60 == 0) {
-                    // TODO: render arrow towards target
-                    // var targetId = PlayerState.get(event.player).getTargetId();
-                    // var target = PlayerState.get(event.player).getTarget();
-                    // ModCommon.LOG.info(String.format("target: %d, %s", targetId, target == null ? "null" : (target.getDisplayName().getString() + ": " + target.getPosition(1f).subtract(event.player.position()).toString())));
-                }
+                TargetArrowRenderer.tick();
             }
         }
     }
@@ -102,11 +97,8 @@ public class ForgeEventBus {
 
             if(player != null) {
                 var ps = PlayerState.get(player);
-                var target = ps.getTarget();
-
-                if(target != null) {
-                    TargetArrowRenderer.render(event.getPoseStack(), target.position().subtract(player.position()), event.getPartialTick());
-                }
+                TargetArrowRenderer.setTarget(player, ps.getTarget());
+                TargetArrowRenderer.render(event.getPoseStack(), event.getPartialTick());
             }
         }
     }

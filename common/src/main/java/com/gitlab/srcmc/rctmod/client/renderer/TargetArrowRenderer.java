@@ -28,72 +28,93 @@ import com.mojang.blaze3d.vertex.VertexFormat;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
-import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.entity.Entity;
 
 public final class TargetArrowRenderer {
-    // https://community.khronos.org/t/best-way-to-draw-a-pyramid/13095/2 - nexusone
     private static final float PYRAMID_STRIP[] = {
-        0.0f, 1.f, 0.0f,
-        -1.0f, -1.0f, 1.0f,
-        1.0f, -1.0f, 1.0f,
-        0.0f, 1.0f, 0.0f,
-        -1.0f, -1.0f, 1.0f,
-        0.0f, -1.0f, -1.0f,
-        0.0f, 1.0f, 0.0f,
-        0.0f, -1.0f, -1.0f,
-        1.0f, -1.0f, 1.0f,
-        -1.0f, -1.0f, 1.0f,
-        0.0f, -1.0f, -1.0f,
-        1.0f, -1.0f, 1.0f
+         0,  1,  0, // top
+         1, -1,  1, // bottom back right
+        -1, -1,  1, // bottom back left
+        -1, -1, -1, // bottom front left
+         0,  1,  0, // top
+         1, -1, -1, // bottom front right
+         1, -1,  1, // bottom back right
+        -1, -1, -1  // bottom front left
     };
 
     private static final float PYRAMID_COLORS[] = {
-        1.0f, 0.0f, 0.0f,
-        0.0f, 1.0f, 0.0f,
-        0.0f, 0.0f, 1.0f,
-        1.0f, 0.0f, 0.0f,
-        0.0f, 1.0f, 0.0f,
-        0.0f, 0.0f, 1.0f,
-        1.0f, 0.0f, 0.0f,
-        0.0f, 1.0f, 0.0f,
-        0.0f, 0.0f, 1.0f,
-        1.0f, 0.0f, 0.0f,
-        0.0f, 1.0f, 0.0f,
-        0.0f, 0.0f, 1.0f
+        1.0f, 0.0f, 0.0f, // top
+        0.0f, 1.0f, 0.0f, // bottom back right
+        0.0f, 1.0f, 0.0f, // bottom back left
+        0.0f, 0.0f, 1.0f, // bottom front left
+        1.0f, 0.0f, 0.0f, // top
+        0.0f, 0.0f, 1.0f, // bottom front right
+        0.0f, 1.0f, 0.0f, // bottom back right
+        0.0f, 0.0f, 1.0f  // bottom front left
     };
 
     private static final float PYRAMID_ALPHA = 0.5f;
     private static final Vector3f PYRAMID_UP = new Vector3f(0, 1, 0);
+    private static final int TICKS_TO_ACTIVATE = 40;
+    private static Vector3f direction;
+    private static int sourceTicks, activationTicks;
+    private static boolean active;
 
-    public static void render(PoseStack poseStack, Vec3 direction, float partialTick) {
-        var mc = Minecraft.getInstance();
-        var cam = mc.gameRenderer.getMainCamera();
+    public static void setTarget(Entity source, Entity target) {
+        sourceTicks = source.tickCount;
+        active = target != null;
 
-        if(cam.isInitialized()) {
-            var rotation = new Quaternionf();
-            direction.toVector3f().rotationTo(PYRAMID_UP, rotation);
-            poseStack.pushPose();
-            poseStack.translate(1, -0.25, -1);
-            poseStack.mulPose(cam.rotation().difference(rotation).rotateLocalX((float)(2*cam.getXRot() * Math.PI / 180)));
-            poseStack.scale(0.05f, 0.1f, 0.05f);
+        if(active) {
+            direction = target.position().subtract(source.position()).toVector3f();
+        }
+    }
 
-            var m = poseStack.last().pose();
-            var tess = Tesselator.getInstance();
-            var buffer = tess.getBuilder();
-
-            RenderSystem.disableCull();
-            RenderSystem.enableBlend();
-            RenderSystem.setShader(GameRenderer::getPositionColorShader);
-            buffer.begin(VertexFormat.Mode.TRIANGLE_STRIP, DefaultVertexFormat.POSITION_COLOR);
-
-            for(int i = 0; i < PYRAMID_STRIP.length; i += 3) {
-                buffer.vertex(m, PYRAMID_STRIP[i], PYRAMID_STRIP[i + 1], PYRAMID_STRIP[i + 2])
-                    .color(PYRAMID_COLORS[i], PYRAMID_COLORS[i + 1], PYRAMID_COLORS[i + 2], PYRAMID_ALPHA)
-                    .endVertex();
+    public static void tick() {
+        if(active) {
+            if(activationTicks < TICKS_TO_ACTIVATE) {
+                activationTicks++;
             }
+        } else {
+            if(activationTicks > 0) {
+                activationTicks--;
+            }
+        }
+    }
 
-            poseStack.popPose();
-            tess.end();
+    public static void render(PoseStack poseStack, float partialTick) {
+        if(activationTicks > 0) {
+            var mc = Minecraft.getInstance();
+            var cam = mc.gameRenderer.getMainCamera();
+
+            if(cam.isInitialized()) {
+                var t = Math.min(activationTicks + partialTick, TICKS_TO_ACTIVATE)/TICKS_TO_ACTIVATE;
+                var rotation = new Quaternionf();
+                direction.rotationTo(PYRAMID_UP, rotation);
+
+                poseStack.pushPose();
+                poseStack.translate(1, -0.25, -1);
+                poseStack.mulPose(cam.rotation().difference(rotation).rotateLocalX((float)(2*cam.getXRot() * Math.PI / 180)));
+                poseStack.mulPose(new Quaternionf().rotateY((float)Math.PI*(sourceTicks + partialTick)/40));
+                poseStack.scale(0.05f * t, 0.1f * t, 0.05f * t);
+
+                var m = poseStack.last().pose();
+                var tess = Tesselator.getInstance();
+                var buffer = tess.getBuilder();
+
+                RenderSystem.disableCull();
+                RenderSystem.enableBlend();
+                RenderSystem.setShader(GameRenderer::getPositionColorShader);
+                buffer.begin(VertexFormat.Mode.TRIANGLE_STRIP, DefaultVertexFormat.POSITION_COLOR);
+
+                for(int i = 0; i < PYRAMID_STRIP.length; i += 3) {
+                    buffer.vertex(m, PYRAMID_STRIP[i], PYRAMID_STRIP[i + 1], PYRAMID_STRIP[i + 2])
+                        .color(PYRAMID_COLORS[i], PYRAMID_COLORS[i + 1], PYRAMID_COLORS[i + 2], PYRAMID_ALPHA * t)
+                        .endVertex();
+                }
+
+                poseStack.popPose();
+                tess.end();
+            }
         }
     }
 
