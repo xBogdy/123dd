@@ -44,13 +44,13 @@ public final class TargetArrowRenderer {
 
     private static final float PYRAMID_COLORS[] = {
         1.0f, 0.0f, 0.0f, // top
-        0.0f, 1.0f, 0.0f, // bottom back right
-        0.0f, 1.0f, 0.0f, // bottom back left
-        0.0f, 0.0f, 1.0f, // bottom front left
+        0.0f, 0.0f, 0.0f, // bottom back right
+        0.0f, 0.0f, 0.0f, // bottom back left
+        0.0f, 0.0f, 0.0f, // bottom front left
         1.0f, 0.0f, 0.0f, // top
-        0.0f, 0.0f, 1.0f, // bottom front right
-        0.0f, 1.0f, 0.0f, // bottom back right
-        0.0f, 0.0f, 1.0f  // bottom front left
+        0.0f, 0.0f, 0.0f, // bottom front right
+        0.0f, 0.0f, 0.0f, // bottom back right
+        0.0f, 0.0f, 0.0f  // bottom front left
     };
 
     private static final float PYRAMID_ALPHA = 0.5f;
@@ -59,6 +59,8 @@ public final class TargetArrowRenderer {
     private static Vector3f direction;
     private static int sourceTicks, activationTicks;
     private static boolean active;
+
+    public static double x = 0.4, y = -0.27, z = -0.66;
 
     public static void setTarget(Entity source, Entity target) {
         sourceTicks = source.tickCount;
@@ -92,10 +94,10 @@ public final class TargetArrowRenderer {
                 direction.rotationTo(PYRAMID_UP, rotation);
 
                 poseStack.pushPose();
-                poseStack.translate(1, -0.25, -1);
+                poseStack.translate(x, y, z);
                 poseStack.mulPose(cam.rotation().difference(rotation).rotateLocalX((float)(2*cam.getXRot() * Math.PI / 180)));
                 poseStack.mulPose(new Quaternionf().rotateY((float)Math.PI*(sourceTicks + partialTick)/40));
-                poseStack.scale(0.05f * t, 0.1f * t, 0.05f * t);
+                poseStack.scale(0.0125f * t, (float)(0.04 + Math.sin((sourceTicks + partialTick)/10)*0.01) * t, 0.025f * t);
 
                 var m = poseStack.last().pose();
                 var tess = Tesselator.getInstance();
