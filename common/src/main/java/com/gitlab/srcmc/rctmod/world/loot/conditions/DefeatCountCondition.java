@@ -17,6 +17,7 @@
  */
 package com.gitlab.srcmc.rctmod.world.loot.conditions;
 
+import java.util.function.BiFunction;
 import java.util.function.Supplier;
 
 import com.gitlab.srcmc.rctmod.api.RCTMod;
@@ -44,18 +45,26 @@ public class DefeatCountCondition implements LootItemCondition {
 
         public void serialize(JsonObject jsonObject, DefeatCountCondition defeatCountCondition, JsonSerializationContext jsonSerializationContext) {
             jsonObject.add("count", jsonSerializationContext.serialize(defeatCountCondition.count));
+            jsonObject.add("comparator", jsonSerializationContext.serialize(defeatCountCondition.comparator.name()));
         }
 
         public DefeatCountCondition deserialize(JsonObject jsonObject, JsonDeserializationContext jsonDeserializationContext) {
             var count = GsonHelper.getAsInt(jsonObject, "count");
-            return new DefeatCountCondition(count);
+            var comparator = Comparator.valueOf(GsonHelper.getAsString(jsonObject, "comparator", "EQUAL"));
+            return new DefeatCountCondition(count, comparator);
         }
     }
 
+    final Comparator comparator;
     final int count;
 
     DefeatCountCondition(int count) {
+        this(count, Comparator.EQUAL);
+    }
+
+    DefeatCountCondition(int count, Comparator comparator) {
         this.count = count;
+        this.comparator = comparator;
     }
 
     public LootItemConditionType getType() {
@@ -66,15 +75,32 @@ public class DefeatCountCondition implements LootItemCondition {
         var player = lootContext.getParamOrNull(LootContextParams.LAST_DAMAGE_PLAYER);
 
         if(player != null && lootContext.getParamOrNull(LootContextParams.THIS_ENTITY) instanceof TrainerMob mob) {
-            return this.count == RCTMod.get().getTrainerManager().getBattleMemory(mob).getDefeatByCount(player);
+            return this.comparator.test(RCTMod.get().getTrainerManager().getBattleMemory(mob).getDefeatByCount(player), this.count);
         }
         
         return false;
     }
 
-    public static LootItemCondition.Builder hasValue(int count) {
-        return () -> {
-            return new DefeatCountCondition(count);
-        };
+    // public static LootItemCondition.Builder hasValue(int count) {
+    //     return () -> {
+    //         return new DefeatCountCondition(count);
+    //     };
+    // }
+
+    public enum Comparator {
+        EQUAL((a, b) -> a.equals(b)),
+        SMALLER((a, b) -> a < b),
+        GREATER((a, b) -> a > b),
+        MODULO((a, b) -> a % b == 0);
+
+        private BiFunction<Integer, Integer, Boolean> testFunc;
+
+        Comparator(BiFunction<Integer, Integer, Boolean> testFunc) {
+            this.testFunc = testFunc;
+        }
+
+        public boolean test(int a, int b) {
+            return this.testFunc.apply(a, b);
+        }
     }
 }

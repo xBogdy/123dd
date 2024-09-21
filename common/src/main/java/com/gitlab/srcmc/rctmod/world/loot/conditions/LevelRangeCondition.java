@@ -83,11 +83,11 @@ public class LevelRangeCondition implements LootItemCondition {
         return false;
     }
 
-    public static LootItemCondition.Builder hasValue(IntRange intRange) {
-        return () -> {
-            return new LevelRangeCondition(intRange);
-        };
-    }
+    // public static LootItemCondition.Builder hasValue(IntRange intRange) {
+    //     return () -> {
+    //         return new LevelRangeCondition(intRange);
+    //     };
+    // }
 
     // Based of: import net.minecraft.world.level.storage.loot.predicates.LootItemConditions.*
     // private static LootItemConditionType register(net.minecraft.world.level.storage.loot.Serializer<? extends LootItemCondition> serializer) {
