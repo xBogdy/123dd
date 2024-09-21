@@ -19,8 +19,10 @@ package com.gitlab.srcmc.rctmod.forge.events;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.client.TrainerRenderer;
+import com.gitlab.srcmc.rctmod.client.renderer.TargetArrowRenderer;
 import com.gitlab.srcmc.rctmod.client.screens.ScreenManager;
 import com.gitlab.srcmc.rctmod.forge.ModRegistries;
+import com.gitlab.srcmc.rctmod.forge.ModRegistries.Items;
 import com.gitlab.srcmc.rctmod.forge.client.ModClient;
 
 import net.minecraftforge.api.distmarker.Dist;
@@ -35,6 +37,7 @@ public class ModClientBus {
     static void onClientSetup(FMLClientSetupEvent event) {
         ModClient.init(new ModClient());
         ModCommon.SCREENS = new ScreenManager();
+        TargetArrowRenderer.init(Items.TRAINER_CARD);
     }
 
     @SubscribeEvent

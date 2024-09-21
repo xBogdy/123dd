@@ -24,14 +24,10 @@ import com.gitlab.srcmc.rctmod.client.renderer.TargetArrowRenderer;
 import com.gitlab.srcmc.rctmod.commands.PlayerCommands;
 import com.gitlab.srcmc.rctmod.commands.TrainerCommands;
 import com.gitlab.srcmc.rctmod.forge.CobblemonTrainersRegistry;
-import com.gitlab.srcmc.rctmod.forge.ModRegistries.Items;
 import com.gitlab.srcmc.rctmod.forge.network.NetworkManager;
 import com.gitlab.srcmc.rctmod.forge.network.packets.S2CPlayerState;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.InteractionHand;
-import net.minecraftforge.client.event.RenderHandEvent;
 import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.TickEvent.Phase;
@@ -74,7 +70,7 @@ public class ForgeEventBus {
                     }
                 }
             } else {
-                TargetArrowRenderer.tick();
+                TargetArrowRenderer.getInstance().tick();
             }
         }
     }
@@ -88,23 +84,5 @@ public class ForgeEventBus {
 	static void onCommandRegistry(final RegisterCommandsEvent event) {
 		PlayerCommands.register(event.getDispatcher());
         TrainerCommands.register(event.getDispatcher());
-    }
-
-    @SubscribeEvent
-    static void onRenderHand(RenderHandEvent event) {
-        if(event.getHand() == InteractionHand.MAIN_HAND) {
-            var mc = Minecraft.getInstance();
-            var player = mc.player;
-
-            if(player != null)  {
-                if(event.getItemStack().is(Items.TRAINER_CARD.get())) {
-                    TargetArrowRenderer.setTarget(player, PlayerState.get(player).getTarget());
-                } else {
-                    TargetArrowRenderer.setTarget(player, null);
-                }
-
-                TargetArrowRenderer.render(event.getPoseStack(), event.getPartialTick());
-            }
-        }
     }
 }

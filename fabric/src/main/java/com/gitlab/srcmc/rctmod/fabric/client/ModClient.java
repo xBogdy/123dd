@@ -25,6 +25,7 @@ import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.client.TrainerRenderer;
+import com.gitlab.srcmc.rctmod.client.renderer.TargetArrowRenderer;
 import com.gitlab.srcmc.rctmod.client.screens.ScreenManager;
 import com.gitlab.srcmc.rctmod.fabric.ModFabric;
 import com.gitlab.srcmc.rctmod.fabric.network.Packets;
@@ -63,6 +64,7 @@ public class ModClient extends com.gitlab.srcmc.rctmod.client.ModClient implemen
         ClientPlayNetworking.registerGlobalReceiver(Packets.PLAYER_STATE, ModClient::handleReceivedPlayerState);
         com.gitlab.srcmc.rctmod.client.ModClient.init(this);
         ModCommon.SCREENS = new ScreenManager();
+        TargetArrowRenderer.init(() -> ModFabric.TRAINER_CARD);
     }
 
     @Override
@@ -82,6 +84,8 @@ public class ModClient extends com.gitlab.srcmc.rctmod.client.ModClient implemen
         if(mc.player.tickCount % RCTMod.get().getServerConfig().spawnIntervalTicks() == 0) {
             ClientPlayNetworking.send(Packets.PLAYER_PING, PacketByteBufs.empty());
         }
+        
+        TargetArrowRenderer.getInstance().tick();
     }
 
     static void handleReceivedPlayerState(Minecraft client, ClientPacketListener handler, FriendlyByteBuf buf, PacketSender responseSender) {

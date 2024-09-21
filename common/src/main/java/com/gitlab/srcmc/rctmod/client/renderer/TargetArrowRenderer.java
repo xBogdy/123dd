@@ -17,9 +17,12 @@
  */
 package com.gitlab.srcmc.rctmod.client.renderer;
 
+import java.util.function.Supplier;
+
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
+import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -29,8 +32,9 @@ import com.mojang.blaze3d.vertex.VertexFormat;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.item.Item;
 
-public final class TargetArrowRenderer {
+public class TargetArrowRenderer {
     private static final float PYRAMID_STRIP[] = {
          0,  1,  0, // top
          1, -1,  1, // bottom back right
@@ -56,48 +60,64 @@ public final class TargetArrowRenderer {
     private static final float PYRAMID_ALPHA = 0.5f;
     private static final Vector3f PYRAMID_UP = new Vector3f(0, 1, 0);
     private static final int TICKS_TO_ACTIVATE = 40;
-    private static Vector3f direction;
-    private static int sourceTicks, activationTicks;
-    private static boolean active;
 
-    public static double x = 0.4, y = -0.27, z = -0.66;
+    public static double TX = -0.15, TY = 0.25, TZ = 0.03;
+    private static final float SX = 0.009375f, SY = 0.03f, SZ = 0.01875f;
 
-    public static void setTarget(Entity source, Entity target) {
-        sourceTicks = source.tickCount;
-        active = target != null;
+    private Supplier<Item> itemSupplier;
+    private Vector3f direction;
+    private int sourceTicks, activationTicks;
+    private boolean active;
 
-        if(active) {
-            direction = target.position().subtract(source.position()).toVector3f();
-        }
+    // public static double x = 0.4, y = -0.27, z = -0.66; // with RenderHand
+    // public static double x = -0.15, y = 0.25, z = 0.03; // with ItemRenderer
+
+    private static Supplier<TargetArrowRenderer> instanceSupplier = () -> {
+        throw new IllegalStateException(TargetArrowRenderer.class.getName() + " not initialized");
+    };
+
+    public static void init(Supplier<Item> triggerItemSupplier) {
+        var instance = new TargetArrowRenderer(triggerItemSupplier);
+        instanceSupplier = () -> instance;
     }
 
-    public static void tick() {
-        if(active) {
-            if(activationTicks < TICKS_TO_ACTIVATE) {
-                activationTicks++;
+    public static TargetArrowRenderer getInstance() {
+        return instanceSupplier.get();
+    }
+
+    private TargetArrowRenderer(Supplier<Item> triggerItemSupplier) {
+        this.itemSupplier = triggerItemSupplier;
+    }
+
+    public void tick() {
+        this.updateTarget();
+
+        if(this.active) {
+            if(this.activationTicks < TICKS_TO_ACTIVATE) {
+                this.activationTicks++;
             }
         } else {
-            if(activationTicks > 0) {
-                activationTicks--;
+            if(this.activationTicks > 0) {
+                this.activationTicks--;
             }
         }
     }
 
-    public static void render(PoseStack poseStack, float partialTick) {
-        if(activationTicks > 0) {
+    public void render(PoseStack poseStack, float partialTick) {
+        if(this.activationTicks > 0) {
             var mc = Minecraft.getInstance();
             var cam = mc.gameRenderer.getMainCamera();
 
             if(cam.isInitialized()) {
-                var t = Math.min(activationTicks + partialTick, TICKS_TO_ACTIVATE)/TICKS_TO_ACTIVATE;
+                var t = Math.min(this.activationTicks + partialTick, TICKS_TO_ACTIVATE)/TICKS_TO_ACTIVATE;
                 var rotation = new Quaternionf();
-                direction.rotationTo(PYRAMID_UP, rotation);
+                this.direction.rotationTo(PYRAMID_UP, rotation);
 
                 poseStack.pushPose();
-                poseStack.translate(x, y, z);
+                poseStack.translate(TX, TY, TZ);
                 poseStack.mulPose(cam.rotation().difference(rotation).rotateLocalX((float)(2*cam.getXRot() * Math.PI / 180)));
-                poseStack.mulPose(new Quaternionf().rotateY((float)Math.PI*(sourceTicks + partialTick)/40));
-                poseStack.scale(0.0125f * t, (float)(0.04 + Math.sin((sourceTicks + partialTick)/10)*0.01) * t, 0.025f * t);
+                poseStack.mulPose(new Quaternionf().rotateY((float)Math.PI*(this.sourceTicks + partialTick)/TICKS_TO_ACTIVATE));
+                poseStack.scale(SX * t, (float)(SY + Math.sin((this.sourceTicks + partialTick)/10)*0.01) * t, SZ * t);
 
                 var m = poseStack.last().pose();
                 var tess = Tesselator.getInstance();
@@ -120,5 +140,25 @@ public final class TargetArrowRenderer {
         }
     }
 
-    private TargetArrowRenderer() {}
+    private void updateTarget() {
+        var mc = Minecraft.getInstance();
+        var player = mc.player;
+
+        if(player != null)  {
+            if(player.getMainHandItem().is(itemSupplier.get())) {
+                this.setTarget(player, PlayerState.get(player).getTarget());
+            } else {
+                this.setTarget(player, null);
+            }
+        }
+    }
+
+    private void setTarget(Entity source, Entity target) {
+        sourceTicks = source.tickCount;
+        active = target != null;
+
+        if(active) {
+            direction = target.position().subtract(source.position()).toVector3f();
+        }
+    }
 }

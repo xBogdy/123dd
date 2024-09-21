@@ -77,26 +77,26 @@ public class TrainerCard extends Item {
             int s = player.getInventory().selected;
             switch(s) {
                 case 0:
-                    TargetArrowRenderer.x += 0.01;
+                    TargetArrowRenderer.TX += 0.01;
                     break;
                 case 1:
-                    TargetArrowRenderer.y += 0.01;
+                    TargetArrowRenderer.TY += 0.01;
                     break;
                 case 2:
-                    TargetArrowRenderer.z += 0.01;
+                    TargetArrowRenderer.TZ += 0.01;
                     break;
                 case 3:
-                    TargetArrowRenderer.x -= 0.01;
+                    TargetArrowRenderer.TX -= 0.01;
                     break;
                 case 4:
-                    TargetArrowRenderer.y -= 0.01;
+                    TargetArrowRenderer.TY -= 0.01;
                     break;
                 case 5:
-                    TargetArrowRenderer.z -= 0.01;
+                    TargetArrowRenderer.TZ -= 0.01;
                     break;
             }
 
-            ModCommon.LOG.info(String.format("ARROW POS: (%.3f, %.3f, %.3f)", TargetArrowRenderer.x, TargetArrowRenderer.y, TargetArrowRenderer.z));
+            ModCommon.LOG.info(String.format("ARROW POS: (%.3f, %.3f, %.3f)", TargetArrowRenderer.TX, TargetArrowRenderer.TY, TargetArrowRenderer.TZ));
         }
 
         return InteractionResultHolder.pass(player.getItemInHand(interactionHand));
