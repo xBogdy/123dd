@@ -6,6 +6,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import com.gitlab.srcmc.rctmod.client.renderer.TargetArrowRenderer;
+import com.gitlab.srcmc.rctmod.world.items.TrainerCard;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -18,7 +19,7 @@ import net.minecraft.world.item.ItemStack;
 public class ItemRendererMixin {
     @Inject(method = "render", at = @At("RETURN"), remap = true)
     public void onRender(ItemStack itemStack, ItemDisplayContext displayContext, boolean rotationReversed, PoseStack poseStack, MultiBufferSource bufferSource, int i1, int i2, BakedModel bakedModel, CallbackInfo ci) {
-        if(displayContext == ItemDisplayContext.FIRST_PERSON_RIGHT_HAND) {
+        if(displayContext == ItemDisplayContext.FIRST_PERSON_RIGHT_HAND && itemStack.getItem() instanceof TrainerCard) {
             TargetArrowRenderer.getInstance().render(poseStack, 0);
         }
     }
