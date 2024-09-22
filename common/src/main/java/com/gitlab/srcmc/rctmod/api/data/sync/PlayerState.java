@@ -47,6 +47,7 @@ public class PlayerState implements Serializable {
     private transient Player player;
     private transient PlayerState updated;
     private transient boolean hasChanges = true;
+    private transient Map<TrainerMobData.Type, Integer> distinctTypeDefeatCounts = new HashMap<>();
 
     public static PlayerState get(Player player) {
         var level = player.level();
@@ -126,17 +127,18 @@ public class PlayerState implements Serializable {
     }
 
     public void addDefeat(String trainerId) {
+        var tm = RCTMod.get().getTrainerManager();
+        var tt = tm.getData(trainerId).getType();
+
         if(!this.trainerDefeatCounts.containsKey(trainerId)) {
             this.trainerDefeatCounts.put(trainerId, 1);
             this.updated.trainerDefeatCounts.put(trainerId, 1);
+            this.distinctTypeDefeatCounts.compute(tt, (k, v) -> v == null ? 1 : v + 1);
         } else {
             this.trainerDefeatCounts.compute(trainerId, (k, v) -> v == Integer.MAX_VALUE ? v : v + 1);
             this.updated.trainerDefeatCounts.put(trainerId, this.trainerDefeatCounts.get(trainerId));
         }
-
-        var tm = RCTMod.get().getTrainerManager();
-        var tt = tm.getData(trainerId).getType();
-
+        
         this.typeDefeatCounts.compute(tt, (k, v) -> v == null ? 1 : v == Integer.MAX_VALUE ? v : v + 1);
         this.updated.typeDefeatCounts.put(tt, this.typeDefeatCounts.get(tt));
         this.hasChanges = true;
@@ -159,8 +161,13 @@ public class PlayerState implements Serializable {
 
             if(defeats == 0) {
                 this.trainerDefeatCounts.remove(trainerId);
+                this.distinctTypeDefeatCounts.compute(tt, (k, v) -> v - 1);
             } else {
                 this.trainerDefeatCounts.put(trainerId, defeats);
+
+                if(currentDefeats == 0) {
+                    this.distinctTypeDefeatCounts.compute(tt, (k, v) -> v == null ? 1 : v + 1);
+                }
             }
 
             this.updated.trainerDefeatCounts.put(trainerId, defeats);            
@@ -169,13 +176,17 @@ public class PlayerState implements Serializable {
         }
     }
 
-    public int getTrainerDefeatCount(String trainerId) {
-        var count = this.trainerDefeatCounts.get(trainerId);
+    public long getTypeDefeatCount(TrainerMobData.Type type) {
+        return this.getTypeDefeatCount(type, false);
+    }
+
+    public long getTypeDefeatCount(TrainerMobData.Type type, boolean distinct) {
+        var count = distinct ? this.distinctTypeDefeatCounts.get(type) : this.typeDefeatCounts.get(type);
         return count == null ? 0 : count;
     }
 
-    public int getTypeDefeatCount(TrainerMobData.Type type) {
-        var count = this.typeDefeatCounts.get(type);
+    public int getTrainerDefeatCount(String trainerId) {
+        var count = this.trainerDefeatCounts.get(trainerId);
         return count == null ? 0 : count;
     }
 
@@ -211,11 +222,19 @@ public class PlayerState implements Serializable {
     }
 
     private void update(PlayerState updated) {
+        var tm = RCTMod.get().getTrainerManager();
+
         updated.trainerDefeatCounts.forEach((trainerId, count) -> {
+            var tt = tm.getData(trainerId).getType();
+
             if(count == 0) {
-                this.trainerDefeatCounts.remove(trainerId);
+                if(this.trainerDefeatCounts.remove(trainerId) != null) {
+                    this.distinctTypeDefeatCounts.compute(tt, (k, v) -> v - 1);
+                }
             } else {
-                this.trainerDefeatCounts.put(trainerId, count);
+                if(this.trainerDefeatCounts.put(trainerId, count) == null) {
+                    this.distinctTypeDefeatCounts.compute(tt, (k, v) -> v == null ? 1 : v + 1);
+                }
             }
         });
 
@@ -244,7 +263,9 @@ public class PlayerState implements Serializable {
                 this.trainerDefeatCounts.put(entry.getKey(), defCount);
 
                 if(defCount > 0) {
-                    this.typeDefeatCounts.compute(entry.getValue().getType(), (k, v) -> v == null ? defCount : v + defCount);
+                    var tt = entry.getValue().getType();
+                    this.typeDefeatCounts.compute(tt, (k, v) -> v == null ? defCount : v + defCount);
+                    this.distinctTypeDefeatCounts.compute(tt, (k, v) -> v == null ? 1 : v + 1);
                 }
             });
         }

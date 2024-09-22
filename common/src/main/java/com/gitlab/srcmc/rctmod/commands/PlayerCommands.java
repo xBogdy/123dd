@@ -147,7 +147,7 @@ public final class PlayerCommands {
                 var type = Type.valueOf(context.getArgument("type", String.class));
                 var count = PlayerState.get(player).getTypeDefeatCount(type);
                 context.getSource().sendSuccess(() -> Component.literal(String.valueOf(count)), false);
-                return count;
+                return (int)count;
             } catch(IllegalArgumentException e) {
                 context.getSource().sendFailure(Component.literal(e.getMessage()));
             }
@@ -164,7 +164,7 @@ public final class PlayerCommands {
             var player = EntityArgument.getPlayer(context, "target");
             var count = PlayerState.get(player).getTypeDefeatCount(type);
             context.getSource().sendSuccess(() -> Component.literal(String.valueOf(count)), false);
-            return count;
+            return (int)count;
         } catch(IllegalArgumentException e) {
             context.getSource().sendFailure(Component.literal(e.getMessage()));
             return - 1;

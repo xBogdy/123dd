@@ -72,7 +72,7 @@ public class DefeatCountTriggerInstance extends AbstractCriterionTriggerInstance
         }
 
         if(this.trainerType != null && this.trainerType.equals(mobTr.getType().name())) {
-            return playerState.getTypeDefeatCount(mobTr.getType()) >= this.count;
+            return playerState.getTypeDefeatCount(mobTr.getType(), true) >= this.count;
         }
 
         return this.trainerId == null && this.trainerType == null
