@@ -1,90 +1,103 @@
 {
   "pools": [
     {
-      "rolls": 1,
+      "rolls": {
+        "min": 1,
+        "max": 1
+      },
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "cobblemon:ultra_ball"
+          "name": "cobblemon:love_ball",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
         },
         {
           "type": "minecraft:item",
-          "name": "cobblemon:friend_ball"
+          "name": "cobblemon:dusk_ball",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
         },
         {
           "type": "minecraft:item",
-          "name": "cobblemon:fast_ball"
+          "name": "cobblemon:repeat_ball",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
         },
         {
           "type": "minecraft:item",
-          "name": "cobblemon:love_ball"
+          "name": "cobblemon:quick_ball",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
         },
         {
           "type": "minecraft:item",
-          "name": "cobblemon:moon_ball"
+          "name": "cobblemon:timer_ball",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
         },
         {
           "type": "minecraft:item",
-          "name": "cobblemon:heavy_ball"
+          "name": "cobblemon:luxury_ball",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
         },
         {
           "type": "minecraft:item",
-          "name": "cobblemon:level_ball"
+          "name": "cobblemon:ancient_gigaton_ball"
         },
         {
           "type": "minecraft:item",
-          "name": "cobblemon:lure_ball"
+          "name": "cobblemon:ancient_jet_ball"
         },
         {
           "type": "minecraft:item",
-          "name": "cobblemon:premier_ball"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:nest_ball"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:park_ball"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:timer_ball"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:repeat_ball"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:park_ball"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:dusk_ball"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:quick_ball"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:dream_ball"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:dive_ball"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:net_ball"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:luxury_ball"
+          "name": "cobblemon:ancient_ultra_ball"
         }
       ]
     }
   ],
-  "random_sequence": "rctmod:generic/rare/pokeballs"
+  "random_sequence": "rctmod:generic/epic/pokeballs"
 }

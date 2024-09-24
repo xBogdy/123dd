@@ -1,30 +1,63 @@
 {
   "pools": [
     {
-      "rolls": 1,
+      "rolls": {
+        "min": 1,
+        "max": 1
+      },
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "cobblemon:potion",
-          "conditions": [
+          "name": "cobblemon:zinc",
+          "functions": [
             {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 0,
-                "max": 15
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
               }
             }
           ]
         },
         {
           "type": "minecraft:item",
-          "name": "cobblemon:super_potion",
-          "conditions": [
+          "name": "cobblemon:protein",
+          "functions": [
             {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 16,
-                "max": 37
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:ether"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:medicinal_brew",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:exp_candy_s",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
               }
             }
           ]
@@ -32,6 +65,15 @@
         {
           "type": "minecraft:item",
           "name": "cobblemon:hyper_potion",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ],
           "conditions": [
             {
               "condition": "rctmod:level_range",
@@ -44,27 +86,81 @@
         },
         {
           "type": "minecraft:item",
-          "name": "cobblemon:medicinal_brew"
+          "name": "cobblemon:fine_remedy",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 16,
+                "max": 37
+              }
+            }
+          ]
         },
         {
           "type": "minecraft:item",
-          "name": "cobblemon:antidote"
+          "name": "cobblemon:iron",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
         },
         {
           "type": "minecraft:item",
-          "name": "cobblemon:awakening"
+          "name": "cobblemon:hp_up",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
         },
         {
           "type": "minecraft:item",
-          "name": "cobblemon:burn_heal"
+          "name": "cobblemon:calcium",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
         },
         {
           "type": "minecraft:item",
-          "name": "cobblemon:ice_heal"
+          "name": "cobblemon:carbos",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
         },
         {
           "type": "minecraft:item",
-          "name": "cobblemon:paralyze_heal"
+          "name": "cobblemon:energy_root"
         }
       ]
     }

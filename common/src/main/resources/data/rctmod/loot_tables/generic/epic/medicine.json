@@ -1,50 +1,70 @@
 {
   "pools": [
     {
-      "rolls": 1,
+      "rolls": {
+        "min": 1,
+        "max": 1
+      },
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "cobblemon:potion",
-          "conditions": [
+          "name": "cobblemon:max_ether",
+          "functions": [
             {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 0,
-                "max": 15
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
               }
             }
           ]
         },
         {
           "type": "minecraft:item",
-          "name": "cobblemon:super_potion",
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 16,
-                "max": 37
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:hyper_potion",
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 38,
-                "max": 49
-              }
-            }
-          ]
+          "name": "cobblemon:rare_candy"
         },
         {
           "type": "minecraft:item",
           "name": "cobblemon:max_potion",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 70,
+                "max": 100
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:pp_max"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:exp_candy_m",
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 36,
+                "max": 100
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:exp_candy_l",
           "conditions": [
             {
               "condition": "rctmod:level_range",
@@ -57,75 +77,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "cobblemon:antidote"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:awakening"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:burn_heal"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:ice_heal"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:paralyze_heal"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:full_heal"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:elixir"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:max_ether"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:revive"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:x_attack"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:x_accuracy"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:x_defence"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:x_special_defence"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:x_special_attack"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:x_speed"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:guard_spec"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:dire_hit"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:hp_up",
+          "name": "cobblemon:full_restore",
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -135,75 +87,6 @@
               }
             }
           ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:protein",
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 1,
-                "max": 2
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:iron",
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 1,
-                "max": 2
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:calcium",
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 1,
-                "max": 2
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:carbos",
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 1,
-                "max": 2
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:zinc",
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 1,
-                "max": 2
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:pp_up"
         }
       ]
     }
