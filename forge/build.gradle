@@ -81,6 +81,12 @@ dependencies {
     // Cobblemon Trainers
     implementation fg.deobf("curse.maven:cobblemontrainers-959503:${cobblemontrainers_version}")
 
+    // Simple TMs
+    runtimeOnly fg.deobf("curse.maven:simpletms-tms-and-trs-for-cobblemon-959184:${simpletms_version}")
+
+    // PKGBadges
+    runtimeOnly fg.deobf("curse.maven:pkgbadges-889895:${pkgbadges_version}")
+
     // Patchouli
     runtimeOnly fg.deobf("curse.maven:patchouli-306770:${patchouli_version}")
 

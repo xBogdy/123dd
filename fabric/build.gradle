@@ -32,6 +32,12 @@ dependencies {
     // Fabric Permission API
     modImplementation "me.lucko:fabric-permissions-api:${fpapi_version}"
 
+    // Simple TMs
+    modRuntimeOnly "curse.maven:simpletms-tms-and-trs-for-cobblemon-959184:${simpletms_fabric_version}"
+
+    // PKGBadges
+    modRuntimeOnly "curse.maven:pkgbadges-889895:${pkgbadges_fabric_version}"
+
     // Patchouli (TODO: figure out error Caused by: java.lang.ClassNotFoundException: io.github.fablabsmc.fablabs.api.fiber.v1.schema.type.derived.ConfigType)
     // modRuntimeOnly "curse.maven:patchouli-fabric-393236:${patchouli_fabric_version}"
 
