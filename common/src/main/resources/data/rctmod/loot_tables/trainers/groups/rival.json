@@ -359,140 +359,14 @@
         },
         {
           "type": "minecraft:loot_table",
-          "name": "rctmod:generic/uncommon/training",
-          "weight": 400,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 60,
-                "max": 79
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/rare/training",
-          "weight": 160,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 60,
-                "max": 79
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/epic/training",
-          "weight": 80,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 60,
-                "max": 79
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/legendary/training",
-          "weight": 8,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 60,
-                "max": 79
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
           "name": "rctmod:generic/common/training",
           "weight": 1000,
           "conditions": [
             {
               "condition": "rctmod:level_range",
               "range": {
-                "min": 60,
-                "max": 79
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/common/training",
-          "weight": 1000,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 80,
-                "max": 100
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/uncommon/training",
-          "weight": 500,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 80,
-                "max": 100
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/rare/training",
-          "weight": 200,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 80,
-                "max": 100
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/epic/training",
-          "weight": 100,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 80,
-                "max": 100
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/legendary/training",
-          "weight": 10,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 80,
-                "max": 100
+                "min": 0,
+                "max": 19
               }
             }
           ]
@@ -543,20 +417,6 @@
           "type": "minecraft:loot_table",
           "name": "rctmod:generic/legendary/training",
           "weight": 2,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 0,
-                "max": 19
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/common/training",
-          "weight": 1000,
           "conditions": [
             {
               "condition": "rctmod:level_range",
@@ -639,6 +499,34 @@
         },
         {
           "type": "minecraft:loot_table",
+          "name": "rctmod:generic/common/training",
+          "weight": 1000,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 40,
+                "max": 59
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/uncommon/training",
+          "weight": 300,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 40,
+                "max": 59
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
           "name": "rctmod:generic/rare/training",
           "weight": 120,
           "conditions": [
@@ -687,8 +575,8 @@
             {
               "condition": "rctmod:level_range",
               "range": {
-                "min": 40,
-                "max": 59
+                "min": 60,
+                "max": 79
               }
             }
           ]
@@ -696,20 +584,76 @@
         {
           "type": "minecraft:loot_table",
           "name": "rctmod:generic/uncommon/training",
-          "weight": 300,
+          "weight": 400,
           "conditions": [
             {
               "condition": "rctmod:level_range",
               "range": {
-                "min": 40,
-                "max": 59
+                "min": 60,
+                "max": 79
               }
             }
           ]
         },
         {
           "type": "minecraft:loot_table",
-          "name": "rctmod:generic/uncommon/evolution",
+          "name": "rctmod:generic/rare/training",
+          "weight": 160,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 60,
+                "max": 79
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/epic/training",
+          "weight": 80,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 60,
+                "max": 79
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/legendary/training",
+          "weight": 8,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 60,
+                "max": 79
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/common/training",
+          "weight": 1000,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 80,
+                "max": 100
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/uncommon/training",
           "weight": 500,
           "conditions": [
             {
@@ -723,7 +667,7 @@
         },
         {
           "type": "minecraft:loot_table",
-          "name": "rctmod:generic/rare/evolution",
+          "name": "rctmod:generic/rare/training",
           "weight": 200,
           "conditions": [
             {
@@ -737,7 +681,7 @@
         },
         {
           "type": "minecraft:loot_table",
-          "name": "rctmod:generic/epic/evolution",
+          "name": "rctmod:generic/epic/training",
           "weight": 100,
           "conditions": [
             {
@@ -751,22 +695,8 @@
         },
         {
           "type": "minecraft:loot_table",
-          "name": "rctmod:generic/legendary/evolution",
+          "name": "rctmod:generic/legendary/training",
           "weight": 10,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 80,
-                "max": 100
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/common/evolution",
-          "weight": 1000,
           "conditions": [
             {
               "condition": "rctmod:level_range",
@@ -1053,6 +983,76 @@
               "range": {
                 "min": 60,
                 "max": 79
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/common/evolution",
+          "weight": 1000,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 80,
+                "max": 100
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/uncommon/evolution",
+          "weight": 500,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 80,
+                "max": 100
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/rare/evolution",
+          "weight": 200,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 80,
+                "max": 100
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/epic/evolution",
+          "weight": 100,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 80,
+                "max": 100
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/legendary/evolution",
+          "weight": 10,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 80,
+                "max": 100
               }
             }
           ]

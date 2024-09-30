@@ -79,6 +79,34 @@
         },
         {
           "type": "minecraft:loot_table",
+          "name": "rctmod:generic/common/battle",
+          "weight": 1000,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 20,
+                "max": 39
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/uncommon/battle",
+          "weight": 200,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 20,
+                "max": 39
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
           "name": "rctmod:generic/rare/battle",
           "weight": 80,
           "conditions": [
@@ -109,34 +137,6 @@
           "type": "minecraft:loot_table",
           "name": "rctmod:generic/legendary/battle",
           "weight": 4,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 20,
-                "max": 39
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/common/battle",
-          "weight": 1000,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 20,
-                "max": 39
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/uncommon/battle",
-          "weight": 200,
           "conditions": [
             {
               "condition": "rctmod:level_range",
@@ -219,20 +219,6 @@
         },
         {
           "type": "minecraft:loot_table",
-          "name": "rctmod:generic/legendary/battle",
-          "weight": 8,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 60,
-                "max": 79
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
           "name": "rctmod:generic/common/battle",
           "weight": 1000,
           "conditions": [
@@ -289,42 +275,14 @@
         },
         {
           "type": "minecraft:loot_table",
-          "name": "rctmod:generic/rare/battle",
-          "weight": 200,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 80,
-                "max": 100
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/epic/battle",
-          "weight": 100,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 80,
-                "max": 100
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
           "name": "rctmod:generic/legendary/battle",
-          "weight": 10,
+          "weight": 8,
           "conditions": [
             {
               "condition": "rctmod:level_range",
               "range": {
-                "min": 80,
-                "max": 100
+                "min": 60,
+                "max": 79
               }
             }
           ]
@@ -359,49 +317,7 @@
         },
         {
           "type": "minecraft:loot_table",
-          "name": "rctmod:generic/legendary/medicine",
-          "weight": 10,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 80,
-                "max": 100
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/common/medicine",
-          "weight": 1000,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 80,
-                "max": 100
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/uncommon/medicine",
-          "weight": 500,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 80,
-                "max": 100
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/rare/medicine",
+          "name": "rctmod:generic/rare/battle",
           "weight": 200,
           "conditions": [
             {
@@ -415,8 +331,22 @@
         },
         {
           "type": "minecraft:loot_table",
-          "name": "rctmod:generic/epic/medicine",
+          "name": "rctmod:generic/epic/battle",
           "weight": 100,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 80,
+                "max": 100
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/legendary/battle",
+          "weight": 10,
           "conditions": [
             {
               "condition": "rctmod:level_range",
@@ -569,6 +499,34 @@
         },
         {
           "type": "minecraft:loot_table",
+          "name": "rctmod:generic/common/medicine",
+          "weight": 1000,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 40,
+                "max": 59
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/uncommon/medicine",
+          "weight": 300,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 40,
+                "max": 59
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
           "name": "rctmod:generic/rare/medicine",
           "weight": 120,
           "conditions": [
@@ -599,34 +557,6 @@
           "type": "minecraft:loot_table",
           "name": "rctmod:generic/legendary/medicine",
           "weight": 6,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 40,
-                "max": 59
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/common/medicine",
-          "weight": 1000,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 40,
-                "max": 59
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/uncommon/medicine",
-          "weight": 300,
           "conditions": [
             {
               "condition": "rctmod:level_range",
@@ -703,6 +633,90 @@
               "range": {
                 "min": 60,
                 "max": 79
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/common/medicine",
+          "weight": 1000,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 80,
+                "max": 100
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/uncommon/medicine",
+          "weight": 500,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 80,
+                "max": 100
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/rare/medicine",
+          "weight": 200,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 80,
+                "max": 100
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/epic/medicine",
+          "weight": 100,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 80,
+                "max": 100
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/legendary/medicine",
+          "weight": 10,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 80,
+                "max": 100
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/common/training",
+          "weight": 1000,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 0,
+                "max": 19
               }
             }
           ]
@@ -753,20 +767,6 @@
           "type": "minecraft:loot_table",
           "name": "rctmod:generic/legendary/training",
           "weight": 2,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 0,
-                "max": 19
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/common/training",
-          "weight": 1000,
           "conditions": [
             {
               "condition": "rctmod:level_range",
@@ -1208,6 +1208,34 @@
         },
         {
           "type": "minecraft:loot_table",
+          "name": "rctmod:generic/common/trs",
+          "weight": 1000,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 40,
+                "max": 59
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/uncommon/trs",
+          "weight": 300,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 40,
+                "max": 59
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
           "name": "rctmod:generic/rare/trs",
           "weight": 120,
           "conditions": [
@@ -1244,48 +1272,6 @@
               "range": {
                 "min": 40,
                 "max": 59
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/common/trs",
-          "weight": 1000,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 40,
-                "max": 59
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/uncommon/trs",
-          "weight": 300,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 40,
-                "max": 59
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/legendary/trs",
-          "weight": 8,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 60,
-                "max": 79
               }
             }
           ]
@@ -1349,13 +1335,13 @@
         {
           "type": "minecraft:loot_table",
           "name": "rctmod:generic/legendary/trs",
-          "weight": 10,
+          "weight": 8,
           "conditions": [
             {
               "condition": "rctmod:level_range",
               "range": {
-                "min": 80,
-                "max": 100
+                "min": 60,
+                "max": 79
               }
             }
           ]
@@ -1406,6 +1392,20 @@
           "type": "minecraft:loot_table",
           "name": "rctmod:generic/epic/trs",
           "weight": 100,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 80,
+                "max": 100
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/legendary/trs",
+          "weight": 10,
           "conditions": [
             {
               "condition": "rctmod:level_range",

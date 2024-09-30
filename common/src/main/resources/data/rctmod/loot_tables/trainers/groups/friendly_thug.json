@@ -9,6 +9,300 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
+          "name": "rctmod:generic/common/pokeballs",
+          "weight": 1000,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 0,
+                "max": 19
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/uncommon/pokeballs",
+          "weight": 100,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 0,
+                "max": 19
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/rare/pokeballs",
+          "weight": 40,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 0,
+                "max": 19
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/epic/pokeballs",
+          "weight": 20,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 0,
+                "max": 19
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/legendary/pokeballs",
+          "weight": 2,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 0,
+                "max": 19
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/common/pokeballs",
+          "weight": 1000,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 20,
+                "max": 39
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/uncommon/pokeballs",
+          "weight": 200,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 20,
+                "max": 39
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/rare/pokeballs",
+          "weight": 80,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 20,
+                "max": 39
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/epic/pokeballs",
+          "weight": 40,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 20,
+                "max": 39
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/legendary/pokeballs",
+          "weight": 4,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 20,
+                "max": 39
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/common/pokeballs",
+          "weight": 1000,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 40,
+                "max": 59
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/uncommon/pokeballs",
+          "weight": 300,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 40,
+                "max": 59
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/rare/pokeballs",
+          "weight": 120,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 40,
+                "max": 59
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/epic/pokeballs",
+          "weight": 60,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 40,
+                "max": 59
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/legendary/pokeballs",
+          "weight": 6,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 40,
+                "max": 59
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/common/pokeballs",
+          "weight": 1000,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 60,
+                "max": 79
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/uncommon/pokeballs",
+          "weight": 400,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 60,
+                "max": 79
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/rare/pokeballs",
+          "weight": 160,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 60,
+                "max": 79
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/epic/pokeballs",
+          "weight": 80,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 60,
+                "max": 79
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/legendary/pokeballs",
+          "weight": 8,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 60,
+                "max": 79
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/common/pokeballs",
+          "weight": 1000,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 80,
+                "max": 100
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
           "name": "rctmod:generic/uncommon/pokeballs",
           "weight": 500,
           "conditions": [
@@ -65,21 +359,7 @@
         },
         {
           "type": "minecraft:loot_table",
-          "name": "rctmod:generic/common/pokeballs",
-          "weight": 1000,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 80,
-                "max": 100
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/common/pokeballs",
+          "name": "rctmod:generic/common/medicine",
           "weight": 1000,
           "conditions": [
             {
@@ -93,7 +373,7 @@
         },
         {
           "type": "minecraft:loot_table",
-          "name": "rctmod:generic/uncommon/pokeballs",
+          "name": "rctmod:generic/uncommon/medicine",
           "weight": 100,
           "conditions": [
             {
@@ -101,258 +381,6 @@
               "range": {
                 "min": 0,
                 "max": 19
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/rare/pokeballs",
-          "weight": 40,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 0,
-                "max": 19
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/epic/pokeballs",
-          "weight": 20,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 0,
-                "max": 19
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/legendary/pokeballs",
-          "weight": 2,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 0,
-                "max": 19
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/epic/pokeballs",
-          "weight": 40,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 20,
-                "max": 39
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/legendary/pokeballs",
-          "weight": 4,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 20,
-                "max": 39
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/common/pokeballs",
-          "weight": 1000,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 20,
-                "max": 39
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/uncommon/pokeballs",
-          "weight": 200,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 20,
-                "max": 39
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/rare/pokeballs",
-          "weight": 80,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 20,
-                "max": 39
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/common/pokeballs",
-          "weight": 1000,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 40,
-                "max": 59
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/uncommon/pokeballs",
-          "weight": 300,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 40,
-                "max": 59
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/rare/pokeballs",
-          "weight": 120,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 40,
-                "max": 59
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/epic/pokeballs",
-          "weight": 60,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 40,
-                "max": 59
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/legendary/pokeballs",
-          "weight": 6,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 40,
-                "max": 59
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/rare/pokeballs",
-          "weight": 160,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 60,
-                "max": 79
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/epic/pokeballs",
-          "weight": 80,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 60,
-                "max": 79
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/legendary/pokeballs",
-          "weight": 8,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 60,
-                "max": 79
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/common/pokeballs",
-          "weight": 1000,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 60,
-                "max": 79
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/uncommon/pokeballs",
-          "weight": 400,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 60,
-                "max": 79
               }
             }
           ]
@@ -407,48 +435,6 @@
             {
               "condition": "rctmod:level_range",
               "range": {
-                "min": 0,
-                "max": 19
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/uncommon/medicine",
-          "weight": 100,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 0,
-                "max": 19
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/legendary/medicine",
-          "weight": 4,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 20,
-                "max": 39
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/common/medicine",
-          "weight": 1000,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
                 "min": 20,
                 "max": 39
               }
@@ -487,6 +473,20 @@
           "type": "minecraft:loot_table",
           "name": "rctmod:generic/epic/medicine",
           "weight": 40,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 20,
+                "max": 39
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/legendary/medicine",
+          "weight": 4,
           "conditions": [
             {
               "condition": "rctmod:level_range",
@@ -633,20 +633,6 @@
               "range": {
                 "min": 60,
                 "max": 79
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/legendary/medicine",
-          "weight": 10,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 80,
-                "max": 100
               }
             }
           ]
@@ -709,6 +695,34 @@
         },
         {
           "type": "minecraft:loot_table",
+          "name": "rctmod:generic/legendary/medicine",
+          "weight": 10,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 80,
+                "max": 100
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/common/archeology",
+          "weight": 1000,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 0,
+                "max": 19
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
           "name": "rctmod:generic/uncommon/archeology",
           "weight": 100,
           "conditions": [
@@ -771,48 +785,6 @@
             {
               "condition": "rctmod:level_range",
               "range": {
-                "min": 0,
-                "max": 19
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/epic/archeology",
-          "weight": 40,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 20,
-                "max": 39
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/legendary/archeology",
-          "weight": 4,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 20,
-                "max": 39
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/common/archeology",
-          "weight": 1000,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
                 "min": 20,
                 "max": 39
               }
@@ -849,14 +821,28 @@
         },
         {
           "type": "minecraft:loot_table",
-          "name": "rctmod:generic/legendary/archeology",
-          "weight": 6,
+          "name": "rctmod:generic/epic/archeology",
+          "weight": 40,
           "conditions": [
             {
               "condition": "rctmod:level_range",
               "range": {
-                "min": 40,
-                "max": 59
+                "min": 20,
+                "max": 39
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/legendary/archeology",
+          "weight": 4,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 20,
+                "max": 39
               }
             }
           ]
@@ -919,6 +905,48 @@
         },
         {
           "type": "minecraft:loot_table",
+          "name": "rctmod:generic/legendary/archeology",
+          "weight": 6,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 40,
+                "max": 59
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/common/archeology",
+          "weight": 1000,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 60,
+                "max": 79
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/uncommon/archeology",
+          "weight": 400,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 60,
+                "max": 79
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
           "name": "rctmod:generic/rare/archeology",
           "weight": 160,
           "conditions": [
@@ -949,34 +977,6 @@
           "type": "minecraft:loot_table",
           "name": "rctmod:generic/legendary/archeology",
           "weight": 8,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 60,
-                "max": 79
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/common/archeology",
-          "weight": 1000,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 60,
-                "max": 79
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/uncommon/archeology",
-          "weight": 400,
           "conditions": [
             {
               "condition": "rctmod:level_range",

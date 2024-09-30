@@ -9,76 +9,6 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "name": "rctmod:generic/legendary/nature",
-          "weight": 10,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 80,
-                "max": 100
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/common/nature",
-          "weight": 1000,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 80,
-                "max": 100
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/uncommon/nature",
-          "weight": 500,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 80,
-                "max": 100
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/rare/nature",
-          "weight": 200,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 80,
-                "max": 100
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/epic/nature",
-          "weight": 100,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 80,
-                "max": 100
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
           "name": "rctmod:generic/common/nature",
           "weight": 1000,
           "conditions": [
@@ -219,20 +149,6 @@
         },
         {
           "type": "minecraft:loot_table",
-          "name": "rctmod:generic/legendary/nature",
-          "weight": 6,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 40,
-                "max": 59
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
           "name": "rctmod:generic/common/nature",
           "weight": 1000,
           "conditions": [
@@ -289,28 +205,14 @@
         },
         {
           "type": "minecraft:loot_table",
-          "name": "rctmod:generic/epic/nature",
-          "weight": 80,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 60,
-                "max": 79
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
           "name": "rctmod:generic/legendary/nature",
-          "weight": 8,
+          "weight": 6,
           "conditions": [
             {
               "condition": "rctmod:level_range",
               "range": {
-                "min": 60,
-                "max": 79
+                "min": 40,
+                "max": 59
               }
             }
           ]
@@ -359,119 +261,7 @@
         },
         {
           "type": "minecraft:loot_table",
-          "name": "rctmod:generic/epic/diverse",
-          "weight": 60,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 40,
-                "max": 59
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/legendary/diverse",
-          "weight": 6,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 40,
-                "max": 59
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/common/diverse",
-          "weight": 1000,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 40,
-                "max": 59
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/uncommon/diverse",
-          "weight": 300,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 40,
-                "max": 59
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/rare/diverse",
-          "weight": 120,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 40,
-                "max": 59
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/common/diverse",
-          "weight": 1000,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 60,
-                "max": 79
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/uncommon/diverse",
-          "weight": 400,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 60,
-                "max": 79
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/rare/diverse",
-          "weight": 160,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 60,
-                "max": 79
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/epic/diverse",
+          "name": "rctmod:generic/epic/nature",
           "weight": 80,
           "conditions": [
             {
@@ -485,7 +275,7 @@
         },
         {
           "type": "minecraft:loot_table",
-          "name": "rctmod:generic/legendary/diverse",
+          "name": "rctmod:generic/legendary/nature",
           "weight": 8,
           "conditions": [
             {
@@ -499,7 +289,21 @@
         },
         {
           "type": "minecraft:loot_table",
-          "name": "rctmod:generic/uncommon/diverse",
+          "name": "rctmod:generic/common/nature",
+          "weight": 1000,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 80,
+                "max": 100
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/uncommon/nature",
           "weight": 500,
           "conditions": [
             {
@@ -513,7 +317,7 @@
         },
         {
           "type": "minecraft:loot_table",
-          "name": "rctmod:generic/rare/diverse",
+          "name": "rctmod:generic/rare/nature",
           "weight": 200,
           "conditions": [
             {
@@ -527,7 +331,7 @@
         },
         {
           "type": "minecraft:loot_table",
-          "name": "rctmod:generic/epic/diverse",
+          "name": "rctmod:generic/epic/nature",
           "weight": 100,
           "conditions": [
             {
@@ -541,7 +345,7 @@
         },
         {
           "type": "minecraft:loot_table",
-          "name": "rctmod:generic/legendary/diverse",
+          "name": "rctmod:generic/legendary/nature",
           "weight": 10,
           "conditions": [
             {
@@ -549,48 +353,6 @@
               "range": {
                 "min": 80,
                 "max": 100
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/common/diverse",
-          "weight": 1000,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 80,
-                "max": 100
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/epic/diverse",
-          "weight": 20,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 0,
-                "max": 19
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/legendary/diverse",
-          "weight": 2,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 0,
-                "max": 19
               }
             }
           ]
@@ -627,6 +389,34 @@
           "type": "minecraft:loot_table",
           "name": "rctmod:generic/rare/diverse",
           "weight": 40,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 0,
+                "max": 19
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/epic/diverse",
+          "weight": 20,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 0,
+                "max": 19
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/legendary/diverse",
+          "weight": 2,
           "conditions": [
             {
               "condition": "rctmod:level_range",
@@ -709,7 +499,147 @@
         },
         {
           "type": "minecraft:loot_table",
-          "name": "rctmod:generic/common/berries",
+          "name": "rctmod:generic/common/diverse",
+          "weight": 1000,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 40,
+                "max": 59
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/uncommon/diverse",
+          "weight": 300,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 40,
+                "max": 59
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/rare/diverse",
+          "weight": 120,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 40,
+                "max": 59
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/epic/diverse",
+          "weight": 60,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 40,
+                "max": 59
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/legendary/diverse",
+          "weight": 6,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 40,
+                "max": 59
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/common/diverse",
+          "weight": 1000,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 60,
+                "max": 79
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/uncommon/diverse",
+          "weight": 400,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 60,
+                "max": 79
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/rare/diverse",
+          "weight": 160,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 60,
+                "max": 79
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/epic/diverse",
+          "weight": 80,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 60,
+                "max": 79
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/legendary/diverse",
+          "weight": 8,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 60,
+                "max": 79
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/common/diverse",
           "weight": 1000,
           "conditions": [
             {
@@ -723,7 +653,7 @@
         },
         {
           "type": "minecraft:loot_table",
-          "name": "rctmod:generic/uncommon/berries",
+          "name": "rctmod:generic/uncommon/diverse",
           "weight": 500,
           "conditions": [
             {
@@ -737,7 +667,7 @@
         },
         {
           "type": "minecraft:loot_table",
-          "name": "rctmod:generic/rare/berries",
+          "name": "rctmod:generic/rare/diverse",
           "weight": 200,
           "conditions": [
             {
@@ -751,7 +681,7 @@
         },
         {
           "type": "minecraft:loot_table",
-          "name": "rctmod:generic/epic/berries",
+          "name": "rctmod:generic/epic/diverse",
           "weight": 100,
           "conditions": [
             {
@@ -765,7 +695,7 @@
         },
         {
           "type": "minecraft:loot_table",
-          "name": "rctmod:generic/legendary/berries",
+          "name": "rctmod:generic/legendary/diverse",
           "weight": 10,
           "conditions": [
             {
@@ -1053,6 +983,76 @@
               "range": {
                 "min": 60,
                 "max": 79
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/common/berries",
+          "weight": 1000,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 80,
+                "max": 100
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/uncommon/berries",
+          "weight": 500,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 80,
+                "max": 100
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/rare/berries",
+          "weight": 200,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 80,
+                "max": 100
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/epic/berries",
+          "weight": 100,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 80,
+                "max": 100
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/legendary/berries",
+          "weight": 10,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 80,
+                "max": 100
               }
             }
           ]

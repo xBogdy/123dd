@@ -149,34 +149,6 @@
         },
         {
           "type": "minecraft:loot_table",
-          "name": "rctmod:generic/epic/battle",
-          "weight": 60,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 40,
-                "max": 59
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/legendary/battle",
-          "weight": 6,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 40,
-                "max": 59
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
           "name": "rctmod:generic/common/battle",
           "weight": 1000,
           "conditions": [
@@ -219,14 +191,28 @@
         },
         {
           "type": "minecraft:loot_table",
-          "name": "rctmod:generic/legendary/battle",
-          "weight": 8,
+          "name": "rctmod:generic/epic/battle",
+          "weight": 60,
           "conditions": [
             {
               "condition": "rctmod:level_range",
               "range": {
-                "min": 60,
-                "max": 79
+                "min": 40,
+                "max": 59
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/legendary/battle",
+          "weight": 6,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 40,
+                "max": 59
               }
             }
           ]
@@ -290,13 +276,13 @@
         {
           "type": "minecraft:loot_table",
           "name": "rctmod:generic/legendary/battle",
-          "weight": 10,
+          "weight": 8,
           "conditions": [
             {
               "condition": "rctmod:level_range",
               "range": {
-                "min": 80,
-                "max": 100
+                "min": 60,
+                "max": 79
               }
             }
           ]
@@ -353,6 +339,34 @@
               "range": {
                 "min": 80,
                 "max": 100
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/legendary/battle",
+          "weight": 10,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 80,
+                "max": 100
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/common/training",
+          "weight": 1000,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 0,
+                "max": 19
               }
             }
           ]
@@ -421,8 +435,8 @@
             {
               "condition": "rctmod:level_range",
               "range": {
-                "min": 0,
-                "max": 19
+                "min": 20,
+                "max": 39
               }
             }
           ]
@@ -491,34 +505,6 @@
             {
               "condition": "rctmod:level_range",
               "range": {
-                "min": 20,
-                "max": 39
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/legendary/training",
-          "weight": 6,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 40,
-                "max": 59
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/common/training",
-          "weight": 1000,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
                 "min": 40,
                 "max": 59
               }
@@ -557,6 +543,20 @@
           "type": "minecraft:loot_table",
           "name": "rctmod:generic/epic/training",
           "weight": 60,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 40,
+                "max": 59
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/legendary/training",
+          "weight": 6,
           "conditions": [
             {
               "condition": "rctmod:level_range",
@@ -849,34 +849,6 @@
         },
         {
           "type": "minecraft:loot_table",
-          "name": "rctmod:generic/epic/evolution",
-          "weight": 60,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 40,
-                "max": 59
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/legendary/evolution",
-          "weight": 6,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 40,
-                "max": 59
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
           "name": "rctmod:generic/common/evolution",
           "weight": 1000,
           "conditions": [
@@ -913,6 +885,48 @@
               "range": {
                 "min": 40,
                 "max": 59
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/epic/evolution",
+          "weight": 60,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 40,
+                "max": 59
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/legendary/evolution",
+          "weight": 6,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 40,
+                "max": 59
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/common/evolution",
+          "weight": 1000,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 60,
+                "max": 79
               }
             }
           ]
@@ -981,8 +995,22 @@
             {
               "condition": "rctmod:level_range",
               "range": {
-                "min": 60,
-                "max": 79
+                "min": 80,
+                "max": 100
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "rctmod:generic/uncommon/evolution",
+          "weight": 500,
+          "conditions": [
+            {
+              "condition": "rctmod:level_range",
+              "range": {
+                "min": 80,
+                "max": 100
               }
             }
           ]
@@ -1019,34 +1047,6 @@
           "type": "minecraft:loot_table",
           "name": "rctmod:generic/legendary/evolution",
           "weight": 10,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 80,
-                "max": 100
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/common/evolution",
-          "weight": 1000,
-          "conditions": [
-            {
-              "condition": "rctmod:level_range",
-              "range": {
-                "min": 80,
-                "max": 100
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:loot_table",
-          "name": "rctmod:generic/uncommon/evolution",
-          "weight": 500,
           "conditions": [
             {
               "condition": "rctmod:level_range",
