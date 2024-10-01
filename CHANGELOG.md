@@ -11,7 +11,8 @@
 
 - Drastically increased spawn chances for *undefeated* trainers and lowered the bonus spawn chance of key trainers (e.g. leaders) gained by players reaching their level cap
 - Overhauled loot tables: Adjusted drop chances and item pools (see this [speadsheet](https://docs.google.com/spreadsheets/d/10JjXPP1VvcgO1uat_QU2rwqvuxp5wveNq9U3YzwxzjY/edit?usp=sharing) for more info). Added native support for PKGBadges/Cobblebadges and SimpleTMs
-- Trainer Card GUI: Click on discovered trainers in the list to show more information (e.g. biomes the trainres spawns in)
+- Prevent Trainer Card to open GUI while holding an item in the other hand
+- Trainer Card GUI: Click on discovered trainers in the list to show more information (e.g. biomes the trainer spawns in)
 
 ***Fixed***
 

@@ -19,8 +19,6 @@ package com.gitlab.srcmc.rctmod.world.items;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
-import com.gitlab.srcmc.rctmod.client.renderer.TargetArrowRenderer;
-
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
@@ -73,30 +71,9 @@ public class TrainerCard extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
         if(level.isClientSide) {
-            ModCommon.SCREENS.openTrainerCardScreen();
-            int s = player.getInventory().selected;
-            switch(s) {
-                case 0:
-                    TargetArrowRenderer.TX += 0.01;
-                    break;
-                case 1:
-                    TargetArrowRenderer.TY += 0.01;
-                    break;
-                case 2:
-                    TargetArrowRenderer.TZ += 0.01;
-                    break;
-                case 3:
-                    TargetArrowRenderer.TX -= 0.01;
-                    break;
-                case 4:
-                    TargetArrowRenderer.TY -= 0.01;
-                    break;
-                case 5:
-                    TargetArrowRenderer.TZ -= 0.01;
-                    break;
+            if(interactionHand == InteractionHand.MAIN_HAND && player.getOffhandItem().isEmpty() || player.getMainHandItem().isEmpty()) {
+                ModCommon.SCREENS.openTrainerCardScreen();
             }
-
-            ModCommon.LOG.info(String.format("ARROW POS: (%.3f, %.3f, %.3f)", TargetArrowRenderer.TX, TargetArrowRenderer.TY, TargetArrowRenderer.TZ));
         }
 
         return InteractionResultHolder.pass(player.getItemInHand(interactionHand));
