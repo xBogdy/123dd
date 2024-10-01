@@ -544,6 +544,18 @@ public class TrainerMob extends PathfinderMob implements Npc {
     }
 
     @Override
+    public void aiStep() {
+        super.aiStep();
+        var level = this.level();
+
+        if (!level.isClientSide && this.isAlive()) {
+            if (this.random.nextInt(900) == 0 && this.deathTime == 0) {
+               this.heal(1.0F);
+            }
+        }
+    }
+
+    @Override
     protected void registerGoals() {
         this.getNavigation().setCanFloat(true);
         this.goalSelector.addGoal(0, new FloatGoal(this));
