@@ -135,12 +135,10 @@ public class PlayerState implements Serializable {
             this.updated.trainerDefeatCounts.put(trainerId, 1);
             this.distinctTypeDefeatCounts.compute(tt, (k, v) -> v == null ? 1 : v + 1);
         } else {
-            this.trainerDefeatCounts.compute(trainerId, (k, v) -> v == Integer.MAX_VALUE ? v : v + 1);
-            this.updated.trainerDefeatCounts.put(trainerId, this.trainerDefeatCounts.get(trainerId));
+            this.updated.trainerDefeatCounts.put(trainerId, this.trainerDefeatCounts.compute(trainerId, (k, v) -> v == Integer.MAX_VALUE ? v : v + 1));
         }
-        
-        this.typeDefeatCounts.compute(tt, (k, v) -> v == null ? 1 : v == Integer.MAX_VALUE ? v : v + 1);
-        this.updated.typeDefeatCounts.put(tt, this.typeDefeatCounts.get(tt));
+
+        this.updated.typeDefeatCounts.put(tt, this.typeDefeatCounts.compute(tt, (k, v) -> v == null ? 1 : v == Integer.MAX_VALUE ? v : v + 1));
         this.hasChanges = true;
     }
 
@@ -251,6 +249,9 @@ public class PlayerState implements Serializable {
     }
 
     private void init() {
+        this.trainerDefeatCounts.clear();
+        this.typeDefeatCounts.clear();
+        this.distinctTypeDefeatCounts.clear();
         var level = player.level();
 
         if(!level.isClientSide) {
@@ -260,10 +261,10 @@ public class PlayerState implements Serializable {
 
             tm.getAllData().forEach(entry -> {
                 var defCount = tm.getBattleMemory(overworld, entry.getKey()).getDefeatByCount(player);
-                this.trainerDefeatCounts.put(entry.getKey(), defCount);
 
                 if(defCount > 0) {
                     var tt = entry.getValue().getType();
+                    this.trainerDefeatCounts.put(entry.getKey(), defCount);
                     this.typeDefeatCounts.compute(tt, (k, v) -> v == null ? defCount : v + defCount);
                     this.distinctTypeDefeatCounts.compute(tt, (k, v) -> v == null ? 1 : v + 1);
                 }
