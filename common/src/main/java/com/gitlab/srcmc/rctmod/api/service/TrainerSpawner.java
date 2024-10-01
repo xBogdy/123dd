@@ -425,41 +425,28 @@ public class TrainerSpawner {
     }
 
     private double computeWeight(Player player, String trainerId, TrainerMobData mobTr) {
-        var config = RCTMod.get().getServerConfig();
-        var tm = RCTMod.get().getTrainerManager();
-        var playerTr = tm.getData(player);
-        var reqLevelCap = mobTr.getRequiredLevelCap();
+        var ps = PlayerState.get(player);
 
-        if(reqLevelCap <= playerTr.getLevelCap()) {
-            var ps = PlayerState.get(player);
-
-            for(var type : TrainerMobData.Type.values()) {
-                if(ps.getTypeDefeatCount(type) < mobTr.getRequiredDefeats(type)) {
-                    return 0;
-                }
-            }
-
-            var playerLevel = tm.getPlayerLevel(player);
-            var keyTrainerFactor = 1f;
-
-            if(mobTr.getRewardLevelCap() > playerTr.getLevelCap()
-            || ((mobTr.getType() == TrainerMobData.Type.LEADER
-                || mobTr.getType() == TrainerMobData.Type.E4
-                || mobTr.getType() == TrainerMobData.Type.CHAMP
-                || mobTr.getType() == TrainerMobData.Type.BOSS)
-                && tm.getBattleMemory((ServerLevel)player.level(), trainerId).getDefeatByCount(player) == 0)
-            ) {
-                var a = (10 - Math.min(9, playerTr.getLevelCap()/10))/2f;
-                var b = Math.max(0, playerTr.getLevelCap() - playerLevel)*a + 1;
-                keyTrainerFactor = KEY_TRAINER_SPAWN_WEIGHT_FACTOR/b;
-            }
-
-            var undefeatedFactor = ps.getTrainerDefeatCount(trainerId) == 0 ? UNDEFEATED_WEIGHT_FACTOR : 1f;
-            int diff = Math.abs(Math.min(playerLevel, playerTr.getLevelCap()) - reqLevelCap);
-            return diff > config.maxLevelDiff() ? 0 : ((config.maxLevelDiff() + 1) - diff)*mobTr.getSpawnWeightFactor()*undefeatedFactor*keyTrainerFactor;
+        if(!ps.canBattle(mobTr)) {
+            return 0;
         }
 
-        return 0;
+        var config = RCTMod.get().getServerConfig();
+        var tm = RCTMod.get().getTrainerManager();
+        var playerLevel = tm.getPlayerLevel(player);
+        var reqLevelCap = mobTr.getRequiredLevelCap();
+        var levelCap = ps.getLevelCap();
+        var keyTrainerFactor = 1f;
+
+        if(ps.isKeyTrainer(mobTr) && tm.getBattleMemory((ServerLevel)player.level(), trainerId).getDefeatByCount(player) == 0) {
+            var a = (10 - Math.min(9, levelCap/10))/2f;
+            var b = Math.max(0, levelCap - playerLevel)*a + 1;
+            keyTrainerFactor = KEY_TRAINER_SPAWN_WEIGHT_FACTOR/b;
+        }
+
+        var undefeatedFactor = ps.getTrainerDefeatCount(trainerId) == 0 ? UNDEFEATED_WEIGHT_FACTOR : 1f;
+        int diff = Math.abs(Math.min(playerLevel, levelCap) - reqLevelCap);
+        return diff > config.maxLevelDiff() ? 0 : ((config.maxLevelDiff() + 1) - diff)*mobTr.getSpawnWeightFactor()*undefeatedFactor*keyTrainerFactor;
     }
 
     private void track(TrainerMob trainer, UUID playerUUID) {

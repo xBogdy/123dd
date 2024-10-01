@@ -30,6 +30,7 @@ import java.util.UUID;
 
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
+
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 
@@ -198,6 +199,28 @@ public class PlayerState implements Serializable {
         } else {
             return this.typeDefeatCounts.values().stream().mapToLong(i -> i).reduce(0, (i, j) -> i + j);
         }
+    }
+
+    public boolean isKeyTrainer(TrainerMobData trainer) {
+        return trainer.getRewardLevelCap() > this.getLevelCap()
+            || trainer.getType() == TrainerMobData.Type.LEADER
+            || trainer.getType() == TrainerMobData.Type.E4
+            || trainer.getType() == TrainerMobData.Type.CHAMP
+            || trainer.getType() == TrainerMobData.Type.BOSS;
+    }
+
+    public boolean canBattle(TrainerMobData trainer) {
+        if(this.getLevelCap() < trainer.getRequiredLevelCap()) {
+            return false;
+        }
+        
+        for(var type : TrainerMobData.Type.values()) {
+            if(this.getTypeDefeatCount(type) < trainer.getRequiredDefeats(type)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     protected Map<String, Integer> getTrainerDefeatCounts() {

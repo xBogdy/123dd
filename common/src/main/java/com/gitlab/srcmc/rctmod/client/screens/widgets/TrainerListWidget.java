@@ -116,10 +116,9 @@ public class TrainerListWidget extends TrainerDataWidget {
                 if(showAllTypes || this.tdm.getData(trainerId).getType() == trainerType) {
                     var count = this.playerState.getTrainerDefeatCount(trainerId);
                     var trMob = this.tdm.getData(trainerId);
-                    var isKeyTrainer = this.playerState.getLevelCap() < trMob.getRewardLevelCap()
-                        && this.playerState.getLevelCap() >= trMob.getRequiredLevelCap();
+                    var isNextKeyTrainer = count == 0 && playerState.isKeyTrainer(trMob) && playerState.canBattle(trMob);
 
-                    if(showUndefeated || isKeyTrainer || count > 0) {
+                    if(showUndefeated || isNextKeyTrainer || count > 0) {
                         p = this.c / ENTRIES_PER_PAGE;
                         r = this.c % ENTRIES_PER_PAGE;
                         this.y = r * this.h;
@@ -127,8 +126,8 @@ public class TrainerListWidget extends TrainerDataWidget {
 
                         this.pages.computeIfAbsent(p, ArrayList::new).add(this.createEntry(
                             this.i + 1, trainerId,
-                            count > 0 ? EntryState.DISCOVERED : isKeyTrainer ? EntryState.HIDDEN : EntryState.UNKNOWN,
-                            trMob, count, isKeyTrainer));
+                            count > 0 ? EntryState.DISCOVERED : isNextKeyTrainer ? EntryState.HIDDEN : EntryState.UNKNOWN,
+                            trMob, count, isNextKeyTrainer));
 
                         if(this.realtime) {
                             TrainerListWidget.this.maxPage = p;
