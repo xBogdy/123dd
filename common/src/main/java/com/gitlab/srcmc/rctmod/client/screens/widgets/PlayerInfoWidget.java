@@ -307,7 +307,9 @@ public class PlayerInfoWidget extends AbstractWidget {
 
     private long getTotalDefeats() {
         if(!this.showUndefeated.selected()) {
-            return this.trainerList.size();
+            return this.trainerList.getShowAllTypes()
+                ? this.getDistinctDefeats()
+                : this.getDistinctDefeats(this.trainerList.getTrainerType());
         }
 
         if(!this.trainerList.getShowAllTypes()) {
@@ -323,6 +325,25 @@ public class PlayerInfoWidget extends AbstractWidget {
         var localPlayer = (LocalPlayer)ModClient.get().getLocalPlayer().get();
         var playerState = PlayerState.get(localPlayer);
         return playerState.getTypeDefeatCount(type);
+    }
+
+    private long getDistinctDefeats() {
+        var localPlayer = (LocalPlayer)ModClient.get().getLocalPlayer().get();
+        var playerState = PlayerState.get(localPlayer);
+        int count = 0;
+
+        // TODO: consider optimization (cache value) if more trainer types get introduced
+        for(var t : TrainerMobData.Type.values()) {
+            count += playerState.getTypeDefeatCount(t, true);
+        }
+
+        return count;
+    }
+
+    private long getDistinctDefeats(TrainerMobData.Type type) {
+        var localPlayer = (LocalPlayer)ModClient.get().getLocalPlayer().get();
+        var playerState = PlayerState.get(localPlayer);
+        return playerState.getTypeDefeatCount(type, true);
     }
 
     private int getDefeats(String trainerId) {
