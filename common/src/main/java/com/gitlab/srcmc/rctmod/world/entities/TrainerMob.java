@@ -100,7 +100,10 @@ public class TrainerMob extends PathfinderMob implements Npc {
     }
 
     public static AttributeSupplier.Builder createAttributes() {
-        return Mob.createMobAttributes().add(Attributes.MOVEMENT_SPEED, 0.5).add(Attributes.FOLLOW_RANGE, 48.0);
+        return Mob.createMobAttributes()
+            .add(Attributes.MOVEMENT_SPEED, 0.5)
+            .add(Attributes.FOLLOW_RANGE, 48.0)
+            .add(Attributes.MAX_HEALTH, 30);
     }
 
     public boolean canBattleAgainst(Entity e) {
@@ -548,8 +551,8 @@ public class TrainerMob extends PathfinderMob implements Npc {
         super.aiStep();
         var level = this.level();
 
-        if (!level.isClientSide && this.isAlive()) {
-            if (this.random.nextInt(900) == 0 && this.deathTime == 0) {
+        if(!level.isClientSide && this.isAlive()) {
+            if(this.random.nextInt(400) == 0 && this.deathTime == 0) {
                this.heal(1.0F);
             }
         }

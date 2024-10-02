@@ -5,15 +5,19 @@
 ***Added***
 
 - Server Config `bonusLevelCap`: Adjust difficulty with a single value
-- Trainer Card tracking feature: The Trainer Card will start to glow if the next key trainer (e.g. leader) spawns nearby and lead players towards them
+- Support for PKGBadges/CobbleBadges: Leaders will now drop badges from this mod when a player defeats them for their first time
+- Support for SimpleTMs: Some trainer types have a chance to drop a random TR
+- Trainer Card tracking feature: The Trainer Card will start to glow if the next key trainer (e.g. leader) spawns nearby and render an arrow that will lead towards them
+- Trainer textures: These were procedurally generated in advance and mapped to the trainers so that every *trainer identity* has a unique appearance, though some differences might be very subtle for now. Different versions of the same trainer will have the same body but will most likely wear different outfits
 
 ***Changed***
 
-- Drastically increased spawn chances for **undefeated** trainers (with *emphasized* names) and lowered the bonus spawn chance of key trainers (e.g. leaders) gained by players reaching their level cap
-- Overhauled loot tables: Adjusted drop chances and item pools (see this [speadsheet](https://docs.google.com/spreadsheets/d/10JjXPP1VvcgO1uat_QU2rwqvuxp5wveNq9U3YzwxzjY/edit?usp=sharing) for more info). Added native support for PKGBadges/Cobblebadges and SimpleTMs
-- Prevent Trainer Card to open GUI while holding an item in the other hand
+- Drastically increased spawn chances for undefeated trainers (with *emphasized* names) and lowered the bonus spawn chance of key trainers (e.g. leaders) gained by players reaching their level cap
+- Increased trainer health from `20` to `30`
+- Overhauled loot tables: Adjusted drop chances and item pools (see this [spreadsheet](https://docs.google.com/spreadsheets/d/10JjXPP1VvcgO1uat_QU2rwqvuxp5wveNq9U3YzwxzjY/edit?usp=sharing) for more info)
+- Prevent Trainer Card to open its GUI while holding an item in the other hand
 - Trainer Card GUI: Click on discovered trainers in the list to show more information (e.g. biomes the trainer spawns in)
-- Trainers now slowly regenerate health (at the same rate as horses)
+- Trainers now slowly regenerate health (about twice as fast as horses)
 
 ***Fixed***
 
