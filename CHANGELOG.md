@@ -14,6 +14,7 @@
 
 - Drastically increased spawn chances for undefeated trainers (with *emphasized* names) and lowered the bonus spawn chance of key trainers (e.g. leaders) gained by players reaching their level cap
 - Increased trainer health from `20` to `30`
+- Loot table `defeat_count` condition now supports a `comparator` field (`EQUAL`, `SMALLER`, `GREATER` or `MODULO`)
 - Overhauled loot tables: Adjusted drop chances and item pools (see this [spreadsheet](https://docs.google.com/spreadsheets/d/10JjXPP1VvcgO1uat_QU2rwqvuxp5wveNq9U3YzwxzjY/edit?usp=sharing) for more info)
 - Prevent Trainer Card to open its GUI while holding an item in the other hand
 - Trainer Card GUI: Click on discovered trainers in the list to show more information (e.g. biomes the trainer spawns in)
