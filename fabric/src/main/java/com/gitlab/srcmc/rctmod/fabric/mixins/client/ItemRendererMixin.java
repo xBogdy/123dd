@@ -1,4 +1,4 @@
-package com.gitlab.srcmc.rctmod.mixins.client;
+package com.gitlab.srcmc.rctmod.fabric.mixins.client;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
