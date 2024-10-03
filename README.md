@@ -2,154 +2,73 @@
 
 Over **700** unique and **challenging** trainers, from the Pokemon rom hack *Radical Red* (v3.02), that will spawn naturally in your world.
 
-## Important
+## Description
 
-This mod, though mostly in a usable state, is currently in an early developement stage. That means there might be bugs and future updates **may** contain changes that will not be compatible with worlds that have been run with previous versions. Be sure to backup your world before updating.
+**Trainer spawning**: Encounter different trainers in different biomes.
 
-The *greater* the difference inbetween versions the more likely it is for issues to arise, e.g:
+![trainer_group](https://cdn.modrinth.com/data/lRwTUnD7/images/cc2709f3cac51b946132260901051cfb79fb48f5.png)
 
-|             |     |            |          |
-| ----------- | --- | ---------- | -------- |
-| 0.5.0       | ->  | 0.5.42     | unlikely |
-| 0.5.0       | ->  | 0.6.0      | possible |
-| 0.9.0       | ->  | 1.0.0      | likely   |
-| 0.9.0-alpha | ->  | 0.9.0-beta | possible |
+> Textures were procedurally generated in advance so trainer appearances do not resemble any specific figures.
 
-## Key Features
+---
 
-- Over **700** unique and challenging trainer teams for all level ranges (including gym leaders, elite 4 members, champions and some special ones)
-- Custom trainer npc natural spawning system:
-  - loosely comparable to the wandering trader but with a significant smaller delay and a higher spawn cap by default
-  - ensures uniqueness: Never will you see two trainers with the same name (unless cheated in)
-  - matching spawns: trainers that spawn around a palyer will attempt to match the players strength
-  - different trainer types will spawn in different biomes
-- Custom trainer npc ai (e.g. trainers *stroll* towards players that can battle against them and will despawn when far away/unloaded)
-- Player stats:
-  - badge count*: increases if a player beats a leader for their first time
-  - beaten elite 4 count: increases if a player beats an elite 4 member for their first time
-  - beaten champion count: increases if a player beats a champion for their first time
-  - level cap: increases after a player has beaten certain trainers (e.g. gym leaders)
-- Level cap system:
-  - Pokemon at or above the level cap will not gain any exp
-  - it is **alot** more likely for trainers around the level cap of a player to spawn
-- Advancements:
-  - keep track of your progress (e.g. badges) and become a champion
-  - some hidden and special advancements (more to come)
-  - custom critera trigger for data pack creators: `defeat_count`
-- Battle dependencies: Trainers might have requirements to be battled with (e.g. level cap, gym badge count, beaten elite 4, ...)
-- Pokemon do not obey: Trainers will refuse to battle players that have pokemon above their level cap in their team
-- Battle reward system powered by loot tables:
-  - custom condition for data pack creators: `level_range`
-  - custom condition for data pack creators: `defeat_count`
-- Trainers talk: Based of the context trainers will give different responses in the chat
-- And probably some other things that I can't think of right now...
+**Story Mode**: Defeat leaders, bosses and many more to become the champion.
 
-## Progression
+![trainer_battle_start](https://cdn.modrinth.com/data/lRwTUnD7/images/91b10715bd330d8f6ea0da84b1a585cc861b1ba9.png)
 
-The mod **forces** players to follow a certain progression, which is based of the original game (Radical Red). Key trainers (like gym leaders and bosses) must be defeated to increase a players level cap and gain badges. **Pokemon that are at or above the level cap of a player will not gain any exp while in that players party. In addition trainers will refuse to battle players that have pokemon above their level cap in their party.**
+---
 
-You can see the required progression in the following table but you can also get an idea of what to expect next by **checking your advancement tab ingame**. The initial level cap is `15`:
+![trainer_card_arrow](https://cdn.modrinth.com/data/lRwTUnD7/images/fce1423ed0f357b5f0c0b7de70e2094647118065.png)
 
-| Trainer        | Reward Level Cap | Requirements             | Type       |
-| -------------- | ---------------- | ------------------------ | ---------- |
-| Brock          | `27`             |                          | `LEADER`   |
-| Misty          | `34`             | 1 Badge                  | `LEADER`   |
-| Lt. Surge      | `44`             | 2 Badges                 | `LEADER`   |
-| Erika          | `47`             | 3 Badges                 | `LEADER`   |
-| Giovanni       | `56`             | 4 Badges                 | `BOSS`     |
-| Archer         |                  | 4 Badges + 1 Boss        | `BOSS`     |
-| Ariana         | `57`             | 4 Badges + 2 Bosses      | `BOSS`     |
-| Giovanni       | `59`             | 4 Badges + 3 Bosses      | `BOSS`     |
-| Sabrina        | `68`             | 4 Badges + 4 Bosses      | `LEADER`   |
-| Koga           | `73`             | 5 Badges                 | `LEADER`   |
-| May            | `76`             | 6 Badges                 | `BOSS`     |
-| Blaine         | `79`             | 6 Badges + 5 Bosses      | `LEADER`   |
-| Archer         |                  | 7 Badges + 5 Boss        | `BOSS`     |
-| Ariana         | `80`             | 7 Badges + 6 Bosses      | `BOSS`     |
-| Giovanni       | `81`             | 7 Badges + 7 Bosses      | `BOSS`     |
-| Clair          | `82`             | 7 Badges + 8 Bosses      | `LEADER`   |
-| Brendan        | `85`             | 8 Badges + 8 Bosses      | `BOSS`     |
-| *Any Elite 4*  |                  | 8 Badges + 9 Bosses      | `E4`       |
-| Champion Terry | `100`            | 4 beaten Elite 4 members | `CHAMPION` |
+---
 
-The names of trainers are colored based of they type, to be able to easily recognize key trainers (names of trainers that have not been beaten are *emphasized*):
+**Player Progression**: Limits how far players can progress by preventing pokemon in their party, below a certain level (*level cap*), to gain any exp until they have defeated the next key trainer (e. g. leader).
 
-| Type          | Color        | Symbol |
-| ------------- | ------------ | ------ |
-| `NORMAL`      | white        |        |
-| `RIVAL`       | white        | `[R]`  |
-| `LEADER`      | green        | `[L]`  |
-| `E4`          | blue         | `[E]`  |
-| `CHAMP`       | light_purple | `[C]`  |
-| `TEAM_ROCKET` | dark_gray    | `[T]`  |
-| `BOSS`        | gold         | `[B]`  |
+![player_level_cap](https://cdn.modrinth.com/data/lRwTUnD7/images/5468daf76abb815076b36ad83382716149be8803.png)
 
-## Trainer Card
+---
 
-Keep track of your progress:
+**Trainer Card**: The Trainer Card will help you to keep track of your progress, find information about trainers and to locate the next key trainer to increase your level cap, when they spawn nearby.
 
-![trainer_card](https://cdn.modrinth.com/data/lRwTUnD7/images/9c8e29b5c111999f5f5af29b0b4488d48232d9c5.png)
+![trainer_card_recipe](https://cdn.modrinth.com/data/lRwTUnD7/images/4a9a661d330053281fb6dd846df75b2c20e61b07.png)
 
-> Trainers are sorted by strength (weaker first) > name > trainer id (not shown).
+---
 
-![trainer_card](https://cdn.modrinth.com/data/lRwTUnD7/images/4a9a661d330053281fb6dd846df75b2c20e61b07.png)
+![trainer_card_list](https://cdn.modrinth.com/data/lRwTUnD7/images/d6d171eb684e2bc68c7a0bb7f56f1fdef81b09d3.png)
 
-> **The item itself does not store any information, hence any player will see their own stats with any trainer card.** This *might* be something to be added in future versions.
+---
 
-## Commands
+**Endgame**: There are many challenging trainers for you to encounter, even after the champion. Seek out stronger trainers for better loot!
 
-Following commands are available:
+![trainer_silhouettes](https://cdn.modrinth.com/data/lRwTUnD7/images/5be19545bb03bb820902c8de4ea1cf3f310c6529.png)
 
-- `rctmod`
-  - `player`
-    - `get` (Op Level: 1)
-      - `level_cap [<player>]`
-        - Retrieves the current level cap of the given player.
-      - `defeats <trainerId> [<player>]`
-        - Retrieves the current number of defeats the given player has against the specified trainer.
-      - `type_defeats <trainerType> [<player>]`
-        - Retrieves the current number of defeats the given player has against the specified trainer type.
-    - `set` (Op Level: 2)
-      - `level_cap [<players>] <value>`
-        - Sets the current level cap of the given players to the specified value.
-      - `defeats <trainerId> [<players>] <value>`
-        - Sets the current number of defeats the given players have against the specified trainer to the given value.
-  - `trainer`
-    - `get` (Op Level: 1)
-      - `type <trainerId>`
-        - Retrieves the type of the trainer with the given trainer id.
-      - `reward_level_cap <trainerId>`
-        - Retrieves the reward level cap trainer mobs with the given trainer id will grant to players if beaten.
-      - `required_level_cap <trainerId>`
-        - Retrieves the required level cap to fight trainer mobs with the given trainer id.
-      - `required_defeats <trainerType> <trainerId>`
-        - Retrieves the amount of required defeats against trainers from the specified type to fight trainer mobs with the given trainer id.
-      - `max_trainer_wins <trainerId>`
-        - Retrieves the max amount of wins trainer mobs with the given trainer id can have before they will not accept any more fights.
-      - `max_trainer_defeats <trainerId>`
-        - Retrieves the max amount of defeats trainer mobs with the given trainer id can have before they will not accept any more fights.
-    - `spawn_for [<player>]` (Op Level: 2)
-      - Attempts to spawn a trainer mob in the vicinity of the given player (using the custom natural spawning mechanics).
-    - `summon <trainerId> [<position>]` (Op Level: 2)
-      - Summons the specified trainer mob at the given postion.
-    - `unregister_persistent <entityId>`
-      - Utility command for server administrators to unregister persistent trainers manually.
+---
 
-## Configuration
+**Native support for other mods**:
 
-This mod provides many config options - "initial level cap" and "max over level cap" or "spawn interval" and "spawn cap" just to name a few. The [documentation](https://srcmc.gitlab.io/rct/docs/configuration/server_config/) contains a table of all available config options.
+- [PKGBadges/CobbleBadges](todo): Leaders will drop badges from this mod
+- [SimpleTMs](todo): Some trainers have a chance to drop a random TR (note: there is currently a *bug* where pokemon of any trainers also have a chance to drop TRs, you may disable the chance for this to happen in the SimpleTMs config)
 
-## Datapack support
+## Configuration/Documentation
 
-Almost all of the data is provided by an internal data pack. **Alot** can be configured by *overshadowing* certain files with an own custom data pack. Please refer to the [documentation](https://srcmc.gitlab.io/rct/docs/configuration/data_pack/fallback_data_system/) for more information.
+The mod contains many config options and has an extensive data pack support. Please refer to the [documentation](https://srcmc.gitlab.io/rct/docs) for more information, guides and the FAQ.
 
-## FAQ
+## Dependencies
 
-Unsure about how some of the mods mechanics work? Check out the [FAQ](https://srcmc.gitlab.io/rct/docs/faq/) in the documention, there is a good chance your questions have already been answered.
+- [Cobblemon](https://modrinth.com/mod/cobblemon)
+- [CobblemonTrainers](https://modrinth.com/mod/cobblemontrainers)
+- [Forge Config API Port](https://modrinth.com/mod/forge-config-api-port)
+
+## Known Issues
+
+- Trainers fail to spawn with 'Convenient Decors' installed
+- I've had reports that some `Persistent` trainers randomly stopped accepting battles after a while (I could not reproduce this on my side yet)
 
 ## Planned features
 
-- More/Better/Fixed assets (Teams, Textures, Mobs, Dialogs, Loot tables, ...)
+- ~~More/Better/Fixed assets (Teams, Textures, Mobs, Dialogs, Loot tables, ...)~~
+- Clear distinction between male and female trainers (textures)
+- Clear distinction between adult and child trainers (models)
 - More config and datapack options to allow trainers beeing used in advancement like scenarios:
   - ~~disable despawning~~
   - max trainer defeats/wins per player
@@ -161,13 +80,10 @@ Unsure about how some of the mods mechanics work? Check out the [FAQ](https://sr
 - ~~More commands~~
 - ~~Fabric~~
 
-## Dependencies
+## Discord
 
-- [Cobblemon](https://modrinth.com/mod/cobblemon)
-- [CobblemonTrainers](https://modrinth.com/mod/cobblemontrainers)
-- [Forge Config API Port](https://modrinth.com/mod/forge-config-api-port)
+You can find a [Discord Channel](https://discord.com/channels/934267676354834442/1234121411275133031) for this mod in the [Cobblemon Discord Server](https://discord.gg/cobblemon).
 
-## Known Issues
+## License
 
-- Trainers fail to spawn with 'Convenient Decors' installed
-- I've had reports that some `Persistent` trainers randomly stopped accepting battles after a while (I could not reproduce this on my side yet, if you have any more information feel free to reach out to me in the [Discord channel](https://discord.com/channels/934267676354834442/1234121411275133031) of this mod (in the [Cobblemon Discord Server](https://discord.gg/cobblemon))).
+The **source code** of this project is licensed under [GNU-LGPL](LICENSE.md).
