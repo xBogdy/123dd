@@ -160,7 +160,11 @@ public class TrainerInfoWidget extends TrainerDataWidget {
         var mc = Minecraft.getInstance();
         var reg = mc.level.registryAccess().registryOrThrow(Registries.BIOME);
         var config = RCTMod.get().getServerConfig();
-        var biomes = new PriorityQueue<ResourceLocation>();
+        var biomes = new PriorityQueue<ResourceLocation>((r1, r2) -> {
+            int i = r1.getNamespace().compareTo(r2.getNamespace());
+            return i == 0 ? r1.getPath().compareTo(r2.getPath()) : i;
+        });
+
         this.y = this.identity == null ? 0 : this.h;
 
         reg.holders().forEach(holder -> {
@@ -178,8 +182,8 @@ public class TrainerInfoWidget extends TrainerDataWidget {
             && (config.biomeTagWhitelist().isEmpty() || config.biomeTagWhitelist().stream().anyMatch(tags::contains))
             && (this.trainer.getBiomeTagWhitelist().isEmpty() || this.trainer.getBiomeTagWhitelist().stream().anyMatch(tags::contains))) {
                 // see DebugScreenOverlay#printBiome
-                biomes.add((ResourceLocation)holder.unwrap().map(
-                    r -> r.location(), b -> new ResourceLocation("", "[unregistered " + b + "]")));
+                biomes.offer((ResourceLocation)holder.unwrap().map(
+                    r -> r.location(), b -> new ResourceLocation("[unregistered]", b.toString())));
             }
         });
 
