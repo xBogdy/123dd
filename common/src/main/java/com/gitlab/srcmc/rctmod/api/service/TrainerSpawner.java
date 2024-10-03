@@ -198,8 +198,6 @@ public class TrainerSpawner {
         var spawns = mob.isPersistenceRequired() ? this.persistentSpawns : this.spawns;
 
         if(spawns.containsKey(mob.getStringUUID())) {
-            ModCommon.LOG.info(String.format("Changing origin player '%s' -> '%s' (%s)", mob.getOriginPlayer(), newOriginPlayer, mob.getStringUUID()));
-
             var originPlayer = mob.getOriginPlayer();
             var playerSpawns = mob.isPersistenceRequired() ? this.persistentPlayerSpawns : this.playerSpawns;
 
