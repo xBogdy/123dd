@@ -6,7 +6,7 @@ Over **700** unique and **challenging** trainers, from the Pokemon rom hack *Rad
 
 **Trainer spawning**: Encounter different trainers in different biomes.
 
-![trainer_group](https://cdn.modrinth.com/data/lRwTUnD7/images/cc2709f3cac51b946132260901051cfb79fb48f5.png)
+![trainer_group](https://cdn.modrinth.com/data/lRwTUnD7/images/90fde6cb08864dd235c49405e74adfb313aa8bb8.png)
 
 > Textures were procedurally generated in advance so trainer appearances do not resemble any specific figures.
 
@@ -14,33 +14,33 @@ Over **700** unique and **challenging** trainers, from the Pokemon rom hack *Rad
 
 **Story Mode**: Defeat leaders, bosses and many more to become the champion.
 
-![trainer_battle_start](https://cdn.modrinth.com/data/lRwTUnD7/images/91b10715bd330d8f6ea0da84b1a585cc861b1ba9.png)
+![trainer_battle_start](https://cdn.modrinth.com/data/lRwTUnD7/images/fc88a7cb14538738ca900eb965b74e40e7ecf42c.png)
 
 ---
 
-![trainer_card_arrow](https://cdn.modrinth.com/data/lRwTUnD7/images/fce1423ed0f357b5f0c0b7de70e2094647118065.png)
+![trainer_card_arrow](https://cdn.modrinth.com/data/lRwTUnD7/images/6fb1b46e6004992f928c19513e52e864bf945bd9.png)
 
 ---
 
 **Player Progression**: Limits how far players can progress by preventing pokemon in their party, below a certain level (*level cap*), to gain any exp until they have defeated the next key trainer (e. g. leader).
 
-![player_level_cap](https://cdn.modrinth.com/data/lRwTUnD7/images/5468daf76abb815076b36ad83382716149be8803.png)
+![player_level_cap](https://cdn.modrinth.com/data/lRwTUnD7/images/0fbd04c6fbf1a3a7624015390f78447af5ae286d.png)
 
 ---
 
 **Trainer Card**: The Trainer Card will help you to keep track of your progress, find information about trainers and to locate the next key trainer to increase your level cap, when they spawn nearby.
 
-![trainer_card_recipe](https://cdn.modrinth.com/data/lRwTUnD7/images/4a9a661d330053281fb6dd846df75b2c20e61b07.png)
+![trainer_card_recipe](https://cdn.modrinth.com/data/lRwTUnD7/images/29ec64c73cdea36e15885143c611d3f60d6e002a.png)
 
 ---
 
-![trainer_card_list](https://cdn.modrinth.com/data/lRwTUnD7/images/d6d171eb684e2bc68c7a0bb7f56f1fdef81b09d3.png)
+![trainer_card_list](https://cdn.modrinth.com/data/lRwTUnD7/images/7b8e14473b9b9258348299156bd5d3d8d421ad28.png)
 
 ---
 
 **Endgame**: There are many challenging trainers for you to encounter, even after the champion. Seek out stronger trainers for better loot!
 
-![trainer_silhouettes](https://cdn.modrinth.com/data/lRwTUnD7/images/5be19545bb03bb820902c8de4ea1cf3f310c6529.png)
+![trainer_silhouettes](https://cdn.modrinth.com/data/lRwTUnD7/images/87405f1ddcea4dd0db4c1a3a67603ec555cbff97.png)
 
 ---
 
