@@ -46,8 +46,8 @@ Over **700** unique and **challenging** trainers, from the Pokemon rom hack *Rad
 
 **Native support for other mods**:
 
-- [PKGBadges/CobbleBadges](todo): Leaders will drop badges from this mod
-- [SimpleTMs](todo): Some trainers have a chance to drop a random TR (note: there is currently a *bug* where pokemon of any trainers also have a chance to drop TRs, you may disable the chance for this to happen in the SimpleTMs config)
+- [PKGBadges/CobbleBadges](https://modrinth.com/mod/pkgbadges): Leaders will drop badges from this mod
+- [SimpleTMs](https://modrinth.com/mod/simpletms-tms-and-trs-for-cobblemon): Some trainers have a chance to drop a random TR (note: there is currently a *bug* where pokemon of any trainers also have a chance to drop TRs, you may disable the chance for this to happen in the SimpleTMs config)
 
 ## Configuration/Documentation
 
