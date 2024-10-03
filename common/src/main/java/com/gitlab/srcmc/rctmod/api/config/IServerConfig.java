@@ -125,10 +125,10 @@ public interface IServerConfig extends IForgeConfig {
     default int maxOverLevelCap() { return 0; }
 
     /**
-     * This is your one stop difficulty setting. The 'bonusLevelCap' is added to the
-     * 'initialLevelCap' aswell as any increased level cap rewarded by trainers (except
-     * of trainers that reward a level cap of 100). In short, a positive value will
-     * make this mod easier a negative value harder.
+     * The 'bonusLevelCap' is added to the 'initialLevelCap' as well as any increased
+     * level cap rewarded by trainers (except of trainers that reward a level cap of
+     * 100). In short, a positive value will make this mod easier a negative value
+     * harder.
      * 
      * On a side note, trainers will also take this value into account when determining
      * the required level cap to fight them. For example if we assume bonusLevelCap=-3:
