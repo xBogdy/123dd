@@ -20,7 +20,7 @@
       }
     },
     "result": {
-      "item": "rctmod:trainer_card",
+      "id": "rctmod:trainer_card",
       "count": 1
     }
   }
