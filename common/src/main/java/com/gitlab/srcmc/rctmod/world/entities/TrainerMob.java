@@ -18,6 +18,9 @@
 package com.gitlab.srcmc.rctmod.world.entities;
 
 import java.util.UUID;
+
+import com.gitlab.srcmc.rctapi.api.RCTApi;
+import com.gitlab.srcmc.rctapi.api.trainer.TrainerNPC;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.TrainerBattle;
@@ -32,10 +35,7 @@ import com.gitlab.srcmc.rctmod.world.entities.goals.PokemonBattleGoal;
 import com.gitlab.srcmc.rctmod.world.entities.goals.RandomStrollAwayGoal;
 import com.gitlab.srcmc.rctmod.world.entities.goals.RandomStrollThroughVillageGoal;
 
-import net.ctengine.api.trainer.TrainerNPC;
-import net.ctengine.api.util.Trainers;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -73,9 +73,7 @@ import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.npc.Npc;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.storage.loot.LootDataType;
 import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 
@@ -268,7 +266,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
     private void updateTrainerNPC(String trainerId) {
         try {
-            var trainer = Trainers.getById(trainerId, TrainerNPC.class);
+            var trainer = RCTApi.getInstance().getTrainerRegistry().getById(trainerId, TrainerNPC.class);
 
             if(trainer != null) {
                 trainer.setEntity(this);

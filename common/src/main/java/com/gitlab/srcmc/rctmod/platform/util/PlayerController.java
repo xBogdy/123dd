@@ -17,23 +17,18 @@
  */
 package com.gitlab.srcmc.rctmod.platform.util;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
-
+import java.util.List;
 import com.cobblemon.mod.common.Cobblemon;
+import com.gitlab.srcmc.rctapi.api.RCTApi;
+import com.gitlab.srcmc.rctapi.api.battle.BattleFormat;
+import com.gitlab.srcmc.rctapi.api.battle.BattleRules;
+import com.gitlab.srcmc.rctapi.api.trainer.TrainerNPC;
+import com.gitlab.srcmc.rctapi.api.trainer.TrainerPlayer;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.service.IPlayerController;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
-// import com.selfdot.cobblemontrainers.CobblemonTrainers;
-// import com.selfdot.cobblemontrainers.util.PokemonUtility;
 
-import net.ctengine.api.battle.BattleRules;
-import net.ctengine.api.trainer.TrainerNPC;
-import net.ctengine.api.trainer.TrainerPlayer;
-import net.ctengine.api.util.Battles;
-import net.ctengine.api.util.Trainers;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 
@@ -69,17 +64,18 @@ public class PlayerController implements IPlayerController {
 
     @Override
     public void startBattle(TrainerMob trainer, Player player) {
-        // ModCommon.LOG.info("PokemonUtility.startTrainerBattle((ServerPlayer)player, CobblemonTrainers.INSTANCE.getTrainerRegistry().getTrainer(trainer.getTrainerId()), trainer)");
+        var reg = RCTApi.getInstance().getTrainerRegistry();
+
         try {
-            var trPlayer = Trainers.getById(RCTMod.get().getTrainerManager().getTrainerId(player), TrainerPlayer.class);
-            var trNPC = Trainers.getById(trainer.getTrainerId(), TrainerNPC.class);
+            var trPlayer = reg.getById(RCTMod.get().getTrainerManager().getTrainerId(player), TrainerPlayer.class);
+            var trNPC = reg.getById(trainer.getTrainerId(), TrainerNPC.class);
 
             if(trPlayer == null) {
                 ModCommon.LOG.error("Failed to start battle: No trainer registered for player '" + player.getDisplayName().getString() + "'");
             } else if(trNPC == null) {
                 ModCommon.LOG.error("Failed to start battle: No trainer registered for mob '" + trainer.getDisplayName().getString() + "'");
             } else {
-                Battles.start(trPlayer, trNPC, new BattleRules());
+                RCTApi.getInstance().getBattleManager().start(List.of(trPlayer), List.of(trNPC), BattleFormat.GEN_9_SINGLES, new BattleRules());
             }
         } catch(IllegalArgumentException e) {
             ModCommon.LOG.error("Failed to start battle", e);

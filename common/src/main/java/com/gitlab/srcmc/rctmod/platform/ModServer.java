@@ -17,23 +17,21 @@
  */
 package com.gitlab.srcmc.rctmod.platform;
 
+import com.gitlab.srcmc.rctapi.api.RCTApi;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.platform.network.PlayerStatePayload;
-import com.gitlab.srcmc.rctmod.platform.util.PlayerController;
-
 import dev.architectury.event.events.common.LifecycleEvent;
 import dev.architectury.event.events.common.PlayerEvent;
 import dev.architectury.event.events.common.TickEvent.LevelTick;
 import dev.architectury.networking.NetworkManager;
 import dev.architectury.registry.ReloadListenerRegistry;
-import net.ctengine.api.util.Trainers;
+
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.packs.PackType;
-import net.minecraft.world.entity.player.Player;
 
 public class ModServer {
     public static void init() {
@@ -47,20 +45,20 @@ public class ModServer {
 
     static void onPlayerJoin(ServerPlayer player) {
         var trainerId = RCTMod.get().getTrainerManager().registerPlayer(player);
-        Trainers.registerPlayer(trainerId, player);
+        RCTApi.getInstance().getTrainerRegistry().registerPlayer(trainerId, player);
         ModCommon.LOG.info(String.format("Registered trainer player: %s", trainerId));
     }
 
     static void onPlayerQuit(ServerPlayer player) {
         var trainerId = RCTMod.get().getTrainerManager().unregisterPlayer(player);
 
-        if(Trainers.unregisterById(trainerId) != null) {
+        if(RCTApi.getInstance().getTrainerRegistry().unregisterById(trainerId) != null) {
             ModCommon.LOG.info(String.format("Unregistered trainer player: %s", trainerId));
         }
     }
 
     static void onServerStarting(MinecraftServer server) {
-        Trainers.init(server);
+        RCTApi.getInstance().getTrainerRegistry().init(server);
         RCTMod.get().getTrainerSpawner().init(server.overworld());
         RCTMod.get().getTrainerManager().forceReload(server.getResourceManager());
         ReloadListenerRegistry.register(PackType.SERVER_DATA, RCTMod.get().getTrainerManager());

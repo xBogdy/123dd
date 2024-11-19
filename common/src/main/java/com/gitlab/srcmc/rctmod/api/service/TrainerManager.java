@@ -17,7 +17,6 @@
  */
 package com.gitlab.srcmc.rctmod.api.service;
 
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -28,6 +27,9 @@ import java.util.UUID;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
+import com.gitlab.srcmc.rctapi.api.RCTApi;
+import com.gitlab.srcmc.rctapi.api.errors.RCTException;
+import com.gitlab.srcmc.rctapi.api.models.TrainerModel;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.TrainerBattle;
@@ -35,21 +37,12 @@ import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
 import com.gitlab.srcmc.rctmod.api.data.save.TrainerBattleMemory;
 import com.gitlab.srcmc.rctmod.api.data.save.TrainerPlayerData;
 import com.gitlab.srcmc.rctmod.api.utils.PathUtils;
-import com.gitlab.srcmc.rctmod.platform.ModServer;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 
-import net.ctengine.CTEngineMod;
-import net.ctengine.api.errors.CTException;
-import net.ctengine.api.models.TrainerModel;
-import net.ctengine.api.trainer.TrainerNPC;
-import net.ctengine.api.util.Trainers;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.packs.resources.IoSupplier;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
 import net.minecraft.util.datafix.DataFixTypes;
@@ -187,17 +180,19 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
 
     public void forceReload(ResourceManager resourceManager) {
         var dpm = RCTMod.get().getServerDataManager();
+        var reg = RCTApi.getInstance().getTrainerRegistry();
+
+        reg.clearNPCs();
         dpm.init(resourceManager);
         this.trainerMobs.clear();
-        Trainers.clearNPCs();
 
         dpm.listTrainerTeams((rl, io) -> {
             var trainerId = PathUtils.filename(rl.getPath());
             dpm.loadResource(trainerId, "mobs", tdm -> this.trainerMobs.put(trainerId, tdm), TrainerMobData.class);
 
             try {
-                Trainers.registerNPC(trainerId, GSON.fromJson(new InputStreamReader(io.get()), TrainerModel.class));
-            } catch(CTException errors) {
+                reg.registerNPC(trainerId, GSON.fromJson(new InputStreamReader(io.get()), TrainerModel.class));
+            } catch(RCTException errors) {
                 ModCommon.LOG.error("Model validation failure for '" + trainerId + "' in: " + rl.getPath());
                 errors.getErrors().forEach(error -> ModCommon.LOG.error(error.message));
             } catch(Exception e) {
@@ -205,7 +200,7 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
             }
         });
 
-        ModCommon.LOG.info(String.format("Registered %d trainers", Trainers.getIds().size()));
+        ModCommon.LOG.info(String.format("Registered %d trainers", reg.getIds().size()));
         dpm.close();
     }
 
