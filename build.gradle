@@ -20,7 +20,7 @@ subprojects {
 
     base {
         // Set up a suffixed format for the mod jar names, e.g. `example-fabric`.
-        archivesName = "$rootProject.archives_name-$project.name"
+        archivesName = "$rootProject.mod_id-$project.name"
     }
 
     repositories {
@@ -74,7 +74,7 @@ subprojects {
     processResources {
         from project(":common").sourceSets.main.resources
         
-        filesMatching(['**/*.mods.toml', 'pack.mcmeta', 'fabric.mod.json', 'mixins.*.json']) {
+        filesMatching(['**/*.mods.toml', 'pack.mcmeta', 'fabric.mod.json', '*.mixins.json']) {
             expand project.properties
         }
     }

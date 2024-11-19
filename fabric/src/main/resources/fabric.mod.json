@@ -12,19 +12,20 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "${group}.${mod_id}.fabric.FabricCommon"
+      "${maven_group}.${mod_id}.fabric.FabricCommon"
     ],
     "client": [
-      "${group}.${mod_id}.fabric.FabricClient"
+      "${maven_group}.${mod_id}.fabric.FabricClient"
     ]
   },
   "mixins": [
-    "mixins.${mod_id}.json"
+    "${mod_id}.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=${fabric_loader_version}",
     "fabric": "*",
     "minecraft": "${minecraft_version}",
+    "rctapi": ">=${rctapi_version}",
     "cobblemon": ">=${cobblemon_min_ver}",
     "forgeconfigapiport": ">=${fcap_min_ver}"
   }

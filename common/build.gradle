@@ -18,11 +18,11 @@ dependencies {
     modApi "com.cobblemon:mod:$rootProject.cobblemon_version"
 
     implementation "org.jetbrains.kotlin:kotlin-reflect:2.0.0"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_stdlib_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$rootProject.kotlin_stdlib_version"
 
     // modImplementation "fuzs.forgeconfigapiport:forgeconfigapiport-common:${fcap_version}"
-    compileOnly "fuzs.forgeconfigapiport:forgeconfigapiport-common-neoforgeapi:${fcap_version}"//source: https://github.com/Fuzss/forgeconfigapiport-fabric
+    compileOnly "fuzs.forgeconfigapiport:forgeconfigapiport-common-neoforgeapi:$rootProject.fcap_version"//source: https://github.com/Fuzss/forgeconfigapiport-fabric
 
-    // TODO: this is temporary until ctengine is available on (curse)maven
-    modImplementation files('../libs/ctengine-common-1.0.0.jar')
+    // TODO: this is temporary until rctapi is available on (curse)maven
+    modImplementation files("../libs/rctapi-common-${rctapi_version}.jar")
 }

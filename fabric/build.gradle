@@ -50,16 +50,8 @@ dependencies {
     // modRuntimeOnly "curse.maven:configured-457570:${configured_fabric_version}"
     // modRuntimeOnly "mezz.jei:jei-${jei_mc_version}-fabric:${jei_version}"
 
-    // TODO: this is temporary until ctengine is available on (curse)maven
-    modImplementation files('../libs/ctengine-fabric-1.0.0.jar')
-}
-
-processResources {
-    inputs.property 'version', project.version
-
-    filesMatching('fabric.mod.json') {
-        expand version: project.version
-    }
+    // TODO: this is temporary until rctapi is available on (curse)maven
+    modImplementation files("../libs/rctapi-fabric-${rctapi_version}.jar")
 }
 
 shadowJar {

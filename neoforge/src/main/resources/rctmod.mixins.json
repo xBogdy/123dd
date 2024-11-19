@@ -3,8 +3,8 @@
   "required": true,
   "minVersion": "0.8.3",
   "compatibilityLevel": "JAVA_17",
-  "package": "${group}.${mod_id}.forge.mixins",
-  "refmap": "mixins.${mod_id}.refmap.json",
+  "package": "${maven_group}.${mod_id}.forge.mixins",
+  "refmap": "${mod_id}.mixins.refmap.json",
   "mixins": [
     "client.ItemRendererMixin"
   ],
