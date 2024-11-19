@@ -1,0 +1,28 @@
+{
+  "parent": "cobblemon:root",
+  "display": {
+    "title": {
+      "text": "Radical Trainers"
+    },
+    "description": {
+      "text": "Defeat any Trainer"
+    },
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "announce_to_chat": false,
+    "show_toast": true,
+    "hidden": false,
+    "frame": "task"
+  },
+  "criteria": {
+    "first_defeat": {
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "requirements": [
+    [
+      "first_defeat"
+    ]
+  ]
+}

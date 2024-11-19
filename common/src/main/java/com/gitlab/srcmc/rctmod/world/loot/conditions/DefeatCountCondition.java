@@ -21,51 +21,61 @@ import java.util.function.BiFunction;
 import java.util.function.Supplier;
 
 import com.gitlab.srcmc.rctmod.api.RCTMod;
+import com.gitlab.srcmc.rctmod.platform.ModRegistries;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSerializationContext;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 import net.minecraft.util.GsonHelper;
+import net.minecraft.util.StringRepresentable;
+import net.minecraft.util.StringRepresentable.StringRepresentableCodec;
+import net.minecraft.world.level.storage.loot.IntRange;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 
-public class DefeatCountCondition implements LootItemCondition {
-    private static Supplier<LootItemConditionType> TYPE;
+public record DefeatCountCondition(Comparator comparator, int count) implements LootItemCondition {
+    private static Supplier<LootItemConditionType> TYPE = ModRegistries.LootItemConditions.DEFEAT_COUNT;
 
-    public static void init(Supplier<LootItemConditionType> type) {
-        TYPE = type;
-    }
+    public static final MapCodec<DefeatCountCondition> CODEC = RecordCodecBuilder.mapCodec(
+        instance -> instance.group(
+            Comparator.CODEC.optionalFieldOf("comparator", Comparator.EQUAL).forGetter(DefeatCountCondition::comparator),
+            Codec.INT.optionalFieldOf("count", 0).forGetter(DefeatCountCondition::count)
+        ).apply(instance, DefeatCountCondition::new)
+    );
 
-    public static class Serializer implements net.minecraft.world.level.storage.loot.Serializer<DefeatCountCondition> {
-        public Serializer() {
-        }
+    // public static class Serializer implements net.minecraft.world.level.storage.loot.Serializer<DefeatCountCondition> {
+    //     public Serializer() {
+    //     }
 
-        public void serialize(JsonObject jsonObject, DefeatCountCondition defeatCountCondition, JsonSerializationContext jsonSerializationContext) {
-            jsonObject.add("count", jsonSerializationContext.serialize(defeatCountCondition.count));
-            jsonObject.add("comparator", jsonSerializationContext.serialize(defeatCountCondition.comparator.name()));
-        }
+    //     public void serialize(JsonObject jsonObject, DefeatCountCondition defeatCountCondition, JsonSerializationContext jsonSerializationContext) {
+    //         jsonObject.add("count", jsonSerializationContext.serialize(defeatCountCondition.count));
+    //         jsonObject.add("comparator", jsonSerializationContext.serialize(defeatCountCondition.comparator.name()));
+    //     }
 
-        public DefeatCountCondition deserialize(JsonObject jsonObject, JsonDeserializationContext jsonDeserializationContext) {
-            var count = GsonHelper.getAsInt(jsonObject, "count");
-            var comparator = Comparator.valueOf(GsonHelper.getAsString(jsonObject, "comparator", "EQUAL"));
-            return new DefeatCountCondition(count, comparator);
-        }
-    }
+    //     public DefeatCountCondition deserialize(JsonObject jsonObject, JsonDeserializationContext jsonDeserializationContext) {
+    //         var count = GsonHelper.getAsInt(jsonObject, "count");
+    //         var comparator = Comparator.valueOf(GsonHelper.getAsString(jsonObject, "comparator", "EQUAL"));
+    //         return new DefeatCountCondition(count, comparator);
+    //     }
+    // }
 
-    final Comparator comparator;
-    final int count;
+    // final Comparator comparator;
+    // final int count;
 
-    DefeatCountCondition(int count) {
-        this(count, Comparator.EQUAL);
-    }
+    // DefeatCountCondition(int count) {
+    //     this(count, Comparator.EQUAL);
+    // }
 
-    DefeatCountCondition(int count, Comparator comparator) {
-        this.count = count;
-        this.comparator = comparator;
-    }
+    // DefeatCountCondition(int count, Comparator comparator) {
+    //     this.count = count;
+    //     this.comparator = comparator;
+    // }
 
     public LootItemConditionType getType() {
         return TYPE.get();
@@ -87,20 +97,27 @@ public class DefeatCountCondition implements LootItemCondition {
     //     };
     // }
 
-    public enum Comparator {
-        EQUAL((a, b) -> a.equals(b)),
-        SMALLER((a, b) -> a < b),
-        GREATER((a, b) -> a > b),
-        MODULO((a, b) -> a % b == 0);
+    public enum Comparator implements StringRepresentable {
+        EQUAL("equal", (a, b) -> a.equals(b)),
+        SMALLER("smaller", (a, b) -> a < b),
+        GREATER("greater", (a, b) -> a > b),
+        MODULO("modulo", (a, b) -> a % b == 0);
 
+        public static final Codec<Comparator> CODEC = StringRepresentable.fromEnum(Comparator::values);
         private BiFunction<Integer, Integer, Boolean> testFunc;
+        private String name;
 
-        Comparator(BiFunction<Integer, Integer, Boolean> testFunc) {
+        Comparator(String name, BiFunction<Integer, Integer, Boolean> testFunc) {
             this.testFunc = testFunc;
         }
 
         public boolean test(int a, int b) {
             return this.testFunc.apply(a, b);
+        }
+
+        @Override
+        public String getSerializedName() {
+            return this.name;
         }
     }
 }

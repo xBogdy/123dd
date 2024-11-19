@@ -98,7 +98,9 @@ public class DataPackManager extends SimpleJsonResourceReloadListener implements
                 dp.close();
             }
 
-            dl.defaultData.getValue().close();
+            if(dl.defaultData != null) {
+                dl.defaultData.getValue().close();
+            }
         }
 
         for(var dp : trainerTeams.values()) {
@@ -123,7 +125,7 @@ public class DataPackManager extends SimpleJsonResourceReloadListener implements
             return Optional.empty();
         }
 
-        var singlePath = new ResourceLocation(ModCommon.MOD_ID, context + "/" + PATH_SINGLE + "/" + trainerId + dl.fileSuffix);
+        var singlePath = ResourceLocation.fromNamespaceAndPath(ModCommon.MOD_ID, context + "/" + PATH_SINGLE + "/" + trainerId + dl.fileSuffix);
 
         if(dl.singleData.containsKey(singlePath)) {
             return Optional.of(singlePath);
@@ -143,7 +145,7 @@ public class DataPackManager extends SimpleJsonResourceReloadListener implements
     }
 
     public Optional<TrainerTeam> loadTrainerTeam(String trainerId) {
-        var teamResource = new ResourceLocation(ModCommon.MOD_ID, PATH_TRAINERS + "/" + trainerId + ".json");
+        var teamResource = ResourceLocation.fromNamespaceAndPath(ModCommon.MOD_ID, PATH_TRAINERS + "/" + trainerId + ".json");
         
         if(trainerTeams.containsKey(teamResource)) {
             return Optional.of(JsonUtils.loadFromOrThrow(trainerTeams.get(teamResource).getResource(this.packType, teamResource), TrainerTeam.class));
@@ -158,7 +160,7 @@ public class DataPackManager extends SimpleJsonResourceReloadListener implements
 
     public <T> void loadResource(String trainerId, String context, Consumer<T> consumer, TypeToken<T> type) {
         var dl = contextMap.get(context);
-        var singlePath = new ResourceLocation(ModCommon.MOD_ID, context + "/" + PATH_SINGLE + "/" + trainerId + dl.fileSuffix);
+        var singlePath = ResourceLocation.fromNamespaceAndPath(ModCommon.MOD_ID, context + "/" + PATH_SINGLE + "/" + trainerId + dl.fileSuffix);
         T obj;
 
         if(dl.singleData.containsKey(singlePath)) {
@@ -207,7 +209,7 @@ public class DataPackManager extends SimpleJsonResourceReloadListener implements
             dl.singleData.put(rl, dataPack);
         });
 
-        var defaultRl = new ResourceLocation(ModCommon.MOD_ID, context + "/" + PATH_DEFAULT + dl.fileSuffix);
+        var defaultRl = ResourceLocation.fromNamespaceAndPath(ModCommon.MOD_ID, context + "/" + PATH_DEFAULT + dl.fileSuffix);
         var defaultData = dataPack.getResource(dl.packType, defaultRl);
 
         if(defaultData != null) {

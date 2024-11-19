@@ -22,13 +22,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import com.gitlab.srcmc.rctmod.ModCommon;
+
+import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.saveddata.SavedData;
 
 public class SavedStringIntegerMap extends SavedData implements Map<String, Integer> {
     private Map<String, Integer> map = new HashMap<>();    
 
-    public static SavedStringIntegerMap of(CompoundTag tag) {
+    public static SavedStringIntegerMap of(CompoundTag tag, Provider provider) {
         var map = new SavedStringIntegerMap();
         tag.getAllKeys().forEach(key -> map.put(key, tag.getInt(key)));
         return map;
@@ -39,7 +41,7 @@ public class SavedStringIntegerMap extends SavedData implements Map<String, Inte
     }
 
     @Override
-    public CompoundTag save(CompoundTag tag) {
+    public CompoundTag save(CompoundTag tag, Provider provider) {
         for(var entry : this.map.entrySet()) {
             tag.putInt(entry.getKey(), entry.getValue());
         }

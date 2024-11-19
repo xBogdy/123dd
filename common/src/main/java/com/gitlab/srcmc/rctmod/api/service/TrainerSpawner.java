@@ -36,9 +36,11 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
+import net.minecraft.util.datafix.DataFixTypes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.level.saveddata.SavedData.Factory;
 
 public class TrainerSpawner {
     private static float KEY_TRAINER_SPAWN_WEIGHT_FACTOR = 120;
@@ -72,20 +74,17 @@ public class TrainerSpawner {
         this.identities.clear();
         this.playerSpawns.clear();
         this.mobs.clear();
-        
+
         this.persistentSpawns = level.getDataStorage().computeIfAbsent(
-            SavedStringIntegerMap::of,
-            SavedStringIntegerMap::new,
+            new Factory<>(SavedStringIntegerMap::new, SavedStringIntegerMap::of, DataFixTypes.LEVEL),
             SavedStringIntegerMap.filePath("spawn.uuids"));
 
         this.persistentNames = level.getDataStorage().computeIfAbsent(
-            SavedStringIntegerMap::of,
-            SavedStringIntegerMap::new,
+            new Factory<>(SavedStringIntegerMap::new, SavedStringIntegerMap::of, DataFixTypes.LEVEL),
             SavedStringIntegerMap.filePath("spawn.names"));
 
         this.persistentPlayerSpawns = level.getDataStorage().computeIfAbsent(
-            SavedStringIntegerMap::of,
-            SavedStringIntegerMap::new,
+            new Factory<>(SavedStringIntegerMap::new, SavedStringIntegerMap::of, DataFixTypes.LEVEL),
             SavedStringIntegerMap.filePath("spawn.counts"));
 
         if(RCTMod.get().getServerConfig().logSpawning()) {

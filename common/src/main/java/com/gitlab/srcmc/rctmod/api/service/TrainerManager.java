@@ -17,9 +17,13 @@
  */
 package com.gitlab.srcmc.rctmod.api.service;
 
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 import java.util.function.Function;
 import java.util.stream.Stream;
@@ -31,16 +35,27 @@ import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
 import com.gitlab.srcmc.rctmod.api.data.save.TrainerBattleMemory;
 import com.gitlab.srcmc.rctmod.api.data.save.TrainerPlayerData;
 import com.gitlab.srcmc.rctmod.api.utils.PathUtils;
+import com.gitlab.srcmc.rctmod.platform.ModServer;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 
+import net.ctengine.CTEngineMod;
+import net.ctengine.api.errors.CTException;
+import net.ctengine.api.models.TrainerModel;
+import net.ctengine.api.trainer.TrainerNPC;
+import net.ctengine.api.util.Trainers;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.packs.resources.IoSupplier;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
+import net.minecraft.util.datafix.DataFixTypes;
 import net.minecraft.util.profiling.ProfilerFiller;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.saveddata.SavedData.Factory;
 
 public class TrainerManager extends SimpleJsonResourceReloadListener {
     private final static Gson GSON = new Gson();
@@ -56,29 +71,69 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
     //     this.activePokemonSupplier = p -> 0;
     // }
 
+    private Map<UUID, String> uuidToTrainerId = new HashMap<>();
+    private Set<String> playerTrainerIds = new HashSet<>();
+
     public TrainerManager(Function<Player, Integer> playerLevelSupplier, Function<Player, Integer> activePokemonSupplier) {
         super(GSON, ModCommon.MOD_ID);
         this.playerLevelSupplier = playerLevelSupplier;
         this.activePokemonSupplier = activePokemonSupplier;
     }
 
+    public String registerPlayer(Player player) {
+        var trainerId = this.uuidToTrainerId.get(player.getUUID());
+
+        if(trainerId == null) {
+            int attempt = 0;
+            var name = player.getName().getString().replace(' ', '_');
+            trainerId = name;
+
+            while(this.playerTrainerIds.contains(trainerId)) {
+                trainerId = String.format("%s_%d", name, ++attempt);
+            }
+
+            this.uuidToTrainerId.put(player.getUUID(), trainerId);
+            this.playerTrainerIds.add(trainerId);
+        }
+
+        return trainerId;
+    }
+
+    public String unregisterPlayer(Player player) {
+        var trainerId = this.uuidToTrainerId.remove(player.getUUID());
+
+        if(trainerId != null) {
+            this.playerTrainerIds.remove(trainerId);
+        }
+
+        return trainerId;
+    }
+
+    public String getTrainerId(Player player) {
+        if(!this.uuidToTrainerId.containsKey(player.getUUID())) {
+            this.registerPlayer(player);
+        }
+
+        return this.uuidToTrainerId.get(player.getUUID());
+    }
+
     public void addBattle(Player initiator, TrainerMob opponent) {
-        trainerBattles.put(initiator.getUUID(), new TrainerBattle(initiator, opponent));
+        this.trainerBattles.put(initiator.getUUID(), new TrainerBattle(initiator, opponent));
     }
 
     public void addBattle(Player[] initiatorSidePlayers, TrainerMob[] initiatorSideMobs, Player[] trainerSidePlayers, TrainerMob[] trainerSideMobs) {
         var battle = new TrainerBattle(initiatorSidePlayers, initiatorSideMobs, trainerSidePlayers, trainerSideMobs);
-        trainerBattles.put(battle.getInitiator().getUUID(), battle);
+        this.trainerBattles.put(battle.getInitiator().getUUID(), battle);
     }
 
     public Optional<TrainerBattle> getBattle(UUID initiatorId) {
-        return trainerBattles.containsKey(initiatorId)
-            ? Optional.of(trainerBattles.get(initiatorId))
+        return this.trainerBattles.containsKey(initiatorId)
+            ? Optional.of(this.trainerBattles.get(initiatorId))
             : Optional.empty();
     }
 
     public boolean removeBattle(UUID initiatorId) {
-        return trainerBattles.remove(initiatorId) != null;
+        return this.trainerBattles.remove(initiatorId) != null;
     }
 
     public TrainerMobData getData(TrainerMob mob) {
@@ -86,7 +141,7 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
     }
 
     public TrainerMobData getData(String trainerId) {
-        if(!trainerMobs.containsKey(trainerId)) {
+        if(!this.trainerMobs.containsKey(trainerId)) {
             // currently disabled -> spams log -> alternative in TrainerMob
             // if(!trainerId.isEmpty()) {
             //     ModCommon.LOG.error(String.format("Invalid trainer id '%s'", trainerId));
@@ -99,7 +154,7 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
     }
 
     public boolean isValidId(String trainerId) {
-        return trainerMobs.containsKey(trainerId);
+        return this.trainerMobs.containsKey(trainerId);
     }
 
     public int getPlayerLevel(Player player) {
@@ -112,13 +167,12 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
 
     public TrainerPlayerData getData(Player player) {
         return player.getServer().overworld().getDataStorage().computeIfAbsent(
-            TrainerPlayerData::of,
-            TrainerPlayerData::new,
+            new Factory<>(TrainerPlayerData::new, TrainerPlayerData::of, DataFixTypes.LEVEL),
             TrainerPlayerData.filePath(player));
     }
 
     public Stream<Map.Entry<String, TrainerMobData>> getAllData() {
-        return trainerMobs.entrySet().stream();
+        return this.trainerMobs.entrySet().stream();
     }
 
     public TrainerBattleMemory getBattleMemory(TrainerMob mob) {
@@ -126,25 +180,37 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
     }
 
     public TrainerBattleMemory getBattleMemory(ServerLevel level, String trainerId) {
-        var ds = level.getDataStorage();
-
-        return ds.computeIfAbsent(
-            TrainerBattleMemory::of,
-            TrainerBattleMemoryLegacy.builder(trainerId, ds)::build,
+        return level.getServer().overworld().getDataStorage().computeIfAbsent(
+            new Factory<>(TrainerBattleMemory::new, TrainerBattleMemory::of, DataFixTypes.LEVEL),
             TrainerBattleMemory.filePath(trainerId));
     }
 
-    @Override
-    protected void apply(Map<ResourceLocation, JsonElement> object, ResourceManager resourceManager, ProfilerFiller profilerFiller) {
+    public void forceReload(ResourceManager resourceManager) {
         var dpm = RCTMod.get().getServerDataManager();
         dpm.init(resourceManager);
         this.trainerMobs.clear();
+        Trainers.clearNPCs();
 
         dpm.listTrainerTeams((rl, io) -> {
             var trainerId = PathUtils.filename(rl.getPath());
             dpm.loadResource(trainerId, "mobs", tdm -> this.trainerMobs.put(trainerId, tdm), TrainerMobData.class);
+
+            try {
+                Trainers.registerNPC(trainerId, GSON.fromJson(new InputStreamReader(io.get()), TrainerModel.class));
+            } catch(CTException errors) {
+                ModCommon.LOG.error("Model validation failure for '" + trainerId + "' in: " + rl.getPath());
+                errors.getErrors().forEach(error -> ModCommon.LOG.error(error.message));
+            } catch(Exception e) {
+                ModCommon.LOG.error("Failed to register trainer '" + trainerId + "': " + rl.getPath(), e);
+            }
         });
 
+        ModCommon.LOG.info(String.format("Registered %d trainers", Trainers.getIds().size()));
         dpm.close();
+    }
+
+    @Override
+    protected void apply(Map<ResourceLocation, JsonElement> object, ResourceManager resourceManager, ProfilerFiller profilerFiller) {
+        this.forceReload(resourceManager);
     }
 }

@@ -17,21 +17,21 @@
  */
 package com.gitlab.srcmc.rctmod.config;
 
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.fml.config.ModConfig;
+// import net.minecraftforge.common.ForgeConfigSpec;
+// import net.minecraftforge.fml.config.ModConfig;
 
 public abstract class ForgeConfig {
-    private ModConfig.Type type;
+    // private ModConfig.Type type;
 
-    public ForgeConfig(ModConfig.Type type) {
-        this.type = type;
-    }
+    // public ForgeConfig(ModConfig.Type type) {
+    //     this.type = type;
+    // }
 
-    public ModConfig.Type getType() {
-        return this.type;
-    }
+    // public ModConfig.Type getType() {
+    //     return this.type;
+    // }
 
-    protected static ForgeConfigSpec.Builder createBuilder() {
-        return new ForgeConfigSpec.Builder();
-    }
+    // protected static ForgeConfigSpec.Builder createBuilder() {
+    //     return new ForgeConfigSpec.Builder();
+    // }
 }

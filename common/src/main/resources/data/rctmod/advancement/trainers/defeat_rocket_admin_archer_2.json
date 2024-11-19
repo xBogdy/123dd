@@ -1,0 +1,31 @@
+{
+  "parent": "rctmod:trainers/defeat_leader_blaine",
+  "display": {
+    "title": {
+      "text": "Beta"
+    },
+    "description": {
+      "text": "Defeat Rocket Admin Archer in the final encounter"
+    },
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "announce_to_chat": true,
+    "show_toast": true,
+    "hidden": false,
+    "frame": "goal"
+  },
+  "criteria": {
+    "first_defeat": {
+      "conditions": {
+        "trainer_id": "rocket_admin_archer_0043"
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "requirements": [
+    [
+      "first_defeat"
+    ]
+  ]
+}

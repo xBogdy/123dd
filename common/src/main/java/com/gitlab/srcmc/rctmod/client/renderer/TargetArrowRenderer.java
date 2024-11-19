@@ -24,6 +24,7 @@ import org.joml.Vector3f;
 
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.BufferUploader;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.Tesselator;
@@ -119,23 +120,21 @@ public class TargetArrowRenderer {
                 poseStack.mulPose(new Quaternionf().rotateY((float)Math.PI*(this.sourceTicks + partialTick)/TICKS_TO_ACTIVATE));
                 poseStack.scale(SX * t, (float)(SY + Math.sin((this.sourceTicks + partialTick)/10)*0.01) * t, SZ * t);
 
-                var m = poseStack.last().pose();
-                var tess = Tesselator.getInstance();
-                var buffer = tess.getBuilder();
-
                 RenderSystem.disableCull();
                 RenderSystem.enableBlend();
                 RenderSystem.setShader(GameRenderer::getPositionColorShader);
-                buffer.begin(VertexFormat.Mode.TRIANGLE_STRIP, DefaultVertexFormat.POSITION_COLOR);
+                
+                var buffer = Tesselator.getInstance().begin(VertexFormat.Mode.TRIANGLE_STRIP, DefaultVertexFormat.POSITION_COLOR);
+                var m = poseStack.last().pose();
+                // buffer.begin(VertexFormat.Mode.TRIANGLE_STRIP, DefaultVertexFormat.POSITION_COLOR);
 
                 for(int i = 0; i < PYRAMID_STRIP.length; i += 3) {
-                    buffer.vertex(m, PYRAMID_STRIP[i], PYRAMID_STRIP[i + 1], PYRAMID_STRIP[i + 2])
-                        .color(PYRAMID_COLORS[i], PYRAMID_COLORS[i + 1], PYRAMID_COLORS[i + 2], PYRAMID_ALPHA * t)
-                        .endVertex();
+                    buffer.addVertex(m, PYRAMID_STRIP[i], PYRAMID_STRIP[i + 1], PYRAMID_STRIP[i + 2])
+                        .setColor(PYRAMID_COLORS[i], PYRAMID_COLORS[i + 1], PYRAMID_COLORS[i + 2], PYRAMID_ALPHA * t);
                 }
 
                 poseStack.popPose();
-                tess.end();
+                BufferUploader.draw(buffer.build());
             }
         }
     }
@@ -145,7 +144,7 @@ public class TargetArrowRenderer {
         var player = mc.player;
 
         if(player != null)  {
-            if(player.getMainHandItem().is(itemSupplier.get())) {
+            if(player.getMainHandItem().is(this.itemSupplier.get())) {
                 this.setTarget(player, PlayerState.get(player).getTarget());
             } else {
                 this.setTarget(player, null);
@@ -154,11 +153,11 @@ public class TargetArrowRenderer {
     }
 
     private void setTarget(Entity source, Entity target) {
-        sourceTicks = source.tickCount;
-        active = target != null;
+        this.sourceTicks = source.tickCount;
+        this.active = target != null;
 
-        if(active) {
-            direction = target.position().subtract(source.position()).toVector3f();
+        if(this.active) {
+            this.direction = target.position().subtract(source.position()).toVector3f();
         }
     }
 }

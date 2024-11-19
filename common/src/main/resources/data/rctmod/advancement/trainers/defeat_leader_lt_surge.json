@@ -1,0 +1,31 @@
+{
+  "parent": "rctmod:trainers/defeat_leader_misty",
+  "display": {
+    "title": {
+      "text": "Thunder Badge"
+    },
+    "description": {
+      "text": "Defeat Leader Lt. Surge"
+    },
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "announce_to_chat": true,
+    "show_toast": true,
+    "hidden": false,
+    "frame": "goal"
+  },
+  "criteria": {
+    "first_defeat": {
+      "conditions": {
+        "trainer_id": "leader_lt_surge_01a0"
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "requirements": [
+    [
+      "first_defeat"
+    ]
+  ]
+}

@@ -29,6 +29,7 @@ import com.gitlab.srcmc.rctmod.api.service.ILootConditions;
 import com.gitlab.srcmc.rctmod.api.service.IPlayerController;
 import com.gitlab.srcmc.rctmod.api.service.TrainerManager;
 import com.gitlab.srcmc.rctmod.api.service.TrainerSpawner;
+import com.gitlab.srcmc.rctmod.platform.ModRegistries;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import com.gitlab.srcmc.rctmod.world.loot.conditions.DefeatCountCondition;
 import com.gitlab.srcmc.rctmod.world.loot.conditions.LevelRangeCondition;
@@ -52,9 +53,13 @@ public final class RCTMod {
         return instance.get();
     }
 
-    public static void init(IPlayerController playerController, ILootConditions lootConditions, IConfigs configs) {
-        LevelRangeCondition.init(lootConditions::levelRangeConditon);
-        DefeatCountCondition.init(lootConditions::defeatCountConditon);
+    // public static void init(IPlayerController playerController, ILootConditions lootConditions, IConfigs configs) {
+    //     LevelRangeCondition.init(lootConditions::levelRangeConditon);
+    //     DefeatCountCondition.init(lootConditions::defeatCountConditon);
+    //     var local = new RCTMod(playerController, configs);
+    //     instance = () -> local;
+    // }
+    public static void init(IPlayerController playerController, IConfigs configs) {
         var local = new RCTMod(playerController, configs);
         instance = () -> local;
     }

@@ -19,34 +19,29 @@ package com.gitlab.srcmc.rctmod.world.items;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.Level;
 
 public class TrainerCard extends Item {
     public TrainerCard() {
-        super(new Properties().stacksTo(1));
+        super(new Properties().stacksTo(1).component(DataComponents.CUSTOM_DATA, CustomData.of(new CompoundTag())));
     }
 
     public void setFoil(ItemStack stack, boolean foil) {
-        if(foil) {
-            var tag = stack.getOrCreateTag();
-            tag.putBoolean("foil", true);
-            stack.setTag(tag);
-        } else if(stack.hasTag()) {
-            var tag = stack.getTag();
-            tag.remove("foil");
-            stack.setTag(tag);
-        }
+        stack.get(DataComponents.CUSTOM_DATA).update(tag -> tag.putBoolean("foil", foil));
     }
 
     @Override
     public boolean isFoil(ItemStack stack) {
-        return super.isFoil(stack) || (stack.hasTag() && stack.getTag().getBoolean("foil"));
+        return super.isFoil(stack) || stack.get(DataComponents.CUSTOM_DATA).copyTag().getBoolean("foil");
     }
 
     @Override

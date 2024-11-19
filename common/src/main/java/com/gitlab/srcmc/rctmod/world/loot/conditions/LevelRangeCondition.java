@@ -23,45 +23,52 @@ import java.util.Set;
 import java.util.function.Supplier;
 
 import com.gitlab.srcmc.rctmod.api.RCTMod;
+import com.gitlab.srcmc.rctmod.platform.ModRegistries;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSerializationContext;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
+import net.minecraft.advancements.critereon.DamageSourcePredicate;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.level.storage.loot.IntRange;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParam;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import net.minecraft.world.level.storage.loot.predicates.DamageSourceCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 
-public class LevelRangeCondition implements LootItemCondition {
-    private static Supplier<LootItemConditionType> TYPE;
+public record LevelRangeCondition(IntRange range) implements LootItemCondition {
+    private static Supplier<LootItemConditionType> TYPE = ModRegistries.LootItemConditions.LEVEL_RANGE;
 
-    public static void init(Supplier<LootItemConditionType> type) {
-        TYPE = type;
-    }
+    public static final MapCodec<LevelRangeCondition> CODEC = RecordCodecBuilder.mapCodec(
+        instance -> instance.group(
+            IntRange.CODEC.fieldOf("range").forGetter(LevelRangeCondition::range)
+        ).apply(instance, LevelRangeCondition::new)
+    );
 
-    public static class Serializer implements net.minecraft.world.level.storage.loot.Serializer<LevelRangeCondition> {
-        public Serializer() {
-        }
+    // public static class Serializer implements net.minecraft.world.level.storage.loot.Serializer<LevelRangeCondition> {
+    //     public Serializer() {
+    //     }
 
-        public void serialize(JsonObject jsonObject, LevelRangeCondition levelRangeCondition, JsonSerializationContext jsonSerializationContext) {
-            jsonObject.add("range", jsonSerializationContext.serialize(levelRangeCondition.range));
-        }
+    //     public void serialize(JsonObject jsonObject, LevelRangeCondition levelRangeCondition, JsonSerializationContext jsonSerializationContext) {
+    //         jsonObject.add("range", jsonSerializationContext.serialize(levelRangeCondition.range));
+    //     }
 
-        public LevelRangeCondition deserialize(JsonObject jsonObject, JsonDeserializationContext jsonDeserializationContext) {
-            var intRange = (IntRange) GsonHelper.getAsObject(jsonObject, "range", jsonDeserializationContext, IntRange.class);
-            return new LevelRangeCondition(intRange);
-        }
-    }
+    //     public LevelRangeCondition deserialize(JsonObject jsonObject, JsonDeserializationContext jsonDeserializationContext) {
+    //         var intRange = (IntRange) GsonHelper.getAsObject(jsonObject, "range", jsonDeserializationContext, IntRange.class);
+    //         return new LevelRangeCondition(intRange);
+    //     }
+    // }
 
-    final IntRange range;
+    // final IntRange range;
 
-    LevelRangeCondition(IntRange intRange) {
-        this.range = intRange;
-    }
+    // LevelRangeCondition(IntRange intRange) {
+    //     this.range = intRange;
+    // }
 
     public LootItemConditionType getType() {
         return TYPE.get();

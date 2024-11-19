@@ -145,5 +145,5 @@ public interface IServerConfig extends IForgeConfig {
      * 
      * default false
      */
-    default boolean logSpawning() { return false; }
+    default boolean logSpawning() { return true; } // TODO: default false
 }

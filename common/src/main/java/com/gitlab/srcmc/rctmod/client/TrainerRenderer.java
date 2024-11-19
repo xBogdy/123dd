@@ -29,7 +29,7 @@ import net.minecraft.client.renderer.entity.HumanoidMobRenderer;
 import net.minecraft.resources.ResourceLocation;
 
 public class TrainerRenderer extends HumanoidMobRenderer<TrainerMob, PlayerModel<TrainerMob>> {
-    private final ResourceLocation FALLBACK_TEXTURE = new ResourceLocation("textures/entity/player/wide/steve.png");
+    private final ResourceLocation FALLBACK_TEXTURE = ResourceLocation.withDefaultNamespace("textures/entity/player/wide/steve.png");
 
     public TrainerRenderer(EntityRendererProvider.Context pContext) {
         super(pContext, new PlayerModel<>(pContext.bakeLayer(ModelLayers.PLAYER), false), 1f);

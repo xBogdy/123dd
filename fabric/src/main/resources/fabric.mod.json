@@ -12,10 +12,10 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "${group}.${mod_id}.fabric.ModFabric"
+      "${group}.${mod_id}.fabric.FabricCommon"
     ],
     "client": [
-      "${group}.${mod_id}.fabric.client.ModClient"
+      "${group}.${mod_id}.fabric.FabricClient"
     ]
   },
   "mixins": [
@@ -26,7 +26,6 @@
     "fabric": "*",
     "minecraft": "${minecraft_version}",
     "cobblemon": ">=${cobblemon_min_ver}",
-    "cobblemontrainers": ">=${cobblemontrainers_min_ver}",
     "forgeconfigapiport": ">=${fcap_min_ver}"
   }
 }

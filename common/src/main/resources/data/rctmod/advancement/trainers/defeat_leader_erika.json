@@ -1,0 +1,31 @@
+{
+  "parent": "rctmod:trainers/defeat_leader_lt_surge",
+  "display": {
+    "title": {
+      "text": "Rainbow Badge"
+    },
+    "description": {
+      "text": "Defeat Leader Erika"
+    },
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "announce_to_chat": true,
+    "show_toast": true,
+    "hidden": false,
+    "frame": "goal"
+  },
+  "criteria": {
+    "first_defeat": {
+      "conditions": {
+        "trainer_id": "leader_erika_01a1"
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "requirements": [
+    [
+      "first_defeat"
+    ]
+  ]
+}

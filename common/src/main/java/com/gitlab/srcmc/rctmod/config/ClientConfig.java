@@ -18,11 +18,11 @@
 package com.gitlab.srcmc.rctmod.config;
 
 import com.gitlab.srcmc.rctmod.api.config.IClientConfig;
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.common.ForgeConfigSpec.ConfigValue;
-import net.minecraftforge.fml.config.ModConfig;
 
-public class ClientConfig extends ForgeConfig implements IClientConfig {
+import net.neoforged.neoforge.common.ModConfigSpec;
+import net.neoforged.neoforge.common.ModConfigSpec.ConfigValue;
+
+public class ClientConfig implements IClientConfig {
     // trainers
     private ConfigValue<Boolean> showTrainerTypeSymbolsValue;
     private ConfigValue<Boolean> showTrainerTypeColorsValue;
@@ -32,12 +32,10 @@ public class ClientConfig extends ForgeConfig implements IClientConfig {
     private ConfigValue<Double> trainerCardAlignmentXValue;
     private ConfigValue<Double> trainerCardAlignmentYValue;
 
-    private ForgeConfigSpec spec;
+    private ModConfigSpec spec;
 
     public ClientConfig() {
-        super(ModConfig.Type.CLIENT);
-
-        var builder = createBuilder();
+        var builder = new ModConfigSpec.Builder();
         builder.push("Trainers");
 
         this.showTrainerTypeSymbolsValue = builder
@@ -67,7 +65,7 @@ public class ClientConfig extends ForgeConfig implements IClientConfig {
     }
 
     @Override
-    public ForgeConfigSpec getSpec() {
+    public ModConfigSpec getSpec() {
         return this.spec;
     }
 

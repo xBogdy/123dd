@@ -17,8 +17,8 @@
  */
 package com.gitlab.srcmc.rctmod.api.config;
 
-import net.minecraftforge.common.ForgeConfigSpec;
+import net.neoforged.neoforge.common.ModConfigSpec;
 
 public interface IForgeConfig {
-    ForgeConfigSpec getSpec();
+    ModConfigSpec getSpec();
 }

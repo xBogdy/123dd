@@ -183,7 +183,7 @@ public class TrainerInfoWidget extends TrainerDataWidget {
             && (this.trainer.getBiomeTagWhitelist().isEmpty() || this.trainer.getBiomeTagWhitelist().stream().anyMatch(tags::contains))) {
                 // see DebugScreenOverlay#printBiome
                 biomes.offer((ResourceLocation)holder.unwrap().map(
-                    r -> r.location(), b -> new ResourceLocation("[unregistered]", b.toString())));
+                    r -> r.location(), b -> ResourceLocation.fromNamespaceAndPath("[unregistered]", b.toString())));
             }
         });
 

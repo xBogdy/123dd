@@ -1,43 +1,28 @@
 plugins {
-    id 'org.spongepowered.gradle.vanilla' version "${sponge_gradle_version}"
+    id "org.jetbrains.kotlin.jvm" version "2.0.0"
 }
 
-archivesBaseName = "${mod_id}-common-${minecraft_version}-${mod_version}"
-
-minecraft {
-    version(minecraft_version)
-    
-    runs {   
-        if (project.hasProperty('common_runs_enabled') ? project.findProperty('common_runs_enabled').toBoolean() : true) {
-            server(project.hasProperty('common_server_run_name') ? project.findProperty('common_server_run_name') : 'vanilla_server') {
-                workingDirectory(this.file("run"))
-            }
-
-            client(project.hasProperty('common_client_run_name') ? project.findProperty('common_client_run_name') : 'vanilla_client') {
-                workingDirectory(this.file("run"))
-            }
-        }
-    }
+architectury {
+    common rootProject.enabled_platforms.split(',')
 }
 
 dependencies {
-    implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
-    implementation "fuzs.forgeconfigapiport:forgeconfigapiport-common:${fcap_version}"
-}
+    // We depend on Fabric Loader here to use the Fabric @Environment annotations,
+    // which get remapped to the correct annotations on each platform.
+    // Do NOT use other classes from Fabric Loader.
+    modImplementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
 
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            groupId project.group
-            artifactId project.archivesBaseName
-            version project.version
-            from components.java
-        }
-    }
+    // Architectury API. This is optional, and you can comment it out if you don't need it.
+    modImplementation "dev.architectury:architectury:$rootProject.architectury_api_version"
 
-    repositories {
-        maven {
-            url "file://" + System.getenv("local_maven")
-        }
-    }
+    modApi "com.cobblemon:mod:$rootProject.cobblemon_version"
+
+    implementation "org.jetbrains.kotlin:kotlin-reflect:2.0.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_stdlib_version"
+
+    // modImplementation "fuzs.forgeconfigapiport:forgeconfigapiport-common:${fcap_version}"
+    compileOnly "fuzs.forgeconfigapiport:forgeconfigapiport-common-neoforgeapi:${fcap_version}"//source: https://github.com/Fuzss/forgeconfigapiport-fabric
+
+    // TODO: this is temporary until ctengine is available on (curse)maven
+    modImplementation files('../libs/ctengine-common-1.0.0.jar')
 }

@@ -1,0 +1,31 @@
+{
+  "parent": "rctmod:trainers/defeat_leader_koga",
+  "display": {
+    "title": {
+      "text": "A different path"
+    },
+    "description": {
+      "text": "Defeat Trainer May"
+    },
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "announce_to_chat": true,
+    "show_toast": true,
+    "hidden": false,
+    "frame": "challenge"
+  },
+  "criteria": {
+    "first_defeat": {
+      "conditions": {
+        "trainer_id": "trainer_may_003d"
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "requirements": [
+    [
+      "first_defeat"
+    ]
+  ]
+}

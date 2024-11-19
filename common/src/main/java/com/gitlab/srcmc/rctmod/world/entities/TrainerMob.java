@@ -32,11 +32,16 @@ import com.gitlab.srcmc.rctmod.world.entities.goals.PokemonBattleGoal;
 import com.gitlab.srcmc.rctmod.world.entities.goals.RandomStrollAwayGoal;
 import com.gitlab.srcmc.rctmod.world.entities.goals.RandomStrollThroughVillageGoal;
 
+import net.ctengine.api.trainer.TrainerNPC;
+import net.ctengine.api.util.Trainers;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
@@ -68,7 +73,9 @@ import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.npc.Npc;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.loot.LootDataType;
 import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 
@@ -92,7 +99,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
     protected TrainerMob(EntityType<? extends PathfinderMob> entityType, Level level) {
         super(entityType, level);
-        this.udpateCustomName();
+        // this.udpateCustomName();
     }
 
     public static EntityType<TrainerMob> getEntityType() {
@@ -253,12 +260,23 @@ public class TrainerMob extends PathfinderMob implements Npc {
             if((currentId == null && trainerId != null) || (currentId != null && !currentId.equals(trainerId))) {
                 RCTMod.get().getTrainerSpawner().notifyChangeTrainerId(this, trainerId);
                 this.entityData.set(DATA_TRAINER_ID, trainerId);
+                this.updateTrainerNPC(trainerId);
                 this.udpateCustomName();
-
-                if(!RCTMod.get().getTrainerManager().isValidId(trainerId)) {
-                    ModCommon.LOG.error(String.format("Invalid trainer id '%s' (%s)", trainerId, this.getStringUUID()));
-                }
             }
+        }
+    }
+
+    private void updateTrainerNPC(String trainerId) {
+        try {
+            var trainer = Trainers.getById(trainerId, TrainerNPC.class);
+
+            if(trainer != null) {
+                trainer.setEntity(this);
+            } else {
+                ModCommon.LOG.error(String.format("Invalid trainer id '%s' (%s): not found", trainerId, this.getStringUUID()));
+            }
+        } catch(IllegalArgumentException e) {
+            ModCommon.LOG.error(String.format("Invalid trainer id '%s' (%s)", trainerId, this.getStringUUID()), e);
         }
     }
 
@@ -326,7 +344,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
     protected void dropBattleLoot(ResourceLocation lootTableResource, Player player) {
         var level = this.level();
-        var lootTable = level.getServer().getLootData().getLootTable(lootTableResource);
+        var lootTable = level.getServer().reloadableRegistries().getLootTable(ResourceKey.create(Registries.LOOT_TABLE, lootTableResource));
         var builder = (new LootParams.Builder((ServerLevel)level))
             .withParameter(LootContextParams.THIS_ENTITY, this)
             .withParameter(LootContextParams.ORIGIN, this.position())
@@ -339,9 +357,9 @@ public class TrainerMob extends PathfinderMob implements Npc {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(DATA_TRAINER_ID, "invalid");
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(DATA_TRAINER_ID, "invalid");
     }
 
     @Override
@@ -462,7 +480,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
     }
 
     @Override
-    public boolean canChangeDimensions() {
+    public boolean canChangeDimensions(Level level1, Level level2) {
         return false;
     }
 

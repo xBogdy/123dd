@@ -22,6 +22,8 @@ import java.util.Map;
 import java.util.UUID;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
+
+import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.saveddata.SavedData;
@@ -31,7 +33,7 @@ public class TrainerBattleMemory extends SavedData {
     
     private Map<UUID, Integer> defeatedBy = new HashMap<>();
 
-    public static TrainerBattleMemory of(CompoundTag tag) {
+    public static TrainerBattleMemory of(CompoundTag tag, Provider provider) {
         var tbm = new TrainerBattleMemory();
         tag.getAllKeys().forEach(key -> tbm.defeatedBy.put(UUID.fromString(key), tag.getInt(key)));
         return tbm;
@@ -70,7 +72,7 @@ public class TrainerBattleMemory extends SavedData {
     }
 
     @Override
-    public CompoundTag save(CompoundTag compoundTag) {
+    public CompoundTag save(CompoundTag compoundTag, Provider provider) {
         this.defeatedBy.forEach((uuid, count) -> compoundTag.putInt(uuid.toString(), count));
         return compoundTag;
     }

@@ -1,0 +1,29 @@
+{
+  "pools": [
+    {
+      "rolls": {
+        "min": 1,
+        "max": 1
+      },
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:trainers/groups/boss_giovanni"
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "min": 1,
+        "max": 1
+      },
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/unique/pokeballs"
+        }
+      ]
+    }
+  ],
+  "random_sequence": "rctmod:trainers/single/boss_giovanni_0045"
+}

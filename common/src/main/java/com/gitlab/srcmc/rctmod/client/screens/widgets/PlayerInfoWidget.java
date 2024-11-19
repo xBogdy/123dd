@@ -45,7 +45,7 @@ import net.minecraft.resources.ResourceLocation;
 public class PlayerInfoWidget extends AbstractWidget {
     public enum Display { TRAINER_LIST, TRAINER_INFO }
 
-    private static final ResourceLocation TRAINER_CARD_IMAGE_LOCATION = new ResourceLocation(ModCommon.MOD_ID, "textures/gui/trainer_card.png");
+    private static final ResourceLocation TRAINER_CARD_IMAGE_LOCATION = ResourceLocation.fromNamespaceAndPath(ModCommon.MOD_ID, "textures/gui/trainer_card.png");
     private static final int TRAINER_CARD_IMAGE_X = 0;
     private static final int TRAINER_CARD_IMAGE_Y = 0;
     private static final int TRAINER_CARD_IMAGE_W = 224;
@@ -132,7 +132,7 @@ public class PlayerInfoWidget extends AbstractWidget {
         types.add(ALL_TRAINER_TYPES_STR);
         types.addAll(Stream.of(TrainerMobData.Type.values()).map(type -> type.name()).toList());
 
-        this.showUndefeated = new Checkbox(x + CHECKBOX_X, y + CHECKBOX_Y, CHECKBOX_W, CHECKBOX_H, Component.empty(), true);
+        this.showUndefeated = Checkbox.builder(Component.empty(), this.font).pos(x + CHECKBOX_X, y + CHECKBOX_Y).maxWidth(CHECKBOX_W).selected(true).build();
         this.trainerTypeButton = CycleButton.<String>builder(t -> Component.literal(t))
             .withValues(types).withInitialValue(ALL_TRAINER_TYPES_STR)
             .create(x + TYPE_BUTTON_X, y + TYPE_BUTTON_Y, TYPE_BUTTON_W, TYPE_BUTTON_H, Component.empty());
@@ -231,7 +231,7 @@ public class PlayerInfoWidget extends AbstractWidget {
         var playerState = PlayerState.get(localPlayer);
         var levelCap = playerState.getLevelCap();
 
-        this.skinLocation = localPlayer.getSkinTextureLocation();
+        this.skinLocation = localPlayer.getSkin().texture();
         this.displayName.setMessage(Component.literal(localPlayer.getDisplayName().getString()).withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.WHITE));
         this.levelCapValue.setMessage(levelCap <= 100
             ? Component.literal(String.valueOf(levelCap)).withStyle(ChatFormatting.WHITE)

@@ -22,6 +22,7 @@ import java.util.List;
 
 import com.gitlab.srcmc.rctmod.advancements.criteria.DefeatCountTrigger;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
+import com.gitlab.srcmc.rctmod.platform.ModRegistries;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 
 import net.minecraft.server.level.ServerPlayer;
@@ -84,7 +85,8 @@ public class TrainerBattle {
                 var battleMem = tm.getBattleMemory(mob);
                 playerTr.setLevelCap(player, Math.max(mobTr.getRewardLevelCap(), playerTr.getLevelCap()));
                 battleMem.addDefeatedBy(mob.getTrainerId(), player);
-                DefeatCountTrigger.get().trigger((ServerPlayer)player, mob);
+                // DefeatCountTrigger.INSTANCE.trigger((ServerPlayer)player, mob);
+                ModRegistries.CriteriaTriggers.DEFEAT_COUNT.get().trigger((ServerPlayer)player, mob);
             }
         }
 

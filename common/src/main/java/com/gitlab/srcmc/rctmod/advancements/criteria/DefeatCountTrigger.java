@@ -19,41 +19,56 @@ package com.gitlab.srcmc.rctmod.advancements.criteria;
 
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import com.google.gson.JsonObject;
+import com.mojang.serialization.Codec;
 
+import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.ContextAwarePredicate;
-import net.minecraft.advancements.critereon.DeserializationContext;
+// import net.minecraft.advancements.critereon.DeserializationContext;
 import net.minecraft.advancements.critereon.SimpleCriterionTrigger;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 
 public class DefeatCountTrigger extends SimpleCriterionTrigger<DefeatCountTriggerInstance> {
-    private static DefeatCountTrigger instance;
+    // public static final DefeatCountTrigger INSTANCE = CriteriaTriggers.register("defeat_count", new DefeatCountTrigger());
 
-    public static DefeatCountTrigger get() {
-        if(instance == null) {
-            instance = new DefeatCountTrigger();
-        }
+    // private static DefeatCountTrigger instance;
 
-        return instance;
-    }
+    // public static DefeatCountTrigger get() {
+    //     if(instance == null) {
+    //         instance = new DefeatCountTrigger();
+    //     }
 
-    @Override
-    public ResourceLocation getId() {
-        return DefeatCountTriggerInstance.ID;
-    }
+    //     return instance;
+    // }
 
-    @Override
-    protected DefeatCountTriggerInstance createInstance(JsonObject jsonObject, ContextAwarePredicate player, DeserializationContext deserializationContext) {
-        var jsonTrainerId = jsonObject.get("trainer_id");
-        var jsonTrainerType = jsonObject.get("trainer_type");
-        var jsonCount = jsonObject.get("count");
-        var trainerId = jsonTrainerId != null ? jsonTrainerId.getAsString() : null;
-        var trainerType = jsonTrainerType != null ? jsonTrainerType.getAsString() : null;
-        var count = jsonCount != null ? jsonCount.getAsInt() : 1;
-        return new DefeatCountTriggerInstance(player, trainerId, trainerType, count);
-    }
+    // @Override
+    // public ResourceLocation getId() {
+    //     return DefeatCountTriggerInstance.ID;
+    // }
+
+    // @Override
+    // protected DefeatCountTriggerInstance createInstance(JsonObject jsonObject, ContextAwarePredicate player, DeserializationContext deserializationContext) {
+    //     var jsonTrainerId = jsonObject.get("trainer_id");
+    //     var jsonTrainerType = jsonObject.get("trainer_type");
+    //     var jsonCount = jsonObject.get("count");
+    //     var trainerId = jsonTrainerId != null ? jsonTrainerId.getAsString() : null;
+    //     var trainerType = jsonTrainerType != null ? jsonTrainerType.getAsString() : null;
+    //     var count = jsonCount != null ? jsonCount.getAsInt() : 1;
+    //     return new DefeatCountTriggerInstance(player, trainerId, trainerType, count);
+    // }
 
     public void trigger(ServerPlayer player, TrainerMob mob) {
         this.trigger(player, triggerInstance -> triggerInstance.matches(player, mob));
+    }
+
+    // @Override
+    // public Criterion<DefeatCountTriggerInstance> createCriterion(DefeatCountTriggerInstance instance) {
+    //     return super.createCriterion(instance);
+    // }
+
+    @Override
+    public Codec<DefeatCountTriggerInstance> codec() {
+        return DefeatCountTriggerInstance.CODEC;
     }
 }

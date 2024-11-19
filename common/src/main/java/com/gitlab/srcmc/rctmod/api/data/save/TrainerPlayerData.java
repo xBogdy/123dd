@@ -21,6 +21,7 @@ import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 
+import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.saveddata.SavedData;
@@ -28,7 +29,7 @@ import net.minecraft.world.level.saveddata.SavedData;
 public class TrainerPlayerData extends SavedData {
     private int levelCap;
 
-    public static TrainerPlayerData of(CompoundTag tag) {
+    public static TrainerPlayerData of(CompoundTag tag, Provider provider) {
         var tpd = new TrainerPlayerData();
         tpd.levelCap = tag.getInt("levelCap");
         return tpd;
@@ -56,7 +57,7 @@ public class TrainerPlayerData extends SavedData {
     }
 
     @Override
-    public CompoundTag save(CompoundTag compoundTag) {
+    public CompoundTag save(CompoundTag compoundTag, Provider provider) {
         compoundTag.putInt("levelCap", this.levelCap);
         return compoundTag;
     }

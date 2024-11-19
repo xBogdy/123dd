@@ -21,9 +21,8 @@ import java.util.List;
 
 import com.gitlab.srcmc.rctmod.api.config.IServerConfig;
 
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.common.ForgeConfigSpec.ConfigValue;
-import net.minecraftforge.fml.config.ModConfig;
+import net.neoforged.neoforge.common.ModConfigSpec;
+import net.neoforged.neoforge.common.ModConfigSpec.ConfigValue;
 
 public class ServerConfig extends ForgeConfig implements IServerConfig {
     // spawning
@@ -46,12 +45,10 @@ public class ServerConfig extends ForgeConfig implements IServerConfig {
     // debug
     private ConfigValue<Boolean> logSpawningValue;
 
-    private ForgeConfigSpec spec;
+    private ModConfigSpec spec;
 
     public ServerConfig() {
-        super(ModConfig.Type.SERVER);
-
-        var builder = createBuilder();
+        var builder = new ModConfigSpec.Builder();
         builder.push("Spawning");
 
         this.globalSpawnChanceValue = builder
@@ -120,7 +117,7 @@ public class ServerConfig extends ForgeConfig implements IServerConfig {
     }
 
     @Override
-    public ForgeConfigSpec getSpec() {
+    public ModConfigSpec getSpec() {
         return this.spec;
     }
 

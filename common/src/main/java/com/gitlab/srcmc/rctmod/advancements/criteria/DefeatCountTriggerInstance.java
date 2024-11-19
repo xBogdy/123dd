@@ -17,69 +17,54 @@
  */
 package com.gitlab.srcmc.rctmod.advancements.criteria;
 
+import java.util.Optional;
+
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import com.google.gson.JsonObject;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-import net.minecraft.advancements.critereon.AbstractCriterionTriggerInstance;
+import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.advancements.CriterionTrigger;
+import net.minecraft.advancements.CriterionTriggerInstance;
+// import net.minecraft.advancements.critereon.AbstractCriterionTriggerInstance;
 import net.minecraft.advancements.critereon.ContextAwarePredicate;
-import net.minecraft.advancements.critereon.SerializationContext;
+import net.minecraft.advancements.critereon.SimpleCriterionTrigger.SimpleInstance;
+// import net.minecraft.advancements.critereon.SerializationContext;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 
-public class DefeatCountTriggerInstance extends AbstractCriterionTriggerInstance {
-    public static final ResourceLocation ID = new ResourceLocation(ModCommon.MOD_ID, "defeat_count");
-    private String trainerType;
-    private String trainerId;
-    private int count = 1;
-
-    public DefeatCountTriggerInstance(ContextAwarePredicate player, String trainerId, String trainerType, int count) {
-        super(ID, player);
-        this.trainerId = trainerId;
-        this.trainerType = trainerType;
-        this.count = count;
-    }
-
-    public static DefeatCountTriggerInstance instance(ContextAwarePredicate player, String trainerId, String trainerType, int count) {
-        return new DefeatCountTriggerInstance(player, trainerId, trainerType, count);
-    }
-
-    @Override
-    public JsonObject serializeToJson(SerializationContext context) {
-        var obj = super.serializeToJson(context);
-
-        if(this.trainerId != null) {
-            obj.addProperty("trainer_id", this.trainerId);
-        }
-
-        if(this.trainerType != null) {
-            obj.addProperty("trainer_type", this.trainerType.toString());
-        }
-
-        obj.addProperty("count", this.count);
-        return obj;
-    }
-
+public record DefeatCountTriggerInstance(String trainerId, String trainerType, int count) implements SimpleInstance {
     public boolean matches(ServerPlayer player, TrainerMob mob) {
+        ModCommon.LOG.info("MATCHING WITH: " + this.trainerId + ", " + this.trainerType + ", " + this.trainerId() + ", " + this.trainerType());
         var battleMem = RCTMod.get().getTrainerManager().getBattleMemory(mob);
         var mobTr = RCTMod.get().getTrainerManager().getData(mob);
         var playerState = PlayerState.get(player);
 
-        if(this.trainerId != null && this.trainerId.equals(mob.getTrainerId())) {
+        if(!this.trainerId.isEmpty() && this.trainerId.equals(mob.getTrainerId())) {
             return battleMem.getDefeatByCount(player) >= this.count;
         }
 
-        if(this.trainerType != null && this.trainerType.equals(mobTr.getType().name())) {
+        if(!this.trainerType.isEmpty() && this.trainerType.equals(mobTr.getType().name())) {
             return playerState.getTypeDefeatCount(mobTr.getType(), true) >= this.count;
         }
 
-        return this.trainerId == null && this.trainerType == null
+        return this.trainerId.isEmpty() && this.trainerType.isEmpty()
             && battleMem.getDefeatByCount(player) >= this.count;
     }
 
-    public void trigger(ServerPlayer player) {
-        this.trigger(player);
+    @Override
+    public Optional<ContextAwarePredicate> player() {
+        return Optional.empty();
     }
+
+    public static final Codec<DefeatCountTriggerInstance> CODEC = RecordCodecBuilder.create(instance ->
+        instance.group(
+            Codec.STRING.optionalFieldOf("trainer_id", "").forGetter(DefeatCountTriggerInstance::trainerId),
+            Codec.STRING.optionalFieldOf("trainer_type", "").forGetter(DefeatCountTriggerInstance::trainerType),
+            Codec.INT.optionalFieldOf("count", 1).forGetter(DefeatCountTriggerInstance::count)
+        ).apply(instance, DefeatCountTriggerInstance::new));
 }

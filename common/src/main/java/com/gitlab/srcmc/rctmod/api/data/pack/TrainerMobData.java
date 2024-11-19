@@ -78,8 +78,8 @@ public class TrainerMobData implements IDataPackObject {
     private transient TrainerTeam team;
 
     public TrainerMobData() {
-        this.textureResource = new ResourceLocation(ModCommon.MOD_ID, "textures/" + DataPackManager.PATH_DEFAULT + ".png");
-        this.lootTableResource = new ResourceLocation(ModCommon.MOD_ID, DataPackManager.PATH_DEFAULT);
+        this.textureResource = ResourceLocation.fromNamespaceAndPath(ModCommon.MOD_ID, "textures/" + DataPackManager.PATH_DEFAULT + ".png");
+        this.lootTableResource = ResourceLocation.fromNamespaceAndPath(ModCommon.MOD_ID, DataPackManager.PATH_DEFAULT);
         this.team = new TrainerTeam();
     }
 
@@ -167,7 +167,7 @@ public class TrainerMobData implements IDataPackObject {
         if(lootTableResource.isPresent()) {
             // the loot table is loaded by net.minecraft.world.level.storage.loot.LootDataManager
             // which resolves a 'shorthand' resource location automatically.
-            this.lootTableResource = new ResourceLocation(ModCommon.MOD_ID, lootTableResource.get().getPath()
+            this.lootTableResource = ResourceLocation.fromNamespaceAndPath(ModCommon.MOD_ID, lootTableResource.get().getPath()
                 .replace("loot_tables/", "")
                 .replace(".json", ""));
         }
