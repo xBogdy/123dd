@@ -15,7 +15,7 @@
       "${maven_group}.${mod_id}.fabric.FabricCommon"
     ],
     "client": [
-      "${maven_group}.${mod_id}.fabric.FabricClient"
+      "${maven_group}.${mod_id}.fabric.client.FabricClient"
     ]
   },
   "mixins": [

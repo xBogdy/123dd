@@ -128,7 +128,7 @@ public class PlayerState implements Serializable {
     }
 
     public void addDefeat(String trainerId) {
-        var tm = RCTMod.get().getTrainerManager();
+        var tm = RCTMod.getInstance().getTrainerManager();
         var tt = tm.getData(trainerId).getType();
 
         if(!this.trainerDefeatCounts.containsKey(trainerId)) {
@@ -147,7 +147,7 @@ public class PlayerState implements Serializable {
         var currentDefeats = this.trainerDefeatCounts.computeIfAbsent(trainerId, key -> 0);
 
         if(defeats != currentDefeats) {
-            var tm = RCTMod.get().getTrainerManager();
+            var tm = RCTMod.getInstance().getTrainerManager();
             var tt = tm.getData(trainerId).getType();
             var typeDefeats = this.typeDefeatCounts.computeIfAbsent(tt, key -> 0);
             var newTypeDefeats = typeDefeats + (defeats - currentDefeats);
@@ -243,7 +243,7 @@ public class PlayerState implements Serializable {
     }
 
     private void update(PlayerState updated) {
-        var tm = RCTMod.get().getTrainerManager();
+        var tm = RCTMod.getInstance().getTrainerManager();
 
         updated.trainerDefeatCounts.forEach((trainerId, count) -> {
             var tt = tm.getData(trainerId).getType();
@@ -278,7 +278,7 @@ public class PlayerState implements Serializable {
         var level = player.level();
 
         if(!level.isClientSide) {
-            var tm = RCTMod.get().getTrainerManager();
+            var tm = RCTMod.getInstance().getTrainerManager();
             var overworld = player.getServer().overworld();
             this.levelCap = tm.getData(player).getLevelCap();
 

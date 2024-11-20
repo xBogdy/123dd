@@ -76,7 +76,7 @@ public class TrainerInfoWidget extends TrainerDataWidget {
     }
 
     public void initTrainerInfo(int trainerNr, String trainerId, EntryState entryState) {
-        this.trainer = RCTMod.get().getTrainerManager().getData(trainerId);
+        this.trainer = RCTMod.getInstance().getTrainerManager().getData(trainerId);
         this.trainerId = trainerId;
 
         this.w = (int)((this.getWidth() - this.totalInnerPadding())/INNER_SCALE);
@@ -159,7 +159,7 @@ public class TrainerInfoWidget extends TrainerDataWidget {
         var pc = initPage("Spawning");
         var mc = Minecraft.getInstance();
         var reg = mc.level.registryAccess().registryOrThrow(Registries.BIOME);
-        var config = RCTMod.get().getServerConfig();
+        var config = RCTMod.getInstance().getServerConfig();
         var biomes = new PriorityQueue<ResourceLocation>((r1, r2) -> {
             int i = r1.getNamespace().compareTo(r2.getNamespace());
             return i == 0 ? r1.getPath().compareTo(r2.getPath()) : i;

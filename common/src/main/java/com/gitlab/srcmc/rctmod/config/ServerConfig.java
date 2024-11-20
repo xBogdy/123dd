@@ -24,7 +24,7 @@ import com.gitlab.srcmc.rctmod.api.config.IServerConfig;
 import net.neoforged.neoforge.common.ModConfigSpec;
 import net.neoforged.neoforge.common.ModConfigSpec.ConfigValue;
 
-public class ServerConfig extends ForgeConfig implements IServerConfig {
+public class ServerConfig implements IServerConfig {
     // spawning
     private ConfigValue<Double> globalSpawnChanceValue;
     private ConfigValue<Integer> spawnIntervalTicksValue;

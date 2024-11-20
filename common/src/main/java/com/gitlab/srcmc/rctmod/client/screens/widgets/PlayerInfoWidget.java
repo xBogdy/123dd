@@ -25,10 +25,10 @@ import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
-import com.gitlab.srcmc.rctmod.client.ModClient;
 import com.gitlab.srcmc.rctmod.client.screens.widgets.text.AutoScaledStringWidget;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractWidget;
@@ -38,7 +38,6 @@ import net.minecraft.client.gui.components.CycleButton;
 import net.minecraft.client.gui.components.PlayerFaceRenderer;
 import net.minecraft.client.gui.components.StringWidget;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
@@ -227,12 +226,12 @@ public class PlayerInfoWidget extends AbstractWidget {
     }
 
     public void tick() {
-        var localPlayer = (LocalPlayer)ModClient.get().getLocalPlayer().get();
-        var playerState = PlayerState.get(localPlayer);
+        var mc = Minecraft.getInstance();
+        var playerState = PlayerState.get(mc.player);
         var levelCap = playerState.getLevelCap();
 
-        this.skinLocation = localPlayer.getSkin().texture();
-        this.displayName.setMessage(Component.literal(localPlayer.getDisplayName().getString()).withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.WHITE));
+        this.skinLocation = mc.player.getSkin().texture();
+        this.displayName.setMessage(Component.literal(mc.player.getDisplayName().getString()).withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.WHITE));
         this.levelCapValue.setMessage(levelCap <= 100
             ? Component.literal(String.valueOf(levelCap)).withStyle(ChatFormatting.WHITE)
             : Component.literal("000").withStyle(ChatFormatting.OBFUSCATED).withStyle(ChatFormatting.WHITE));
@@ -316,20 +315,20 @@ public class PlayerInfoWidget extends AbstractWidget {
             return this.getTotalDefeats(this.trainerList.getTrainerType());
         }
 
-        var localPlayer = (LocalPlayer)ModClient.get().getLocalPlayer().get();
-        var playerState = PlayerState.get(localPlayer);
+        var mc = Minecraft.getInstance();
+        var playerState = PlayerState.get(mc.player);
         return playerState.getTrainerDefeatCount();
     }
 
     private long getTotalDefeats(TrainerMobData.Type type) {
-        var localPlayer = (LocalPlayer)ModClient.get().getLocalPlayer().get();
-        var playerState = PlayerState.get(localPlayer);
+        var mc = Minecraft.getInstance();
+        var playerState = PlayerState.get(mc.player);
         return playerState.getTypeDefeatCount(type);
     }
 
     private long getDistinctDefeats() {
-        var localPlayer = (LocalPlayer)ModClient.get().getLocalPlayer().get();
-        var playerState = PlayerState.get(localPlayer);
+        var mc = Minecraft.getInstance();
+        var playerState = PlayerState.get(mc.player);
         int count = 0;
 
         // TODO: consider optimization (cache value) if more trainer types get introduced
@@ -341,19 +340,19 @@ public class PlayerInfoWidget extends AbstractWidget {
     }
 
     private long getDistinctDefeats(TrainerMobData.Type type) {
-        var localPlayer = (LocalPlayer)ModClient.get().getLocalPlayer().get();
-        var playerState = PlayerState.get(localPlayer);
+        var mc = Minecraft.getInstance();
+        var playerState = PlayerState.get(mc.player);
         return playerState.getTypeDefeatCount(type, true);
     }
 
     private int getDefeats(String trainerId) {
-        var localPlayer = (LocalPlayer)ModClient.get().getLocalPlayer().get();
-        var playerState = PlayerState.get(localPlayer);
+        var mc = Minecraft.getInstance();
+        var playerState = PlayerState.get(mc.player);
         return playerState.getTrainerDefeatCount(trainerId);
     }
 
     private static List<String> sortedTrainerIds() {
-        var tdm = RCTMod.get().getTrainerManager();
+        var tdm = RCTMod.getInstance().getTrainerManager();
 
         return tdm.getAllData().map(entry -> entry.getKey()).sorted((k1, k2) -> {
             var t1 = tdm.getData(k1);

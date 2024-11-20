@@ -20,20 +20,14 @@ package com.gitlab.srcmc.rctmod.world.loot.conditions;
 import java.util.function.BiFunction;
 import java.util.function.Supplier;
 
+import com.gitlab.srcmc.rctmod.ModRegistries;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
-import com.gitlab.srcmc.rctmod.platform.ModRegistries;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSerializationContext;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-import net.minecraft.util.GsonHelper;
 import net.minecraft.util.StringRepresentable;
-import net.minecraft.util.StringRepresentable.StringRepresentableCodec;
-import net.minecraft.world.level.storage.loot.IntRange;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
@@ -49,34 +43,6 @@ public record DefeatCountCondition(Comparator comparator, int count) implements 
         ).apply(instance, DefeatCountCondition::new)
     );
 
-    // public static class Serializer implements net.minecraft.world.level.storage.loot.Serializer<DefeatCountCondition> {
-    //     public Serializer() {
-    //     }
-
-    //     public void serialize(JsonObject jsonObject, DefeatCountCondition defeatCountCondition, JsonSerializationContext jsonSerializationContext) {
-    //         jsonObject.add("count", jsonSerializationContext.serialize(defeatCountCondition.count));
-    //         jsonObject.add("comparator", jsonSerializationContext.serialize(defeatCountCondition.comparator.name()));
-    //     }
-
-    //     public DefeatCountCondition deserialize(JsonObject jsonObject, JsonDeserializationContext jsonDeserializationContext) {
-    //         var count = GsonHelper.getAsInt(jsonObject, "count");
-    //         var comparator = Comparator.valueOf(GsonHelper.getAsString(jsonObject, "comparator", "EQUAL"));
-    //         return new DefeatCountCondition(count, comparator);
-    //     }
-    // }
-
-    // final Comparator comparator;
-    // final int count;
-
-    // DefeatCountCondition(int count) {
-    //     this(count, Comparator.EQUAL);
-    // }
-
-    // DefeatCountCondition(int count, Comparator comparator) {
-    //     this.count = count;
-    //     this.comparator = comparator;
-    // }
-
     public LootItemConditionType getType() {
         return TYPE.get();
     }
@@ -85,17 +51,11 @@ public record DefeatCountCondition(Comparator comparator, int count) implements 
         var player = lootContext.getParamOrNull(LootContextParams.LAST_DAMAGE_PLAYER);
 
         if(player != null && lootContext.getParamOrNull(LootContextParams.THIS_ENTITY) instanceof TrainerMob mob) {
-            return this.comparator.test(RCTMod.get().getTrainerManager().getBattleMemory(mob).getDefeatByCount(player), this.count);
+            return this.comparator.test(RCTMod.getInstance().getTrainerManager().getBattleMemory(mob).getDefeatByCount(player), this.count);
         }
         
         return false;
     }
-
-    // public static LootItemCondition.Builder hasValue(int count) {
-    //     return () -> {
-    //         return new DefeatCountCondition(count);
-    //     };
-    // }
 
     public enum Comparator implements StringRepresentable {
         EQUAL("equal", (a, b) -> a.equals(b)),

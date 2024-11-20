@@ -29,7 +29,7 @@ public final class ChatUtils {
     private ChatUtils() {}
 
     public static void reply(TrainerMob source, Player target, String context) {
-        var messages = RCTMod.get().getTrainerManager().getData(source).getDialog().get(context);
+        var messages = RCTMod.getInstance().getTrainerManager().getData(source).getDialog().get(context);
 
         if(messages == null) {
             ModCommon.LOG.error(String.format("Invalid dialog context '%s'", context));

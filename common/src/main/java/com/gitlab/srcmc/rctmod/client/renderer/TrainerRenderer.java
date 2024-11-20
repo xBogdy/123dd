@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU Lesser General Public License along
  * with Radical Cobblemon Trainers. If not, see <http://www.gnu.org/licenses/lgpl>.
  */
-package com.gitlab.srcmc.rctmod.client;
+package com.gitlab.srcmc.rctmod.client.renderer;
 
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
@@ -37,7 +37,7 @@ public class TrainerRenderer extends HumanoidMobRenderer<TrainerMob, PlayerModel
 
     @Override
     public ResourceLocation getTextureLocation(TrainerMob mob) {
-        return RCTMod.get().getClientDataManager().findResource(mob.getTrainerId(), "textures").orElse(FALLBACK_TEXTURE);
+        return RCTMod.getInstance().getClientDataManager().findResource(mob.getTrainerId(), "textures").orElse(FALLBACK_TEXTURE);
     }
 
     @Override

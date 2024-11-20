@@ -17,60 +17,61 @@
  */
 package com.gitlab.srcmc.rctmod.api;
 
+import java.util.List;
 import java.util.function.Supplier;
 
+import com.cobblemon.mod.common.Cobblemon;
+import com.gitlab.srcmc.rctapi.api.RCTApi;
+import com.gitlab.srcmc.rctapi.api.battle.BattleFormat;
+import com.gitlab.srcmc.rctapi.api.battle.BattleRules;
+import com.gitlab.srcmc.rctapi.api.trainer.TrainerNPC;
+import com.gitlab.srcmc.rctapi.api.trainer.TrainerPlayer;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.config.IClientConfig;
-import com.gitlab.srcmc.rctmod.api.config.ICommonConfig;
 import com.gitlab.srcmc.rctmod.api.config.IServerConfig;
 import com.gitlab.srcmc.rctmod.api.data.pack.DataPackManager;
-import com.gitlab.srcmc.rctmod.api.service.IConfigs;
-import com.gitlab.srcmc.rctmod.api.service.ILootConditions;
-import com.gitlab.srcmc.rctmod.api.service.IPlayerController;
 import com.gitlab.srcmc.rctmod.api.service.TrainerManager;
 import com.gitlab.srcmc.rctmod.api.service.TrainerSpawner;
-import com.gitlab.srcmc.rctmod.platform.ModRegistries;
+import com.gitlab.srcmc.rctmod.config.ClientConfig;
+import com.gitlab.srcmc.rctmod.config.ServerConfig;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
-import com.gitlab.srcmc.rctmod.world.loot.conditions.DefeatCountCondition;
-import com.gitlab.srcmc.rctmod.world.loot.conditions.LevelRangeCondition;
-
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.entity.player.Player;
 
 public final class RCTMod {
-    private TrainerManager trainerManager;
-    private DataPackManager clientDataManager;
-    private DataPackManager serverDataManager;
-    private TrainerSpawner trainerSpawner;
-    private IPlayerController playerController;
-    private IConfigs configs;
+    private static Supplier<RCTMod> instanceSupplier = () -> {
+        var defaultInstance = new RCTMod(
+            new TrainerManager(), new TrainerSpawner(),
+            new DataPackManager(PackType.CLIENT_RESOURCES),
+            new DataPackManager(PackType.SERVER_DATA),
+            new ClientConfig(), new ServerConfig());
 
-    private static Supplier<RCTMod> instance = () -> {
-        throw new RuntimeException(RCTMod.class.getName() + " not initialized");
+        RCTMod.instanceSupplier = () -> defaultInstance;
+        return defaultInstance;
     };
 
-    public static RCTMod get() {
-        return instance.get();
-    }
+    private TrainerManager trainerManager;
+    private TrainerSpawner trainerSpawner;
+    private DataPackManager clientDataManager;
+    private DataPackManager serverDataManager;
+    private IClientConfig clientConfig;
+    private IServerConfig serverConfig;
 
-    // public static void init(IPlayerController playerController, ILootConditions lootConditions, IConfigs configs) {
-    //     LevelRangeCondition.init(lootConditions::levelRangeConditon);
-    //     DefeatCountCondition.init(lootConditions::defeatCountConditon);
-    //     var local = new RCTMod(playerController, configs);
-    //     instance = () -> local;
-    // }
-    public static void init(IPlayerController playerController, IConfigs configs) {
-        var local = new RCTMod(playerController, configs);
-        instance = () -> local;
-    }
-
-    private RCTMod(IPlayerController playerController, IConfigs configs) {
-        this.trainerManager = new TrainerManager(playerController::getPlayerLevel, playerController::getActivePokemonCount);
-        this.clientDataManager = new DataPackManager(PackType.CLIENT_RESOURCES);
-        this.serverDataManager = new DataPackManager(PackType.SERVER_DATA);
-        this.trainerSpawner = new TrainerSpawner();
-        this.playerController = playerController;
-        this.configs = configs;
+    private RCTMod(
+        TrainerManager trainerManager,
+        TrainerSpawner trainerSpawner,
+        DataPackManager clientDataManager,
+        DataPackManager serverDataManager,
+        IClientConfig clientConfig,
+        IServerConfig serverConfig)
+    {
+        this.trainerManager = trainerManager;
+        this.trainerSpawner = trainerSpawner;
+        this.clientDataManager = clientDataManager;
+        this.serverDataManager = serverDataManager;
+        this.clientConfig = clientConfig;
+        this.serverConfig = serverConfig;
     }
 
     public TrainerManager getTrainerManager() {
@@ -90,33 +91,69 @@ public final class RCTMod {
     }
 
     public IClientConfig getClientConfig() {
-        return this.configs.clientConfig();
-    }
-
-    public ICommonConfig getCommonConfig() {
-        return this.configs.commonConfig();
+        return this.clientConfig;
     }
 
     public IServerConfig getServerConfig() {
-        return this.configs.serverConfig();
+        return this.serverConfig;
     }
 
-    public boolean makeBattle(TrainerMob source, Player target) {
+    public boolean makeBattle(TrainerMob mob, Player player) {
+        var reg = RCTApi.getInstance().getTrainerRegistry();
+
         try {
-            this.playerController.startBattle(source, target);
-        } catch(Exception e) {
-            ModCommon.LOG.error(e.getMessage(), e);
-            return false;
+            var trPlayer = reg.getById(RCTMod.getInstance().getTrainerManager().getTrainerId(player), TrainerPlayer.class);
+            var trNPC = reg.getById(mob.getTrainerId(), TrainerNPC.class);
+
+            if(trPlayer == null) {
+                ModCommon.LOG.error("Failed to start battle: No trainer registered for player '" + player.getDisplayName().getString() + "'");
+            } else if(trNPC == null) {
+                ModCommon.LOG.error("Failed to start battle: No trainer registered for mob '" + mob.getDisplayName().getString() + "'");
+            } else {
+                return RCTApi.getInstance().getBattleManager().start(List.of(trPlayer), List.of(trNPC), BattleFormat.GEN_9_SINGLES, new BattleRules());
+            }
+        } catch(IllegalArgumentException e) {
+            ModCommon.LOG.error("Failed to start battle", e);
         }
 
-        return true;
+        return false;
     }
 
     public void stopBattle(TrainerMob mob) {
-        this.playerController.stopBattle(mob);
+        var opp = (ServerPlayer)mob.getOpponent();
+
+        if(opp != null) {
+            var battle = Cobblemon.INSTANCE.getBattleRegistry().getBattleByParticipatingPlayer(opp);
+
+            if(battle == null) {
+                ModCommon.LOG.error(String.format("Player '%s' is not in a battle", opp.getDisplayName().getString()));
+            } else {
+                battle.stop();
+            }
+        }
     }
 
     public boolean isInBattle(Player player) {
-        return this.playerController.isInBattle(player);
+        return Cobblemon.INSTANCE.getBattleRegistry().getBattleByParticipatingPlayerId(player.getUUID()) != null;
+    }
+
+    public static void init(
+        TrainerManager trainerManager,
+        TrainerSpawner trainerSpawner,
+        DataPackManager clientDataManager,
+        DataPackManager serverDataManager,
+        IClientConfig clientConfig,
+        IServerConfig serverConfig)
+    {
+        var instance = new RCTMod(
+            trainerManager, trainerSpawner,
+            clientDataManager, serverDataManager,
+            clientConfig, serverConfig);
+
+        RCTMod.instanceSupplier = () -> instance;
+    }
+
+    public static RCTMod getInstance() {
+        return RCTMod.instanceSupplier.get();
     }
 }

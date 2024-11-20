@@ -20,9 +20,8 @@ package com.gitlab.srcmc.rctmod.api.data;
 import java.util.Collections;
 import java.util.List;
 
-import com.gitlab.srcmc.rctmod.advancements.criteria.DefeatCountTrigger;
+import com.gitlab.srcmc.rctmod.ModRegistries;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
-import com.gitlab.srcmc.rctmod.platform.ModRegistries;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 
 import net.minecraft.server.level.ServerPlayer;
@@ -76,7 +75,7 @@ public class TrainerBattle {
     public void distributeRewards(boolean initiatorWins) {
         var winnerPlayers = initiatorWins ? initiatorSidePlayers : trainerSidePlayers;
         var looserMobs = initiatorWins ? trainerSideMobs : initiatorSideMobs;
-        var tm = RCTMod.get().getTrainerManager();
+        var tm = RCTMod.getInstance().getTrainerManager();
 
         for(var player : winnerPlayers) {
             for(var mob : looserMobs) {
@@ -85,7 +84,6 @@ public class TrainerBattle {
                 var battleMem = tm.getBattleMemory(mob);
                 playerTr.setLevelCap(player, Math.max(mobTr.getRewardLevelCap(), playerTr.getLevelCap()));
                 battleMem.addDefeatedBy(mob.getTrainerId(), player);
-                // DefeatCountTrigger.INSTANCE.trigger((ServerPlayer)player, mob);
                 ModRegistries.CriteriaTriggers.DEFEAT_COUNT.get().trigger((ServerPlayer)player, mob);
             }
         }

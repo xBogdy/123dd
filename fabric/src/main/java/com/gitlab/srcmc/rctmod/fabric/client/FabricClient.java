@@ -1,8 +1,8 @@
-package com.gitlab.srcmc.rctmod.fabric;
+package com.gitlab.srcmc.rctmod.fabric.client;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
-import com.gitlab.srcmc.rctmod.platform.ModClient;
+import com.gitlab.srcmc.rctmod.client.ModClient;
 
 import fuzs.forgeconfigapiport.fabric.api.neoforge.v4.NeoForgeConfigRegistry;
 import net.fabricmc.api.ClientModInitializer;
@@ -15,6 +15,6 @@ public class FabricClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         ModClient.init();
-        NeoForgeConfigRegistry.INSTANCE.register(ModCommon.MOD_ID, ModConfig.Type.CLIENT, RCTMod.get().getClientConfig().getSpec());
+        NeoForgeConfigRegistry.INSTANCE.register(ModCommon.MOD_ID, ModConfig.Type.CLIENT, RCTMod.getInstance().getClientConfig().getSpec());
     }
 }

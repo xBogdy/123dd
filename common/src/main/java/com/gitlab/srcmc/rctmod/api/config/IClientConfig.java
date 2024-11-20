@@ -17,7 +17,7 @@
  */
 package com.gitlab.srcmc.rctmod.api.config;
 
-public interface IClientConfig extends IForgeConfig {
+public interface IClientConfig extends IModConfig {
     /**
      * Determines if symbols for trainer types are shown next to trainer names.
      * 

@@ -23,25 +23,19 @@ import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
-import com.google.gson.JsonObject;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.advancements.CriterionTrigger;
-import net.minecraft.advancements.CriterionTriggerInstance;
-// import net.minecraft.advancements.critereon.AbstractCriterionTriggerInstance;
 import net.minecraft.advancements.critereon.ContextAwarePredicate;
 import net.minecraft.advancements.critereon.SimpleCriterionTrigger.SimpleInstance;
-// import net.minecraft.advancements.critereon.SerializationContext;
-import net.minecraft.resources.ResourceLocation;
+
 import net.minecraft.server.level.ServerPlayer;
 
 public record DefeatCountTriggerInstance(String trainerId, String trainerType, int count) implements SimpleInstance {
     public boolean matches(ServerPlayer player, TrainerMob mob) {
         ModCommon.LOG.info("MATCHING WITH: " + this.trainerId + ", " + this.trainerType + ", " + this.trainerId() + ", " + this.trainerType());
-        var battleMem = RCTMod.get().getTrainerManager().getBattleMemory(mob);
-        var mobTr = RCTMod.get().getTrainerManager().getData(mob);
+        var battleMem = RCTMod.getInstance().getTrainerManager().getBattleMemory(mob);
+        var mobTr = RCTMod.getInstance().getTrainerManager().getData(mob);
         var playerState = PlayerState.get(player);
 
         if(!this.trainerId.isEmpty() && this.trainerId.equals(mob.getTrainerId())) {

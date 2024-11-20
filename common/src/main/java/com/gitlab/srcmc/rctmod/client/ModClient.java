@@ -17,22 +17,60 @@
  */
 package com.gitlab.srcmc.rctmod.client;
 
-import java.util.Optional;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedDeque;
 
-import net.minecraft.world.entity.player.Player;
+import com.gitlab.srcmc.rctmod.ModCommon;
+import com.gitlab.srcmc.rctmod.ModRegistries;
+import com.gitlab.srcmc.rctmod.api.RCTMod;
+import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
+import com.gitlab.srcmc.rctmod.client.renderer.TargetArrowRenderer;
+import com.gitlab.srcmc.rctmod.client.renderer.TrainerRenderer;
+import com.gitlab.srcmc.rctmod.client.screens.ScreenManager;
+import com.gitlab.srcmc.rctmod.network.PlayerStatePayload;
+
+import dev.architectury.event.events.client.ClientTickEvent;
+import dev.architectury.networking.NetworkManager;
+import dev.architectury.networking.NetworkManager.PacketContext;
+import dev.architectury.networking.NetworkManager.Side;
+import dev.architectury.registry.ReloadListenerRegistry;
+import dev.architectury.registry.client.level.entity.EntityRendererRegistry;
+import net.minecraft.client.Minecraft;
+import net.minecraft.server.packs.PackType;
+import net.minecraft.world.level.Level;
 
 public class ModClient {
-    private static ModClient instance;
+    private static Queue<byte[]> playerStateUpdates = new ConcurrentLinkedDeque<>();
 
-    public static void init(ModClient instance) {
-        ModClient.instance = instance;
-    }
-    
-    public static ModClient get() {
-        return instance == null ? (instance = new ModClient()) : instance;
+    public static void init() {
+        var mc = Minecraft.getInstance();
+        ModCommon.initLocalPlayer(mc.player);
+        ModCommon.initScreenManager(new ScreenManager());
+        TargetArrowRenderer.init(ModRegistries.Items.TRAINER_CARD);
+        EntityRendererRegistry.register(ModRegistries.Entities.TRAINER, TrainerRenderer::new);
+        ReloadListenerRegistry.register(PackType.CLIENT_RESOURCES, RCTMod.getInstance().getClientDataManager());
+        NetworkManager.registerReceiver(Side.S2C, PlayerStatePayload.TYPE, PlayerStatePayload.CODEC, ModClient::receivePlayerState);
+        ClientTickEvent.CLIENT_LEVEL_PRE.register(ModClient::onClientWorldTick);
     }
 
-    public Optional<Player> getLocalPlayer() {
-        return Optional.empty();
+    // ClientTickEvent
+
+    static void onClientWorldTick(Level level) {
+        var mc = Minecraft.getInstance();
+        var psu = ModClient.playerStateUpdates.poll();
+
+        if(psu != null) {
+            PlayerState.get(mc.player).deserializeUpdate(psu);
+        }
+        
+        TargetArrowRenderer.getInstance().tick();
+    }
+
+    // NetworkManager
+
+    static void receivePlayerState(PlayerStatePayload pl, PacketContext context) {
+        if(!ModClient.playerStateUpdates.offer(pl.bytes())) {
+            throw new IllegalStateException("Failed to store player state updates");
+        }
     }
 }

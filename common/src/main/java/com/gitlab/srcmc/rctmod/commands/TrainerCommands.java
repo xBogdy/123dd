@@ -99,7 +99,7 @@ public class TrainerCommands {
     }
 
     private static CompletableFuture<Suggestions> get_trainer_suggestions(final CommandContext<CommandSourceStack> context, final SuggestionsBuilder builder) throws CommandSyntaxException {
-        RCTMod.get().getTrainerManager().getAllData().map(e -> e.getKey()).forEach(builder::suggest);
+        RCTMod.getInstance().getTrainerManager().getAllData().map(e -> e.getKey()).forEach(builder::suggest);
         return builder.buildFuture();
     }
 
@@ -116,7 +116,7 @@ public class TrainerCommands {
                 mob.setPos(player.blockPosition().above().getCenter().add(0, -0.5, 0));
                 mob.setTrainerId(context.getArgument("trainer", String.class));
                 level.addFreshEntity(mob);
-                RCTMod.get().getTrainerSpawner().register(mob);
+                RCTMod.getInstance().getTrainerSpawner().register(mob);
             } catch(Exception e) {
                 ModCommon.LOG.error(e.getMessage(), e);
             }
@@ -134,7 +134,7 @@ public class TrainerCommands {
         mob.setPos(BlockPosArgument.getSpawnablePos(context, "at").getCenter().add(0, -0.5, 0));
         mob.setTrainerId(context.getArgument("trainer", String.class));
         level.addFreshEntity(mob);
-        RCTMod.get().getTrainerSpawner().register(mob);
+        RCTMod.getInstance().getTrainerSpawner().register(mob);
         return 0;
     }
 
@@ -147,7 +147,7 @@ public class TrainerCommands {
                 mob.setTrainerId(context.getArgument("trainer", String.class));
                 mob.setPersistent(true);
                 level.addFreshEntity(mob);
-                RCTMod.get().getTrainerSpawner().register(mob);
+                RCTMod.getInstance().getTrainerSpawner().register(mob);
             } catch(Exception e) {
                 ModCommon.LOG.error(e.getMessage(), e);
             }
@@ -166,14 +166,14 @@ public class TrainerCommands {
         mob.setTrainerId(context.getArgument("trainer", String.class));
         mob.setPersistent(true);
         level.addFreshEntity(mob);
-        RCTMod.get().getTrainerSpawner().register(mob);
+        RCTMod.getInstance().getTrainerSpawner().register(mob);
         return 0;
     }
 
     private static int mob_spawn_for(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         if(context.getSource().getEntity() instanceof Player player) {
             try {
-                RCTMod.get().getTrainerSpawner().attemptSpawnFor(player);
+                RCTMod.getInstance().getTrainerSpawner().attemptSpawnFor(player);
             } catch(Exception e) {
                 ModCommon.LOG.error(e.getMessage(), e);
             }
@@ -188,7 +188,7 @@ public class TrainerCommands {
     private static int mob_spawn_for_target(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         if(EntityArgument.getEntity(context, "target") instanceof Player player) {
             try {
-                RCTMod.get().getTrainerSpawner().attemptSpawnFor(player);
+                RCTMod.getInstance().getTrainerSpawner().attemptSpawnFor(player);
             } catch(Exception e) {
                 ModCommon.LOG.error(e.getMessage(), e);
             }
@@ -201,7 +201,7 @@ public class TrainerCommands {
     }
 
     private static int mob_get_type(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
-        var type = RCTMod.get().getTrainerManager()
+        var type = RCTMod.getInstance().getTrainerManager()
             .getData(context.getArgument("trainer", String.class))
             .getType().name();
 
@@ -210,7 +210,7 @@ public class TrainerCommands {
     }
 
     private static int mob_get_max_trainer_wins(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
-        var max_trainer_wins = RCTMod.get().getTrainerManager()
+        var max_trainer_wins = RCTMod.getInstance().getTrainerManager()
             .getData(context.getArgument("trainer", String.class))
             .getMaxTrainerWins();
 
@@ -219,7 +219,7 @@ public class TrainerCommands {
     }
 
     private static int mob_get_max_trainer_defeats(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
-        var max_trainer_defeats = RCTMod.get().getTrainerManager()
+        var max_trainer_defeats = RCTMod.getInstance().getTrainerManager()
             .getData(context.getArgument("trainer", String.class))
             .getMaxTrainerDefeats();
 
@@ -228,7 +228,7 @@ public class TrainerCommands {
     }
 
     private static int mob_get_reward_level_cap(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
-        var reward_level_cap = RCTMod.get().getTrainerManager()
+        var reward_level_cap = RCTMod.getInstance().getTrainerManager()
             .getData(context.getArgument("trainer", String.class))
             .getRewardLevelCap();
 
@@ -237,7 +237,7 @@ public class TrainerCommands {
     }
 
     private static int mob_get_required_level_cap(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
-        var required_level_cap = RCTMod.get().getTrainerManager()
+        var required_level_cap = RCTMod.getInstance().getTrainerManager()
             .getData(context.getArgument("trainer", String.class))
             .getRequiredLevelCap();
 
@@ -246,7 +246,7 @@ public class TrainerCommands {
     }
 
     private static int mob_get_required_defeats(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
-        var required_defeats = RCTMod.get().getTrainerManager()
+        var required_defeats = RCTMod.getInstance().getTrainerManager()
             .getData(context.getArgument("trainer", String.class))
             .getRequiredDefeats(Type.valueOf(context.getArgument("type", String.class)));
 
@@ -255,7 +255,7 @@ public class TrainerCommands {
     }
 
     private static int mob_unregister_persistent(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
-        RCTMod.get().getTrainerSpawner().unregisterPersistent(context.getArgument("mobUUID", String.class));
+        RCTMod.getInstance().getTrainerSpawner().unregisterPersistent(context.getArgument("mobUUID", String.class));
         return 0;
     }
 }

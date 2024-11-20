@@ -43,7 +43,7 @@ public class TrainerCardScreen extends Screen {
         this.width = window.getGuiScaledWidth();
         this.height = window.getGuiScaledHeight();
         
-        var cfg = RCTMod.get().getClientConfig();
+        var cfg = RCTMod.getInstance().getClientConfig();
         var pad = cfg.trainerCardPadding();
         var card_x = pad + (int)((this.width - (CARD_W + 2*pad))*cfg.trainerCardAlignmentX());
         var card_y = pad + (int)((this.height - (CARD_H + 2*pad))*cfg.trainerCardAlignmentY());

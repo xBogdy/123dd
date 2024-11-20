@@ -24,9 +24,9 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
-import java.util.function.Function;
 import java.util.stream.Stream;
 
+import com.cobblemon.mod.common.Cobblemon;
 import com.gitlab.srcmc.rctapi.api.RCTApi;
 import com.gitlab.srcmc.rctapi.api.errors.RCTException;
 import com.gitlab.srcmc.rctapi.api.models.TrainerModel;
@@ -43,6 +43,7 @@ import com.google.gson.JsonElement;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
 import net.minecraft.util.datafix.DataFixTypes;
@@ -55,22 +56,12 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
 
     private Map<String, TrainerMobData> trainerMobs = new HashMap<>();
     private Map<UUID, TrainerBattle> trainerBattles = new HashMap<>();
-    private Function<Player, Integer> playerLevelSupplier;
-    private Function<Player, Integer> activePokemonSupplier;
-
-    // public TrainerManager() {
-    //     super(GSON, ModCommon.MOD_ID);
-    //     this.playerLevelSupplier = p -> TrainerManager.this.getData(p).getLevelCap();
-    //     this.activePokemonSupplier = p -> 0;
-    // }
 
     private Map<UUID, String> uuidToTrainerId = new HashMap<>();
     private Set<String> playerTrainerIds = new HashSet<>();
 
-    public TrainerManager(Function<Player, Integer> playerLevelSupplier, Function<Player, Integer> activePokemonSupplier) {
+    public TrainerManager() {
         super(GSON, ModCommon.MOD_ID);
-        this.playerLevelSupplier = playerLevelSupplier;
-        this.activePokemonSupplier = activePokemonSupplier;
     }
 
     public String registerPlayer(Player player) {
@@ -151,11 +142,29 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
     }
 
     public int getPlayerLevel(Player player) {
-        return this.playerLevelSupplier.apply(player);
+        int maxLevel = 0;
+
+        if(player instanceof ServerPlayer serverPlayer) {
+            for(var pk : Cobblemon.INSTANCE.getStorage().getParty(serverPlayer)) {
+                maxLevel = Math.max(maxLevel, pk.getLevel());
+            }
+        }
+
+        return maxLevel;
     }
 
     public int getActivePokemon(Player player) {
-        return this.activePokemonSupplier.apply(player);
+        int count = 0;
+
+        if(player instanceof ServerPlayer serverPlayer) {
+            for(var pk : Cobblemon.INSTANCE.getStorage().getParty(serverPlayer)) {
+                if(!pk.isFainted()) {
+                    count++;
+                }
+            }
+        }
+
+        return count;
     }
 
     public TrainerPlayerData getData(Player player) {
@@ -179,7 +188,7 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
     }
 
     public void forceReload(ResourceManager resourceManager) {
-        var dpm = RCTMod.get().getServerDataManager();
+        var dpm = RCTMod.getInstance().getServerDataManager();
         var reg = RCTApi.getInstance().getTrainerRegistry();
 
         reg.clearNPCs();

@@ -26,11 +26,11 @@ import com.gitlab.srcmc.rctmod.api.algorithm.IAlgorithm;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.api.service.TrainerManager;
-import com.gitlab.srcmc.rctmod.client.ModClient;
 import com.gitlab.srcmc.rctmod.client.screens.widgets.text.MultiStyleStringWidget;
 import com.gitlab.srcmc.rctmod.client.screens.widgets.text.TextUtils;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Style;
@@ -98,10 +98,11 @@ public class TrainerListWidget extends TrainerDataWidget {
         }
 
         private UpdateState(Map<Integer, List<Entry>> pages) {
+            var mc = Minecraft.getInstance();
             this.realtime = pages == TrainerListWidget.this.pages;
             this.pages = pages;
-            this.playerState = PlayerState.get(ModClient.get().getLocalPlayer().get());
-            this.tdm = RCTMod.get().getTrainerManager();
+            this.playerState = PlayerState.get(mc.player);
+            this.tdm = RCTMod.getInstance().getTrainerManager();
             this.w = (int)((getWidth() - totalInnerPadding())/INNER_SCALE);
             this.h = TrainerListWidget.this.entryHeight;
         }

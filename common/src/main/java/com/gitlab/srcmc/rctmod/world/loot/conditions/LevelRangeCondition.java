@@ -22,22 +22,16 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Supplier;
 
+import com.gitlab.srcmc.rctmod.ModRegistries;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
-import com.gitlab.srcmc.rctmod.platform.ModRegistries;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSerializationContext;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-import net.minecraft.advancements.critereon.DamageSourcePredicate;
-import net.minecraft.util.GsonHelper;
 import net.minecraft.world.level.storage.loot.IntRange;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParam;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraft.world.level.storage.loot.predicates.DamageSourceCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 
@@ -50,26 +44,6 @@ public record LevelRangeCondition(IntRange range) implements LootItemCondition {
         ).apply(instance, LevelRangeCondition::new)
     );
 
-    // public static class Serializer implements net.minecraft.world.level.storage.loot.Serializer<LevelRangeCondition> {
-    //     public Serializer() {
-    //     }
-
-    //     public void serialize(JsonObject jsonObject, LevelRangeCondition levelRangeCondition, JsonSerializationContext jsonSerializationContext) {
-    //         jsonObject.add("range", jsonSerializationContext.serialize(levelRangeCondition.range));
-    //     }
-
-    //     public LevelRangeCondition deserialize(JsonObject jsonObject, JsonDeserializationContext jsonDeserializationContext) {
-    //         var intRange = (IntRange) GsonHelper.getAsObject(jsonObject, "range", jsonDeserializationContext, IntRange.class);
-    //         return new LevelRangeCondition(intRange);
-    //     }
-    // }
-
-    // final IntRange range;
-
-    // LevelRangeCondition(IntRange intRange) {
-    //     this.range = intRange;
-    // }
-
     public LootItemConditionType getType() {
         return TYPE.get();
     }
@@ -80,7 +54,7 @@ public record LevelRangeCondition(IntRange range) implements LootItemCondition {
 
     public boolean test(LootContext lootContext) {
         if(lootContext.getParamOrNull(LootContextParams.THIS_ENTITY) instanceof TrainerMob mob) {
-            var teamLevel = RCTMod.get().getTrainerManager()
+            var teamLevel = RCTMod.getInstance().getTrainerManager()
                 .getData(mob).getTeam().getMembers().stream()
                 .map(p -> p.getLevel()).max(Integer::compare).orElse(0);
 
@@ -89,18 +63,4 @@ public record LevelRangeCondition(IntRange range) implements LootItemCondition {
 
         return false;
     }
-
-    // public static LootItemCondition.Builder hasValue(IntRange intRange) {
-    //     return () -> {
-    //         return new LevelRangeCondition(intRange);
-    //     };
-    // }
-
-    // Based of: import net.minecraft.world.level.storage.loot.predicates.LootItemConditions.*
-    // private static LootItemConditionType register(net.minecraft.world.level.storage.loot.Serializer<? extends LootItemCondition> serializer) {
-    //     return (LootItemConditionType) Registry.register(
-    //         BuiltInRegistries.LOOT_CONDITION_TYPE,
-    //         new ResourceLocation(ModCommon.MOD_ID, "level_range"),
-    //         new LootItemConditionType(serializer));
-    // }
 }

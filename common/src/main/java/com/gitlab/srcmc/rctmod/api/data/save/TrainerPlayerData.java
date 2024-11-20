@@ -36,7 +36,7 @@ public class TrainerPlayerData extends SavedData {
     }
 
     public TrainerPlayerData() {
-        var cfg = RCTMod.get().getServerConfig();
+        var cfg = RCTMod.getInstance().getServerConfig();
         this.levelCap = Math.max(0, Math.min(100, cfg.initialLevelCap() + cfg.bonusLevelCap()));
     }
 

@@ -1,8 +1,7 @@
-package com.gitlab.srcmc.rctmod.platform.network;
+package com.gitlab.srcmc.rctmod.network;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
 
-import dev.architectury.networking.NetworkManager;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;

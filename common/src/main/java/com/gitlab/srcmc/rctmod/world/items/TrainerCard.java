@@ -67,7 +67,11 @@ public class TrainerCard extends Item {
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
         if(level.isClientSide) {
             if(interactionHand == InteractionHand.MAIN_HAND && player.getOffhandItem().isEmpty() || player.getMainHandItem().isEmpty()) {
-                ModCommon.SCREENS.openTrainerCardScreen();
+                var screens = ModCommon.getScreenManager();
+
+                if(screens.isPresent()) {
+                    screens.get().openTrainerCardScreen();
+                }
             }
         }
 

@@ -28,7 +28,6 @@ import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData.Type;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.api.utils.ChatUtils;
-import com.gitlab.srcmc.rctmod.client.ModClient;
 import com.gitlab.srcmc.rctmod.world.entities.goals.LookAtPlayerAndWaitGoal;
 import com.gitlab.srcmc.rctmod.world.entities.goals.MoveCloseToTargetGoal;
 import com.gitlab.srcmc.rctmod.world.entities.goals.PokemonBattleGoal;
@@ -97,7 +96,6 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
     protected TrainerMob(EntityType<? extends PathfinderMob> entityType, Level level) {
         super(entityType, level);
-        // this.udpateCustomName();
     }
 
     public static EntityType<TrainerMob> getEntityType() {
@@ -113,17 +111,17 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
     public boolean canBattleAgainst(Entity e) {
         if(e instanceof Player player) {
-            if(RCTMod.get().isInBattle(player)) {
+            if(RCTMod.getInstance().isInBattle(player)) {
                 return false;
             }
 
-            var tm = RCTMod.get().getTrainerManager();
+            var tm = RCTMod.getInstance().getTrainerManager();
 
             if(tm.getActivePokemon(player) == 0) {
                 return false;
             }
 
-            var cfg = RCTMod.get().getServerConfig();
+            var cfg = RCTMod.getInstance().getServerConfig();
             var playerState = PlayerState.get(player);
 
             if(tm.getPlayerLevel(player) > (playerState.getLevelCap() + cfg.maxOverLevelCap())) {
@@ -150,8 +148,8 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
     public void startBattleWith(Player player) {
         if(this.canBattleAgainst(player)) {
-            if(RCTMod.get().makeBattle(this, player)) {
-                RCTMod.get().getTrainerManager().addBattle(player, this);
+            if(RCTMod.getInstance().makeBattle(this, player)) {
+                RCTMod.getInstance().getTrainerManager().addBattle(player, this);
                 ChatUtils.reply(this, player, "battle_start");
                 this.setOpponent(player);
             }
@@ -161,12 +159,12 @@ public class TrainerMob extends PathfinderMob implements Npc {
     }
 
     protected void replyTo(Player player) {
-        var tm = RCTMod.get().getTrainerManager();
-        var cfg = RCTMod.get().getServerConfig();
+        var tm = RCTMod.getInstance().getTrainerManager();
+        var cfg = RCTMod.getInstance().getServerConfig();
         var playerState = PlayerState.get(player);
         var trMob = tm.getData(this);
 
-        if(RCTMod.get().isInBattle(player)) {
+        if(RCTMod.getInstance().isInBattle(player)) {
             ChatUtils.reply(this, player, "player_busy");
         } else if(playerState.getTypeDefeatCount(Type.LEADER) < trMob.getRequiredDefeats(Type.LEADER)) {
             ChatUtils.reply(this, player, "missing_badges");
@@ -206,7 +204,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
     }
 
     public boolean canBattle() {
-        var mobTr = RCTMod.get().getTrainerManager().getData(this);
+        var mobTr = RCTMod.getInstance().getTrainerManager().getData(this);
 
         return !this.isInBattle()
             && this.getCooldown() == 0
@@ -214,19 +212,19 @@ public class TrainerMob extends PathfinderMob implements Npc {
     }
 
     private void udpateCustomName() {
-        var tmd = RCTMod.get().getTrainerManager().getData(this);
+        var tmd = RCTMod.getInstance().getTrainerManager().getData(this);
         this.setCustomName(Component.literal(tmd.getTeam().getDisplayName()));
     }
 
     @Override
     public Component getDisplayName() {
-        var tmd = RCTMod.get().getTrainerManager().getData(this);
+        var tmd = RCTMod.getInstance().getTrainerManager().getData(this);
         var suffix = new StringBuilder();
         var cmp = this.getCustomName().copy();
-        var localPlayer = ModClient.get().getLocalPlayer();
+        var localPlayer = ModCommon.getLocalPlayer();
         
         if(localPlayer.isPresent()) {
-            var cfg = RCTMod.get().getClientConfig();
+            var cfg = RCTMod.getInstance().getClientConfig();
             var player = localPlayer.get();
 
             if(cfg.showTrainerTypeSymbols()) {
@@ -256,7 +254,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
             var currentId = this.getTrainerId();
 
             if((currentId == null && trainerId != null) || (currentId != null && !currentId.equals(trainerId))) {
-                RCTMod.get().getTrainerSpawner().notifyChangeTrainerId(this, trainerId);
+                RCTMod.getInstance().getTrainerSpawner().notifyChangeTrainerId(this, trainerId);
                 this.entityData.set(DATA_TRAINER_ID, trainerId);
                 this.updateTrainerNPC(trainerId);
                 this.udpateCustomName();
@@ -286,7 +284,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
         var level = this.level();
 
         if(!level.isClientSide && this.isInBattle()) {
-            var mobTr = RCTMod.get().getTrainerManager().getData(this);
+            var mobTr = RCTMod.getInstance().getTrainerManager().getData(this);
             this.cooldown = mobTr.getBattleCooldownTicks();
             this.setOpponent(null);
             this.setTarget(null);
@@ -297,7 +295,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
                         ChatUtils.reply(this, player, "battle_lost");
                     });
                 } else {
-                    var tm = RCTMod.get().getTrainerManager();
+                    var tm = RCTMod.getInstance().getTrainerManager();
                     var initiatorSidePlayer = battle.getInitiatorSidePlayers();
                     Player minWinsPlayer = null;
 
@@ -334,8 +332,8 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
     public void cancelBattle() {
         if(this.opponent != null) {
-            RCTMod.get().getTrainerManager().removeBattle(this.opponent.getUUID());
-            RCTMod.get().stopBattle(this);
+            RCTMod.getInstance().getTrainerManager().removeBattle(this.opponent.getUUID());
+            RCTMod.getInstance().stopBattle(this);
             this.setOpponent(null);
         }
     }
@@ -379,7 +377,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
                 this.updateTarget();
             }
 
-            if(this.isPersistenceRequired() && !RCTMod.get().getTrainerSpawner().isRegistered(this)) {
+            if(this.isPersistenceRequired() && !RCTMod.getInstance().getTrainerSpawner().isRegistered(this)) {
                 this.setPersistent(false);
 
                 ModCommon.LOG.error(String.format(
@@ -397,7 +395,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
             if(this.canBattle()) {
                 this.startBattleWith(player);
             } else {
-                var mobTr = RCTMod.get().getTrainerManager().getData(this);
+                var mobTr = RCTMod.getInstance().getTrainerManager().getData(this);
 
                 if(this.isInBattle()) {
                     ChatUtils.reply(this, player, "is_busy");
@@ -418,12 +416,12 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
     @Override
     public void remove(RemovalReason reason) {
-        if(RCTMod.get().getServerConfig().logSpawning()) {
+        if(RCTMod.getInstance().getServerConfig().logSpawning()) {
             ModCommon.LOG.info(String.format("Removed trainer '%s' (%s): %s", this.getTrainerId(), this.getStringUUID(), reason.toString()));
         }
 
         if(reason == RemovalReason.DISCARDED || reason == RemovalReason.KILLED) {
-            RCTMod.get().getTrainerSpawner().unregister(this);
+            RCTMod.getInstance().getTrainerSpawner().unregister(this);
             this.cancelBattle();
         }
 
@@ -433,7 +431,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
     private void updateTarget() {
         if(this.tickCount % 60 == 0) {
             if(this.canBattle()) {
-                var tm = RCTMod.get().getTrainerManager();
+                var tm = RCTMod.getInstance().getTrainerManager();
                 int reqLevelCap = tm.getData(this).getRequiredLevelCap();
 
                 this.setTarget(this.level().getNearbyPlayers(
@@ -452,7 +450,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
     public void setPersistent(boolean persistent) {
         if(this.persistent != persistent) {
-            RCTMod.get().getTrainerSpawner().notifyChangePersistence(this, persistent);
+            RCTMod.getInstance().getTrainerSpawner().notifyChangePersistence(this, persistent);
             this.persistent = persistent;
         }
     }
@@ -484,7 +482,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
     public boolean shouldDespawn() {
         if(++this.despawnTicks % DESPAWN_TICK_SCALE == 0) {
-            if(!this.isInBattle() && this.level().getNearestPlayer(this, Math.max(DESPAWN_DISTANCE, RCTMod.get().getServerConfig().maxHorizontalDistanceToPlayers())) == null) {
+            if(!this.isInBattle() && this.level().getNearestPlayer(this, Math.max(DESPAWN_DISTANCE, RCTMod.getInstance().getServerConfig().maxHorizontalDistanceToPlayers())) == null) {
                 return this.despawnTicks >= TICKS_TO_DESPAWN;
             }
 
@@ -510,7 +508,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
     public void setOriginPlayer(UUID originPlayer) {
         if((this.originPlayer == null && originPlayer != null) || (this.originPlayer != null && !this.originPlayer.equals(originPlayer))) {
-            RCTMod.get().getTrainerSpawner().notifyChangeOriginPlayer(this, originPlayer);
+            RCTMod.getInstance().getTrainerSpawner().notifyChangeOriginPlayer(this, originPlayer);
             this.originPlayer = originPlayer;
         }
     }
@@ -591,7 +589,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
         this.goalSelector.addGoal(4, new LookAtPlayerAndWaitGoal(this, LivingEntity.class, 4.0F, 0.004F, 80, 160));
         this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, LivingEntity.class, 8.0F));
         this.goalSelector.addGoal(6, new RandomStrollAwayGoal(this, 0.35, () -> 0.0025f, m -> { var tr = (TrainerMob)m; return !tr.canBattle() && tr.getCooldown() == 0; }));
-        this.goalSelector.addGoal(8, new MoveCloseToTargetGoal(this, 0.35, () -> this.requiredBy(this.getTarget()) ? 0.25f : 0.0025f, 2*RCTMod.get().getServerConfig().maxHorizontalDistanceToPlayers()));
+        this.goalSelector.addGoal(8, new MoveCloseToTargetGoal(this, 0.35, () -> this.requiredBy(this.getTarget()) ? 0.25f : 0.0025f, 2*RCTMod.getInstance().getServerConfig().maxHorizontalDistanceToPlayers()));
         this.goalSelector.addGoal(10, new RandomStrollThroughVillageGoal(this, 0.35F, () -> 0.0025f));
         this.goalSelector.addGoal(12, new WaterAvoidingRandomStrollGoal(this, 0.35));
     }
@@ -599,7 +597,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
     public boolean requiredBy(LivingEntity entity) {
         if(entity instanceof Player player) {
             var plState = PlayerState.get(player);
-            var trMob = RCTMod.get().getTrainerManager().getData(this);
+            var trMob = RCTMod.getInstance().getTrainerManager().getData(this);
             var type = trMob.getType();
 
             return (type == TrainerMobData.Type.BOSS

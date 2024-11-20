@@ -84,7 +84,7 @@ public final class PlayerCommands {
     }
 
     private static CompletableFuture<Suggestions> get_trainer_suggestions(final CommandContext<CommandSourceStack> context, final SuggestionsBuilder builder) throws CommandSyntaxException {
-        RCTMod.get().getTrainerManager().getAllData().map(e -> e.getKey()).forEach(builder::suggest);
+        RCTMod.getInstance().getTrainerManager().getAllData().map(e -> e.getKey()).forEach(builder::suggest);
         return builder.buildFuture();
     }
 
@@ -95,7 +95,7 @@ public final class PlayerCommands {
 
     private static int player_get_level_cap(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         if(context.getSource().getEntity() instanceof Player player) {
-            var level_cap = RCTMod.get().getTrainerManager().getData(player).getLevelCap();
+            var level_cap = RCTMod.getInstance().getTrainerManager().getData(player).getLevelCap();
             context.getSource().sendSuccess(() -> Component.literal(String.valueOf(level_cap)), false);
             return level_cap;
         }
@@ -106,7 +106,7 @@ public final class PlayerCommands {
 
     private static int player_get_level_cap_target(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         var player = EntityArgument.getPlayer(context, "target");
-        var level_cap = RCTMod.get().getTrainerManager().getData(player).getLevelCap();
+        var level_cap = RCTMod.getInstance().getTrainerManager().getData(player).getLevelCap();
         context.getSource().sendSuccess(() -> Component.literal(String.valueOf(level_cap)), false);
         return level_cap;
     }
@@ -174,7 +174,7 @@ public final class PlayerCommands {
     private static int player_set_level_cap_value(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         if(context.getSource().getEntity() instanceof Player player) {
             var level_cap = IntegerArgumentType.getInteger(context, "value");
-            RCTMod.get().getTrainerManager().getData(player).setLevelCap(player, level_cap);
+            RCTMod.getInstance().getTrainerManager().getData(player).setLevelCap(player, level_cap);
             return level_cap;
         }
         
@@ -185,7 +185,7 @@ public final class PlayerCommands {
     private static int player_set_level_cap_targets_value(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         var targets = EntityArgument.getPlayers(context, "targets");
         var level_cap = IntegerArgumentType.getInteger(context, "value");
-        var tm = RCTMod.get().getTrainerManager();
+        var tm = RCTMod.getInstance().getTrainerManager();
 
         for(var player : targets) {
             tm.getData(player).setLevelCap(player, level_cap);
@@ -199,7 +199,7 @@ public final class PlayerCommands {
             try {
                 var trainerId = context.getArgument("trainerId", String.class);
                 var count = IntegerArgumentType.getInteger(context, "value");
-                RCTMod.get().getTrainerManager().getBattleMemory((ServerLevel)player.level(), trainerId).setDefeatedBy(trainerId, player, count);
+                RCTMod.getInstance().getTrainerManager().getBattleMemory((ServerLevel)player.level(), trainerId).setDefeatedBy(trainerId, player, count);
                 return count;
             } catch(IllegalArgumentException e) {
                 context.getSource().sendFailure(Component.literal(e.getMessage()));
@@ -216,7 +216,7 @@ public final class PlayerCommands {
             var trainerId = context.getArgument("trainerId", String.class);
             var targets = EntityArgument.getPlayers(context, "targets");
             var count = IntegerArgumentType.getInteger(context, "value");
-            var tm = RCTMod.get().getTrainerManager();
+            var tm = RCTMod.getInstance().getTrainerManager();
 
             for(var player : targets) {
                 tm.getBattleMemory((ServerLevel)player.level(), trainerId).setDefeatedBy(trainerId, player, count);

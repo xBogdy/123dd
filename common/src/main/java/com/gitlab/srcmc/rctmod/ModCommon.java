@@ -17,53 +17,186 @@
  */
 package com.gitlab.srcmc.rctmod;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.cobblemon.mod.common.api.Priority;
+import com.cobblemon.mod.common.api.battles.model.actor.BattleActor;
 import com.cobblemon.mod.common.api.events.CobblemonEvents;
-import com.gitlab.srcmc.rctmod.advancements.criteria.DefeatCountTrigger;
+import com.cobblemon.mod.common.api.events.battles.BattleVictoryEvent;
+import com.cobblemon.mod.common.api.events.pokemon.ExperienceGainedPreEvent;
+import com.gitlab.srcmc.rctapi.api.RCTApi;
+import com.gitlab.srcmc.rctapi.commands.RCTApiCommands;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
+import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.client.screens.IScreenManager;
 import com.gitlab.srcmc.rctmod.commands.PlayerCommands;
 import com.gitlab.srcmc.rctmod.commands.TrainerCommands;
-import com.gitlab.srcmc.rctmod.config.ClientConfig;
-import com.gitlab.srcmc.rctmod.config.ServerConfig;
-import com.gitlab.srcmc.rctmod.platform.CobblemonHandler;
-import com.gitlab.srcmc.rctmod.platform.ModRegistries;
-import com.gitlab.srcmc.rctmod.platform.util.Configs;
-import com.gitlab.srcmc.rctmod.platform.util.PlayerController;
+import com.gitlab.srcmc.rctmod.network.PlayerStatePayload;
+import com.mojang.brigadier.CommandDispatcher;
+
 import dev.architectury.event.events.common.CommandRegistrationEvent;
-import net.minecraft.advancements.CriteriaTriggers;
+import dev.architectury.event.events.common.LifecycleEvent;
+import dev.architectury.event.events.common.PlayerEvent;
+import dev.architectury.event.events.common.TickEvent.LevelTick;
+import dev.architectury.networking.NetworkManager;
+import dev.architectury.registry.ReloadListenerRegistry;
+import kotlin.Unit;
+import net.minecraft.commands.CommandBuildContext;
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.commands.Commands.CommandSelection;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.packs.PackType;
+import net.minecraft.world.entity.player.Player;
 
 public class ModCommon {
     public static final String MOD_ID = "rctmod";
     public static final String MOD_NAME = "Radical Cobblemon Trainers";
     public static final Logger LOG = LoggerFactory.getLogger(MOD_NAME);
-    public static IScreenManager SCREENS = new IScreenManager() {}; // needs to be set on client side
+
+    private static IScreenManager screenManager;
+    private static Player localPlayer;
 
     public static void init() {
-        ModCommon.LOG.info("INITIALIZING COMMON");
         ModRegistries.init();
-        ModCommon.registerCommands();
-        // ModCommon.registerAdvancementCriteria();
-        ModCommon.registerCobblemonEvents();
-        RCTMod.init(new PlayerController(), new Configs(new ClientConfig(), new ServerConfig(), null));
+        RCTApiCommands.register();
+        ModCommon.registerEvents();
     }
 
-    static void registerCommands() {
-        CommandRegistrationEvent.EVENT.register((dispatcher, registryAccess, environment) -> {
-            PlayerCommands.register(dispatcher);
-            TrainerCommands.register(dispatcher);
+    // called on client side to initialize
+    public static void initScreenManager(IScreenManager screenManager) {
+        ModCommon.screenManager = screenManager;
+    }
+
+    // called on client side to initialize
+    public static void initLocalPlayer(Player player) {
+        ModCommon.localPlayer = player;
+    }
+
+    // not available on server side
+    public static Optional<IScreenManager> getScreenManager() {
+        return Optional.ofNullable(ModCommon.screenManager);
+    }
+
+    // not available on server side
+    public static Optional<Player> getLocalPlayer() {
+        return Optional.ofNullable(ModCommon.localPlayer);
+    }
+
+    static void registerEvents() {
+        CommandRegistrationEvent.EVENT.register(ModCommon::onCommandRegistration);
+        LifecycleEvent.SERVER_STARTING.register(ModCommon::onServerStarting);
+        LevelTick.SERVER_LEVEL_PRE.register(ModCommon::onServerWorldTick);
+        LevelTick.SERVER_PRE.register(ModCommon::onServerTick);
+        PlayerEvent.PLAYER_JOIN.register(ModCommon::onPlayerJoin);
+        PlayerEvent.PLAYER_QUIT.register(ModCommon::onPlayerQuit);
+        CobblemonEvents.BATTLE_VICTORY.subscribe(Priority.NORMAL, ModCommon::onBattleVictory);
+        CobblemonEvents.EXPERIENCE_GAINED_EVENT_PRE.subscribe(Priority.HIGHEST, ModCommon::onExperienceGained);
+    }
+
+    // CommandRegistrationEvent
+
+    static void onCommandRegistration(CommandDispatcher<CommandSourceStack> dispatcher, CommandBuildContext context, CommandSelection env) {
+        PlayerCommands.register(dispatcher);
+        TrainerCommands.register(dispatcher);
+    }
+
+    // LifecycleEvent
+
+    static void onServerStarting(MinecraftServer server) {
+        RCTApi.getInstance().getTrainerRegistry().init(server);
+        RCTMod.getInstance().getTrainerSpawner().init(server.overworld());
+        RCTMod.getInstance().getTrainerManager().forceReload(server.getResourceManager());
+        ReloadListenerRegistry.register(PackType.SERVER_DATA, RCTMod.getInstance().getTrainerManager());
+    }
+
+    // LevelTick
+
+    static void onServerTick(MinecraftServer server) {
+        RCTMod.getInstance().getTrainerSpawner().checkDespawns();
+    }
+
+    static void onServerWorldTick(ServerLevel level) {
+        level.players().forEach(player -> {
+            if(player.tickCount % RCTMod.getInstance().getServerConfig().spawnIntervalTicks() == 0) {
+                RCTMod.getInstance().getTrainerSpawner().attemptSpawnFor(player);
+            }
+
+            if(player.tickCount % PlayerState.SYNC_INTERVAL_TICKS == 0) {
+                var bytes = PlayerState.get(player).serializeUpdate();
+
+                if(bytes.length > 0) {
+                    NetworkManager.sendToPlayer(player, PlayerStatePayload.of(bytes));
+                }
+            }
         });
     }
 
-    // static void registerAdvancementCriteria() {
-    //     CriteriaTriggers.register("defeat_count", DefeatCountTrigger.get()); // TODO: registry frozen (neoforge)
-    // }
+    // PlayerEvent
+    
+    static void onPlayerJoin(ServerPlayer player) {
+        var trainerId = RCTMod.getInstance().getTrainerManager().registerPlayer(player);
+        RCTApi.getInstance().getTrainerRegistry().registerPlayer(trainerId, player);
+        ModCommon.LOG.info(String.format("Registered trainer player: %s", trainerId));
+    }
 
-    static void registerCobblemonEvents() {
-        CobblemonEvents.BATTLE_VICTORY.subscribe(Priority.NORMAL, CobblemonHandler::handleBattleVictory);
-        CobblemonEvents.EXPERIENCE_GAINED_EVENT_PRE.subscribe(Priority.HIGHEST, CobblemonHandler::handleExperienceGained);
+    static void onPlayerQuit(ServerPlayer player) {
+        var trainerId = RCTMod.getInstance().getTrainerManager().unregisterPlayer(player);
+
+        if(RCTApi.getInstance().getTrainerRegistry().unregisterById(trainerId) != null) {
+            ModCommon.LOG.info(String.format("Unregistered trainer player: %s", trainerId));
+        }
+    }
+
+    // CobblemonEvent
+
+    public static Unit onBattleVictory(BattleVictoryEvent event) {
+        if(!ModCommon.removeBattleFromInitiator(event.getWinners(), true)) {
+            ModCommon.removeBattleFromInitiator(event.getLosers(), false);
+        }
+
+        return Unit.INSTANCE;
+    }
+
+    public static Unit onExperienceGained(ExperienceGainedPreEvent event) {
+        var owner = event.getPokemon().getOwnerPlayer();
+
+        if(owner != null) {
+            var playerTr = RCTMod.getInstance().getTrainerManager().getData(owner);
+            var maxExp = event.getPokemon().getExperienceToLevel(playerTr.getLevelCap());
+
+            if(maxExp < event.getExperience()) {
+                owner.server.getCommands().performPrefixedCommand(
+                    owner.server.createCommandSourceStack().withSuppressedOutput(),
+                    String.format("title %s actionbar \"%s is %s the level cap (%d)\"",
+                        owner.getName().getString(),
+                        event.getPokemon().getDisplayName().getString(),
+                        event.getPokemon().getLevel() == playerTr.getLevelCap() ? "at" : "over",
+                        playerTr.getLevelCap()));
+            }
+
+            event.setExperience(Math.min(event.getExperience(), maxExp));
+        }
+
+        return Unit.INSTANCE;
+    }
+
+    private static boolean removeBattleFromInitiator(List<BattleActor> actors, boolean winners) {
+        for(var actor : actors) {
+            var trainerBattle = RCTMod.getInstance().getTrainerManager().getBattle(actor.getUuid());
+
+            if(trainerBattle.isPresent()) {
+                RCTMod.getInstance().getTrainerManager().removeBattle(actor.getUuid());
+                trainerBattle.get().distributeRewards(winners);
+                return true;
+            }
+        }
+
+        return false;
     }
 }

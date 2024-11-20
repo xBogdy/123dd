@@ -87,7 +87,7 @@ public class TrainerSpawner {
             new Factory<>(SavedStringIntegerMap::new, SavedStringIntegerMap::of, DataFixTypes.LEVEL),
             SavedStringIntegerMap.filePath("spawn.counts"));
 
-        if(RCTMod.get().getServerConfig().logSpawning()) {
+        if(RCTMod.getInstance().getServerConfig().logSpawning()) {
             ModCommon.LOG.info("Initialized trainer spawner" + this.persistentSpawns.keySet().stream().reduce("", (u1, u2) -> u1 + " " + u2));
         }
     }
@@ -111,7 +111,7 @@ public class TrainerSpawner {
         var spawns = mob.isPersistenceRequired() ? this.persistentSpawns : this.spawns;
 
         if(!spawns.containsKey(mob.getStringUUID())) {
-            var identity = RCTMod.get().getTrainerManager().getData(mob).getTeam().getIdentity();
+            var identity = RCTMod.getInstance().getTrainerManager().getData(mob).getTeam().getIdentity();
             var identities = mob.isPersistenceRequired() ? this.persistentNames : this.identities;
             var originPlayer = mob.getOriginPlayer();
             var playerSpawns = mob.isPersistenceRequired() ? this.persistentPlayerSpawns : this.playerSpawns;
@@ -128,7 +128,7 @@ public class TrainerSpawner {
                 this.mobs.add(mob);
             }
 
-            var config = RCTMod.get().getServerConfig();
+            var config = RCTMod.getInstance().getServerConfig();
 
             if(config.logSpawning()) {
                 ModCommon.LOG.info(String.format("Registered%strainer '%s' (%s) to spawner, attached to %s (%d/%d), (%d/%d)",
@@ -144,7 +144,7 @@ public class TrainerSpawner {
         var spawns = mob.isPersistenceRequired() ? this.persistentSpawns : this.spawns;
 
         if(spawns.containsKey(mob.getStringUUID())) {
-            var identity = RCTMod.get().getTrainerManager().getData(mob).getTeam().getIdentity();
+            var identity = RCTMod.getInstance().getTrainerManager().getData(mob).getTeam().getIdentity();
             var identities = mob.isPersistenceRequired() ? this.persistentNames : this.identities;
             var originPlayer = mob.getOriginPlayer();
             var playerSpawns = mob.isPersistenceRequired() ? this.persistentPlayerSpawns : this.playerSpawns;
@@ -157,7 +157,7 @@ public class TrainerSpawner {
             identities.compute(identity, (key, value) -> value == 1 ? null : value - 1);
             spawns.remove(mob.getStringUUID());
 
-            var config = RCTMod.get().getServerConfig();
+            var config = RCTMod.getInstance().getServerConfig();
 
             if(config.logSpawning()) {
                 ModCommon.LOG.info(String.format("Unregistered%strainer '%s' (%s) from spawner, attached to %s (%d/%d), (%d/%d)",
@@ -185,8 +185,8 @@ public class TrainerSpawner {
         if(spawns.containsKey(mob.getStringUUID())) {
             ModCommon.LOG.info(String.format("Changing trainer id '%s' -> '%s' (%s)", mob.getTrainerId(), newTrainerId, mob.getStringUUID()));
 
-            var identity = RCTMod.get().getTrainerManager().getData(mob).getTeam().getIdentity();
-            var newIdentity = RCTMod.get().getTrainerManager().getData(newTrainerId).getTeam().getIdentity();
+            var identity = RCTMod.getInstance().getTrainerManager().getData(mob).getTeam().getIdentity();
+            var newIdentity = RCTMod.getInstance().getTrainerManager().getData(newTrainerId).getTeam().getIdentity();
             var identities = mob.isPersistenceRequired() ? this.persistentNames : this.identities;
             identities.compute(identity, (key, value) -> value == 1 ? null : value - 1);
             identities.compute(newIdentity, (key, value) -> value == null ? 1 : value + 1);
@@ -233,9 +233,9 @@ public class TrainerSpawner {
     }
 
     public void attemptSpawnFor(Player player) {
-        var config = RCTMod.get().getServerConfig();
+        var config = RCTMod.getInstance().getServerConfig();
 
-        if(config.globalSpawnChance() < player.getRandom().nextFloat() || RCTMod.get().getTrainerManager().getPlayerLevel(player) == 0) {
+        if(config.globalSpawnChance() < player.getRandom().nextFloat() || RCTMod.getInstance().getTrainerManager().getPlayerLevel(player) == 0) {
             return;
         }
 
@@ -263,7 +263,7 @@ public class TrainerSpawner {
     }
 
     private void spawnFor(Player player, String trainerId, BlockPos pos) {
-        var config = RCTMod.get().getServerConfig();
+        var config = RCTMod.getInstance().getServerConfig();
         var level = player.level();
         var mob = TrainerMob.getEntityType().create(level);
         mob.setPos(pos.getCenter().add(0, -0.5, 0));
@@ -273,7 +273,7 @@ public class TrainerSpawner {
         this.register(mob);
 
         if(config.logSpawning()) {
-            var trainer = RCTMod.get().getTrainerManager().getData(trainerId).getTeam().getDisplayName();
+            var trainer = RCTMod.getInstance().getTrainerManager().getData(trainerId).getTeam().getDisplayName();
             var biome = level.getBiome(mob.blockPosition());
             var dim = level.dimension();
 
@@ -289,7 +289,7 @@ public class TrainerSpawner {
 
     @SuppressWarnings("unused")
     private BlockPos nextPos(Player player) {
-        var config = RCTMod.get().getServerConfig();
+        var config = RCTMod.getInstance().getServerConfig();
         var level = player.level();
         var rng = player.getRandom();
         
@@ -385,11 +385,11 @@ public class TrainerSpawner {
             .map(t -> t.location().getPath())
             .forEach(t -> tags.add(t));
 
-        var config = RCTMod.get().getServerConfig();
+        var config = RCTMod.getInstance().getServerConfig();
 
         if(config.biomeTagBlacklist().stream().noneMatch(tags::contains)
         && (config.biomeTagWhitelist().isEmpty() || config.biomeTagWhitelist().stream().anyMatch(tags::contains))) {
-            RCTMod.get().getTrainerManager().getAllData()
+            RCTMod.getInstance().getTrainerManager().getAllData()
                 .filter(e -> this.isUnique(e.getValue().getTeam().getIdentity())
                     && e.getValue().getBiomeTagBlacklist().stream().noneMatch(tags::contains)
                     && (e.getValue().getBiomeTagWhitelist().isEmpty() || e.getValue().getBiomeTagWhitelist().stream().anyMatch(tags::contains)))
@@ -428,8 +428,8 @@ public class TrainerSpawner {
             return 0;
         }
 
-        var config = RCTMod.get().getServerConfig();
-        var tm = RCTMod.get().getTrainerManager();
+        var config = RCTMod.getInstance().getServerConfig();
+        var tm = RCTMod.getInstance().getTrainerManager();
         var playerLevel = tm.getPlayerLevel(player);
         var reqLevelCap = mobTr.getRequiredLevelCap();
         var levelCap = ps.getLevelCap();
@@ -451,7 +451,7 @@ public class TrainerSpawner {
             var player = trainer.level().getPlayerByUUID(playerUUID);
 
             if(player != null) {
-                var tm = RCTMod.get().getTrainerManager();
+                var tm = RCTMod.getInstance().getTrainerManager();
                 var trMob = tm.getData(trainer);
                 
                 if(trMob.getRewardLevelCap() > tm.getData(player).getLevelCap()) {

@@ -1,6 +1,5 @@
-package com.gitlab.srcmc.rctmod.platform;
+package com.gitlab.srcmc.rctmod;
 
-import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.advancements.criteria.DefeatCountTrigger;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import com.gitlab.srcmc.rctmod.world.items.TrainerCard;

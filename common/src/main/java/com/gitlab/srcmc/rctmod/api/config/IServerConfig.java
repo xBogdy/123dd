@@ -19,7 +19,7 @@ package com.gitlab.srcmc.rctmod.api.config;
 
 import java.util.List;
 
-public interface IServerConfig extends IForgeConfig {
+public interface IServerConfig extends IModConfig {
     /**
      * A global factor that determines if a spawn attempt for a trainer is made.
      * 
