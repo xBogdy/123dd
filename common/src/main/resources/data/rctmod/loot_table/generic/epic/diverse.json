@@ -80,7 +80,7 @@
           "functions": [
             {
               "function": "minecraft:enchant_randomly",
-              "enchantments": [
+              "options": [
                 "minecraft:aqua_affinity",
                 "minecraft:binding_curse",
                 "minecraft:blast_protection",

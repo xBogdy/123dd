@@ -74,7 +74,7 @@ subprojects {
     processResources {
         from project(":common").sourceSets.main.resources
         
-        filesMatching(['**/*.mods.toml', 'pack.mcmeta', 'fabric.mod.json', '*.mixins.json']) {
+        filesMatching(['**/*.mods.toml', '**/pack.mcmeta', 'fabric.mod.json', '*.mixins.json']) {
             expand project.properties
         }
     }
