@@ -1,11 +1,11 @@
 {
-  "displayName": "Lass Megan",
+  "name": "Lass Megan",
   "team": [
     {
-      "species": "cobblemon:magby",
+      "species": "magby",
       "gender": "FEMALE",
       "level": 35,
-      "nature": "cobblemon:hasty",
+      "nature": "hasty",
       "ability": "magmaarmor",
       "moveset": [
         "flameburst",
@@ -15,28 +15,19 @@
       ],
       "ivs": {
         "hp": 5,
-        "attack": 5,
-        "defence": 5,
-        "special_attack": 5,
-        "special_defence": 5,
-        "speed": 5
+        "atk": 5,
+        "def": 5,
+        "spa": 5,
+        "spd": 5,
+        "spe": 5
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:smoochum",
+      "species": "smoochum",
       "gender": "FEMALE",
       "level": 35,
-      "nature": "cobblemon:quiet",
+      "nature": "quiet",
       "ability": "forewarn",
       "moveset": [
         "meanlook",
@@ -46,28 +37,19 @@
       ],
       "ivs": {
         "hp": 5,
-        "attack": 5,
-        "defence": 5,
-        "special_attack": 5,
-        "special_defence": 5,
-        "speed": 5
+        "atk": 5,
+        "def": 5,
+        "spa": 5,
+        "spd": 5,
+        "spe": 5
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:comfey",
+      "species": "comfey",
       "gender": "MALE",
       "level": 35,
-      "nature": "cobblemon:bold",
+      "nature": "bold",
       "ability": "triage",
       "moveset": [
         "petalblizzard",
@@ -77,28 +59,19 @@
       ],
       "ivs": {
         "hp": 5,
-        "attack": 5,
-        "defence": 5,
-        "special_attack": 5,
-        "special_defence": 5,
-        "speed": 5
+        "atk": 5,
+        "def": 5,
+        "spa": 5,
+        "spd": 5,
+        "spe": 5
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:elekid",
+      "species": "elekid",
       "gender": "FEMALE",
       "level": 36,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "static",
       "moveset": [
         "lightscreen",
@@ -108,28 +81,19 @@
       ],
       "ivs": {
         "hp": 5,
-        "attack": 5,
-        "defence": 5,
-        "special_attack": 5,
-        "special_defence": 5,
-        "speed": 5
+        "atk": 5,
+        "def": 5,
+        "spa": 5,
+        "spd": 5,
+        "spe": 5
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:kirlia",
+      "species": "kirlia",
       "gender": "MALE",
       "level": 35,
-      "nature": "cobblemon:modest",
+      "nature": "modest",
       "ability": "trace",
       "moveset": [
         "drainingkiss",
@@ -139,26 +103,13 @@
       ],
       "ivs": {
         "hp": 5,
-        "attack": 5,
-        "defence": 5,
-        "special_attack": 5,
-        "special_defence": 5,
-        "speed": 5
+        "atk": 5,
+        "def": 5,
+        "spa": 5,
+        "spd": 5,
+        "spe": 5
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

@@ -1,11 +1,11 @@
 {
-  "displayName": "Picnicker Claire",
+  "name": "Picnicker Claire",
   "team": [
     {
-      "species": "cobblemon:alakazam",
+      "species": "alakazam",
       "gender": "FEMALE",
       "level": 92,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "synchronize",
       "moveset": [
         "expandingforce",
@@ -15,28 +15,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 4,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "def": 4,
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:alakazite"
+      "heldItem": "alakazite"
     },
     {
-      "species": "cobblemon:indeedee",
+      "species": "indeedee",
       "gender": "MALE",
       "level": 93,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "psychicsurge",
       "moveset": [
         "expandingforce",
@@ -46,28 +42,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 4,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "def": 4,
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:tanga_berry"
+      "heldItem": "tanga_berry"
     },
     {
-      "species": "cobblemon:dugtrio",
+      "species": "dugtrio",
       "gender": "MALE",
       "level": 93,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "arenatrap",
       "moveset": [
         "earthquake",
@@ -77,28 +69,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 252,
-        "defence": 4,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "def": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:focus_sash"
+      "heldItem": "focus_sash"
     },
     {
-      "species": "cobblemon:lucario",
+      "species": "lucario",
       "gender": "FEMALE",
       "level": 93,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "justified",
       "moveset": [
         "crunch",
@@ -108,26 +96,18 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 252,
-        "defence": 4,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "def": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:life_orb"
+      "heldItem": "life_orb"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

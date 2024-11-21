@@ -1,11 +1,11 @@
 {
-  "displayName": "Ace Trainer Leroy",
+  "name": "Ace Trainer Leroy",
   "team": [
     {
-      "species": "cobblemon:rhydon",
+      "species": "rhydon",
       "gender": "MALE",
       "level": 52,
-      "nature": "cobblemon:lax",
+      "nature": "lax",
       "ability": "rockhead",
       "moveset": [
         "earthquake",
@@ -15,28 +15,19 @@
       ],
       "ivs": {
         "hp": 25,
-        "attack": 25,
-        "defence": 25,
-        "special_attack": 25,
-        "special_defence": 25,
-        "speed": 25
+        "atk": 25,
+        "def": 25,
+        "spa": 25,
+        "spd": 25,
+        "spe": 25
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:slowbro",
+      "species": "slowbro",
       "gender": "MALE",
       "level": 54,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "owntempo",
       "moveset": [
         "psychic",
@@ -46,28 +37,19 @@
       ],
       "ivs": {
         "hp": 25,
-        "attack": 25,
-        "defence": 25,
-        "special_attack": 25,
-        "special_defence": 25,
-        "speed": 25
+        "atk": 25,
+        "def": 25,
+        "spa": 25,
+        "spd": 25,
+        "spe": 25
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:kangaskhan",
+      "species": "kangaskhan",
       "gender": "FEMALE",
       "level": 52,
-      "nature": "cobblemon:mild",
+      "nature": "mild",
       "ability": "scrappy",
       "moveset": [
         "dizzypunch",
@@ -77,28 +59,19 @@
       ],
       "ivs": {
         "hp": 25,
-        "attack": 25,
-        "defence": 25,
-        "special_attack": 25,
-        "special_defence": 25,
-        "speed": 25
+        "atk": 25,
+        "def": 25,
+        "spa": 25,
+        "spd": 25,
+        "spe": 25
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:machamp",
+      "species": "machamp",
       "gender": "FEMALE",
       "level": 52,
-      "nature": "cobblemon:relaxed",
+      "nature": "relaxed",
       "ability": "noguard",
       "moveset": [
         "crosschop",
@@ -108,28 +81,19 @@
       ],
       "ivs": {
         "hp": 25,
-        "attack": 25,
-        "defence": 25,
-        "special_attack": 25,
-        "special_defence": 25,
-        "speed": 25
+        "atk": 25,
+        "def": 25,
+        "spa": 25,
+        "spd": 25,
+        "spe": 25
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:ursaring",
+      "species": "ursaring",
       "gender": "MALE",
       "level": 55,
-      "nature": "cobblemon:careful",
+      "nature": "careful",
       "ability": "quickfeet",
       "moveset": [
         "slash",
@@ -139,26 +103,13 @@
       ],
       "ivs": {
         "hp": 25,
-        "attack": 25,
-        "defence": 25,
-        "special_attack": 25,
-        "special_defence": 25,
-        "speed": 25
+        "atk": 25,
+        "def": 25,
+        "spa": 25,
+        "spd": 25,
+        "spe": 25
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

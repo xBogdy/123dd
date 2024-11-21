@@ -1,11 +1,11 @@
 {
-  "displayName": "Gentleman Thomas",
+  "name": "Gentleman Thomas",
   "team": [
     {
-      "species": "cobblemon:growlithe",
+      "species": "growlithe",
       "gender": "FEMALE",
       "level": 26,
-      "nature": "cobblemon:bashful",
+      "nature": "bashful",
       "ability": "intimidate",
       "moveset": [
         "flamewheel",
@@ -15,28 +15,19 @@
       ],
       "ivs": {
         "hp": 15,
-        "attack": 15,
-        "defence": 15,
-        "special_attack": 15,
-        "special_defence": 15,
-        "speed": 15
+        "atk": 15,
+        "def": 15,
+        "spa": 15,
+        "spd": 15,
+        "spe": 15
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:litleo",
+      "species": "litleo",
       "gender": "MALE",
       "level": 26,
-      "nature": "cobblemon:naive",
+      "nature": "naive",
       "ability": "rivalry",
       "moveset": [
         "headbutt",
@@ -46,26 +37,13 @@
       ],
       "ivs": {
         "hp": 15,
-        "attack": 15,
-        "defence": 15,
-        "special_attack": 15,
-        "special_defence": 15,
-        "speed": 15
+        "atk": 15,
+        "def": 15,
+        "spa": 15,
+        "spd": 15,
+        "spe": 15
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

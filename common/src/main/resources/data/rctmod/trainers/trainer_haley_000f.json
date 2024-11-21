@@ -1,11 +1,11 @@
 {
-  "displayName": "Trainer Haley",
+  "name": "Trainer Haley",
   "team": [
     {
-      "species": "cobblemon:magnezone",
+      "species": "magnezone",
       "gender": "GENDERLESS",
       "level": 44,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "sturdy",
       "moveset": [
         "voltswitch",
@@ -15,28 +15,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:air_balloon"
+      "heldItem": "air_balloon"
     },
     {
-      "species": "cobblemon:hawlucha",
+      "species": "hawlucha",
       "gender": "MALE",
       "level": 44,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "unburden",
       "moveset": [
         "skyattack",
@@ -46,28 +42,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:power_herb"
+      "heldItem": "power_herb"
     },
     {
-      "species": "cobblemon:magmortar",
+      "species": "magmortar",
       "gender": "FEMALE",
       "level": 44,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "flamebody",
       "moveset": [
         "meteorbeam",
@@ -77,28 +69,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:power_herb"
+      "heldItem": "power_herb"
     },
     {
-      "species": "cobblemon:cursola",
+      "species": "cursola",
       "gender": "MALE",
       "level": 44,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "unburden",
       "moveset": [
         "meteorbeam",
@@ -108,28 +96,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:power_herb"
+      "heldItem": "power_herb"
     },
     {
-      "species": "cobblemon:starmie",
+      "species": "starmie",
       "gender": "GENDERLESS",
       "level": 44,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "analytic",
       "moveset": [
         "meteorbeam",
@@ -139,28 +123,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:power_herb"
+      "heldItem": "power_herb"
     },
     {
-      "species": "cobblemon:sandaconda",
+      "species": "sandaconda",
       "gender": "FEMALE",
       "level": 44,
-      "nature": "cobblemon:careful",
+      "nature": "careful",
       "ability": "shedskin",
       "moveset": [
         "bodyslam",
@@ -170,26 +150,17 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 252,
-        "speed": 0
+        "spd": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:sandacondite"
+      "heldItem": "sandacondite"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

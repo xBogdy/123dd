@@ -1,11 +1,11 @@
 {
-  "displayName": "Ace Trainer Janny",
+  "name": "Ace Trainer Janny",
   "team": [
     {
-      "species": "cobblemon:pelipper",
+      "species": "pelipper",
       "gender": "FEMALE",
       "level": 95,
-      "nature": "cobblemon:calm",
+      "nature": "calm",
       "ability": "drizzle",
       "moveset": [
         "scald",
@@ -15,28 +15,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 248,
-        "attack": 0,
-        "defence": 8,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "def": 8,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:damp_rock"
+      "heldItem": "damp_rock"
     },
     {
-      "species": "cobblemon:ferrothorn",
+      "species": "ferrothorn",
       "gender": "FEMALE",
       "level": 93,
-      "nature": "cobblemon:impish",
+      "nature": "impish",
       "ability": "ironbarbs",
       "moveset": [
         "powerwhip",
@@ -46,28 +42,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 248,
-        "attack": 0,
-        "defence": 252,
-        "special_attack": 0,
-        "special_defence": 8,
-        "speed": 0
+        "def": 252,
+        "spd": 8
       },
-      "shiny": false,
-      "heldItem": "cobblemon:rocky_helmet"
+      "heldItem": "rocky_helmet"
     },
     {
-      "species": "cobblemon:seismitoad",
+      "species": "seismitoad",
       "gender": "MALE",
       "level": 93,
-      "nature": "cobblemon:modest",
+      "nature": "modest",
       "ability": "swiftswim",
       "moveset": [
         "weatherball",
@@ -77,28 +69,23 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:life_orb"
+      "heldItem": "life_orb"
     },
     {
-      "species": "cobblemon:articuno",
+      "species": "articuno",
       "gender": "GENDERLESS",
       "level": 95,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "competitive",
       "moveset": [
         "hurricane",
@@ -108,31 +95,27 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 4,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "def": 4,
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:weaknesspol",
+      "heldItem": "weaknesspol",
       "aspects": [
         "galar"
       ]
     },
     {
-      "species": "cobblemon:barraskewda",
+      "species": "barraskewda",
       "gender": "MALE",
       "level": 93,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "swiftswim",
       "moveset": [
         "liquidation",
@@ -142,28 +125,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 252,
-        "defence": 4,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "def": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:waterium_z"
+      "heldItem": "waterium_z"
     },
     {
-      "species": "cobblemon:raikou",
+      "species": "raikou",
       "gender": "GENDERLESS",
       "level": 95,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "innerfocus",
       "moveset": [
         "calmmind",
@@ -173,26 +152,18 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 4,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "def": 4,
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:leftovers"
+      "heldItem": "leftovers"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

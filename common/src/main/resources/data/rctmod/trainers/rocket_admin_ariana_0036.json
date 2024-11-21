@@ -1,11 +1,11 @@
 {
-  "displayName": "Rocket Admin Ariana",
+  "name": "Rocket Admin Ariana",
   "team": [
     {
-      "species": "cobblemon:incineroar",
+      "species": "incineroar",
       "gender": "FEMALE",
       "level": 54,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "intimidate",
       "moveset": [
         "fakeout",
@@ -15,28 +15,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 6
+        "atk": 252,
+        "spe": 6
       },
-      "shiny": false,
-      "heldItem": "cobblemon:sitrus_berry"
+      "heldItem": "sitrus_berry"
     },
     {
-      "species": "cobblemon:primarina",
+      "species": "primarina",
       "gender": "FEMALE",
       "level": 55,
-      "nature": "cobblemon:modest",
+      "nature": "modest",
       "ability": "liquidvoice",
       "moveset": [
         "hypervoice",
@@ -46,28 +42,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:throat_spray"
+      "heldItem": "throat_spray"
     },
     {
-      "species": "cobblemon:mawile",
+      "species": "mawile",
       "gender": "MALE",
       "level": 55,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "intimidate",
       "moveset": [
         "playrough",
@@ -77,26 +69,18 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 6
+        "atk": 252,
+        "spe": 6
       },
-      "shiny": false,
-      "heldItem": "cobblemon:mawilite"
+      "heldItem": "mawilite"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

@@ -1,177 +1,149 @@
 {
-  "displayName": "Dumbass Creator",
+  "name": "Dumbass Creator",
   "team": [
     {
-      "species": "cobblemon:gigalith",
+      "species": "gigalith",
       "gender": "FEMALE",
       "level": 100,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "sandstream",
       "moveset": [
         "explosion"
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:smooth_rock"
+      "heldItem": "smooth_rock"
     },
     {
-      "species": "cobblemon:shedinja",
+      "species": "shedinja",
       "gender": "GENDERLESS",
       "level": 100,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "wonderguard",
       "moveset": [
         "phantomforce"
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:choice_scarf"
+      "heldItem": "choice_scarf"
     },
     {
-      "species": "cobblemon:shedinja",
+      "species": "shedinja",
       "gender": "GENDERLESS",
       "level": 100,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "wonderguard",
       "moveset": [
         "phantomforce"
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:choice_scarf"
+      "heldItem": "choice_scarf"
     },
     {
-      "species": "cobblemon:shedinja",
+      "species": "shedinja",
       "gender": "GENDERLESS",
       "level": 100,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "wonderguard",
       "moveset": [
         "phantomforce"
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:choice_scarf"
+      "heldItem": "choice_scarf"
     },
     {
-      "species": "cobblemon:shedinja",
+      "species": "shedinja",
       "gender": "GENDERLESS",
       "level": 100,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "wonderguard",
       "moveset": [
         "phantomforce"
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:choice_scarf"
+      "heldItem": "choice_scarf"
     },
     {
-      "species": "cobblemon:shedinja",
+      "species": "shedinja",
       "gender": "GENDERLESS",
       "level": 100,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "wonderguard",
       "moveset": [
         "phantomforce"
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:choice_scarf"
+      "heldItem": "choice_scarf"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

@@ -1,11 +1,11 @@
 {
-  "displayName": "Swimmer♂ Roland",
+  "name": "Swimmer♂ Roland",
   "team": [
     {
-      "species": "cobblemon:poliwhirl",
+      "species": "poliwhirl",
       "gender": "FEMALE",
       "level": 63,
-      "nature": "cobblemon:lonely",
+      "nature": "lonely",
       "ability": "waterabsorb",
       "moveset": [
         "bellydrum",
@@ -15,28 +15,19 @@
       ],
       "ivs": {
         "hp": 10,
-        "attack": 10,
-        "defence": 10,
-        "special_attack": 10,
-        "special_defence": 10,
-        "speed": 10
+        "atk": 10,
+        "def": 10,
+        "spa": 10,
+        "spd": 10,
+        "spe": 10
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:ludicolo",
+      "species": "ludicolo",
       "gender": "FEMALE",
       "level": 64,
-      "nature": "cobblemon:brave",
+      "nature": "brave",
       "ability": "swiftswim",
       "moveset": [
         "astonish",
@@ -46,28 +37,19 @@
       ],
       "ivs": {
         "hp": 10,
-        "attack": 10,
-        "defence": 10,
-        "special_attack": 10,
-        "special_defence": 10,
-        "speed": 10
+        "atk": 10,
+        "def": 10,
+        "spa": 10,
+        "spd": 10,
+        "spe": 10
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:seismitoad",
+      "species": "seismitoad",
       "gender": "MALE",
       "level": 64,
-      "nature": "cobblemon:rash",
+      "nature": "rash",
       "ability": "swiftswim",
       "moveset": [
         "drainpunch",
@@ -77,26 +59,13 @@
       ],
       "ivs": {
         "hp": 10,
-        "attack": 10,
-        "defence": 10,
-        "special_attack": 10,
-        "special_defence": 10,
-        "speed": 10
+        "atk": 10,
+        "def": 10,
+        "spa": 10,
+        "spd": 10,
+        "spe": 10
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

@@ -1,11 +1,11 @@
 {
-  "displayName": "Boss Giovanni",
+  "name": "Boss Giovanni",
   "team": [
     {
-      "species": "cobblemon:nidoking",
+      "species": "nidoking",
       "gender": "MALE",
       "level": 45,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "sheerforce",
       "moveset": [
         "earthpower",
@@ -15,28 +15,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 4,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "def": 4,
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:life_orb"
+      "heldItem": "life_orb"
     },
     {
-      "species": "cobblemon:honchkrow",
+      "species": "honchkrow",
       "gender": "FEMALE",
       "level": 45,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "superluck",
       "moveset": [
         "nightslash",
@@ -46,28 +42,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 252,
-        "defence": 4,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "def": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:scope_lens"
+      "heldItem": "scope_lens"
     },
     {
-      "species": "cobblemon:infernape",
+      "species": "infernape",
       "gender": "FEMALE",
       "level": 45,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "blaze",
       "moveset": [
         "pyroball",
@@ -77,28 +69,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 252,
-        "defence": 4,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "def": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:focus_sash"
+      "heldItem": "focus_sash"
     },
     {
-      "species": "cobblemon:kangaskhan",
+      "species": "kangaskhan",
       "gender": "FEMALE",
       "level": 46,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "innerfocus",
       "moveset": [
         "fakeout",
@@ -108,28 +96,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 0,
-        "defence": 4,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 0
+        "def": 4,
+        "spa": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:kangaskanite"
+      "heldItem": "kangaskanite"
     },
     {
-      "species": "cobblemon:rotom",
+      "species": "rotom",
       "gender": "GENDERLESS",
       "level": 45,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "levitate",
       "moveset": [
         "willowisp",
@@ -139,29 +123,21 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 4,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "def": 4,
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:sitrus_berry",
+      "heldItem": "sitrus_berry",
       "aspects": [
         "frost"
       ]
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

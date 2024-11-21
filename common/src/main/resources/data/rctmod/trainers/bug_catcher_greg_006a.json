@@ -1,11 +1,11 @@
 {
-  "displayName": "Bug Catcher Greg",
+  "name": "Bug Catcher Greg",
   "team": [
     {
-      "species": "cobblemon:nincada",
+      "species": "nincada",
       "gender": "FEMALE",
       "level": 11,
-      "nature": "cobblemon:bashful",
+      "nature": "bashful",
       "ability": "compoundeyes",
       "moveset": [
         "scratch",
@@ -14,28 +14,19 @@
       ],
       "ivs": {
         "hp": 1,
-        "attack": 1,
-        "defence": 1,
-        "special_attack": 1,
-        "special_defence": 1,
-        "speed": 1
+        "atk": 1,
+        "def": 1,
+        "spa": 1,
+        "spd": 1,
+        "spe": 1
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:sizzlipede",
+      "species": "sizzlipede",
       "gender": "FEMALE",
       "level": 11,
-      "nature": "cobblemon:sassy",
+      "nature": "sassy",
       "ability": "flashfire",
       "moveset": [
         "ember",
@@ -44,56 +35,38 @@
       ],
       "ivs": {
         "hp": 1,
-        "attack": 1,
-        "defence": 1,
-        "special_attack": 1,
-        "special_defence": 1,
-        "speed": 1
+        "atk": 1,
+        "def": 1,
+        "spa": 1,
+        "spd": 1,
+        "spe": 1
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:dustox",
+      "species": "dustox",
       "gender": "MALE",
       "level": 10,
-      "nature": "cobblemon:naughty",
+      "nature": "naughty",
       "ability": "shielddust",
       "moveset": [
         "gust"
       ],
       "ivs": {
         "hp": 1,
-        "attack": 1,
-        "defence": 1,
-        "special_attack": 1,
-        "special_defence": 1,
-        "speed": 1
+        "atk": 1,
+        "def": 1,
+        "spa": 1,
+        "spd": 1,
+        "spe": 1
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:joltik",
+      "species": "joltik",
       "gender": "FEMALE",
       "level": 11,
-      "nature": "cobblemon:serious",
+      "nature": "serious",
       "ability": "compoundeyes",
       "moveset": [
         "megadrain",
@@ -103,26 +76,13 @@
       ],
       "ivs": {
         "hp": 1,
-        "attack": 1,
-        "defence": 1,
-        "special_attack": 1,
-        "special_defence": 1,
-        "speed": 1
+        "atk": 1,
+        "def": 1,
+        "spa": 1,
+        "spd": 1,
+        "spe": 1
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

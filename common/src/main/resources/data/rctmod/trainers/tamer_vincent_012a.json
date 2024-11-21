@@ -1,11 +1,11 @@
 {
-  "displayName": "Tamer Vincent",
+  "name": "Tamer Vincent",
   "team": [
     {
-      "species": "cobblemon:persian",
+      "species": "persian",
       "gender": "FEMALE",
       "level": 80,
-      "nature": "cobblemon:serious",
+      "nature": "serious",
       "ability": "technician",
       "moveset": [
         "assurance",
@@ -15,28 +15,19 @@
       ],
       "ivs": {
         "hp": 20,
-        "attack": 20,
-        "defence": 20,
-        "special_attack": 20,
-        "special_defence": 20,
-        "speed": 20
+        "atk": 20,
+        "def": 20,
+        "spa": 20,
+        "spd": 20,
+        "spe": 20
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:golduck",
+      "species": "golduck",
       "gender": "FEMALE",
       "level": 81,
-      "nature": "cobblemon:bashful",
+      "nature": "bashful",
       "ability": "cloudnine",
       "moveset": [
         "psychup",
@@ -46,26 +37,13 @@
       ],
       "ivs": {
         "hp": 20,
-        "attack": 20,
-        "defence": 20,
-        "special_attack": 20,
-        "special_defence": 20,
-        "speed": 20
+        "atk": 20,
+        "def": 20,
+        "spa": 20,
+        "spd": 20,
+        "spe": 20
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

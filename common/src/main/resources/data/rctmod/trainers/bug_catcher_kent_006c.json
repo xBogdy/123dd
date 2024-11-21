@@ -1,11 +1,11 @@
 {
-  "displayName": "Bug Catcher Kent",
+  "name": "Bug Catcher Kent",
   "team": [
     {
-      "species": "cobblemon:weedle",
+      "species": "weedle",
       "gender": "FEMALE",
       "level": 13,
-      "nature": "cobblemon:sassy",
+      "nature": "sassy",
       "ability": "shielddust",
       "moveset": [
         "poisonsting",
@@ -14,28 +14,19 @@
       ],
       "ivs": {
         "hp": 1,
-        "attack": 1,
-        "defence": 1,
-        "special_attack": 1,
-        "special_defence": 1,
-        "speed": 1
+        "atk": 1,
+        "def": 1,
+        "spa": 1,
+        "spd": 1,
+        "spe": 1
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:kricketune",
+      "species": "kricketune",
       "gender": "FEMALE",
       "level": 12,
-      "nature": "cobblemon:calm",
+      "nature": "calm",
       "ability": "technician",
       "moveset": [
         "tackle",
@@ -45,26 +36,13 @@
       ],
       "ivs": {
         "hp": 1,
-        "attack": 1,
-        "defence": 1,
-        "special_attack": 1,
-        "special_defence": 1,
-        "speed": 1
+        "atk": 1,
+        "def": 1,
+        "spa": 1,
+        "spd": 1,
+        "spe": 1
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

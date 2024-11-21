@@ -1,11 +1,11 @@
 {
-  "displayName": "Rival Terry",
+  "name": "Rival Terry",
   "team": [
     {
-      "species": "cobblemon:kirlia",
+      "species": "kirlia",
       "gender": "MALE",
       "level": 28,
-      "nature": "cobblemon:docile",
+      "nature": "docile",
       "ability": "trace",
       "moveset": [
         "magicalleaf",
@@ -15,28 +15,19 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:lycanroc",
+      "species": "lycanroc",
       "gender": "MALE",
       "level": 26,
-      "nature": "cobblemon:quiet",
+      "nature": "quiet",
       "ability": "toughclaws",
       "moveset": [
         "rockthrow",
@@ -46,28 +37,19 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:staravia",
+      "species": "staravia",
       "gender": "FEMALE",
       "level": 26,
-      "nature": "cobblemon:rash",
+      "nature": "rash",
       "ability": "intimidate",
       "moveset": [
         "quickattack",
@@ -77,28 +59,19 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:charmeleon",
+      "species": "charmeleon",
       "gender": "FEMALE",
       "level": 28,
-      "nature": "cobblemon:lonely",
+      "nature": "lonely",
       "ability": "blaze",
       "moveset": [
         "firefang",
@@ -108,26 +81,13 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

@@ -1,11 +1,11 @@
 {
-  "displayName": "Channeler Rachel",
+  "name": "Channeler Rachel",
   "team": [
     {
-      "species": "cobblemon:grimmsnarl",
+      "species": "grimmsnarl",
       "gender": "MALE",
       "level": 91,
-      "nature": "cobblemon:relaxed",
+      "nature": "relaxed",
       "ability": "prankster",
       "moveset": [
         "fakeout",
@@ -15,28 +15,23 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 0,
-        "defence": 252,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
+        "def": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:light_clay"
+      "heldItem": "light_clay"
     },
     {
-      "species": "cobblemon:moltres",
+      "species": "moltres",
       "gender": "GENDERLESS",
       "level": 93,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "berserk",
       "moveset": [
         "darkpulse",
@@ -46,31 +41,27 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 4,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:sitrus_berry",
+      "heldItem": "sitrus_berry",
       "aspects": [
         "galar"
       ]
     },
     {
-      "species": "cobblemon:zoroark",
+      "species": "zoroark",
       "gender": "FEMALE",
       "level": 92,
-      "nature": "cobblemon:hasty",
+      "nature": "hasty",
       "ability": "illusion",
       "moveset": [
         "uturn",
@@ -80,28 +71,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 4,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:choice_scarf"
+      "heldItem": "choice_scarf"
     },
     {
-      "species": "cobblemon:sneasler",
+      "species": "sneasler",
       "gender": "MALE",
       "level": 93,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "poisontouch",
       "moveset": [
         "poisonjab",
@@ -111,28 +98,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 4,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:life_orb"
+      "heldItem": "life_orb"
     },
     {
-      "species": "cobblemon:absol",
+      "species": "absol",
       "gender": "FEMALE",
       "level": 92,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "superluck",
       "moveset": [
         "nightslash",
@@ -142,28 +125,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 4,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:absolite"
+      "heldItem": "absolite"
     },
     {
-      "species": "cobblemon:bisharp",
+      "species": "bisharp",
       "gender": "FEMALE",
       "level": 92,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "defiant",
       "moveset": [
         "knockoff",
@@ -173,26 +152,18 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 4,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:life_orb"
+      "heldItem": "life_orb"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

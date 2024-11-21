@@ -1,11 +1,11 @@
 {
-  "displayName": "Jasmine",
+  "name": "Jasmine",
   "team": [
     {
-      "species": "cobblemon:excadrill",
+      "species": "excadrill",
       "gender": "FEMALE",
       "level": 85,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "moldbreaker",
       "moveset": [
         "rapidspin",
@@ -15,28 +15,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:focus_sash"
+      "heldItem": "focus_sash"
     },
     {
-      "species": "cobblemon:magearna",
+      "species": "magearna",
       "gender": "GENDERLESS",
       "level": 85,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "soulheart",
       "moveset": [
         "shiftgear",
@@ -46,28 +42,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:steelium_z"
+      "heldItem": "steelium_z"
     },
     {
-      "species": "cobblemon:heatran",
+      "species": "heatran",
       "gender": "FEMALE",
       "level": 85,
-      "nature": "cobblemon:calm",
+      "nature": "calm",
       "ability": "flashfire",
       "moveset": [
         "lavaplume",
@@ -77,28 +69,23 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 252,
-        "speed": 0
+        "spd": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:leftovers"
+      "heldItem": "leftovers"
     },
     {
-      "species": "cobblemon:latios",
+      "species": "latios",
       "gender": "MALE",
       "level": 85,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "levitate",
       "moveset": [
         "psychic",
@@ -108,28 +95,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:latiosite"
+      "heldItem": "latiosite"
     },
     {
-      "species": "cobblemon:togekiss",
+      "species": "togekiss",
       "gender": "FEMALE",
       "level": 85,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "serenegrace",
       "moveset": [
         "airslash",
@@ -139,28 +122,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:choice_scarf"
+      "heldItem": "choice_scarf"
     },
     {
-      "species": "cobblemon:copperajah",
+      "species": "copperajah",
       "gender": "FEMALE",
       "level": 85,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "heavymetal",
       "moveset": [
         "doubleironbash",
@@ -170,26 +149,18 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 6
+        "atk": 252,
+        "spe": 6
       },
-      "shiny": false,
-      "heldItem": "cobblemon:copperajite"
+      "heldItem": "copperajite"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

@@ -1,11 +1,11 @@
 {
-  "displayName": "Dumbass Jojo Fan",
+  "name": "Dumbass Jojo Fan",
   "team": [
     {
-      "species": "cobblemon:galvantula",
+      "species": "galvantula",
       "gender": "FEMALE",
       "level": 85,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "compoundeyes",
       "moveset": [
         "stickyweb",
@@ -15,28 +15,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:focus_sash"
+      "heldItem": "focus_sash"
     },
     {
-      "species": "cobblemon:garchomp",
+      "species": "garchomp",
       "gender": "FEMALE",
       "level": 85,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "roughskin",
       "moveset": [
         "swordsdance",
@@ -46,28 +42,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:garchompite"
+      "heldItem": "garchompite"
     },
     {
-      "species": "cobblemon:huntail",
+      "species": "huntail",
       "gender": "MALE",
       "level": 85,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "intimidate",
       "moveset": [
         "shellsmash",
@@ -77,28 +69,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:white_herb"
+      "heldItem": "white_herb"
     },
     {
-      "species": "cobblemon:necrozma",
+      "species": "necrozma",
       "gender": "GENDERLESS",
       "level": 85,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "prismarmor",
       "moveset": [
         "dragondance",
@@ -108,31 +96,27 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 6
+        "atk": 252,
+        "spe": 6
       },
-      "shiny": false,
-      "heldItem": "cobblemon:weaknesspol",
+      "heldItem": "weaknesspol",
       "aspects": [
         "dusk_mane"
       ]
     },
     {
-      "species": "cobblemon:machamp",
+      "species": "machamp",
       "gender": "FEMALE",
       "level": 85,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "guts",
       "moveset": [
         "poweruppunch",
@@ -142,28 +126,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 6
+        "atk": 252,
+        "spe": 6
       },
-      "shiny": false,
-      "heldItem": "cobblemon:machampite"
+      "heldItem": "machampite"
     },
     {
-      "species": "cobblemon:hoopa",
+      "species": "hoopa",
       "gender": "GENDERLESS",
       "level": 85,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "magician",
       "moveset": [
         "nastyplot",
@@ -173,29 +153,21 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:fightinium_z",
+      "heldItem": "fightinium_z",
       "aspects": [
         "unbound"
       ]
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

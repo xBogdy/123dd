@@ -1,12 +1,12 @@
 {
-  "displayName": "Brock",
+  "name": "Brock",
   "identity": "Leader Brock",
   "team": [
     {
-      "species": "cobblemon:gigalith",
+      "species": "gigalith",
       "gender": "MALE",
       "level": 54,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "sandstream",
       "moveset": [
         "stealthrock",
@@ -16,28 +16,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 6
+        "atk": 252,
+        "spe": 6
       },
-      "shiny": false,
-      "heldItem": "cobblemon:smooth_rock"
+      "heldItem": "smooth_rock"
     },
     {
-      "species": "cobblemon:omastar",
+      "species": "omastar",
       "gender": "FEMALE",
       "level": 54,
-      "nature": "cobblemon:modest",
+      "nature": "modest",
       "ability": "swiftswim",
       "moveset": [
         "shellsmash",
@@ -47,28 +43,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:power_herb"
+      "heldItem": "power_herb"
     },
     {
-      "species": "cobblemon:sandslash",
+      "species": "sandslash",
       "gender": "FEMALE",
       "level": 54,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "sandrush",
       "moveset": [
         "swordsdance",
@@ -78,28 +70,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:soft_sand"
+      "heldItem": "soft_sand"
     },
     {
-      "species": "cobblemon:lycanroc",
+      "species": "lycanroc",
       "gender": "MALE",
       "level": 54,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "toughclaws",
       "moveset": [
         "accelerock",
@@ -109,28 +97,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:life_orb"
+      "heldItem": "life_orb"
     },
     {
-      "species": "cobblemon:tyranitar",
+      "species": "tyranitar",
       "gender": "MALE",
       "level": 55,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "sandstream",
       "moveset": [
         "stoneedge",
@@ -140,28 +124,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:weaknesspol"
+      "heldItem": "weaknesspol"
     },
     {
-      "species": "cobblemon:aerodactyl",
+      "species": "aerodactyl",
       "gender": "FEMALE",
       "level": 54,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "unnerve",
       "moveset": [
         "stoneedge",
@@ -171,26 +151,18 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:aerodactlite"
+      "heldItem": "aerodactlite"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

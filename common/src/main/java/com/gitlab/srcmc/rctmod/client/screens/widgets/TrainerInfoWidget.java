@@ -23,6 +23,7 @@ import java.util.PriorityQueue;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
+import com.gitlab.srcmc.rctapi.api.util.Locations;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
 import com.gitlab.srcmc.rctmod.client.screens.widgets.TrainerListWidget.EntryState;
@@ -210,7 +211,7 @@ public class TrainerInfoWidget extends TrainerDataWidget {
         pc.height = this.y + this.h;
 
         this.trainer.getTrainerTeam().getTeam().forEach(poke -> {
-            pc.renderables.add(new StringWidget(8, this.y += this.h , this.w, this.h, toComponent(TextUtils.trim(poke.getSpecies().split(":")[1], MAX_SPECIES_LENGTH)), this.font).alignLeft());
+            pc.renderables.add(new StringWidget(8, this.y += this.h , this.w, this.h, toComponent(TextUtils.trim(Locations.withoutNamespace(poke.getSpecies()), MAX_SPECIES_LENGTH)), this.font).alignLeft());
             pc.renderables.add(new StringWidget(8, this.y, (int)(this.w*0.9), this.h, toComponent(poke.getLevel()), this.font).alignRight());
         });
 

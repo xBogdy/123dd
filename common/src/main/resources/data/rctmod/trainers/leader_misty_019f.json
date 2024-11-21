@@ -1,11 +1,11 @@
 {
-  "displayName": "Leader Misty",
+  "name": "Leader Misty",
   "team": [
     {
-      "species": "cobblemon:frogadier",
+      "species": "frogadier",
       "gender": "FEMALE",
       "level": 25,
-      "nature": "cobblemon:bashful",
+      "nature": "bashful",
       "ability": "protean",
       "moveset": [
         "icepunch",
@@ -15,28 +15,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 100,
-        "attack": 40,
-        "defence": 0,
-        "special_attack": 40,
-        "special_defence": 0,
-        "speed": 0
+        "atk": 40,
+        "spa": 40
       },
-      "shiny": false,
-      "heldItem": "cobblemon:eviolite"
+      "heldItem": "eviolite"
     },
     {
-      "species": "cobblemon:floatzel",
+      "species": "floatzel",
       "gender": "MALE",
       "level": 25,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "technician",
       "moveset": [
         "waterpulse",
@@ -46,28 +42,20 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 30,
-        "defence": 31,
-        "special_attack": 30,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 30,
+        "def": 31,
+        "spa": 30,
+        "spd": 31,
+        "spe": 31
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:mystic_water"
+      "evs": {},
+      "heldItem": "mystic_water"
     },
     {
-      "species": "cobblemon:starmie",
+      "species": "starmie",
       "gender": "GENDERLESS",
       "level": 27,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "analytic",
       "moveset": [
         "psyshock",
@@ -77,28 +65,20 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:sitrus_berry"
+      "evs": {},
+      "heldItem": "sitrus_berry"
     },
     {
-      "species": "cobblemon:lanturn",
+      "species": "lanturn",
       "gender": "FEMALE",
       "level": 25,
-      "nature": "cobblemon:bold",
+      "nature": "bold",
       "ability": "voltabsorb",
       "moveset": [
         "scald",
@@ -108,26 +88,14 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 30,
-        "defence": 31,
-        "special_attack": 30,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 30,
+        "def": 31,
+        "spa": 30,
+        "spd": 31,
+        "spe": 31
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:iapapa_berry"
+      "evs": {},
+      "heldItem": "iapapa_berry"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

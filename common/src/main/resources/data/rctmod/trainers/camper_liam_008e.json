@@ -1,11 +1,11 @@
 {
-  "displayName": "Camper Liam",
+  "name": "Camper Liam",
   "team": [
     {
-      "species": "cobblemon:growlithe",
+      "species": "growlithe",
       "gender": "FEMALE",
       "level": 11,
-      "nature": "cobblemon:bashful",
+      "nature": "bashful",
       "ability": "intimidate",
       "moveset": [
         "rockthrow",
@@ -14,31 +14,23 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:oran_berry",
+      "evs": {},
+      "heldItem": "oran_berry",
       "aspects": [
         "hisui"
       ]
     },
     {
-      "species": "cobblemon:drilbur",
+      "species": "drilbur",
       "gender": "MALE",
       "level": 11,
-      "nature": "cobblemon:bashful",
+      "nature": "bashful",
       "ability": "moldbreaker",
       "moveset": [
         "rapidspin",
@@ -47,26 +39,14 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:soft_sand"
+      "evs": {},
+      "heldItem": "soft_sand"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

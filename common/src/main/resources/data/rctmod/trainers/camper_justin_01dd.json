@@ -1,11 +1,11 @@
 {
-  "displayName": "Camper Justin",
+  "name": "Camper Justin",
   "team": [
     {
-      "species": "cobblemon:darmanitan",
+      "species": "darmanitan",
       "gender": "FEMALE",
       "level": 92,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "zenmode",
       "moveset": [
         "uturn",
@@ -15,31 +15,27 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 4,
-        "speed": 252
+        "atk": 252,
+        "spd": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:charti_berry",
+      "heldItem": "charti_berry",
       "aspects": [
         "galar"
       ]
     },
     {
-      "species": "cobblemon:sandslash",
+      "species": "sandslash",
       "gender": "MALE",
       "level": 93,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "slushrush",
       "moveset": [
         "swordsdance",
@@ -49,31 +45,27 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 4,
-        "speed": 252
+        "atk": 252,
+        "spd": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:focus_sash",
+      "heldItem": "focus_sash",
       "aspects": [
         "alola"
       ]
     },
     {
-      "species": "cobblemon:conkeldurr",
+      "species": "conkeldurr",
       "gender": "MALE",
       "level": 88,
-      "nature": "cobblemon:careful",
+      "nature": "careful",
       "ability": "ironfist",
       "moveset": [
         "drainpunch",
@@ -83,28 +75,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 4,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 252,
-        "speed": 0
+        "atk": 4,
+        "spd": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:assault_vest"
+      "heldItem": "assault_vest"
     },
     {
-      "species": "cobblemon:gengar",
+      "species": "gengar",
       "gender": "MALE",
       "level": 93,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "levitate",
       "moveset": [
         "nastyplot",
@@ -114,26 +102,18 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 4,
-        "speed": 252
+        "spa": 252,
+        "spd": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:spell_tag"
+      "heldItem": "spell_tag"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

@@ -1,11 +1,11 @@
 {
-  "displayName": "Biker Isaac",
+  "name": "Biker Isaac",
   "team": [
     {
-      "species": "cobblemon:garbodor",
+      "species": "garbodor",
       "gender": "MALE",
       "level": 57,
-      "nature": "cobblemon:brave",
+      "nature": "brave",
       "ability": "weakarmor",
       "moveset": [
         "screech",
@@ -15,28 +15,19 @@
       ],
       "ivs": {
         "hp": 10,
-        "attack": 10,
-        "defence": 10,
-        "special_attack": 10,
-        "special_defence": 10,
-        "speed": 10
+        "atk": 10,
+        "def": 10,
+        "spa": 10,
+        "spd": 10,
+        "spe": 10
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:crobat",
+      "species": "crobat",
       "gender": "MALE",
       "level": 57,
-      "nature": "cobblemon:lax",
+      "nature": "lax",
       "ability": "sniper",
       "moveset": [
         "screech",
@@ -46,28 +37,19 @@
       ],
       "ivs": {
         "hp": 10,
-        "attack": 10,
-        "defence": 10,
-        "special_attack": 10,
-        "special_defence": 10,
-        "speed": 10
+        "atk": 10,
+        "def": 10,
+        "spa": 10,
+        "spd": 10,
+        "spe": 10
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:rhydon",
+      "species": "rhydon",
       "gender": "FEMALE",
       "level": 57,
-      "nature": "cobblemon:relaxed",
+      "nature": "relaxed",
       "ability": "rockhead",
       "moveset": [
         "smokescreen",
@@ -77,26 +59,13 @@
       ],
       "ivs": {
         "hp": 10,
-        "attack": 10,
-        "defence": 10,
-        "special_attack": 10,
-        "special_defence": 10,
-        "speed": 10
+        "atk": 10,
+        "def": 10,
+        "spa": 10,
+        "spd": 10,
+        "spe": 10
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

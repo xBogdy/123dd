@@ -1,11 +1,11 @@
 {
-  "displayName": "Biker Goon",
+  "name": "Biker Goon",
   "team": [
     {
-      "species": "cobblemon:overqwil",
+      "species": "overqwil",
       "gender": "MALE",
       "level": 90,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "intimidate",
       "moveset": [
         "knockoff",
@@ -15,28 +15,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 252,
-        "defence": 4,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
+        "atk": 252,
+        "def": 4
       },
-      "shiny": false,
-      "heldItem": "cobblemon:dark_gem"
+      "heldItem": "dark_gem"
     },
     {
-      "species": "cobblemon:dusknoir",
+      "species": "dusknoir",
       "gender": "FEMALE",
       "level": 92,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "pressure",
       "moveset": [
         "shadowpunch",
@@ -46,26 +42,18 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 252,
-        "defence": 4,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
+        "atk": 252,
+        "def": 4
       },
-      "shiny": false,
-      "heldItem": "cobblemon:reaper_cloth"
+      "heldItem": "reaper_cloth"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

@@ -1,11 +1,11 @@
 {
-  "displayName": "Ace Trainer Caroline",
+  "name": "Ace Trainer Caroline",
   "team": [
     {
-      "species": "cobblemon:bellossom",
+      "species": "bellossom",
       "gender": "FEMALE",
       "level": 83,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "chlorophyll",
       "moveset": [
         "sleeppowder",
@@ -15,28 +15,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 4,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:leftovers"
+      "heldItem": "leftovers"
     },
     {
-      "species": "cobblemon:parasect",
+      "species": "parasect",
       "gender": "FEMALE",
       "level": 83,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "dryskin",
       "moveset": [
         "spore",
@@ -46,28 +42,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 6
+        "atk": 252,
+        "spe": 6
       },
-      "shiny": false,
-      "heldItem": "cobblemon:focus_sash"
+      "heldItem": "focus_sash"
     },
     {
-      "species": "cobblemon:vileplume",
+      "species": "vileplume",
       "gender": "MALE",
       "level": 83,
-      "nature": "cobblemon:calm",
+      "nature": "calm",
       "ability": "chlorophyll",
       "moveset": [
         "sludgebomb",
@@ -77,28 +69,25 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 0,
-        "defence": 128,
-        "special_attack": 0,
-        "special_defence": 128,
-        "speed": 4
+        "def": 128,
+        "spd": 128,
+        "spe": 4
       },
-      "shiny": false,
-      "heldItem": "cobblemon:black_sludge"
+      "heldItem": "black_sludge"
     },
     {
-      "species": "cobblemon:amoonguss",
+      "species": "amoonguss",
       "gender": "FEMALE",
       "level": 83,
-      "nature": "cobblemon:impish",
+      "nature": "impish",
       "ability": "regenerator",
       "moveset": [
         "spore",
@@ -108,28 +97,25 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 0,
-        "defence": 128,
-        "special_attack": 0,
-        "special_defence": 128,
-        "speed": 4
+        "def": 128,
+        "spd": 128,
+        "spe": 4
       },
-      "shiny": false,
-      "heldItem": "cobblemon:black_sludge"
+      "heldItem": "black_sludge"
     },
     {
-      "species": "cobblemon:lopunny",
+      "species": "lopunny",
       "gender": "FEMALE",
       "level": 84,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "klutz",
       "moveset": [
         "closecombat",
@@ -139,26 +125,18 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:lopunnite"
+      "heldItem": "lopunnite"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

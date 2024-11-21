@@ -1,11 +1,11 @@
 {
-  "displayName": "Elite Four Lorelei",
+  "name": "Elite Four Lorelei",
   "team": [
     {
-      "species": "cobblemon:politoed",
+      "species": "politoed",
       "gender": "FEMALE",
       "level": 84,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "drizzle",
       "moveset": [
         "scald",
@@ -15,28 +15,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 4,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:damp_rock"
+      "heldItem": "damp_rock"
     },
     {
-      "species": "cobblemon:poliwrath",
+      "species": "poliwrath",
       "gender": "FEMALE",
       "level": 84,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "waterabsorb",
       "moveset": [
         "flipturn",
@@ -46,28 +42,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:focus_sash"
+      "heldItem": "focus_sash"
     },
     {
-      "species": "cobblemon:swampert",
+      "species": "swampert",
       "gender": "FEMALE",
       "level": 85,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "torrent",
       "moveset": [
         "poweruppunch",
@@ -77,28 +69,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:swampertite"
+      "heldItem": "swampertite"
     },
     {
-      "species": "cobblemon:kingdra",
+      "species": "kingdra",
       "gender": "FEMALE",
       "level": 85,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "swiftswim",
       "moveset": [
         "muddywater",
@@ -108,28 +96,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:life_orb"
+      "heldItem": "life_orb"
     },
     {
-      "species": "cobblemon:kyogre",
+      "species": "kyogre",
       "gender": "GENDERLESS",
       "level": 85,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "drizzle",
       "moveset": [
         "waterspout",
@@ -139,28 +123,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:blue_orb"
+      "heldItem": "blue_orb"
     },
     {
-      "species": "cobblemon:dracovish",
+      "species": "dracovish",
       "gender": "GENDERLESS",
       "level": 85,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "strongjaw",
       "moveset": [
         "fishiousrend",
@@ -170,26 +150,18 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:choice_scarf"
+      "heldItem": "choice_scarf"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

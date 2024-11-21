@@ -1,11 +1,11 @@
 {
-  "displayName": "Leader Koga",
+  "name": "Leader Koga",
   "team": [
     {
-      "species": "cobblemon:swellow",
+      "species": "swellow",
       "gender": "FEMALE",
       "level": 67,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "aerilate",
       "moveset": [
         "boomburst",
@@ -13,28 +13,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:choice_specs"
+      "heldItem": "choice_specs"
     },
     {
-      "species": "cobblemon:accelgor",
+      "species": "accelgor",
       "gender": "FEMALE",
       "level": 68,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "sheerforce",
       "moveset": [
         "bugbuzz",
@@ -44,28 +40,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:life_orb"
+      "heldItem": "life_orb"
     },
     {
-      "species": "cobblemon:greninja",
+      "species": "greninja",
       "gender": "FEMALE",
       "level": 68,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "battlebond",
       "moveset": [
         "surf",
@@ -75,28 +67,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:life_orb"
+      "heldItem": "life_orb"
     },
     {
-      "species": "cobblemon:drapion",
+      "species": "drapion",
       "gender": "FEMALE",
       "level": 68,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "sniper",
       "moveset": [
         "wickedblow",
@@ -104,28 +92,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:choice_scarf"
+      "heldItem": "choice_scarf"
     },
     {
-      "species": "cobblemon:dragapult",
+      "species": "dragapult",
       "gender": "FEMALE",
       "level": 68,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "infiltrator",
       "moveset": [
         "shadowball",
@@ -135,28 +119,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:life_orb"
+      "heldItem": "life_orb"
     },
     {
-      "species": "cobblemon:toxtricity",
+      "species": "toxtricity",
       "gender": "MALE",
       "level": 68,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "plus",
       "moveset": [
         "voltswitch",
@@ -166,26 +146,18 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:toxtricitite"
+      "heldItem": "toxtricitite"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

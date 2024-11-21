@@ -1,67 +1,51 @@
 {
-  "displayName": "Scientist Taylor",
+  "name": "Scientist Taylor",
   "team": [
     {
-      "species": "cobblemon:electrode",
+      "species": "electrode",
       "gender": "GENDERLESS",
       "level": 44,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "soundproof",
       "moveset": [
         "explosion"
       ],
       "ivs": {
         "hp": 15,
-        "attack": 15,
-        "defence": 15,
-        "special_attack": 15,
-        "special_defence": 15,
-        "speed": 15
+        "atk": 15,
+        "def": 15,
+        "spa": 15,
+        "spd": 15,
+        "spe": 15
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:choice_band"
+      "evs": {},
+      "heldItem": "choice_band"
     },
     {
-      "species": "cobblemon:weezing",
+      "species": "weezing",
       "gender": "FEMALE",
       "level": 45,
-      "nature": "cobblemon:relaxed",
+      "nature": "relaxed",
       "ability": "levitate",
       "moveset": [
         "explosion"
       ],
       "ivs": {
         "hp": 15,
-        "attack": 15,
-        "defence": 15,
-        "special_attack": 15,
-        "special_defence": 15,
-        "speed": 15
+        "atk": 15,
+        "def": 15,
+        "spa": 15,
+        "spd": 15,
+        "spe": 15
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:stardust"
+      "evs": {},
+      "heldItem": "stardust"
     },
     {
-      "species": "cobblemon:musharna",
+      "species": "musharna",
       "gender": "MALE",
       "level": 44,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "forewarn",
       "moveset": [
         "psychic",
@@ -71,28 +55,19 @@
       ],
       "ivs": {
         "hp": 15,
-        "attack": 15,
-        "defence": 15,
-        "special_attack": 15,
-        "special_defence": 15,
-        "speed": 15
+        "atk": 15,
+        "def": 15,
+        "spa": 15,
+        "spd": 15,
+        "spe": 15
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:amoonguss",
+      "species": "amoonguss",
       "gender": "FEMALE",
       "level": 44,
-      "nature": "cobblemon:brave",
+      "nature": "brave",
       "ability": "effectspore",
       "moveset": [
         "spore",
@@ -101,28 +76,19 @@
       ],
       "ivs": {
         "hp": 15,
-        "attack": 15,
-        "defence": 15,
-        "special_attack": 15,
-        "special_defence": 15,
-        "speed": 15
+        "atk": 15,
+        "def": 15,
+        "spa": 15,
+        "spd": 15,
+        "spe": 15
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:scolipede",
+      "species": "scolipede",
       "gender": "FEMALE",
       "level": 44,
-      "nature": "cobblemon:rash",
+      "nature": "rash",
       "ability": "poisontouch",
       "moveset": [
         "poisonjab",
@@ -131,26 +97,14 @@
       ],
       "ivs": {
         "hp": 15,
-        "attack": 15,
-        "defence": 15,
-        "special_attack": 15,
-        "special_defence": 15,
-        "speed": 15
+        "atk": 15,
+        "def": 15,
+        "spa": 15,
+        "spd": 15,
+        "spe": 15
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:prism_scale"
+      "evs": {},
+      "heldItem": "prism_scale"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

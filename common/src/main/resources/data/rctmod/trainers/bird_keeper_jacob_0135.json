@@ -1,11 +1,11 @@
 {
-  "displayName": "Bird Keeper Jacob",
+  "name": "Bird Keeper Jacob",
   "team": [
     {
-      "species": "cobblemon:cramorant",
+      "species": "cramorant",
       "gender": "FEMALE",
       "level": 91,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "gulpmissile",
       "moveset": [
         "surf",
@@ -15,28 +15,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 4,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "def": 4,
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:focus_sash"
+      "heldItem": "focus_sash"
     },
     {
-      "species": "cobblemon:decidueye",
+      "species": "decidueye",
       "gender": "FEMALE",
       "level": 89,
-      "nature": "cobblemon:naive",
+      "nature": "naive",
       "ability": "tintedlens",
       "moveset": [
         "uturn",
@@ -46,28 +42,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 252,
-        "defence": 4,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "def": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:spell_tag"
+      "heldItem": "spell_tag"
     },
     {
-      "species": "cobblemon:porygon2",
+      "species": "porygon2",
       "gender": "GENDERLESS",
       "level": 93,
-      "nature": "cobblemon:bold",
+      "nature": "bold",
       "ability": "trace",
       "moveset": [
         "thunder",
@@ -77,28 +69,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 0,
-        "defence": 252,
-        "special_attack": 4,
-        "special_defence": 0,
-        "speed": 0
+        "def": 252,
+        "spa": 4
       },
-      "shiny": false,
-      "heldItem": "cobblemon:eviolite"
+      "heldItem": "eviolite"
     },
     {
-      "species": "cobblemon:basculegion",
+      "species": "basculegion",
       "gender": "FEMALE",
       "level": 89,
-      "nature": "cobblemon:modest",
+      "nature": "modest",
       "ability": "adaptability",
       "moveset": [
         "hydropump",
@@ -108,31 +96,27 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 4,
-        "speed": 0
+        "spa": 252,
+        "spd": 4
       },
-      "shiny": false,
-      "heldItem": "cobblemon:weaknesspol",
+      "heldItem": "weaknesspol",
       "aspects": [
         "f"
       ]
     },
     {
-      "species": "cobblemon:nidoqueen",
+      "species": "nidoqueen",
       "gender": "FEMALE",
       "level": 92,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "sheerforce",
       "moveset": [
         "thunder",
@@ -142,26 +126,18 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 4,
-        "speed": 0
+        "spa": 252,
+        "spd": 4
       },
-      "shiny": false,
-      "heldItem": "cobblemon:life_orb"
+      "heldItem": "life_orb"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

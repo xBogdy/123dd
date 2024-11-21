@@ -1,11 +1,11 @@
 {
-  "displayName": "Rocker Luca",
+  "name": "Rocker Luca",
   "team": [
     {
-      "species": "cobblemon:rotom",
+      "species": "rotom",
       "gender": "GENDERLESS",
       "level": 93,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "levitate",
       "moveset": [
         "blizzard",
@@ -15,31 +15,27 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 4,
-        "speed": 252
+        "spa": 252,
+        "spd": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:nevermeltice",
+      "heldItem": "nevermeltice",
       "aspects": [
         "frost"
       ]
     },
     {
-      "species": "cobblemon:heliolisk",
+      "species": "heliolisk",
       "gender": "FEMALE",
       "level": 89,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "dryskin",
       "moveset": [
         "boomburst",
@@ -49,28 +45,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 4,
-        "speed": 252
+        "spa": 252,
+        "spd": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:life_orb"
+      "heldItem": "life_orb"
     },
     {
-      "species": "cobblemon:nidoqueen",
+      "species": "nidoqueen",
       "gender": "FEMALE",
       "level": 93,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "sheerforce",
       "moveset": [
         "earthpower",
@@ -80,28 +72,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 4,
-        "speed": 252
+        "spa": 252,
+        "spd": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:life_orb"
+      "heldItem": "life_orb"
     },
     {
-      "species": "cobblemon:yanmega",
+      "species": "yanmega",
       "gender": "FEMALE",
       "level": 92,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "tintedlens",
       "moveset": [
         "bugbuzz",
@@ -111,28 +99,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 4,
-        "speed": 252
+        "spa": 252,
+        "spd": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:choice_specs"
+      "heldItem": "choice_specs"
     },
     {
-      "species": "cobblemon:blastoise",
+      "species": "blastoise",
       "gender": "MALE",
       "level": 90,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "raindish",
       "moveset": [
         "shellsmash",
@@ -142,28 +126,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 4,
-        "speed": 252
+        "spa": 252,
+        "spd": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:blastoisnite"
+      "heldItem": "blastoisnite"
     },
     {
-      "species": "cobblemon:walrein",
+      "species": "walrein",
       "gender": "MALE",
       "level": 91,
-      "nature": "cobblemon:bold",
+      "nature": "bold",
       "ability": "icebody",
       "moveset": [
         "blizzard",
@@ -173,26 +153,18 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 0,
-        "defence": 252,
-        "special_attack": 0,
-        "special_defence": 4,
-        "speed": 0
+        "def": 252,
+        "spd": 4
       },
-      "shiny": false,
-      "heldItem": "cobblemon:leftovers"
+      "heldItem": "leftovers"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

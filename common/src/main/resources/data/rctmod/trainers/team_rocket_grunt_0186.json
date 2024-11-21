@@ -1,11 +1,11 @@
 {
-  "displayName": "Team Rocket Grunt",
+  "name": "Team Rocket Grunt",
   "team": [
     {
-      "species": "cobblemon:copperajah",
+      "species": "copperajah",
       "gender": "MALE",
       "level": 46,
-      "nature": "cobblemon:docile",
+      "nature": "docile",
       "ability": "heavymetal",
       "moveset": [
         "irondefense",
@@ -15,28 +15,19 @@
       ],
       "ivs": {
         "hp": 15,
-        "attack": 15,
-        "defence": 15,
-        "special_attack": 15,
-        "special_defence": 15,
-        "speed": 15
+        "atk": 15,
+        "def": 15,
+        "spa": 15,
+        "spd": 15,
+        "spe": 15
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:swoobat",
+      "species": "swoobat",
       "gender": "MALE",
       "level": 46,
-      "nature": "cobblemon:impish",
+      "nature": "impish",
       "ability": "klutz",
       "moveset": [
         "calmmind",
@@ -46,28 +37,19 @@
       ],
       "ivs": {
         "hp": 15,
-        "attack": 15,
-        "defence": 15,
-        "special_attack": 15,
-        "special_defence": 15,
-        "speed": 15
+        "atk": 15,
+        "def": 15,
+        "spa": 15,
+        "spd": 15,
+        "spe": 15
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:purugly",
+      "species": "purugly",
       "gender": "MALE",
       "level": 46,
-      "nature": "cobblemon:lonely",
+      "nature": "lonely",
       "ability": "owntempo",
       "moveset": [
         "assist",
@@ -77,28 +59,19 @@
       ],
       "ivs": {
         "hp": 15,
-        "attack": 15,
-        "defence": 15,
-        "special_attack": 15,
-        "special_defence": 15,
-        "speed": 15
+        "atk": 15,
+        "def": 15,
+        "spa": 15,
+        "spd": 15,
+        "spe": 15
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:nidoqueen",
+      "species": "nidoqueen",
       "gender": "FEMALE",
       "level": 47,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "rivalry",
       "moveset": [
         "sludge",
@@ -108,28 +81,19 @@
       ],
       "ivs": {
         "hp": 15,
-        "attack": 15,
-        "defence": 15,
-        "special_attack": 15,
-        "special_defence": 15,
-        "speed": 15
+        "atk": 15,
+        "def": 15,
+        "spa": 15,
+        "spd": 15,
+        "spe": 15
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:arbok",
+      "species": "arbok",
       "gender": "MALE",
       "level": 47,
-      "nature": "cobblemon:bold",
+      "nature": "bold",
       "ability": "shedskin",
       "moveset": [
         "spitup",
@@ -139,26 +103,13 @@
       ],
       "ivs": {
         "hp": 15,
-        "attack": 15,
-        "defence": 15,
-        "special_attack": 15,
-        "special_defence": 15,
-        "speed": 15
+        "atk": 15,
+        "def": 15,
+        "spa": 15,
+        "spd": 15,
+        "spe": 15
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

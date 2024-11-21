@@ -1,11 +1,11 @@
 {
-  "displayName": "Rival Terry",
+  "name": "Rival Terry",
   "team": [
     {
-      "species": "cobblemon:pidgeotto",
+      "species": "pidgeotto",
       "gender": "MALE",
       "level": 25,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "tangledfeet",
       "moveset": [
         "quickattack",
@@ -15,28 +15,19 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:exeggcute",
+      "species": "exeggcute",
       "gender": "MALE",
       "level": 23,
-      "nature": "cobblemon:sassy",
+      "nature": "sassy",
       "ability": "chlorophyll",
       "moveset": [
         "megadrain",
@@ -46,28 +37,19 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:gyarados",
+      "species": "gyarados",
       "gender": "FEMALE",
       "level": 22,
-      "nature": "cobblemon:bashful",
+      "nature": "bashful",
       "ability": "intimidate",
       "moveset": [
         "bite",
@@ -76,28 +58,19 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:kadabra",
+      "species": "kadabra",
       "gender": "FEMALE",
       "level": 20,
-      "nature": "cobblemon:careful",
+      "nature": "careful",
       "ability": "innerfocus",
       "moveset": [
         "teleport",
@@ -107,28 +80,19 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:charmeleon",
+      "species": "charmeleon",
       "gender": "FEMALE",
       "level": 25,
-      "nature": "cobblemon:gentle",
+      "nature": "gentle",
       "ability": "blaze",
       "moveset": [
         "ancientpower",
@@ -138,26 +102,13 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

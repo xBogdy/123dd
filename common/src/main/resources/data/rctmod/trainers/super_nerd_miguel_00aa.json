@@ -1,11 +1,11 @@
 {
-  "displayName": "Super Nerd Miguel",
+  "name": "Super Nerd Miguel",
   "team": [
     {
-      "species": "cobblemon:thwackey",
+      "species": "thwackey",
       "gender": "FEMALE",
       "level": 90,
-      "nature": "cobblemon:bashful",
+      "nature": "bashful",
       "ability": "grassysurge",
       "moveset": [
         "fakeout",
@@ -15,28 +15,20 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:eviolite"
+      "evs": {},
+      "heldItem": "eviolite"
     },
     {
-      "species": "cobblemon:voltorb",
+      "species": "voltorb",
       "gender": "GENDERLESS",
       "level": 88,
-      "nature": "cobblemon:naive",
+      "nature": "naive",
       "ability": "reckless",
       "moveset": [
         "magicalleaf",
@@ -46,31 +38,23 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 30,
-        "defence": 30,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 30,
+        "def": 30,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:focus_sash",
+      "evs": {},
+      "heldItem": "focus_sash",
       "aspects": [
         "hisui"
       ]
     },
     {
-      "species": "cobblemon:bibarel",
+      "species": "bibarel",
       "gender": "FEMALE",
       "level": 89,
-      "nature": "cobblemon:careful",
+      "nature": "careful",
       "ability": "simple",
       "moveset": [
         "headbutt",
@@ -80,28 +64,20 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:grassy_seed"
+      "evs": {},
+      "heldItem": "grassy_seed"
     },
     {
-      "species": "cobblemon:sableye",
+      "species": "sableye",
       "gender": "MALE",
       "level": 90,
-      "nature": "cobblemon:careful",
+      "nature": "careful",
       "ability": "prankster",
       "moveset": [
         "willowisp",
@@ -111,26 +87,14 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:leftovers"
+      "evs": {},
+      "heldItem": "leftovers"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

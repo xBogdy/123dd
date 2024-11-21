@@ -1,11 +1,11 @@
 {
-  "displayName": "Rival Terry",
+  "name": "Rival Terry",
   "team": [
     {
-      "species": "cobblemon:heracross",
+      "species": "heracross",
       "gender": "MALE",
       "level": 72,
-      "nature": "cobblemon:careful",
+      "nature": "careful",
       "ability": "guts",
       "moveset": [
         "megahorn",
@@ -15,28 +15,19 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:alakazam",
+      "species": "alakazam",
       "gender": "FEMALE",
       "level": 73,
-      "nature": "cobblemon:lax",
+      "nature": "lax",
       "ability": "innerfocus",
       "moveset": [
         "psychic",
@@ -46,28 +37,19 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:tyranitar",
+      "species": "tyranitar",
       "gender": "FEMALE",
       "level": 72,
-      "nature": "cobblemon:bashful",
+      "nature": "bashful",
       "ability": "sandstream",
       "moveset": [
         "crunch",
@@ -77,28 +59,19 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:exeggutor",
+      "species": "exeggutor",
       "gender": "MALE",
       "level": 73,
-      "nature": "cobblemon:gentle",
+      "nature": "gentle",
       "ability": "chlorophyll",
       "moveset": [
         "gigadrain",
@@ -108,28 +81,19 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:gyarados",
+      "species": "gyarados",
       "gender": "MALE",
       "level": 73,
-      "nature": "cobblemon:lonely",
+      "nature": "lonely",
       "ability": "intimidate",
       "moveset": [
         "hydropump",
@@ -139,28 +103,19 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:charizard",
+      "species": "charizard",
       "gender": "FEMALE",
       "level": 75,
-      "nature": "cobblemon:relaxed",
+      "nature": "relaxed",
       "ability": "blaze",
       "moveset": [
         "fireblast",
@@ -170,26 +125,14 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:sitrus_berry"
+      "evs": {},
+      "heldItem": "sitrus_berry"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

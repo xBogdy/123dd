@@ -1,11 +1,11 @@
 {
-  "displayName": "Ace Trainer Barry",
+  "name": "Ace Trainer Barry",
   "team": [
     {
-      "species": "cobblemon:landorus",
+      "species": "landorus",
       "gender": "MALE",
       "level": 93,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "intimidate",
       "moveset": [
         "earthquake",
@@ -15,31 +15,27 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 252,
-        "defence": 4,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "def": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:focus_sash",
+      "heldItem": "focus_sash",
       "aspects": [
         "therian"
       ]
     },
     {
-      "species": "cobblemon:corviknight",
+      "species": "corviknight",
       "gender": "MALE",
       "level": 93,
-      "nature": "cobblemon:impish",
+      "nature": "impish",
       "ability": "mirrorarmor",
       "moveset": [
         "bulkup",
@@ -49,28 +45,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 0,
-        "defence": 252,
-        "special_attack": 0,
-        "special_defence": 4,
-        "speed": 0
+        "def": 252,
+        "spd": 4
       },
-      "shiny": false,
-      "heldItem": "cobblemon:leftovers"
+      "heldItem": "leftovers"
     },
     {
-      "species": "cobblemon:alakazam",
+      "species": "alakazam",
       "gender": "FEMALE",
       "level": 94,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "magicguard",
       "moveset": [
         "nastyplot",
@@ -80,28 +72,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 4,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "def": 4,
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:focus_sash"
+      "heldItem": "focus_sash"
     },
     {
-      "species": "cobblemon:kommoo",
+      "species": "kommoo",
       "gender": "MALE",
       "level": 93,
-      "nature": "cobblemon:naive",
+      "nature": "naive",
       "ability": "soundproof",
       "moveset": [
         "clangingscales",
@@ -111,28 +99,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 4,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spa": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:kommonium_z"
+      "heldItem": "kommonium_z"
     },
     {
-      "species": "cobblemon:latias",
+      "species": "latias",
       "gender": "FEMALE",
       "level": 95,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "levitate",
       "moveset": [
         "dracometeor",
@@ -142,28 +126,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 4,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "def": 4,
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:weaknesspol"
+      "heldItem": "weaknesspol"
     },
     {
-      "species": "cobblemon:toxtricity",
+      "species": "toxtricity",
       "gender": "FEMALE",
       "level": 95,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "punkrock",
       "moveset": [
         "boomburst",
@@ -173,26 +153,18 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 30,
-        "defence": 31,
-        "special_attack": 30,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 30,
+        "def": 31,
+        "spa": 30,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 4,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "def": 4,
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:toxtricitite"
+      "heldItem": "toxtricitite"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

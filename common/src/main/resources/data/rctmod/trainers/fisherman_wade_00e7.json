@@ -1,11 +1,11 @@
 {
-  "displayName": "Fisherman Wade",
+  "name": "Fisherman Wade",
   "team": [
     {
-      "species": "cobblemon:magikarp",
+      "species": "magikarp",
       "gender": "FEMALE",
       "level": 70,
-      "nature": "cobblemon:gentle",
+      "nature": "gentle",
       "ability": "swiftswim",
       "moveset": [
         "splash",
@@ -14,28 +14,19 @@
       ],
       "ivs": {
         "hp": 10,
-        "attack": 10,
-        "defence": 10,
-        "special_attack": 10,
-        "special_defence": 10,
-        "speed": 10
+        "atk": 10,
+        "def": 10,
+        "spa": 10,
+        "spd": 10,
+        "spe": 10
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:feebas",
+      "species": "feebas",
       "gender": "FEMALE",
       "level": 70,
-      "nature": "cobblemon:bold",
+      "nature": "bold",
       "ability": "swiftswim",
       "moveset": [
         "splash",
@@ -44,28 +35,19 @@
       ],
       "ivs": {
         "hp": 10,
-        "attack": 10,
-        "defence": 10,
-        "special_attack": 10,
-        "special_defence": 10,
-        "speed": 10
+        "atk": 10,
+        "def": 10,
+        "spa": 10,
+        "spd": 10,
+        "spe": 10
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:gyarados",
+      "species": "gyarados",
       "gender": "MALE",
       "level": 64,
-      "nature": "cobblemon:naughty",
+      "nature": "naughty",
       "ability": "intimidate",
       "moveset": [
         "dragondance",
@@ -75,28 +57,19 @@
       ],
       "ivs": {
         "hp": 10,
-        "attack": 10,
-        "defence": 10,
-        "special_attack": 10,
-        "special_defence": 10,
-        "speed": 10
+        "atk": 10,
+        "def": 10,
+        "spa": 10,
+        "spd": 10,
+        "spe": 10
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:milotic",
+      "species": "milotic",
       "gender": "FEMALE",
       "level": 63,
-      "nature": "cobblemon:lax",
+      "nature": "lax",
       "ability": "marvelscale",
       "moveset": [
         "safeguard",
@@ -106,28 +79,19 @@
       ],
       "ivs": {
         "hp": 10,
-        "attack": 10,
-        "defence": 10,
-        "special_attack": 10,
-        "special_defence": 10,
-        "speed": 10
+        "atk": 10,
+        "def": 10,
+        "spa": 10,
+        "spd": 10,
+        "spe": 10
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:alomomola",
+      "species": "alomomola",
       "gender": "FEMALE",
       "level": 62,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "healer",
       "moveset": [
         "whirlpool",
@@ -137,28 +101,19 @@
       ],
       "ivs": {
         "hp": 10,
-        "attack": 10,
-        "defence": 10,
-        "special_attack": 10,
-        "special_defence": 10,
-        "speed": 10
+        "atk": 10,
+        "def": 10,
+        "spa": 10,
+        "spd": 10,
+        "spe": 10
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:luvdisc",
+      "species": "luvdisc",
       "gender": "MALE",
       "level": 65,
-      "nature": "cobblemon:modest",
+      "nature": "modest",
       "ability": "swiftswim",
       "moveset": [
         "lovelykiss",
@@ -168,26 +123,13 @@
       ],
       "ivs": {
         "hp": 10,
-        "attack": 10,
-        "defence": 10,
-        "special_attack": 10,
-        "special_defence": 10,
-        "speed": 10
+        "atk": 10,
+        "def": 10,
+        "spa": 10,
+        "spd": 10,
+        "spe": 10
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

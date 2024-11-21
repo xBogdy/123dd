@@ -1,11 +1,11 @@
 {
-  "displayName": "Falkner",
+  "name": "Falkner",
   "team": [
     {
-      "species": "cobblemon:rufflet",
+      "species": "rufflet",
       "gender": "MALE",
       "level": 13,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "hustle",
       "moveset": [
         "aerialace",
@@ -15,28 +15,23 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 4,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 40
+        "spe": 40
       },
-      "shiny": false,
-      "heldItem": "cobblemon:berry_juice"
+      "heldItem": "berry_juice"
     },
     {
-      "species": "cobblemon:emolga",
+      "species": "emolga",
       "gender": "FEMALE",
       "level": 13,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "lightningrod",
       "moveset": [
         "shockwave",
@@ -46,28 +41,23 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 4,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 40
+        "spe": 40
       },
-      "shiny": false,
-      "heldItem": "cobblemon:berry_juice"
+      "heldItem": "berry_juice"
     },
     {
-      "species": "cobblemon:corvisquire",
+      "species": "corvisquire",
       "gender": "FEMALE",
       "level": 14,
-      "nature": "cobblemon:careful",
+      "nature": "careful",
       "ability": "unnerve",
       "moveset": [
         "pluck",
@@ -77,26 +67,17 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 4,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 40
+        "spe": 40
       },
-      "shiny": false,
-      "heldItem": "cobblemon:berry_juice"
+      "heldItem": "berry_juice"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

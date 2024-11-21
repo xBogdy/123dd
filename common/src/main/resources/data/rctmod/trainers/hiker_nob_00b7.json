@@ -1,11 +1,11 @@
 {
-  "displayName": "Hiker Nob",
+  "name": "Hiker Nob",
   "team": [
     {
-      "species": "cobblemon:phanpy",
+      "species": "phanpy",
       "gender": "MALE",
       "level": 18,
-      "nature": "cobblemon:hardy",
+      "nature": "hardy",
       "ability": "pickup",
       "moveset": [
         "flail",
@@ -15,28 +15,19 @@
       ],
       "ivs": {
         "hp": 10,
-        "attack": 10,
-        "defence": 10,
-        "special_attack": 10,
-        "special_defence": 10,
-        "speed": 10
+        "atk": 10,
+        "def": 10,
+        "spa": 10,
+        "spd": 10,
+        "spe": 10
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:sandile",
+      "species": "sandile",
       "gender": "MALE",
       "level": 18,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "moxie",
       "moveset": [
         "rockthrow",
@@ -46,28 +37,19 @@
       ],
       "ivs": {
         "hp": 10,
-        "attack": 10,
-        "defence": 10,
-        "special_attack": 10,
-        "special_defence": 10,
-        "speed": 10
+        "atk": 10,
+        "def": 10,
+        "spa": 10,
+        "spd": 10,
+        "spe": 10
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:machop",
+      "species": "machop",
       "gender": "FEMALE",
       "level": 19,
-      "nature": "cobblemon:brave",
+      "nature": "brave",
       "ability": "noguard",
       "moveset": [
         "rocktomb",
@@ -77,28 +59,19 @@
       ],
       "ivs": {
         "hp": 10,
-        "attack": 10,
-        "defence": 10,
-        "special_attack": 10,
-        "special_defence": 10,
-        "speed": 10
+        "atk": 10,
+        "def": 10,
+        "spa": 10,
+        "spd": 10,
+        "spe": 10
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:makuhita",
+      "species": "makuhita",
       "gender": "FEMALE",
       "level": 19,
-      "nature": "cobblemon:docile",
+      "nature": "docile",
       "ability": "guts",
       "moveset": [
         "fakeout",
@@ -108,26 +81,13 @@
       ],
       "ivs": {
         "hp": 10,
-        "attack": 10,
-        "defence": 10,
-        "special_attack": 10,
-        "special_defence": 10,
-        "speed": 10
+        "atk": 10,
+        "def": 10,
+        "spa": 10,
+        "spd": 10,
+        "spe": 10
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

@@ -1,11 +1,11 @@
 {
-  "displayName": "Lass Megan",
+  "name": "Lass Megan",
   "team": [
     {
-      "species": "cobblemon:pidgeotto",
+      "species": "pidgeotto",
       "gender": "MALE",
       "level": 22,
-      "nature": "cobblemon:brave",
+      "nature": "brave",
       "ability": "tangledfeet",
       "moveset": [
         "gust",
@@ -15,28 +15,19 @@
       ],
       "ivs": {
         "hp": 5,
-        "attack": 5,
-        "defence": 5,
-        "special_attack": 5,
-        "special_defence": 5,
-        "speed": 5
+        "atk": 5,
+        "def": 5,
+        "spa": 5,
+        "spd": 5,
+        "spe": 5
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:raticate",
+      "species": "raticate",
       "gender": "MALE",
       "level": 22,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "guts",
       "moveset": [
         "focusenergy",
@@ -46,28 +37,19 @@
       ],
       "ivs": {
         "hp": 5,
-        "attack": 5,
-        "defence": 5,
-        "special_attack": 5,
-        "special_defence": 5,
-        "speed": 5
+        "atk": 5,
+        "def": 5,
+        "spa": 5,
+        "spd": 5,
+        "spe": 5
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:nidoranm",
+      "species": "nidoranm",
       "gender": "MALE",
       "level": 23,
-      "nature": "cobblemon:sassy",
+      "nature": "sassy",
       "ability": "rivalry",
       "moveset": [
         "doublekick",
@@ -77,28 +59,19 @@
       ],
       "ivs": {
         "hp": 5,
-        "attack": 5,
-        "defence": 5,
-        "special_attack": 5,
-        "special_defence": 5,
-        "speed": 5
+        "atk": 5,
+        "def": 5,
+        "spa": 5,
+        "spd": 5,
+        "spe": 5
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:meowth",
+      "species": "meowth",
       "gender": "MALE",
       "level": 21,
-      "nature": "cobblemon:bold",
+      "nature": "bold",
       "ability": "technician",
       "moveset": [
         "fakeout",
@@ -108,28 +81,19 @@
       ],
       "ivs": {
         "hp": 5,
-        "attack": 5,
-        "defence": 5,
-        "special_attack": 5,
-        "special_defence": 5,
-        "speed": 5
+        "atk": 5,
+        "def": 5,
+        "spa": 5,
+        "spd": 5,
+        "spe": 5
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:pikachu",
+      "species": "pikachu",
       "gender": "MALE",
       "level": 22,
-      "nature": "cobblemon:hasty",
+      "nature": "hasty",
       "ability": "static",
       "moveset": [
         "quickattack",
@@ -139,26 +103,13 @@
       ],
       "ivs": {
         "hp": 5,
-        "attack": 5,
-        "defence": 5,
-        "special_attack": 5,
-        "special_defence": 5,
-        "speed": 5
+        "atk": 5,
+        "def": 5,
+        "spa": 5,
+        "spd": 5,
+        "spe": 5
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

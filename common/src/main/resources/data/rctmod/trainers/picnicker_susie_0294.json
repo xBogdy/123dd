@@ -1,11 +1,11 @@
 {
-  "displayName": "Picnicker Susie",
+  "name": "Picnicker Susie",
   "team": [
     {
-      "species": "cobblemon:pidgeot",
+      "species": "pidgeot",
       "gender": "MALE",
       "level": 52,
-      "nature": "cobblemon:gentle",
+      "nature": "gentle",
       "ability": "tangledfeet",
       "moveset": [
         "agility",
@@ -15,28 +15,19 @@
       ],
       "ivs": {
         "hp": 5,
-        "attack": 5,
-        "defence": 5,
-        "special_attack": 5,
-        "special_defence": 5,
-        "speed": 5
+        "atk": 5,
+        "def": 5,
+        "spa": 5,
+        "spd": 5,
+        "spe": 5
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:persian",
+      "species": "persian",
       "gender": "MALE",
       "level": 52,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "technician",
       "moveset": [
         "powergem",
@@ -46,28 +37,19 @@
       ],
       "ivs": {
         "hp": 5,
-        "attack": 5,
-        "defence": 5,
-        "special_attack": 5,
-        "special_defence": 5,
-        "speed": 5
+        "atk": 5,
+        "def": 5,
+        "spa": 5,
+        "spd": 5,
+        "spe": 5
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:raticate",
+      "species": "raticate",
       "gender": "FEMALE",
       "level": 52,
-      "nature": "cobblemon:bashful",
+      "nature": "bashful",
       "ability": "guts",
       "moveset": [
         "return",
@@ -77,28 +59,19 @@
       ],
       "ivs": {
         "hp": 5,
-        "attack": 5,
-        "defence": 5,
-        "special_attack": 5,
-        "special_defence": 5,
-        "speed": 5
+        "atk": 5,
+        "def": 5,
+        "spa": 5,
+        "spd": 5,
+        "spe": 5
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:raichu",
+      "species": "raichu",
       "gender": "MALE",
       "level": 52,
-      "nature": "cobblemon:bold",
+      "nature": "bold",
       "ability": "static",
       "moveset": [
         "tailwhip",
@@ -108,28 +81,19 @@
       ],
       "ivs": {
         "hp": 5,
-        "attack": 5,
-        "defence": 5,
-        "special_attack": 5,
-        "special_defence": 5,
-        "speed": 5
+        "atk": 5,
+        "def": 5,
+        "spa": 5,
+        "spd": 5,
+        "spe": 5
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:persian",
+      "species": "persian",
       "gender": "MALE",
       "level": 52,
-      "nature": "cobblemon:serious",
+      "nature": "serious",
       "ability": "technician",
       "moveset": [
         "powergem",
@@ -139,26 +103,13 @@
       ],
       "ivs": {
         "hp": 5,
-        "attack": 5,
-        "defence": 5,
-        "special_attack": 5,
-        "special_defence": 5,
-        "speed": 5
+        "atk": 5,
+        "def": 5,
+        "spa": 5,
+        "spd": 5,
+        "spe": 5
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

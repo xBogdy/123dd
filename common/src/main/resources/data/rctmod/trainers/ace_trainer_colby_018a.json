@@ -1,11 +1,11 @@
 {
-  "displayName": "Ace Trainer Colby",
+  "name": "Ace Trainer Colby",
   "team": [
     {
-      "species": "cobblemon:feraligatr",
+      "species": "feraligatr",
       "gender": "FEMALE",
       "level": 83,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "strongjaw",
       "moveset": [
         "dragondance",
@@ -15,28 +15,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:focus_sash"
+      "heldItem": "focus_sash"
     },
     {
-      "species": "cobblemon:swanna",
+      "species": "swanna",
       "gender": "MALE",
       "level": 83,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "noguard",
       "moveset": [
         "hurricane",
@@ -45,28 +41,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:life_orb"
+      "heldItem": "life_orb"
     },
     {
-      "species": "cobblemon:walrein",
+      "species": "walrein",
       "gender": "FEMALE",
       "level": 83,
-      "nature": "cobblemon:calm",
+      "nature": "calm",
       "ability": "furcoat",
       "moveset": [
         "surf",
@@ -76,28 +68,25 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 0,
-        "defence": 128,
-        "special_attack": 0,
-        "special_defence": 128,
-        "speed": 4
+        "def": 128,
+        "spd": 128,
+        "spe": 4
       },
-      "shiny": false,
-      "heldItem": "cobblemon:leftovers"
+      "heldItem": "leftovers"
     },
     {
-      "species": "cobblemon:sharpedo",
+      "species": "sharpedo",
       "gender": "MALE",
       "level": 84,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "speedboost",
       "moveset": [
         "crunch",
@@ -107,28 +96,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:sharpedonite"
+      "heldItem": "sharpedonite"
     },
     {
-      "species": "cobblemon:empoleon",
+      "species": "empoleon",
       "gender": "FEMALE",
       "level": 84,
-      "nature": "cobblemon:bold",
+      "nature": "bold",
       "ability": "competitive",
       "moveset": [
         "calmmind",
@@ -138,26 +123,17 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 0,
-        "defence": 252,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
+        "def": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:leftovers"
+      "heldItem": "leftovers"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

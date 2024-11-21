@@ -1,11 +1,11 @@
 {
-  "displayName": "Leader Lt. Surge",
+  "name": "Leader Lt. Surge",
   "team": [
     {
-      "species": "cobblemon:pincurchin",
+      "species": "pincurchin",
       "gender": "MALE",
       "level": 32,
-      "nature": "cobblemon:modest",
+      "nature": "modest",
       "ability": "electricsurge",
       "moveset": [
         "voltswitch",
@@ -15,28 +15,25 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 30,
-        "defence": 31,
-        "special_attack": 30,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 30,
+        "def": 31,
+        "spa": 30,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 100,
-        "attack": 100,
-        "defence": 0,
-        "special_attack": 100,
-        "special_defence": 0,
-        "speed": 40
+        "atk": 100,
+        "spa": 100,
+        "spe": 40
       },
-      "shiny": false,
-      "heldItem": "cobblemon:electr_seed"
+      "heldItem": "electr_seed"
     },
     {
-      "species": "cobblemon:raichu",
+      "species": "raichu",
       "gender": "MALE",
       "level": 33,
-      "nature": "cobblemon:modest",
+      "nature": "modest",
       "ability": "surgesurfer",
       "moveset": [
         "psyshock",
@@ -46,31 +43,28 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 24,
-        "attack": 16,
-        "defence": 0,
-        "special_attack": 40,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 16,
+        "spa": 40,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:twistedspoon",
+      "heldItem": "twistedspoon",
       "aspects": [
         "alola"
       ]
     },
     {
-      "species": "cobblemon:vikavolt",
+      "species": "vikavolt",
       "gender": "FEMALE",
       "level": 33,
-      "nature": "cobblemon:modest",
+      "nature": "modest",
       "ability": "levitate",
       "moveset": [
         "voltswitch",
@@ -80,28 +74,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 200,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 100,
-        "special_defence": 0,
-        "speed": 4
+        "spa": 100,
+        "spe": 4
       },
-      "shiny": false,
-      "heldItem": "cobblemon:occa_berry"
+      "heldItem": "occa_berry"
     },
     {
-      "species": "cobblemon:manectric",
+      "species": "manectric",
       "gender": "MALE",
       "level": 34,
-      "nature": "cobblemon:modest",
+      "nature": "modest",
       "ability": "intimidate",
       "moveset": [
         "chargebeam",
@@ -111,28 +101,25 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 30,
-        "defence": 31,
-        "special_attack": 30,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 30,
+        "def": 31,
+        "spa": 30,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 100,
-        "attack": 100,
-        "defence": 0,
-        "special_attack": 100,
-        "special_defence": 0,
-        "speed": 40
+        "atk": 100,
+        "spa": 100,
+        "spe": 40
       },
-      "shiny": false,
-      "heldItem": "cobblemon:manectite"
+      "heldItem": "manectite"
     },
     {
-      "species": "cobblemon:boltund",
+      "species": "boltund",
       "gender": "MALE",
       "level": 33,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "strongjaw",
       "moveset": [
         "thunderfang",
@@ -142,26 +129,18 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 100,
-        "attack": 100,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 100,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:expert_belt"
+      "heldItem": "expert_belt"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

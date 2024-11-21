@@ -1,11 +1,11 @@
 {
-  "displayName": "Boss Giovanni",
+  "name": "Boss Giovanni",
   "team": [
     {
-      "species": "cobblemon:scrafty",
+      "species": "scrafty",
       "gender": "FEMALE",
       "level": 80,
-      "nature": "cobblemon:modest",
+      "nature": "modest",
       "ability": "moxie",
       "moveset": [
         "roar",
@@ -15,28 +15,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 6
+        "spa": 252,
+        "spe": 6
       },
-      "shiny": false,
-      "heldItem": "cobblemon:psychic_seed"
+      "heldItem": "psychic_seed"
     },
     {
-      "species": "cobblemon:tapulele",
+      "species": "tapulele",
       "gender": "GENDERLESS",
       "level": 80,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "psychicsurge",
       "moveset": [
         "moonblast",
@@ -46,28 +42,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:terrain_ext"
+      "heldItem": "terrain_ext"
     },
     {
-      "species": "cobblemon:excadrill",
+      "species": "excadrill",
       "gender": "MALE",
       "level": 80,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "sandrush",
       "moveset": [
         "highhorsepower",
@@ -77,28 +69,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:focus_sash"
+      "heldItem": "focus_sash"
     },
     {
-      "species": "cobblemon:tyranitar",
+      "species": "tyranitar",
       "gender": "FEMALE",
       "level": 80,
-      "nature": "cobblemon:careful",
+      "nature": "careful",
       "ability": "sandstream",
       "moveset": [
         "crunch",
@@ -108,28 +96,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 4,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 252,
-        "speed": 0
+        "atk": 4,
+        "spd": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:assault_vest"
+      "heldItem": "assault_vest"
     },
     {
-      "species": "cobblemon:celesteela",
+      "species": "celesteela",
       "gender": "GENDERLESS",
       "level": 80,
-      "nature": "cobblemon:modest",
+      "nature": "modest",
       "ability": "beastboost",
       "moveset": [
         "autotomize",
@@ -139,28 +123,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:power_herb"
+      "heldItem": "power_herb"
     },
     {
-      "species": "cobblemon:mewtwo",
+      "species": "mewtwo",
       "gender": "GENDERLESS",
       "level": 80,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "pressure",
       "moveset": [
         "expandingforce",
@@ -170,26 +150,17 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+        "spa": 252,
+        "spe": 252
+      }
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

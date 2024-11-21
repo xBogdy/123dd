@@ -1,11 +1,11 @@
 {
-  "displayName": "Leader Clair",
+  "name": "Leader Clair",
   "team": [
     {
-      "species": "cobblemon:aerodactyl",
+      "species": "aerodactyl",
       "gender": "FEMALE",
       "level": 80,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "pressure",
       "moveset": [
         "stealthrock",
@@ -15,28 +15,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:focus_sash"
+      "heldItem": "focus_sash"
     },
     {
-      "species": "cobblemon:dracovish",
+      "species": "dracovish",
       "gender": "GENDERLESS",
       "level": 80,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "strongjaw",
       "moveset": [
         "fishiousrend",
@@ -46,28 +42,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:choice_scarf"
+      "heldItem": "choice_scarf"
     },
     {
-      "species": "cobblemon:dragonite",
+      "species": "dragonite",
       "gender": "FEMALE",
       "level": 80,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "multiscale",
       "moveset": [
         "extremespeed",
@@ -77,28 +69,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:weaknesspol"
+      "heldItem": "weaknesspol"
     },
     {
-      "species": "cobblemon:magearna",
+      "species": "magearna",
       "gender": "GENDERLESS",
       "level": 81,
-      "nature": "cobblemon:modest",
+      "nature": "modest",
       "ability": "soulheart",
       "moveset": [
         "shiftgear",
@@ -108,28 +96,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:leftovers"
+      "heldItem": "leftovers"
     },
     {
-      "species": "cobblemon:naganadel",
+      "species": "naganadel",
       "gender": "GENDERLESS",
       "level": 81,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "beastboost",
       "moveset": [
         "nastyplot",
@@ -139,28 +123,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:life_orb"
+      "heldItem": "life_orb"
     },
     {
-      "species": "cobblemon:duraludon",
+      "species": "duraludon",
       "gender": "FEMALE",
       "level": 81,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "heavymetal",
       "moveset": [
         "dracometeor",
@@ -170,26 +150,18 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:duraludite"
+      "heldItem": "duraludite"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

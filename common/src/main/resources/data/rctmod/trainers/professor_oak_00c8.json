@@ -1,11 +1,11 @@
 {
-  "displayName": "Professor Oak",
+  "name": "Professor Oak",
   "team": [
     {
-      "species": "cobblemon:tauros",
+      "species": "tauros",
       "gender": "MALE",
       "level": 99,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "sheerforce",
       "moveset": [
         "headcharge",
@@ -15,28 +15,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 252,
-        "defence": 4,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "def": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:life_orb"
+      "heldItem": "life_orb"
     },
     {
-      "species": "cobblemon:exeggutor",
+      "species": "exeggutor",
       "gender": "MALE",
       "level": 97,
-      "nature": "cobblemon:modest",
+      "nature": "modest",
       "ability": "harvest",
       "moveset": [
         "chloroblast",
@@ -46,28 +42,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 0,
-        "defence": 4,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 0
+        "def": 4,
+        "spa": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:sitrus_berry"
+      "heldItem": "sitrus_berry"
     },
     {
-      "species": "cobblemon:charizard",
+      "species": "charizard",
       "gender": "FEMALE",
       "level": 99,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "blaze",
       "moveset": [
         "dragondance",
@@ -77,28 +69,23 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:charzarditex"
+      "heldItem": "charzarditex"
     },
     {
-      "species": "cobblemon:gyarados",
+      "species": "gyarados",
       "gender": "MALE",
       "level": 98,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "moxie",
       "moveset": [
         "dragondance",
@@ -108,28 +95,23 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:water_gem"
+      "heldItem": "water_gem"
     },
     {
-      "species": "cobblemon:mew",
+      "species": "mew",
       "gender": "GENDERLESS",
       "level": 99,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "synchronize",
       "moveset": [
         "nastyplot",
@@ -139,28 +121,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 4,
-        "speed": 252
+        "spa": 252,
+        "spd": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:fighting_gem"
+      "heldItem": "fighting_gem"
     },
     {
-      "species": "cobblemon:jolteon",
+      "species": "jolteon",
       "gender": "FEMALE",
       "level": 97,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "voltabsorb",
       "moveset": [
         "lastresort",
@@ -170,26 +148,18 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 30,
-        "defence": 30,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 30,
+        "def": 30,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 4,
-        "speed": 252
+        "spa": 252,
+        "spd": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:eevium_z"
+      "heldItem": "eevium_z"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

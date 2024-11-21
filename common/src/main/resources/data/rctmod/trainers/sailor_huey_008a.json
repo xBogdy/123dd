@@ -1,11 +1,11 @@
 {
-  "displayName": "Sailor Huey",
+  "name": "Sailor Huey",
   "team": [
     {
-      "species": "cobblemon:croconaw",
+      "species": "croconaw",
       "gender": "FEMALE",
       "level": 28,
-      "nature": "cobblemon:careful",
+      "nature": "careful",
       "ability": "sheerforce",
       "moveset": [
         "seismictoss",
@@ -15,28 +15,19 @@
       ],
       "ivs": {
         "hp": 10,
-        "attack": 10,
-        "defence": 10,
-        "special_attack": 10,
-        "special_defence": 10,
-        "speed": 10
+        "atk": 10,
+        "def": 10,
+        "spa": 10,
+        "spd": 10,
+        "spe": 10
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:bibarel",
+      "species": "bibarel",
       "gender": "FEMALE",
       "level": 28,
-      "nature": "cobblemon:lonely",
+      "nature": "lonely",
       "ability": "simple",
       "moveset": [
         "headbutt",
@@ -46,26 +37,13 @@
       ],
       "ivs": {
         "hp": 10,
-        "attack": 10,
-        "defence": 10,
-        "special_attack": 10,
-        "special_defence": 10,
-        "speed": 10
+        "atk": 10,
+        "def": 10,
+        "spa": 10,
+        "spd": 10,
+        "spe": 10
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

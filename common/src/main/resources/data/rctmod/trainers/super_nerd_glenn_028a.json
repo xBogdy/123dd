@@ -1,11 +1,11 @@
 {
-  "displayName": "Super Nerd Glenn",
+  "name": "Super Nerd Glenn",
   "team": [
     {
-      "species": "cobblemon:muk",
+      "species": "muk",
       "gender": "MALE",
       "level": 28,
-      "nature": "cobblemon:gentle",
+      "nature": "gentle",
       "ability": "stickyhold",
       "moveset": [
         "disable",
@@ -15,28 +15,19 @@
       ],
       "ivs": {
         "hp": 15,
-        "attack": 15,
-        "defence": 15,
-        "special_attack": 15,
-        "special_defence": 15,
-        "speed": 15
+        "atk": 15,
+        "def": 15,
+        "spa": 15,
+        "spd": 15,
+        "spe": 15
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:muk",
+      "species": "muk",
       "gender": "MALE",
       "level": 28,
-      "nature": "cobblemon:quiet",
+      "nature": "quiet",
       "ability": "stickyhold",
       "moveset": [
         "disable",
@@ -46,28 +37,19 @@
       ],
       "ivs": {
         "hp": 15,
-        "attack": 15,
-        "defence": 15,
-        "special_attack": 15,
-        "special_defence": 15,
-        "speed": 15
+        "atk": 15,
+        "def": 15,
+        "spa": 15,
+        "spd": 15,
+        "spe": 15
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:muk",
+      "species": "muk",
       "gender": "FEMALE",
       "level": 28,
-      "nature": "cobblemon:naughty",
+      "nature": "naughty",
       "ability": "stickyhold",
       "moveset": [
         "disable",
@@ -77,26 +59,13 @@
       ],
       "ivs": {
         "hp": 15,
-        "attack": 15,
-        "defence": 15,
-        "special_attack": 15,
-        "special_defence": 15,
-        "speed": 15
+        "atk": 15,
+        "def": 15,
+        "spa": 15,
+        "spd": 15,
+        "spe": 15
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

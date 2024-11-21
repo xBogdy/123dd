@@ -1,11 +1,11 @@
 {
-  "displayName": "Bugsy",
+  "name": "Bugsy",
   "team": [
     {
-      "species": "cobblemon:kleavor",
+      "species": "kleavor",
       "gender": "MALE",
       "level": 93,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "technician",
       "moveset": [
         "stealthrock",
@@ -15,28 +15,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 252,
-        "defence": 4,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "def": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:focus_sash"
+      "heldItem": "focus_sash"
     },
     {
-      "species": "cobblemon:scizor",
+      "species": "scizor",
       "gender": "MALE",
       "level": 97,
-      "nature": "cobblemon:careful",
+      "nature": "careful",
       "ability": "technician",
       "moveset": [
         "bulletpunch",
@@ -46,28 +42,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 252,
-        "defence": 4,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
+        "atk": 252,
+        "def": 4
       },
-      "shiny": false,
-      "heldItem": "cobblemon:scizorite"
+      "heldItem": "scizorite"
     },
     {
-      "species": "cobblemon:scyther",
+      "species": "scyther",
       "gender": "MALE",
       "level": 96,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "technician",
       "moveset": [
         "swordsdance",
@@ -77,28 +69,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 252,
-        "defence": 4,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "def": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:eviolite"
+      "heldItem": "eviolite"
     },
     {
-      "species": "cobblemon:heracross",
+      "species": "heracross",
       "gender": "FEMALE",
       "level": 93,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "moxie",
       "moveset": [
         "megahorn",
@@ -108,28 +96,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 252,
-        "defence": 4,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "def": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:coba_berry"
+      "heldItem": "coba_berry"
     },
     {
-      "species": "cobblemon:araquanid",
+      "species": "araquanid",
       "gender": "MALE",
       "level": 94,
-      "nature": "cobblemon:impish",
+      "nature": "impish",
       "ability": "waterbubble",
       "moveset": [
         "xscissor",
@@ -139,28 +123,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 4,
-        "defence": 252,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
+        "atk": 4,
+        "def": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:leftovers"
+      "heldItem": "leftovers"
     },
     {
-      "species": "cobblemon:vikavolt",
+      "species": "vikavolt",
       "gender": "MALE",
       "level": 96,
-      "nature": "cobblemon:modest",
+      "nature": "modest",
       "ability": "levitate",
       "moveset": [
         "thunder",
@@ -170,26 +150,14 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:magnet"
+      "evs": {},
+      "heldItem": "magnet"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

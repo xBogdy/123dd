@@ -1,11 +1,11 @@
 {
-  "displayName": "Crush Girl Cyndy",
+  "name": "Crush Girl Cyndy",
   "team": [
     {
-      "species": "cobblemon:primeape",
+      "species": "primeape",
       "gender": "MALE",
       "level": 48,
-      "nature": "cobblemon:careful",
+      "nature": "careful",
       "ability": "angerpoint",
       "moveset": [
         "thrash",
@@ -15,28 +15,20 @@
       ],
       "ivs": {
         "hp": 15,
-        "attack": 15,
-        "defence": 15,
-        "special_attack": 15,
-        "special_defence": 15,
-        "speed": 15
+        "atk": 15,
+        "def": 15,
+        "spa": 15,
+        "spd": 15,
+        "spe": 15
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:black_belt"
+      "evs": {},
+      "heldItem": "black_belt"
     },
     {
-      "species": "cobblemon:hitmontop",
+      "species": "hitmontop",
       "gender": "MALE",
       "level": 48,
-      "nature": "cobblemon:hardy",
+      "nature": "hardy",
       "ability": "technician",
       "moveset": [
         "agility",
@@ -46,28 +38,20 @@
       ],
       "ivs": {
         "hp": 15,
-        "attack": 15,
-        "defence": 15,
-        "special_attack": 15,
-        "special_defence": 15,
-        "speed": 15
+        "atk": 15,
+        "def": 15,
+        "spa": 15,
+        "spd": 15,
+        "spe": 15
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:black_belt"
+      "evs": {},
+      "heldItem": "black_belt"
     },
     {
-      "species": "cobblemon:machoke",
+      "species": "machoke",
       "gender": "FEMALE",
       "level": 48,
-      "nature": "cobblemon:bold",
+      "nature": "bold",
       "ability": "noguard",
       "moveset": [
         "dualchop",
@@ -77,26 +61,14 @@
       ],
       "ivs": {
         "hp": 15,
-        "attack": 15,
-        "defence": 15,
-        "special_attack": 15,
-        "special_defence": 15,
-        "speed": 15
+        "atk": 15,
+        "def": 15,
+        "spa": 15,
+        "spd": 15,
+        "spe": 15
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:black_belt"
+      "evs": {},
+      "heldItem": "black_belt"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

@@ -1,11 +1,11 @@
 {
-  "displayName": "Team Rocket Grunt",
+  "name": "Team Rocket Grunt",
   "team": [
     {
-      "species": "cobblemon:ariados",
+      "species": "ariados",
       "gender": "MALE",
       "level": 40,
-      "nature": "cobblemon:lax",
+      "nature": "lax",
       "ability": "noguard",
       "moveset": [
         "poisonjab",
@@ -15,28 +15,19 @@
       ],
       "ivs": {
         "hp": 15,
-        "attack": 15,
-        "defence": 15,
-        "special_attack": 15,
-        "special_defence": 15,
-        "speed": 15
+        "atk": 15,
+        "def": 15,
+        "spa": 15,
+        "spd": 15,
+        "spe": 15
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:weezing",
+      "species": "weezing",
       "gender": "MALE",
       "level": 42,
-      "nature": "cobblemon:hardy",
+      "nature": "hardy",
       "ability": "neutralizinggas",
       "moveset": [
         "selfdestruct",
@@ -46,28 +37,19 @@
       ],
       "ivs": {
         "hp": 15,
-        "attack": 15,
-        "defence": 15,
-        "special_attack": 15,
-        "special_defence": 15,
-        "speed": 15
+        "atk": 15,
+        "def": 15,
+        "spa": 15,
+        "spd": 15,
+        "spe": 15
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:centiskorch",
+      "species": "centiskorch",
       "gender": "FEMALE",
       "level": 40,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "clearbody",
       "moveset": [
         "firelash",
@@ -76,26 +58,13 @@
       ],
       "ivs": {
         "hp": 15,
-        "attack": 15,
-        "defence": 15,
-        "special_attack": 15,
-        "special_defence": 15,
-        "speed": 15
+        "atk": 15,
+        "def": 15,
+        "spa": 15,
+        "spd": 15,
+        "spe": 15
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

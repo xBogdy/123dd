@@ -1,11 +1,11 @@
 {
-  "displayName": "Rocket Admin Ariana",
+  "name": "Rocket Admin Ariana",
   "team": [
     {
-      "species": "cobblemon:ambipom",
+      "species": "ambipom",
       "gender": "FEMALE",
       "level": 85,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "technician",
       "moveset": [
         "fakeout",
@@ -15,28 +15,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:life_orb"
+      "heldItem": "life_orb"
     },
     {
-      "species": "cobblemon:weavile",
+      "species": "weavile",
       "gender": "FEMALE",
       "level": 85,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "pressure",
       "moveset": [
         "tripleaxel",
@@ -46,28 +42,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:focus_sash"
+      "heldItem": "focus_sash"
     },
     {
-      "species": "cobblemon:victini",
+      "species": "victini",
       "gender": "GENDERLESS",
       "level": 85,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "victorystar",
       "moveset": [
         "celebrate",
@@ -77,28 +69,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:normalium_z"
+      "heldItem": "normalium_z"
     },
     {
-      "species": "cobblemon:toxapex",
+      "species": "toxapex",
       "gender": "FEMALE",
       "level": 85,
-      "nature": "cobblemon:bold",
+      "nature": "bold",
       "ability": "regenerator",
       "moveset": [
         "haze",
@@ -108,28 +96,23 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 0,
-        "defence": 252,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
+        "def": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:black_sludge"
+      "heldItem": "black_sludge"
     },
     {
-      "species": "cobblemon:mawile",
+      "species": "mawile",
       "gender": "FEMALE",
       "level": 85,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "hypercutter",
       "moveset": [
         "ironhead",
@@ -139,28 +122,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 6
+        "atk": 252,
+        "spe": 6
       },
-      "shiny": false,
-      "heldItem": "cobblemon:mawilite"
+      "heldItem": "mawilite"
     },
     {
-      "species": "cobblemon:xerneas",
+      "species": "xerneas",
       "gender": "GENDERLESS",
       "level": 85,
-      "nature": "cobblemon:modest",
+      "nature": "modest",
       "ability": "fairyaura",
       "moveset": [
         "geomancy",
@@ -170,26 +149,18 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 6
+        "spa": 252,
+        "spe": 6
       },
-      "shiny": false,
-      "heldItem": "cobblemon:power_herb"
+      "heldItem": "power_herb"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

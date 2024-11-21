@@ -1,11 +1,11 @@
 {
-  "displayName": "Biker Ernest",
+  "name": "Biker Ernest",
   "team": [
     {
-      "species": "cobblemon:weezing",
+      "species": "weezing",
       "gender": "FEMALE",
       "level": 57,
-      "nature": "cobblemon:hasty",
+      "nature": "hasty",
       "ability": "levitate",
       "moveset": [
         "smokescreen",
@@ -15,28 +15,19 @@
       ],
       "ivs": {
         "hp": 10,
-        "attack": 10,
-        "defence": 10,
-        "special_attack": 10,
-        "special_defence": 10,
-        "speed": 10
+        "atk": 10,
+        "def": 10,
+        "spa": 10,
+        "spd": 10,
+        "spe": 10
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:weezing",
+      "species": "weezing",
       "gender": "FEMALE",
       "level": 57,
-      "nature": "cobblemon:bold",
+      "nature": "bold",
       "ability": "levitate",
       "moveset": [
         "smokescreen",
@@ -46,28 +37,19 @@
       ],
       "ivs": {
         "hp": 10,
-        "attack": 10,
-        "defence": 10,
-        "special_attack": 10,
-        "special_defence": 10,
-        "speed": 10
+        "atk": 10,
+        "def": 10,
+        "spa": 10,
+        "spd": 10,
+        "spe": 10
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:weezing",
+      "species": "weezing",
       "gender": "MALE",
       "level": 57,
-      "nature": "cobblemon:impish",
+      "nature": "impish",
       "ability": "levitate",
       "moveset": [
         "smokescreen",
@@ -77,28 +59,19 @@
       ],
       "ivs": {
         "hp": 10,
-        "attack": 10,
-        "defence": 10,
-        "special_attack": 10,
-        "special_defence": 10,
-        "speed": 10
+        "atk": 10,
+        "def": 10,
+        "spa": 10,
+        "spd": 10,
+        "spe": 10
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:salazzle",
+      "species": "salazzle",
       "gender": "FEMALE",
       "level": 57,
-      "nature": "cobblemon:bashful",
+      "nature": "bashful",
       "ability": "corrosion",
       "moveset": [
         "smokescreen",
@@ -108,28 +81,19 @@
       ],
       "ivs": {
         "hp": 10,
-        "attack": 10,
-        "defence": 10,
-        "special_attack": 10,
-        "special_defence": 10,
-        "speed": 10
+        "atk": 10,
+        "def": 10,
+        "spa": 10,
+        "spd": 10,
+        "spe": 10
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:gengar",
+      "species": "gengar",
       "gender": "FEMALE",
       "level": 58,
-      "nature": "cobblemon:bashful",
+      "nature": "bashful",
       "ability": "levitate",
       "moveset": [
         "minimize",
@@ -139,26 +103,13 @@
       ],
       "ivs": {
         "hp": 10,
-        "attack": 10,
-        "defence": 10,
-        "special_attack": 10,
-        "special_defence": 10,
-        "speed": 10
+        "atk": 10,
+        "def": 10,
+        "spa": 10,
+        "spd": 10,
+        "spe": 10
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

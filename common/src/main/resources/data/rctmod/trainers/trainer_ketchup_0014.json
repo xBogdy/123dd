@@ -1,11 +1,11 @@
 {
-  "displayName": "Trainer Ketchup",
+  "name": "Trainer Ketchup",
   "team": [
     {
-      "species": "cobblemon:azumarill",
+      "species": "azumarill",
       "gender": "FEMALE",
       "level": 60,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "hugepower",
       "moveset": [
         "liquidation",
@@ -15,28 +15,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 6
+        "atk": 252,
+        "spe": 6
       },
-      "shiny": false,
-      "heldItem": "cobblemon:assault_vest"
+      "heldItem": "assault_vest"
     },
     {
-      "species": "cobblemon:gliscor",
+      "species": "gliscor",
       "gender": "FEMALE",
       "level": 60,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "poisonheal",
       "moveset": [
         "swordsdance",
@@ -46,28 +42,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 6
+        "atk": 252,
+        "spe": 6
       },
-      "shiny": false,
-      "heldItem": "cobblemon:toxic_orb"
+      "heldItem": "toxic_orb"
     },
     {
-      "species": "cobblemon:dracozolt",
+      "species": "dracozolt",
       "gender": "GENDERLESS",
       "level": 60,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "hustle",
       "moveset": [
         "boltbeak",
@@ -77,28 +69,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:choice_scarf"
+      "heldItem": "choice_scarf"
     },
     {
-      "species": "cobblemon:aggron",
+      "species": "aggron",
       "gender": "FEMALE",
       "level": 60,
-      "nature": "cobblemon:careful",
+      "nature": "careful",
       "ability": "sturdy",
       "moveset": [
         "curse",
@@ -108,28 +96,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 0,
-        "defence": 4,
-        "special_attack": 0,
-        "special_defence": 252,
-        "speed": 0
+        "def": 4,
+        "spd": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:aggronite"
+      "heldItem": "aggronite"
     },
     {
-      "species": "cobblemon:urshifu",
+      "species": "urshifu",
       "gender": "FEMALE",
       "level": 60,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "unseenfist",
       "moveset": [
         "wickedblow",
@@ -139,28 +123,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:choice_band"
+      "heldItem": "choice_band"
     },
     {
-      "species": "cobblemon:urshifu",
+      "species": "urshifu",
       "gender": "FEMALE",
       "level": 60,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "unseenfist",
       "moveset": [
         "surgingstrikes",
@@ -170,29 +150,21 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:choice_band",
+      "heldItem": "choice_band",
       "aspects": [
         "rapid_strike"
       ]
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

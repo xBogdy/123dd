@@ -1,11 +1,11 @@
 {
-  "displayName": "Cool Couple Lex \u0026 Nya",
+  "name": "Cool Couple Lex \u0026 Nya",
   "team": [
     {
-      "species": "cobblemon:miltank",
+      "species": "miltank",
       "gender": "FEMALE",
       "level": 57,
-      "nature": "cobblemon:quiet",
+      "nature": "quiet",
       "ability": "scrappy",
       "moveset": [
         "bodyslam",
@@ -15,28 +15,19 @@
       ],
       "ivs": {
         "hp": 25,
-        "attack": 25,
-        "defence": 25,
-        "special_attack": 25,
-        "special_defence": 25,
-        "speed": 25
+        "atk": 25,
+        "def": 25,
+        "spa": 25,
+        "spd": 25,
+        "spe": 25
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:tauros",
+      "species": "tauros",
       "gender": "MALE",
       "level": 57,
-      "nature": "cobblemon:impish",
+      "nature": "impish",
       "ability": "angerpoint",
       "moveset": [
         "takedown",
@@ -46,26 +37,13 @@
       ],
       "ivs": {
         "hp": 25,
-        "attack": 25,
-        "defence": 25,
-        "special_attack": 25,
-        "special_defence": 25,
-        "speed": 25
+        "atk": 25,
+        "def": 25,
+        "spa": 25,
+        "spd": 25,
+        "spe": 25
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

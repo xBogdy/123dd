@@ -1,11 +1,11 @@
 {
-  "displayName": "Trainer Brendan",
+  "name": "Trainer Brendan",
   "team": [
     {
-      "species": "cobblemon:deoxys",
+      "species": "deoxys",
       "gender": "GENDERLESS",
       "level": 81,
-      "nature": "cobblemon:naive",
+      "nature": "naive",
       "ability": "pressure",
       "moveset": [
         "psychic",
@@ -15,31 +15,27 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 128,
-        "defence": 0,
-        "special_attack": 132,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 128,
+        "spa": 132,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:focus_sash",
+      "heldItem": "focus_sash",
       "aspects": [
         "attack"
       ]
     },
     {
-      "species": "cobblemon:jirachi",
+      "species": "jirachi",
       "gender": "GENDERLESS",
       "level": 81,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "serenegrace",
       "moveset": [
         "ironhead",
@@ -49,28 +45,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:choice_scarf"
+      "heldItem": "choice_scarf"
     },
     {
-      "species": "cobblemon:landorus",
+      "species": "landorus",
       "gender": "MALE",
       "level": 82,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "sandforce",
       "moveset": [
         "earthpower",
@@ -80,28 +72,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:life_orb"
+      "heldItem": "life_orb"
     },
     {
-      "species": "cobblemon:zapdos",
+      "species": "zapdos",
       "gender": "GENDERLESS",
       "level": 81,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "defiant",
       "moveset": [
         "bravebird",
@@ -111,31 +99,27 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:choice_band",
+      "heldItem": "choice_band",
       "aspects": [
         "galar"
       ]
     },
     {
-      "species": "cobblemon:huntail",
+      "species": "huntail",
       "gender": "FEMALE",
       "level": 81,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "intimidate",
       "moveset": [
         "shellsmash",
@@ -145,28 +129,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:white_herb"
+      "heldItem": "white_herb"
     },
     {
-      "species": "cobblemon:sceptile",
+      "species": "sceptile",
       "gender": "FEMALE",
       "level": 82,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "overgrow",
       "moveset": [
         "swordsdance",
@@ -176,26 +156,18 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:sceptilite"
+      "heldItem": "sceptilite"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

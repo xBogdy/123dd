@@ -1,11 +1,11 @@
 {
-  "displayName": "Juggler Nelson",
+  "name": "Juggler Nelson",
   "team": [
     {
-      "species": "cobblemon:hypno",
+      "species": "hypno",
       "gender": "FEMALE",
       "level": 80,
-      "nature": "cobblemon:naive",
+      "nature": "naive",
       "ability": "insomnia",
       "moveset": [
         "swagger",
@@ -15,28 +15,19 @@
       ],
       "ivs": {
         "hp": 10,
-        "attack": 10,
-        "defence": 10,
-        "special_attack": 10,
-        "special_defence": 10,
-        "speed": 10
+        "atk": 10,
+        "def": 10,
+        "spa": 10,
+        "spd": 10,
+        "spe": 10
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:electrode",
+      "species": "electrode",
       "gender": "GENDERLESS",
       "level": 81,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "soundproof",
       "moveset": [
         "explosion",
@@ -46,28 +37,19 @@
       ],
       "ivs": {
         "hp": 10,
-        "attack": 10,
-        "defence": 10,
-        "special_attack": 10,
-        "special_defence": 10,
-        "speed": 10
+        "atk": 10,
+        "def": 10,
+        "spa": 10,
+        "spd": 10,
+        "spe": 10
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:meowstic",
+      "species": "meowstic",
       "gender": "MALE",
       "level": 76,
-      "nature": "cobblemon:quirky",
+      "nature": "quirky",
       "ability": "prankster",
       "moveset": [
         "imprison",
@@ -77,28 +59,19 @@
       ],
       "ivs": {
         "hp": 10,
-        "attack": 10,
-        "defence": 10,
-        "special_attack": 10,
-        "special_defence": 10,
-        "speed": 10
+        "atk": 10,
+        "def": 10,
+        "spa": 10,
+        "spd": 10,
+        "spe": 10
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:gothitelle",
+      "species": "gothitelle",
       "gender": "MALE",
       "level": 82,
-      "nature": "cobblemon:relaxed",
+      "nature": "relaxed",
       "ability": "frisk",
       "moveset": [
         "psychic",
@@ -108,26 +81,13 @@
       ],
       "ivs": {
         "hp": 10,
-        "attack": 10,
-        "defence": 10,
-        "special_attack": 10,
-        "special_defence": 10,
-        "speed": 10
+        "atk": 10,
+        "def": 10,
+        "spa": 10,
+        "spd": 10,
+        "spe": 10
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

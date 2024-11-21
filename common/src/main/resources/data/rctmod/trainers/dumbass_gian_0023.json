@@ -1,11 +1,11 @@
 {
-  "displayName": "Dumbass Gian",
+  "name": "Dumbass Gian",
   "team": [
     {
-      "species": "cobblemon:magearna",
+      "species": "magearna",
       "gender": "GENDERLESS",
       "level": 93,
-      "nature": "cobblemon:calm",
+      "nature": "calm",
       "ability": "soulheart",
       "moveset": [
         "helpinghand",
@@ -15,31 +15,27 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 4
+        "spa": 252,
+        "spe": 4
       },
-      "shiny": false,
-      "heldItem": "cobblemon:sitrus_berry",
+      "heldItem": "sitrus_berry",
       "aspects": [
         "original"
       ]
     },
     {
-      "species": "cobblemon:swampert",
+      "species": "swampert",
       "gender": "FEMALE",
       "level": 91,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "damp",
       "moveset": [
         "highhorsepower",
@@ -49,28 +45,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 252,
-        "defence": 4,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "def": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:swampertite"
+      "heldItem": "swampertite"
     },
     {
-      "species": "cobblemon:necrozma",
+      "species": "necrozma",
       "gender": "GENDERLESS",
       "level": 91,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "prismarmor",
       "moveset": [
         "sunsteelstrike",
@@ -80,31 +72,27 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 252,
-        "defence": 4,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "def": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:solganium_z",
+      "heldItem": "solganium_z",
       "aspects": [
         "dusk_mane"
       ]
     },
     {
-      "species": "cobblemon:greninja",
+      "species": "greninja",
       "gender": "FEMALE",
       "level": 92,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "battlebond",
       "moveset": [
         "watershuriken",
@@ -114,31 +102,27 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 4,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "def": 4,
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:life_orb",
+      "heldItem": "life_orb",
       "aspects": [
         "ash"
       ]
     },
     {
-      "species": "cobblemon:palkia",
+      "species": "palkia",
       "gender": "GENDERLESS",
       "level": 91,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "pressure",
       "moveset": [
         "hydropump",
@@ -148,31 +132,27 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 4,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "def": 4,
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:lustrous_orb",
+      "heldItem": "lustrous_orb",
       "aspects": [
         "origin"
       ]
     },
     {
-      "species": "cobblemon:shaymin",
+      "species": "shaymin",
       "gender": "GENDERLESS",
       "level": 93,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "serenegrace",
       "moveset": [
         "seedflare",
@@ -182,29 +162,21 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 30,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 30,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 4,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "def": 4,
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:choice_specs",
+      "heldItem": "choice_specs",
       "aspects": [
         "sky"
       ]
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

@@ -1,11 +1,11 @@
 {
-  "displayName": "Juggler Gregory",
+  "name": "Juggler Gregory",
   "team": [
     {
-      "species": "cobblemon:mrmime",
+      "species": "mrmime",
       "gender": "FEMALE",
       "level": 83,
-      "nature": "cobblemon:naughty",
+      "nature": "naughty",
       "ability": "solidrock",
       "moveset": [
         "psychic",
@@ -14,26 +14,13 @@
       ],
       "ivs": {
         "hp": 10,
-        "attack": 10,
-        "defence": 10,
-        "special_attack": 10,
-        "special_defence": 10,
-        "speed": 10
+        "atk": 10,
+        "def": 10,
+        "spa": 10,
+        "spd": 10,
+        "spe": 10
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

@@ -1,11 +1,11 @@
 {
-  "displayName": "Dumbass Kid",
+  "name": "Dumbass Kid",
   "team": [
     {
-      "species": "cobblemon:swampert",
+      "species": "swampert",
       "gender": "FEMALE",
       "level": 54,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "torrent",
       "moveset": [
         "stealthrock",
@@ -15,28 +15,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 6
+        "atk": 252,
+        "spe": 6
       },
-      "shiny": false,
-      "heldItem": "cobblemon:rindo_berry"
+      "heldItem": "rindo_berry"
     },
     {
-      "species": "cobblemon:pelipper",
+      "species": "pelipper",
       "gender": "MALE",
       "level": 54,
-      "nature": "cobblemon:modest",
+      "nature": "modest",
       "ability": "drizzle",
       "moveset": [
         "surf",
@@ -46,28 +42,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:damp_rock"
+      "heldItem": "damp_rock"
     },
     {
-      "species": "cobblemon:scizor",
+      "species": "scizor",
       "gender": "FEMALE",
       "level": 54,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "technician",
       "moveset": [
         "swordsdance",
@@ -77,28 +69,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 6
+        "atk": 252,
+        "spe": 6
       },
-      "shiny": false,
-      "heldItem": "cobblemon:metal_coat"
+      "heldItem": "metal_coat"
     },
     {
-      "species": "cobblemon:frosmoth",
+      "species": "frosmoth",
       "gender": "MALE",
       "level": 54,
-      "nature": "cobblemon:modest",
+      "nature": "modest",
       "ability": "icescales",
       "moveset": [
         "quiverdance",
@@ -108,28 +96,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:leftovers"
+      "heldItem": "leftovers"
     },
     {
-      "species": "cobblemon:seaking",
+      "species": "seaking",
       "gender": "MALE",
       "level": 54,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "raindish",
       "moveset": [
         "fishiousrend",
@@ -138,28 +122,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:choice_band"
+      "heldItem": "choice_band"
     },
     {
-      "species": "cobblemon:swampert",
+      "species": "swampert",
       "gender": "FEMALE",
       "level": 54,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "torrent",
       "moveset": [
         "liquidation",
@@ -169,26 +149,18 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:swampertite"
+      "heldItem": "swampertite"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

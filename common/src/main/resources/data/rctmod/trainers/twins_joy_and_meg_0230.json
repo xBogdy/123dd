@@ -1,11 +1,11 @@
 {
-  "displayName": "Twins Joy \u0026 Meg",
+  "name": "Twins Joy \u0026 Meg",
   "team": [
     {
-      "species": "cobblemon:empoleon",
+      "species": "empoleon",
       "gender": "FEMALE",
       "level": 93,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "competitive",
       "moveset": [
         "hydropump",
@@ -15,28 +15,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 30,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 30,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 176,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 80,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 80,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:weaknesspol"
+      "heldItem": "weaknesspol"
     },
     {
-      "species": "cobblemon:granbull",
+      "species": "granbull",
       "gender": "FEMALE",
       "level": 92,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "intimidate",
       "moveset": [
         "closecombat",
@@ -46,28 +42,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 4,
-        "speed": 0
+        "atk": 252,
+        "spd": 4
       },
-      "shiny": false,
-      "heldItem": "cobblemon:assault_vest"
+      "heldItem": "assault_vest"
     },
     {
-      "species": "cobblemon:volbeat",
+      "species": "volbeat",
       "gender": "MALE",
       "level": 93,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "illuminate",
       "moveset": [
         "thunder",
@@ -77,28 +69,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 4,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "def": 4,
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:electrium_z"
+      "heldItem": "electrium_z"
     },
     {
-      "species": "cobblemon:illumise",
+      "species": "illumise",
       "gender": "FEMALE",
       "level": 92,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "tintedlens",
       "moveset": [
         "playrough",
@@ -108,28 +96,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 252,
-        "defence": 4,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "def": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:life_orb"
+      "heldItem": "life_orb"
     },
     {
-      "species": "cobblemon:minun",
+      "species": "minun",
       "gender": "MALE",
       "level": 92,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "galvanize",
       "moveset": [
         "extremespeed",
@@ -139,28 +123,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 252,
-        "defence": 4,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "def": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:magnet"
+      "heldItem": "magnet"
     },
     {
-      "species": "cobblemon:plusle",
+      "species": "plusle",
       "gender": "MALE",
       "level": 91,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "transistor",
       "moveset": [
         "thunderbolt",
@@ -170,26 +150,18 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 30,
-        "defence": 31,
-        "special_attack": 30,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 30,
+        "def": 31,
+        "spa": 30,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 4,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "def": 4,
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:focus_sash"
+      "heldItem": "focus_sash"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

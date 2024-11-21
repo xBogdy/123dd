@@ -1,11 +1,11 @@
 {
-  "displayName": "Leader Sabrina",
+  "name": "Leader Sabrina",
   "team": [
     {
-      "species": "cobblemon:hatterene",
+      "species": "hatterene",
       "gender": "FEMALE",
       "level": 57,
-      "nature": "cobblemon:quiet",
+      "nature": "quiet",
       "ability": "magicbounce",
       "moveset": [
         "trickroom",
@@ -15,28 +15,22 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 0,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 0
+        "def": 31,
+        "spa": 31,
+        "spd": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 0,
-        "defence": 4,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 0
+        "def": 4,
+        "spa": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:psychic_seed"
+      "heldItem": "psychic_seed"
     },
     {
-      "species": "cobblemon:indeedee",
+      "species": "indeedee",
       "gender": "FEMALE",
       "level": 57,
-      "nature": "cobblemon:quiet",
+      "nature": "quiet",
       "ability": "psychicsurge",
       "moveset": [
         "expandingforce",
@@ -46,31 +40,25 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 0,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 0
+        "def": 31,
+        "spa": 31,
+        "spd": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 0,
-        "defence": 4,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 0
+        "def": 4,
+        "spa": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:terrain_ext",
+      "heldItem": "terrain_ext",
       "aspects": [
         "f"
       ]
     },
     {
-      "species": "cobblemon:crawdaunt",
+      "species": "crawdaunt",
       "gender": "FEMALE",
       "level": 58,
-      "nature": "cobblemon:brave",
+      "nature": "brave",
       "ability": "adaptability",
       "moveset": [
         "knockoff",
@@ -80,28 +68,23 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 0
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 252,
-        "defence": 4,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
+        "atk": 252,
+        "def": 4
       },
-      "shiny": false,
-      "heldItem": "cobblemon:focus_sash"
+      "heldItem": "focus_sash"
     },
     {
-      "species": "cobblemon:porygon2",
+      "species": "porygon2",
       "gender": "GENDERLESS",
       "level": 58,
-      "nature": "cobblemon:relaxed",
+      "nature": "relaxed",
       "ability": "trace",
       "moveset": [
         "trickroom",
@@ -111,28 +94,22 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 0,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 0
+        "def": 31,
+        "spa": 31,
+        "spd": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 0,
-        "defence": 252,
-        "special_attack": 0,
-        "special_defence": 4,
-        "speed": 0
+        "def": 252,
+        "spd": 4
       },
-      "shiny": false,
-      "heldItem": "cobblemon:eviolite"
+      "heldItem": "eviolite"
     },
     {
-      "species": "cobblemon:ursaluna",
+      "species": "ursaluna",
       "gender": "MALE",
       "level": 59,
-      "nature": "cobblemon:brave",
+      "nature": "brave",
       "ability": "guts",
       "moveset": [
         "protect",
@@ -142,28 +119,23 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 0
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 252,
-        "defence": 4,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
+        "atk": 252,
+        "def": 4
       },
-      "shiny": false,
-      "heldItem": "cobblemon:flame_orb"
+      "heldItem": "flame_orb"
     },
     {
-      "species": "cobblemon:gardevoir",
+      "species": "gardevoir",
       "gender": "MALE",
       "level": 59,
-      "nature": "cobblemon:quiet",
+      "nature": "quiet",
       "ability": "trace",
       "moveset": [
         "hypervoice",
@@ -173,26 +145,16 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 0,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 0
+        "def": 31,
+        "spa": 31,
+        "spd": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 0,
-        "defence": 4,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 0
+        "def": 4,
+        "spa": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:gardevoirite"
+      "heldItem": "gardevoirite"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

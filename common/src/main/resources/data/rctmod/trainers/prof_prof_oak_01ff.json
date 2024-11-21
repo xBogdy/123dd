@@ -1,11 +1,11 @@
 {
-  "displayName": "Prof. Prof. Oak",
+  "name": "Prof. Prof. Oak",
   "team": [
     {
-      "species": "cobblemon:ekans",
+      "species": "ekans",
       "gender": "MALE",
       "level": 5,
-      "nature": "cobblemon:naive",
+      "nature": "naive",
       "ability": "shedskin",
       "moveset": [
         "wrap",
@@ -14,26 +14,13 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

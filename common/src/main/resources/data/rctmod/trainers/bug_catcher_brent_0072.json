@@ -1,11 +1,11 @@
 {
-  "displayName": "Bug Catcher Brent",
+  "name": "Bug Catcher Brent",
   "team": [
     {
-      "species": "cobblemon:orbeetle",
+      "species": "orbeetle",
       "gender": "MALE",
       "level": 28,
-      "nature": "cobblemon:calm",
+      "nature": "calm",
       "ability": "frisk",
       "moveset": [
         "psybeam",
@@ -15,28 +15,19 @@
       ],
       "ivs": {
         "hp": 1,
-        "attack": 1,
-        "defence": 1,
-        "special_attack": 1,
-        "special_defence": 1,
-        "speed": 1
+        "atk": 1,
+        "def": 1,
+        "spa": 1,
+        "spd": 1,
+        "spe": 1
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:vivillon",
+      "species": "vivillon",
       "gender": "MALE",
       "level": 29,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "compoundeyes",
       "moveset": [
         "psybeam",
@@ -46,26 +37,13 @@
       ],
       "ivs": {
         "hp": 1,
-        "attack": 1,
-        "defence": 1,
-        "special_attack": 1,
-        "special_defence": 1,
-        "speed": 1
+        "atk": 1,
+        "def": 1,
+        "spa": 1,
+        "spd": 1,
+        "spe": 1
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

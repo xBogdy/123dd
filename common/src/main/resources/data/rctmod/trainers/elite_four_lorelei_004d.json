@@ -1,11 +1,11 @@
 {
-  "displayName": "Elite Four Lorelei",
+  "name": "Elite Four Lorelei",
   "team": [
     {
-      "species": "cobblemon:ninetales",
+      "species": "ninetales",
       "gender": "MALE",
       "level": 84,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "snowwarning",
       "moveset": [
         "blizzard",
@@ -15,31 +15,27 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:light_clay",
+      "heldItem": "light_clay",
       "aspects": [
         "alola"
       ]
     },
     {
-      "species": "cobblemon:glaceon",
+      "species": "glaceon",
       "gender": "FEMALE",
       "level": 84,
-      "nature": "cobblemon:modest",
+      "nature": "modest",
       "ability": "slushrush",
       "moveset": [
         "blizzard",
@@ -49,28 +45,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 30,
-        "defence": 31,
-        "special_attack": 30,
-        "special_defence": 31,
-        "speed": 30
+        "atk": 30,
+        "def": 31,
+        "spa": 30,
+        "spd": 31,
+        "spe": 30
       },
       "evs": {
         "hp": 6,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:choice_specs"
+      "heldItem": "choice_specs"
     },
     {
-      "species": "cobblemon:rotom",
+      "species": "rotom",
       "gender": "GENDERLESS",
       "level": 85,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "levitate",
       "moveset": [
         "voltswitch",
@@ -80,31 +72,27 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 4,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:wiki_berry",
+      "heldItem": "wiki_berry",
       "aspects": [
         "wash"
       ]
     },
     {
-      "species": "cobblemon:azumarill",
+      "species": "azumarill",
       "gender": "FEMALE",
       "level": 85,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "hugepower",
       "moveset": [
         "aquajet",
@@ -114,28 +102,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 6
+        "atk": 252,
+        "spe": 6
       },
-      "shiny": false,
-      "heldItem": "cobblemon:assault_vest"
+      "heldItem": "assault_vest"
     },
     {
-      "species": "cobblemon:calyrex",
+      "species": "calyrex",
       "gender": "GENDERLESS",
       "level": 85,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "unnerve",
       "moveset": [
         "glaciallance",
@@ -145,31 +129,27 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 6
+        "atk": 252,
+        "spe": 6
       },
-      "shiny": false,
-      "heldItem": "cobblemon:choice_band",
+      "heldItem": "choice_band",
       "aspects": [
         "ice"
       ]
     },
     {
-      "species": "cobblemon:abomasnow",
+      "species": "abomasnow",
       "gender": "FEMALE",
       "level": 85,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "snowwarning",
       "moveset": [
         "blizzard",
@@ -179,26 +159,18 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 30,
-        "defence": 31,
-        "special_attack": 30,
-        "special_defence": 31,
-        "speed": 30
+        "atk": 30,
+        "def": 31,
+        "spa": 30,
+        "spd": 31,
+        "spe": 30
       },
       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 4,
-        "speed": 252
+        "spa": 252,
+        "spd": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:abomasite"
+      "heldItem": "abomasite"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

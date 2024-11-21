@@ -1,11 +1,11 @@
 {
-  "displayName": "Ace Trainer Julie",
+  "name": "Ace Trainer Julie",
   "team": [
     {
-      "species": "cobblemon:persian",
+      "species": "persian",
       "gender": "MALE",
       "level": 42,
-      "nature": "cobblemon:hasty",
+      "nature": "hasty",
       "ability": "technician",
       "moveset": [
         "furyswipes",
@@ -15,28 +15,19 @@
       ],
       "ivs": {
         "hp": 25,
-        "attack": 25,
-        "defence": 25,
-        "special_attack": 25,
-        "special_defence": 25,
-        "speed": 25
+        "atk": 25,
+        "def": 25,
+        "spa": 25,
+        "spd": 25,
+        "spe": 25
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:ninetales",
+      "species": "ninetales",
       "gender": "MALE",
       "level": 42,
-      "nature": "cobblemon:bashful",
+      "nature": "bashful",
       "ability": "flashfire",
       "moveset": [
         "flamethrower",
@@ -46,28 +37,19 @@
       ],
       "ivs": {
         "hp": 25,
-        "attack": 25,
-        "defence": 25,
-        "special_attack": 25,
-        "special_defence": 25,
-        "speed": 25
+        "atk": 25,
+        "def": 25,
+        "spa": 25,
+        "spd": 25,
+        "spe": 25
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:rapidash",
+      "species": "rapidash",
       "gender": "FEMALE",
       "level": 42,
-      "nature": "cobblemon:docile",
+      "nature": "docile",
       "ability": "flashfire",
       "moveset": [
         "furyattack",
@@ -77,28 +59,19 @@
       ],
       "ivs": {
         "hp": 25,
-        "attack": 25,
-        "defence": 25,
-        "special_attack": 25,
-        "special_defence": 25,
-        "speed": 25
+        "atk": 25,
+        "def": 25,
+        "spa": 25,
+        "spd": 25,
+        "spe": 25
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:pikachu",
+      "species": "pikachu",
       "gender": "MALE",
       "level": 42,
-      "nature": "cobblemon:careful",
+      "nature": "careful",
       "ability": "static",
       "moveset": [
         "thunderbolt",
@@ -108,28 +81,19 @@
       ],
       "ivs": {
         "hp": 25,
-        "attack": 25,
-        "defence": 25,
-        "special_attack": 25,
-        "special_defence": 25,
-        "speed": 25
+        "atk": 25,
+        "def": 25,
+        "spa": 25,
+        "spd": 25,
+        "spe": 25
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:raichu",
+      "species": "raichu",
       "gender": "MALE",
       "level": 42,
-      "nature": "cobblemon:bold",
+      "nature": "bold",
       "ability": "static",
       "moveset": [
         "thunder",
@@ -139,26 +103,13 @@
       ],
       "ivs": {
         "hp": 25,
-        "attack": 25,
-        "defence": 25,
-        "special_attack": 25,
-        "special_defence": 25,
-        "speed": 25
+        "atk": 25,
+        "def": 25,
+        "spa": 25,
+        "spd": 25,
+        "spe": 25
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

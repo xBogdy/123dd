@@ -1,11 +1,11 @@
 {
-  "displayName": "Rival Terry",
+  "name": "Rival Terry",
   "team": [
     {
-      "species": "cobblemon:staraptor",
+      "species": "staraptor",
       "gender": "MALE",
       "level": 80,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "intimidate",
       "moveset": [
         "bravebird",
@@ -15,28 +15,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:choice_band"
+      "heldItem": "choice_band"
     },
     {
-      "species": "cobblemon:electivire",
+      "species": "electivire",
       "gender": "FEMALE",
       "level": 80,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "ironfist",
       "moveset": [
         "plasmafists",
@@ -46,28 +42,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:expert_belt"
+      "heldItem": "expert_belt"
     },
     {
-      "species": "cobblemon:azumarill",
+      "species": "azumarill",
       "gender": "FEMALE",
       "level": 81,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "hugepower",
       "moveset": [
         "aquajet",
@@ -77,28 +69,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:mystic_water"
+      "heldItem": "mystic_water"
     },
     {
-      "species": "cobblemon:darmanitan",
+      "species": "darmanitan",
       "gender": "MALE",
       "level": 81,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "sheerforce",
       "moveset": [
         "flareblitz",
@@ -108,28 +96,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:life_orb"
+      "heldItem": "life_orb"
     },
     {
-      "species": "cobblemon:kartana",
+      "species": "kartana",
       "gender": "GENDERLESS",
       "level": 81,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "beastboost",
       "moveset": [
         "leafblade",
@@ -139,28 +123,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:choice_scarf"
+      "heldItem": "choice_scarf"
     },
     {
-      "species": "cobblemon:venusaur",
+      "species": "venusaur",
       "gender": "FEMALE",
       "level": 81,
-      "nature": "cobblemon:modest",
+      "nature": "modest",
       "ability": "overgrow",
       "moveset": [
         "gigadrain",
@@ -170,26 +150,18 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 6
+        "spa": 252,
+        "spe": 6
       },
-      "shiny": false,
-      "heldItem": "cobblemon:venusaurite"
+      "heldItem": "venusaurite"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

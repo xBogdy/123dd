@@ -1,11 +1,11 @@
 {
-  "displayName": "Bug Catcher Charlie",
+  "name": "Bug Catcher Charlie",
   "team": [
     {
-      "species": "cobblemon:nincada",
+      "species": "nincada",
       "gender": "FEMALE",
       "level": 6,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "compoundeyes",
       "moveset": [
         "scratch",
@@ -14,28 +14,19 @@
       ],
       "ivs": {
         "hp": 1,
-        "attack": 1,
-        "defence": 1,
-        "special_attack": 1,
-        "special_defence": 1,
-        "speed": 1
+        "atk": 1,
+        "def": 1,
+        "spa": 1,
+        "spd": 1,
+        "spe": 1
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:spewpa",
+      "species": "spewpa",
       "gender": "FEMALE",
       "level": 9,
-      "nature": "cobblemon:hardy",
+      "nature": "hardy",
       "ability": "shedskin",
       "moveset": [
         "detect",
@@ -43,28 +34,19 @@
       ],
       "ivs": {
         "hp": 1,
-        "attack": 1,
-        "defence": 1,
-        "special_attack": 1,
-        "special_defence": 1,
-        "speed": 1
+        "atk": 1,
+        "def": 1,
+        "spa": 1,
+        "spd": 1,
+        "spe": 1
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:metapod",
+      "species": "metapod",
       "gender": "FEMALE",
       "level": 8,
-      "nature": "cobblemon:quiet",
+      "nature": "quiet",
       "ability": "shedskin",
       "moveset": [
         "harden",
@@ -72,26 +54,13 @@
       ],
       "ivs": {
         "hp": 1,
-        "attack": 1,
-        "defence": 1,
-        "special_attack": 1,
-        "special_defence": 1,
-        "speed": 1
+        "atk": 1,
+        "def": 1,
+        "spa": 1,
+        "spd": 1,
+        "spe": 1
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

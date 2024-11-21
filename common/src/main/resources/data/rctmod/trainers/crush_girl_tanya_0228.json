@@ -1,11 +1,11 @@
 {
-  "displayName": "Crush Girl Tanya",
+  "name": "Crush Girl Tanya",
   "team": [
     {
-      "species": "cobblemon:pangoro",
+      "species": "pangoro",
       "gender": "MALE",
       "level": 91,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "scrappy",
       "moveset": [
         "wickedblow",
@@ -15,28 +15,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 252,
-        "defence": 4,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "def": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:focus_sash"
+      "heldItem": "focus_sash"
     },
     {
-      "species": "cobblemon:bewear",
+      "species": "bewear",
       "gender": "FEMALE",
       "level": 91,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "fluffy",
       "moveset": [
         "closecombat",
@@ -46,28 +42,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 4
+        "atk": 252,
+        "spe": 4
       },
-      "shiny": false,
-      "heldItem": "cobblemon:sitrus_berry"
+      "heldItem": "sitrus_berry"
     },
     {
-      "species": "cobblemon:ursaring",
+      "species": "ursaring",
       "gender": "FEMALE",
       "level": 93,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "guts",
       "moveset": [
         "drainpunch",
@@ -77,31 +69,27 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 4
+        "atk": 252,
+        "spe": 4
       },
-      "shiny": false,
-      "heldItem": "cobblemon:flame_orb",
+      "heldItem": "flame_orb",
       "aspects": [
         "sevii"
       ]
     },
     {
-      "species": "cobblemon:tauros",
+      "species": "tauros",
       "gender": "MALE",
       "level": 91,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "sheerforce",
       "moveset": [
         "headcharge",
@@ -111,26 +99,17 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:life_orb"
+      "heldItem": "life_orb"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

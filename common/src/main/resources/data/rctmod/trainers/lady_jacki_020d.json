@@ -1,11 +1,11 @@
 {
-  "displayName": "Lady Jacki",
+  "name": "Lady Jacki",
   "team": [
     {
-      "species": "cobblemon:hoppip",
+      "species": "hoppip",
       "gender": "MALE",
       "level": 48,
-      "nature": "cobblemon:naive",
+      "nature": "naive",
       "ability": "leafguard",
       "moveset": [
         "uturn",
@@ -15,28 +15,20 @@
       ],
       "ivs": {
         "hp": 20,
-        "attack": 20,
-        "defence": 20,
-        "special_attack": 20,
-        "special_defence": 20,
-        "speed": 20
+        "atk": 20,
+        "def": 20,
+        "spa": 20,
+        "spd": 20,
+        "spe": 20
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:stardust"
+      "evs": {},
+      "heldItem": "stardust"
     },
     {
-      "species": "cobblemon:skiploom",
+      "species": "skiploom",
       "gender": "MALE",
       "level": 50,
-      "nature": "cobblemon:brave",
+      "nature": "brave",
       "ability": "leafguard",
       "moveset": [
         "ragepowder",
@@ -46,26 +38,14 @@
       ],
       "ivs": {
         "hp": 20,
-        "attack": 20,
-        "defence": 20,
-        "special_attack": 20,
-        "special_defence": 20,
-        "speed": 20
+        "atk": 20,
+        "def": 20,
+        "spa": 20,
+        "spd": 20,
+        "spe": 20
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:stardust"
+      "evs": {},
+      "heldItem": "stardust"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

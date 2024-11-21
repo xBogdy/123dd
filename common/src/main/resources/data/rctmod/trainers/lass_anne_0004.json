@@ -1,67 +1,51 @@
 {
-  "displayName": "Lass Anne",
+  "name": "Lass Anne",
   "team": [
     {
-      "species": "cobblemon:togepi",
+      "species": "togepi",
       "gender": "FEMALE",
       "level": 89,
-      "nature": "cobblemon:bashful",
+      "nature": "bashful",
       "ability": "serenegrace",
       "moveset": [
         "metronome"
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:eviolite"
+      "evs": {},
+      "heldItem": "eviolite"
     },
     {
-      "species": "cobblemon:clefairy",
+      "species": "clefairy",
       "gender": "MALE",
       "level": 93,
-      "nature": "cobblemon:bashful",
+      "nature": "bashful",
       "ability": "magicguard",
       "moveset": [
         "metronome"
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:life_orb"
+      "evs": {},
+      "heldItem": "life_orb"
     },
     {
-      "species": "cobblemon:audino",
+      "species": "audino",
       "gender": "FEMALE",
       "level": 93,
-      "nature": "cobblemon:bashful",
+      "nature": "bashful",
       "ability": "klutz",
       "moveset": [
         "swagger",
@@ -70,27 +54,11 @@
         "yawn"
       ],
       "ivs": {
-        "hp": 0,
-        "attack": 31,
-        "defence": 0,
-        "special_attack": 31,
-        "special_defence": 0,
-        "speed": 31
+        "atk": 31,
+        "spa": 31,
+        "spe": 31
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

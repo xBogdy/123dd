@@ -1,11 +1,11 @@
 {
-  "displayName": "Scientist Gideon",
+  "name": "Scientist Gideon",
   "team": [
     {
-      "species": "cobblemon:voltorb",
+      "species": "voltorb",
       "gender": "GENDERLESS",
       "level": 46,
-      "nature": "cobblemon:naive",
+      "nature": "naive",
       "ability": "soundproof",
       "moveset": [
         "swift",
@@ -15,28 +15,19 @@
       ],
       "ivs": {
         "hp": 15,
-        "attack": 15,
-        "defence": 15,
-        "special_attack": 15,
-        "special_defence": 15,
-        "speed": 15
+        "atk": 15,
+        "def": 15,
+        "spa": 15,
+        "spd": 15,
+        "spe": 15
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:electrode",
+      "species": "electrode",
       "gender": "GENDERLESS",
       "level": 46,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "soundproof",
       "moveset": [
         "spark",
@@ -46,28 +37,19 @@
       ],
       "ivs": {
         "hp": 15,
-        "attack": 15,
-        "defence": 15,
-        "special_attack": 15,
-        "special_defence": 15,
-        "speed": 15
+        "atk": 15,
+        "def": 15,
+        "spa": 15,
+        "spd": 15,
+        "spe": 15
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:magnemite",
+      "species": "magnemite",
       "gender": "GENDERLESS",
       "level": 46,
-      "nature": "cobblemon:lonely",
+      "nature": "lonely",
       "ability": "magnetpull",
       "moveset": [
         "screech",
@@ -77,28 +59,19 @@
       ],
       "ivs": {
         "hp": 15,
-        "attack": 15,
-        "defence": 15,
-        "special_attack": 15,
-        "special_defence": 15,
-        "speed": 15
+        "atk": 15,
+        "def": 15,
+        "spa": 15,
+        "spd": 15,
+        "spe": 15
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:magneton",
+      "species": "magneton",
       "gender": "GENDERLESS",
       "level": 46,
-      "nature": "cobblemon:gentle",
+      "nature": "gentle",
       "ability": "magnetpull",
       "moveset": [
         "triattack",
@@ -108,28 +81,19 @@
       ],
       "ivs": {
         "hp": 15,
-        "attack": 15,
-        "defence": 15,
-        "special_attack": 15,
-        "special_defence": 15,
-        "speed": 15
+        "atk": 15,
+        "def": 15,
+        "spa": 15,
+        "spd": 15,
+        "spe": 15
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:porygon",
+      "species": "porygon",
       "gender": "GENDERLESS",
       "level": 46,
-      "nature": "cobblemon:naughty",
+      "nature": "naughty",
       "ability": "trace",
       "moveset": [
         "triattack",
@@ -139,26 +103,13 @@
       ],
       "ivs": {
         "hp": 15,
-        "attack": 15,
-        "defence": 15,
-        "special_attack": 15,
-        "special_defence": 15,
-        "speed": 15
+        "atk": 15,
+        "def": 15,
+        "spa": 15,
+        "spd": 15,
+        "spe": 15
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

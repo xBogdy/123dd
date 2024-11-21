@@ -1,11 +1,11 @@
 {
-  "displayName": "Trainer May",
+  "name": "Trainer May",
   "team": [
     {
-      "species": "cobblemon:solrock",
+      "species": "solrock",
       "gender": "GENDERLESS",
       "level": 71,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "levitate",
       "moveset": [
         "stealthrock",
@@ -15,28 +15,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:focus_sash"
+      "heldItem": "focus_sash"
     },
     {
-      "species": "cobblemon:breloom",
+      "species": "breloom",
       "gender": "MALE",
       "level": 71,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "poisonheal",
       "moveset": [
         "spore",
@@ -46,28 +42,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:toxic_orb"
+      "heldItem": "toxic_orb"
     },
     {
-      "species": "cobblemon:manectric",
+      "species": "manectric",
       "gender": "FEMALE",
       "level": 72,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "lightningrod",
       "moveset": [
         "voltswitch",
@@ -77,28 +69,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:choice_specs"
+      "heldItem": "choice_specs"
     },
     {
-      "species": "cobblemon:relicanth",
+      "species": "relicanth",
       "gender": "FEMALE",
       "level": 72,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "rockhead",
       "moveset": [
         "waterfall",
@@ -108,28 +96,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 6
+        "atk": 252,
+        "spe": 6
       },
-      "shiny": false,
-      "heldItem": "cobblemon:choice_band"
+      "heldItem": "choice_band"
     },
     {
-      "species": "cobblemon:flygon",
+      "species": "flygon",
       "gender": "MALE",
       "level": 72,
-      "nature": "cobblemon:hasty",
+      "nature": "hasty",
       "ability": "tintedlens",
       "moveset": [
         "earthquake",
@@ -139,28 +123,25 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 128,
-        "defence": 0,
-        "special_attack": 128,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 128,
+        "spa": 128,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:life_orb"
+      "heldItem": "life_orb"
     },
     {
-      "species": "cobblemon:blaziken",
+      "species": "blaziken",
       "gender": "FEMALE",
       "level": 73,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "speedboost",
       "moveset": [
         "swordsdance",
@@ -170,26 +151,18 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:blazikenite"
+      "heldItem": "blazikenite"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

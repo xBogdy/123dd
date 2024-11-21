@@ -1,11 +1,11 @@
 {
-  "displayName": "Camper Drew",
+  "name": "Camper Drew",
   "team": [
     {
-      "species": "cobblemon:persian",
+      "species": "persian",
       "gender": "FEMALE",
       "level": 28,
-      "nature": "cobblemon:serious",
+      "nature": "serious",
       "ability": "furcoat",
       "moveset": [
         "furyswipes",
@@ -15,31 +15,22 @@
       ],
       "ivs": {
         "hp": 5,
-        "attack": 5,
-        "defence": 5,
-        "special_attack": 5,
-        "special_defence": 5,
-        "speed": 5
+        "atk": 5,
+        "def": 5,
+        "spa": 5,
+        "spd": 5,
+        "spe": 5
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none",
+      "evs": {},
       "aspects": [
         "alola"
       ]
     },
     {
-      "species": "cobblemon:palpitoad",
+      "species": "palpitoad",
       "gender": "FEMALE",
       "level": 27,
-      "nature": "cobblemon:hardy",
+      "nature": "hardy",
       "ability": "swiftswim",
       "moveset": [
         "bubblebeam",
@@ -49,28 +40,19 @@
       ],
       "ivs": {
         "hp": 5,
-        "attack": 5,
-        "defence": 5,
-        "special_attack": 5,
-        "special_defence": 5,
-        "speed": 5
+        "atk": 5,
+        "def": 5,
+        "spa": 5,
+        "spd": 5,
+        "spe": 5
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:stunky",
+      "species": "stunky",
       "gender": "MALE",
       "level": 28,
-      "nature": "cobblemon:brave",
+      "nature": "brave",
       "ability": "stench",
       "moveset": [
         "acidspray",
@@ -80,28 +62,19 @@
       ],
       "ivs": {
         "hp": 5,
-        "attack": 5,
-        "defence": 5,
-        "special_attack": 5,
-        "special_defence": 5,
-        "speed": 5
+        "atk": 5,
+        "def": 5,
+        "spa": 5,
+        "spd": 5,
+        "spe": 5
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:spinda",
+      "species": "spinda",
       "gender": "FEMALE",
       "level": 28,
-      "nature": "cobblemon:naughty",
+      "nature": "naughty",
       "ability": "owntempo",
       "moveset": [
         "psybeam",
@@ -111,26 +84,13 @@
       ],
       "ivs": {
         "hp": 5,
-        "attack": 5,
-        "defence": 5,
-        "special_attack": 5,
-        "special_defence": 5,
-        "speed": 5
+        "atk": 5,
+        "def": 5,
+        "spa": 5,
+        "spd": 5,
+        "spe": 5
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

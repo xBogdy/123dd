@@ -1,11 +1,11 @@
 {
-  "displayName": "Swimmer♀ Amara",
+  "name": "Swimmer♀ Amara",
   "team": [
     {
-      "species": "cobblemon:milotic",
+      "species": "milotic",
       "gender": "MALE",
       "level": 93,
-      "nature": "cobblemon:modest",
+      "nature": "modest",
       "ability": "competitive",
       "moveset": [
         "hydropump",
@@ -15,28 +15,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 30,
-        "defence": 31,
-        "special_attack": 30,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 30,
+        "def": 31,
+        "spa": 30,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 0,
-        "defence": 4,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 0
+        "def": 4,
+        "spa": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:sitrus_berry"
+      "heldItem": "sitrus_berry"
     },
     {
-      "species": "cobblemon:milotic",
+      "species": "milotic",
       "gender": "FEMALE",
       "level": 92,
-      "nature": "cobblemon:modest",
+      "nature": "modest",
       "ability": "serenegrace",
       "moveset": [
         "scorchingsands",
@@ -46,31 +42,27 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 0,
-        "defence": 4,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 0
+        "def": 4,
+        "spa": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:leftovers",
+      "heldItem": "leftovers",
       "aspects": [
         "sevii"
       ]
     },
     {
-      "species": "cobblemon:dewgong",
+      "species": "dewgong",
       "gender": "FEMALE",
       "level": 92,
-      "nature": "cobblemon:calm",
+      "nature": "calm",
       "ability": "icescales",
       "moveset": [
         "scald",
@@ -80,26 +72,18 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 0,
-        "defence": 4,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "def": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:sitrus_berry"
+      "heldItem": "sitrus_berry"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

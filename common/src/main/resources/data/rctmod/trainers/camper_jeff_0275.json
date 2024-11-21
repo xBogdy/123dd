@@ -1,11 +1,11 @@
 {
-  "displayName": "Camper Jeff",
+  "name": "Camper Jeff",
   "team": [
     {
-      "species": "cobblemon:fearow",
+      "species": "fearow",
       "gender": "FEMALE",
       "level": 54,
-      "nature": "cobblemon:bashful",
+      "nature": "bashful",
       "ability": "frisk",
       "moveset": [
         "roost",
@@ -15,28 +15,19 @@
       ],
       "ivs": {
         "hp": 5,
-        "attack": 5,
-        "defence": 5,
-        "special_attack": 5,
-        "special_defence": 5,
-        "speed": 5
+        "atk": 5,
+        "def": 5,
+        "spa": 5,
+        "spd": 5,
+        "spe": 5
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:raticate",
+      "species": "raticate",
       "gender": "FEMALE",
       "level": 54,
-      "nature": "cobblemon:rash",
+      "nature": "rash",
       "ability": "runaway",
       "moveset": [
         "return",
@@ -46,26 +37,13 @@
       ],
       "ivs": {
         "hp": 5,
-        "attack": 5,
-        "defence": 5,
-        "special_attack": 5,
-        "special_defence": 5,
-        "speed": 5
+        "atk": 5,
+        "def": 5,
+        "spa": 5,
+        "spd": 5,
+        "spe": 5
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

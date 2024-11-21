@@ -1,11 +1,11 @@
 {
-  "displayName": "Ace Trainer Samantha",
+  "name": "Ace Trainer Samantha",
   "team": [
     {
-      "species": "cobblemon:torkoal",
+      "species": "torkoal",
       "gender": "FEMALE",
       "level": 93,
-      "nature": "cobblemon:relaxed",
+      "nature": "relaxed",
       "ability": "drought",
       "moveset": [
         "stealthrock",
@@ -15,28 +15,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 0,
-        "defence": 252,
-        "special_attack": 4,
-        "special_defence": 0,
-        "speed": 0
+        "def": 252,
+        "spa": 4
       },
-      "shiny": false,
-      "heldItem": "cobblemon:heat_rock"
+      "heldItem": "heat_rock"
     },
     {
-      "species": "cobblemon:charizard",
+      "species": "charizard",
       "gender": "FEMALE",
       "level": 93,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "solarpower",
       "moveset": [
         "solarbeam",
@@ -46,28 +42,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 4,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "def": 4,
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:choice_specs"
+      "heldItem": "choice_specs"
     },
     {
-      "species": "cobblemon:milotic",
+      "species": "milotic",
       "gender": "MALE",
       "level": 93,
-      "nature": "cobblemon:modest",
+      "nature": "modest",
       "ability": "competitive",
       "moveset": [
         "weatherball",
@@ -77,28 +69,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 0,
-        "defence": 4,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 0
+        "def": 4,
+        "spa": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:assault_vest"
+      "heldItem": "assault_vest"
     },
     {
-      "species": "cobblemon:dodrio",
+      "species": "dodrio",
       "gender": "FEMALE",
       "level": 94,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "rockhead",
       "moveset": [
         "headlongrush",
@@ -108,31 +96,27 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 4,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spa": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:focus_sash",
+      "heldItem": "focus_sash",
       "aspects": [
         "sevii"
       ]
     },
     {
-      "species": "cobblemon:tyranitar",
+      "species": "tyranitar",
       "gender": "FEMALE",
       "level": 93,
-      "nature": "cobblemon:brave",
+      "nature": "brave",
       "ability": "unnerve",
       "moveset": [
         "fireblast",
@@ -142,28 +126,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 4,
-        "special_defence": 0,
-        "speed": 0
+        "atk": 252,
+        "spa": 4
       },
-      "shiny": false,
-      "heldItem": "cobblemon:assault_vest"
+      "heldItem": "assault_vest"
     },
     {
-      "species": "cobblemon:garchomp",
+      "species": "garchomp",
       "gender": "FEMALE",
       "level": 94,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "roughskin",
       "moveset": [
         "swordsdance",
@@ -173,26 +153,18 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 252,
-        "defence": 4,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "def": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:garchompite"
+      "heldItem": "garchompite"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

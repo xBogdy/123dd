@@ -1,11 +1,11 @@
 {
-  "displayName": "Ace Trainer Wilton",
+  "name": "Ace Trainer Wilton",
   "team": [
     {
-      "species": "cobblemon:dragapult",
+      "species": "dragapult",
       "gender": "FEMALE",
       "level": 95,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "cursedbody",
       "moveset": [
         "shadowball",
@@ -15,28 +15,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 4,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "def": 4,
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:focus_sash"
+      "heldItem": "focus_sash"
     },
     {
-      "species": "cobblemon:kabutops",
+      "species": "kabutops",
       "gender": "FEMALE",
       "level": 92,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "swiftswim",
       "moveset": [
         "waterfall",
@@ -46,28 +42,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 252,
-        "defence": 4,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "def": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:mystic_water"
+      "heldItem": "mystic_water"
     },
     {
-      "species": "cobblemon:pinsir",
+      "species": "pinsir",
       "gender": "MALE",
       "level": 91,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "hypercutter",
       "moveset": [
         "xscissor",
@@ -77,28 +69,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 252,
-        "defence": 4,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "def": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:pinsirite"
+      "heldItem": "pinsirite"
     },
     {
-      "species": "cobblemon:omastar",
+      "species": "omastar",
       "gender": "FEMALE",
       "level": 92,
-      "nature": "cobblemon:modest",
+      "nature": "modest",
       "ability": "swiftswim",
       "moveset": [
         "shellsmash",
@@ -108,26 +96,18 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 4,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "def": 4,
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:white_herb"
+      "heldItem": "white_herb"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

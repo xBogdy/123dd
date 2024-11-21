@@ -1,11 +1,11 @@
 {
-  "displayName": "Cue Ball Jamal",
+  "name": "Cue Ball Jamal",
   "team": [
     {
-      "species": "cobblemon:feraligatr",
+      "species": "feraligatr",
       "gender": "FEMALE",
       "level": 55,
-      "nature": "cobblemon:sassy",
+      "nature": "sassy",
       "ability": "sheerforce",
       "moveset": [
         "crunch",
@@ -15,28 +15,19 @@
       ],
       "ivs": {
         "hp": 10,
-        "attack": 10,
-        "defence": 10,
-        "special_attack": 10,
-        "special_defence": 10,
-        "speed": 10
+        "atk": 10,
+        "def": 10,
+        "spa": 10,
+        "spd": 10,
+        "spe": 10
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:rapidash",
+      "species": "rapidash",
       "gender": "MALE",
       "level": 55,
-      "nature": "cobblemon:quirky",
+      "nature": "quirky",
       "ability": "flashfire",
       "moveset": [
         "fireblast",
@@ -46,28 +37,19 @@
       ],
       "ivs": {
         "hp": 10,
-        "attack": 10,
-        "defence": 10,
-        "special_attack": 10,
-        "special_defence": 10,
-        "speed": 10
+        "atk": 10,
+        "def": 10,
+        "spa": 10,
+        "spd": 10,
+        "spe": 10
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:obstagoon",
+      "species": "obstagoon",
       "gender": "FEMALE",
       "level": 56,
-      "nature": "cobblemon:docile",
+      "nature": "docile",
       "ability": "guts",
       "moveset": [
         "scaryface",
@@ -77,28 +59,19 @@
       ],
       "ivs": {
         "hp": 10,
-        "attack": 10,
-        "defence": 10,
-        "special_attack": 10,
-        "special_defence": 10,
-        "speed": 10
+        "atk": 10,
+        "def": 10,
+        "spa": 10,
+        "spd": 10,
+        "spe": 10
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:dodrio",
+      "species": "dodrio",
       "gender": "MALE",
       "level": 56,
-      "nature": "cobblemon:relaxed",
+      "nature": "relaxed",
       "ability": "earlybird",
       "moveset": [
         "jumpkick",
@@ -108,26 +81,13 @@
       ],
       "ivs": {
         "hp": 10,
-        "attack": 10,
-        "defence": 10,
-        "special_attack": 10,
-        "special_defence": 10,
-        "speed": 10
+        "atk": 10,
+        "def": 10,
+        "spa": 10,
+        "spd": 10,
+        "spe": 10
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

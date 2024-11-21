@@ -1,11 +1,11 @@
 {
-  "displayName": "Pryce",
+  "name": "Pryce",
   "team": [
     {
-      "species": "cobblemon:abomasnow",
+      "species": "abomasnow",
       "gender": "FEMALE",
       "level": 95,
-      "nature": "cobblemon:quiet",
+      "nature": "quiet",
       "ability": "soundproof",
       "moveset": [
         "earthpower",
@@ -15,28 +15,23 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 0
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31
       },
       "evs": {
         "hp": 248,
-        "attack": 8,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 0
+        "atk": 8,
+        "spa": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:abomasite"
+      "heldItem": "abomasite"
     },
     {
-      "species": "cobblemon:calyrex",
+      "species": "calyrex",
       "gender": "GENDERLESS",
       "level": 95,
-      "nature": "cobblemon:brave",
+      "nature": "brave",
       "ability": "unnerve",
       "moveset": [
         "trickroom",
@@ -46,31 +41,26 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 0
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31
       },
       "evs": {
         "hp": 248,
-        "attack": 252,
-        "defence": 8,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
+        "atk": 252,
+        "def": 8
       },
-      "shiny": false,
-      "heldItem": "cobblemon:mental_herb",
+      "heldItem": "mental_herb",
       "aspects": [
         "ice"
       ]
     },
     {
-      "species": "cobblemon:kyurem",
+      "species": "kyurem",
       "gender": "GENDERLESS",
       "level": 95,
-      "nature": "cobblemon:quiet",
+      "nature": "quiet",
       "ability": "pressure",
       "moveset": [
         "blizzard",
@@ -80,28 +70,23 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 0
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31
       },
       "evs": {
         "hp": 248,
-        "attack": 0,
-        "defence": 8,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 0
+        "def": 8,
+        "spa": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:icium_z"
+      "heldItem": "icium_z"
     },
     {
-      "species": "cobblemon:wishiwashi",
+      "species": "wishiwashi",
       "gender": "FEMALE",
       "level": 97,
-      "nature": "cobblemon:quiet",
+      "nature": "quiet",
       "ability": "schooling",
       "moveset": [
         "shadowball",
@@ -111,31 +96,25 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 0
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 0
+        "spa": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:sitrus_berry",
+      "heldItem": "sitrus_berry",
       "aspects": [
         "hisui"
       ]
     },
     {
-      "species": "cobblemon:donphan",
+      "species": "donphan",
       "gender": "FEMALE",
       "level": 97,
-      "nature": "cobblemon:brave",
+      "nature": "brave",
       "ability": "technician",
       "moveset": [
         "iceshard",
@@ -145,28 +124,22 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 0,
-        "special_defence": 31,
-        "speed": 0
+        "atk": 31,
+        "def": 31,
+        "spd": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 252,
-        "defence": 4,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
+        "atk": 252,
+        "def": 4
       },
-      "shiny": false,
-      "heldItem": "cobblemon:lum_berry"
+      "heldItem": "lum_berry"
     },
     {
-      "species": "cobblemon:heracross",
+      "species": "heracross",
       "gender": "FEMALE",
       "level": 95,
-      "nature": "cobblemon:brave",
+      "nature": "brave",
       "ability": "moxie",
       "moveset": [
         "armthrust",
@@ -176,26 +149,16 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 0,
-        "special_defence": 31,
-        "speed": 0
+        "atk": 31,
+        "def": 31,
+        "spd": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 252,
-        "defence": 4,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
+        "atk": 252,
+        "def": 4
       },
-      "shiny": false,
-      "heldItem": "cobblemon:heracronite"
+      "heldItem": "heracronite"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

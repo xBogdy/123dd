@@ -1,11 +1,11 @@
 {
-  "displayName": "Morty",
+  "name": "Morty",
   "team": [
     {
-      "species": "cobblemon:mimikyu",
+      "species": "mimikyu",
       "gender": "FEMALE",
       "level": 96,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "disguise",
       "moveset": [
         "shadowclaw",
@@ -15,28 +15,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 252,
-        "defence": 4,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "def": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:ghostium_z"
+      "heldItem": "ghostium_z"
     },
     {
-      "species": "cobblemon:marshadow",
+      "species": "marshadow",
       "gender": "GENDERLESS",
       "level": 97,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "technician",
       "moveset": [
         "bulkup",
@@ -46,28 +42,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 252,
-        "defence": 4,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "def": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:focus_sash"
+      "heldItem": "focus_sash"
     },
     {
-      "species": "cobblemon:silvally",
+      "species": "silvally",
       "gender": "GENDERLESS",
       "level": 96,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "battlearmor",
       "moveset": [
         "thunderwave",
@@ -77,31 +69,27 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 0,
-        "defence": 4,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "def": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:leftovers",
+      "heldItem": "leftovers",
       "aspects": [
         "fairy"
       ]
     },
     {
-      "species": "cobblemon:urshifu",
+      "species": "urshifu",
       "gender": "FEMALE",
       "level": 96,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "unseenfist",
       "moveset": [
         "uturn",
@@ -111,28 +99,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 252,
-        "defence": 4,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "def": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:blackglasses"
+      "heldItem": "blackglasses"
     },
     {
-      "species": "cobblemon:gengar",
+      "species": "gengar",
       "gender": "MALE",
       "level": 97,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "levitate",
       "moveset": [
         "shadowball",
@@ -142,28 +126,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 4,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "def": 4,
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:gengarite"
+      "heldItem": "gengarite"
     },
     {
-      "species": "cobblemon:zarude",
+      "species": "zarude",
       "gender": "GENDERLESS",
       "level": 96,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "leafguard",
       "moveset": [
         "uturn",
@@ -173,26 +153,18 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 252,
-        "defence": 4,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "def": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:leftovers"
+      "heldItem": "leftovers"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

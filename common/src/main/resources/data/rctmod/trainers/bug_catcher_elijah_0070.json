@@ -1,11 +1,11 @@
 {
-  "displayName": "Bug Catcher Elijah",
+  "name": "Bug Catcher Elijah",
   "team": [
     {
-      "species": "cobblemon:masquerain",
+      "species": "masquerain",
       "gender": "FEMALE",
       "level": 24,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "intimidate",
       "moveset": [
         "watersport",
@@ -15,26 +15,13 @@
       ],
       "ivs": {
         "hp": 1,
-        "attack": 1,
-        "defence": 1,
-        "special_attack": 1,
-        "special_defence": 1,
-        "speed": 1
+        "atk": 1,
+        "def": 1,
+        "spa": 1,
+        "spd": 1,
+        "spe": 1
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

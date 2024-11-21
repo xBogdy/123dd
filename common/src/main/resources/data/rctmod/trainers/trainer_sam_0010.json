@@ -1,11 +1,11 @@
 {
-  "displayName": "Trainer Sam",
+  "name": "Trainer Sam",
   "team": [
     {
-      "species": "cobblemon:luvdisc",
+      "species": "luvdisc",
       "gender": "MALE",
       "level": 44,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "soulheart",
       "moveset": [
         "lovelykiss",
@@ -15,28 +15,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:focus_sash"
+      "heldItem": "focus_sash"
     },
     {
-      "species": "cobblemon:flapple",
+      "species": "flapple",
       "gender": "MALE",
       "level": 44,
-      "nature": "cobblemon:lonely",
+      "nature": "lonely",
       "ability": "hustle",
       "moveset": [
         "scaleshot",
@@ -46,28 +42,25 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 128,
-        "defence": 0,
-        "special_attack": 128,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 128,
+        "spa": 128,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:applite"
+      "heldItem": "applite"
     },
     {
-      "species": "cobblemon:farfetchd",
+      "species": "farfetchd",
       "gender": "FEMALE",
       "level": 44,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "sharpness",
       "moveset": [
         "bravebird",
@@ -77,26 +70,18 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:leek_stick"
+      "heldItem": "leek_stick"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

@@ -1,11 +1,11 @@
 {
-  "displayName": "Rocket Admin Archer",
+  "name": "Rocket Admin Archer",
   "team": [
     {
-      "species": "cobblemon:impidimp",
+      "species": "impidimp",
       "gender": "MALE",
       "level": 18,
-      "nature": "cobblemon:bashful",
+      "nature": "bashful",
       "ability": "prankster",
       "moveset": [
         "fakeout",
@@ -15,28 +15,23 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 4,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 40
+        "spe": 40
       },
-      "shiny": false,
-      "heldItem": "cobblemon:oran_berry"
+      "heldItem": "oran_berry"
     },
     {
-      "species": "cobblemon:houndour",
+      "species": "houndour",
       "gender": "FEMALE",
       "level": 19,
-      "nature": "cobblemon:modest",
+      "nature": "modest",
       "ability": "earlybird",
       "moveset": [
         "snarl",
@@ -46,28 +41,23 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 30,
-        "defence": 31,
-        "special_attack": 30,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 30,
+        "def": 31,
+        "spa": 30,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 60,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 40
+        "spe": 40
       },
-      "shiny": false,
-      "heldItem": "cobblemon:wise_glasses"
+      "heldItem": "wise_glasses"
     },
     {
-      "species": "cobblemon:mightyena",
+      "species": "mightyena",
       "gender": "MALE",
       "level": 21,
-      "nature": "cobblemon:bashful",
+      "nature": "bashful",
       "ability": "strongjaw",
       "moveset": [
         "bite",
@@ -77,26 +67,17 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 100,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 40
+        "spe": 40
       },
-      "shiny": false,
-      "heldItem": "cobblemon:berry_juice"
+      "heldItem": "berry_juice"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

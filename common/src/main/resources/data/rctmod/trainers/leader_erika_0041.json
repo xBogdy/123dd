@@ -1,12 +1,12 @@
 {
-  "displayName": "Erika",
+  "name": "Erika",
   "identity": "Leader Erika",
   "team": [
     {
-      "species": "cobblemon:tsareena",
+      "species": "tsareena",
       "gender": "FEMALE",
       "level": 60,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "reckless",
       "moveset": [
         "tripleaxel",
@@ -16,28 +16,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:focus_sash"
+      "heldItem": "focus_sash"
     },
     {
-      "species": "cobblemon:bellossom",
+      "species": "bellossom",
       "gender": "MALE",
       "level": 62,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "chlorophyll",
       "moveset": [
         "sleeppowder",
@@ -47,28 +43,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 4,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:leftovers"
+      "heldItem": "leftovers"
     },
     {
-      "species": "cobblemon:hawlucha",
+      "species": "hawlucha",
       "gender": "FEMALE",
       "level": 60,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "unburden",
       "moveset": [
         "swordsdance",
@@ -78,28 +70,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 252
+        "atk": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:grassy_seed"
+      "heldItem": "grassy_seed"
     },
     {
-      "species": "cobblemon:rillaboom",
+      "species": "rillaboom",
       "gender": "FEMALE",
       "level": 60,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "grassysurge",
       "moveset": [
         "swordsdance",
@@ -109,28 +97,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:grassy_seed"
+      "heldItem": "grassy_seed"
     },
     {
-      "species": "cobblemon:serperior",
+      "species": "serperior",
       "gender": "FEMALE",
       "level": 60,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "contrary",
       "moveset": [
         "leafstorm",
@@ -140,28 +124,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 6,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 252
+        "spa": 252,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:focus_sash"
+      "heldItem": "focus_sash"
     },
     {
-      "species": "cobblemon:venusaur",
+      "species": "venusaur",
       "gender": "FEMALE",
       "level": 62,
-      "nature": "cobblemon:modest",
+      "nature": "modest",
       "ability": "overgrow",
       "moveset": [
         "gigadrain",
@@ -171,26 +151,18 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 252,
-        "special_defence": 0,
-        "speed": 6
+        "spa": 252,
+        "spe": 6
       },
-      "shiny": false,
-      "heldItem": "cobblemon:venusaurite"
+      "heldItem": "venusaurite"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

@@ -1,11 +1,11 @@
 {
-  "displayName": "Picnicker Kelsey",
+  "name": "Picnicker Kelsey",
   "team": [
     {
-      "species": "cobblemon:nidorino",
+      "species": "nidorino",
       "gender": "MALE",
       "level": 49,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "poisontouch",
       "moveset": [
         "poisonjab",
@@ -14,28 +14,19 @@
       ],
       "ivs": {
         "hp": 5,
-        "attack": 5,
-        "defence": 5,
-        "special_attack": 5,
-        "special_defence": 5,
-        "speed": 5
+        "atk": 5,
+        "def": 5,
+        "spa": 5,
+        "spd": 5,
+        "spe": 5
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:nidorina",
+      "species": "nidorina",
       "gender": "FEMALE",
       "level": 49,
-      "nature": "cobblemon:hardy",
+      "nature": "hardy",
       "ability": "poisontouch",
       "moveset": [
         "sludgebomb",
@@ -45,26 +36,13 @@
       ],
       "ivs": {
         "hp": 5,
-        "attack": 5,
-        "defence": 5,
-        "special_attack": 5,
-        "special_defence": 5,
-        "speed": 5
+        "atk": 5,
+        "def": 5,
+        "spa": 5,
+        "spd": 5,
+        "spe": 5
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

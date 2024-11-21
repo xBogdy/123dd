@@ -1,11 +1,11 @@
 {
-  "displayName": "Cue Ball Luke",
+  "name": "Cue Ball Luke",
   "team": [
     {
-      "species": "cobblemon:dugtrio",
+      "species": "dugtrio",
       "gender": "MALE",
       "level": 91,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "arenatrap",
       "moveset": [
         "earthquake",
@@ -15,28 +15,24 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
-        "hp": 0,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 4,
-        "speed": 252
+        "atk": 252,
+        "spd": 4,
+        "spe": 252
       },
-      "shiny": false,
-      "heldItem": "cobblemon:life_orb"
+      "heldItem": "life_orb"
     },
     {
-      "species": "cobblemon:hariyama",
+      "species": "hariyama",
       "gender": "FEMALE",
       "level": 89,
-      "nature": "cobblemon:careful",
+      "nature": "careful",
       "ability": "thickfat",
       "moveset": [
         "fakeout",
@@ -46,26 +42,18 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
       "evs": {
         "hp": 252,
-        "attack": 252,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 4,
-        "speed": 0
+        "atk": 252,
+        "spd": 4
       },
-      "shiny": false,
-      "heldItem": "cobblemon:assault_vest"
+      "heldItem": "assault_vest"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

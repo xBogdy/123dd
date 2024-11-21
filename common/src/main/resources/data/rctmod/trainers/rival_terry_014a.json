@@ -1,11 +1,11 @@
 {
-  "displayName": "Rival Terry",
+  "name": "Rival Terry",
   "team": [
     {
-      "species": "cobblemon:starly",
+      "species": "starly",
       "gender": "MALE",
       "level": 9,
-      "nature": "cobblemon:mild",
+      "nature": "mild",
       "ability": "frisk",
       "moveset": [
         "tackle",
@@ -15,28 +15,19 @@
       ],
       "ivs": {
         "hp": 25,
-        "attack": 25,
-        "defence": 25,
-        "special_attack": 25,
-        "special_defence": 25,
-        "speed": 25
+        "atk": 25,
+        "def": 25,
+        "spa": 25,
+        "spd": 25,
+        "spe": 25
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:bulbasaur",
+      "species": "bulbasaur",
       "gender": "FEMALE",
       "level": 9,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "overgrow",
       "moveset": [
         "tackle",
@@ -46,26 +37,13 @@
       ],
       "ivs": {
         "hp": 25,
-        "attack": 25,
-        "defence": 25,
-        "special_attack": 25,
-        "special_defence": 25,
-        "speed": 25
+        "atk": 25,
+        "def": 25,
+        "spa": 25,
+        "spd": 25,
+        "spe": 25
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

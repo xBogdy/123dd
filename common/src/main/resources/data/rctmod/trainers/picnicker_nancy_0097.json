@@ -1,11 +1,11 @@
 {
-  "displayName": "Picnicker Nancy",
+  "name": "Picnicker Nancy",
   "team": [
     {
-      "species": "cobblemon:growlithe",
+      "species": "growlithe",
       "gender": "FEMALE",
       "level": 23,
-      "nature": "cobblemon:modest",
+      "nature": "modest",
       "ability": "flashfire",
       "moveset": [
         "flamewheel",
@@ -15,28 +15,19 @@
       ],
       "ivs": {
         "hp": 5,
-        "attack": 5,
-        "defence": 5,
-        "special_attack": 5,
-        "special_defence": 5,
-        "speed": 5
+        "atk": 5,
+        "def": 5,
+        "spa": 5,
+        "spd": 5,
+        "spe": 5
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:vulpix",
+      "species": "vulpix",
       "gender": "MALE",
       "level": 22,
-      "nature": "cobblemon:hasty",
+      "nature": "hasty",
       "ability": "serenegrace",
       "moveset": [
         "confuseray",
@@ -46,29 +37,16 @@
       ],
       "ivs": {
         "hp": 5,
-        "attack": 5,
-        "defence": 5,
-        "special_attack": 5,
-        "special_defence": 5,
-        "speed": 5
+        "atk": 5,
+        "def": 5,
+        "spa": 5,
+        "spd": 5,
+        "spe": 5
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none",
+      "evs": {},
       "aspects": [
         "alola"
       ]
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

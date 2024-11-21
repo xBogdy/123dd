@@ -1,11 +1,11 @@
 {
-  "displayName": "Picnicker Yazmin",
+  "name": "Picnicker Yazmin",
   "team": [
     {
-      "species": "cobblemon:weepinbell",
+      "species": "weepinbell",
       "gender": "FEMALE",
       "level": 57,
-      "nature": "cobblemon:adamant",
+      "nature": "adamant",
       "ability": "chlorophyll",
       "moveset": [
         "gastroacid",
@@ -15,28 +15,19 @@
       ],
       "ivs": {
         "hp": 5,
-        "attack": 5,
-        "defence": 5,
-        "special_attack": 5,
-        "special_defence": 5,
-        "speed": 5
+        "atk": 5,
+        "def": 5,
+        "spa": 5,
+        "spd": 5,
+        "spe": 5
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:leavanny",
+      "species": "leavanny",
       "gender": "FEMALE",
       "level": 57,
-      "nature": "cobblemon:mild",
+      "nature": "mild",
       "ability": "swarm",
       "moveset": [
         "entrainment",
@@ -46,28 +37,19 @@
       ],
       "ivs": {
         "hp": 5,
-        "attack": 5,
-        "defence": 5,
-        "special_attack": 5,
-        "special_defence": 5,
-        "speed": 5
+        "atk": 5,
+        "def": 5,
+        "spa": 5,
+        "spd": 5,
+        "spe": 5
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:alcremie",
+      "species": "alcremie",
       "gender": "FEMALE",
       "level": 58,
-      "nature": "cobblemon:calm",
+      "nature": "calm",
       "ability": "sweetveil",
       "moveset": [
         "dazzlinggleam",
@@ -77,26 +59,13 @@
       ],
       "ivs": {
         "hp": 5,
-        "attack": 5,
-        "defence": 5,
-        "special_attack": 5,
-        "special_defence": 5,
-        "speed": 5
+        "atk": 5,
+        "def": 5,
+        "spa": 5,
+        "spd": 5,
+        "spe": 5
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

@@ -1,11 +1,11 @@
 {
-  "displayName": "Lass Haley",
+  "name": "Lass Haley",
   "team": [
     {
-      "species": "cobblemon:illumise",
+      "species": "illumise",
       "gender": "FEMALE",
       "level": 19,
-      "nature": "cobblemon:bold",
+      "nature": "bold",
       "ability": "tintedlens",
       "moveset": [
         "charm",
@@ -15,28 +15,19 @@
       ],
       "ivs": {
         "hp": 5,
-        "attack": 5,
-        "defence": 5,
-        "special_attack": 5,
-        "special_defence": 5,
-        "speed": 5
+        "atk": 5,
+        "def": 5,
+        "spa": 5,
+        "spd": 5,
+        "spe": 5
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:slowpoke",
+      "species": "slowpoke",
       "gender": "MALE",
       "level": 19,
-      "nature": "cobblemon:docile",
+      "nature": "docile",
       "ability": "owntempo",
       "moveset": [
         "yawn",
@@ -46,31 +37,22 @@
       ],
       "ivs": {
         "hp": 5,
-        "attack": 5,
-        "defence": 5,
-        "special_attack": 5,
-        "special_defence": 5,
-        "speed": 5
+        "atk": 5,
+        "def": 5,
+        "spa": 5,
+        "spd": 5,
+        "spe": 5
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none",
+      "evs": {},
       "aspects": [
         "galar"
       ]
     },
     {
-      "species": "cobblemon:audino",
+      "species": "audino",
       "gender": "FEMALE",
       "level": 18,
-      "nature": "cobblemon:quiet",
+      "nature": "quiet",
       "ability": "regenerator",
       "moveset": [
         "babydolleyes",
@@ -80,26 +62,13 @@
       ],
       "ivs": {
         "hp": 5,
-        "attack": 5,
-        "defence": 5,
-        "special_attack": 5,
-        "special_defence": 5,
-        "speed": 5
+        "atk": 5,
+        "def": 5,
+        "spa": 5,
+        "spd": 5,
+        "spe": 5
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

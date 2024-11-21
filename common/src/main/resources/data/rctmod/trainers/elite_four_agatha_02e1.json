@@ -1,12 +1,12 @@
 {
-  "displayName": "Agatha",
+  "name": "Agatha",
   "identity": "Elite Four Agatha",
   "team": [
     {
-      "species": "cobblemon:gengar",
+      "species": "gengar",
       "gender": "FEMALE",
       "level": 66,
-      "nature": "cobblemon:lax",
+      "nature": "lax",
       "ability": "levitate",
       "moveset": [
         "shadowball",
@@ -16,28 +16,19 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:crobat",
+      "species": "crobat",
       "gender": "FEMALE",
       "level": 66,
-      "nature": "cobblemon:bashful",
+      "nature": "bashful",
       "ability": "infiltrator",
       "moveset": [
         "sludgebomb",
@@ -47,28 +38,19 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:misdreavus",
+      "species": "misdreavus",
       "gender": "MALE",
       "level": 65,
-      "nature": "cobblemon:docile",
+      "nature": "docile",
       "ability": "levitate",
       "moveset": [
         "shadowball",
@@ -78,28 +60,19 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:arbok",
+      "species": "arbok",
       "gender": "FEMALE",
       "level": 68,
-      "nature": "cobblemon:serious",
+      "nature": "serious",
       "ability": "intimidate",
       "moveset": [
         "sludgebomb",
@@ -109,28 +82,19 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:none"
+      "evs": {}
     },
     {
-      "species": "cobblemon:gengar",
+      "species": "gengar",
       "gender": "FEMALE",
       "level": 70,
-      "nature": "cobblemon:naughty",
+      "nature": "naughty",
       "ability": "levitate",
       "moveset": [
         "shadowball",
@@ -140,26 +104,14 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:chesto_berry"
+      "evs": {},
+      "heldItem": "chesto_berry"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }

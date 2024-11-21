@@ -1,11 +1,11 @@
 {
-  "displayName": "Team Rocket Grunt",
+  "name": "Team Rocket Grunt",
   "team": [
     {
-      "species": "cobblemon:persian",
+      "species": "persian",
       "gender": "MALE",
       "level": 89,
-      "nature": "cobblemon:timid",
+      "nature": "timid",
       "ability": "cursedbody",
       "moveset": [
         "snarl",
@@ -15,31 +15,23 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:blackglasses",
+      "evs": {},
+      "heldItem": "blackglasses",
       "aspects": [
         "alola"
       ]
     },
     {
-      "species": "cobblemon:golbat",
+      "species": "golbat",
       "gender": "MALE",
       "level": 90,
-      "nature": "cobblemon:naive",
+      "nature": "naive",
       "ability": "sniper",
       "moveset": [
         "megadrain",
@@ -49,28 +41,20 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 30,
-        "defence": 31,
-        "special_attack": 30,
-        "special_defence": 31,
-        "speed": 30
+        "atk": 30,
+        "def": 31,
+        "spa": 30,
+        "spd": 31,
+        "spe": 30
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:eviolite"
+      "evs": {},
+      "heldItem": "eviolite"
     },
     {
-      "species": "cobblemon:raticate",
+      "species": "raticate",
       "gender": "FEMALE",
       "level": 89,
-      "nature": "cobblemon:jolly",
+      "nature": "jolly",
       "ability": "hustle",
       "moveset": [
         "hyperfang",
@@ -80,28 +64,20 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 30,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 30,
+        "spd": 31,
+        "spe": 31
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:silk_scarf"
+      "evs": {},
+      "heldItem": "silk_scarf"
     },
     {
-      "species": "cobblemon:octillery",
+      "species": "octillery",
       "gender": "FEMALE",
       "level": 92,
-      "nature": "cobblemon:rash",
+      "nature": "rash",
       "ability": "skilllink",
       "moveset": [
         "bulletseed",
@@ -111,26 +87,14 @@
       ],
       "ivs": {
         "hp": 31,
-        "attack": 31,
-        "defence": 31,
-        "special_attack": 31,
-        "special_defence": 31,
-        "speed": 31
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
       },
-      "evs": {
-        "hp": 0,
-        "attack": 0,
-        "defence": 0,
-        "special_attack": 0,
-        "special_defence": 0,
-        "speed": 0
-      },
-      "shiny": false,
-      "heldItem": "cobblemon:rindo_berry"
+      "evs": {},
+      "heldItem": "rindo_berry"
     }
-  ],
-  "winCommand": "",
-  "lossCommand": "",
-  "canOnlyBeatOnce": false,
-  "cooldownSeconds": 0
+  ]
 }
