@@ -17,7 +17,6 @@
  */
 package com.gitlab.srcmc.rctmod.api.service;
 
-import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -29,7 +28,6 @@ import java.util.stream.Stream;
 import com.cobblemon.mod.common.Cobblemon;
 import com.gitlab.srcmc.rctapi.api.RCTApi;
 import com.gitlab.srcmc.rctapi.api.errors.RCTException;
-import com.gitlab.srcmc.rctapi.api.models.TrainerModel;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.TrainerBattle;
@@ -197,16 +195,19 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
 
         dpm.listTrainerTeams((rl, io) -> {
             var trainerId = PathUtils.filename(rl.getPath());
-            dpm.loadResource(trainerId, "mobs", tdm -> this.trainerMobs.put(trainerId, tdm), TrainerMobData.class);
 
-            try {
-                reg.registerNPC(trainerId, GSON.fromJson(new InputStreamReader(io.get()), TrainerModel.class));
-            } catch(RCTException errors) {
-                ModCommon.LOG.error("Model validation failure for '" + trainerId + "' in: " + rl.getPath());
-                errors.getErrors().forEach(error -> ModCommon.LOG.error(error.message));
-            } catch(Exception e) {
-                ModCommon.LOG.error("Failed to register trainer '" + trainerId + "': " + rl.getPath(), e);
-            }
+            dpm.loadResource(trainerId, "mobs", tmd -> {
+                try {
+                    this.trainerMobs.put(trainerId, tmd);
+                    reg.registerNPC(trainerId, tmd.getTrainerTeam());
+                } catch(RCTException errors) {
+                    ModCommon.LOG.error("Model validation failure for '" + trainerId + "' in: " + rl.getPath());
+                    errors.getErrors().forEach(error -> ModCommon.LOG.error(error.message));
+                } catch(Exception e) {
+                    // this.trainerMobs.remove(trainerId); // not that it really matters at this point
+                    ModCommon.LOG.error("Failed to register trainer '" + trainerId + "': " + rl.getPath(), e);
+                }
+            }, TrainerMobData.class);
         });
 
         ModCommon.LOG.info(String.format("Registered %d trainers", reg.getIds().size()));

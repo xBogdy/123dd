@@ -55,7 +55,7 @@ public record LevelRangeCondition(IntRange range) implements LootItemCondition {
     public boolean test(LootContext lootContext) {
         if(lootContext.getParamOrNull(LootContextParams.THIS_ENTITY) instanceof TrainerMob mob) {
             var teamLevel = RCTMod.getInstance().getTrainerManager()
-                .getData(mob).getTeam().getMembers().stream()
+                .getData(mob).getTrainerTeam().getTeam().stream()
                 .map(p -> p.getLevel()).max(Integer::compare).orElse(0);
 
             return this.range.test(lootContext, teamLevel);

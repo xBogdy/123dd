@@ -70,6 +70,7 @@ public class ModClient {
 
     static void receivePlayerState(PlayerStatePayload pl, PacketContext context) {
         if(!ModClient.playerStateUpdates.offer(pl.bytes())) {
+            // TODO: log error instead of exception
             throw new IllegalStateException("Failed to store player state updates");
         }
     }

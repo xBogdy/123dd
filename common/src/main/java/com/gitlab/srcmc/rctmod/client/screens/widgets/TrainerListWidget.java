@@ -152,7 +152,7 @@ public class TrainerListWidget extends TrainerDataWidget {
         }
 
         private Entry createEntry(int trainerNr, String trainerId, EntryState entryState, TrainerMobData trMob, int defeatCount, boolean isKeyTrainer) {
-            var name = TextUtils.trim(isKeyTrainer || defeatCount > 0 ? trMob.getTeam().getDisplayName() : "???", MAX_NAME_LENGTH);
+            var name = TextUtils.trim(isKeyTrainer || defeatCount > 0 ? trMob.getTrainerTeam().getName() : "???", MAX_NAME_LENGTH);
             var nameComponent = (defeatCount == 0 && isKeyTrainer) ? toComponent(name).withStyle(ChatFormatting.OBFUSCATED) : toComponent(name);
             var numberWidget = new MultiStyleStringWidget(this.x, this.y, this.w, this.h, toComponent(String.format("%04d: ", trainerNr)), font).addStyle(Style.EMPTY.withColor(ChatFormatting.RED)).alignLeft();
             var nameWidget = new MultiStyleStringWidget((int)(this.x + this.w*0.18), this.y, (int)(this.w*0.62), this.h, nameComponent, font).addStyle(Style.EMPTY.withColor(ChatFormatting.RED)).alignLeft();

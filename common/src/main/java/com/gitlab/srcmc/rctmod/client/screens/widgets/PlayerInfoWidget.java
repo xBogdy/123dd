@@ -357,11 +357,11 @@ public class PlayerInfoWidget extends AbstractWidget {
         return tdm.getAllData().map(entry -> entry.getKey()).sorted((k1, k2) -> {
             var t1 = tdm.getData(k1);
             var t2 = tdm.getData(k2);
-            var c = t1.getTeam().getMembers().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0)
-                  - t2.getTeam().getMembers().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0);
+            var c = t1.getTrainerTeam().getTeam().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0)
+                  - t2.getTrainerTeam().getTeam().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0);
             
             if(c == 0) {
-                c = t1.getTeam().getDisplayName().compareTo(t2.getTeam().getDisplayName());
+                c = t1.getTrainerTeam().getName().compareTo(t2.getTrainerTeam().getName());
 
                 if(c == 0) {
                     c = k1.compareTo(k2);

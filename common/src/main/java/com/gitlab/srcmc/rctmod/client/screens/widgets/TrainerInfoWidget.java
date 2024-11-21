@@ -83,8 +83,8 @@ public class TrainerInfoWidget extends TrainerDataWidget {
         this.h = this.getHeight() / 6;
         this.y = 0;
 
-        var displayName = TextUtils.trim(entryState == EntryState.UNKNOWN ? "???" : trainer.getTeam().getDisplayName(), MAX_NAME_LENGTH);
-        var identity = TextUtils.trim(entryState == EntryState.UNKNOWN ? "???" : trainer.getTeam().getIdentity(), MAX_NAME_LENGTH);
+        var displayName = TextUtils.trim(entryState == EntryState.UNKNOWN ? "???" : trainer.getTrainerTeam().getName(), MAX_NAME_LENGTH);
+        var identity = TextUtils.trim(entryState == EntryState.UNKNOWN ? "???" : trainer.getTrainerTeam().getIdentity(), MAX_NAME_LENGTH);
         var backX = (int)(this.w*0.92);
 
         this.back = new HoverElement<>(
@@ -209,7 +209,7 @@ public class TrainerInfoWidget extends TrainerDataWidget {
         this.y = this.identity == null ? 0 : this.h;
         pc.height = this.y + this.h;
 
-        this.trainer.getTeam().getMembers().forEach(poke -> {
+        this.trainer.getTrainerTeam().getTeam().forEach(poke -> {
             pc.renderables.add(new StringWidget(8, this.y += this.h , this.w, this.h, toComponent(TextUtils.trim(poke.getSpecies().split(":")[1], MAX_SPECIES_LENGTH)), this.font).alignLeft());
             pc.renderables.add(new StringWidget(8, this.y, (int)(this.w*0.9), this.h, toComponent(poke.getLevel()), this.font).alignRight());
         });

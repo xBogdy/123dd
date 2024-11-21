@@ -19,7 +19,6 @@ package com.gitlab.srcmc.rctmod.advancements.criteria;
 
 import java.util.Optional;
 
-import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
@@ -33,7 +32,6 @@ import net.minecraft.server.level.ServerPlayer;
 
 public record DefeatCountTriggerInstance(String trainerId, String trainerType, int count) implements SimpleInstance {
     public boolean matches(ServerPlayer player, TrainerMob mob) {
-        ModCommon.LOG.info("MATCHING WITH: " + this.trainerId + ", " + this.trainerType + ", " + this.trainerId() + ", " + this.trainerType());
         var battleMem = RCTMod.getInstance().getTrainerManager().getBattleMemory(mob);
         var mobTr = RCTMod.getInstance().getTrainerManager().getData(mob);
         var playerState = PlayerState.get(player);

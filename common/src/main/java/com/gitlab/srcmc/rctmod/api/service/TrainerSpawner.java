@@ -111,7 +111,7 @@ public class TrainerSpawner {
         var spawns = mob.isPersistenceRequired() ? this.persistentSpawns : this.spawns;
 
         if(!spawns.containsKey(mob.getStringUUID())) {
-            var identity = RCTMod.getInstance().getTrainerManager().getData(mob).getTeam().getIdentity();
+            var identity = RCTMod.getInstance().getTrainerManager().getData(mob).getTrainerTeam().getIdentity();
             var identities = mob.isPersistenceRequired() ? this.persistentNames : this.identities;
             var originPlayer = mob.getOriginPlayer();
             var playerSpawns = mob.isPersistenceRequired() ? this.persistentPlayerSpawns : this.playerSpawns;
@@ -144,7 +144,7 @@ public class TrainerSpawner {
         var spawns = mob.isPersistenceRequired() ? this.persistentSpawns : this.spawns;
 
         if(spawns.containsKey(mob.getStringUUID())) {
-            var identity = RCTMod.getInstance().getTrainerManager().getData(mob).getTeam().getIdentity();
+            var identity = RCTMod.getInstance().getTrainerManager().getData(mob).getTrainerTeam().getIdentity();
             var identities = mob.isPersistenceRequired() ? this.persistentNames : this.identities;
             var originPlayer = mob.getOriginPlayer();
             var playerSpawns = mob.isPersistenceRequired() ? this.persistentPlayerSpawns : this.playerSpawns;
@@ -185,8 +185,8 @@ public class TrainerSpawner {
         if(spawns.containsKey(mob.getStringUUID())) {
             ModCommon.LOG.info(String.format("Changing trainer id '%s' -> '%s' (%s)", mob.getTrainerId(), newTrainerId, mob.getStringUUID()));
 
-            var identity = RCTMod.getInstance().getTrainerManager().getData(mob).getTeam().getIdentity();
-            var newIdentity = RCTMod.getInstance().getTrainerManager().getData(newTrainerId).getTeam().getIdentity();
+            var identity = RCTMod.getInstance().getTrainerManager().getData(mob).getTrainerTeam().getIdentity();
+            var newIdentity = RCTMod.getInstance().getTrainerManager().getData(newTrainerId).getTrainerTeam().getIdentity();
             var identities = mob.isPersistenceRequired() ? this.persistentNames : this.identities;
             identities.compute(identity, (key, value) -> value == 1 ? null : value - 1);
             identities.compute(newIdentity, (key, value) -> value == null ? 1 : value + 1);
@@ -273,7 +273,7 @@ public class TrainerSpawner {
         this.register(mob);
 
         if(config.logSpawning()) {
-            var trainer = RCTMod.getInstance().getTrainerManager().getData(trainerId).getTeam().getDisplayName();
+            var trainer = RCTMod.getInstance().getTrainerManager().getData(trainerId).getTrainerTeam().getName();
             var biome = level.getBiome(mob.blockPosition());
             var dim = level.dimension();
 
@@ -390,7 +390,7 @@ public class TrainerSpawner {
         if(config.biomeTagBlacklist().stream().noneMatch(tags::contains)
         && (config.biomeTagWhitelist().isEmpty() || config.biomeTagWhitelist().stream().anyMatch(tags::contains))) {
             RCTMod.getInstance().getTrainerManager().getAllData()
-                .filter(e -> this.isUnique(e.getValue().getTeam().getIdentity())
+                .filter(e -> this.isUnique(e.getValue().getTrainerTeam().getIdentity())
                     && e.getValue().getBiomeTagBlacklist().stream().noneMatch(tags::contains)
                     && (e.getValue().getBiomeTagWhitelist().isEmpty() || e.getValue().getBiomeTagWhitelist().stream().anyMatch(tags::contains)))
                 .forEach(e -> {

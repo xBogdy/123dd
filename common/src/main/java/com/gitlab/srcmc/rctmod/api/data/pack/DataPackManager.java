@@ -103,7 +103,7 @@ public class DataPackManager extends SimpleJsonResourceReloadListener implements
             }
         }
 
-        for(var dp : trainerTeams.values()) {
+        for(var dp : this.trainerTeams.values()) {
             dp.close();
         }
     }
@@ -115,11 +115,11 @@ public class DataPackManager extends SimpleJsonResourceReloadListener implements
             dl.defaultData = null;
         }
 
-        trainerTeams.clear();
+        this.trainerTeams.clear();
     }
 
     public Optional<ResourceLocation> findResource(String trainerId, String context) {
-        var dl = contextMap.get(context);
+        var dl = this.contextMap.get(context);
 
         if(dl == null) {
             return Optional.empty();
@@ -147,15 +147,16 @@ public class DataPackManager extends SimpleJsonResourceReloadListener implements
     public Optional<TrainerTeam> loadTrainerTeam(String trainerId) {
         var teamResource = ResourceLocation.fromNamespaceAndPath(ModCommon.MOD_ID, PATH_TRAINERS + "/" + trainerId + ".json");
         
-        if(trainerTeams.containsKey(teamResource)) {
-            return Optional.of(JsonUtils.loadFromOrThrow(trainerTeams.get(teamResource).getResource(this.packType, teamResource), TrainerTeam.class));
+        if(this.trainerTeams.containsKey(teamResource)) {
+            return Optional.of(JsonUtils.loadFromOrThrow(this.trainerTeams.get(teamResource).getResource(this.packType, teamResource), TrainerTeam.class));
         }
 
         return Optional.empty();
     }
-    
+
+    // TODO: buffer loaded resources
     public <T> void loadResource(String trainerId, String context, Consumer<T> consumer, Class<T> type) {
-        loadResource(trainerId, context, consumer, TypeToken.get(type));
+        this.loadResource(trainerId, context, consumer, TypeToken.get(type));
     }
 
     public <T> void loadResource(String trainerId, String context, Consumer<T> consumer, TypeToken<T> type) {
@@ -175,11 +176,11 @@ public class DataPackManager extends SimpleJsonResourceReloadListener implements
             }
         }
 
-        consumer.accept(obj);
-
         if(obj instanceof IDataPackObject dpo) {
             dpo.onLoad(this, trainerId, context);
         }
+
+        consumer.accept(obj);
     }
     
     private void gather(PackResources dataPack) {

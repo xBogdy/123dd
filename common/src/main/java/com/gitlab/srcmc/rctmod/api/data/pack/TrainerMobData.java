@@ -75,12 +75,12 @@ public class TrainerMobData implements IDataPackObject {
     private transient Map<String, String[]> dialog = new HashMap<>();
     private transient ResourceLocation textureResource;
     private transient ResourceLocation lootTableResource;
-    private transient TrainerTeam team;
+    private transient TrainerTeam trainerTeam;
 
     public TrainerMobData() {
         this.textureResource = ResourceLocation.fromNamespaceAndPath(ModCommon.MOD_ID, "textures/" + DataPackManager.PATH_DEFAULT + ".png");
         this.lootTableResource = ResourceLocation.fromNamespaceAndPath(ModCommon.MOD_ID, DataPackManager.PATH_DEFAULT);
-        this.team = new TrainerTeam();
+        this.trainerTeam = new TrainerTeam();
     }
 
     public TrainerMobData(TrainerMobData origin) {
@@ -95,7 +95,7 @@ public class TrainerMobData implements IDataPackObject {
         this.dialog = Map.copyOf(origin.dialog);
         this.textureResource = origin.textureResource;
         this.lootTableResource = origin.lootTableResource;
-        this.team = origin.team; // no need for deep copy since immutable
+        this.trainerTeam = origin.trainerTeam; // no need for deep copy since immutable
     }
 
     public Type getType() {
@@ -108,7 +108,7 @@ public class TrainerMobData implements IDataPackObject {
 
     public int getRequiredLevelCap() {
         var bonus = RCTMod.getInstance().getServerConfig().bonusLevelCap();
-        return Math.max(0, Math.min(100, this.getTeam().getMembers().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0) + bonus));
+        return Math.max(0, Math.min(100, this.getTrainerTeam().getTeam().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0) + bonus));
     }
 
     public int getRequiredDefeats(Type type) {
@@ -151,8 +151,8 @@ public class TrainerMobData implements IDataPackObject {
         return this.lootTableResource;
     }
 
-    public TrainerTeam getTeam() {
-        return this.team;
+    public TrainerTeam getTrainerTeam() {
+        return this.trainerTeam;
     }
 
     @Override
@@ -180,10 +180,10 @@ public class TrainerMobData implements IDataPackObject {
             this.dialog = new HashMap<>();
         }
 
-        var team = dpm.loadTrainerTeam(trainerId);
+        var trainerTeam = dpm.loadTrainerTeam(trainerId);
 
-        if(team.isPresent()) {
-            this.team = team.get();
+        if(trainerTeam.isPresent()) {
+            this.trainerTeam = trainerTeam.get();
         }
     }
 }
