@@ -54,7 +54,7 @@
         "atk": 252,
         "spe": 252
       },
-      "heldItem": "metagrossite"
+      "heldItem": "assault_vest"
     },
     {
       "species": "groudon",
@@ -81,7 +81,7 @@
         "atk": 4,
         "spd": 252
       },
-      "heldItem": "red_orb"
+      "heldItem": "leftovers"
     },
     {
       "species": "yveltal",

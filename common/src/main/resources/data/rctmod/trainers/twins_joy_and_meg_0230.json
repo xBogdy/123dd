@@ -26,7 +26,7 @@
         "spa": 80,
         "spe": 252
       },
-      "heldItem": "weaknesspol"
+      "heldItem": "weakness_policy"
     },
     {
       "species": "granbull",
@@ -80,7 +80,7 @@
         "spa": 252,
         "spe": 252
       },
-      "heldItem": "electrium_z"
+      "heldItem": "electric_gem"
     },
     {
       "species": "illumise",

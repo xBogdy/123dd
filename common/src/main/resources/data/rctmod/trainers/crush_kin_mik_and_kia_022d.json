@@ -80,7 +80,7 @@
         "def": 4,
         "spe": 252
       },
-      "heldItem": "metagrossite"
+      "heldItem": "assault_vest"
     },
     {
       "species": "lycanroc",
@@ -107,7 +107,7 @@
         "def": 4,
         "spe": 252
       },
-      "heldItem": "laprasite"
+      "heldItem": "life_orb"
     }
   ]
 }

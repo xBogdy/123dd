@@ -135,7 +135,7 @@
         "atk": 252,
         "spe": 252
       },
-      "heldItem": "weaknesspol"
+      "heldItem": "weakness_policy"
     },
     {
       "species": "aerodactyl",
@@ -162,7 +162,7 @@
         "atk": 252,
         "spe": 252
       },
-      "heldItem": "aerodactlite"
+      "heldItem": "life_orb"
     }
   ]
 }

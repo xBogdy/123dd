@@ -133,7 +133,7 @@
         "hp": 252,
         "spd": 252
       },
-      "heldItem": "adamant_orb"
+      "heldItem": "leftovers"
     },
     {
       "species": "salamence",
@@ -160,7 +160,7 @@
         "atk": 252,
         "spe": 252
       },
-      "heldItem": "salamencite"
+      "heldItem": "life_orb"
     }
   ]
 }

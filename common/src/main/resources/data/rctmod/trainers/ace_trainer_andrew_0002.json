@@ -53,7 +53,7 @@
         "def": 4,
         "spe": 252
       },
-      "heldItem": "sceptilite"
+      "heldItem": "expert_belt"
     },
     {
       "species": "torterra",
@@ -107,7 +107,7 @@
         "def": 4,
         "spe": 252
       },
-      "heldItem": "blazikenite"
+      "heldItem": "life_orb"
     },
     {
       "species": "greninja",

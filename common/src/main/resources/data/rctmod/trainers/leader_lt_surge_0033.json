@@ -80,7 +80,7 @@
         "spa": 252,
         "spe": 252
       },
-      "heldItem": "terrain_ext"
+      "heldItem": "terrain_extender"
     },
     {
       "species": "manectric",
@@ -107,7 +107,7 @@
         "spd": 4,
         "spe": 252
       },
-      "heldItem": "manectite"
+      "heldItem": "expert_belt"
     }
   ]
 }

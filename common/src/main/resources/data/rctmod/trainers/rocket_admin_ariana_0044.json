@@ -53,7 +53,7 @@
         "atk": 252,
         "spe": 6
       },
-      "heldItem": "weaknesspol"
+      "heldItem": "weakness_policy"
     },
     {
       "species": "honchkrow",
@@ -107,7 +107,7 @@
         "atk": 252,
         "spe": 6
       },
-      "heldItem": "mawilite"
+      "heldItem": "expert_belt"
     }
   ]
 }

@@ -28,7 +28,7 @@
       },
       "heldItem": "light_clay",
       "aspects": [
-        "alola"
+        "alolan"
       ]
     },
     {
@@ -56,7 +56,7 @@
         "spa": 4,
         "spe": 252
       },
-      "heldItem": "garchompite"
+      "heldItem": "life_orb"
     },
     {
       "species": "dragapult",
@@ -84,7 +84,7 @@
         "spa": 4,
         "spe": 132
       },
-      "heldItem": "weaknesspol"
+      "heldItem": "weakness_policy"
     },
     {
       "species": "heatran",
@@ -167,9 +167,9 @@
         "def": 4,
         "spe": 252
       },
-      "heldItem": "flyinium_z",
+      "heldItem": "flying_gem",
       "aspects": [
-        "galar"
+        "galarian"
       ]
     }
   ]

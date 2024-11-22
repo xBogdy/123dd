@@ -86,7 +86,7 @@
       },
       "heldItem": "assault_vest",
       "aspects": [
-        "hisui"
+        "hisuian"
       ]
     },
     {
@@ -114,7 +114,7 @@
         "spa": 252,
         "spe": 252
       },
-      "heldItem": "waterium_z"
+      "heldItem": "water_gem"
     },
     {
       "species": "drednaw",
@@ -141,7 +141,7 @@
         "def": 4,
         "spe": 252
       },
-      "heldItem": "drednawite"
+      "heldItem": "life_orb"
     },
     {
       "species": "floatzel",

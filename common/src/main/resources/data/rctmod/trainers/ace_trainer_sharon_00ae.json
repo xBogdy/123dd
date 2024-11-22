@@ -80,7 +80,7 @@
         "def": 4,
         "spe": 252
       },
-      "heldItem": "groundium_z"
+      "heldItem": "ground_gem"
     },
     {
       "species": "absol",
@@ -107,7 +107,7 @@
         "def": 4,
         "spe": 252
       },
-      "heldItem": "absolite"
+      "heldItem": "expert_belt"
     },
     {
       "species": "mantine",

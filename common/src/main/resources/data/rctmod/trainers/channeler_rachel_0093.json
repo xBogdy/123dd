@@ -54,7 +54,7 @@
       },
       "heldItem": "sitrus_berry",
       "aspects": [
-        "galar"
+        "galarian"
       ]
     },
     {
@@ -136,7 +136,7 @@
         "atk": 252,
         "spe": 252
       },
-      "heldItem": "absolite"
+      "heldItem": "expert_belt"
     },
     {
       "species": "bisharp",

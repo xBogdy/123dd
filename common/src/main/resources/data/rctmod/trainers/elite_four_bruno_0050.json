@@ -133,7 +133,7 @@
         "atk": 252,
         "spe": 252
       },
-      "heldItem": "rusty_sword",
+      "heldItem": "leftovers",
       "aspects": [
         "crowned"
       ]
@@ -163,7 +163,7 @@
         "atk": 252,
         "spe": 252
       },
-      "heldItem": "lucarionite"
+      "heldItem": "life_orb"
     }
   ]
 }

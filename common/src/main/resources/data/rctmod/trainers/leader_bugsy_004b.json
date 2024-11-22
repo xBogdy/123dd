@@ -54,7 +54,7 @@
       },
       "heldItem": "focus_sash",
       "aspects": [
-        "hisui"
+        "hisuian"
       ]
     },
     {
@@ -82,7 +82,7 @@
         "spa": 252,
         "spe": 252
       },
-      "heldItem": "douse_drive",
+      "heldItem": "leftovers",
       "aspects": [
         "douse"
       ]
@@ -139,7 +139,7 @@
         "def": 4,
         "spe": 252
       },
-      "heldItem": "buginium_z",
+      "heldItem": "bug_gem",
       "aspects": [
         "bug"
       ]
@@ -168,7 +168,7 @@
         "def": 4,
         "spe": 252
       },
-      "heldItem": "pinsirite"
+      "heldItem": "life_orb"
     }
   ]
 }

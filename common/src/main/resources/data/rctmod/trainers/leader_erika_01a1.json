@@ -26,7 +26,7 @@
         "def": 4,
         "spe": 252
       },
-      "heldItem": "terrain_ext"
+      "heldItem": "terrain_extender"
     },
     {
       "species": "serperior",
@@ -80,7 +80,7 @@
         "def": 4,
         "spa": 252
       },
-      "heldItem": "venusaurite"
+      "heldItem": "leftovers"
     },
     {
       "species": "meganium",
@@ -136,7 +136,7 @@
       },
       "heldItem": "life_orb",
       "aspects": [
-        "hisui"
+        "hisuian"
       ]
     }
   ]

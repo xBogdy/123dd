@@ -28,7 +28,7 @@
       },
       "heldItem": "miracle_seed",
       "aspects": [
-        "alola"
+        "alolan"
       ]
     },
     {
@@ -137,7 +137,7 @@
         "atk": 252,
         "spe": 252
       },
-      "heldItem": "pinsirite"
+      "heldItem": "life_orb"
     }
   ]
 }

@@ -80,7 +80,7 @@
         "spa": 4,
         "spe": 252
       },
-      "heldItem": "salamencite"
+      "heldItem": "life_orb"
     },
     {
       "species": "aegislash",
@@ -107,7 +107,7 @@
         "atk": 4,
         "spa": 252
       },
-      "heldItem": "ghostium_z"
+      "heldItem": "ghost_gem"
     },
     {
       "species": "victini",

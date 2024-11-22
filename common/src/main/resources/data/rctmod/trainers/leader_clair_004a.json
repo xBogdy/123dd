@@ -80,7 +80,7 @@
         "atk": 252,
         "spe": 252
       },
-      "heldItem": "weaknesspol"
+      "heldItem": "weakness_policy"
     },
     {
       "species": "magearna",
@@ -161,7 +161,7 @@
         "spa": 252,
         "spe": 252
       },
-      "heldItem": "duraludite"
+      "heldItem": "assault_vest"
     }
   ]
 }

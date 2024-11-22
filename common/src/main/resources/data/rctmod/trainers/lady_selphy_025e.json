@@ -22,7 +22,7 @@
         "spe": 20
       },
       "evs": {},
-      "heldItem": "nugget"
+      "heldItem": "minecraft:gold_nugget"
     },
     {
       "species": "persian",
@@ -45,7 +45,7 @@
         "spe": 20
       },
       "evs": {},
-      "heldItem": "nugget"
+      "heldItem": "minecraft:gold_nugget"
     }
   ]
 }

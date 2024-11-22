@@ -80,7 +80,7 @@
         "spa": 4,
         "spe": 252
       },
-      "heldItem": "latiasite"
+      "heldItem": "leftovers"
     },
     {
       "species": "houndoom",
@@ -107,7 +107,7 @@
         "spa": 252,
         "spe": 252
       },
-      "heldItem": "houndoomnite"
+      "heldItem": "expert_belt"
     },
     {
       "species": "mismagius",
@@ -134,7 +134,7 @@
         "spa": 252,
         "spe": 252
       },
-      "heldItem": "ghostium_z"
+      "heldItem": "ghost_gem"
     },
     {
       "species": "heatran",

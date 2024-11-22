@@ -106,9 +106,9 @@
         "spa": 252,
         "spe": 252
       },
-      "heldItem": "weaknesspol",
+      "heldItem": "weakness_policy",
       "aspects": [
-        "galar"
+        "galarian"
       ]
     },
     {
@@ -136,7 +136,7 @@
         "def": 4,
         "spe": 252
       },
-      "heldItem": "waterium_z"
+      "heldItem": "water_gem"
     },
     {
       "species": "raikou",

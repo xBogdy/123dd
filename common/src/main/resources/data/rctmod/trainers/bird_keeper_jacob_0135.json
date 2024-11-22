@@ -107,7 +107,7 @@
         "spa": 252,
         "spd": 4
       },
-      "heldItem": "weaknesspol",
+      "heldItem": "weakness_policy",
       "aspects": [
         "f"
       ]

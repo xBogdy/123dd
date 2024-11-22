@@ -25,7 +25,7 @@
         "atk": 8,
         "spa": 252
       },
-      "heldItem": "abomasite"
+      "heldItem": "assault_vest"
     },
     {
       "species": "calyrex",
@@ -80,7 +80,7 @@
         "def": 8,
         "spa": 252
       },
-      "heldItem": "icium_z"
+      "heldItem": "ice_gem"
     },
     {
       "species": "wishiwashi",
@@ -107,7 +107,7 @@
       },
       "heldItem": "sitrus_berry",
       "aspects": [
-        "hisui"
+        "hisuian"
       ]
     },
     {
@@ -158,7 +158,7 @@
         "atk": 252,
         "def": 4
       },
-      "heldItem": "heracronite"
+      "heldItem": "expert_belt"
     }
   ]
 }

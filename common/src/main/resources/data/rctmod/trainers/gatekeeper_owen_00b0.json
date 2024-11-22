@@ -56,7 +56,7 @@
         "spa": 252,
         "spe": 252
       },
-      "heldItem": "mewnium_z"
+      "heldItem": "psychic_gem"
     },
     {
       "species": "kingler",
@@ -82,7 +82,7 @@
         "atk": 252,
         "spe": 252
       },
-      "heldItem": "kinglerite"
+      "heldItem": "life_orb"
     },
     {
       "species": "giratina",
@@ -109,7 +109,7 @@
         "atk": 12,
         "spa": 252
       },
-      "heldItem": "griseous_orb",
+      "heldItem": "leftovers",
       "aspects": [
         "origin"
       ]

@@ -106,7 +106,7 @@
         "spa": 252,
         "spe": 252
       },
-      "heldItem": "heavydboots"
+      "heldItem": "heavy_duty_boots"
     },
     {
       "species": "sunflora",
@@ -160,7 +160,7 @@
         "spa": 252,
         "spe": 252
       },
-      "heldItem": "charzarditey"
+      "heldItem": "expert_belt"
     }
   ]
 }

@@ -28,7 +28,7 @@
       },
       "heldItem": "light_clay",
       "aspects": [
-        "alola"
+        "alolan"
       ]
     },
     {
@@ -170,7 +170,7 @@
         "spd": 4,
         "spe": 252
       },
-      "heldItem": "abomasite"
+      "heldItem": "assault_vest"
     }
   ]
 }

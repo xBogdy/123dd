@@ -80,7 +80,7 @@
         "def": 252,
         "spd": 4
       },
-      "heldItem": "slowbronite"
+      "heldItem": "leftovers"
     },
     {
       "species": "lanturn",
@@ -134,7 +134,7 @@
         "spa": 252,
         "spe": 252
       },
-      "heldItem": "waterium_z"
+      "heldItem": "water_gem"
     }
   ]
 }

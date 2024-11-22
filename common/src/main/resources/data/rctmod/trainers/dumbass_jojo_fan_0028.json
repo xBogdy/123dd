@@ -53,7 +53,7 @@
         "atk": 252,
         "spe": 252
       },
-      "heldItem": "garchompite"
+      "heldItem": "life_orb"
     },
     {
       "species": "huntail",
@@ -107,7 +107,7 @@
         "atk": 252,
         "spe": 6
       },
-      "heldItem": "weaknesspol",
+      "heldItem": "weakness_policy",
       "aspects": [
         "dusk_mane"
       ]
@@ -137,7 +137,7 @@
         "atk": 252,
         "spe": 6
       },
-      "heldItem": "machampite"
+      "heldItem": "expert_belt"
     },
     {
       "species": "hoopa",
@@ -164,7 +164,7 @@
         "spa": 252,
         "spe": 252
       },
-      "heldItem": "fightinium_z",
+      "heldItem": "fighting_gem",
       "aspects": [
         "unbound"
       ]

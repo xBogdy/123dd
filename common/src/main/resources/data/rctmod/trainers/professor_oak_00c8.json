@@ -79,7 +79,7 @@
         "atk": 252,
         "spe": 252
       },
-      "heldItem": "charzarditex"
+      "heldItem": "life_orb"
     },
     {
       "species": "gyarados",
@@ -159,7 +159,7 @@
         "spd": 4,
         "spe": 252
       },
-      "heldItem": "eevium_z"
+      "heldItem": "normal_gem"
     }
   ]
 }

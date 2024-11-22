@@ -59,7 +59,7 @@
         "spa": 252,
         "spd": 4
       },
-      "heldItem": "venusaurite"
+      "heldItem": "leftovers"
     },
     {
       "species": "blastoise",
@@ -86,7 +86,7 @@
         "spa": 252,
         "spe": 252
       },
-      "heldItem": "blastoisnite"
+      "heldItem": "leftovers"
     },
     {
       "species": "charizard",
@@ -113,7 +113,7 @@
         "def": 4,
         "spe": 252
       },
-      "heldItem": "charzarditex"
+      "heldItem": "life_orb"
     },
     {
       "species": "snorlax",
@@ -167,7 +167,7 @@
         "atk": 252,
         "spe": 252
       },
-      "heldItem": "mewtwonitex"
+      "heldItem": "leftovers"
     }
   ]
 }

@@ -80,7 +80,7 @@
         "spa": 252,
         "spe": 252
       },
-      "heldItem": "normalium_z"
+      "heldItem": "normal_gem"
     },
     {
       "species": "toxapex",
@@ -133,7 +133,7 @@
         "atk": 252,
         "spe": 6
       },
-      "heldItem": "mawilite"
+      "heldItem": "expert_belt"
     },
     {
       "species": "xerneas",

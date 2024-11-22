@@ -26,7 +26,7 @@
         "atk": 252,
         "spe": 252
       },
-      "heldItem": "abomasite"
+      "heldItem": "assault_vest"
     },
     {
       "species": "landorus",
@@ -83,7 +83,7 @@
         "atk": 252,
         "spe": 252
       },
-      "heldItem": "normalium_z"
+      "heldItem": "normal_gem"
     },
     {
       "species": "medicham",
@@ -110,7 +110,7 @@
         "atk": 252,
         "spe": 252
       },
-      "heldItem": "medichamite"
+      "heldItem": "choice_scarf"
     }
   ]
 }

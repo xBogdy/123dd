@@ -80,7 +80,7 @@
         "atk": 252,
         "spe": 252
       },
-      "heldItem": "charcoal"
+      "heldItem": "charcoal_stick"
     },
     {
       "species": "jumpluff",
@@ -134,7 +134,7 @@
         "spa": 252,
         "spe": 252
       },
-      "heldItem": "blastoisnite"
+      "heldItem": "leftovers"
     }
   ]
 }

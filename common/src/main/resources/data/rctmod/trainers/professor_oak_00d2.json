@@ -26,7 +26,7 @@
         "spa": 252,
         "spe": 252
       },
-      "heldItem": "pidgeotite"
+      "heldItem": "expert_belt"
     },
     {
       "species": "blastoise",
@@ -53,7 +53,7 @@
         "spa": 252,
         "spe": 252
       },
-      "heldItem": "blastoisnite"
+      "heldItem": "leftovers"
     },
     {
       "species": "flareon",
@@ -79,7 +79,7 @@
         "atk": 252,
         "spe": 252
       },
-      "heldItem": "eevium_z"
+      "heldItem": "normal_gem"
     },
     {
       "species": "zapdos",

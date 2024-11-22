@@ -25,7 +25,7 @@
         "spa": 4,
         "spe": 252
       },
-      "heldItem": "applite"
+      "heldItem": "eject_pack"
     },
     {
       "species": "arcanine",
@@ -54,7 +54,7 @@
       },
       "heldItem": "rock_gem",
       "aspects": [
-        "hisui"
+        "hisuian"
       ]
     },
     {

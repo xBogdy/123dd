@@ -49,7 +49,7 @@
         "def": 4,
         "spa": 252
       },
-      "heldItem": "terrain_ext",
+      "heldItem": "terrain_extender",
       "aspects": [
         "f"
       ]
@@ -154,7 +154,7 @@
         "def": 4,
         "spa": 252
       },
-      "heldItem": "gardevoirite"
+      "heldItem": "leftovers"
     }
   ]
 }

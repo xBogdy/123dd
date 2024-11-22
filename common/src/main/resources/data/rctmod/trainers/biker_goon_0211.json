@@ -28,7 +28,7 @@
       },
       "heldItem": "focus_sash",
       "aspects": [
-        "hisui"
+        "hisuian"
       ]
     },
     {
@@ -58,7 +58,7 @@
       },
       "heldItem": "life_orb",
       "aspects": [
-        "hisui"
+        "hisuian"
       ]
     },
     {
@@ -86,7 +86,7 @@
         "def": 4,
         "spe": 252
       },
-      "heldItem": "sharpedonite"
+      "heldItem": "life_orb"
     }
   ]
 }

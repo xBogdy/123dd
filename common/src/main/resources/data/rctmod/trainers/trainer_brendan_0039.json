@@ -134,7 +134,7 @@
         "spa": 252,
         "spe": 252
       },
-      "heldItem": "pixie_plate"
+      "heldItem": "leftovers"
     },
     {
       "species": "sceptile",
@@ -161,7 +161,7 @@
         "atk": 252,
         "spe": 252
       },
-      "heldItem": "sceptilite"
+      "heldItem": "expert_belt"
     }
   ]
 }

@@ -112,7 +112,7 @@
       },
       "heldItem": "choice_band",
       "aspects": [
-        "galar"
+        "galarian"
       ]
     },
     {
@@ -167,7 +167,7 @@
         "atk": 252,
         "spe": 252
       },
-      "heldItem": "sceptilite"
+      "heldItem": "expert_belt"
     }
   ]
 }

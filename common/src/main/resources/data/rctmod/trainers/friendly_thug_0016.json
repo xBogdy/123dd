@@ -26,7 +26,7 @@
         "atk": 252,
         "spe": 252
       },
-      "heldItem": "salamencite"
+      "heldItem": "life_orb"
     },
     {
       "species": "aggron",
@@ -53,7 +53,7 @@
         "atk": 252,
         "spe": 6
       },
-      "heldItem": "aggronite"
+      "heldItem": "iron_ball"
     }
   ]
 }

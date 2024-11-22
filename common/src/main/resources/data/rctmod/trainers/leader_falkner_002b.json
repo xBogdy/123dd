@@ -22,7 +22,7 @@
         "spe": 31
       },
       "evs": {},
-      "heldItem": "pidgeotite"
+      "heldItem": "expert_belt"
     },
     {
       "species": "yanmega",
@@ -138,7 +138,7 @@
         "spe": 31
       },
       "evs": {},
-      "heldItem": "flyinium_z"
+      "heldItem": "flying_gem"
     }
   ]
 }

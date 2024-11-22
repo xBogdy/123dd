@@ -56,7 +56,7 @@
         "def": 4,
         "spe": 252
       },
-      "heldItem": "swampertite"
+      "heldItem": "leftovers"
     },
     {
       "species": "necrozma",
@@ -83,7 +83,7 @@
         "def": 4,
         "spe": 252
       },
-      "heldItem": "solganium_z",
+      "heldItem": "steel_gem",
       "aspects": [
         "dusk_mane"
       ]
@@ -143,7 +143,7 @@
         "spa": 252,
         "spe": 252
       },
-      "heldItem": "lustrous_orb",
+      "heldItem": "leftovers",
       "aspects": [
         "origin"
       ]

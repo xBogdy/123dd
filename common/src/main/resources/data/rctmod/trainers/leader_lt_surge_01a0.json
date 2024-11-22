@@ -27,7 +27,7 @@
         "spa": 100,
         "spe": 40
       },
-      "heldItem": "electr_seed"
+      "heldItem": "electric_seed"
     },
     {
       "species": "raichu",
@@ -55,9 +55,9 @@
         "spa": 40,
         "spe": 252
       },
-      "heldItem": "twistedspoon",
+      "heldItem": "twisted_spoon",
       "aspects": [
-        "alola"
+        "alolan"
       ]
     },
     {
@@ -113,7 +113,7 @@
         "spa": 100,
         "spe": 40
       },
-      "heldItem": "manectite"
+      "heldItem": "expert_belt"
     },
     {
       "species": "boltund",

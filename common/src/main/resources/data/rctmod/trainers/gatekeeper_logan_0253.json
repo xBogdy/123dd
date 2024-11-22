@@ -55,7 +55,7 @@
       },
       "heldItem": "hard_stone",
       "aspects": [
-        "hisui"
+        "hisuian"
       ]
     },
     {
@@ -83,7 +83,7 @@
         "def": 4,
         "spe": 252
       },
-      "heldItem": "altarianite"
+      "heldItem": "life_orb"
     },
     {
       "species": "feraligatr",

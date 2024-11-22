@@ -81,7 +81,7 @@
       },
       "heldItem": "rocky_helmet",
       "aspects": [
-        "galar"
+        "galarian"
       ]
     },
     {
@@ -163,7 +163,7 @@
         "atk": 252,
         "spe": 6
       },
-      "heldItem": "centiskite"
+      "heldItem": "life_orb"
     }
   ]
 }

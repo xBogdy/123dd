@@ -110,7 +110,7 @@
         "spa": 4,
         "spe": 252
       },
-      "heldItem": "kommonium_z"
+      "heldItem": "dragon_gem"
     },
     {
       "species": "latias",
@@ -137,7 +137,7 @@
         "spa": 252,
         "spe": 252
       },
-      "heldItem": "weaknesspol"
+      "heldItem": "weakness_policy"
     },
     {
       "species": "toxtricity",
@@ -164,7 +164,7 @@
         "spa": 252,
         "spe": 252
       },
-      "heldItem": "toxtricitite"
+      "heldItem": "assault_vest"
     }
   ]
 }

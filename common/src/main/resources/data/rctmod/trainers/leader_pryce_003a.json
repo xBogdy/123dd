@@ -28,7 +28,7 @@
       },
       "heldItem": "icy_rock",
       "aspects": [
-        "alola"
+        "alolan"
       ]
     },
     {
@@ -112,7 +112,7 @@
       },
       "heldItem": "assault_vest",
       "aspects": [
-        "alola"
+        "alolan"
       ]
     },
     {
@@ -167,7 +167,7 @@
         "atk": 252,
         "spe": 252
       },
-      "heldItem": "glalitite"
+      "heldItem": "leftovers"
     }
   ]
 }

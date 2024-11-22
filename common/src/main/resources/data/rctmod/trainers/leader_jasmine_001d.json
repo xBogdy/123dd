@@ -53,7 +53,7 @@
         "spa": 252,
         "spe": 252
       },
-      "heldItem": "steelium_z"
+      "heldItem": "steel_gem"
     },
     {
       "species": "heatran",
@@ -106,7 +106,7 @@
         "spa": 252,
         "spe": 252
       },
-      "heldItem": "latiosite"
+      "heldItem": "life_orb"
     },
     {
       "species": "togekiss",
@@ -160,7 +160,7 @@
         "atk": 252,
         "spe": 6
       },
-      "heldItem": "copperajite"
+      "heldItem": "assault_vest"
     }
   ]
 }

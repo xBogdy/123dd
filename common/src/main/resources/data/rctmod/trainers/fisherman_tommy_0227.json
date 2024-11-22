@@ -80,7 +80,7 @@
         "def": 252,
         "spd": 4
       },
-      "heldItem": "slowbronite"
+      "heldItem": "leftovers"
     },
     {
       "species": "slowbro",
@@ -108,7 +108,7 @@
       },
       "heldItem": "choice_specs",
       "aspects": [
-        "galar"
+        "galarian"
       ]
     }
   ]

@@ -21,8 +21,7 @@
         "spd": 20,
         "spe": 20
       },
-      "evs": {},
-      "heldItem": "stardust"
+      "evs": {}
     },
     {
       "species": "mareep",
@@ -44,8 +43,7 @@
         "spd": 20,
         "spe": 20
       },
-      "evs": {},
-      "heldItem": "stardust"
+      "evs": {}
     },
     {
       "species": "flaaffy",
@@ -68,7 +66,7 @@
         "spe": 20
       },
       "evs": {},
-      "heldItem": "nugget"
+      "heldItem": "minecraft:gold_nugget"
     }
   ]
 }

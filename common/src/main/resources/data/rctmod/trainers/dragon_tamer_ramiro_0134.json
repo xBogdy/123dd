@@ -26,7 +26,10 @@
         "spd": 4,
         "spe": 252
       },
-      "heldItem": "focus_sash"
+      "heldItem": "focus_sash",
+      "aspects": [
+        "surfing"
+      ]
     },
     {
       "species": "milotic",
@@ -80,7 +83,7 @@
         "def": 4,
         "spa": 252
       },
-      "heldItem": "laprasite"
+      "heldItem": "life_orb"
     },
     {
       "species": "goodra",
@@ -108,7 +111,7 @@
       },
       "heldItem": "assault_vest",
       "aspects": [
-        "hisui"
+        "hisuian"
       ]
     },
     {

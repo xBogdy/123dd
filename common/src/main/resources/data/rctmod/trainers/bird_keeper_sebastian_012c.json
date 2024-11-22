@@ -53,7 +53,7 @@
         "def": 4,
         "spe": 252
       },
-      "heldItem": "charzarditex"
+      "heldItem": "life_orb"
     },
     {
       "species": "togekiss",
@@ -107,7 +107,7 @@
         "def": 4,
         "spe": 252
       },
-      "heldItem": "charcoal"
+      "heldItem": "charcoal_stick"
     },
     {
       "species": "tropius",

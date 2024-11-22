@@ -54,7 +54,7 @@
         "spa": 252,
         "spd": 4
       },
-      "heldItem": "adamant_orb"
+      "heldItem": "leftovers"
     },
     {
       "species": "dragonite",
@@ -81,7 +81,7 @@
         "spd": 4,
         "spe": 252
       },
-      "heldItem": "weaknesspol"
+      "heldItem": "weakness_policy"
     },
     {
       "species": "flapple",
@@ -108,7 +108,7 @@
         "spa": 252,
         "spe": 252
       },
-      "heldItem": "applite"
+      "heldItem": "eject_pack"
     },
     {
       "species": "kyurem",

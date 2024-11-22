@@ -50,8 +50,7 @@
         "hp": 6,
         "spa": 252,
         "spd": 252
-      },
-      "heldItem": "green_shard"
+      }
     },
     {
       "species": "vileplume",
@@ -77,7 +76,7 @@
         "spa": 252,
         "spd": 252
       },
-      "heldItem": "ability_pill"
+      "heldItem": "ability_capsule"
     },
     {
       "species": "ivysaur",

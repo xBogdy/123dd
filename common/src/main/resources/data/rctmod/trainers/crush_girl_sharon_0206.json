@@ -53,7 +53,7 @@
         "atk": 252,
         "spe": 252
       },
-      "heldItem": "galladite"
+      "heldItem": "life_orb"
     },
     {
       "species": "darmanitan",
@@ -80,9 +80,9 @@
         "def": 4,
         "spe": 252
       },
-      "heldItem": "charcoal",
+      "heldItem": "charcoal_stick",
       "aspects": [
-        "galar"
+        "galarian"
       ]
     },
     {

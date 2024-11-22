@@ -110,9 +110,9 @@
         "spa": 252,
         "spe": 252
       },
-      "heldItem": "charcoal",
+      "heldItem": "charcoal_stick",
       "aspects": [
-        "hisui"
+        "hisuian"
       ]
     },
     {
@@ -140,7 +140,7 @@
         "spa": 252,
         "spe": 252
       },
-      "heldItem": "gengarite"
+      "heldItem": "expert_belt"
     },
     {
       "species": "weavile",

@@ -54,7 +54,7 @@
         "spa": 128,
         "spe": 252
       },
-      "heldItem": "applite"
+      "heldItem": "eject_pack"
     },
     {
       "species": "farfetchd",
@@ -81,7 +81,7 @@
         "atk": 252,
         "spe": 252
       },
-      "heldItem": "leek_stick"
+      "heldItem": "scope_lens"
     }
   ]
 }
