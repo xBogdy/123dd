@@ -47,6 +47,7 @@ public class TrainerSpawner {
     private static float UNDEFEATED_WEIGHT_FACTOR = 8;
     private static final int SPAWN_RETRIES = 4;
     private static final boolean CAN_SPAWN_IN_WATER = false; // experimental
+    private static final double TRAINER_DIRECT_SPAWN_CHANCE = 0.75;
 
     private class SpawnCandidate {
         public final String id;
@@ -232,34 +233,54 @@ public class TrainerSpawner {
         return 0;
     }
 
-    public void attemptSpawnFor(Player player) {
-        var config = RCTMod.getInstance().getServerConfig();
+    public boolean attemptSpawnFor(Player player, String trainerId, BlockPos pos) {
+        var level = player.level();
 
-        if(config.globalSpawnChance() < player.getRandom().nextFloat() || RCTMod.getInstance().getTrainerManager().getPlayerLevel(player) == 0) {
-            return;
-        }
+        if(level.getBlockState(pos).entityCanStandOn(level, pos, player) && this.canSpawnFor(player)) {
+            var tmd = RCTMod.getInstance().getTrainerManager().getData(trainerId);
 
-        if(this.getSpawnCount() < config.maxTrainersTotal()) {
-            if(this.getSpawnCount(player.getUUID()) < config.maxTrainersPerPlayer()) {
-                for(int i = 0; i < SPAWN_RETRIES; i++) {
-                    var pos = this.nextPos(player);
-
-                    if(pos != null) {
-                        var spawnCandidate = this.nextSpawnCandidate(player, pos);
-                        
-                        if(spawnCandidate != null) {
-                            this.spawnFor(player, spawnCandidate.id, pos);
-                        }
-
-                        break;
-                    }
+            if(tmd != null && this.isUnique(tmd.getTrainerTeam().getIdentity())) {
+                if(this.computeChance(player, trainerId, tmd) < player.getRandom().nextDouble()) {
+                    this.spawnFor(player, trainerId, pos);
+                    return true;
                 }
             }
         }
+
+        return false;
+    }
+
+    public boolean attemptSpawnFor(Player player) {
+        if(this.canSpawnFor(player)) {
+            for(int i = 0; i < SPAWN_RETRIES; i++) {
+                var pos = this.nextPos(player);
+
+                if(pos != null) {
+                    var spawnCandidate = this.nextSpawnCandidate(player, pos);
+                    
+                    if(spawnCandidate != null) {
+                        this.spawnFor(player, spawnCandidate.id, pos);
+                    }
+
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
     private boolean isUnique(String identity) {
         return !this.identities.containsKey(identity) && !this.persistentNames.containsKey(identity);
+    }
+
+    private boolean canSpawnFor(Player player) {
+        var config = RCTMod.getInstance().getServerConfig();
+
+        return config.globalSpawnChance() >= player.getRandom().nextFloat()
+            && RCTMod.getInstance().getTrainerManager().getPlayerLevel(player) > 0
+            && this.getSpawnCount() < config.maxTrainersTotal()
+            && this.getSpawnCount(player.getUUID()) < config.maxTrainersPerPlayer();
     }
 
     private void spawnFor(Player player, String trainerId, BlockPos pos) {
@@ -419,6 +440,22 @@ public class TrainerSpawner {
         }
         
         return candidates.get(i);
+    }
+
+    private double computeChance(Player player, String trainerId, TrainerMobData mobTr) {
+        var ps = PlayerState.get(player);
+        var config = RCTMod.getInstance().getServerConfig();
+        var tm = RCTMod.getInstance().getTrainerManager();
+        var playerLevel = tm.getPlayerLevel(player);
+        var reqLevelCap = mobTr.getRequiredLevelCap();
+        var levelCap = ps.getLevelCap();
+        var chance = TRAINER_DIRECT_SPAWN_CHANCE;
+
+        if(tm.getBattleMemory((ServerLevel)player.level(), trainerId).getDefeatByCount(player) > 0) {
+            chance /= UNDEFEATED_WEIGHT_FACTOR;
+        }
+
+        return chance * Math.min(config.maxLevelDiff(), Math.abs(Math.min(playerLevel, levelCap) - reqLevelCap))/config.maxLevelDiff();
     }
 
     private double computeWeight(Player player, String trainerId, TrainerMobData mobTr) {
