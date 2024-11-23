@@ -1,5 +1,40 @@
 # Changelog
 
+## [0.13.x-beta] - 2024-11-23
+
+***Added***
+
+- Double- and Multi battles: Multi battles require trainers to have their partner nearby. Trainers that offer multi battles will spawn together with their partner and the AI will try its best to keep them together (TODO)
+- Learning battle AI: Trainers learn and get better over time, all trainers have access to the accumulated knowledge of other trainers, "weaker" trainers tend to experiment more where as "stronger" trainers tend to stick to the best known choices
+- Server config `allowOverLeveling`: Specifies if players should be allowed to level their pokemon above their level cap (default: `false`) (TODO)
+- Server config `trainerSpawnerItems`: Allows to specify what items can be used to configure a trainer spawner to summon specific trainers (TODO)
+- Trainer (type) dependent battle rules: Currently allows to set item usage restrictions, leaders and bosses will by default not allow more than `2` item uses
+- Trainer Spawner block: Can be attuned to spawn different trainers whenever a player is nearby (and the trainer is not already elsewhere), trainers will not move while standing on this block, what items will spawn what trainers can be configured (TODO)
+- `Home` block positon tag for trainer npcs: Trainers will stay/move to the defined position (trainers spawned from a Trainer Spawner block will have that block set as their home position) (TODO)
+
+***Changed***
+
+- Core dependency "CobblemonTrainers" is now replaced by "RCTApi"
+- Data pack trainer format is now slightly different (see the docs for a full overview of changes)
+- Decreased trainer batte cooldown from `30` to `20` seconds (TODO)
+- Different battle AIs for trainers: "Stronger" trainers (e.g. leaders and bosses) use a stronger AI (AI implementations are still wip/experimental) (TODO)
+- Increased battle attempts against leaders/bosses from `2` to `3` and against other trainers from `3` to `5` (TODO)
+- Minor adjustments to spawn rates: Decreased boosted rates for never beaten leaders/bosses but increased the rates for never beaten trainers in general
+- Possible spawn locations of leaders and bosses now somewhat match their themes (rather than beeing able to spawn everywhere) (TODO)
+- Some pokemon that are originally supposed to mega evolve (i.e. holding key stones) now hold other competetive held items as replacement (until mega evolutions are supported)
+- Some trainers might carry items that they may use in battles (e.g. potions) (TODO)
+- Trainer Card GUI: Trainers that can be spawned with a trainer spawner will show the item required to so in their overview page (TODO)
+- Trainer defeat counts are now per player, this means different players can now fight the same trainer in a row (trainers will still tend to walk away if defeated/exhausted once) (TODO)
+- Trainers now follow players that are close and are holding a Trainer Card (TODO)
+- Update to Cobblemon 1.6, Minecraft 1.21, Fabric/Neoforge
+
+***Fixed***
+
+- Some pokemon missing held items
+- Some pokemon not having the correct regional form
+- Trainer Card now glows and renders the arrow for all players whenever they get close to the next key trainer they have to defeat (regardless of if the trainer spawned in naturally or was summoned in any other way) (TODO)
+- Trainer pokemon sometimes dropping loot, missing trainer pokemon send out and retrieve animation, and probably some other stuff
+
 ## [0.12.0-beta] - 2024-10-03
 
 ***Added***
