@@ -26,15 +26,18 @@ import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.client.renderer.TargetArrowRenderer;
 import com.gitlab.srcmc.rctmod.client.renderer.TrainerRenderer;
+import com.gitlab.srcmc.rctmod.client.renderer.TrainerSpawnerBlockEntityRenderer;
 import com.gitlab.srcmc.rctmod.client.screens.ScreenManager;
 import com.gitlab.srcmc.rctmod.network.PlayerStatePayload;
 
 import dev.architectury.event.events.client.ClientTickEvent;
+import dev.architectury.event.events.common.LifecycleEvent;
 import dev.architectury.networking.NetworkManager;
 import dev.architectury.networking.NetworkManager.PacketContext;
 import dev.architectury.networking.NetworkManager.Side;
 import dev.architectury.registry.ReloadListenerRegistry;
 import dev.architectury.registry.client.level.entity.EntityRendererRegistry;
+import dev.architectury.registry.client.rendering.BlockEntityRendererRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.level.Level;
@@ -46,11 +49,18 @@ public class ModClient {
         var mc = Minecraft.getInstance();
         ModCommon.initLocalPlayer(mc.player);
         ModCommon.initScreenManager(new ScreenManager());
-        TargetArrowRenderer.init(ModRegistries.Items.TRAINER_CARD);
-        EntityRendererRegistry.register(ModRegistries.Entities.TRAINER, TrainerRenderer::new);
         ReloadListenerRegistry.register(PackType.CLIENT_RESOURCES, RCTMod.getInstance().getClientDataManager());
         NetworkManager.registerReceiver(Side.S2C, PlayerStatePayload.TYPE, PlayerStatePayload.CODEC, ModClient::receivePlayerState);
         ClientTickEvent.CLIENT_LEVEL_PRE.register(ModClient::onClientWorldTick);
+        EntityRendererRegistry.register(ModRegistries.Entities.TRAINER, TrainerRenderer::new);
+        TargetArrowRenderer.init(ModRegistries.Items.TRAINER_CARD);
+        LifecycleEvent.SETUP.register(ModClient::onSetup);
+    }
+
+    // Setup
+
+    public static void onSetup() {
+        BlockEntityRendererRegistry.register(ModRegistries.BlockEntityTypes.TRAINER_SPAWNER.get(), TrainerSpawnerBlockEntityRenderer::new);
     }
 
     // ClientTickEvent

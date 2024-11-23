@@ -18,6 +18,7 @@
 package com.gitlab.srcmc.rctmod.api.config;
 
 import java.util.List;
+import java.util.Map;
 
 public interface IServerConfig extends IModConfig {
     /**
@@ -105,6 +106,23 @@ public interface IServerConfig extends IModConfig {
      * default: []
      */
     default List<? extends String> biomeTagWhitelist() { return List.of(); }
+
+    /**
+     * A list of items that can be used to configure a trainer spawner to spawn
+     * specific trainers. Every entry must define an item followed by atleast one space
+     * and a trainer id (see default value for examples).
+     * 
+     * default: [
+     *  "cobblemon:hard_stone leader_brock_019e",
+     *  "minecraft:diamond leader_misty_019f"
+     * ]
+     */
+    default Map<? extends String, ? extends String> trainerSpawnerItems() {
+        return Map.<String, String>ofEntries(
+            Map.<String, String>entry("cobblemon:hard_stone", "leader_brock_019e"),
+            Map.<String, String>entry("minecraft:diamond", "leader_misty_019f")
+        );
+    }
 
     /**
      * Initial level cap of players. Pokemon will not gain any experience if at or

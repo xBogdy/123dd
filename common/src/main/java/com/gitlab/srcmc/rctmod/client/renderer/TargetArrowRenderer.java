@@ -65,7 +65,7 @@ public class TargetArrowRenderer {
     public static double TX = -0.15, TY = 0.25, TZ = 0.03;
     private static final float SX = 0.009375f, SY = 0.03f, SZ = 0.01875f;
 
-    private Supplier<Item> itemSupplier;
+    private Supplier<? extends Item> itemSupplier;
     private Vector3f direction;
     private int sourceTicks, activationTicks;
     private boolean active;
@@ -77,7 +77,7 @@ public class TargetArrowRenderer {
         throw new IllegalStateException(TargetArrowRenderer.class.getName() + " not initialized");
     };
 
-    public static void init(Supplier<Item> triggerItemSupplier) {
+    public static void init(Supplier<? extends Item> triggerItemSupplier) {
         var instance = new TargetArrowRenderer(triggerItemSupplier);
         instanceSupplier = () -> instance;
     }
@@ -86,7 +86,7 @@ public class TargetArrowRenderer {
         return instanceSupplier.get();
     }
 
-    private TargetArrowRenderer(Supplier<Item> triggerItemSupplier) {
+    private TargetArrowRenderer(Supplier<? extends Item> triggerItemSupplier) {
         this.itemSupplier = triggerItemSupplier;
     }
 

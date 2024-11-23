@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "rctmod:block/trainer_spawner"
+    }
+  }
+}

@@ -38,16 +38,17 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.datafix.DataFixTypes;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.saveddata.SavedData.Factory;
 
 public class TrainerSpawner {
-    private static float KEY_TRAINER_SPAWN_WEIGHT_FACTOR = 120;
-    private static float UNDEFEATED_WEIGHT_FACTOR = 8;
+    private static float KEY_TRAINER_SPAWN_WEIGHT_FACTOR = 8;
+    private static float UNDEFEATED_WEIGHT_FACTOR = 32;
     private static final int SPAWN_RETRIES = 4;
     private static final boolean CAN_SPAWN_IN_WATER = false; // experimental
-    private static final double TRAINER_DIRECT_SPAWN_CHANCE = 0.75;
+    private static final double TRAINER_DIRECT_SPAWN_CHANCE = 0.35;
 
     private class SpawnCandidate {
         public final String id;
@@ -236,11 +237,11 @@ public class TrainerSpawner {
     public boolean attemptSpawnFor(Player player, String trainerId, BlockPos pos) {
         var level = player.level();
 
-        if(level.getBlockState(pos).entityCanStandOn(level, pos, player) && this.canSpawnFor(player)) {
+        if(TrainerSpawner.canSpawnOn(level, pos) && this.canSpawnFor(player)) {
             var tmd = RCTMod.getInstance().getTrainerManager().getData(trainerId);
 
             if(tmd != null && this.isUnique(tmd.getTrainerTeam().getIdentity())) {
-                if(this.computeChance(player, trainerId, tmd) < player.getRandom().nextDouble()) {
+                if(this.computeChance(player, trainerId, tmd) >= player.getRandom().nextDouble()) {
                     this.spawnFor(player, trainerId, pos);
                     return true;
                 }
@@ -268,6 +269,12 @@ public class TrainerSpawner {
         }
 
         return false;
+    }
+
+    private static boolean canSpawnOn(Level level, BlockPos blockPos) {
+        return true // level.getBlockState(blockPos).isFaceSturdy(level, blockPos, Direction.UP)
+            && level.getBlockState(blockPos.above()).isAir()
+            && level.getBlockState(blockPos.above().above()).isAir();
     }
 
     private boolean isUnique(String identity) {
@@ -455,7 +462,8 @@ public class TrainerSpawner {
             chance /= UNDEFEATED_WEIGHT_FACTOR;
         }
 
-        return chance * Math.min(config.maxLevelDiff(), Math.abs(Math.min(playerLevel, levelCap) - reqLevelCap))/config.maxLevelDiff();
+        var e = (1.0  - Math.min(config.maxLevelDiff(), Math.abs(Math.min(playerLevel, levelCap) - reqLevelCap))/(double)config.maxLevelDiff());
+        return chance * e * e;
     }
 
     private double computeWeight(Player player, String trainerId, TrainerMobData mobTr) {
