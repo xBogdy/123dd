@@ -17,6 +17,7 @@
  */
 package com.gitlab.srcmc.rctmod.world.entities;
 
+import java.util.Objects;
 import java.util.UUID;
 
 import com.gitlab.srcmc.rctapi.api.RCTApi;
@@ -30,10 +31,12 @@ import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.api.utils.ChatUtils;
 import com.gitlab.srcmc.rctmod.world.entities.goals.LookAtPlayerAndWaitGoal;
 import com.gitlab.srcmc.rctmod.world.entities.goals.MoveCloseToTargetGoal;
+import com.gitlab.srcmc.rctmod.world.entities.goals.MoveToHomePosGoal;
 import com.gitlab.srcmc.rctmod.world.entities.goals.PokemonBattleGoal;
 import com.gitlab.srcmc.rctmod.world.entities.goals.RandomStrollAwayGoal;
 import com.gitlab.srcmc.rctmod.world.entities.goals.RandomStrollThroughVillageGoal;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -93,9 +96,11 @@ public class TrainerMob extends PathfinderMob implements Npc {
     private UUID originPlayer;
     private boolean persistent;
     private int despawnTicks;
+    private BlockPos homePos;
 
     protected TrainerMob(EntityType<? extends PathfinderMob> entityType, Level level) {
         super(entityType, level);
+        this.setCustomName(Component.literal("Trainer"));
     }
 
     public static EntityType<TrainerMob> getEntityType() {
@@ -253,7 +258,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
         if(!level.isClientSide) {
             var currentId = this.getTrainerId();
 
-            if((currentId == null && trainerId != null) || (currentId != null && !currentId.equals(trainerId))) {
+            if(!Objects.equals(currentId, trainerId)) {
                 RCTMod.getInstance().getTrainerSpawner().notifyChangeTrainerId(this, trainerId);
                 this.entityData.set(DATA_TRAINER_ID, trainerId);
                 this.updateTrainerNPC(trainerId);
@@ -278,6 +283,22 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
     public String getTrainerId() {
         return this.entityData.get(DATA_TRAINER_ID);
+    }
+
+    public void setHomePos(BlockPos blockPos) {
+        var level = this.level();
+
+        if(!level.isClientSide) {
+            var currentHome = this.getHomePos();
+
+            if(!Objects.equals(currentHome, blockPos)) {
+                this.homePos = blockPos;
+            }
+        }
+    }
+
+    public BlockPos getHomePos() {
+        return this.homePos;
     }
 
     public void finishBattle(TrainerBattle battle, boolean defeated) {
@@ -355,7 +376,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
-        builder.define(DATA_TRAINER_ID, "invalid");
+        builder.define(DATA_TRAINER_ID, "");
     }
 
     @Override
@@ -434,12 +455,14 @@ public class TrainerMob extends PathfinderMob implements Npc {
                 var tm = RCTMod.getInstance().getTrainerManager();
                 int reqLevelCap = tm.getData(this).getRequiredLevelCap();
 
-                this.setTarget(this.level().getNearbyPlayers(
-                    TargetingConditions
-                        .forNonCombat()
-                        .ignoreLineOfSight()
-                        .selector(p -> PlayerState.get((Player)p).getLevelCap() >= reqLevelCap),
-                    this, this.getBoundingBox().deflate(MAX_PLAYER_TRACKING_RANGE)).stream()
+                this.setTarget(this.level()
+                    .getNearbyPlayers(
+                        TargetingConditions
+                            .forNonCombat()
+                            .ignoreLineOfSight()
+                            .selector(p -> PlayerState.get((Player)p).getLevelCap() >= reqLevelCap),
+                        this, this.getBoundingBox().inflate(MAX_PLAYER_TRACKING_RANGE))
+                    .stream()
                         .sorted((p1, p2) -> Integer.compare(Math.abs(tm.getPlayerLevel(p1) - reqLevelCap), Math.abs(tm.getPlayerLevel(p2) - reqLevelCap)))
                         .findFirst().orElse(null));
             } else {
@@ -526,6 +549,10 @@ public class TrainerMob extends PathfinderMob implements Npc {
         compoundTag.putString("TrainerId", this.getTrainerId());
         compoundTag.putBoolean("Persistent", this.isPersistenceRequired());
 
+        if(this.homePos != null) {
+            compoundTag.putLong("HomePos", this.homePos.asLong());
+        }
+
         if(this.originPlayer != null) {
             compoundTag.putUUID("OriginPlayer", this.originPlayer);
         }
@@ -551,6 +578,10 @@ public class TrainerMob extends PathfinderMob implements Npc {
             this.setTrainerId(compoundTag.getString("TrainerId"));
         }
 
+        if(compoundTag.contains("HomePos")) {
+            this.setHomePos(BlockPos.of(compoundTag.getLong("HomePos")));
+        }
+
         if(compoundTag.contains("OriginPlayer")) {
             this.setOriginPlayer(compoundTag.getUUID("OriginPlayer"));
         }
@@ -574,6 +605,8 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
     @Override
     protected void registerGoals() {
+        var maxTrackingDistance = 2*RCTMod.getInstance().getServerConfig().maxHorizontalDistanceToPlayers();
+
         this.getNavigation().setCanFloat(true);
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(0, new PokemonBattleGoal(this));
@@ -588,8 +621,9 @@ public class TrainerMob extends PathfinderMob implements Npc {
         this.goalSelector.addGoal(4, new LookAtPlayerAndWaitGoal(this, LivingEntity.class, 2.0F, 0.04F, 160, 320));
         this.goalSelector.addGoal(4, new LookAtPlayerAndWaitGoal(this, LivingEntity.class, 4.0F, 0.004F, 80, 160));
         this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, LivingEntity.class, 8.0F));
+        this.goalSelector.addGoal(5, new MoveToHomePosGoal(this));
         this.goalSelector.addGoal(6, new RandomStrollAwayGoal(this, 0.35, () -> 0.0025f, m -> { var tr = (TrainerMob)m; return !tr.canBattle() && tr.getCooldown() == 0; }));
-        this.goalSelector.addGoal(8, new MoveCloseToTargetGoal(this, 0.35, () -> this.requiredBy(this.getTarget()) ? 0.25f : 0.0025f, 2*RCTMod.getInstance().getServerConfig().maxHorizontalDistanceToPlayers()));
+        this.goalSelector.addGoal(8, new MoveCloseToTargetGoal(this, 0.35, () -> this.requiredBy(this.getTarget()) ? 0.25f : 0.0025f, maxTrackingDistance));
         this.goalSelector.addGoal(10, new RandomStrollThroughVillageGoal(this, 0.35F, () -> 0.0025f));
         this.goalSelector.addGoal(12, new WaterAvoidingRandomStrollGoal(this, 0.35));
     }

@@ -152,7 +152,7 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
         var spawner = RCTMod.getInstance().getTrainerSpawner();
 
         for(var player : this.level.getNearbyPlayers(TargetingConditions.forNonCombat(), null, this.aabb)) {
-            if(spawner.attemptSpawnFor(player, this.trainerId, this.getBlockPos().above())) {
+            if(spawner.attemptSpawnFor(player, this.trainerId, this.getBlockPos().above(), true)) {
                 break;
             }
         }

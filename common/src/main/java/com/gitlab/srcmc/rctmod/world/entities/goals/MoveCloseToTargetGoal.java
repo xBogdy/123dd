@@ -23,7 +23,7 @@ import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.MoveTowardsTargetGoal;
 
 public class MoveCloseToTargetGoal extends MoveTowardsTargetGoal {
-    private static final int DEFAULT_SOCIAL_DISTANCING = 24;
+    private static final int DEFAULT_SOCIAL_DISTANCING = 36;
 
     private PathfinderMob mob;
     private double minDistanceSquared;

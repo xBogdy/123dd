@@ -47,8 +47,11 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class TrainerSpawnerBlock extends BaseEntityBlock {
     public static final MapCodec<TrainerSpawnerBlock> CODEC = TrainerSpawnerBlock.simpleCodec(TrainerSpawnerBlock::new);
+
+    // sub-optimal for ai pathing (TODO: adjust model?)
     public static final VoxelShape SHAPE = Shapes.or(
         Block.box(0, 0, 0, 16, 3, 16),
+        Block.box(0, 13, 0, 16, 16, 16),
         Block.box(1, 3, 11, 5, 13, 15),
         Block.box(11, 3, 1, 15, 13, 5),
         Block.box(11, 3, 11, 15, 13, 15),

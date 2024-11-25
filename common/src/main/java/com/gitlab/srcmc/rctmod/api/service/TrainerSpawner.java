@@ -235,14 +235,18 @@ public class TrainerSpawner {
     }
 
     public boolean attemptSpawnFor(Player player, String trainerId, BlockPos pos) {
+        return this.attemptSpawnFor(player, trainerId, pos, false);
+    }
+
+    public boolean attemptSpawnFor(Player player, String trainerId, BlockPos pos, boolean setHome) {
         var level = player.level();
 
-        if(TrainerSpawner.canSpawnOn(level, pos) && this.canSpawnFor(player)) {
+        if(TrainerSpawner.canSpawnAt(level, pos) && this.canSpawnFor(player)) {
             var tmd = RCTMod.getInstance().getTrainerManager().getData(trainerId);
 
             if(tmd != null && this.isUnique(tmd.getTrainerTeam().getIdentity())) {
                 if(this.computeChance(player, trainerId, tmd) >= player.getRandom().nextDouble()) {
-                    this.spawnFor(player, trainerId, pos);
+                    this.spawnFor(player, trainerId, pos, setHome);
                     return true;
                 }
             }
@@ -271,10 +275,10 @@ public class TrainerSpawner {
         return false;
     }
 
-    private static boolean canSpawnOn(Level level, BlockPos blockPos) {
-        return true // level.getBlockState(blockPos).isFaceSturdy(level, blockPos, Direction.UP)
-            && level.getBlockState(blockPos.above()).isAir()
-            && level.getBlockState(blockPos.above().above()).isAir();
+    private static boolean canSpawnAt(Level level, BlockPos blockPos) {
+        return !level.getBlockState(blockPos.below()).isAir()
+            && level.getBlockState(blockPos).isAir()
+            && level.getBlockState(blockPos.above()).isAir();
     }
 
     private boolean isUnique(String identity) {
@@ -291,6 +295,10 @@ public class TrainerSpawner {
     }
 
     private void spawnFor(Player player, String trainerId, BlockPos pos) {
+        this.spawnFor(player, trainerId, pos, false);
+    }
+
+    private void spawnFor(Player player, String trainerId, BlockPos pos, boolean setHome) {
         var config = RCTMod.getInstance().getServerConfig();
         var level = player.level();
         var mob = TrainerMob.getEntityType().create(level);
@@ -299,6 +307,10 @@ public class TrainerSpawner {
         mob.setOriginPlayer(player.getUUID());
         level.addFreshEntity(mob);
         this.register(mob);
+
+        if(setHome) {
+            mob.setHomePos(pos);
+        }
 
         if(config.logSpawning()) {
             var trainer = RCTMod.getInstance().getTrainerManager().getData(trainerId).getTrainerTeam().getName();

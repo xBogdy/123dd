@@ -10,7 +10,7 @@
 - Server config `trainerSpawnerItems`: Allows to specify what items can be used to configure a trainer spawner to summon specific trainers (TODO)
 - Trainer (type) dependent battle rules: Currently allows to set item usage restrictions, leaders and bosses will by default not allow more than `2` item uses
 - Trainer Spawner block: Can be attuned to spawn different trainers whenever a player is nearby (and the trainer is not already elsewhere), trainers will not move while standing on this block, what items will spawn what trainers can be configured (TODO)
-- `Home` block positon tag for trainer npcs: Trainers will stay/move to the defined position (trainers spawned from a Trainer Spawner block will have that block set as their home position) (TODO)
+- `HomePos` block positon tag for trainer npcs: Trainers will stay/move to the defined position, trainers spawned from a Trainer Spawner block will have that block set as their home position
 
 ***Changed***
 
@@ -30,6 +30,7 @@
 
 ***Fixed***
 
+- Some oversights in npc ai behaviour (e.g. player tracking not working properly)
 - Some pokemon missing held items
 - Some pokemon not having the correct regional form
 - Trainer Card now glows and renders the arrow for all players whenever they get close to the next key trainer they have to defeat (regardless of if the trainer spawned in naturally or was summoned in any other way) (TODO)
