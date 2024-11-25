@@ -21,6 +21,7 @@ import java.util.Objects;
 
 import com.gitlab.srcmc.rctmod.ModRegistries;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
+import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -40,13 +41,15 @@ import net.minecraft.world.phys.AABB;
 
 public class TrainerSpawnerBlockEntity extends BlockEntity {
     private static final int SPAWN_INTERVAL_TICKS = 80;
+    private static final int SCAN_INTERVAL_TICKS = 200;
 
     private String trainerId;
     private String renderItemKey;
     private double minPlayerDistance;
     private double maxPlayerDistance;
 
-    private Timer timer = new Timer();
+    private Timer spawnTimer = new Timer();
+    private Timer scanTimer = new Timer();
     private Item renderItem;
     private AABB aabb;
 
@@ -54,8 +57,8 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
         super(ModRegistries.BlockEntityTypes.TRAINER_SPAWNER.get(), blockPos, blockState);
 
         this.setPlayerDistanceThreshold(
-            RCTMod.getInstance().getServerConfig().minHorizontalDistanceToPlayers()/2,
-            RCTMod.getInstance().getServerConfig().maxHorizontalDistanceToPlayers()/2);
+            RCTMod.getInstance().getServerConfig().minHorizontalDistanceToPlayers()*(2/3.0),
+            RCTMod.getInstance().getServerConfig().maxHorizontalDistanceToPlayers()*(2/3.0));
     }
 
     @Override
@@ -94,7 +97,8 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
         if(!Objects.equals(trainerId, this.trainerId) || !Objects.equals(renderItemKey, this.renderItemKey)) {
             this.setRenderItemKey(renderItemKey);
             this.trainerId = trainerId;
-            this.timer.reset(this.level.getGameTime());
+            this.spawnTimer.reset(this.level.getGameTime());
+            this.scanTimer.reset(this.level.getGameTime());
             this.setChanged();
 
             if(!this.level.isClientSide) {
@@ -141,9 +145,9 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
         this.renderItemKey = renderItemKey;
     }
 
-    private void attemptSpawn() {
-        var pos = this.getBlockPos().getCenter();
-        var nearest = this.level.getNearestPlayer(TargetingConditions.forNonCombat(), null, pos.x, pos.y, pos.z);
+    private void attemptSpawn(Level level, BlockPos blockPos) {
+        var pos = blockPos.getCenter();
+        var nearest = level.getNearestPlayer(TargetingConditions.forNonCombat(), null, pos.x, pos.y, pos.z);
 
         if(nearest == null || nearest.distanceToSqr(pos) < Math.pow(this.minPlayerDistance, 2)/2) {
             return;
@@ -151,17 +155,33 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
 
         var spawner = RCTMod.getInstance().getTrainerSpawner();
 
-        for(var player : this.level.getNearbyPlayers(TargetingConditions.forNonCombat(), null, this.aabb)) {
+        for(var player : level.getNearbyPlayers(TargetingConditions.forNonCombat(), null, this.aabb)) {
             if(spawner.attemptSpawnFor(player, this.trainerId, this.getBlockPos().above(), true)) {
                 break;
             }
         }
     }
 
+    private void scanForTrainerNearby(Level level) {
+        level.getNearbyEntities(
+                TrainerMob.class,
+                TargetingConditions.forNonCombat(),
+                null, this.aabb)
+            .stream().filter(t -> Objects.equals(t.getTrainerId(), this.trainerId))
+            .forEach(t -> t.setHomePos(this.getBlockPos().above()));
+    }
+
     public static void serverTick(Level level, BlockPos blockPos, BlockState blockState, TrainerSpawnerBlockEntity be) {
-        if(be.getTrainerId() != null && be.timer.passed(level.getGameTime()) >= SPAWN_INTERVAL_TICKS) {
-            be.attemptSpawn();
-            be.timer.reset(level.getGameTime());
+        if(be.getTrainerId() != null) {
+            if(be.spawnTimer.passed(level.getGameTime()) >= SPAWN_INTERVAL_TICKS) {
+                be.attemptSpawn(level, blockPos);
+                be.spawnTimer.reset(level.getGameTime());
+            }
+
+            if(be.scanTimer.passed(level.getGameTime()) >= SCAN_INTERVAL_TICKS) {
+                be.scanForTrainerNearby(level);
+                be.scanTimer.reset(level.getGameTime());
+            }
         }
     }
 
