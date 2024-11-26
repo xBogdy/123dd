@@ -17,7 +17,11 @@
  */
 package com.gitlab.srcmc.rctmod.world.blocks.entities;
 
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import com.gitlab.srcmc.rctmod.ModRegistries;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
@@ -42,8 +46,8 @@ import net.minecraft.world.phys.AABB;
 public class TrainerSpawnerBlockEntity extends BlockEntity {
     private static final int SPAWN_INTERVAL_TICKS = 80;
     private static final int SCAN_INTERVAL_TICKS = 200;
-
-    private String trainerId;
+    
+    private Set<String> trainerIds = new HashSet<>();
     private String renderItemKey;
     private double minPlayerDistance;
     private double maxPlayerDistance;
@@ -77,9 +81,8 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
     public void saveAdditional(CompoundTag tag, HolderLookup.Provider provider) {
         super.saveAdditional(tag, provider);
 
-        if(this.trainerId != null) {
-            tag.putString("trainerId", this.trainerId);
-        }
+        byte b = 0;
+        this.trainerIds.forEach(tid -> tag.putByte('_' + tid, b));
 
         if(this.renderItemKey != null) {
             tag.putString("renderItemKey", this.renderItemKey);
@@ -89,26 +92,26 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
     @Override
     public void loadAdditional(CompoundTag tag, HolderLookup.Provider provider) {
         super.loadAdditional(tag, provider);
-        this.trainerId = tag.getString("trainerId");
+        this.trainerIds.clear();
+        tag.getAllKeys().stream().filter(key -> key.charAt(0) == '_').map(key -> key.substring(1)).forEach(this.trainerIds::add);
         this.setRenderItemKey(tag.getString("renderItemKey"));
     }
 
-    public void setTrainerId(String trainerId, String renderItemKey) {
-        if(!Objects.equals(trainerId, this.trainerId) || !Objects.equals(renderItemKey, this.renderItemKey)) {
-            this.setRenderItemKey(renderItemKey);
-            this.trainerId = trainerId;
-            this.spawnTimer.reset(this.level.getGameTime());
-            this.scanTimer.reset(this.level.getGameTime());
-            this.setChanged();
+    public void setTrainerIds(String renderItemKey, List<String> trainerIds) {
+        this.setRenderItemKey(renderItemKey);
+        this.trainerIds.clear();
+        this.trainerIds.addAll(trainerIds);
+        this.spawnTimer.reset(this.level.getGameTime());
+        this.scanTimer.reset(this.level.getGameTime());
+        this.setChanged();
 
-            if(!this.level.isClientSide) {
-                this.level.sendBlockUpdated(this.getBlockPos(), this.getBlockState(), this.getBlockState(), Block.UPDATE_CLIENTS);
-            }
+        if(!this.level.isClientSide) {
+            this.level.sendBlockUpdated(this.getBlockPos(), this.getBlockState(), this.getBlockState(), Block.UPDATE_CLIENTS);
         }
     }
 
-    public String getTrainerId() {
-        return this.trainerId;
+    public Set<String> getTrainerIds() {
+        return Collections.unmodifiableSet(this.trainerIds);
     }
 
     public double getMinPlayerDistance() {
@@ -154,10 +157,14 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
         }
 
         var spawner = RCTMod.getInstance().getTrainerSpawner();
+        var trainerIds = new ArrayList<>(this.trainerIds);
+        Collections.shuffle(trainerIds);
 
         for(var player : level.getNearbyPlayers(TargetingConditions.forNonCombat(), null, this.aabb)) {
-            if(spawner.attemptSpawnFor(player, this.trainerId, this.getBlockPos().above(), true)) {
-                break;
+            for(var trainerId : trainerIds) {
+                if(spawner.attemptSpawnFor(player, trainerId, this.getBlockPos().above(), true)) {
+                    return;
+                }
             }
         }
     }
@@ -167,12 +174,12 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
                 TrainerMob.class,
                 TargetingConditions.forNonCombat(),
                 null, this.aabb)
-            .stream().filter(t -> Objects.equals(t.getTrainerId(), this.trainerId))
+            .stream().filter(t -> this.trainerIds.contains(t.getTrainerId()))
             .forEach(t -> t.setHomePos(this.getBlockPos().above()));
     }
 
     public static void serverTick(Level level, BlockPos blockPos, BlockState blockState, TrainerSpawnerBlockEntity be) {
-        if(be.getTrainerId() != null) {
+        if(be.getRenderItemKey() != null) {
             if(be.spawnTimer.passed(level.getGameTime()) >= SPAWN_INTERVAL_TICKS) {
                 be.attemptSpawn(level, blockPos);
                 be.spawnTimer.reset(level.getGameTime());

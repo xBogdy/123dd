@@ -7,7 +7,7 @@
 - Double battle support (in fact support for various battle formats but trainers only offer single or double battles)
 - Learning battle AI (LAI): Trainers learn and get better over time, all trainers have access to the accumulated knowledge of other trainers, "weaker" trainers tend to experiment more where as "stronger" trainers tend to stick to the best known choices (TODO)
 - Server config `allowOverLeveling`: Specifies if players should be allowed to level their pokemon above their level cap (default: `false`)
-- Server config `trainerSpawnerItems`: Allows to specify what items can be used to configure a trainer spawner to summon specific trainers (TODO)
+- Server config `trainerSpawnerItems`: Allows to specify what items can be used to configure a trainer spawner to summon specific trainers
 - Trainer (type) dependent battle rules: Currently allows to set item usage restrictions, leaders and bosses will by default not allow more than `2` item uses
 - Trainer Spawner block: Can be attuned to spawn different trainers whenever a player is nearby (and the trainer is not already elsewhere), trainers will not move while standing on this block, what items will spawn what trainers can be configured
 - `HomePos` block positon tag for trainer npcs: Trainers will stay/move to the defined position, trainers spawned from a Trainer Spawner block will have that block set as their home position (this is also the case for any trainers nearby a matching Trainer Spawner)

@@ -19,15 +19,31 @@ package com.gitlab.srcmc.rctmod.forge;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
-
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.event.config.ModConfigEvent;
 
 @Mod(ModCommon.MOD_ID)
 public class NeoForgeCommon {
     public NeoForgeCommon(ModContainer container) {
         ModCommon.init();
         container.registerConfig(ModConfig.Type.SERVER, RCTMod.getInstance().getServerConfig().getSpec());
+        container.getEventBus().addListener(NeoForgeCommon::onConfigLoading);
+        container.getEventBus().addListener(NeoForgeCommon::onConfigReloading);
+    }
+
+    static void onConfigLoading(ModConfigEvent.Loading event) {
+        onConfigLoadingOrReloading(event.getConfig());
+    }
+
+    static void onConfigReloading(ModConfigEvent.Reloading event) {
+        onConfigLoadingOrReloading(event.getConfig());
+    }
+
+    static void onConfigLoadingOrReloading(ModConfig config) {
+        if(config.getType() == ModConfig.Type.SERVER) {
+            RCTMod.getInstance().getServerConfig().reload();
+        }
     }
 }

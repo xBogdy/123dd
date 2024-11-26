@@ -70,7 +70,7 @@ public class TrainerSpawnerBlock extends BaseEntityBlock {
         var result = ItemInteractionResult.FAIL;
 
         if(level.getBlockEntity(blockPos) instanceof TrainerSpawnerBlockEntity be) {
-            if(be.getTrainerId() == null) {
+            if(be.getRenderItemKey() == null) {
                 var spawnerItems = RCTMod.getInstance().getServerConfig().trainerSpawnerItems();
                 var itemKey = itemStack.getItem().arch$registryName().toString();
 
@@ -79,10 +79,10 @@ public class TrainerSpawnerBlock extends BaseEntityBlock {
                         result = ItemInteractionResult.SUCCESS;
                     }
                 } else {
-                    var trainerId = spawnerItems.get(itemKey);
+                    var trainerIds = spawnerItems.get(itemKey);
 
-                    if(trainerId != null) {
-                        be.setTrainerId(trainerId, itemKey);
+                    if(trainerIds != null) {
+                        be.setTrainerIds(itemKey, trainerIds);
                         itemStack.consume(1, player);
                         result = ItemInteractionResult.SUCCESS;
                     }

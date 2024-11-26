@@ -22,6 +22,11 @@ import java.util.Map;
 
 public interface IServerConfig extends IModConfig {
     /**
+     * Reload is invoked after the config was reloaded and all config values have been parsed.
+     */
+    default void reload() {}
+
+    /**
      * A global factor that determines if a spawn attempt for a trainer is made.
      * 
      * range [0, 1]
@@ -109,18 +114,54 @@ public interface IServerConfig extends IModConfig {
 
     /**
      * A list of items that can be used to configure a trainer spawner to spawn
-     * specific trainers. Every entry must define an item followed by atleast one space
-     * and a trainer id (see default value for examples).
+     * specific trainers. Every entry must define an item followed by a space seperated
+     * list of trainer ids (of which one will be randomly chosen to spawn).
      * 
      * default: [
      *  "cobblemon:hard_stone leader_brock_019e",
-     *  "minecraft:diamond leader_misty_019f"
+     *  "cobblemon:mystic_water leader_misty_019f",
+     *  "cobblemon:magnet leader_lt_surge_01a0",
+     *  "cobblemon:miracle_seed leader_erika_01a1",
+     *  "cobblemon:upgrade boss_giovanni_015c",
+     *  "cobblemon:black_sludge rocket_admin_archer_0035 rocket_admin_ariana_0036",
+     *  "cobblemon:dubious_disc boss_giovanni_015d",
+     *  "cobblemon:twisted_spoon leader_sabrina_01a4",
+     *  "cobblemon:poison_barb leader_koga_01a2",
+     *  "cobblemon:vivichoke trainer_may_003d",
+     *  "cobblemon:charcoal_stick leader_blaine_01a3",
+     *  "cobblemon:toxic_orb rocket_admin_archer_0043 rocket_admin_ariana_0044",
+     *  "cobblemon:destiny_knot boss_giovanni_0045",
+     *  "cobblemon:dragon_fang leader_clair_004a",
+     *  "cobblemon:silk_scarf trainer_brendan_001a",
+     *  "cobblemon:choice_specs elite_four_agatha_0053", "elite_four_agatha_0054",
+     *  "cobblemon:focus_band elite_four_bruno_0050", "elite_four_bruno_0051",
+     *  "cobblemon:choice_band elite_four_lance_0056", "elite_four_lance_0057",
+     *  "cobblemon:choice_scarf elite_four_lorelei_004d", "elite_four_lorelei_004e",
+     *  "cobblemon:life_orb champion_terry_01b6", "champion_terry_01b7", "champion_terry_01b8", "champion_terry_02e3", "champion_terry_02e4", "champion_terry_02e"
      * ]
      */
-    default Map<? extends String, ? extends String> trainerSpawnerItems() {
-        return Map.<String, String>ofEntries(
-            Map.<String, String>entry("cobblemon:hard_stone", "leader_brock_019e"),
-            Map.<String, String>entry("minecraft:diamond", "leader_misty_019f")
+    default Map<String, List<String>> trainerSpawnerItems() {
+        return Map.<String, List<String>>ofEntries(
+            Map.<String, List<String>>entry("cobblemon:hard_stone", List.of("leader_brock_019e")),
+            Map.<String, List<String>>entry("cobblemon:mystic_water", List.of("leader_misty_019f")),
+            Map.<String, List<String>>entry("cobblemon:magnet", List.of("leader_lt_surge_01a0")),
+            Map.<String, List<String>>entry("cobblemon:miracle_seed", List.of("leader_erika_01a1")),
+            Map.<String, List<String>>entry("cobblemon:upgrade", List.of("boss_giovanni_015c")),
+            Map.<String, List<String>>entry("cobblemon:black_sludge", List.of("rocket_admin_archer_0035", "rocket_admin_ariana_0036")), // TODO: double battle
+            Map.<String, List<String>>entry("cobblemon:dubious_disc", List.of("boss_giovanni_015d")),
+            Map.<String, List<String>>entry("cobblemon:twisted_spoon", List.of("leader_sabrina_01a4")),
+            Map.<String, List<String>>entry("cobblemon:poison_barb", List.of("leader_koga_01a2")),
+            Map.<String, List<String>>entry("cobblemon:vivichoke", List.of("trainer_may_003d")),
+            Map.<String, List<String>>entry("cobblemon:charcoal_stick", List.of("leader_blaine_01a3")),
+            Map.<String, List<String>>entry("cobblemon:toxic_orb", List.of("rocket_admin_archer_0043", "rocket_admin_ariana_0044")), // TODO: double battle
+            Map.<String, List<String>>entry("cobblemon:destiny_knot", List.of("boss_giovanni_0045")),
+            Map.<String, List<String>>entry("cobblemon:dragon_fang", List.of("leader_clair_004a")),
+            Map.<String, List<String>>entry("cobblemon:silk_scarf", List.of("trainer_brendan_001a")),
+            Map.<String, List<String>>entry("cobblemon:choice_specs", List.of("elite_four_agatha_0053", "elite_four_agatha_0054")),
+            Map.<String, List<String>>entry("cobblemon:focus_band", List.of("elite_four_bruno_0050", "elite_four_bruno_0051")),
+            Map.<String, List<String>>entry("cobblemon:choice_band", List.of("elite_four_lance_0056", "elite_four_lance_0057")),
+            Map.<String, List<String>>entry("cobblemon:choice_scarf", List.of("elite_four_lorelei_004d", "elite_four_lorelei_004e")),
+            Map.<String, List<String>>entry("cobblemon:life_orb", List.of("champion_terry_01b6", "champion_terry_01b7", "champion_terry_01b8", "champion_terry_02e3", "champion_terry_02e4", "champion_terry_02e5"))
         );
     }
 

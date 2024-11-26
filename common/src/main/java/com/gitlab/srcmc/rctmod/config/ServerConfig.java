@@ -17,7 +17,11 @@
  */
 package com.gitlab.srcmc.rctmod.config;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.gitlab.srcmc.rctmod.api.config.IServerConfig;
 
@@ -26,27 +30,29 @@ import net.neoforged.neoforge.common.ModConfigSpec.ConfigValue;
 
 public class ServerConfig implements IServerConfig {
     // spawning
-    private ConfigValue<Double> globalSpawnChanceValue;
-    private ConfigValue<Integer> spawnIntervalTicksValue;
-    private ConfigValue<Integer> maxHorizontalDistanceToPlayersValue;
-    private ConfigValue<Integer> minHorizontalDistanceToPlayersValue;
-    private ConfigValue<Integer> maxVerticalDistanceToPlayersValue;
-    private ConfigValue<Integer> maxTrainersPerPlayerValue;
-    private ConfigValue<Integer> maxTrainersTotalValue;
-    private ConfigValue<Integer> maxLevelDiffValue;
-    private ConfigValue<List<? extends String>> biomeTagBlacklistValue;
-    private ConfigValue<List<? extends String>> biomeTagWhitelistValue;
+    private final ConfigValue<Double> globalSpawnChanceValue;
+    private final ConfigValue<Integer> spawnIntervalTicksValue;
+    private final ConfigValue<Integer> maxHorizontalDistanceToPlayersValue;
+    private final ConfigValue<Integer> minHorizontalDistanceToPlayersValue;
+    private final ConfigValue<Integer> maxVerticalDistanceToPlayersValue;
+    private final ConfigValue<Integer> maxTrainersPerPlayerValue;
+    private final ConfigValue<Integer> maxTrainersTotalValue;
+    private final ConfigValue<Integer> maxLevelDiffValue;
+    private final ConfigValue<List<? extends String>> biomeTagBlacklistValue;
+    private final ConfigValue<List<? extends String>> biomeTagWhitelistValue;
+    private final ConfigValue<List<? extends String>> trainerSpawnerItems;
+    private final Map<String, List<String>> trainerSpawnerItemsParsed;
 
     // players
-    private ConfigValue<Integer> initialLevelCapValue;
-    private ConfigValue<Integer> maxOverLevelCapValue;
-    private ConfigValue<Integer> bonusLevelCapValue;
-    private ConfigValue<Boolean> allowOverLeveling;
+    private final ConfigValue<Integer> initialLevelCapValue;
+    private final ConfigValue<Integer> maxOverLevelCapValue;
+    private final ConfigValue<Integer> bonusLevelCapValue;
+    private final ConfigValue<Boolean> allowOverLeveling;
 
     // debug
-    private ConfigValue<Boolean> logSpawningValue;
+    private final ConfigValue<Boolean> logSpawningValue;
 
-    private ModConfigSpec spec;
+    private final ModConfigSpec spec;
 
     public ServerConfig() {
         var builder = new ModConfigSpec.Builder();
@@ -84,6 +90,7 @@ public class ServerConfig implements IServerConfig {
             .comment("The maximum level difference between the strongest pokemon in the team of a player and the strongest pokemon in the team of a trainer to spawn for that player. The spawn weight decreases with a higher level difference. Trainers with pokemon above the level cap of a player are excluded.")
             .defineInRange("maxLevelDiff", IServerConfig.super.maxLevelDiff(), 0, 100);
 
+        // TODO: proper value validation
         this.biomeTagBlacklistValue = builder
             .comment("A comma separated list of biome tags (e.g. [\"is_overworld\", \"is_forest\"]). A biome may not have any of the given tags attached to it, for a trainer to spawn in that biome. Trainers may also have additional tags defined by a data pack.")
             .defineList("biomeTagBlacklist", IServerConfig.super.biomeTagBlacklist(), element -> true);
@@ -91,6 +98,10 @@ public class ServerConfig implements IServerConfig {
         this.biomeTagWhitelistValue = builder
             .comment("A comma separated list of biome tags (e.g. [\"is_overworld\", \"is_forest\"]). A biome must have atleast one of the given tags attached to it, for a trainer to spawn in that biome (unless the list is empty). Trainers may also have additional tags defined by a data pack.")
             .defineList("biomeTagWhitelist", IServerConfig.super.biomeTagWhitelist(), element -> true);
+        
+        this.trainerSpawnerItems = builder
+            .comment("A list of items that can be used to configure a trainer spawner to spawn specific trainers. Every entry must define an item followed by a space seperated list of trainer ids (of which one will be randomly chosen to spawn).")
+            .defineList("trainerSpawnerItems", ServerConfig.trainerSpawnerItemList(IServerConfig.super.trainerSpawnerItems()), element -> true);
 
         builder.pop();
         builder.push("Players");
@@ -119,6 +130,16 @@ public class ServerConfig implements IServerConfig {
             .define("logSpawning", IServerConfig.super.logSpawning());
 
         this.spec = builder.build();
+        this.trainerSpawnerItemsParsed = new HashMap<>();
+    }
+
+    @Override
+    public void reload() {
+        this.trainerSpawnerItemsParsed.clear();
+
+        for(var entry : this.trainerSpawnerItems.get()) {
+            ServerConfig.parseTrainerSpawnerItem(trainerSpawnerItemsParsed, entry);
+        }
     }
 
     @Override
@@ -177,6 +198,11 @@ public class ServerConfig implements IServerConfig {
     }
 
     @Override
+    public Map<String, List<String>> trainerSpawnerItems() {
+        return this.trainerSpawnerItemsParsed;
+    }
+
+    @Override
     public int initialLevelCap() {
         return this.initialLevelCapValue.get();
     }
@@ -199,5 +225,24 @@ public class ServerConfig implements IServerConfig {
     @Override
     public boolean logSpawning() {
         return this.logSpawningValue.get();
+    }
+
+    public static void parseTrainerSpawnerItem(Map<String, List<String>> target, String trainerSpawnerItem) {
+        var values = trainerSpawnerItem.split(" ");
+
+        if(values.length > 1) {
+            // TODO: log errors (validation here?)
+            target.put(values[0], Arrays.stream(values).skip(1).toList());
+        }
+    }
+
+    public static List<String> trainerSpawnerItemList(Map<String, List<String>> trainerSpawnerItems) {
+        var list = new ArrayList<String>();
+
+        for(var entry : trainerSpawnerItems.entrySet()) {
+            list.add(String.format("%s%s", entry.getKey(), entry.getValue().stream().reduce("", (a, b) -> a + ' ' + b)));
+        }
+
+        return list;
     }
 }
