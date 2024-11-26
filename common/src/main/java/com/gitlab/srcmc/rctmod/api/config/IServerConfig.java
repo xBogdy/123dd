@@ -158,6 +158,15 @@ public interface IServerConfig extends IModConfig {
     default int bonusLevelCap() { return 0; }
 
     /**
+     * If enabled the level cap of a players will not prevent their pokemon from
+     * gaining experience and leveling up. Trainers will still refuse to battle players
+     * that carry pokemon above their level cap!
+     * 
+     * default: false
+     */
+    default boolean allowOverLeveling() { return false; }
+
+    /**
      * If enabled additional information are printed to the log whenever a trainer
      * spawns or despawns.
      * 

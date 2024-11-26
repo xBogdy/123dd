@@ -41,6 +41,7 @@ public class ServerConfig implements IServerConfig {
     private ConfigValue<Integer> initialLevelCapValue;
     private ConfigValue<Integer> maxOverLevelCapValue;
     private ConfigValue<Integer> bonusLevelCapValue;
+    private ConfigValue<Boolean> allowOverLeveling;
 
     // debug
     private ConfigValue<Boolean> logSpawningValue;
@@ -103,8 +104,12 @@ public class ServerConfig implements IServerConfig {
             .define("maxOverLevelCap", IServerConfig.super.maxOverLevelCap());
 
         this.bonusLevelCapValue = builder
-            .comment("This is your one stop difficulty setting. The 'bonusLevelCap' is added to the 'initialLevelCap' aswell as any increased level cap rewarded by trainers (except of trainers that reward a level cap of 100). In short, a positive value will make this mod easier a negative value harder. On a side note, trainers will also take this value into account when determining the required level cap to fight them. For example if we assume bonusLevelCap=-3: A trainer with a strongest pokemon at level 15 would usually require a level cap of 15, now a level cap of 15-3=12 is required.")
+            .comment("The 'bonusLevelCap' is added to the 'initialLevelCap' aswell as any increased level cap rewarded by trainers (except of trainers that reward a level cap of 100). In short, a positive value will make this mod easier a negative value harder. On a side note, trainers will also take this value into account when determining the required level cap to fight them. For example if we assume bonusLevelCap=-3: A trainer with a strongest pokemon at level 15 would usually require a level cap of 15, now a level cap of 15-3=12 is required.")
             .define("bonusLevelCap", IServerConfig.super.bonusLevelCap());
+
+        this.allowOverLeveling = builder
+            .comment("If enabled the level cap of a players will not prevent their pokemon from gaining experience and leveling up. Trainers will still refuse to battle players that carry pokemon above their level cap!")
+            .define("allowOverLeveling", IServerConfig.super.allowOverLeveling());
 
         builder.pop();
         builder.push("Debug");
@@ -184,6 +189,11 @@ public class ServerConfig implements IServerConfig {
     @Override
     public int bonusLevelCap() {
         return this.bonusLevelCapValue.get();
+    }
+
+    @Override
+    public boolean allowOverLeveling() {
+        return this.allowOverLeveling.get();
     }
 
     @Override

@@ -164,23 +164,25 @@ public class ModCommon {
     }
 
     public static Unit onExperienceGained(ExperienceGainedPreEvent event) {
-        var owner = event.getPokemon().getOwnerPlayer();
+        if(!RCTMod.getInstance().getServerConfig().allowOverLeveling()) {
+            var owner = event.getPokemon().getOwnerPlayer();
 
-        if(owner != null) {
-            var playerTr = RCTMod.getInstance().getTrainerManager().getData(owner);
-            var maxExp = event.getPokemon().getExperienceToLevel(playerTr.getLevelCap());
+            if(owner != null) {
+                var playerTr = RCTMod.getInstance().getTrainerManager().getData(owner);
+                var maxExp = event.getPokemon().getExperienceToLevel(playerTr.getLevelCap());
 
-            if(maxExp < event.getExperience()) {
-                owner.server.getCommands().performPrefixedCommand(
-                    owner.server.createCommandSourceStack().withSuppressedOutput(),
-                    String.format("title %s actionbar \"%s is %s the level cap (%d)\"",
-                        owner.getName().getString(),
-                        event.getPokemon().getDisplayName().getString(),
-                        event.getPokemon().getLevel() == playerTr.getLevelCap() ? "at" : "over",
-                        playerTr.getLevelCap()));
+                if(maxExp < event.getExperience()) {
+                    owner.server.getCommands().performPrefixedCommand(
+                        owner.server.createCommandSourceStack().withSuppressedOutput(),
+                        String.format("title %s actionbar \"%s is %s the level cap (%d)\"",
+                            owner.getName().getString(),
+                            event.getPokemon().getDisplayName().getString(),
+                            event.getPokemon().getLevel() == playerTr.getLevelCap() ? "at" : "over",
+                            playerTr.getLevelCap()));
+                }
+
+                event.setExperience(Math.min(event.getExperience(), maxExp));
             }
-
-            event.setExperience(Math.min(event.getExperience(), maxExp));
         }
 
         return Unit.INSTANCE;
