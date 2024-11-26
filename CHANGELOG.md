@@ -25,7 +25,7 @@
 - Some trainers might carry items that they may use in battles (e.g. potions) (TODO)
 - Trainer Card GUI: Trainers that can be spawned with a trainer spawner will show the item required to do so in their overview page (TODO)
 - Trainer defeat counts are now per player, this means different players can now fight the same trainer in a row (trainers will still tend to walk away if defeated/exhausted once) (TODO)
-- Trainers now follow players that are close and are holding a Trainer Card (TODO)
+- Trainers now follow players that are close and are holding a Trainer Card in their main- or off hand
 - Update to Cobblemon 1.6, Minecraft 1.21, Fabric/Neoforge
 
 ***Fixed***
