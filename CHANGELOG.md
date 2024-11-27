@@ -4,6 +4,7 @@
 
 ***Added***
 
+- "Reset System": After a player has defeated the Champion an option appears in the Trainer Card that allows players to reset their progression (level cap and defeat counts against key trainers) and rewards them with a visual indicator in the Trainer Card (reset amount) as well as a permanent increase of trainer battle loot dop rates. Can be repeated indefinetely (TODO)
 - Double battle support (in fact support for various battle formats but trainers only offer single or double battles)
 - Learning battle AI (LAI): Trainers learn and get better over time, all trainers have access to the accumulated knowledge of other trainers, "weaker" trainers tend to experiment more where as "stronger" trainers tend to stick to the best known choices (TODO)
 - Server config `allowOverLeveling`: Specifies if players should be allowed to level their pokemon above their level cap (default: `false`)
@@ -19,13 +20,14 @@
 - Decreased trainer batte cooldown from `30` to `20` seconds (TODO)
 - Different battle AIs for trainers: "Stronger" trainers (e.g. leaders and bosses) use a stronger AI (AI implementations are still wip/experimental) (TODO)
 - Increased battle attempts against leaders/bosses from `2` to `3` and against other trainers from `3` to `5` (TODO)
+- Minor adjustment to progression: The two instances of the "Archer" and "Arianna" battles are now replaced by one "Archer" and one "Arianna" double battle each with teams made up of a combination from the previous trainers (the former versions may still spawn randomly) (TODO)
 - Minor adjustments to spawn rates: Decreased boosted rates for never beaten leaders/bosses but increased the rates for never beaten trainers in general
 - Possible spawn locations of leaders and bosses now somewhat match their themes (rather than beeing able to spawn everywhere) (TODO)
 - Some pokemon that are originally supposed to mega evolve (i.e. holding key stones) now hold other competetive held items as replacement (until mega evolutions are supported)
 - Some trainers might carry items that they may use in battles (e.g. potions) (TODO)
 - Trainer Card GUI: Trainers that can be spawned with a trainer spawner will show the item required to do so in their overview page (TODO)
-- Trainer defeat counts are now per player, this means different players can now fight the same trainer in a row (trainers will still tend to walk away if defeated/exhausted once) (TODO)
-- Trainers now follow players that are close and are holding a Trainer Card in their main- or off hand
+- Trainer defeat counts are now per player, this means different players can now fight the same trainer in a row (trainers will still tend to walk away if defeated/exhausted once)
+- Trainers now follow players holding a Trainer Card in their main- or off hand
 - Update to Cobblemon 1.6, Minecraft 1.21, Fabric/Neoforge
 
 ***Fixed***

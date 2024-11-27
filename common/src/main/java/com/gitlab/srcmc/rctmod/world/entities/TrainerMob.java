@@ -17,6 +17,9 @@
  */
 package com.gitlab.srcmc.rctmod.world.entities;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -88,13 +91,15 @@ public class TrainerMob extends PathfinderMob implements Npc {
         .canSpawnFarFromPlayer()
         .sized(0.6F, 1.95F).build("trainer");
 
-    private final int TICKS_TO_DESPAWN = 600;
-    private final int DESPAWN_TICK_SCALE = 20;
-    private final int DESPAWN_DISTANCE = 128;
-    private final int MAX_PLAYER_TRACKING_RANGE = 128;
+    private final static int TICKS_TO_DESPAWN = 600;
+    private final static int DESPAWN_TICK_SCALE = 20;
+    private final static int DESPAWN_DISTANCE = 128;
+    private final static int MAX_PLAYER_TRACKING_RANGE = 128;
+    private final static int TARGET_UPDATE_INTERVAL = 120;
 
-    private int cooldown, wins, defeats;
-    private Player opponent; // TODO: not really required anymore
+    private Map<UUID, int[]> winsAndDefeats = new HashMap<>();
+    private int cooldown;
+    private Player opponent;
     private UUID originPlayer;
     private boolean persistent;
     private int despawnTicks;
@@ -118,36 +123,20 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
     public boolean canBattleAgainst(Entity e) {
         if(e instanceof Player player) {
-            if(RCTMod.getInstance().isInBattle(player)) {
-                return false;
-            }
-
-            var tm = RCTMod.getInstance().getTrainerManager();
-
-            if(tm.getActivePokemon(player) == 0) {
-                return false;
-            }
-
-            var cfg = RCTMod.getInstance().getServerConfig();
-            var playerState = PlayerState.get(player);
-
-            if(tm.getPlayerLevel(player) > (playerState.getLevelCap() + cfg.maxOverLevelCap())) {
-                return false;
-            }
-
+            var rct = RCTMod.getInstance();
+            var tm = rct.getTrainerManager();
+            var cfg = rct.getServerConfig();
+            var ps = PlayerState.get(player);
             var trMob = tm.getData(this);
 
-            if(playerState.getLevelCap() < trMob.getRequiredLevelCap()) {
-                return false;
-            }
-
-            for(var type : Type.values()) {
-                if(playerState.getTypeDefeatCount(type) < trMob.getRequiredDefeats(type)) {
-                    return false;
-                }
-            }
-
-            return true;
+            return this.getCooldown() == 0
+                && !this.isInBattle()
+                && !rct.isInBattle(player)
+                && tm.getActivePokemon(player) > 0
+                && ps.getLevelCap() >= trMob.getRequiredLevelCap()
+                && tm.getPlayerLevel(player) <= (ps.getLevelCap() + cfg.maxOverLevelCap())
+                && Arrays.stream(Type.values()).noneMatch(type -> ps.getTypeDefeatCount(type) < trMob.getRequiredDefeats(type))
+                && (this.isPersistenceRequired() || (!this.wasDefeatedBy(player.getUUID()) && !this.wasVictoriousAgainst(player.getUUID())));
         }
 
         return false;
@@ -156,9 +145,9 @@ public class TrainerMob extends PathfinderMob implements Npc {
     public void startBattleWith(Player player) {
         if(this.canBattleAgainst(player)) {
             if(RCTMod.getInstance().makeBattle(this, player)) {
+                this.setOpponent(player);
                 RCTMod.getInstance().getTrainerManager().addBattle(player, this);
                 ChatUtils.reply(this, player, "battle_start");
-                this.setOpponent(player);
             }
         } else {
             this.replyTo(player);
@@ -171,7 +160,15 @@ public class TrainerMob extends PathfinderMob implements Npc {
         var playerState = PlayerState.get(player);
         var trMob = tm.getData(this);
 
-        if(RCTMod.getInstance().isInBattle(player)) {
+        if(this.isInBattle()) {
+            ChatUtils.reply(this, player, "is_busy");
+        } else if(!this.isPersistenceRequired() && this.wasDefeatedBy(player.getUUID())) {
+            ChatUtils.reply(this, player, "done_looser");
+        } else if(!this.isPersistenceRequired() && this.wasVictoriousAgainst(player.getUUID())) {
+            ChatUtils.reply(this, player, "done_winner");
+        } else if(this.getCooldown() > 0) {
+            ChatUtils.reply(this, player, "on_cooldown");
+        } else if(RCTMod.getInstance().isInBattle(player)) {
             ChatUtils.reply(this, player, "player_busy");
         } else if(playerState.getTypeDefeatCount(Type.LEADER) < trMob.getRequiredDefeats(Type.LEADER)) {
             ChatUtils.reply(this, player, "missing_badges");
@@ -179,6 +176,8 @@ public class TrainerMob extends PathfinderMob implements Npc {
             ChatUtils.reply(this, player, "missing_beaten_e4");
         } else if(playerState.getTypeDefeatCount(Type.CHAMP) < trMob.getRequiredDefeats(Type.CHAMP)) {
             ChatUtils.reply(this, player, "missing_beaten_champs");
+        } else if(playerState.getTypeDefeatCount(Type.BOSS) < trMob.getRequiredDefeats(Type.BOSS)) {
+            ChatUtils.reply(this, player, "missing_beaten_boss");
         } else if(playerState.getLevelCap() < trMob.getRequiredLevelCap()) {
             ChatUtils.reply(this, player, "low_level_cap");
         } else if(tm.getPlayerLevel(player) > (playerState.getLevelCap() + cfg.maxOverLevelCap())) {
@@ -199,23 +198,71 @@ public class TrainerMob extends PathfinderMob implements Npc {
     }
 
     public boolean isInBattle() {
-        return opponent != null;
+        return this.opponent != null;
     }
 
-    public int getDefeats() {
-        return this.defeats;
+    private void addWins(Player player, int wins) {
+        this.winsAndDefeats.compute(player.getUUID(), (k, v) -> {
+            if(v == null) {
+                return new int[]{wins, 0};
+            }
+
+            v[0] += wins;
+            return v;
+        });
     }
 
-    public int getWins() {
-        return this.wins;
+    private void addDefeats(Player player, int defeats) {
+        this.winsAndDefeats.compute(player.getUUID(), (k, v) -> {
+            if(v == null) {
+                return new int[]{0, defeats};
+            }
+
+            v[1] += defeats;
+            return v;
+        });
     }
 
-    public boolean canBattle() {
-        var mobTr = RCTMod.getInstance().getTrainerManager().getData(this);
+    public boolean wasDefeatedBy(UUID opponentUUID) {
+        var wd = this.winsAndDefeats.get(opponentUUID);
+        return wd != null && wd[1] >= RCTMod.getInstance().getTrainerManager().getData(this).getMaxTrainerDefeats();
+    }
 
-        return !this.isInBattle()
-            && this.getCooldown() == 0
-            && (this.isPersistenceRequired() || (mobTr.getMaxTrainerDefeats() > 0 && this.getDefeats() < mobTr.getMaxTrainerDefeats() && mobTr.getMaxTrainerWins() > 0 && this.getWins() < mobTr.getMaxTrainerWins()));
+    public boolean wasVictoriousAgainst(UUID opponentUUID) {
+        var wd = this.winsAndDefeats.get(opponentUUID);
+        return wd != null && wd[0] >= RCTMod.getInstance().getTrainerManager().getData(this).getMaxTrainerWins();
+    }
+
+    public boolean wasDefeated() {
+        var maxDefeats = RCTMod.getInstance().getTrainerManager().getData(this).getMaxTrainerDefeats();
+
+        if(maxDefeats > 0) {
+            for(var wd : this.winsAndDefeats.values()) {
+                if(wd[1] >= maxDefeats) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public boolean wasVictorious() {
+        var maxWins = RCTMod.getInstance().getTrainerManager().getData(this).getMaxTrainerWins();
+
+        if(maxWins > 0) {
+            for(var wd : this.winsAndDefeats.values()) {
+                if(wd[0] >= maxWins) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public boolean wasExhausted() {
+        return !this.isPersistenceRequired() && (this.wasDefeated() || this.wasVictorious());
     }
 
     private void udpateCustomName() {
@@ -308,6 +355,8 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
         if(!level.isClientSide && this.isInBattle()) {
             var mobTr = RCTMod.getInstance().getTrainerManager().getData(this);
+            var opponent = this.getOpponent();
+
             this.cooldown = mobTr.getBattleCooldownTicks();
             this.setOpponent(null);
             this.setTarget(null);
@@ -332,7 +381,9 @@ public class TrainerMob extends PathfinderMob implements Npc {
                     }
                 }
 
-                this.defeats++;
+                if(opponent != null) {
+                    this.addDefeats(opponent, 1);
+                }
             } else {
                 if(battle.getInitiatorSideMobs().contains(this)) {
                     battle.getTrainerSidePlayers().forEach(player -> {
@@ -344,10 +395,10 @@ public class TrainerMob extends PathfinderMob implements Npc {
                     });
                 }
 
-                this.wins++;
+                this.addWins(opponent, 1);
             }
 
-            if(this.getDefeats() >= mobTr.getMaxTrainerDefeats() || this.getWins() >= mobTr.getMaxTrainerWins()) {
+            if(this.originPlayer != null && (this.wasDefeatedBy(this.originPlayer) || this.wasVictoriousAgainst(this.originPlayer))) {
                 this.setOriginPlayer(null);
             }
         }
@@ -392,9 +443,11 @@ public class TrainerMob extends PathfinderMob implements Npc {
             }
 
             if(this.isInBattle()) {
-                if(!this.getOpponent().isAlive()) {
-                    this.setOpponent(null);
-                    this.wins++;
+                var opponent = this.getOpponent();
+
+                if(opponent != null && !opponent.isAlive()) {
+                    this.addWins(opponent, 1);
+                    this.cancelBattle();
                 }
             } else {
                 this.updateTarget();
@@ -415,23 +468,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
         var level = this.level();
 
         if(!level.isClientSide) {
-            if(this.canBattle()) {
-                this.startBattleWith(player);
-            } else {
-                var mobTr = RCTMod.getInstance().getTrainerManager().getData(this);
-
-                if(this.isInBattle()) {
-                    ChatUtils.reply(this, player, "is_busy");
-                } else if(!this.isPersistenceRequired() && this.getDefeats() >= mobTr.getMaxTrainerDefeats()) {
-                    ChatUtils.reply(this, player, "done_looser");
-                } else if(!this.isPersistenceRequired() && this.getWins() >= mobTr.getMaxTrainerWins()) {
-                    ChatUtils.reply(this, player, "done_winner");
-                } else if(this.getCooldown() > 0) {
-                    ChatUtils.reply(this, player, "on_cooldown");
-                } else {
-                    ChatUtils.reply(this, player, "done_generic");
-                }
-            }
+            this.startBattleWith(player);
         }
 
         return InteractionResult.sidedSuccess(level.isClientSide);
@@ -452,24 +489,22 @@ public class TrainerMob extends PathfinderMob implements Npc {
     }
 
     private void updateTarget() {
-        if(this.tickCount % 60 == 0) {
-            if(this.canBattle()) {
-                var tm = RCTMod.getInstance().getTrainerManager();
-                int reqLevelCap = tm.getData(this).getRequiredLevelCap();
+        if(this.tickCount % TARGET_UPDATE_INTERVAL == 0) {
+            var tm = RCTMod.getInstance().getTrainerManager();
+            int reqLevelCap = tm.getData(this).getRequiredLevelCap();
 
-                this.setTarget(this.level()
-                    .getNearbyPlayers(
-                        TargetingConditions
-                            .forNonCombat()
-                            .ignoreLineOfSight()
-                            .selector(p -> PlayerState.get((Player)p).getLevelCap() >= reqLevelCap),
-                        this, this.getBoundingBox().inflate(MAX_PLAYER_TRACKING_RANGE))
-                    .stream()
-                        .sorted((p1, p2) -> Integer.compare(Math.abs(tm.getPlayerLevel(p1) - reqLevelCap), Math.abs(tm.getPlayerLevel(p2) - reqLevelCap)))
-                        .findFirst().orElse(null));
-            } else {
-                this.setTarget(null);
-            }
+            this.setTarget(this.level()
+                .getNearbyPlayers(
+                    TargetingConditions
+                        .forNonCombat()
+                        .ignoreLineOfSight()
+                        .selector(p -> PlayerState.get((Player)p).getLevelCap() >= reqLevelCap
+                            && !this.wasDefeatedBy(p.getUUID())
+                            && !this.wasVictoriousAgainst(p.getUUID())),
+                    this, this.getBoundingBox().inflate(MAX_PLAYER_TRACKING_RANGE))
+                .stream()
+                    .min((p1, p2) -> Integer.compare(Math.abs(tm.getPlayerLevel(p1) - reqLevelCap), Math.abs(tm.getPlayerLevel(p2) - reqLevelCap)))
+                    .orElse(null));
         }
     }
 
@@ -545,8 +580,6 @@ public class TrainerMob extends PathfinderMob implements Npc {
     @Override
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
-        compoundTag.putInt("Defeats", this.getDefeats());
-        compoundTag.putInt("Wins", this.getWins());
         compoundTag.putInt("Cooldown", this.getCooldown());
         compoundTag.putString("TrainerId", this.getTrainerId());
         compoundTag.putBoolean("Persistent", this.isPersistenceRequired());
@@ -563,14 +596,6 @@ public class TrainerMob extends PathfinderMob implements Npc {
     @Override
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
-
-        if(compoundTag.contains("Defeats")) {
-            this.defeats = compoundTag.getInt("Defeats");
-        }
-
-        if(compoundTag.contains("Wins")) {
-            this.wins =  compoundTag.getInt("Wins");
-        }
 
         if(compoundTag.contains("Cooldown")) {
             this.cooldown = compoundTag.getInt("Cooldown");
@@ -625,7 +650,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
         this.goalSelector.addGoal(4, new LookAtPlayerAndWaitGoal(this, LivingEntity.class, 4.0F, 0.004F, 80, 160));
         this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, LivingEntity.class, 8.0F));
         this.goalSelector.addGoal(5, new MoveToHomePosGoal(this));
-        this.goalSelector.addGoal(6, new RandomStrollAwayGoal(this, 0.35, () -> 0.0025f, m -> { var tr = (TrainerMob)m; return !tr.canBattle() && tr.getCooldown() == 0; }));
+        this.goalSelector.addGoal(6, new RandomStrollAwayGoal(this, 0.35, () -> 0.0025f, m -> { var tr = (TrainerMob)m; return !tr.wasExhausted(); }));
         this.goalSelector.addGoal(8, new MoveCloseToTargetGoal(this, 0.35, () -> this.requiredBy(this.getTarget()) ? 0.25f : 0.0025f, maxTrackingDistance));
         this.goalSelector.addGoal(10, new RandomStrollThroughVillageGoal(this, 0.35F, () -> 0.0025f));
         this.goalSelector.addGoal(12, new WaterAvoidingRandomStrollGoal(this, 0.35));
