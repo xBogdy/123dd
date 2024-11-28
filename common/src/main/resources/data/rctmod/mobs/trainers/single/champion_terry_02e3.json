@@ -1,5 +1,8 @@
 {
   "type": "RIVAL",
+  "requiredDefeats": [
+    ["trainer_may_003d"]
+  ],
   "maxTrainerWins": 2,
   "maxTrainerDefeats": 1,
   "battleCooldownTicks": 600,

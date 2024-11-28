@@ -166,8 +166,10 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
     }
 
     public TrainerPlayerData getData(Player player) {
+        var builder = new TrainerPlayerData.Builder(player);
+        
         return player.getServer().overworld().getDataStorage().computeIfAbsent(
-            new Factory<>(TrainerPlayerData::new, TrainerPlayerData::of, DataFixTypes.LEVEL),
+            new Factory<>(builder::create, builder::of, DataFixTypes.LEVEL),
             TrainerPlayerData.filePath(player));
     }
 
@@ -209,6 +211,20 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
                 }
             }, TrainerMobData.class);
         });
+
+        this.trainerMobs.forEach((trainerId, tmd) -> {
+            tmd.getMissingRequirements(Set.of(), true).forEach(tid -> {
+                var tmd2 = this.trainerMobs.get(tid);
+
+                if(tmd2 != null) {
+                    tmd2.addFollowedBy(trainerId);
+                }
+            });
+        });
+
+        this.trainerMobs.values().forEach(tmd -> tmd.setRewardLevelCap(tmd.getFollowdBy().stream()
+            .map(tid -> this.trainerMobs.get(tid).getRequiredLevelCap())
+            .max(Integer::compare).orElse(tmd.getRequiredLevelCap())));
 
         ModCommon.LOG.info(String.format("Registered %d trainers", reg.getIds().size()));
         dpm.close();

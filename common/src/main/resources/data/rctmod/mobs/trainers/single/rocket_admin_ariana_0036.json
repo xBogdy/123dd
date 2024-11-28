@@ -1,10 +1,8 @@
 {
-  "type": "BOSS",
-  "rewardLevelCap": 57,
-  "requiredDefeats": {
-    "LEADER": 4,
-    "BOSS": 2
-  },
+  "type": "TEAM_ROCKET",
+  "requiredDefeats": [
+    ["boss_giovanni_015d"]
+  ],
   "maxTrainerWins": 2,
   "maxTrainerDefeats": 1,
   "battleCooldownTicks": 600,

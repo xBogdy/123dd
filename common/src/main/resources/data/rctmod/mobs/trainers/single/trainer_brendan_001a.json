@@ -1,10 +1,8 @@
 {
-  "type": "BOSS",
-  "rewardLevelCap": 85,
-  "requiredDefeats": {
-    "LEADER": 8,
-    "BOSS": 8
-  },
+  "type": "RIVAL",
+  "requiredDefeats": [
+    ["rival_terry_01b3", "rival_terry_01b4", "rival_terry_01b5"]
+  ],
   "maxTrainerWins": 2,
   "maxTrainerDefeats": 1,
   "battleCooldownTicks": 600,

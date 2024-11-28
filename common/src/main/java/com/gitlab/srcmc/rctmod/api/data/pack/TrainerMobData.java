@@ -17,11 +17,14 @@
  */
 package com.gitlab.srcmc.rctmod.api.data.pack;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
@@ -61,17 +64,18 @@ public class TrainerMobData implements IDataPackObject {
     }
 
     private Type type = Type.NORMAL;
-    private int rewardLevelCap;
-    private Map<Type, Integer> requiredDefeats = new HashMap<>();
-
+    private List<Set<String>> requiredDefeats = new ArrayList<>();
+    
     private int maxTrainerWins = 3;
     private int maxTrainerDefeats = 1;
-    private int battleCooldownTicks = 2000;
-
+    private int battleCooldownTicks = 300;
+    
     private float spawnWeightFactor = 1F; // >= 0
     private Set<String> biomeTagBlacklist = new HashSet<>();
     private Set<String> biomeTagWhitelist = new HashSet<>();
     
+    private transient int rewardLevelCap;
+    private transient Set<String> followdBy = new HashSet<>();
     private transient Map<String, String[]> dialog = new HashMap<>();
     private transient ResourceLocation textureResource;
     private transient ResourceLocation lootTableResource;
@@ -86,7 +90,8 @@ public class TrainerMobData implements IDataPackObject {
     public TrainerMobData(TrainerMobData origin) {
         this.type = origin.type;
         this.rewardLevelCap = origin.rewardLevelCap;
-        this.requiredDefeats = Map.copyOf(origin.requiredDefeats);
+        this.requiredDefeats = List.copyOf(origin.requiredDefeats);
+        this.followdBy = Set.copyOf(origin.followdBy);
         this.maxTrainerWins = origin.maxTrainerWins;
         this.maxTrainerDefeats = origin.maxTrainerDefeats;
         this.battleCooldownTicks = origin.battleCooldownTicks;
@@ -102,17 +107,32 @@ public class TrainerMobData implements IDataPackObject {
         return this.type;
     }
 
+    public void setRewardLevelCap(int levelCap) {
+        var cfg = RCTMod.getInstance().getServerConfig();
+        this.rewardLevelCap = Math.min(100, Math.max(0, Math.max(cfg.initialLevelCap(), levelCap) + cfg.bonusLevelCap()));
+    }
+
     public int getRewardLevelCap() {
-        return this.rewardLevelCap < 100 ? Math.max(0, Math.min(100, this.rewardLevelCap + RCTMod.getInstance().getServerConfig().bonusLevelCap())) : 100;
+        return this.rewardLevelCap;
     }
 
     public int getRequiredLevelCap() {
-        var bonus = RCTMod.getInstance().getServerConfig().bonusLevelCap();
-        return Math.max(0, Math.min(100, this.getTrainerTeam().getTeam().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0) + bonus));
+        var cfg = RCTMod.getInstance().getServerConfig();
+        return Math.max(0, Math.min(100, Math.max(cfg.initialLevelCap(), this.getTrainerTeam().getTeam().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0)) + cfg.bonusLevelCap()));
     }
 
-    public int getRequiredDefeats(Type type) {
-        return this.requiredDefeats.getOrDefault(type, 0);
+    public Stream<String> getMissingRequirements(Set<String> trainerIds) {
+        return this.getMissingRequirements(trainerIds, false);
+    }
+
+    public Stream<String> getMissingRequirements(Set<String> trainerIds, boolean all) {
+        return this.requiredDefeats.stream().<String>mapMulti((set, cons) -> {
+            if(all) {                
+                set.stream().filter(tid -> !trainerIds.contains(tid)).forEach(cons);
+            } else if(!set.isEmpty() && set.stream().noneMatch(trainerIds::contains)) {
+                cons.accept(set.stream().findFirst().get());
+            }
+        });
     }
 
     public int getMaxTrainerWins() {
@@ -137,6 +157,22 @@ public class TrainerMobData implements IDataPackObject {
 
     public Set<String> getBiomeTagWhitelist() {
         return Collections.unmodifiableSet(this.biomeTagWhitelist);
+    }
+
+    public Set<String> getFollowdBy() {
+        return Collections.unmodifiableSet(this.followdBy);
+    }
+    
+    public boolean addFollowedBy(String trainerId) {
+        return this.followdBy.add(trainerId);
+    }
+
+    public boolean removeFollowdBy(String trainerId) {
+        return this.followdBy.remove(trainerId);
+    }
+
+    public void clearFollowedBy(String trainerId) {
+        this.followdBy.clear();
     }
 
     public Map<String, String[]> getDialog() {

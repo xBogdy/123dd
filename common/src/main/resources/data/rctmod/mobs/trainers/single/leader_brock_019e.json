@@ -1,6 +1,5 @@
 {
   "type": "LEADER",
-  "rewardLevelCap": 27,
   "maxTrainerWins": 2,
   "maxTrainerDefeats": 1,
   "battleCooldownTicks": 600,

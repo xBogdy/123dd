@@ -20,6 +20,7 @@ package com.gitlab.srcmc.rctmod.client.screens.widgets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.PriorityQueue;
+import java.util.Set;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
@@ -143,14 +144,15 @@ public class TrainerInfoWidget extends TrainerDataWidget {
         pc.renderables.add(new StringWidget(8, this.y += this.h , this.w, this.h, toComponent("Req. Level Cap: "), this.font).alignLeft());
         pc.renderables.add(new StringWidget(8, this.y, (int)(this.w*0.9), this.h, toComponent(this.trainer.getRequiredLevelCap()), this.font).alignRight());
 
-        for(var type : TrainerMobData.Type.values()) {
-            var c = trainer.getRequiredDefeats(type);
+        pc.renderables.add(new StringWidget(8, this.y += this.h , this.w, this.h, toComponent("Req. Trainers: "), this.font).alignLeft());
+        var tm = RCTMod.getInstance().getTrainerManager();
 
-            if(c > 0) {
-                pc.renderables.add(new StringWidget(8, this.y += this.h , this.w, this.h, toComponent(String.format("Req. %s: ", type.name())), this.font).alignLeft());
-                pc.renderables.add(new StringWidget(8, this.y, (int)(this.w*0.9), this.h, toComponent(c), this.font).alignRight());
-            }
-        }
+        this.trainer.getMissingRequirements(Set.of()).map(tm::getData).sorted((tmd1, tmd2) -> {
+            var c = Integer.compare(tmd1.getRequiredLevelCap(), tmd2.getRequiredLevelCap());
+            return c == 0 ? tmd1.getTrainerTeam().getName().compareTo(tmd2.getTrainerTeam().getName()) : c;
+        }).forEach(tmd -> {
+            pc.renderables.add(new StringWidget(12, this.y += this.h , this.w, this.h, toComponent(String.format("%s", tmd.getTrainerTeam().getName())), this.font).alignLeft());
+        });
 
         pc.height = this.y + this.h;
         return pc;

@@ -481,7 +481,7 @@ public class TrainerSpawner {
     private double computeWeight(Player player, String trainerId, TrainerMobData mobTr) {
         var ps = PlayerState.get(player);
 
-        if(!ps.canBattle(mobTr)) {
+        if(!ps.canBattle(trainerId)) {
             return 0;
         }
 

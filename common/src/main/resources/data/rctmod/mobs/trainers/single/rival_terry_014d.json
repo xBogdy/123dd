@@ -1,7 +1,7 @@
 {
-  "type": "TEAM_ROCKET",
+  "type": "RIVAL",
   "requiredDefeats": [
-    ["leader_erika_01a1"]
+    ["rocket_admin_archer_002e"]
   ],
   "maxTrainerWins": 2,
   "maxTrainerDefeats": 1,

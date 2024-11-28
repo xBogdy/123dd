@@ -1,9 +1,8 @@
 {
   "type": "LEADER",
-  "rewardLevelCap": 73,
-  "requiredDefeats": {
-    "LEADER": 5
-  },
+  "requiredDefeats": [
+    ["trainer_brendan_0039"]
+  ],
   "maxTrainerWins": 2,
   "maxTrainerDefeats": 1,
   "battleCooldownTicks": 600,

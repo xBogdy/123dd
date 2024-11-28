@@ -79,11 +79,10 @@ public class TrainerBattle {
 
         for(var player : winnerPlayers) {
             for(var mob : looserMobs) {
-                var mobTr = tm.getData(mob);
-                var playerTr = tm.getData(player);
-                var battleMem = tm.getBattleMemory(mob);
-                playerTr.setLevelCap(player, Math.max(mobTr.getRewardLevelCap(), playerTr.getLevelCap()));
-                battleMem.addDefeatedBy(mob.getTrainerId(), player);
+                var tpd = tm.getData(player);
+                var btm = tm.getBattleMemory(mob);
+                tpd.addProgressDefeat(mob.getTrainerId());
+                btm.addDefeatedBy(mob.getTrainerId(), player);
                 ModRegistries.CriteriaTriggers.DEFEAT_COUNT.get().trigger((ServerPlayer)player, mob);
             }
         }

@@ -25,12 +25,14 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
+import com.gitlab.srcmc.rctapi.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
-
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 
@@ -42,6 +44,8 @@ public class PlayerState implements Serializable {
 
     private Map<String, Integer> trainerDefeatCounts = new HashMap<>();
     private Map<TrainerMobData.Type, Integer> typeDefeatCounts = new HashMap<>();
+    private Set<String> defeatedTrainerIds = new HashSet<>();
+    private Set<String> removedDefeatedTrainerIds = new HashSet<>();
     private int targetEntity = -1;
     private int levelCap;
 
@@ -127,6 +131,31 @@ public class PlayerState implements Serializable {
         return this.levelCap;
     }
 
+    public void addProgressDefeat(String trainerId) {
+        if(this.defeatedTrainerIds.add(trainerId)) {
+            this.updated.defeatedTrainerIds.add(trainerId);
+            this.updated.removedDefeatedTrainerIds.remove(trainerId);
+            this.hasChanges = true;
+        }
+    }
+
+    public void removeProgressDefeat(String trainerId) {
+        if(this.defeatedTrainerIds.remove(trainerId)) {
+            this.updated.removedDefeatedTrainerIds.add(trainerId);
+            this.updated.defeatedTrainerIds.remove(trainerId);
+            this.hasChanges = true;
+        }
+    }
+
+    public void removeProgressDefeats() {
+        if(this.defeatedTrainerIds.size() > 0) {
+            this.updated.removedDefeatedTrainerIds.addAll(this.defeatedTrainerIds);
+            this.updated.defeatedTrainerIds.clear();
+            this.defeatedTrainerIds.clear();
+            this.hasChanges = true;
+        }
+    }
+
     public void addDefeat(String trainerId) {
         var tm = RCTMod.getInstance().getTrainerManager();
         var tt = tm.getData(trainerId).getType();
@@ -202,25 +231,14 @@ public class PlayerState implements Serializable {
     }
 
     public boolean isKeyTrainer(TrainerMobData trainer) {
-        return trainer.getRewardLevelCap() > this.getLevelCap()
-            || trainer.getType() == TrainerMobData.Type.LEADER
-            || trainer.getType() == TrainerMobData.Type.E4
-            || trainer.getType() == TrainerMobData.Type.CHAMP
-            || trainer.getType() == TrainerMobData.Type.BOSS;
+        return trainer.getFollowdBy().size() > 0;
     }
 
-    public boolean canBattle(TrainerMobData trainer) {
-        if(this.getLevelCap() < trainer.getRequiredLevelCap()) {
-            return false;
-        }
-        
-        for(var type : TrainerMobData.Type.values()) {
-            if(this.getTypeDefeatCount(type) < trainer.getRequiredDefeats(type)) {
-                return false;
-            }
-        }
+    public boolean canBattle(String trainerId) {
+        var tmd = RCTMod.getInstance().getTrainerManager().getData(trainerId);
 
-        return true;
+        return this.getLevelCap() >= tmd.getRequiredLevelCap()
+            && tmd.getMissingRequirements(this.defeatedTrainerIds).findFirst().isEmpty();
     }
 
     protected Map<String, Integer> getTrainerDefeatCounts() {
@@ -266,6 +284,9 @@ public class PlayerState implements Serializable {
                 this.typeDefeatCounts.put(type, count);
             }
         });
+
+        updated.defeatedTrainerIds.forEach(this.defeatedTrainerIds::add);
+        updated.removedDefeatedTrainerIds.forEach(this.defeatedTrainerIds::remove);
         
         this.targetEntity = updated.targetEntity;
         this.levelCap = updated.levelCap;
@@ -275,12 +296,17 @@ public class PlayerState implements Serializable {
         this.trainerDefeatCounts.clear();
         this.typeDefeatCounts.clear();
         this.distinctTypeDefeatCounts.clear();
-        var level = player.level();
+        this.defeatedTrainerIds.clear();
+        this.removedDefeatedTrainerIds.clear();
+        var level = this.player.level();
 
         if(!level.isClientSide) {
             var tm = RCTMod.getInstance().getTrainerManager();
-            var overworld = player.getServer().overworld();
-            this.levelCap = tm.getData(player).getLevelCap();
+            var overworld = this.player.getServer().overworld();
+            var tpd = tm.getData(this.player);
+
+            this.levelCap = tpd.getLevelCap();
+            this.defeatedTrainerIds.addAll(tpd.getDefeatedTrainerIds());
 
             tm.getAllData().forEach(entry -> {
                 var defCount = tm.getBattleMemory(overworld, entry.getKey()).getDefeatByCount(player);

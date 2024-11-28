@@ -1,7 +1,7 @@
 {
-  "type": "TEAM_ROCKET",
+  "type": "RIVAL",
   "requiredDefeats": [
-    ["leader_erika_01a1"]
+    ["leader_misty_019f"]
   ],
   "maxTrainerWins": 2,
   "maxTrainerDefeats": 1,

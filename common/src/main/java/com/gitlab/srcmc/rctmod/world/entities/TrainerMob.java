@@ -17,7 +17,6 @@
  */
 package com.gitlab.srcmc.rctmod.world.entities;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -29,8 +28,6 @@ import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.ModRegistries;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.TrainerBattle;
-import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
-import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData.Type;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.api.utils.ChatUtils;
 import com.gitlab.srcmc.rctmod.world.entities.goals.LookAtPlayerAndWaitGoal;
@@ -126,16 +123,16 @@ public class TrainerMob extends PathfinderMob implements Npc {
             var rct = RCTMod.getInstance();
             var tm = rct.getTrainerManager();
             var cfg = rct.getServerConfig();
-            var ps = PlayerState.get(player);
-            var trMob = tm.getData(this);
+            var tpd = tm.getData(player);
+            var tmd = tm.getData(this);
 
             return this.getCooldown() == 0
                 && !this.isInBattle()
                 && !rct.isInBattle(player)
                 && tm.getActivePokemon(player) > 0
-                && ps.getLevelCap() >= trMob.getRequiredLevelCap()
-                && tm.getPlayerLevel(player) <= (ps.getLevelCap() + cfg.maxOverLevelCap())
-                && Arrays.stream(Type.values()).noneMatch(type -> ps.getTypeDefeatCount(type) < trMob.getRequiredDefeats(type))
+                && tpd.getLevelCap() >= tmd.getRequiredLevelCap()
+                && tm.getPlayerLevel(player) <= (tpd.getLevelCap() + cfg.maxOverLevelCap())
+                && tmd.getMissingRequirements(tm.getData(player).getDefeatedTrainerIds()).findFirst().isEmpty()
                 && (this.isPersistenceRequired() || (!this.wasDefeatedBy(player.getUUID()) && !this.wasVictoriousAgainst(player.getUUID())));
         }
 
@@ -157,8 +154,9 @@ public class TrainerMob extends PathfinderMob implements Npc {
     protected void replyTo(Player player) {
         var tm = RCTMod.getInstance().getTrainerManager();
         var cfg = RCTMod.getInstance().getServerConfig();
-        var playerState = PlayerState.get(player);
-        var trMob = tm.getData(this);
+        var tmd = tm.getData(this);
+        var tpd = tm.getData(player);
+        var msr = tmd.getMissingRequirements(tm.getData(player).getDefeatedTrainerIds()).findFirst();
 
         if(this.isInBattle()) {
             ChatUtils.reply(this, player, "is_busy");
@@ -170,17 +168,32 @@ public class TrainerMob extends PathfinderMob implements Npc {
             ChatUtils.reply(this, player, "on_cooldown");
         } else if(RCTMod.getInstance().isInBattle(player)) {
             ChatUtils.reply(this, player, "player_busy");
-        } else if(playerState.getTypeDefeatCount(Type.LEADER) < trMob.getRequiredDefeats(Type.LEADER)) {
-            ChatUtils.reply(this, player, "missing_badges");
-        } else if(playerState.getTypeDefeatCount(Type.E4) < trMob.getRequiredDefeats(Type.E4)) {
-            ChatUtils.reply(this, player, "missing_beaten_e4");
-        } else if(playerState.getTypeDefeatCount(Type.CHAMP) < trMob.getRequiredDefeats(Type.CHAMP)) {
-            ChatUtils.reply(this, player, "missing_beaten_champs");
-        } else if(playerState.getTypeDefeatCount(Type.BOSS) < trMob.getRequiredDefeats(Type.BOSS)) {
-            ChatUtils.reply(this, player, "missing_beaten_boss");
-        } else if(playerState.getLevelCap() < trMob.getRequiredLevelCap()) {
+        } else if(msr.isPresent()) {
+            var t = tm.getData(msr.get());
+
+            switch(t.getType()) {
+                case LEADER:
+                    ChatUtils.reply(this, player, "missing_badges");
+                    break;
+                case E4:
+                    ChatUtils.reply(this, player, "missing_beaten_e4");
+                    break;
+                case CHAMP:
+                    ChatUtils.reply(this, player, "missing_beaten_champs");
+                    break;
+                case BOSS:
+                    ChatUtils.reply(this, player, "missing_beaten_boss");
+                    break;
+                case RIVAL:
+                    ChatUtils.reply(this, player, "missing_beaten_rival"); // TODO!
+                    break;
+                default:
+                    // TODO: default response ('missing_beaten_trainer')
+                    break;
+            }
+        } else if(tpd.getLevelCap() < tmd.getRequiredLevelCap()) {
             ChatUtils.reply(this, player, "low_level_cap");
-        } else if(tm.getPlayerLevel(player) > (playerState.getLevelCap() + cfg.maxOverLevelCap())) {
+        } else if(tm.getPlayerLevel(player) > (tpd.getLevelCap() + cfg.maxOverLevelCap())) {
             ChatUtils.reply(this, player, "over_level_cap");
         } else if(tm.getActivePokemon(player) == 0) {
             ChatUtils.reply(this, player, "missing_pokemon");
@@ -658,16 +671,11 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
     public boolean requiredBy(LivingEntity entity) {
         if(entity instanceof Player player) {
-            var plState = PlayerState.get(player);
-            var trMob = RCTMod.getInstance().getTrainerManager().getData(this);
-            var type = trMob.getType();
+            var tmd = RCTMod.getInstance().getTrainerManager().getData(this);
+            var tpd = RCTMod.getInstance().getTrainerManager().getData(player);
 
-            return (type == TrainerMobData.Type.BOSS
-                || type == TrainerMobData.Type.LEADER
-                || type == TrainerMobData.Type.E4
-                || type == TrainerMobData.Type.CHAMP
-                || trMob.getRewardLevelCap() > plState.getLevelCap())
-                && plState.getTrainerDefeatCount(this.getTrainerId()) == 0;
+            return !tpd.getDefeatedTrainerIds().contains(this.getTrainerId())
+                && tmd.getMissingRequirements(tpd.getDefeatedTrainerIds()).findFirst().isEmpty();
         }
 
         return false;

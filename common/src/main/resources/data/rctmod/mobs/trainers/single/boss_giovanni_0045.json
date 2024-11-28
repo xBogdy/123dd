@@ -1,10 +1,8 @@
 {
-  "type": "BOSS",
-  "rewardLevelCap": 81,
-  "requiredDefeats": {
-    "LEADER": 7,
-    "BOSS": 7
-  },
+  "type": "TEAM_ROCKET",
+  "requiredDefeats": [
+    ["rocket_admin_ariana_0044"]
+  ],
   "maxTrainerWins": 2,
   "maxTrainerDefeats": 1,
   "battleCooldownTicks": 600,

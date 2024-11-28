@@ -90,12 +90,13 @@ public class TrainerCommands {
                         .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainer", StringArgumentType.string())
                             .suggests(TrainerCommands::get_trainer_suggestions)
                             .executes(TrainerCommands::mob_get_required_level_cap)))
-                    .then(Commands.literal("required_defeats")
-                        .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("type", StringArgumentType.string())
-                            .suggests(TrainerCommands::get_type_suggestions)
-                            .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainer", StringArgumentType.string())
-                                .suggests(TrainerCommands::get_trainer_suggestions)
-                                .executes(TrainerCommands::mob_get_required_defeats)))))));
+                    // .then(Commands.literal("required_defeats")
+                    //     .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("type", StringArgumentType.string())
+                    //         .suggests(TrainerCommands::get_type_suggestions)
+                    //         .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainer", StringArgumentType.string())
+                    //             .suggests(TrainerCommands::get_trainer_suggestions)
+                    //             .executes(TrainerCommands::mob_get_required_defeats))))
+        )));
     }
 
     private static CompletableFuture<Suggestions> get_trainer_suggestions(final CommandContext<CommandSourceStack> context, final SuggestionsBuilder builder) throws CommandSyntaxException {
@@ -245,14 +246,14 @@ public class TrainerCommands {
         return required_level_cap;
     }
 
-    private static int mob_get_required_defeats(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
-        var required_defeats = RCTMod.getInstance().getTrainerManager()
-            .getData(context.getArgument("trainer", String.class))
-            .getRequiredDefeats(Type.valueOf(context.getArgument("type", String.class)));
+    // private static int mob_get_required_defeats(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+    //     var required_defeats = RCTMod.getInstance().getTrainerManager()
+    //         .getData(context.getArgument("trainer", String.class))
+    //         .getRequiredDefeats(Type.valueOf(context.getArgument("type", String.class)));
 
-        context.getSource().sendSuccess(() -> Component.literal(String.valueOf(required_defeats)), false);
-        return required_defeats;
-    }
+    //     context.getSource().sendSuccess(() -> Component.literal(String.valueOf(required_defeats)), false);
+    //     return required_defeats;
+    // }
 
     private static int mob_unregister_persistent(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         RCTMod.getInstance().getTrainerSpawner().unregisterPersistent(context.getArgument("mobUUID", String.class));

@@ -66,12 +66,12 @@ public final class PlayerCommands {
                                 .executes(PlayerCommands::player_get_type_defeats_target)))))
                 .then(Commands.literal("set")
                     .requires(css -> css.hasPermission(2))
-                    .then(Commands.literal("level_cap")
-                        .then(Commands.argument("value", IntegerArgumentType.integer(0))
-                            .executes(PlayerCommands::player_set_level_cap_value))
-                        .then(Commands.argument("targets", EntityArgument.players())
-                            .then(Commands.argument("value", IntegerArgumentType.integer(0))
-                                .executes(PlayerCommands::player_set_level_cap_targets_value))))
+                    // .then(Commands.literal("level_cap")
+                    //     .then(Commands.argument("value", IntegerArgumentType.integer(0))
+                    //         .executes(PlayerCommands::player_set_level_cap_value))
+                    //     .then(Commands.argument("targets", EntityArgument.players())
+                    //         .then(Commands.argument("value", IntegerArgumentType.integer(0))
+                    //             .executes(PlayerCommands::player_set_level_cap_targets_value))))
                     .then(Commands.literal("defeats")
                         .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainerId", StringArgumentType.string())
                             .suggests(PlayerCommands::get_trainer_suggestions)
@@ -171,28 +171,28 @@ public final class PlayerCommands {
         }
     }
 
-    private static int player_set_level_cap_value(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
-        if(context.getSource().getEntity() instanceof Player player) {
-            var level_cap = IntegerArgumentType.getInteger(context, "value");
-            RCTMod.getInstance().getTrainerManager().getData(player).setLevelCap(player, level_cap);
-            return level_cap;
-        }
+    // private static int player_set_level_cap_value(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+    //     if(context.getSource().getEntity() instanceof Player player) {
+    //         var level_cap = IntegerArgumentType.getInteger(context, "value");
+    //         RCTMod.getInstance().getTrainerManager().getData(player).setLevelCap(player, level_cap);
+    //         return level_cap;
+    //     }
         
-        context.getSource().sendFailure(Component.literal("caller is not a player"));
-        return -1;
-    }
+    //     context.getSource().sendFailure(Component.literal("caller is not a player"));
+    //     return -1;
+    // }
 
-    private static int player_set_level_cap_targets_value(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
-        var targets = EntityArgument.getPlayers(context, "targets");
-        var level_cap = IntegerArgumentType.getInteger(context, "value");
-        var tm = RCTMod.getInstance().getTrainerManager();
+    // private static int player_set_level_cap_targets_value(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+    //     var targets = EntityArgument.getPlayers(context, "targets");
+    //     var level_cap = IntegerArgumentType.getInteger(context, "value");
+    //     var tm = RCTMod.getInstance().getTrainerManager();
 
-        for(var player : targets) {
-            tm.getData(player).setLevelCap(player, level_cap);
-        }
+    //     for(var player : targets) {
+    //         tm.getData(player).setLevelCap(player, level_cap);
+    //     }
         
-        return level_cap;
-    }
+    //     return level_cap;
+    // }
 
     private static int player_set_defeats_value(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         if(context.getSource().getEntity() instanceof Player player) {

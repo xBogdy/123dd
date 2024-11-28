@@ -17,6 +17,10 @@
  */
 package com.gitlab.srcmc.rctmod.api.data.save;
 
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
@@ -27,38 +31,105 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.saveddata.SavedData;
 
 public class TrainerPlayerData extends SavedData {
+    private Set<String> defeatedTrainerIds = new HashSet<>();
+    private Player player;
     private int levelCap;
 
-    public static TrainerPlayerData of(CompoundTag tag, Provider provider) {
-        var tpd = new TrainerPlayerData();
-        tpd.levelCap = tag.getInt("levelCap");
-        return tpd;
-    }
-
-    public TrainerPlayerData() {
-        var cfg = RCTMod.getInstance().getServerConfig();
-        this.levelCap = Math.max(0, Math.min(100, cfg.initialLevelCap() + cfg.bonusLevelCap()));
-    }
-
-    public static String filePath(Player player) {
-        return String.format("%s.player.%s.stat", ModCommon.MOD_ID, player.getUUID().toString());
+    public TrainerPlayerData(Player player) {
+        this.player = player;
     }
 
     public int getLevelCap() {
         return this.levelCap;
     }
 
-    public void setLevelCap(Player player, int levelCap) {
-        if(this.levelCap != levelCap) {
-            PlayerState.get(player).setLevelCap(levelCap);
-            this.levelCap = levelCap;
-            setDirty();
+    private void updateLevelCap() {
+        var cfg = RCTMod.getInstance().getServerConfig();
+        this.levelCap = Math.max(0, Math.min(100, cfg.initialLevelCap() + cfg.bonusLevelCap()));
+        this.defeatedTrainerIds.forEach(this::updateLevelCap);
+    }
+
+    private void updateLevelCap(String trainerId) {
+        var cfg = RCTMod.getInstance().getServerConfig();
+        var tmd = RCTMod.getInstance().getTrainerManager().getData(trainerId);
+        this.levelCap = Math.max(this.levelCap, Math.max(0, Math.min(100, Math.max(tmd.getRequiredLevelCap(), tmd.getRewardLevelCap())) + cfg.bonusLevelCap()));
+    }
+
+    public Set<String> getDefeatedTrainerIds() {
+        return Collections.unmodifiableSet(this.defeatedTrainerIds);
+    }
+
+    public boolean addProgressDefeat(String trainerId) {
+        if(this.defeatedTrainerIds.add(trainerId)) {
+            var ps = PlayerState.get(this.player);
+            this.updateLevelCap(trainerId);
+            ps.addProgressDefeat(trainerId);
+            ps.setLevelCap(this.getLevelCap());
+            this.setDirty();
+            return true;
         }
+
+        return false;
+    }
+
+    public boolean removeProgressDefeat(String trainerId) {
+        if(this.defeatedTrainerIds.remove(trainerId)) {
+            var ps = PlayerState.get(this.player);
+            this.updateLevelCap();
+            ps.removeProgressDefeat(trainerId);
+            ps.setLevelCap(this.getLevelCap());
+            this.setDirty();
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean removeProgressDefeats() {
+        if(this.defeatedTrainerIds.size() > 0) {
+            var ps = PlayerState.get(this.player);
+            this.defeatedTrainerIds.clear();
+            this.updateLevelCap();
+            ps.removeProgressDefeats();
+            ps.setLevelCap(this.getLevelCap());
+            this.setDirty();
+            return true;
+        }
+
+        return false;
     }
 
     @Override
     public CompoundTag save(CompoundTag compoundTag, Provider provider) {
-        compoundTag.putInt("levelCap", this.levelCap);
+        byte b = 0;
+        this.defeatedTrainerIds.forEach(tid -> compoundTag.putByte(tid, b));
         return compoundTag;
+    }
+
+    public static class Builder {
+        private Player player;
+
+        public Builder(Player player) {
+            this.player = player;
+        }
+
+        public TrainerPlayerData create() {
+            var tpd = new TrainerPlayerData(this.player);
+            tpd.updateLevelCap();
+            return tpd;
+        }
+
+        public TrainerPlayerData of(CompoundTag tag, Provider provider) {
+            var tpd = new TrainerPlayerData(this.player);
+            tpd.defeatedTrainerIds.addAll(tag.getAllKeys());
+            tpd.defeatedTrainerIds.remove("levelCap"); // TODO: backwards compatibility for <= 0.12-beta (would cause issues with trainerId == 'levelCap', probably remove in release version)
+            tpd.updateLevelCap();
+            return tpd;
+        }
+    }
+
+
+    public static String filePath(Player player) {
+        return String.format("%s.player.%s.stat", ModCommon.MOD_ID, player.getUUID().toString());
     }
 }

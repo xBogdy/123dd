@@ -1,11 +1,13 @@
 {
   "type": "CHAMP",
-  "rewardLevelCap": 100,
-  "requiredDefeats": {
-    "E4": 4
-  },
+  "requiredDefeats": [
+    ["elite_four_bruno_0050", "elite_four_bruno_0051"],
+    ["elite_four_lance_0056", "elite_four_lance_0057"],
+    ["elite_four_lorelei_004d", "elite_four_lorelei_004e"],
+    ["elite_four_agatha_0053", "elite_four_agatha_0054"]
+  ],
   "maxTrainerWins": 1,
-  "maxTrainerDefeats": 1,
+  "maxTrainerDefeats": 2,
   "battleCooldownTicks": 600,
   "spawnWeightFactor": 0.25,
   "biomeTagBlacklist": ["is_void"],

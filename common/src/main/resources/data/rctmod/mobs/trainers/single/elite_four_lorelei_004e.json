@@ -1,10 +1,9 @@
 {
   "type": "E4",
-  "requiredDefeats": {
-    "LEADER": 8,
-    "BOSS": 9
-  },
-  "maxTrainerWins": 1,
+  "requiredDefeats": [
+    ["trainer_brendan_001a"]
+  ],
+  "maxTrainerWins": 2,
   "maxTrainerDefeats": 1,
   "battleCooldownTicks": 600,
   "spawnWeightFactor": 0.25,

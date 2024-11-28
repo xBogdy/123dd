@@ -117,7 +117,7 @@ public class TrainerListWidget extends TrainerDataWidget {
                 if(showAllTypes || this.tdm.getData(trainerId).getType() == trainerType) {
                     var count = this.playerState.getTrainerDefeatCount(trainerId);
                     var trMob = this.tdm.getData(trainerId);
-                    var isNextKeyTrainer = count == 0 && playerState.isKeyTrainer(trMob) && playerState.canBattle(trMob);
+                    var isNextKeyTrainer = count == 0 && playerState.isKeyTrainer(trMob) && playerState.canBattle(trainerId);
 
                     if(showUndefeated || isNextKeyTrainer || count > 0) {
                         p = this.c / ENTRIES_PER_PAGE;
