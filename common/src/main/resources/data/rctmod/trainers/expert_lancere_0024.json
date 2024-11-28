@@ -1,5 +1,12 @@
 {
   "name": "Expert LanceRe",
+  "ai": "CBH",
+  "bag": [
+    {
+      "id": "cobblemon:hyper_potion",
+      "quantity": 2
+    }
+  ],
   "team": [
     {
       "species": "ekans",

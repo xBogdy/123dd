@@ -1,5 +1,12 @@
 {
   "name": "Ace Trainer Janny",
+  "ai": "CBH",
+  "bag": [
+    {
+      "id": "cobblemon:hyper_potion",
+      "quantity": 2
+    }
+  ],
   "team": [
     {
       "species": "pelipper",

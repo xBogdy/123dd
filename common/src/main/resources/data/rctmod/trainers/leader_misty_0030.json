@@ -1,6 +1,13 @@
 {
   "name": "Misty",
   "identity": "Leader Misty",
+  "ai": "CBH",
+  "bag": [
+    {
+      "id": "cobblemon:full_restore",
+      "quantity": 2
+    }
+  ],
   "team": [
     {
       "species": "politoed",

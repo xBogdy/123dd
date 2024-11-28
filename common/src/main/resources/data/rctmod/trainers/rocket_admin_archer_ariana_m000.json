@@ -1,6 +1,9 @@
 {
-  "name": "Elite Four Agatha",
-  "ai": "CBH",
+  "name": "Rocket Admins Archer \u0026 Ariana",
+  "battleFormat": "GEN_9_DOUBLES",
+  "battleRules": {
+    "maxItemUses": 2
+  },
   "bag": [
     {
       "id": "cobblemon:full_restore",
@@ -9,98 +12,16 @@
   ],
   "team": [
     {
-      "species": "zoroark",
+      "species": "incineroar",
       "gender": "FEMALE",
-      "level": 84,
-      "nature": "timid",
-      "ability": "illusion",
-      "moveset": [
-        "taunt",
-        "darkpulse",
-        "flamethrower",
-        "sludgebomb"
-      ],
-      "ivs": {
-        "hp": 31,
-        "atk": 31,
-        "def": 31,
-        "spa": 31,
-        "spd": 31,
-        "spe": 31
-      },
-      "evs": {
-        "hp": 6,
-        "spa": 252,
-        "spe": 252
-      },
-      "heldItem": "focus_sash"
-    },
-    {
-      "species": "spectrier",
-      "gender": "GENDERLESS",
-      "level": 85,
-      "nature": "timid",
-      "ability": "grimneigh",
-      "moveset": [
-        "shadowball",
-        "hiddenpower",
-        "darkpulse",
-        "sleeptalk"
-      ],
-      "ivs": {
-        "hp": 31,
-        "atk": 31,
-        "def": 30,
-        "spa": 30,
-        "spd": 30,
-        "spe": 30
-      },
-      "evs": {
-        "hp": 6,
-        "spa": 252,
-        "spe": 252
-      },
-      "heldItem": "choice_scarf"
-    },
-    {
-      "species": "aegislash",
-      "gender": "MALE",
-      "level": 85,
-      "nature": "calm",
-      "ability": "stancechange",
-      "moveset": [
-        "shadowball",
-        "toxic",
-        "flashcannon",
-        "kingsshield"
-      ],
-      "ivs": {
-        "hp": 31,
-        "atk": 31,
-        "def": 31,
-        "spa": 31,
-        "spd": 31,
-        "spe": 31
-      },
-      "evs": {
-        "hp": 252,
-        "def": 128,
-        "spd": 128,
-        "spe": 4
-      },
-      "heldItem": "leftovers"
-    },
-    {
-      "species": "silvally",
-      "gender": "GENDERLESS",
-      "level": 85,
+      "level": 54,
       "nature": "adamant",
-      "ability": "battlearmor",
+      "ability": "intimidate",
       "moveset": [
-        "multiattack",
-        "flamethrower",
-        "thunderwave",
-        "partingshot"
+        "fakeout",
+        "partingshot",
+        "darkestlariat",
+        "firepunch"
       ],
       "ivs": {
         "hp": 31,
@@ -115,22 +36,46 @@
         "atk": 252,
         "spe": 6
       },
-      "heldItem": "leftovers",
-      "aspects": [
-        "dark"
-      ]
+      "heldItem": "sitrus_berry"
     },
     {
-      "species": "marshadow",
-      "gender": "GENDERLESS",
-      "level": 85,
-      "nature": "jolly",
-      "ability": "technician",
+      "species": "gothitelle",
+      "gender": "MALE",
+      "level": 54,
+      "nature": "modest",
+      "ability": "competitive",
       "moveset": [
-        "spectralthief",
-        "closecombat",
-        "shadowsneak",
-        "bulkup"
+        "psychic",
+        "shadowball",
+        "hiddenpower",
+        "thunderwave"
+      ],
+      "ivs": {
+        "hp": 31,
+        "atk": 31,
+        "def": 30,
+        "spa": 30,
+        "spd": 30,
+        "spe": 30
+      },
+      "evs": {
+        "hp": 252,
+        "spa": 252,
+        "spe": 4
+      },
+      "heldItem": "colbur_berry"
+    },
+    {
+      "species": "primarina",
+      "gender": "FEMALE",
+      "level": 55,
+      "nature": "modest",
+      "ability": "liquidvoice",
+      "moveset": [
+        "hypervoice",
+        "scald",
+        "psychic",
+        "dazzlinggleam"
       ],
       "ivs": {
         "hp": 31,
@@ -142,22 +87,76 @@
       },
       "evs": {
         "hp": 6,
-        "atk": 252,
+        "spa": 252,
         "spe": 252
       },
-      "heldItem": "focus_sash"
+      "heldItem": "throat_spray"
     },
     {
-      "species": "gengar",
-      "gender": "MALE",
-      "level": 85,
-      "nature": "timid",
-      "ability": "levitate",
+      "species": "aegislash",
+      "gender": "FEMALE",
+      "level": 55,
+      "nature": "adamant",
+      "ability": "stancechange",
       "moveset": [
-        "shadowball",
-        "sludgewave",
-        "nastyplot",
-        "thunderbolt"
+        "ironhead",
+        "shadowclaw",
+        "shadowsneak",
+        "kingsshield"
+      ],
+      "ivs": {
+        "hp": 31,
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
+      },
+      "evs": {
+        "hp": 252,
+        "atk": 252,
+        "spe": 6
+      },
+      "heldItem": "leftovers"
+    },
+    {
+      "species": "mawile",
+      "gender": "MALE",
+      "level": 55,
+      "nature": "adamant",
+      "ability": "intimidate",
+      "moveset": [
+        "playrough",
+        "suckerpunch",
+        "ironhead",
+        "thunderpunch"
+      ],
+      "ivs": {
+        "hp": 31,
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
+      },
+      "evs": {
+        "hp": 252,
+        "atk": 252,
+        "spe": 6
+      },
+      "heldItem": "expert_belt"
+    },
+    {
+      "species": "houndoom",
+      "gender": "MALE",
+      "level": 55,
+      "nature": "timid",
+      "ability": "unnerve",
+      "moveset": [
+        "heatwave",
+        "darkpulse",
+        "scorchingsands",
+        "suckerpunch"
       ],
       "ivs": {
         "hp": 31,

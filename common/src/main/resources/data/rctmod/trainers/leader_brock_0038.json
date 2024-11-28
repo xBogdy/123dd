@@ -1,6 +1,13 @@
 {
   "name": "Brock",
   "identity": "Leader Brock",
+  "ai": "CBH",
+  "bag": [
+    {
+      "id": "cobblemon:full_restore",
+      "quantity": 2
+    }
+  ],
   "team": [
     {
       "species": "gigalith",

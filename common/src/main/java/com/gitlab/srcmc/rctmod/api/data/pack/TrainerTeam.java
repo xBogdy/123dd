@@ -20,23 +20,37 @@ package com.gitlab.srcmc.rctmod.api.data.pack;
 import java.util.List;
 
 import com.gitlab.srcmc.rctapi.api.ai.AIType;
+import com.gitlab.srcmc.rctapi.api.battle.BattleFormat;
+import com.gitlab.srcmc.rctapi.api.battle.BattleRules;
 import com.gitlab.srcmc.rctapi.api.models.BagItemModel;
 import com.gitlab.srcmc.rctapi.api.models.PokemonModel;
 import com.gitlab.srcmc.rctapi.api.models.TrainerModel;
 
 public class TrainerTeam extends TrainerModel {
     private String identity;
+    private BattleFormat battleFormat;
+    private BattleRules battleRules;
 
     public TrainerTeam() {
-        this(null, "Trainer", AIType.LAI, List.of(), List.of());
+        this(null, "Trainer", BattleFormat.GEN_9_SINGLES, new BattleRules(), AIType.CBM, List.of(), List.of());
     }
 
-    public TrainerTeam(String identity, String name, AIType ai, List<BagItemModel> bag, List<PokemonModel> team) {
+    public TrainerTeam(String identity, String name, BattleFormat battleFormat, BattleRules battleRules, AIType ai, List<BagItemModel> bag, List<PokemonModel> team) {
         super(name, ai, bag, team);
         this.identity = identity;
+        this.battleFormat = battleFormat;
+        this.battleRules = battleRules;
     }
 
     public String getIdentity() {
         return this.identity != null ? this.identity : this.getName();
+    }
+
+    public BattleFormat getBattleFormat() {
+        return this.battleFormat;
+    }
+
+    public BattleRules getBattleRules() {
+        return this.battleRules;
     }
 }

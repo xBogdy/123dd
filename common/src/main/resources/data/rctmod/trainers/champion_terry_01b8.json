@@ -1,6 +1,13 @@
 {
   "name": "Champion Terry",
   "identity": "Rival Terry",
+  "ai": "CBH",
+  "bag": [
+    {
+      "id": "cobblemon:full_restore",
+      "quantity": 2
+    }
+  ],
   "team": [
     {
       "species": "pheromosa",

@@ -1,5 +1,12 @@
 {
   "name": "Ace Trainer Nick",
+  "ai": "CBH",
+  "bag": [
+    {
+      "id": "cobblemon:hyper_potion",
+      "quantity": 2
+    }
+  ],
   "team": [
     {
       "species": "ninetales",

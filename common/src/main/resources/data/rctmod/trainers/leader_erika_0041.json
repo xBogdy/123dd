@@ -1,6 +1,13 @@
 {
   "name": "Erika",
   "identity": "Leader Erika",
+  "ai": "CBH",
+  "bag": [
+    {
+      "id": "cobblemon:full_restore",
+      "quantity": 2
+    }
+  ],
   "team": [
     {
       "species": "tsareena",
