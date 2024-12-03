@@ -59,7 +59,7 @@ dependencies {
     // runtimeOnly fg.deobf("mezz.jei:jei-${jei_mc_version}-forge:${jei_version}")
 
     // TODO: this is temporary until rctapi is available on (curse)maven
-    modImplementation files("../libs/rctapi-neoforge-${rctapi_version}.jar")
+    modImplementation files("../libs/rctapi-neoforge-${minecraft_version}-${rctapi_version}.jar")
 }
 
 shadowJar {

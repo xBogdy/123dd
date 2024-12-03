@@ -24,5 +24,5 @@ dependencies {
     compileOnly "fuzs.forgeconfigapiport:forgeconfigapiport-common-neoforgeapi:$rootProject.fcap_version"//source: https://github.com/Fuzss/forgeconfigapiport-fabric
 
     // TODO: this is temporary until rctapi is available on (curse)maven
-    modImplementation files("../libs/rctapi-common-${rctapi_version}.jar")
+    modImplementation files("../libs/rctapi-common-${minecraft_version}-${rctapi_version}.jar")
 }

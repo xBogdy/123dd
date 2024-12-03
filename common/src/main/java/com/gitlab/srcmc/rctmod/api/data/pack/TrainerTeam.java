@@ -19,7 +19,7 @@ package com.gitlab.srcmc.rctmod.api.data.pack;
 
 import java.util.List;
 
-import com.gitlab.srcmc.rctapi.api.ai.AIType;
+import com.gitlab.srcmc.rctapi.api.ai.utils.AIType;
 import com.gitlab.srcmc.rctapi.api.battle.BattleFormat;
 import com.gitlab.srcmc.rctapi.api.battle.BattleRules;
 import com.gitlab.srcmc.rctapi.api.models.BagItemModel;
@@ -32,7 +32,7 @@ public class TrainerTeam extends TrainerModel {
     private BattleRules battleRules;
 
     public TrainerTeam() {
-        this(null, "Trainer", BattleFormat.GEN_9_SINGLES, new BattleRules(), AIType.CBM, List.of(), List.of());
+        this(null, "Trainer", BattleFormat.GEN_9_SINGLES, new BattleRules(), AIType.RCT, List.of(), List.of());
     }
 
     public TrainerTeam(String identity, String name, BattleFormat battleFormat, BattleRules battleRules, AIType ai, List<BagItemModel> bag, List<PokemonModel> team) {
