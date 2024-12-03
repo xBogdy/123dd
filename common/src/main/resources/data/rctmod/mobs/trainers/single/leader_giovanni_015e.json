@@ -1,7 +1,7 @@
 {
   "type": "TEAM_ROCKET",
   "requiredDefeats": [
-    ["leader_erika_01a1"]
+    ["boss_giovanni_015c"]
   ],
   "maxTrainerWins": 2,
   "maxTrainerDefeats": 1,
