@@ -1,6 +1,9 @@
 {
   "name": "Ace Trainer George",
-  "ai": "CBH",
+  "ai": "RCT",
+  "battleRules": {
+    "maxItemUses": 5
+  },
   "bag": [
     {
       "id": "cobblemon:hyper_potion",

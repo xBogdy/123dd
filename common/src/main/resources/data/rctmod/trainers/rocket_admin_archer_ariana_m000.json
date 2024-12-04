@@ -1,5 +1,6 @@
 {
   "name": "Rocket Admins Archer \u0026 Ariana",
+  "ai": "RCT",
   "battleFormat": "GEN_9_DOUBLES",
   "battleRules": {
     "maxItemUses": 2

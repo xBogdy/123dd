@@ -1,6 +1,10 @@
 {
   "name": "Boss Giovanni",
-  "ai": "CBH",
+  "ai": "RCT",
+  "battleFormat": "GEN_9_DOUBLES",
+  "battleRules": {
+    "maxItemUses": 2
+  },
   "bag": [
     {
       "id": "cobblemon:full_restore",

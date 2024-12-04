@@ -1,7 +1,10 @@
 {
   "name": "Bruno",
   "identity": "Elite Four Bruno",
-  "ai": "CBH",
+  "ai": "RCT",
+  "battleRules": {
+    "maxItemUses": 2
+  },
   "bag": [
     {
       "id": "cobblemon:full_restore",

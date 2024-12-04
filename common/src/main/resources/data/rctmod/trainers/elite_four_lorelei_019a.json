@@ -1,7 +1,10 @@
 {
   "name": "Lorelei",
   "identity": "Elite Four Lorelei",
-  "ai": "CBH",
+  "ai": "RCT",
+  "battleRules": {
+    "maxItemUses": 2
+  },
   "bag": [
     {
       "id": "cobblemon:full_restore",

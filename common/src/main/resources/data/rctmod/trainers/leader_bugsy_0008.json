@@ -1,6 +1,9 @@
 {
   "name": "Bugsy",
-  "ai": "CBH",
+  "ai": "RCT",
+  "battleRules": {
+    "maxItemUses": 2
+  },
   "bag": [
     {
       "id": "cobblemon:full_restore",
