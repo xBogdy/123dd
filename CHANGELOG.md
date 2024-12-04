@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.13.x-beta] - 2024-11-23
+## [0.13.x-beta] - 2024-11-27
 
 ***Added***
 
@@ -20,9 +20,10 @@
 - Decreased trainer batte cooldown from `30` to `20` seconds (TODO)
 - Different battle AIs for trainers: "Stronger" trainers (e.g. leaders and bosses) use a stronger AI (AI implementations are still wip/experimental) (TODO)
 - Increased battle attempts against leaders/bosses from `2` to `3` and against other trainers from `3` to `5` (TODO)
-- Minor adjustment to progression: The two instances of the "Archer" and "Arianna" battles are now replaced by one "Archer" and one "Arianna" double battle each with teams made up of a combination from the previous trainers (the former versions may still spawn randomly) (TODO)
 - Minor adjustments to spawn rates: Decreased boosted rates for never beaten leaders/bosses but increased the rates for never beaten trainers in general
 - Possible spawn locations of leaders and bosses now somewhat match their themes (rather than beeing able to spawn everywhere) (TODO)
+- Progression: Added more required trainer fights, e.g. Rocket Admin Archer after Brock, rival fights and double battles
+- ServerConfig: Renamed `bonusLevelCap` -> `additiveLevelCapRequirement` (works slightly different but effectively serves the same purpose)
 - Some pokemon that are originally supposed to mega evolve (i.e. holding key stones) now hold other competetive held items as replacement (until mega evolutions are supported)
 - Some trainers might carry items that they may use in battles (e.g. potions) (TODO)
 - Trainer Card GUI: Trainers that can be spawned with a trainer spawner will show the item required to do so in their overview page (TODO)
@@ -37,6 +38,10 @@
 - Some pokemon not having the correct regional form
 - Trainer Card now glows and renders the arrow for all players whenever they get close to the next key trainer they have to defeat (regardless of if the trainer spawned in naturally or was summoned in any other way) (TODO)
 - Trainer pokemon sometimes dropping loot, missing trainer pokemon send out and retrieve animation, and probably some other stuff
+
+***Removed***
+
+- ServerConfig: `maxOverLevelCap` (too much of a corner case barely useful but rather confusing)
 
 ## [0.12.0-beta] - 2024-10-03
 

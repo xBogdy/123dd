@@ -45,14 +45,13 @@ public class TrainerPlayerData extends SavedData {
 
     private void updateLevelCap() {
         var cfg = RCTMod.getInstance().getServerConfig();
-        this.levelCap = Math.max(0, Math.min(100, cfg.initialLevelCap() + cfg.bonusLevelCap()));
+        this.levelCap = Math.max(0, Math.min(100, cfg.initialLevelCap() - cfg.additiveLevelCapRequirement()));
         this.defeatedTrainerIds.forEach(this::updateLevelCap);
     }
 
     private void updateLevelCap(String trainerId) {
-        var cfg = RCTMod.getInstance().getServerConfig();
         var tmd = RCTMod.getInstance().getTrainerManager().getData(trainerId);
-        this.levelCap = Math.max(this.levelCap, Math.max(0, Math.min(100, Math.max(tmd.getRequiredLevelCap(), tmd.getRewardLevelCap())) + cfg.bonusLevelCap()));
+        this.levelCap = Math.max(this.levelCap, Math.max(0, Math.min(100, Math.max(tmd.getRequiredLevelCap(), tmd.getRewardLevelCap()))));
     }
 
     public Set<String> getDefeatedTrainerIds() {
@@ -127,7 +126,6 @@ public class TrainerPlayerData extends SavedData {
             return tpd;
         }
     }
-
 
     public static String filePath(Player player) {
         return String.format("%s.player.%s.stat", ModCommon.MOD_ID, player.getUUID().toString());

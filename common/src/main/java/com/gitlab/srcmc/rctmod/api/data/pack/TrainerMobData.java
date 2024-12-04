@@ -109,7 +109,7 @@ public class TrainerMobData implements IDataPackObject {
 
     public void setRewardLevelCap(int levelCap) {
         var cfg = RCTMod.getInstance().getServerConfig();
-        this.rewardLevelCap = Math.min(100, Math.max(0, Math.max(cfg.initialLevelCap(), levelCap) + cfg.bonusLevelCap()));
+        this.rewardLevelCap = Math.min(100, Math.max(0, Math.max(cfg.initialLevelCap() - cfg.additiveLevelCapRequirement(), levelCap)));
     }
 
     public int getRewardLevelCap() {
@@ -118,7 +118,7 @@ public class TrainerMobData implements IDataPackObject {
 
     public int getRequiredLevelCap() {
         var cfg = RCTMod.getInstance().getServerConfig();
-        return Math.max(0, Math.min(100, Math.max(cfg.initialLevelCap(), this.getTrainerTeam().getTeam().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0)) + cfg.bonusLevelCap()));
+        return Math.max(0, Math.min(100, Math.max(cfg.initialLevelCap(), this.getTrainerTeam().getTeam().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0)) + cfg.additiveLevelCapRequirement()));
     }
 
     public Stream<String> getMissingRequirements(Set<String> trainerIds) {

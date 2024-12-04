@@ -131,7 +131,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
                 && !rct.isInBattle(player)
                 && tm.getActivePokemon(player) > 0
                 && tpd.getLevelCap() >= tmd.getRequiredLevelCap()
-                && tm.getPlayerLevel(player) <= (tpd.getLevelCap() + cfg.maxOverLevelCap())
+                && (cfg.allowOverLeveling() || tm.getPlayerLevel(player) <= tpd.getLevelCap())
                 && tmd.getMissingRequirements(tm.getData(player).getDefeatedTrainerIds()).findFirst().isEmpty()
                 && (this.isPersistenceRequired() || (!this.wasDefeatedBy(player.getUUID()) && !this.wasVictoriousAgainst(player.getUUID())));
         }
@@ -193,7 +193,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
             }
         } else if(tpd.getLevelCap() < tmd.getRequiredLevelCap()) {
             ChatUtils.reply(this, player, "low_level_cap");
-        } else if(tm.getPlayerLevel(player) > (tpd.getLevelCap() + cfg.maxOverLevelCap())) {
+        } else if(tm.getPlayerLevel(player) > tpd.getLevelCap() && !cfg.allowOverLeveling()) {
             ChatUtils.reply(this, player, "over_level_cap");
         } else if(tm.getActivePokemon(player) == 0) {
             ChatUtils.reply(this, player, "missing_pokemon");

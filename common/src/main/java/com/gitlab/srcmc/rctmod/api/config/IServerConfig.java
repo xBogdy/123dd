@@ -189,28 +189,17 @@ public interface IServerConfig extends IModConfig {
     default int initialLevelCap() { return 15; }
 
     /**
-     * Trainers will refuse to battle players that have pokemon in their party with a
-     * level greater than the set value + the level cap of the player. This value can
-     * also be negative.
+     * The required level cap for trainers is based of the strongest pokemon in their
+     * team. This value will be added to the derived level cap.
      * 
-     * default 0
-     */
-    default int maxOverLevelCap() { return 0; }
-
-    /**
-     * The 'bonusLevelCap' is added to the 'initialLevelCap' as well as any increased
-     * level cap rewarded by trainers (except of trainers that reward a level cap of
-     * 100). In short, a positive value will make this mod easier a negative value
-     * harder.
-     * 
-     * On a side note, trainers will also take this value into account when determining
-     * the required level cap to fight them. For example if we assume bonusLevelCap=-3:
-     * A trainer with a strongest pokemon at level 15 would usually require a level cap
-     * of 15, now a level cap of 15-3=12 is required.
+     * Example: A trainer with a Pikachu at level 50 has a level cap requirement of 50.
+     * If the additiveLevelCapRequirement is `-10` the required level cap of that
+     * trainer becomes 40, if it is `10` the level cap requirement becomes `60`. Set to
+     * `-100` (or lower) to disable all level cap requirements.
      * 
      * default: 0
      */
-    default int bonusLevelCap() { return 0; }
+    default int additiveLevelCapRequirement() { return 0; }
 
     /**
      * If enabled the level cap of a players will not prevent their pokemon from

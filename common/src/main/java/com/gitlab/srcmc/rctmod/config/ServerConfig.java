@@ -45,8 +45,7 @@ public class ServerConfig implements IServerConfig {
 
     // players
     private final ConfigValue<Integer> initialLevelCapValue;
-    private final ConfigValue<Integer> maxOverLevelCapValue;
-    private final ConfigValue<Integer> bonusLevelCapValue;
+    private final ConfigValue<Integer> additiveLevelCapRequirement;
     private final ConfigValue<Boolean> allowOverLeveling;
 
     // debug
@@ -110,13 +109,9 @@ public class ServerConfig implements IServerConfig {
             .comment("Initial level cap of players. Pokemon will not gain any experience if at or above the level cap.")
             .defineInRange("initialLevelCap", IServerConfig.super.initialLevelCap(), 1, 100);
 
-        this.maxOverLevelCapValue = builder
-            .comment("Trainers will refuse to battle players that have pokemon in their party with a level greater than the set value + the level cap of the player. This value can also be negative.")
-            .define("maxOverLevelCap", IServerConfig.super.maxOverLevelCap());
-
-        this.bonusLevelCapValue = builder
-            .comment("The 'bonusLevelCap' is added to the 'initialLevelCap' aswell as any increased level cap rewarded by trainers (except of trainers that reward a level cap of 100). In short, a positive value will make this mod easier a negative value harder. On a side note, trainers will also take this value into account when determining the required level cap to fight them. For example if we assume bonusLevelCap=-3: A trainer with a strongest pokemon at level 15 would usually require a level cap of 15, now a level cap of 15-3=12 is required.")
-            .define("bonusLevelCap", IServerConfig.super.bonusLevelCap());
+        this.additiveLevelCapRequirement = builder
+            .comment("The required level cap for trainers is based of the strongest pokemon in their team. This value will be added to the derived level cap. Example: A trainer with a Pikachu at level 50 has a level cap requirement of 50. If the additiveLevelCapRequirement is `-10` the required level cap of that trainer becomes 40, if it is `10` the level cap requirement becomes `60`. Set to `-100` (or lower) to disable all level cap requirements.")
+            .define("additiveLevelCapRequirement", IServerConfig.super.additiveLevelCapRequirement());
 
         this.allowOverLeveling = builder
             .comment("If enabled the level cap of a players will not prevent their pokemon from gaining experience and leveling up. Trainers will still refuse to battle players that carry pokemon above their level cap!")
@@ -208,13 +203,8 @@ public class ServerConfig implements IServerConfig {
     }
 
     @Override
-    public int maxOverLevelCap() {
-        return this.maxOverLevelCapValue.get();
-    }
-
-    @Override
-    public int bonusLevelCap() {
-        return this.bonusLevelCapValue.get();
+    public int additiveLevelCapRequirement() {
+        return this.additiveLevelCapRequirement.get();
     }
 
     @Override
