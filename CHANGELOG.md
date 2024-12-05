@@ -1,12 +1,10 @@
 # Changelog
 
-## [0.13.x-beta] - 2024-11-27
+## [0.13.x-beta] - 2024-12-05
 
 ***Added***
 
-- "Reset System": After a player has defeated the Champion an option appears in the Trainer Card that allows players to reset their progression (level cap and defeat counts against key trainers) and rewards them with a visual indicator in the Trainer Card (reset amount) as well as a permanent increase of trainer battle loot dop rates. Can be repeated indefinetely (TODO)
-- Double battle support (in fact support for various battle formats but trainers only offer single or double battles)
-- Learning battle AI (LAI): Trainers learn and get better over time, all trainers have access to the accumulated knowledge of other trainers, "weaker" trainers tend to experiment more where as "stronger" trainers tend to stick to the best known choices (TODO)
+- Double battles
 - Server config `allowOverLeveling`: Specifies if players should be allowed to level their pokemon above their level cap (default: `false`)
 - Server config `trainerSpawnerItems`: Allows to specify what items can be used to configure a trainer spawner to summon specific trainers
 - Trainer (type) dependent battle rules: Currently allows to set item usage restrictions, leaders and bosses will by default not allow more than `2` item uses
@@ -17,12 +15,11 @@
 
 - Core dependency "CobblemonTrainers" is now replaced by "RCTApi"
 - Data pack trainer format is now slightly different (see the docs for a full overview of changes)
-- Decreased trainer batte cooldown from `30` to `20` seconds (TODO)
-- Different battle AIs for trainers: "Stronger" trainers (e.g. leaders and bosses) use a stronger AI (AI implementations are still wip/experimental) (TODO)
+- Decreased trainer battle cooldown from `30` to `12` seconds (TODO)
 - Increased battle attempts against leaders/bosses from `2` to `3` and against other trainers from `3` to `5` (TODO)
 - Minor adjustments to spawn rates: Decreased boosted rates for never beaten leaders/bosses but increased the rates for never beaten trainers in general
 - Possible spawn locations of leaders and bosses now somewhat match their themes (rather than beeing able to spawn everywhere) (TODO)
-- Progression: Added more required trainer fights, e.g. Rocket Admin Archer after Brock, rival fights and double battles
+- Progression: Added more required trainer fights, e.g. Rocket Admin Archer after Brock and rival fights
 - ServerConfig: Renamed `bonusLevelCap` -> `additiveLevelCapRequirement` (works slightly different but effectively serves the same purpose)
 - Some pokemon that are originally supposed to mega evolve (i.e. holding key stones) now hold other competetive held items as replacement (until mega evolutions are supported)
 - Some trainers might carry items that they may use in battles (e.g. potions) (TODO)
@@ -36,12 +33,12 @@
 - Some oversights in npc ai behaviour (e.g. player tracking not working properly)
 - Some pokemon missing held items
 - Some pokemon not having the correct regional form
-- Trainer Card now glows and renders the arrow for all players whenever they get close to the next key trainer they have to defeat (regardless of if the trainer spawned in naturally or was summoned in any other way) (TODO)
+- Trainer Card now glows and renders the arrow regardless if the trainer spawned in naturally or was summoned in any other way (TODO)
 - Trainer pokemon sometimes dropping loot, missing trainer pokemon send out and retrieve animation, and probably some other stuff
 
 ***Removed***
 
-- ServerConfig: `maxOverLevelCap` (too much of a corner case barely useful but rather confusing)
+- ServerConfig: `maxOverLevelCap` (too much of a corner case and barely useful, see `allowOverLeveling` and `additiveLevelCapRequirement` for alternatives)
 
 ## [0.12.0-beta] - 2024-10-03
 
