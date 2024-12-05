@@ -51,6 +51,10 @@ public final class PlayerCommands {
             .requires(css -> css.hasPermission(1))
             .then(Commands.literal("player")
                 .then(Commands.literal("get")
+                    .then(Commands.literal("progress")
+                        .executes(PlayerCommands::player_get_progress)
+                        .then(Commands.argument("target", EntityArgument.player())
+                            .executes(PlayerCommands::player_get_progress_target)))
                     .then(Commands.literal("level_cap")
                         .executes(PlayerCommands::player_get_level_cap)
                         .then(Commands.argument("target", EntityArgument.player())
@@ -114,6 +118,48 @@ public final class PlayerCommands {
     private static CompletableFuture<Suggestions> get_type_suggestions(final CommandContext<CommandSourceStack> context, final SuggestionsBuilder builder) throws CommandSyntaxException {
         Stream.of(Type.values()).map(Type::name).forEach(builder::suggest);
         return builder.buildFuture();
+    }
+
+    private static int player_get_progress(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        if(context.getSource().getEntity() instanceof Player player) {
+            var it = RCTMod.getInstance().getTrainerManager().getData(player).getDefeatedTrainerIds().stream().iterator();
+            var sb = new StringBuilder();
+            sb.append('[');
+            
+            if(it.hasNext()) {
+                sb.append(it.next());
+            }
+            
+            while(it.hasNext()) {
+                sb.append(", ").append(it.next());
+            }
+
+            sb.append(']');
+            context.getSource().sendSuccess(() -> Component.literal(String.valueOf(sb.toString())), false);
+            return 0;
+        }
+        
+        context.getSource().sendFailure(Component.literal("caller is not a player"));
+        return -1;
+    }
+
+    private static int player_get_progress_target(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        var player = EntityArgument.getPlayer(context, "target");
+        var it = RCTMod.getInstance().getTrainerManager().getData(player).getDefeatedTrainerIds().stream().iterator();
+        var sb = new StringBuilder();
+        sb.append('[');
+        
+        if(it.hasNext()) {
+            sb.append(it.next());
+        }
+        
+        while(it.hasNext()) {
+            sb.append(", ").append(it.next());
+        }
+
+        sb.append(']');
+        context.getSource().sendSuccess(() -> Component.literal(String.valueOf(sb.toString())), false);
+        return 0;
     }
 
     private static int player_get_level_cap(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {

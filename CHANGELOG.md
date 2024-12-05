@@ -4,6 +4,7 @@
 
 ***Added***
 
+- Command: `player get progress [player]`: Outputs a list of all trainers a player has defeated that are part of the required progression
 - Command: `player set progress [player(s)] (before|after) <trainerId>`
 - Double battles
 - Server config `allowOverLeveling`: Specifies if players should be allowed to level their pokemon above their level cap (default: `false`)
