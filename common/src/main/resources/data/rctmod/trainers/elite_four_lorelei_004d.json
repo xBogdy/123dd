@@ -1,6 +1,7 @@
 {
   "name": "Elite Four Lorelei",
   "ai": "RCT",
+  "battleFormat": "GEN_9_DOUBLES",
   "battleRules": {
     "maxItemUses": 2
   },
