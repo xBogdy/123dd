@@ -40,6 +40,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.packs.resources.ResourceManager;
@@ -57,10 +58,15 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
 
     private Map<UUID, String> uuidToTrainerId = new HashMap<>();
     private Set<String> playerTrainerIds = new HashSet<>();
+    private MinecraftServer server;
 
     public TrainerManager() {
         super(GSON, ModCommon.MOD_ID);
     }
+
+   public void init(MinecraftServer server) {
+    this.server = server;
+   }
 
     public String registerPlayer(Player player) {
         var trainerId = this.uuidToTrainerId.get(player.getUUID());
@@ -187,7 +193,18 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
             TrainerBattleMemory.filePath(trainerId));
     }
 
-    public void forceReload(ResourceManager resourceManager) {
+    public void forceReload() {
+        if(this.server != null && this.server.isRunning()) {
+            this.forceReload(this.server.getResourceManager());
+        }
+    }
+
+    protected void forceReload(ResourceManager resourceManager) {
+        if(this.server == null || !this.server.isRunning()) {
+            ModCommon.LOG.info("Trainer data reload skipped (server not running)");
+            return;
+        }
+
         var dpm = RCTMod.getInstance().getServerDataManager();
         var reg = RCTApi.getInstance().getTrainerRegistry();
 

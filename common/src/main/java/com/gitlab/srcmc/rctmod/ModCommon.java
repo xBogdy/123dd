@@ -66,6 +66,7 @@ public class ModCommon {
         ModRegistries.init();
         RCTApiCommands.register();
         ModCommon.registerEvents();
+        ReloadListenerRegistry.register(PackType.SERVER_DATA, RCTMod.getInstance().getTrainerManager());
     }
 
     // called on client side to initialize
@@ -111,8 +112,8 @@ public class ModCommon {
     static void onServerStarting(MinecraftServer server) {
         RCTApi.getInstance().getTrainerRegistry().init(server);
         RCTMod.getInstance().getTrainerSpawner().init(server.overworld());
-        RCTMod.getInstance().getTrainerManager().forceReload(server.getResourceManager());
-        ReloadListenerRegistry.register(PackType.SERVER_DATA, RCTMod.getInstance().getTrainerManager());
+        RCTMod.getInstance().getTrainerManager().init(server);
+        RCTMod.getInstance().getTrainerManager().forceReload();
     }
 
     // LevelTick
