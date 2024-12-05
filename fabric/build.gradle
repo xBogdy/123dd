@@ -43,15 +43,15 @@ dependencies {
 
     modImplementation "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${fcap_version}"
 
+    // Radical Cobblemon Trainers API
+    modImplementation "curse.maven:radical-cobblemon-trainers-api-1152792:${rctapi_fabric_version}"
+
     // modRuntimeOnly "curse.maven:simpletms-tms-and-trs-for-cobblemon-959184:${simpletms_fabric_version}"
     // modRuntimeOnly "curse.maven:pkgbadges-889895:${pkgbadges_fabric_version}"
     // modRuntimeOnly "curse.maven:patchouli-fabric-393236:${patchouli_fabric_version}"
     // modRuntimeOnly "curse.maven:cobblepedia-850946:${cobblepedia_fabric_version}"
     // modRuntimeOnly "curse.maven:configured-457570:${configured_fabric_version}"
     // modRuntimeOnly "mezz.jei:jei-${jei_mc_version}-fabric:${jei_version}"
-
-    // TODO: this is temporary until rctapi is available on (curse)maven
-    modImplementation files("../libs/rctapi-fabric-${minecraft_version}-${rctapi_version}.jar")
 }
 
 shadowJar {

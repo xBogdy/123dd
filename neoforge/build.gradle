@@ -50,16 +50,16 @@ dependencies {
 
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
     shadowBundle project(path: ':common', configuration: 'transformProductionNeoForge')
-    
+
+    // Radical Cobblemon Trainers API
+    modImplementation "curse.maven:radical-cobblemon-trainers-api-1152792:${rctapi_neoforge_version}"
+
     // runtimeOnly fg.deobf("curse.maven:simpletms-tms-and-trs-for-cobblemon-959184:${simpletms_version}")
     // runtimeOnly fg.deobf("curse.maven:pkgbadges-889895:${pkgbadges_version}")
     // runtimeOnly fg.deobf("curse.maven:patchouli-306770:${patchouli_version}")
     // runtimeOnly fg.deobf("curse.maven:cobblepedia-850946:${cobblepedia_version}")
     // runtimeOnly fg.deobf("curse.maven:configured-457570:${configured_version}")
     // runtimeOnly fg.deobf("mezz.jei:jei-${jei_mc_version}-forge:${jei_version}")
-
-    // TODO: this is temporary until rctapi is available on (curse)maven
-    modImplementation files("../libs/rctapi-neoforge-${minecraft_version}-${rctapi_version}.jar")
 }
 
 shadowJar {
