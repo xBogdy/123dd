@@ -101,7 +101,9 @@ public class TrainerPlayerData extends SavedData {
     @Override
     public CompoundTag save(CompoundTag compoundTag, Provider provider) {
         byte b = 0;
-        this.defeatedTrainerIds.forEach(tid -> compoundTag.putByte(tid, b));
+        var progressDefeats = new CompoundTag();
+        this.defeatedTrainerIds.forEach(tid -> progressDefeats.putByte(tid, b));
+        compoundTag.put("progressDefeats", progressDefeats);
         return compoundTag;
     }
 
@@ -120,8 +122,21 @@ public class TrainerPlayerData extends SavedData {
 
         public TrainerPlayerData of(CompoundTag tag, Provider provider) {
             var tpd = new TrainerPlayerData(this.player);
-            tpd.defeatedTrainerIds.addAll(tag.getAllKeys());
-            tpd.defeatedTrainerIds.remove("levelCap"); // TODO: backwards compatibility for <= 0.12-beta (would cause issues with trainerId == 'levelCap', probably remove in release version)
+
+            if(tag.contains("progressDefeats")) {
+                tpd.defeatedTrainerIds.addAll(tag.getCompound("progressDefeats").getAllKeys());
+            } else {
+                // legacy support: derive progress defeats from trainer defeat counts
+                var tm = RCTMod.getInstance().getTrainerManager();
+                var level = this.player.getServer().overworld();
+
+                tm.getAllData()
+                    .filter(entry -> !entry.getValue().getFollowdBy().isEmpty() || entry.getValue().getMissingRequirements(Set.of()).findFirst().isPresent())
+                    .map(entry -> entry.getKey())
+                    .filter(tid -> tm.getBattleMemory(level, tid).getDefeatByCount(this.player) > 0)
+                    .forEach(tpd.defeatedTrainerIds::add);
+            }
+
             tpd.updateLevelCap();
             return tpd;
         }

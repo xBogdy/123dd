@@ -64,9 +64,9 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
         super(GSON, ModCommon.MOD_ID);
     }
 
-   public void init(MinecraftServer server) {
-    this.server = server;
-   }
+    public void init(MinecraftServer server) {
+        this.server = server;
+    }
 
     public String registerPlayer(Player player) {
         var trainerId = this.uuidToTrainerId.get(player.getUUID());
