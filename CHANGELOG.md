@@ -15,6 +15,7 @@
 
 ***Changed***
 
+- Command: `trainer get required_defeats` now prints a list of required trainers for trainers that are part of the progression
 - Core dependency "CobblemonTrainers" is now replaced by "RCTApi"
 - Data pack trainer format is now slightly different (see the docs for a full overview of changes)
 - Decreased trainer battle cooldown from `30` to `12` seconds (TODO)

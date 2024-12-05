@@ -17,12 +17,10 @@
  */
 package com.gitlab.srcmc.rctmod.commands;
 
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
-
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
-import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData.Type;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
@@ -90,22 +88,15 @@ public class TrainerCommands {
                         .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainer", StringArgumentType.string())
                             .suggests(TrainerCommands::get_trainer_suggestions)
                             .executes(TrainerCommands::mob_get_required_level_cap)))
-                    // .then(Commands.literal("required_defeats")
-                    //     .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("type", StringArgumentType.string())
-                    //         .suggests(TrainerCommands::get_type_suggestions)
-                    //         .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainer", StringArgumentType.string())
-                    //             .suggests(TrainerCommands::get_trainer_suggestions)
-                    //             .executes(TrainerCommands::mob_get_required_defeats))))
+                    .then(Commands.literal("required_defeats")
+                        .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainer", StringArgumentType.string())
+                            .suggests(TrainerCommands::get_trainer_suggestions)
+                            .executes(TrainerCommands::mob_get_required_defeats)))
         )));
     }
 
     private static CompletableFuture<Suggestions> get_trainer_suggestions(final CommandContext<CommandSourceStack> context, final SuggestionsBuilder builder) throws CommandSyntaxException {
         RCTMod.getInstance().getTrainerManager().getAllData().map(e -> e.getKey()).forEach(builder::suggest);
-        return builder.buildFuture();
-    }
-
-    private static CompletableFuture<Suggestions> get_type_suggestions(final CommandContext<CommandSourceStack> context, final SuggestionsBuilder builder) throws CommandSyntaxException {
-        Stream.of(Type.values()).map(Type::name).forEach(builder::suggest);
         return builder.buildFuture();
     }
 
@@ -246,14 +237,23 @@ public class TrainerCommands {
         return required_level_cap;
     }
 
-    // private static int mob_get_required_defeats(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
-    //     var required_defeats = RCTMod.getInstance().getTrainerManager()
-    //         .getData(context.getArgument("trainer", String.class))
-    //         .getRequiredDefeats(Type.valueOf(context.getArgument("type", String.class)));
+    private static int mob_get_required_defeats(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        var it = RCTMod.getInstance().getTrainerManager().getData(context.getArgument("trainer", String.class)).getMissingRequirements(Set.of()).iterator();
+        var sb = new StringBuilder();
+        sb.append('[');
+        
+        if(it.hasNext()) {
+            sb.append(it.next());
+        }
+        
+        while(it.hasNext()) {
+            sb.append(", ").append(it.next());
+        }
 
-    //     context.getSource().sendSuccess(() -> Component.literal(String.valueOf(required_defeats)), false);
-    //     return required_defeats;
-    // }
+        sb.append(']');
+        context.getSource().sendSuccess(() -> Component.literal(String.valueOf(sb.toString())), false);
+        return 0;
+    }
 
     private static int mob_unregister_persistent(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         RCTMod.getInstance().getTrainerSpawner().unregisterPersistent(context.getArgument("mobUUID", String.class));
