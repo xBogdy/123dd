@@ -17,12 +17,15 @@
  */
 package com.gitlab.srcmc.rctmod.commands;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Stream;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData.Type;
+import com.gitlab.srcmc.rctmod.api.data.save.TrainerPlayerData;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
@@ -66,12 +69,24 @@ public final class PlayerCommands {
                                 .executes(PlayerCommands::player_get_type_defeats_target)))))
                 .then(Commands.literal("set")
                     .requires(css -> css.hasPermission(2))
-                    // .then(Commands.literal("level_cap")
-                    //     .then(Commands.argument("value", IntegerArgumentType.integer(0))
-                    //         .executes(PlayerCommands::player_set_level_cap_value))
-                    //     .then(Commands.argument("targets", EntityArgument.players())
-                    //         .then(Commands.argument("value", IntegerArgumentType.integer(0))
-                    //             .executes(PlayerCommands::player_set_level_cap_targets_value))))
+                    .then(Commands.literal("progress")
+                        .then(Commands.literal("before")
+                            .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainerId", StringArgumentType.string())
+                            .suggests(PlayerCommands::get_progress_trainer_suggestions)
+                            .executes(PlayerCommands::player_set_progress_before)))
+                        .then(Commands.literal("after")
+                            .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainerId", StringArgumentType.string())
+                            .suggests(PlayerCommands::get_progress_trainer_suggestions)
+                            .executes(PlayerCommands::player_set_progress_after)))
+                        .then(Commands.argument("targets", EntityArgument.players())
+                            .then(Commands.literal("before")
+                                .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainerId", StringArgumentType.string())
+                                .suggests(PlayerCommands::get_progress_trainer_suggestions)
+                                .executes(PlayerCommands::player_set_progress_targets_before)))
+                            .then(Commands.literal("after")
+                                .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainerId", StringArgumentType.string())
+                                .suggests(PlayerCommands::get_progress_trainer_suggestions)
+                                .executes(PlayerCommands::player_set_progress_targets_after)))))
                     .then(Commands.literal("defeats")
                         .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainerId", StringArgumentType.string())
                             .suggests(PlayerCommands::get_trainer_suggestions)
@@ -81,6 +96,14 @@ public final class PlayerCommands {
                                 .then(Commands.argument("value", IntegerArgumentType.integer(0))
                                     .executes(PlayerCommands::player_set_defeats_targets_value)))))
                 )));
+    }
+
+    private static CompletableFuture<Suggestions> get_progress_trainer_suggestions(final CommandContext<CommandSourceStack> context, final SuggestionsBuilder builder) throws CommandSyntaxException {
+        RCTMod.getInstance().getTrainerManager().getAllData()
+            .filter(e -> !e.getValue().getFollowdBy().isEmpty() || e.getValue().getMissingRequirements(Set.of()).findFirst().isPresent())
+            .map(e -> e.getKey()).forEach(builder::suggest);
+
+        return builder.buildFuture();
     }
 
     private static CompletableFuture<Suggestions> get_trainer_suggestions(final CommandContext<CommandSourceStack> context, final SuggestionsBuilder builder) throws CommandSyntaxException {
@@ -171,28 +194,91 @@ public final class PlayerCommands {
         }
     }
 
-    // private static int player_set_level_cap_value(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
-    //     if(context.getSource().getEntity() instanceof Player player) {
-    //         var level_cap = IntegerArgumentType.getInteger(context, "value");
-    //         RCTMod.getInstance().getTrainerManager().getData(player).setLevelCap(player, level_cap);
-    //         return level_cap;
-    //     }
-        
-    //     context.getSource().sendFailure(Component.literal("caller is not a player"));
-    //     return -1;
-    // }
+    private static void add_progress(TrainerPlayerData tpd, String trainerId, Set<String> visited) {
+        if(!visited.contains(trainerId)) {
+            visited.add(trainerId);
 
-    // private static int player_set_level_cap_targets_value(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
-    //     var targets = EntityArgument.getPlayers(context, "targets");
-    //     var level_cap = IntegerArgumentType.getInteger(context, "value");
-    //     var tm = RCTMod.getInstance().getTrainerManager();
+            var tmd = RCTMod.getInstance().getTrainerManager().getData(trainerId);
+            tmd.getMissingRequirements(Set.of()).forEach(tid -> PlayerCommands.add_progress(tpd, tid, visited));
+            tpd.addProgressDefeat(trainerId);
+        }
+    }
 
-    //     for(var player : targets) {
-    //         tm.getData(player).setLevelCap(player, level_cap);
-    //     }
+    private static int player_set_progress_before(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        if(context.getSource().getEntity() instanceof Player player) {
+            var trainerId = StringArgumentType.getString(context, "trainerId");
+            var tm = RCTMod.getInstance().getTrainerManager();
+            var tmd = tm.getData(trainerId);
+
+            if(tmd != null) {
+                var tpd = RCTMod.getInstance().getTrainerManager().getData(player);
+                tpd.removeProgressDefeats();
+                var visited = new HashSet<String>();
+                tmd.getMissingRequirements(Set.of()).forEach(tid -> PlayerCommands.add_progress(tpd, tid, visited));
+            }
+
+            return 0;
+        }
         
-    //     return level_cap;
-    // }
+        context.getSource().sendFailure(Component.literal("caller is not a player"));
+        return -1;
+    }
+
+    private static int player_set_progress_after(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        if(context.getSource().getEntity() instanceof Player player) {
+            var trainerId = StringArgumentType.getString(context, "trainerId");
+            var tm = RCTMod.getInstance().getTrainerManager();
+            var tmd = tm.getData(trainerId);
+
+            if(tmd != null) {
+                var tpd = RCTMod.getInstance().getTrainerManager().getData(player);
+                tpd.removeProgressDefeats();
+                PlayerCommands.add_progress(tpd, trainerId, new HashSet<>());
+            }
+
+            return 0;
+        }
+        
+        context.getSource().sendFailure(Component.literal("caller is not a player"));
+        return -1;
+    }
+
+    private static int player_set_progress_targets_before(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        var targets = EntityArgument.getPlayers(context, "targets");
+        var trainerId = StringArgumentType.getString(context, "trainerId");
+        var tm = RCTMod.getInstance().getTrainerManager();
+
+        for(var player : targets) {
+            var tmd = tm.getData(trainerId);
+
+            if(tmd != null) {
+                var tpd = RCTMod.getInstance().getTrainerManager().getData(player);
+                tpd.removeProgressDefeats();
+                var visited = new HashSet<String>();
+                tmd.getMissingRequirements(Set.of()).forEach(tid -> PlayerCommands.add_progress(tpd, tid, visited));
+            }
+        }
+        
+        return 0;
+    }
+
+    private static int player_set_progress_targets_after(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        var targets = EntityArgument.getPlayers(context, "targets");
+        var trainerId = StringArgumentType.getString(context, "trainerId");
+        var tm = RCTMod.getInstance().getTrainerManager();
+
+        for(var player : targets) {
+            var tmd = tm.getData(trainerId);
+
+            if(tmd != null) {
+                var tpd = RCTMod.getInstance().getTrainerManager().getData(player);
+                tpd.removeProgressDefeats();
+                PlayerCommands.add_progress(tpd, trainerId, new HashSet<>());
+            }
+        }
+        
+        return 0;
+    }
 
     private static int player_set_defeats_value(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         if(context.getSource().getEntity() instanceof Player player) {

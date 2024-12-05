@@ -4,11 +4,12 @@
 
 ***Added***
 
+- Command: `player set progress [player(s)] (before|after) <trainerId>`
 - Double battles
 - Server config `allowOverLeveling`: Specifies if players should be allowed to level their pokemon above their level cap (default: `false`)
 - Server config `trainerSpawnerItems`: Allows to specify what items can be used to configure a trainer spawner to summon specific trainers
 - Trainer (type) dependent battle rules: Currently allows to set item usage restrictions, leaders and bosses will by default not allow more than `2` item uses
-- Trainer Spawner block: Can be attuned to spawn different trainers whenever a player is nearby (and the trainer is not already elsewhere), trainers will not move while standing on this block, what items will spawn what trainers can be configured
+- Trainer Spawner (craftable) block: Can be attuned to spawn different trainers whenever a player is nearby (and the trainer is not already elsewhere), trainers will not move while standing on this block, what items will spawn what trainers can be configured
 - `HomePos` block positon tag for trainer npcs: Trainers will stay/move to the defined position, trainers spawned from a Trainer Spawner block will have that block set as their home position (this is also the case for any trainers nearby a matching Trainer Spawner)
 
 ***Changed***
@@ -38,6 +39,7 @@
 
 ***Removed***
 
+- Command: `player set level_cap` (see `player set progress` for alternative)
 - ServerConfig: `maxOverLevelCap` (too much of a corner case and barely useful, see `allowOverLeveling` and `additiveLevelCapRequirement` for alternatives)
 
 ## [0.12.0-beta] - 2024-10-03
