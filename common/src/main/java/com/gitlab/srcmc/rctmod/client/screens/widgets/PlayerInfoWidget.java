@@ -33,7 +33,6 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.Checkbox;
 import net.minecraft.client.gui.components.CycleButton;
 import net.minecraft.client.gui.components.PlayerFaceRenderer;
 import net.minecraft.client.gui.components.StringWidget;
@@ -83,8 +82,10 @@ public class PlayerInfoWidget extends AbstractWidget {
 
     private static final int CHECKBOX_X = 196;
     private static final int CHECKBOX_Y = 8;
-    private static final int CHECKBOX_W = 20; // min
+    private static final int CHECKBOX_W = 20;
     private static final int CHECKBOX_H = 16;
+    private static final List<String> CHECKBOX_VALUES = List.of(" ", "✔");
+
 
     private static final int NEXT_PAGE_BUTTON_X = 200;
     private static final int NEXT_PAGE_BUTTON_Y = 104;
@@ -103,7 +104,7 @@ public class PlayerInfoWidget extends AbstractWidget {
     private final CycleButton<String> trainerTypeButton;
     private final Button nextPageButton;
     private final Button prevPageButton;
-    private final Checkbox showUndefeated;
+    private final CycleButton<String> showUndefeated;
 
     private final AbstractWidget[] renderableWidgets;
     private final AbstractWidget[] renderableOnlies;
@@ -131,7 +132,11 @@ public class PlayerInfoWidget extends AbstractWidget {
         types.add(ALL_TRAINER_TYPES_STR);
         types.addAll(Stream.of(TrainerMobData.Type.values()).map(type -> type.name()).toList());
 
-        this.showUndefeated = Checkbox.builder(Component.empty(), this.font).pos(x + CHECKBOX_X, y + CHECKBOX_Y).maxWidth(CHECKBOX_W).selected(true).build();
+        this.showUndefeated = CycleButton.<String>builder(t -> Component.literal(t))
+            .displayOnlyValue()
+            .withValues(CHECKBOX_VALUES).withInitialValue(CHECKBOX_VALUES.get(1))
+            .create(x + CHECKBOX_X, y + CHECKBOX_Y, CHECKBOX_W, CHECKBOX_H, Component.empty());
+
         this.trainerTypeButton = CycleButton.<String>builder(t -> Component.literal(t))
             .withValues(types).withInitialValue(ALL_TRAINER_TYPES_STR)
             .create(x + TYPE_BUTTON_X, y + TYPE_BUTTON_Y, TYPE_BUTTON_W, TYPE_BUTTON_H, Component.empty());
@@ -190,7 +195,7 @@ public class PlayerInfoWidget extends AbstractWidget {
                 this.trainerTypeButton.active = true;
 
                 if(this.trainerListShowUndefeated != null) {
-                    if(this.trainerListShowUndefeated != this.showUndefeated.selected()) {
+                    if(this.trainerListShowUndefeated != this.isShowUndefeatedSelected()) {
                         this.showUndefeated.onPress();
                     }
 
@@ -205,14 +210,14 @@ public class PlayerInfoWidget extends AbstractWidget {
                 break;
             case TRAINER_INFO:
                 if(this.trainerListShowUndefeated == null) {
-                    this.trainerListShowUndefeated = this.showUndefeated.selected();
+                    this.trainerListShowUndefeated = this.isShowUndefeatedSelected();
                 }
 
                 if(this.trainerListType == null) {
                     this.trainerListType = this.trainerTypeButton.getMessage();
                 }
 
-                if(this.showUndefeated.selected()) {
+                if(this.isShowUndefeatedSelected()) {
                     this.showUndefeated.onPress();
                 }
 
@@ -246,7 +251,7 @@ public class PlayerInfoWidget extends AbstractWidget {
             this.prevPageButton.active = this.trainerList.getPage() > 0;
 
             var trainerTypeStr = this.trainerTypeButton.getValue();
-            var showUndefeated = this.showUndefeated.selected();
+            var showUndefeated = this.isShowUndefeatedSelected();
             var showAllTypes = trainerTypeStr.equals(ALL_TRAINER_TYPES_STR);
 
             if(!showAllTypes) {
@@ -282,6 +287,10 @@ public class PlayerInfoWidget extends AbstractWidget {
         // TODO
     }
 
+    private boolean isShowUndefeatedSelected() {
+        return this.showUndefeated.getValue().equals(CHECKBOX_VALUES.get(1));
+    }
+
     private void onNextPage(Button button) {
         if(this.trainerList.active) {
             this.trainerList.setPage(this.trainerList.getPage() + 1);
@@ -305,7 +314,7 @@ public class PlayerInfoWidget extends AbstractWidget {
     }
 
     private long getTotalDefeats() {
-        if(!this.showUndefeated.selected()) {
+        if(!this.isShowUndefeatedSelected()) {
             return this.trainerList.getShowAllTypes()
                 ? this.getDistinctDefeats()
                 : this.getDistinctDefeats(this.trainerList.getTrainerType());

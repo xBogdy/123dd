@@ -87,7 +87,7 @@ public class TrainerInfoWidget extends TrainerDataWidget {
 
         var displayName = TextUtils.trim(entryState == EntryState.UNKNOWN ? "???" : trainer.getTrainerTeam().getName(), MAX_NAME_LENGTH);
         var identity = TextUtils.trim(entryState == EntryState.UNKNOWN ? "???" : trainer.getTrainerTeam().getIdentity(), MAX_NAME_LENGTH);
-        var backX = (int)(this.w*0.92);
+        var backX = (int)(this.w*0.9);
 
         this.back = new HoverElement<>(
             new MultiStyleStringWidget(backX, this.y, this.w - backX, h, toComponent("[X]"), this.font).addStyle(Style.EMPTY.withColor(ChatFormatting.RED)).alignRight(),
@@ -138,20 +138,16 @@ public class TrainerInfoWidget extends TrainerDataWidget {
         pc.renderables.add(new StringWidget(8, this.y += this.h, this.w, this.h, toComponent("Type: "), this.font).alignLeft());
         pc.renderables.add(new StringWidget(8, this.y, (int)(this.w*0.9), this.h, toComponent(this.trainer.getType().name()), this.font).alignRight());
 
-        pc.renderables.add(new StringWidget(8, this.y += this.h, this.w, this.h, toComponent("Rew. Level Cap: "), this.font).alignLeft());
-        pc.renderables.add(new StringWidget(8, this.y, (int)(this.w*0.9), this.h, toComponent(this.trainer.getRewardLevelCap()), this.font).alignRight());
-
-        pc.renderables.add(new StringWidget(8, this.y += this.h , this.w, this.h, toComponent("Req. Level Cap: "), this.font).alignLeft());
-        pc.renderables.add(new StringWidget(8, this.y, (int)(this.w*0.9), this.h, toComponent(this.trainer.getRequiredLevelCap()), this.font).alignRight());
-
-        pc.renderables.add(new StringWidget(8, this.y += this.h , this.w, this.h, toComponent("Req. Trainers: "), this.font).alignLeft());
+        pc.renderables.add(new StringWidget(8, this.y += this.h, this.w, this.h, toComponent("Level Caps: "), this.font).alignLeft());
+        pc.renderables.add(new StringWidget(8, this.y, (int)(this.w*0.9), this.h, toComponent(String.format("%d -> %d", this.trainer.getRequiredLevelCap(), this.trainer.getRewardLevelCap())), this.font).alignRight());
+        pc.renderables.add(new StringWidget(8, this.y += this.h , this.w, this.h, toComponent("Required Trainers: "), this.font).alignLeft());
         var tm = RCTMod.getInstance().getTrainerManager();
 
         this.trainer.getMissingRequirements(Set.of()).map(tm::getData).sorted((tmd1, tmd2) -> {
             var c = Integer.compare(tmd1.getRequiredLevelCap(), tmd2.getRequiredLevelCap());
             return c == 0 ? tmd1.getTrainerTeam().getName().compareTo(tmd2.getTrainerTeam().getName()) : c;
         }).forEach(tmd -> {
-            pc.renderables.add(new StringWidget(12, this.y += this.h , this.w, this.h, toComponent(String.format("%s", tmd.getTrainerTeam().getName())), this.font).alignLeft());
+            pc.renderables.add(new StringWidget(16, this.y += this.h , this.w, this.h, toComponent(String.format("%s", tmd.getTrainerTeam().getName())), this.font).alignLeft());
         });
 
         pc.height = this.y + this.h;
