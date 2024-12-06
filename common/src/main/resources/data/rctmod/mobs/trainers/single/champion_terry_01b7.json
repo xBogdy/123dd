@@ -8,7 +8,7 @@
   ],
   "maxTrainerWins": 2,
   "maxTrainerDefeats": 1,
-  "battleCooldownTicks": 600,
+  "battleCooldownTicks": 240,
   "spawnWeightFactor": 0.25,
   "biomeTagBlacklist": ["is_void"],
   "biomeTagWhitelist": ["has_structure/end_city", "is_rare"]

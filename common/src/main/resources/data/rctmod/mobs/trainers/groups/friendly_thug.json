@@ -2,7 +2,7 @@
   "type": "NORMAL",
   "maxTrainerWins": 3,
   "maxTrainerDefeats": 1,
-  "battleCooldownTicks": 600,
+  "battleCooldownTicks": 240,
   "spawnWeightFactor": 1.0,
   "biomeTagBlacklist": ["is_void", "is_water"],
   "biomeTagWhitelist": ["is_nether", "is_badlands", "is_wasteland", "has_structure/end_city"]

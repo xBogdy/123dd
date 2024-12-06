@@ -68,7 +68,7 @@ public class TrainerMobData implements IDataPackObject {
     
     private int maxTrainerWins = 3;
     private int maxTrainerDefeats = 1;
-    private int battleCooldownTicks = 300;
+    private int battleCooldownTicks = 240;
     
     private float spawnWeightFactor = 1F; // >= 0
     private Set<String> biomeTagBlacklist = new HashSet<>();
