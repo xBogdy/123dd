@@ -3,7 +3,7 @@
   "requiredDefeats": [
     ["rival_terry_01b3", "rival_terry_01b4", "rival_terry_01b5"]
   ],
-  "maxTrainerWins": 2,
+  "maxTrainerWins": 3,
   "maxTrainerDefeats": 1,
   "battleCooldownTicks": 240,
   "spawnWeightFactor": 0.25,

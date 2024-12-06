@@ -6,7 +6,7 @@
     ["elite_four_lorelei_004d", "elite_four_lorelei_004e"],
     ["elite_four_agatha_0053", "elite_four_agatha_0054"]
   ],
-  "maxTrainerWins": 1,
+  "maxTrainerWins": 3,
   "maxTrainerDefeats": 2,
   "battleCooldownTicks": 240,
   "spawnWeightFactor": 0.25,

@@ -3,7 +3,7 @@
   "requiredDefeats": [
     ["rocket_admin_archer_002e"]
   ],
-  "maxTrainerWins": 2,
+  "maxTrainerWins": 3,
   "maxTrainerDefeats": 1,
   "battleCooldownTicks": 240,
   "spawnWeightFactor": 0.25,

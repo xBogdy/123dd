@@ -3,7 +3,7 @@
   "requiredDefeats": [
     ["leader_lt_surge_01a0"]
   ],
-  "maxTrainerWins": 2,
+  "maxTrainerWins": 3,
   "maxTrainerDefeats": 1,
   "battleCooldownTicks": 240,
   "spawnWeightFactor": 0.25,

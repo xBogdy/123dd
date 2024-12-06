@@ -1,6 +1,6 @@
 {
   "type": "TEAM_ROCKET",
-  "maxTrainerWins": 3,
+  "maxTrainerWins": 5,
   "maxTrainerDefeats": 1,
   "battleCooldownTicks": 240,
   "spawnWeightFactor": 1.0,
