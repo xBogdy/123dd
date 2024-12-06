@@ -29,10 +29,8 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -41,21 +39,18 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class TrainerSpawnerBlock extends BaseEntityBlock {
     public static final MapCodec<TrainerSpawnerBlock> CODEC = TrainerSpawnerBlock.simpleCodec(TrainerSpawnerBlock::new);
 
     // sub-optimal for ai pathing (TODO: adjust model?)
-    public static final VoxelShape SHAPE = Shapes.or(
-        Block.box(0, 0, 0, 16, 3, 16),
-        Block.box(0, 13, 0, 16, 16, 16),
-        Block.box(1, 3, 11, 5, 13, 15),
-        Block.box(11, 3, 1, 15, 13, 5),
-        Block.box(11, 3, 11, 15, 13, 15),
-        Block.box(1, 3, 1, 5, 13, 5));
+    // public static final VoxelShape SHAPE = Shapes.or(
+    //     Block.box(0, 0, 0, 16, 3, 16),
+    //     Block.box(0, 13, 0, 16, 16, 16),
+    //     Block.box(1, 3, 11, 5, 13, 15),
+    //     Block.box(11, 3, 1, 15, 13, 5),
+    //     Block.box(11, 3, 11, 15, 13, 15),
+    //     Block.box(1, 3, 1, 5, 13, 5));
 
     public TrainerSpawnerBlock() {
         this(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICKS).noOcclusion());
@@ -103,10 +98,10 @@ public class TrainerSpawnerBlock extends BaseEntityBlock {
         return RenderShape.MODEL;
     }
 
-    @Override
-    protected VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
-        return TrainerSpawnerBlock.SHAPE;
-    }
+    // @Override
+    // protected VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
+    //     return TrainerSpawnerBlock.SHAPE;
+    // }
 
     @Override
     protected MapCodec<? extends BaseEntityBlock> codec() {

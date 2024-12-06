@@ -23,6 +23,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.ModRegistries;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
@@ -94,7 +95,12 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
         super.loadAdditional(tag, provider);
         this.trainerIds.clear();
         tag.getAllKeys().stream().filter(key -> key.charAt(0) == '_').map(key -> key.substring(1)).forEach(this.trainerIds::add);
-        this.setRenderItemKey(tag.getString("renderItemKey"));
+
+        if(tag.contains("renderItemKey")) {
+            this.setRenderItemKey(tag.getString("renderItemKey"));
+        } else {
+            this.setRenderItemKey(null);
+        }
     }
 
     public void setTrainerIds(String renderItemKey, List<String> trainerIds) {
@@ -137,12 +143,15 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
     }
 
     protected void setRenderItemKey(String renderItemKey) {
-        var rl = ResourceLocation.parse(renderItemKey);
+        if(renderItemKey != null) {
+            var rl = ResourceLocation.parse(renderItemKey);
 
-        if(renderItemKey == null || !BuiltInRegistries.ITEM.containsKey(rl)) {
-            this.renderItem = null;
-        } else {
-            this.renderItem = BuiltInRegistries.ITEM.get(rl);
+            if(!BuiltInRegistries.ITEM.containsKey(rl)) {
+                ModCommon.LOG.info("Invalid render item for Trainer Spawner: " + rl.toString());
+                this.renderItem = null;
+            } else {
+                this.renderItem = BuiltInRegistries.ITEM.get(rl);
+            }
         }
 
         this.renderItemKey = renderItemKey;
