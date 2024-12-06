@@ -175,7 +175,7 @@ public interface IServerConfig extends IModConfig {
             Map.<String, List<String>>entry("cobblemon:focus_band", List.of("elite_four_bruno_0050", "elite_four_bruno_0051")),
             Map.<String, List<String>>entry("cobblemon:dragon_fang", List.of("elite_four_lance_0056", "elite_four_lance_0057")),
             Map.<String, List<String>>entry("cobblemon:never_melt_ice", List.of("elite_four_lorelei_004d", "elite_four_lorelei_004e")),
-            Map.<String, List<String>>entry("cobblemon:life_orb", List.of("champion_terry_01b6", "champion_terry_01b7", "champion_terry_01b8", "champion_terry_02e3", "champion_terry_02e4", "champion_terry_02e5"))
+            Map.<String, List<String>>entry("cobblemon:life_orb", List.of("champion_terry_01b6", "champion_terry_01b7", "champion_terry_01b8"))
         );
     }
 
