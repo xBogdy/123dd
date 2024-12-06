@@ -5,5 +5,5 @@
   "battleCooldownTicks": 240,
   "spawnWeightFactor": 1.0,
   "biomeTagBlacklist": ["is_void", "is_end", "is_water", "is_underground"],
-  "biomeTagWhitelist": ["is_forest", "is_dense", "is_plains", "is_beach", "is_hill"]
+  "biomeTagWhitelist": ["is_forest", "is_dense_vegetation", "is_plains", "is_beach", "is_hill"]
 }

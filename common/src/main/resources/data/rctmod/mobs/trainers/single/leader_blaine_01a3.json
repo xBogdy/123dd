@@ -7,6 +7,6 @@
   "maxTrainerDefeats": 1,
   "battleCooldownTicks": 240,
   "spawnWeightFactor": 0.25,
-  "biomeTagBlacklist": ["is_void", "is_end"],
+  "biomeTagBlacklist": ["is_void", "is_end", "is_wet"],
   "biomeTagWhitelist": ["is_hot"]
 }

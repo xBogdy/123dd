@@ -8,5 +8,5 @@
   "battleCooldownTicks": 240,
   "spawnWeightFactor": 0.25,
   "biomeTagBlacklist": ["is_void", "is_nether", "is_end"],
-  "biomeTagWhitelist": ["is_dense", "is_lush"]
+  "biomeTagWhitelist": ["is_dense_vegetation", "is_lush"]
 }

@@ -8,5 +8,5 @@
   "battleCooldownTicks": 240,
   "spawnWeightFactor": 0.25,
   "biomeTagBlacklist": ["is_void", "is_nether", "is_end"],
-  "biomeTagWhitelist": ["is_plains", "is_sparse", "is_rare", "is_forest"]
+  "biomeTagWhitelist": ["is_plains", "is_sparse_vegetation", "is_rare", "is_forest"]
 }
