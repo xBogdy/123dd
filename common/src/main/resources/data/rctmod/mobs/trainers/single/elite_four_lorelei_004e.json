@@ -7,6 +7,6 @@
   "maxTrainerDefeats": 1,
   "battleCooldownTicks": 240,
   "spawnWeightFactor": 0.25,
-  "biomeTagBlacklist": ["is_void"],
-  "biomeTagWhitelist": ["is_nether", "has_structure/end_city", "is_peak", "is_rare"]
+  "biomeTagBlacklist": ["is_void", "is_nether", "is_end"],
+  "biomeTagWhitelist": ["is_cold"]
 }

@@ -10,8 +10,8 @@
 - Server config `allowOverLeveling`: Specifies if players should be allowed to level their pokemon above their level cap (default: `false`)
 - Server config `trainerSpawnerItems`: Allows to specify what items can be used to configure a trainer spawner to summon specific trainers
 - Trainer (type) dependent battle rules: Currently allows to set item usage restrictions, leaders and bosses will by default not allow more than `2` item uses
-- Trainer Spawner (craftable) block: Can be attuned to spawn different trainers whenever a player is nearby (and the trainer is not already elsewhere), trainers will not move while standing on this block, what items will spawn what trainers can be configured
-- `HomePos` block positon tag for trainer npcs: Trainers will stay/move to the defined position, trainers spawned from a Trainer Spawner block will have that block set as their home position (this is also the case for any trainers nearby a matching Trainer Spawner)
+- Trainer Spawner (craftable) block: Can be attuned to spawn different trainers whenever a player is nearby (and the trainer is not already elsewhere), trainers will not move while standing on this block, what items will spawn what trainers can be configured (check out the [documentation](https://srcmc.gitlab.io/rct/docs/gameplay/blocks/#trainer-spawner) for more information)
+- `HomePos` block positon tag for trainer npcs: Trainers will stay/move to the defined position, trainers spawned from a Trainer Spawner block will have that block set as their home position (this is also the case for any trainers nearby a matching Trainer Spawner block)
 
 ***Changed***
 
@@ -21,8 +21,8 @@
 - Decreased trainer battle cooldown from `30` to `12` seconds
 - Increased battle attempts against leaders/bosses from `2` to `3` and against other trainers from `3` to `5`
 - Minor adjustments to spawn rates: Decreased boosted rates for never beaten leaders/bosses but increased the rates for never beaten trainers in general
-- Possible spawn locations of leaders and bosses now somewhat match their themes (rather than beeing able to spawn everywhere) (TODO)
-- Progression: Added more required trainer fights, e.g. Rocket Admin Archer after Brock and rival fights
+- Possible spawn locations of leaders and bosses now somewhat match their themes (rather than beeing able to spawn everywhere)
+- Progression: Added more required trainer fights, e.g. Rocket Admin Archer after Brock and all the rival fights
 - ServerConfig: Renamed `bonusLevelCap` -> `additiveLevelCapRequirement` (works slightly different but effectively serves the same purpose)
 - Some pokemon that are originally supposed to mega evolve (i.e. holding key stones) now hold other competetive held items as replacement (until mega evolutions are supported)
 - Some trainers might carry items that they may use in battles (e.g. potions) (TODO)
@@ -37,7 +37,7 @@
 - Some pokemon missing held items
 - Some pokemon not having the correct regional form
 - Trainer Card now glows and renders the arrow regardless if the trainer spawned in naturally or was summoned in any other way (TODO)
-- Trainer pokemon sometimes dropping loot, missing trainer pokemon send out and retrieve animation, and probably some other stuff
+- Trainer pokemon sometimes dropping loot, missing trainer pokemon send out and retrieve animations, and probably some other stuff
 
 ***Removed***
 
