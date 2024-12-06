@@ -19,6 +19,9 @@ package com.gitlab.srcmc.rctmod.api.config;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
+import net.minecraft.world.item.Item;
 
 public interface IServerConfig extends IModConfig {
     /**
@@ -178,6 +181,13 @@ public interface IServerConfig extends IModConfig {
             Map.<String, List<String>>entry("cobblemon:life_orb", List.of("champion_terry_01b6", "champion_terry_01b7", "champion_terry_01b8"))
         );
     }
+
+    /**
+     * Retrieves a set of spawner items that are configured to spawn a trainer with the
+     * given trainer id. This values is not a config value but derived from {@link
+     * IServerConfig#trainerSpawnerItems()} on config reload.
+     */
+    default Set<Item> spawnerItemsFor(String trainerId) { return Set.of(); }
 
     /**
      * Initial level cap of players. Pokemon will not gain any experience if at or

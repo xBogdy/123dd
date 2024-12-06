@@ -45,7 +45,7 @@ import net.minecraft.resources.ResourceLocation;
 public class TrainerInfoWidget extends TrainerDataWidget {
     private static final int MAX_NAME_LENGTH = 20;
     private static final int MAX_SPECIES_LENGTH = 28;
-    private static final int MAX_BIOME_LENGTH = 28;
+    private static final int MAX_BIOME_LENGTH = 24;
 
     public class PageContent {
         public final Component title;
@@ -165,6 +165,14 @@ public class TrainerInfoWidget extends TrainerDataWidget {
         });
 
         this.y = this.identity == null ? 0 : this.h;
+        var spawnerItems = config.spawnerItemsFor(this.trainerId);
+        
+        if(spawnerItems.size() > 0) {
+            pc.renderables.add(new StringWidget(8, this.y += this.h , this.w, this.h, toComponent("Items:"), this.font).alignLeft());
+            spawnerItems.forEach(item -> pc.renderables.add(new StringWidget(16, this.y += this.h, this.w, this.h, toComponent(item.getDefaultInstance().getHoverName().getString()), this.font).alignLeft()));
+        }
+
+        pc.renderables.add(new StringWidget(8, this.y += this.h , this.w, this.h, toComponent("Biomes:"), this.font).alignLeft());
 
         reg.holders().forEach(holder -> {
             var tags = holder.tags()
@@ -192,11 +200,11 @@ public class TrainerInfoWidget extends TrainerDataWidget {
             var rs = biomes.poll();
 
             if(!namespace.equals(rs.getNamespace())) {
-                pc.renderables.add(new StringWidget(8, this.y += this.h , this.w, this.h, toComponent(TextUtils.trim(rs.getNamespace(), MAX_BIOME_LENGTH)), this.font).alignLeft());
+                pc.renderables.add(new StringWidget(16, this.y += this.h , this.w, this.h, toComponent(TextUtils.trim(rs.getNamespace(), MAX_BIOME_LENGTH)), this.font).alignLeft());
                 namespace = rs.getNamespace();
             }
 
-            pc.renderables.add(new StringWidget(16, this.y += this.h , this.w, this.h, toComponent(TextUtils.trim(rs.getPath(), MAX_BIOME_LENGTH)), this.font).alignLeft());
+            pc.renderables.add(new StringWidget(20, this.y += this.h , this.w, this.h, toComponent(TextUtils.trim(rs.getPath(), MAX_BIOME_LENGTH)), this.font).alignLeft());
         }
 
         pc.height = this.y + this.h;

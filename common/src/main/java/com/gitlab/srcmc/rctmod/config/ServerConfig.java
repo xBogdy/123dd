@@ -19,12 +19,18 @@ package com.gitlab.srcmc.rctmod.config;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import com.gitlab.srcmc.rctmod.api.config.IServerConfig;
 
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.common.ModConfigSpec;
 import net.neoforged.neoforge.common.ModConfigSpec.ConfigValue;
 
@@ -42,6 +48,7 @@ public class ServerConfig implements IServerConfig {
     private final ConfigValue<List<? extends String>> biomeTagWhitelistValue;
     private final ConfigValue<List<? extends String>> trainerSpawnerItems;
     private final Map<String, List<String>> trainerSpawnerItemsParsed;
+    private final Map<String, Set<Item>> trainerIdToSpawnerItems;
 
     // players
     private final ConfigValue<Integer> initialLevelCapValue;
@@ -126,15 +133,34 @@ public class ServerConfig implements IServerConfig {
 
         this.spec = builder.build();
         this.trainerSpawnerItemsParsed = new HashMap<>();
+        this.trainerIdToSpawnerItems = new HashMap<>();
     }
 
     @Override
     public void reload() {
         this.trainerSpawnerItemsParsed.clear();
+        this.trainerIdToSpawnerItems.clear();
 
         for(var entry : this.trainerSpawnerItems.get()) {
             ServerConfig.parseTrainerSpawnerItem(trainerSpawnerItemsParsed, entry);
         }
+
+        this.trainerSpawnerItemsParsed.forEach((itemKey, tids) -> {
+            var itemRl = ResourceLocation.parse(itemKey);
+
+            if(BuiltInRegistries.ITEM.containsKey(itemRl)) {
+                var item = BuiltInRegistries.ITEM.get(itemRl);
+
+                tids.forEach(tid -> this.trainerIdToSpawnerItems.compute(tid, (k, v) -> {
+                    if(v == null) {
+                        v = new HashSet<>();
+                    }
+
+                    v.add(item);
+                    return v;
+                }));
+            }
+        });
     }
 
     @Override
@@ -194,7 +220,12 @@ public class ServerConfig implements IServerConfig {
 
     @Override
     public Map<String, List<String>> trainerSpawnerItems() {
-        return this.trainerSpawnerItemsParsed;
+        return Collections.unmodifiableMap(this.trainerSpawnerItemsParsed);
+    }
+
+    @Override
+    public Set<Item> spawnerItemsFor(String trainerId) {
+        return Collections.unmodifiableSet(this.trainerIdToSpawnerItems.getOrDefault(trainerId, Set.of()));
     }
 
     @Override
