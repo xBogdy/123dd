@@ -64,7 +64,7 @@ public class TargetArrowRenderer {
     private static final float SX = 0.009375f, SY = 0.03f, SZ = 0.01875f;
 
     private Vector3f direction;
-    private int activationTicks;
+    private int activationTicks, sourceTicks;
     private Entity source, target;
 
     // public static double x = 0.4, y = -0.27, z = -0.66; // with RenderHand
@@ -85,6 +85,7 @@ public class TargetArrowRenderer {
 
     public void tick() {
         if(this.source != null && this.target != null) {
+            this.sourceTicks = source.tickCount;
             this.updateDirection();
 
             if(this.activationTicks < TICKS_TO_ACTIVATE) {
@@ -114,8 +115,8 @@ public class TargetArrowRenderer {
                 poseStack.pushPose();
                 poseStack.translate(TX, TY, TZ);
                 poseStack.mulPose(cam.rotation().difference(rotation));
-                poseStack.mulPose(new Quaternionf().rotateY((float)Math.PI*(this.source.tickCount + partialTick)/TICKS_TO_ACTIVATE));
-                poseStack.scale(SX * t, (float)(SY + Math.sin((this.source.tickCount + partialTick)/10)*0.01) * t, SZ * t);
+                poseStack.mulPose(new Quaternionf().rotateY((float)Math.PI*(this.sourceTicks + partialTick)/TICKS_TO_ACTIVATE));
+                poseStack.scale(SX * t, (float)(SY + Math.sin((this.sourceTicks + partialTick)/10)*0.01) * t, SZ * t);
 
                 RenderSystem.disableCull();
                 RenderSystem.enableBlend();
