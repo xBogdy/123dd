@@ -204,12 +204,12 @@ public class PlayerState implements Serializable {
     }
 
     public boolean isKeyTrainer(String trainerId) {
+        var tm = RCTMod.getInstance().getTrainerManager();
         var tmd = RCTMod.getInstance().getTrainerManager().getData(trainerId);
 
         return tmd != null
             && tmd.getFollowdBy().size() > 0
-            && !this.defeatedTrainerIds.contains(trainerId)
-            && tmd.getFollowdBy().stream().noneMatch(this.defeatedTrainerIds::contains)
+            && tmd.getFollowdBy().stream().noneMatch(sid -> tm.getData(sid).getMissingRequirements(this.defeatedTrainerIds).findFirst().isEmpty())
             && tmd.getMissingRequirements(this.defeatedTrainerIds).findFirst().isEmpty();
     }
 
