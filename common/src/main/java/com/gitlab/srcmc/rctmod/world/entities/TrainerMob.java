@@ -190,10 +190,13 @@ public class TrainerMob extends PathfinderMob implements Npc {
                     ChatUtils.reply(this, player, "missing_beaten_champs");
                     break;
                 case RIVAL:
-                    ChatUtils.reply(this, player, "missing_beaten_rival"); // TODO!
+                    ChatUtils.reply(this, player, "missing_beaten_rival");
+                    break;
+                case TEAM_ROCKET:
+                    ChatUtils.reply(this, player, "missing_beaten_team_rocket");
                     break;
                 default:
-                    // TODO: default response ('missing_beaten_trainer')
+                    ModCommon.LOG.info("Unexpected reason for battle failure: " + player.getDisplayName().getString() + " vs " + this.getTrainerId());
                     break;
             }
         } else if(tpd.getLevelCap() < tmd.getRequiredLevelCap()) {

@@ -195,7 +195,7 @@
     "You must overcome a champion to face me.",
     "Prove yourself against a champion first."
   ],
-  "missing_beaten_boss": [
+  "missing_beaten_rival": [
     "There is someone that you should face first.",
     "Someone out there needs your attention more than me right now.",
     "Isn't there something else that you should take care of first?",
@@ -265,6 +265,16 @@
     "Your next opponent is not me, but another.",
     "You need to finish another battle before facing me.",
     "Another trainer awaits your arrival."
+  ],
+  "missing_beaten_team_rocket": [
+    "I heard Team Rocket was looking for you.",
+    "I don't think its a good time for a battle right now, some ominous people were looking for you.",
+    "You seem to be caught in some trouble, sorry but I don't want to get targeted by them.",
+    "Someone was looking for you.",
+    "There's someone else you need to defeat first.",
+    "I saw some shady figures lurking around, and they seemed interested in you.",
+    "You seem to be in a bit of a bind, sorry but I don't want to get caught up in it.",
+    "Lets have a battle another time, there was someone looking for you you should meet first."
   ],
   "missing_pokemon": [
     "You do not seem to have any Pokémon capable fighting in your team.",
