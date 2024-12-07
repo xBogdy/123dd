@@ -35,11 +35,10 @@ import net.minecraft.resources.ResourceLocation;
 
 public class TrainerMobData implements IDataPackObject {
     public enum Type {
-        NORMAL, LEADER, BOSS, E4, CHAMP, TEAM_ROCKET, RIVAL;
+        NORMAL, LEADER, E4, CHAMP, TEAM_ROCKET, RIVAL;
 
         private static final Map<Type, String> symbols = Map.of(
             LEADER, "[L]",
-            BOSS, "[B]",
             E4, "[E]",
             CHAMP, "[C]",
             TEAM_ROCKET, "[T]",
@@ -48,10 +47,10 @@ public class TrainerMobData implements IDataPackObject {
 
         private static final Map<Type, Integer> colors = Map.of(
             LEADER, ChatFormatting.GREEN.getColor(),
-            BOSS, ChatFormatting.GOLD.getColor(),
             E4, ChatFormatting.BLUE.getColor(),
             CHAMP, ChatFormatting.LIGHT_PURPLE.getColor(),
-            TEAM_ROCKET, ChatFormatting.DARK_GRAY.getColor()
+            TEAM_ROCKET, ChatFormatting.DARK_GRAY.getColor(),
+            RIVAL, ChatFormatting.GOLD.getColor()
         );
 
         public String toString() {

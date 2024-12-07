@@ -189,9 +189,6 @@ public class TrainerMob extends PathfinderMob implements Npc {
                 case CHAMP:
                     ChatUtils.reply(this, player, "missing_beaten_champs");
                     break;
-                case BOSS:
-                    ChatUtils.reply(this, player, "missing_beaten_boss");
-                    break;
                 case RIVAL:
                     ChatUtils.reply(this, player, "missing_beaten_rival"); // TODO!
                     break;

@@ -30,6 +30,7 @@
 - Trainer defeat counts are now per player, this means different players can now fight the same trainer in a row (trainers will still tend to walk away if defeated/exhausted once)
 - Trainers now follow players holding a Trainer Card in their main- or off hand
 - Update to Cobblemon 1.6, Minecraft 1.21, Fabric/Neoforge
+- `RIVAL` names are now colored gold
 
 ***Fixed***
 
@@ -43,6 +44,7 @@
 
 - Command: `player set level_cap` (see `player set progress` for alternative)
 - ServerConfig: `maxOverLevelCap` (too much of a corner case and barely useful, see `allowOverLeveling` and `additiveLevelCapRequirement` for alternatives)
+- Trainer type `BOSS` (former bosses are now either of type `RIVAL` or `TEAM_ROCKET`)
 
 ## [0.12.0-beta] - 2024-10-03
 
