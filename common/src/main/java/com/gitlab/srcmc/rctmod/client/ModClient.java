@@ -53,8 +53,8 @@ public class ModClient {
         NetworkManager.registerReceiver(Side.S2C, PlayerStatePayload.TYPE, PlayerStatePayload.CODEC, ModClient::receivePlayerState);
         ClientTickEvent.CLIENT_LEVEL_PRE.register(ModClient::onClientWorldTick);
         EntityRendererRegistry.register(ModRegistries.Entities.TRAINER, TrainerRenderer::new);
-        TargetArrowRenderer.init(ModRegistries.Items.TRAINER_CARD);
         LifecycleEvent.SETUP.register(ModClient::onSetup);
+        TargetArrowRenderer.init();
     }
 
     // Setup

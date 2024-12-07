@@ -69,7 +69,6 @@ public class TrainerSpawner {
     private Map<String, Integer> persistentPlayerSpawns;
 
     private Set<TrainerMob> mobs = new HashSet<>();
-    private Map<UUID, Integer> tracked = new HashMap<>();
 
     public void init(ServerLevel level) {
         this.spawns.clear();
@@ -120,7 +119,6 @@ public class TrainerSpawner {
 
             if(originPlayer != null) {
                 playerSpawns.compute(originPlayer.toString(), (key, value) -> value == null ? 1 : value + 1);
-                this.track(mob, originPlayer);
             }
 
             identities.compute(identity, (key, value) -> value == null ? 1 : value + 1);
@@ -153,7 +151,6 @@ public class TrainerSpawner {
 
             if(originPlayer != null) {
                 playerSpawns.compute(originPlayer.toString(), (key, value) -> value == 1 ? null : value - 1);
-                this.untrack(mob, originPlayer);
             }
 
             identities.compute(identity, (key, value) -> value == 1 ? null : value - 1);
@@ -204,12 +201,10 @@ public class TrainerSpawner {
 
             if(originPlayer != null) {
                 playerSpawns.compute(originPlayer.toString(), (key, value) -> value == 1 ? null : value - 1);
-                this.untrack(mob, originPlayer);
             }
 
             if(newOriginPlayer != null) {
                 playerSpawns.compute(newOriginPlayer.toString(), (key, value) -> value == null ? 1 : value + 1);
-                this.track(mob, newOriginPlayer);
             }
         }
     }
@@ -491,44 +486,16 @@ public class TrainerSpawner {
         var reqLevelCap = mobTr.getRequiredLevelCap();
         var levelCap = ps.getLevelCap();
         var keyTrainerFactor = 1f;
+        var isKey = ps.isKeyTrainer(trainerId);
 
-        if(ps.isKeyTrainer(mobTr) && tm.getBattleMemory((ServerLevel)player.level(), trainerId).getDefeatByCount(player) == 0) {
+        if(isKey) {
             var a = (10 - Math.min(9, levelCap/10))/2f;
             var b = Math.max(0, levelCap - playerLevel)*a + 1;
             keyTrainerFactor = KEY_TRAINER_SPAWN_WEIGHT_FACTOR/b;
         }
 
-        var undefeatedFactor = ps.getTrainerDefeatCount(trainerId) == 0 ? UNDEFEATED_WEIGHT_FACTOR : 1f;
+        var undefeatedFactor = isKey || ps.getTrainerDefeatCount(trainerId) == 0 ? UNDEFEATED_WEIGHT_FACTOR : 1f;
         int diff = Math.abs(Math.min(playerLevel, levelCap) - reqLevelCap);
         return diff > config.maxLevelDiff() ? 0 : ((config.maxLevelDiff() + 1) - diff)*mobTr.getSpawnWeightFactor()*undefeatedFactor*keyTrainerFactor;
-    }
-
-    private void track(TrainerMob trainer, UUID playerUUID) {
-        if(playerUUID != null) {
-            var player = trainer.level().getPlayerByUUID(playerUUID);
-
-            if(player != null) {
-                var tm = RCTMod.getInstance().getTrainerManager();
-                var trMob = tm.getData(trainer);
-                
-                if(trMob.getRewardLevelCap() > tm.getData(player).getLevelCap()) {
-                    PlayerState.get(player).setTarget(trainer.getId());
-                    this.tracked.put(playerUUID, trainer.getId());
-                }
-            }
-        }
-    }
-    
-    private void untrack(TrainerMob trainer, UUID playerUUID) {
-        var id = this.tracked.get(playerUUID);
-
-        if(id != null && trainer.getId() == id) {
-            var player = trainer.level().getPlayerByUUID(playerUUID);
-            this.tracked.remove(playerUUID);
-
-            if(player != null) {
-                PlayerState.get(player).setTarget(-1);
-            }
-        }
     }
 }

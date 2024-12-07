@@ -133,7 +133,15 @@ public class TrainerMob extends PathfinderMob implements Npc {
                 && tpd.getLevelCap() >= tmd.getRequiredLevelCap()
                 && (cfg.allowOverLeveling() || tm.getPlayerLevel(player) <= tpd.getLevelCap())
                 && tmd.getMissingRequirements(tm.getData(player).getDefeatedTrainerIds()).findFirst().isEmpty()
-                && (this.isPersistenceRequired() || (!this.wasDefeatedBy(player.getUUID()) && !this.wasVictoriousAgainst(player.getUUID())));
+                && this.couldBattleAgainst(e);
+        }
+
+        return false;
+    }
+
+    public boolean couldBattleAgainst(Entity e) {
+        if(e instanceof Player player) {
+            return this.isPersistenceRequired() || (!this.wasDefeatedBy(player.getUUID()) && !this.wasVictoriousAgainst(player.getUUID()));
         }
 
         return false;

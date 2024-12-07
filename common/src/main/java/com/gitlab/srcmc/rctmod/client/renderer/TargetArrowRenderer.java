@@ -22,7 +22,6 @@ import java.util.function.Supplier;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
-import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.BufferUploader;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
@@ -33,7 +32,6 @@ import com.mojang.blaze3d.vertex.VertexFormat;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.Item;
 
 public class TargetArrowRenderer {
     private static final float PYRAMID_STRIP[] = {
@@ -65,10 +63,9 @@ public class TargetArrowRenderer {
     public static double TX = -0.15, TY = 0.25, TZ = 0.03;
     private static final float SX = 0.009375f, SY = 0.03f, SZ = 0.01875f;
 
-    private Supplier<? extends Item> itemSupplier;
     private Vector3f direction;
     private int sourceTicks, activationTicks;
-    private boolean active;
+    private Entity source, target;
 
     // public static double x = 0.4, y = -0.27, z = -0.66; // with RenderHand
     // public static double x = -0.15, y = 0.25, z = 0.03; // with ItemRenderer
@@ -77,8 +74,8 @@ public class TargetArrowRenderer {
         throw new IllegalStateException(TargetArrowRenderer.class.getName() + " not initialized");
     };
 
-    public static void init(Supplier<? extends Item> triggerItemSupplier) {
-        var instance = new TargetArrowRenderer(triggerItemSupplier);
+    public static void init() {
+        var instance = new TargetArrowRenderer();
         instanceSupplier = () -> instance;
     }
 
@@ -86,16 +83,16 @@ public class TargetArrowRenderer {
         return instanceSupplier.get();
     }
 
-    private TargetArrowRenderer(Supplier<? extends Item> triggerItemSupplier) {
-        this.itemSupplier = triggerItemSupplier;
-    }
-
     public void tick() {
-        this.updateTarget();
+        if(this.source != null && this.target != null) {
+            this.updateDirection();
 
-        if(this.active) {
             if(this.activationTicks < TICKS_TO_ACTIVATE) {
                 this.activationTicks++;
+            }
+
+            if(!this.target.isAlive()) {
+                this.setTarget(null, null);
             }
         } else {
             if(this.activationTicks > 0) {
@@ -139,25 +136,16 @@ public class TargetArrowRenderer {
         }
     }
 
-    private void updateTarget() {
-        var mc = Minecraft.getInstance();
-        var player = mc.player;
-
-        if(player != null)  {
-            if(player.getMainHandItem().is(this.itemSupplier.get())) {
-                this.setTarget(player, PlayerState.get(player).getTarget());
-            } else {
-                this.setTarget(player, null);
-            }
+    public void setTarget(Entity source, Entity target) {
+        if(source != null) {
+            this.sourceTicks = source.tickCount;
         }
+
+        this.source = source;
+        this.target = target;
     }
 
-    private void setTarget(Entity source, Entity target) {
-        this.sourceTicks = source.tickCount;
-        this.active = target != null;
-
-        if(this.active) {
-            this.direction = target.position().subtract(source.position()).toVector3f();
-        }
+    private void updateDirection() {
+        this.direction = this.target.position().subtract(this.source.position()).toVector3f();
     }
 }

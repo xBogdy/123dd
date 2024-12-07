@@ -121,15 +121,15 @@ public class TrainerMobData implements IDataPackObject {
         return Math.max(0, Math.min(100, Math.max(cfg.initialLevelCap(), this.getTrainerTeam().getTeam().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0)) + cfg.additiveLevelCapRequirement()));
     }
 
-    public Stream<String> getMissingRequirements(Set<String> trainerIds) {
-        return this.getMissingRequirements(trainerIds, false);
+    public Stream<String> getMissingRequirements(Set<String> defeatedTrainerIds) {
+        return this.getMissingRequirements(defeatedTrainerIds, false);
     }
 
-    public Stream<String> getMissingRequirements(Set<String> trainerIds, boolean includeAlternatives) {
-        return this.requiredDefeats.stream().<String>mapMulti((set, cons) -> {
+    public Stream<String> getMissingRequirements(Set<String> defeatedTrainerIds, boolean includeAlternatives) {
+        return this.requiredDefeats.stream().mapMulti((set, cons) -> {
             if(includeAlternatives) {                
-                set.stream().filter(tid -> !trainerIds.contains(tid)).forEach(cons);
-            } else if(!set.isEmpty() && set.stream().noneMatch(trainerIds::contains)) {
+                set.stream().filter(tid -> !defeatedTrainerIds.contains(tid)).forEach(cons);
+            } else if(!set.isEmpty() && set.stream().noneMatch(defeatedTrainerIds::contains)) {
                 cons.accept(set.stream().findFirst().get());
             }
         });

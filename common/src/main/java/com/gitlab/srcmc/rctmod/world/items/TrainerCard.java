@@ -18,7 +18,11 @@
 package com.gitlab.srcmc.rctmod.world.items;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
+import com.gitlab.srcmc.rctmod.ModRegistries;
+import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
+import com.gitlab.srcmc.rctmod.client.renderer.TargetArrowRenderer;
+
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.InteractionHand;
@@ -47,16 +51,31 @@ public class TrainerCard extends Item {
     @Override
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int i, boolean bl) {
         if(level.isClientSide) {
-            if(entity instanceof Player player) {
-                var target = PlayerState.get(player).getTarget();
+            if(level.getGameTime() % 60 == 0) {
+                if(entity instanceof Player player) {
+                    var cfg = RCTMod.getInstance().getServerConfig();
+                    var ps = PlayerState.get(player);
+                    var keyTrainers = level.getEntities(
+                        ModRegistries.Entities.TRAINER.get(),
+                        player.getBoundingBox().inflate(
+                            cfg.maxHorizontalDistanceToPlayers(),
+                            cfg.maxVerticalDistanceToPlayers(),
+                            cfg.maxHorizontalDistanceToPlayers()),
+                        t -> t.couldBattleAgainst(player) && ps.isKeyTrainer(t.getTrainerId()));
 
-                if(target != null) {
-                    this.setFoil(stack, true);
+                    if(keyTrainers.size() > 0) {
+                        var t = keyTrainers.get(0);
+                        TargetArrowRenderer.getInstance().setTarget(player, t);
+                        this.setFoil(stack, true);
+                        ModCommon.LOG.info("KEY TRAINER TARGETED: " + t.getTrainerId());
+                    } else {
+                        TargetArrowRenderer.getInstance().setTarget(null, null);
+                        this.setFoil(stack, false);
+                        ModCommon.LOG.info("KEY TRAINER TARGETED LOST");
+                    }
                 } else {
                     this.setFoil(stack, false);
                 }
-            } else {
-                this.setFoil(stack, false);
             }
         }
 

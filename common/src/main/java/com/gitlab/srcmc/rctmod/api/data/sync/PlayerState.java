@@ -32,7 +32,6 @@ import java.util.UUID;
 
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 
 public class PlayerState implements Serializable {
@@ -45,7 +44,6 @@ public class PlayerState implements Serializable {
     private Map<TrainerMobData.Type, Integer> typeDefeatCounts = new HashMap<>();
     private Set<String> defeatedTrainerIds = new HashSet<>();
     private Set<String> removedDefeatedTrainerIds = new HashSet<>();
-    private int targetEntity = -1;
     private int levelCap;
 
     private transient Player player;
@@ -92,30 +90,6 @@ public class PlayerState implements Serializable {
         } catch(IOException | ClassNotFoundException e) {
             throw new IllegalStateException(e);
         }
-    }
-
-    public void setTarget(Entity entity) {
-        this.setTarget(entity.getId());
-    }
-
-    public void setTarget(int targetId) {
-        if(targetId != this.targetEntity) {
-            this.targetEntity = targetId;
-            this.updated.targetEntity = targetId;
-            this.hasChanges = true;
-        }
-    }
-
-    public Entity getTarget() {
-        if(this.targetEntity >= 0 && this.player != null) {
-            return this.player.level().getEntity(this.targetEntity);
-        }
-
-        return null;
-    }
-
-    public int getTargetId() {
-        return this.targetEntity;
     }
 
     public void setLevelCap(int levelCap) {
@@ -229,8 +203,14 @@ public class PlayerState implements Serializable {
         }
     }
 
-    public boolean isKeyTrainer(TrainerMobData trainer) {
-        return trainer.getFollowdBy().size() > 0;
+    public boolean isKeyTrainer(String trainerId) {
+        var tmd = RCTMod.getInstance().getTrainerManager().getData(trainerId);
+
+        return tmd != null
+            && tmd.getFollowdBy().size() > 0
+            && !this.defeatedTrainerIds.contains(trainerId)
+            && tmd.getFollowdBy().stream().noneMatch(this.defeatedTrainerIds::contains)
+            && tmd.getMissingRequirements(this.defeatedTrainerIds).findFirst().isEmpty();
     }
 
     public boolean canBattle(String trainerId) {
@@ -255,7 +235,6 @@ public class PlayerState implements Serializable {
     }
 
     private PlayerState(PlayerState template) {
-        this.targetEntity = template.targetEntity;
         this.levelCap = template.levelCap;
     }
 
@@ -286,8 +265,6 @@ public class PlayerState implements Serializable {
 
         updated.defeatedTrainerIds.forEach(this.defeatedTrainerIds::add);
         updated.removedDefeatedTrainerIds.forEach(this.defeatedTrainerIds::remove);
-        
-        this.targetEntity = updated.targetEntity;
         this.levelCap = updated.levelCap;
     }
 
