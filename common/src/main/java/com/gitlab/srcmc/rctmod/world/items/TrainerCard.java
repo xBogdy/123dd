@@ -40,7 +40,7 @@ public class TrainerCard extends Item {
     }
 
     public void setFoil(ItemStack stack, boolean foil) {
-        stack.get(DataComponents.CUSTOM_DATA).update(tag -> tag.putBoolean("foil", foil));
+        stack.update(DataComponents.CUSTOM_DATA, CustomData.of(new CompoundTag()), d -> d.update(tag -> tag.putBoolean("foil", foil)));
     }
 
     @Override
@@ -65,13 +65,11 @@ public class TrainerCard extends Item {
 
                     if(keyTrainers.size() > 0) {
                         var t = keyTrainers.get(0);
-                        TargetArrowRenderer.getInstance().setTarget(player, t);
                         this.setFoil(stack, true);
-                        ModCommon.LOG.info("KEY TRAINER TARGETED: " + t.getTrainerId());
+                        TargetArrowRenderer.getInstance().setTarget(player, t);
                     } else {
-                        TargetArrowRenderer.getInstance().setTarget(null, null);
                         this.setFoil(stack, false);
-                        ModCommon.LOG.info("KEY TRAINER TARGETED LOST");
+                        TargetArrowRenderer.getInstance().setTarget(null, null);
                     }
                 } else {
                     this.setFoil(stack, false);
