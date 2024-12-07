@@ -69,18 +69,13 @@ public class TrainerSpawnerBlock extends BaseEntityBlock {
                 var spawnerItems = RCTMod.getInstance().getServerConfig().trainerSpawnerItems();
                 var itemKey = itemStack.getItem().arch$registryName().toString();
 
-                if(level.isClientSide) {
-                    if(spawnerItems.keySet().contains(itemKey)) {
-                        result = ItemInteractionResult.SUCCESS;
-                    }
-                } else {
-                    var trainerIds = spawnerItems.get(itemKey);
-
-                    if(trainerIds != null) {
-                        be.setTrainerIds(itemKey, trainerIds);
+                if(spawnerItems.keySet().contains(itemKey)) {
+                    if(!level.isClientSide) {
+                        be.setRenderItem(itemKey);
                         itemStack.consume(1, player);
-                        result = ItemInteractionResult.SUCCESS;
                     }
+                    
+                    result = ItemInteractionResult.SUCCESS;
                 }
             }
         }

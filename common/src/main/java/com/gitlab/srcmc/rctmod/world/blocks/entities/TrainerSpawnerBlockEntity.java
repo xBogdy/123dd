@@ -19,10 +19,7 @@ package com.gitlab.srcmc.rctmod.world.blocks.entities;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.ModRegistries;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
@@ -48,7 +45,6 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
     private static final int SPAWN_INTERVAL_TICKS = 80;
     private static final int SCAN_INTERVAL_TICKS = 200;
     
-    private Set<String> trainerIds = new HashSet<>();
     private String renderItemKey;
     private double minPlayerDistance;
     private double maxPlayerDistance;
@@ -82,9 +78,6 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
     public void saveAdditional(CompoundTag tag, HolderLookup.Provider provider) {
         super.saveAdditional(tag, provider);
 
-        byte b = 0;
-        this.trainerIds.forEach(tid -> tag.putByte('_' + tid, b));
-
         if(this.renderItemKey != null) {
             tag.putString("renderItemKey", this.renderItemKey);
         }
@@ -93,8 +86,6 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
     @Override
     public void loadAdditional(CompoundTag tag, HolderLookup.Provider provider) {
         super.loadAdditional(tag, provider);
-        this.trainerIds.clear();
-        tag.getAllKeys().stream().filter(key -> key.charAt(0) == '_').map(key -> key.substring(1)).forEach(this.trainerIds::add);
 
         if(tag.contains("renderItemKey")) {
             this.setRenderItemKey(tag.getString("renderItemKey"));
@@ -103,10 +94,8 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
         }
     }
 
-    public void setTrainerIds(String renderItemKey, List<String> trainerIds) {
+    public void setRenderItem(String renderItemKey) {
         this.setRenderItemKey(renderItemKey);
-        this.trainerIds.clear();
-        this.trainerIds.addAll(trainerIds);
         this.spawnTimer.reset(this.level.getGameTime());
         this.scanTimer.reset(this.level.getGameTime());
         this.setChanged();
@@ -116,8 +105,8 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
         }
     }
 
-    public Set<String> getTrainerIds() {
-        return Collections.unmodifiableSet(this.trainerIds);
+    public List<String> getTrainerIds() {
+        return Collections.unmodifiableList(RCTMod.getInstance().getServerConfig().trainerSpawnerItems().getOrDefault(this.renderItemKey, List.of()));
     }
 
     public double getMinPlayerDistance() {
@@ -166,7 +155,7 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
         }
 
         var spawner = RCTMod.getInstance().getTrainerSpawner();
-        var trainerIds = new ArrayList<>(this.trainerIds);
+        var trainerIds = new ArrayList<>(this.getTrainerIds());
         Collections.shuffle(trainerIds);
 
         for(var player : level.getNearbyPlayers(TargetingConditions.forNonCombat(), null, this.aabb)) {
@@ -179,11 +168,13 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
     }
 
     private void scanForTrainerNearby(Level level) {
+        var trainerIds = this.getTrainerIds();
+
         level.getNearbyEntities(
                 TrainerMob.class,
                 TargetingConditions.forNonCombat(),
                 null, this.aabb)
-            .stream().filter(t -> this.trainerIds.contains(t.getTrainerId()))
+            .stream().filter(t -> trainerIds.contains(t.getTrainerId()))
             .forEach(t -> t.setHomePos(this.getBlockPos().above()));
     }
 
