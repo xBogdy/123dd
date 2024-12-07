@@ -38,3 +38,6 @@ license="${license}"
   versionRange="[${rctapi_version},)"
   ordering="NONE"
   side="BOTH"
+
+[[mixins]]
+config = "${mod_id}.mixins.json"

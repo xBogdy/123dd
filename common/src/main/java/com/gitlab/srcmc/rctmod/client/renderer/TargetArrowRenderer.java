@@ -64,7 +64,7 @@ public class TargetArrowRenderer {
     private static final float SX = 0.009375f, SY = 0.03f, SZ = 0.01875f;
 
     private Vector3f direction;
-    private int sourceTicks, activationTicks;
+    private int activationTicks;
     private Entity source, target;
 
     // public static double x = 0.4, y = -0.27, z = -0.66; // with RenderHand
@@ -109,38 +109,33 @@ public class TargetArrowRenderer {
             if(cam.isInitialized()) {
                 var t = Math.min(this.activationTicks + partialTick, TICKS_TO_ACTIVATE)/TICKS_TO_ACTIVATE;
                 var rotation = new Quaternionf();
-                this.direction.rotationTo(PYRAMID_UP, rotation);
+                PYRAMID_UP.rotationTo(this.direction, rotation);
 
                 poseStack.pushPose();
                 poseStack.translate(TX, TY, TZ);
-                poseStack.mulPose(cam.rotation().difference(rotation).rotateLocalX((float)(2*cam.getXRot() * Math.PI / 180)));
-                poseStack.mulPose(new Quaternionf().rotateY((float)Math.PI*(this.sourceTicks + partialTick)/TICKS_TO_ACTIVATE));
-                poseStack.scale(SX * t, (float)(SY + Math.sin((this.sourceTicks + partialTick)/10)*0.01) * t, SZ * t);
+                poseStack.mulPose(cam.rotation().difference(rotation));
+                poseStack.mulPose(new Quaternionf().rotateY((float)Math.PI*(this.source.tickCount + partialTick)/TICKS_TO_ACTIVATE));
+                poseStack.scale(SX * t, (float)(SY + Math.sin((this.source.tickCount + partialTick)/10)*0.01) * t, SZ * t);
 
                 RenderSystem.disableCull();
                 RenderSystem.enableBlend();
                 RenderSystem.setShader(GameRenderer::getPositionColorShader);
-                
                 var buffer = Tesselator.getInstance().begin(VertexFormat.Mode.TRIANGLE_STRIP, DefaultVertexFormat.POSITION_COLOR);
                 var m = poseStack.last().pose();
-                // buffer.begin(VertexFormat.Mode.TRIANGLE_STRIP, DefaultVertexFormat.POSITION_COLOR);
 
                 for(int i = 0; i < PYRAMID_STRIP.length; i += 3) {
-                    buffer.addVertex(m, PYRAMID_STRIP[i], PYRAMID_STRIP[i + 1], PYRAMID_STRIP[i + 2])
+                    buffer
+                        .addVertex(m, PYRAMID_STRIP[i], PYRAMID_STRIP[i + 1], PYRAMID_STRIP[i + 2])
                         .setColor(PYRAMID_COLORS[i], PYRAMID_COLORS[i + 1], PYRAMID_COLORS[i + 2], PYRAMID_ALPHA * t);
                 }
 
                 poseStack.popPose();
-                BufferUploader.draw(buffer.build());
+                BufferUploader.drawWithShader(buffer.buildOrThrow());
             }
         }
     }
 
     public void setTarget(Entity source, Entity target) {
-        if(source != null) {
-            this.sourceTicks = source.tickCount;
-        }
-
         this.source = source;
         this.target = target;
     }

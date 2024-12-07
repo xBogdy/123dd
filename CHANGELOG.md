@@ -26,7 +26,7 @@
 - ServerConfig: Renamed `bonusLevelCap` -> `additiveLevelCapRequirement` (works slightly different but effectively serves the same purpose)
 - Some pokemon that are originally supposed to mega evolve (i.e. holding key stones) now hold other competetive held items as replacement (until mega evolutions are supported)
 - Some trainers might carry items that they may use in battles (e.g. potions) (TODO)
-- Trainer Card GUI: Trainers that can be spawned with a trainer spawner will show the item required to do so in their overview page (TODO)
+- Trainer Card GUI: Trainers that can be spawned with a trainer spawner will show the item(s) required to do so on the 'Spawning' info page
 - Trainer defeat counts are now per player, this means different players can now fight the same trainer in a row (trainers will still tend to walk away if defeated/exhausted once)
 - Trainers now follow players holding a Trainer Card in their main- or off hand
 - Update to Cobblemon 1.6, Minecraft 1.21, Fabric/Neoforge
@@ -36,7 +36,7 @@
 - Some oversights in npc ai behaviour (e.g. player tracking not working properly)
 - Some pokemon missing held items
 - Some pokemon not having the correct regional form
-- Trainer Card now glows and renders the arrow regardless if the trainer spawned in naturally or was summoned in any other way (TODO)
+- Trainer Card now glows and renders the arrow regardless if the trainer spawned in naturally or was summoned in any other way
 - Trainer pokemon sometimes dropping loot, missing trainer pokemon send out and retrieve animations, and probably some other stuff
 
 ***Removed***
