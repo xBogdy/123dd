@@ -1,5 +1,5 @@
 {
-  "parent": "rctmod:trainers/defeat_any",
+  "parent": "rctmod:trainers/defeat_rocket_admin_archer_1",
   "display": {
     "title": {
       "text": "Rivalry"
@@ -18,7 +18,7 @@
   "criteria": {
     "first_defeat": {
       "conditions": {
-        "trainer_type": "RIVAL"
+        "trainer_ids": ["rival_terry_014e", "rival_terry_014d", "rival_terry_014c"]
       },
       "trigger": "rctmod:defeat_count"
     }

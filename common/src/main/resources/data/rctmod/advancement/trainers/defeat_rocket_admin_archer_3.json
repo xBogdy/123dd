@@ -1,24 +1,24 @@
 {
-  "parent": "rctmod:trainers/defeat_leader_clair",
+  "parent": "rctmod:trainers/defeat_leader_blaine",
   "display": {
     "title": {
-      "text": "Final test"
+      "text": "Beta"
     },
     "description": {
-      "text": "Defeat Trainer Brendan"
+      "text": "Defeat Rocket Admin Archer (again)"
     },
     "icon": {
       "id": "cobblemon:poke_ball"
     },
-    "announce_to_chat": true,
+    "announce_to_chat": false,
     "show_toast": true,
     "hidden": false,
-    "frame": "challenge"
+    "frame": "task"
   },
   "criteria": {
     "first_defeat": {
       "conditions": {
-        "trainer_id": "trainer_brendan_001a"
+        "trainer_ids": ["rocket_admin_archer_0043"]
       },
       "trigger": "rctmod:defeat_count"
     }

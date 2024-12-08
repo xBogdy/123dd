@@ -1,5 +1,5 @@
 {
-  "parent": "rctmod:trainers/defeat_leader_brock",
+  "parent": "rctmod:trainers/defeat_rival_terry_1",
   "display": {
     "title": {
       "text": "Cascade Badge"
@@ -18,7 +18,7 @@
   "criteria": {
     "first_defeat": {
       "conditions": {
-        "trainer_id": "leader_misty_019f"
+        "trainer_ids": ["leader_misty_019f"]
       },
       "trigger": "rctmod:defeat_count"
     }

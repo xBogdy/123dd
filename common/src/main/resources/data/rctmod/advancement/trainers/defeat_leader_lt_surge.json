@@ -1,5 +1,5 @@
 {
-  "parent": "rctmod:trainers/defeat_leader_misty",
+  "parent": "rctmod:trainers/defeat_trainer_brendan_1",
   "display": {
     "title": {
       "text": "Thunder Badge"
@@ -18,7 +18,7 @@
   "criteria": {
     "first_defeat": {
       "conditions": {
-        "trainer_id": "leader_lt_surge_01a0"
+        "trainer_ids": ["leader_lt_surge_01a0"]
       },
       "trigger": "rctmod:defeat_count"
     }

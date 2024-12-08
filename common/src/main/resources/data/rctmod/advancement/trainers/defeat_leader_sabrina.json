@@ -1,5 +1,5 @@
 {
-  "parent": "rctmod:trainers/defeat_leader_erika",
+  "parent": "rctmod:trainers/defeat_boss_giovanni_2",
   "display": {
     "title": {
       "text": "Marsh Badge"
@@ -18,7 +18,7 @@
   "criteria": {
     "first_defeat": {
       "conditions": {
-        "trainer_id": "leader_sabrina_01a4"
+        "trainer_ids": ["leader_sabrina_01a4"]
       },
       "trigger": "rctmod:defeat_count"
     }

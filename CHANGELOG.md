@@ -15,6 +15,8 @@
 
 ***Changed***
 
+- Advancement defeat count trigger property `trainer_id` now an array `trainer_ids` (of which only one must be defeated for an advancement to be granted)
+- Advancment defeat count trigger now triggers if all trainers of a specified `trainer_type` are defeated if a negative `count` is given
 - Command: `trainer get required_defeats` now prints a list of required trainers for trainers that are part of the progression
 - Core dependency "CobblemonTrainers" is now replaced by "RCTApi"
 - Data pack trainer format is now slightly different (see the docs for a full overview of changes)

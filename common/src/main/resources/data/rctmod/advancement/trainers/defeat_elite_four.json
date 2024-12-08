@@ -1,5 +1,5 @@
 {
-  "parent": "rctmod:trainers/defeat_leader_clair",
+  "parent": "rctmod:trainers/defeat_trainer_brendan_3",
   "display": {
     "title": {
       "text": "Elite 4"
@@ -16,17 +16,35 @@
     "frame": "goal"
   },
   "criteria": {
-    "first_defeat": {
+    "first_defeat_bruno": {
       "conditions": {
-        "trainer_type": "E4",
-        "count": 4
+        "trainer_ids": ["elite_four_bruno_0051", "elite_four_bruno_0050"]
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_lance": {
+      "conditions": {
+        "trainer_ids": ["elite_four_lance_0057", "elite_four_lance_0056"]
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_lorelei": {
+      "conditions": {
+        "trainer_ids": ["elite_four_lorelei_004e", "elite_four_lorelei_004d"]
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "first_defeat_agatha": {
+      "conditions": {
+        "trainer_ids": ["elite_four_agatha_0054", "elite_four_agatha_0053"]
       },
       "trigger": "rctmod:defeat_count"
     }
   },
   "requirements": [
-    [
-      "first_defeat"
-    ]
+    ["first_defeat_bruno"],
+    ["first_defeat_lance"],
+    ["first_defeat_lorelei"],
+    ["first_defeat_agatha"]
   ]
 }

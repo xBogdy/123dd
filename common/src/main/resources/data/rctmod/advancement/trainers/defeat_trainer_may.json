@@ -13,12 +13,12 @@
     "announce_to_chat": true,
     "show_toast": true,
     "hidden": false,
-    "frame": "challenge"
+    "frame": "task"
   },
   "criteria": {
     "first_defeat": {
       "conditions": {
-        "trainer_id": "trainer_may_003d"
+        "trainer_ids": ["trainer_may_003d"]
       },
       "trigger": "rctmod:defeat_count"
     }

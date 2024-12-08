@@ -1,24 +1,24 @@
 {
-  "parent": "rctmod:trainers/defeat_rocket_admin_archer_2",
+  "parent": "rctmod:trainers/defeat_rocket_admin_archer_3",
   "display": {
     "title": {
       "text": "Alpha"
     },
     "description": {
-      "text": "Defeat Rocket Admin Ariana in the final encounter"
+      "text": "Defeat Rocket Admin Ariana"
     },
     "icon": {
       "id": "cobblemon:poke_ball"
     },
-    "announce_to_chat": true,
+    "announce_to_chat": false,
     "show_toast": true,
     "hidden": false,
-    "frame": "goal"
+    "frame": "task"
   },
   "criteria": {
     "first_defeat": {
       "conditions": {
-        "trainer_id": "rocket_admin_ariana_0044"
+        "trainer_ids": ["rocket_admin_ariana_0044"]
       },
       "trigger": "rctmod:defeat_count"
     }

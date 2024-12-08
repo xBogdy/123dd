@@ -1,24 +1,24 @@
 {
-  "parent": "rctmod:trainers/defeat_leader_erika",
+  "parent": "rctmod:trainers/defeat_trainer_brendan_3",
   "display": {
     "title": {
-      "text": "Behind the scenes"
+      "text": "Leftovers"
     },
     "description": {
-      "text": "Defeat Boss Giovanni for the first time"
+      "text": "Defeat Rocket Admin Arianas final team"
     },
     "icon": {
       "id": "cobblemon:poke_ball"
     },
     "announce_to_chat": true,
     "show_toast": true,
-    "hidden": false,
+    "hidden": true,
     "frame": "task"
   },
   "criteria": {
     "first_defeat": {
       "conditions": {
-        "trainer_ids": ["boss_giovanni_015c"]
+        "trainer_ids": ["rocket_admin_archer_002a"]
       },
       "trigger": "rctmod:defeat_count"
     }

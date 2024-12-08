@@ -1,5 +1,5 @@
 {
-  "parent": "rctmod:trainers/defeat_leader_koga",
+  "parent": "rctmod:trainers/defeat_trainer_may",
   "display": {
     "title": {
       "text": "Volcano Badge"
@@ -18,7 +18,7 @@
   "criteria": {
     "first_defeat": {
       "conditions": {
-        "trainer_id": "leader_blaine_01a3"
+        "trainer_ids": ["leader_blaine_01a3"]
       },
       "trigger": "rctmod:defeat_count"
     }

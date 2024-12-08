@@ -2,23 +2,23 @@
   "parent": "rctmod:trainers/defeat_leader_erika",
   "display": {
     "title": {
-      "text": "Behind the scenes"
+      "text": "A facade?"
     },
     "description": {
-      "text": "Defeat Boss Giovanni for the first time"
+      "text": "Defeat Leader Giovanni"
     },
     "icon": {
       "id": "cobblemon:poke_ball"
     },
     "announce_to_chat": true,
     "show_toast": true,
-    "hidden": false,
+    "hidden": true,
     "frame": "task"
   },
   "criteria": {
     "first_defeat": {
       "conditions": {
-        "trainer_ids": ["boss_giovanni_015c"]
+        "trainer_ids": ["leader_giovanni_015e"]
       },
       "trigger": "rctmod:defeat_count"
     }

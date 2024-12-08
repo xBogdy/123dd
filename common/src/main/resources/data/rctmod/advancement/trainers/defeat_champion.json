@@ -5,7 +5,7 @@
       "text": "Champion"
     },
     "description": {
-      "text": "Defeat a Champion Terry"
+      "text": "Defeat Champion Terry"
     },
     "icon": {
       "id": "cobblemon:poke_ball"
@@ -18,7 +18,7 @@
   "criteria": {
     "first_defeat": {
       "conditions": {
-        "trainer_type": "CHAMP"
+        "trainer_ids": ["champion_terry_01b8", "champion_terry_01b7", "champion_terry_01b6"]
       },
       "trigger": "rctmod:defeat_count"
     }

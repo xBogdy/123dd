@@ -1,24 +1,24 @@
 {
-  "parent": "rctmod:trainers/defeat_boss_giovanni_1",
+  "parent": "rctmod:trainers/defeat_leader_brock",
   "display": {
     "title": {
-      "text": "Left hand"
+      "text": "Shady organization"
     },
     "description": {
-      "text": "Defeat Rocket Admin Archer"
+      "text": "Defeat Rocket Admin Archer for the first time"
     },
     "icon": {
       "id": "cobblemon:poke_ball"
     },
-    "announce_to_chat": true,
+    "announce_to_chat": false,
     "show_toast": true,
     "hidden": false,
-    "frame": "goal"
+    "frame": "task"
   },
   "criteria": {
     "first_defeat": {
       "conditions": {
-        "trainer_id": "rocket_admin_archer_0035"
+        "trainer_ids": ["rocket_admin_archer_002e"]
       },
       "trigger": "rctmod:defeat_count"
     }

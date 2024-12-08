@@ -18,7 +18,7 @@
   "criteria": {
     "first_defeat": {
       "conditions": {
-        "trainer_id": "trainer_red_0003"
+        "trainer_ids": ["trainer_red_0003"]
       },
       "trigger": "rctmod:defeat_count"
     }

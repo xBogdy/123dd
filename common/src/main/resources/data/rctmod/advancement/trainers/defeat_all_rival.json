@@ -1,11 +1,11 @@
 {
-  "parent": "rctmod:trainers/defeat_rival_terry",
+  "parent": "rctmod:trainers/defeat_trainer_red",
   "display": {
     "title": {
-      "text": "Only one"
+      "text": "There can only be one"
     },
     "description": {
-      "text": "Defeat all versions of Rival Terry"
+      "text": "Defeat all rivals"
     },
     "icon": {
       "id": "cobblemon:poke_ball"
@@ -19,7 +19,7 @@
     "first_defeat": {
       "conditions": {
         "trainer_type": "RIVAL",
-        "count": 24
+        "count": -1
       },
       "trigger": "rctmod:defeat_count"
     }

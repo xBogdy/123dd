@@ -1,24 +1,24 @@
 {
-  "parent": "rctmod:trainers/defeat_rocket_admin_archer_1",
+  "parent": "rctmod:trainers/defeat_boss_giovanni_2",
   "display": {
     "title": {
       "text": "Right hand"
     },
     "description": {
-      "text": "Defeat Rocket Admin Ariana"
+      "text": "Defeat Rocket Admin Arianas single team"
     },
     "icon": {
       "id": "cobblemon:poke_ball"
     },
     "announce_to_chat": true,
     "show_toast": true,
-    "hidden": false,
-    "frame": "goal"
+    "hidden": true,
+    "frame": "task"
   },
   "criteria": {
     "first_defeat": {
       "conditions": {
-        "trainer_id": "rocket_admin_ariana_0036"
+        "trainer_ids": ["rocket_admin_ariana_0036"]
       },
       "trigger": "rctmod:defeat_count"
     }

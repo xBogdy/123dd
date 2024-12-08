@@ -1,16 +1,16 @@
 {
-  "parent": "rctmod:trainers/defeat_leader_erika",
+  "parent": "rctmod:trainers/defeat_boss_giovanni_1",
   "display": {
     "title": {
-      "text": "Behind the scenes"
+      "text": "We are on good terms... right?"
     },
     "description": {
-      "text": "Defeat Boss Giovanni for the first time"
+      "text": "Defeat Rival Terry (again)"
     },
     "icon": {
       "id": "cobblemon:poke_ball"
     },
-    "announce_to_chat": true,
+    "announce_to_chat": false,
     "show_toast": true,
     "hidden": false,
     "frame": "task"
@@ -18,7 +18,7 @@
   "criteria": {
     "first_defeat": {
       "conditions": {
-        "trainer_ids": ["boss_giovanni_015c"]
+        "trainer_ids": ["rival_terry_01b2", "rival_terry_01b1", "rival_terry_01b0"]
       },
       "trigger": "rctmod:defeat_count"
     }

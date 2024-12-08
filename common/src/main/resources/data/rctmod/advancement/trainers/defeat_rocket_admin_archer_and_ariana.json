@@ -1,16 +1,16 @@
 {
-  "parent": "rctmod:trainers/defeat_leader_erika",
+  "parent": "rctmod:trainers/defeat_rival_terry_2",
   "display": {
     "title": {
-      "text": "Behind the scenes"
+      "text": "Double trouble"
     },
     "description": {
-      "text": "Defeat Boss Giovanni for the first time"
+      "text": "Defeat Rocket Admin Archer & Ariana"
     },
     "icon": {
       "id": "cobblemon:poke_ball"
     },
-    "announce_to_chat": true,
+    "announce_to_chat": false,
     "show_toast": true,
     "hidden": false,
     "frame": "task"
@@ -18,7 +18,7 @@
   "criteria": {
     "first_defeat": {
       "conditions": {
-        "trainer_ids": ["boss_giovanni_015c"]
+        "trainer_ids": ["rocket_admin_archer_ariana_m000"]
       },
       "trigger": "rctmod:defeat_count"
     }

@@ -1,11 +1,11 @@
 {
-  "parent": "rctmod:trainers/defeat_leader_erika",
+  "parent": "rctmod:trainers/defeat_rival_terry_4",
   "display": {
     "title": {
-      "text": "Behind the scenes"
+      "text": "Are you prepared?"
     },
     "description": {
-      "text": "Defeat Boss Giovanni for the first time"
+      "text": "Defeat Trainer Brendans final team"
     },
     "icon": {
       "id": "cobblemon:poke_ball"
@@ -18,7 +18,7 @@
   "criteria": {
     "first_defeat": {
       "conditions": {
-        "trainer_ids": ["boss_giovanni_015c"]
+        "trainer_ids": ["trainer_brendan_001a"]
       },
       "trigger": "rctmod:defeat_count"
     }

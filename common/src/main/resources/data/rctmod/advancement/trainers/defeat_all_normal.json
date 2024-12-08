@@ -19,7 +19,7 @@
     "first_defeat": {
       "conditions": {
         "trainer_type": "NORMAL",
-        "count": 626
+        "count": -1
       },
       "trigger": "rctmod:defeat_count"
     }

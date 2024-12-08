@@ -1,5 +1,5 @@
 {
-  "parent": "rctmod:trainers/defeat_rocket_admin_ariana_1",
+  "parent": "rctmod:trainers/defeat_rocket_admin_archer_and_ariana",
   "display": {
     "title": {
       "text": "Fateful encounter"
@@ -13,12 +13,12 @@
     "announce_to_chat": true,
     "show_toast": true,
     "hidden": false,
-    "frame": "challenge"
+    "frame": "task"
   },
   "criteria": {
     "first_defeat": {
       "conditions": {
-        "trainer_id": "boss_giovanni_015d"
+        "trainer_ids": ["boss_giovanni_015d"]
       },
       "trigger": "rctmod:defeat_count"
     }

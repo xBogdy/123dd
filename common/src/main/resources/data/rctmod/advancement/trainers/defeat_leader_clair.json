@@ -1,5 +1,5 @@
 {
-  "parent": "rctmod:trainers/defeat_leader_blaine",
+  "parent": "rctmod:trainers/defeat_boss_giovanni_3",
   "display": {
     "title": {
       "text": "Rising Badge"
@@ -18,7 +18,7 @@
   "criteria": {
     "first_defeat": {
       "conditions": {
-        "trainer_id": "leader_clair_004a"
+        "trainer_ids": ["leader_clair_004a"]
       },
       "trigger": "rctmod:defeat_count"
     }

@@ -1,5 +1,5 @@
 {
-  "parent": "rctmod:trainers/defeat_team_rocket",
+  "parent": "rctmod:trainers/defeat_boss_giovanni_3",
   "display": {
     "title": {
       "text": "Wrong side of the tracks"
@@ -19,7 +19,7 @@
     "first_defeat": {
       "conditions": {
         "trainer_type": "TEAM_ROCKET",
-        "count": 61
+        "count": -1
       },
       "trigger": "rctmod:defeat_count"
     }

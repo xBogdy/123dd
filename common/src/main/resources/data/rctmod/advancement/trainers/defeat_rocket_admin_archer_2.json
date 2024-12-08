@@ -1,24 +1,24 @@
 {
-  "parent": "rctmod:trainers/defeat_leader_blaine",
+  "parent": "rctmod:trainers/defeat_boss_giovanni_2",
   "display": {
     "title": {
-      "text": "Beta"
+      "text": "Left hand"
     },
     "description": {
-      "text": "Defeat Rocket Admin Archer in the final encounter"
+      "text": "Defeat Rocket Admin Archers single team"
     },
     "icon": {
       "id": "cobblemon:poke_ball"
     },
     "announce_to_chat": true,
     "show_toast": true,
-    "hidden": false,
-    "frame": "goal"
+    "hidden": true,
+    "frame": "task"
   },
   "criteria": {
     "first_defeat": {
       "conditions": {
-        "trainer_id": "rocket_admin_archer_0043"
+        "trainer_ids": ["rocket_admin_archer_0035"]
       },
       "trigger": "rctmod:defeat_count"
     }

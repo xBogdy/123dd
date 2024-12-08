@@ -18,7 +18,7 @@
   "criteria": {
     "first_defeat": {
       "conditions": {
-        "trainer_id": "boss_giovanni_0045"
+        "trainer_ids": ["boss_giovanni_0045"]
       },
       "trigger": "rctmod:defeat_count"
     }
