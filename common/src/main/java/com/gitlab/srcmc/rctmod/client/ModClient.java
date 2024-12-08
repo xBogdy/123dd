@@ -20,13 +20,13 @@ package com.gitlab.srcmc.rctmod.client;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
-import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.ModRegistries;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.client.renderer.TargetArrowRenderer;
 import com.gitlab.srcmc.rctmod.client.renderer.TrainerRenderer;
 import com.gitlab.srcmc.rctmod.client.renderer.TrainerSpawnerBlockEntityRenderer;
+import com.gitlab.srcmc.rctmod.client.screens.IScreenManager;
 import com.gitlab.srcmc.rctmod.client.screens.ScreenManager;
 import com.gitlab.srcmc.rctmod.network.PlayerStatePayload;
 
@@ -43,12 +43,10 @@ import net.minecraft.server.packs.PackType;
 import net.minecraft.world.level.Level;
 
 public class ModClient {
+    public static final IScreenManager SCREENS = new ScreenManager();
     private static Queue<byte[]> playerStateUpdates = new ConcurrentLinkedDeque<>();
 
     public static void init() {
-        var mc = Minecraft.getInstance();
-        ModCommon.initLocalPlayer(mc.player);
-        ModCommon.initScreenManager(new ScreenManager());
         ReloadListenerRegistry.register(PackType.CLIENT_RESOURCES, RCTMod.getInstance().getClientDataManager());
         NetworkManager.registerReceiver(Side.S2C, PlayerStatePayload.TYPE, PlayerStatePayload.CODEC, ModClient::receivePlayerState);
         ClientTickEvent.CLIENT_LEVEL_PRE.register(ModClient::onClientWorldTick);

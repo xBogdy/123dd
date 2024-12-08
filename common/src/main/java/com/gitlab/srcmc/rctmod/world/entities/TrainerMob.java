@@ -37,6 +37,7 @@ import com.gitlab.srcmc.rctmod.world.entities.goals.PokemonBattleGoal;
 import com.gitlab.srcmc.rctmod.world.entities.goals.RandomStrollAwayGoal;
 import com.gitlab.srcmc.rctmod.world.entities.goals.RandomStrollThroughVillageGoal;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
@@ -296,27 +297,23 @@ public class TrainerMob extends PathfinderMob implements Npc {
         var tmd = RCTMod.getInstance().getTrainerManager().getData(this);
         var suffix = new StringBuilder();
         var cmp = this.getCustomName().copy();
-        var localPlayer = ModCommon.getLocalPlayer();
-        
-        if(localPlayer.isPresent()) {
-            var cfg = RCTMod.getInstance().getClientConfig();
-            var player = localPlayer.get();
+        var mc = Minecraft.getInstance();
+        var cfg = RCTMod.getInstance().getClientConfig();
 
-            if(cfg.showTrainerTypeSymbols()) {
-                var sym = tmd.getType().toString();
-                
-                if(sym.length() > 0) {
-                    suffix.append(' ').append(sym);
-                }
+        if(cfg.showTrainerTypeSymbols()) {
+            var sym = tmd.getType().toString();
+            
+            if(sym.length() > 0) {
+                suffix.append(' ').append(sym);
             }
+        }
 
-            if(cfg.showTrainerTypeColors()) {
-                cmp.setStyle(cmp.getStyle().withColor(tmd.getType().toColor()));
-            }
+        if(cfg.showTrainerTypeColors()) {
+            cmp.setStyle(cmp.getStyle().withColor(tmd.getType().toColor()));
+        }
 
-            if(PlayerState.get(player).getTrainerDefeatCount(this.getTrainerId()) == 0) {
-                cmp.setStyle(cmp.getStyle().withItalic(true));
-            }
+        if(PlayerState.get(mc.player).getTrainerDefeatCount(this.getTrainerId()) == 0) {
+            cmp.setStyle(cmp.getStyle().withItalic(true));
         }
 
         return cmp.append(suffix.toString());

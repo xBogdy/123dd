@@ -17,10 +17,10 @@
  */
 package com.gitlab.srcmc.rctmod.world.items;
 
-import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.ModRegistries;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
+import com.gitlab.srcmc.rctmod.client.ModClient;
 import com.gitlab.srcmc.rctmod.client.renderer.TargetArrowRenderer;
 
 import net.minecraft.core.component.DataComponents;
@@ -84,11 +84,7 @@ public class TrainerCard extends Item {
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
         if(level.isClientSide) {
             if(interactionHand == InteractionHand.MAIN_HAND && player.getOffhandItem().isEmpty() || player.getMainHandItem().isEmpty()) {
-                var screens = ModCommon.getScreenManager();
-
-                if(screens.isPresent()) {
-                    screens.get().openTrainerCardScreen();
-                }
+                ModClient.SCREENS.openTrainerCardScreen();
             }
         }
 

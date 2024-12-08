@@ -18,8 +18,6 @@
 package com.gitlab.srcmc.rctmod;
 
 import java.util.List;
-import java.util.Optional;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,7 +30,6 @@ import com.gitlab.srcmc.rctapi.api.RCTApi;
 import com.gitlab.srcmc.rctapi.commands.RCTApiCommands;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
-import com.gitlab.srcmc.rctmod.client.screens.IScreenManager;
 import com.gitlab.srcmc.rctmod.commands.PlayerCommands;
 import com.gitlab.srcmc.rctmod.commands.TrainerCommands;
 import com.gitlab.srcmc.rctmod.network.PlayerStatePayload;
@@ -52,41 +49,17 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.packs.PackType;
-import net.minecraft.world.entity.player.Player;
 
 public class ModCommon {
     public static final String MOD_ID = "rctmod";
     public static final String MOD_NAME = "Radical Cobblemon Trainers";
     public static final Logger LOG = LoggerFactory.getLogger(MOD_NAME);
 
-    private static IScreenManager screenManager;
-    private static Player localPlayer;
-
     public static void init() {
         ModRegistries.init();
         RCTApiCommands.register();
         ModCommon.registerEvents();
         ReloadListenerRegistry.register(PackType.SERVER_DATA, RCTMod.getInstance().getTrainerManager());
-    }
-
-    // called on client side to initialize
-    public static void initScreenManager(IScreenManager screenManager) {
-        ModCommon.screenManager = screenManager;
-    }
-
-    // called on client side to initialize
-    public static void initLocalPlayer(Player player) {
-        ModCommon.localPlayer = player;
-    }
-
-    // not available on server side
-    public static Optional<IScreenManager> getScreenManager() {
-        return Optional.ofNullable(ModCommon.screenManager);
-    }
-
-    // not available on server side
-    public static Optional<Player> getLocalPlayer() {
-        return Optional.ofNullable(ModCommon.localPlayer);
     }
 
     static void registerEvents() {
