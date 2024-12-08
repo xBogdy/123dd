@@ -47,8 +47,8 @@ public class TrainerMobData implements IDataPackObject {
 
         private static final Map<Type, Integer> colors = Map.of(
             LEADER, ChatFormatting.GREEN.getColor(),
-            E4, ChatFormatting.BLUE.getColor(),
-            CHAMP, ChatFormatting.LIGHT_PURPLE.getColor(),
+            E4, ChatFormatting.DARK_AQUA.getColor(),
+            CHAMP, ChatFormatting.DARK_PURPLE.getColor(),
             TEAM_ROCKET, ChatFormatting.DARK_GRAY.getColor(),
             RIVAL, ChatFormatting.GOLD.getColor()
         );
