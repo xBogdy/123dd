@@ -35,7 +35,7 @@ license="${license}"
 [[dependencies.${mod_id}]]
   modId="rctapi"
   mandatory=true
-  versionRange="[${rctapi_version},)"
+  versionRange="[${rctapi_min_version},)"
   ordering="NONE"
   side="BOTH"
 
