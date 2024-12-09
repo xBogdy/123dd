@@ -18,9 +18,12 @@
 package com.gitlab.srcmc.rctmod.fabric.client;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
+import com.gitlab.srcmc.rctmod.ModRegistries;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.client.ModClient;
+import com.gitlab.srcmc.rctmod.client.renderer.TrainerSpawnerBlockEntityRenderer;
 
+import dev.architectury.registry.client.rendering.BlockEntityRendererRegistry;
 import fuzs.forgeconfigapiport.fabric.api.neoforge.v4.NeoForgeConfigRegistry;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
@@ -33,5 +36,6 @@ public class FabricClient implements ClientModInitializer {
     public void onInitializeClient() {
         ModClient.init();
         NeoForgeConfigRegistry.INSTANCE.register(ModCommon.MOD_ID, ModConfig.Type.CLIENT, RCTMod.getInstance().getClientConfig().getSpec());
+        BlockEntityRendererRegistry.register(ModRegistries.BlockEntityTypes.TRAINER_SPAWNER.get(), TrainerSpawnerBlockEntityRenderer::new);
     }
 }
