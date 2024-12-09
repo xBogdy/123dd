@@ -1,7 +1,12 @@
 {
   "name": "Lorelei",
   "identity": "Elite Four Lorelei",
-  "ai": "RCT",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
   "battleRules": {
     "maxItemUses": 2
   },

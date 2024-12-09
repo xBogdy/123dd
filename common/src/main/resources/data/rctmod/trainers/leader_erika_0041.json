@@ -1,7 +1,12 @@
 {
   "name": "Erika",
   "identity": "Leader Erika",
-  "ai": "RCT",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
   "battleRules": {
     "maxItemUses": 2
   },

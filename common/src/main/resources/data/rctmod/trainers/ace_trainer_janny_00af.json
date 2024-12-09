@@ -1,6 +1,11 @@
 {
   "name": "Ace Trainer Janny",
-  "ai": "RCT",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
   "battleRules": {
     "maxItemUses": 5
   },

@@ -1,6 +1,11 @@
 {
   "name": "Elite Four Agatha",
-  "ai": "RCT",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
   "battleRules": {
     "maxItemUses": 2
   },

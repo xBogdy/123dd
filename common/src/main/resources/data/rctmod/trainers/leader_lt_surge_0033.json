@@ -1,7 +1,12 @@
 {
   "name": "Lt. Surge",
   "identity": "Leader Lt. Surge",
-  "ai": "RCT",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
   "battleRules": {
     "maxItemUses": 2
   },
