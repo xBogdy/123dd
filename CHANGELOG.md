@@ -21,9 +21,9 @@
 - Core dependency "CobblemonTrainers" is now replaced by "RCTApi"
 - Data pack trainer format is now slightly different (see the docs for a full overview of changes)
 - Decreased trainer battle cooldown from `30` to `12` seconds
-- Increased battle attempts against leaders/bosses from `2` to `3` and against other trainers from `3` to `5`
-- Minor adjustments to spawn rates: Decreased boosted rates for never beaten leaders/bosses but increased the rates for never beaten trainers in general
-- Possible spawn locations of leaders and bosses now somewhat match their themes (rather than beeing able to spawn everywhere)
+- Increased battle attempts against leaders from `2` to `3` and against other trainers from `3` to `5`
+- Minor adjustments to spawn rates: Decreased boosted rates for never beaten leaders but increased the rates for never beaten trainers in general
+- Possible spawn locations of leaders now somewhat match their themes (rather than beeing able to spawn everywhere)
 - Progression: Added more required trainer fights, e.g. Rocket Admin Archer after Brock and all the rival fights
 - ServerConfig: Renamed `bonusLevelCap` -> `additiveLevelCapRequirement` (works slightly different but effectively serves the same purpose)
 - Some pokemon that are originally supposed to mega evolve (i.e. holding key stones) now hold other competetive held items as replacement (until mega evolutions are supported)

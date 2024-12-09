@@ -49,7 +49,7 @@ public class TrainerMobData implements IDataPackObject {
             LEADER, ChatFormatting.GREEN.getColor(),
             E4, ChatFormatting.DARK_AQUA.getColor(),
             CHAMP, ChatFormatting.DARK_PURPLE.getColor(),
-            TEAM_ROCKET, ChatFormatting.DARK_GRAY.getColor(),
+            TEAM_ROCKET, ChatFormatting.GRAY.getColor(),
             RIVAL, ChatFormatting.GOLD.getColor()
         );
 
