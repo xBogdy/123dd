@@ -226,5 +226,5 @@ public interface IServerConfig extends IModConfig {
      * 
      * default false
      */
-    default boolean logSpawning() { return true; } // TODO: default false
+    default boolean logSpawning() { return false; }
 }
