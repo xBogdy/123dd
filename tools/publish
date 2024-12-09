@@ -11,7 +11,7 @@ set -e
 
 # config
 config_files=( "gradle.properties" )
-mod_loaders=( "forge" "fabric" ) # [common, forge, fabric]
+mod_loaders=( "neoforge" "fabric" ) # [common, forge, neoforge, fabric]
 
 minecraft_version_key="minecraft_version"
 mod_version_key="mod_version"
@@ -47,7 +47,7 @@ function get_version() {
     assert "$1", "get_version: missing version key"
     version_key="$1="
     
-    for file in "$(find -name gradle.properties)"; do
+    for file in $(find -name gradle.properties); do
         result=$(grep "^$version_key" "$file")
 
         if [ -n "$result" ]; then
@@ -73,7 +73,7 @@ function set_version() {
 function get_mod_id() {
     _mod_id_key="$mod_id_key="
 
-    for file in "$(find -name gradle.properties)"; do
+    for file in $(find -name gradle.properties); do
         result=$(grep "^$_mod_id_key" "$file")
 
         if [ -n "$result" ]; then
