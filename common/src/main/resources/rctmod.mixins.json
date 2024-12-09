@@ -3,7 +3,7 @@
   "minVersion": "0.8.3",
   "compatibilityLevel": "JAVA_21",
   "package": "${maven_group}.${mod_id}.mixins",
-  "mixins": [
+  "client": [
     "client.ItemRendererMixin"
   ],
   "injectors": {
