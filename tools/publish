@@ -238,14 +238,15 @@ minecraft_version_ids=$(echo $minecraft_version_ids \
 assert "$minecraft_version_ids" "minecraft version '$minecraft_version' not found"
 minecraft_version_ids="${minecraft_version_ids:0:-1}" # trailing comma ','
 
-unset answer
-while [ "$answer" != "y" -a "$answer" != "n" ]; do
-    read -p "Do you wish to upload to Curseforge (y/n)?: " answer
-done
+# upload archives to curseforge
+for mod_loader in "${mod_loaders[@]}"; do
+    unset answer
 
-if [ "$answer" = "y" ]; then
-    # upload archives to curseforge
-    for mod_loader in "${mod_loaders[@]}"; do
+    while [ "$answer" != "y" -a "$answer" != "n" ]; do
+        read -p "Do you wish to upload '$mod_loader' to Curseforge (y/n)?: " answer
+    done
+
+    if [ "$answer" = "y" ]; then
         # curseforge api has trouble with empty relations...
         relations="$(cat publish/curseforge.$mod_loader.dependencies.json | tr -d "[:space:]")"
 
@@ -271,8 +272,8 @@ if [ "$answer" = "y" ]; then
             "$curseforge_url/api/projects/$CURSE_PROJECT_ID/upload-file")
 
         echo "Published '$mod_archive' to Curseforge: $response"
-    done
-fi
+    fi
+done
 
 #####################################################
 #                     Modrinth                      #
@@ -280,14 +281,15 @@ fi
 
 modrinth_url=https://api.modrinth.com/v2
 
-unset answer
-while [ "$answer" != "y" -a "$answer" != "n" ]; do
-    read -p "Do you wish to upload to Modrinth (y/n)?: " answer
-done
+# upload archives to modrinth
+for mod_loader in "${mod_loaders[@]}"; do
+    unset answer
 
-if [ "$answer" = "y" ]; then
-    # upload archives to modrinth
-    for mod_loader in "${mod_loaders[@]}"; do
+    while [ "$answer" != "y" -a "$answer" != "n" ]; do
+        read -p "Do you wish to upload '$mod_loader' to Modrinth (y/n)?: " answer
+    done
+
+    if [ "$answer" = "y" ]; then
         metadata="{
             \"name\": \"Version $mod_version\",
             \"version_number\": \"$mod_version\",
@@ -309,8 +311,8 @@ if [ "$answer" = "y" ]; then
             "$modrinth_url/version")
 
         echo "Published '$mod_archive' to Modrinth: $response"
-    done
-fi
+    fi
+done
 
 #####################################################
 #                      Git Tag                      #
