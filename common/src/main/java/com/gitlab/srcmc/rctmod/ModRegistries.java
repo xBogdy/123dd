@@ -120,8 +120,8 @@ public final class ModRegistries {
 
         if(!ModRegistries.initialized) {
             Entities.REGISTRY.register();
-            Items.REGISTRY.register();
             Blocks.REGISTRY.register();
+            Items.REGISTRY.register();
             BlockEntityTypes.REGISTRY.register();
             LootItemConditions.REGISTRY.register();
             CriteriaTriggers.REGISTRY.register();
