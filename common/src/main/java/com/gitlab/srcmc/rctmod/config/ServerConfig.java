@@ -99,15 +99,15 @@ public class ServerConfig implements IServerConfig {
         // TODO: proper value validation
         this.biomeTagBlacklistValue = builder
             .comment("A comma separated list of biome tags (e.g. [\"is_overworld\", \"is_forest\"]). A biome may not have any of the given tags attached to it, for a trainer to spawn in that biome. Trainers may also have additional tags defined by a data pack.")
-            .defineList("biomeTagBlacklist", IServerConfig.super.biomeTagBlacklist(), element -> true);
+            .defineList("biomeTagBlacklist", IServerConfig.super.biomeTagBlacklist(), String::new, element -> true);
 
         this.biomeTagWhitelistValue = builder
             .comment("A comma separated list of biome tags (e.g. [\"is_overworld\", \"is_forest\"]). A biome must have atleast one of the given tags attached to it, for a trainer to spawn in that biome (unless the list is empty). Trainers may also have additional tags defined by a data pack.")
-            .defineList("biomeTagWhitelist", IServerConfig.super.biomeTagWhitelist(), element -> true);
+            .defineList("biomeTagWhitelist", IServerConfig.super.biomeTagWhitelist(), String::new, element -> true);
         
         this.trainerSpawnerItems = builder
             .comment("A list of items that can be used to configure a trainer spawner to spawn specific trainers. Every entry must define an item followed by a space seperated list of trainer ids (of which one will be randomly chosen to spawn).")
-            .defineList("trainerSpawnerItems", ServerConfig.trainerSpawnerItemList(IServerConfig.super.trainerSpawnerItems()), element -> true);
+            .defineList("trainerSpawnerItems", ServerConfig.trainerSpawnerItemList(IServerConfig.super.trainerSpawnerItems()), String::new, element -> true);
 
         builder.pop();
         builder.push("Players");
