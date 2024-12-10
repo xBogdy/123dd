@@ -40,4 +40,4 @@ license="${license}"
   side="BOTH"
 
 [[mixins]]
-config = "${mod_id}.mixins.json"
+config = "${mod_id}.neoforge.mixins.json"
