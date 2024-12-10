@@ -20,6 +20,7 @@ package com.gitlab.srcmc.rctmod.client;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
+import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.ModRegistries;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
@@ -44,6 +45,8 @@ public class ModClient {
     private static Queue<byte[]> playerStateUpdates = new ConcurrentLinkedDeque<>();
 
     public static void init() {
+        var mc = Minecraft.getInstance();
+        ModCommon.initPlayer(mc.player);
         ReloadListenerRegistry.register(PackType.CLIENT_RESOURCES, RCTMod.getInstance().getClientDataManager());
         NetworkManager.registerReceiver(Side.S2C, PlayerStatePayload.TYPE, PlayerStatePayload.CODEC, ModClient::receivePlayerState);
         ClientTickEvent.CLIENT_LEVEL_PRE.register(ModClient::onClientWorldTick);
@@ -54,11 +57,10 @@ public class ModClient {
     // ClientTickEvent
 
     static void onClientWorldTick(Level level) {
-        var mc = Minecraft.getInstance();
         var psu = ModClient.playerStateUpdates.poll();
 
         if(psu != null) {
-            PlayerState.get(mc.player).deserializeUpdate(psu);
+            PlayerState.get(ModCommon.localPlayer()).deserializeUpdate(psu);
         }
         
         TargetArrowRenderer.getInstance().tick();

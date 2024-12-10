@@ -37,7 +37,6 @@ import com.gitlab.srcmc.rctmod.world.entities.goals.PokemonBattleGoal;
 import com.gitlab.srcmc.rctmod.world.entities.goals.RandomStrollAwayGoal;
 import com.gitlab.srcmc.rctmod.world.entities.goals.RandomStrollThroughVillageGoal;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
@@ -297,7 +296,6 @@ public class TrainerMob extends PathfinderMob implements Npc {
         var tmd = RCTMod.getInstance().getTrainerManager().getData(this);
         var suffix = new StringBuilder();
         var cmp = this.getCustomName().copy();
-        var mc = Minecraft.getInstance();
         var cfg = RCTMod.getInstance().getClientConfig();
 
         if(cfg.showTrainerTypeSymbols()) {
@@ -312,7 +310,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
             cmp.setStyle(cmp.getStyle().withColor(tmd.getType().toColor()));
         }
 
-        if(PlayerState.get(mc.player).getTrainerDefeatCount(this.getTrainerId()) == 0) {
+        if(PlayerState.get(ModCommon.localPlayer()).getTrainerDefeatCount(this.getTrainerId()) == 0) {
             cmp.setStyle(cmp.getStyle().withItalic(true));
         }
 

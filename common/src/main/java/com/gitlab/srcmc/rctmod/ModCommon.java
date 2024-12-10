@@ -48,16 +48,30 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.packs.PackType;
+import net.minecraft.world.entity.player.Player;
 
 public class ModCommon {
     public static final String MOD_ID = "rctmod";
     public static final String MOD_NAME = "Radical Cobblemon Trainers";
     public static final Logger LOG = LoggerFactory.getLogger(MOD_NAME);
+    public static Player player;
 
     public static void init() {
         ModRegistries.init();
         ModCommon.registerEvents();
         ReloadListenerRegistry.register(PackType.SERVER_DATA, RCTMod.getInstance().getTrainerManager());
+    }
+
+    public static void initPlayer(Player player) {
+        ModCommon.player = player;
+    }
+
+    public static Player localPlayer() {
+        if(ModCommon.player == null) {
+            throw new IllegalStateException("Local player not initialized, call ModCommon.initPlayer on the client side");
+        }
+
+        return ModCommon.player;
     }
 
     static void registerEvents() {
