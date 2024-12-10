@@ -67,10 +67,6 @@ public class ModCommon {
         ModRegistries.init();
         ModCommon.registerEvents();
         ReloadListenerRegistry.register(PackType.SERVER_DATA, RCTMod.getInstance().getTrainerManager());
-
-        if(DedicatedServer.class.isAssignableFrom(ModCommon.class)) {
-            NetworkManager.registerS2CPayloadType(PlayerStatePayload.TYPE, PlayerStatePayload.CODEC);
-        }
     }
 
     public static void initPlayer(Supplier<Player> player) {

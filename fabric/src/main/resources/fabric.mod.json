@@ -16,6 +16,9 @@
     ],
     "client": [
       "${maven_group}.${mod_id}.fabric.client.FabricClient"
+    ],
+    "server": [
+      "${maven_group}.${mod_id}.fabric.server.FabricServer"
     ]
   },
   "mixins": [
