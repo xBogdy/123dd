@@ -296,9 +296,19 @@ public class TrainerMob extends PathfinderMob implements Npc {
         var tmd = RCTMod.getInstance().getTrainerManager().getData(this);
         var suffix = new StringBuilder();
         var cmp = this.getCustomName().copy();
-        var cfg = RCTMod.getInstance().getClientConfig();
+        var level = this.level();
+        var showSymbols = false;
+        var showColors = true;
+        var showItalic = false;
 
-        if(cfg.showTrainerTypeSymbols()) {
+        if(level.isClientSide) {
+            var cfg = RCTMod.getInstance().getClientConfig();
+            showSymbols = cfg.showTrainerTypeSymbols();
+            showColors = cfg.showTrainerTypeColors();
+            showItalic = PlayerState.get(ModCommon.localPlayer()).getTrainerDefeatCount(this.getTrainerId()) == 0;
+        }
+
+        if(showSymbols) {
             var sym = tmd.getType().toString();
             
             if(sym.length() > 0) {
@@ -306,11 +316,11 @@ public class TrainerMob extends PathfinderMob implements Npc {
             }
         }
 
-        if(cfg.showTrainerTypeColors()) {
+        if(showColors) {
             cmp.setStyle(cmp.getStyle().withColor(tmd.getType().toColor()));
         }
 
-        if(PlayerState.get(ModCommon.localPlayer()).getTrainerDefeatCount(this.getTrainerId()) == 0) {
+        if(showItalic) {
             cmp.setStyle(cmp.getStyle().withItalic(true));
         }
 
