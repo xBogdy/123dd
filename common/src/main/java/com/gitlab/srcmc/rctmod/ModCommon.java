@@ -18,6 +18,8 @@
 package com.gitlab.srcmc.rctmod;
 
 import java.util.List;
+import java.util.function.Supplier;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -41,6 +43,8 @@ import dev.architectury.event.events.common.TickEvent.LevelTick;
 import dev.architectury.networking.NetworkManager;
 import dev.architectury.registry.ReloadListenerRegistry;
 import kotlin.Unit;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.EnvironmentInterface;
 import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands.CommandSelection;
@@ -50,19 +54,26 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.entity.player.Player;
 
+@EnvironmentInterface(itf = ModCommon.DedicatedServer.class, value = EnvType.SERVER)
 public class ModCommon {
+    interface DedicatedServer {}
+
     public static final String MOD_ID = "rctmod";
     public static final String MOD_NAME = "Radical Cobblemon Trainers";
     public static final Logger LOG = LoggerFactory.getLogger(MOD_NAME);
-    public static Player player;
+    public static Supplier<Player> player;
 
     public static void init() {
         ModRegistries.init();
         ModCommon.registerEvents();
         ReloadListenerRegistry.register(PackType.SERVER_DATA, RCTMod.getInstance().getTrainerManager());
+
+        if(DedicatedServer.class.isAssignableFrom(ModCommon.class)) {
+            NetworkManager.registerS2CPayloadType(PlayerStatePayload.TYPE, PlayerStatePayload.CODEC);
+        }
     }
 
-    public static void initPlayer(Player player) {
+    public static void initPlayer(Supplier<Player> player) {
         ModCommon.player = player;
     }
 
@@ -71,7 +82,7 @@ public class ModCommon {
             throw new IllegalStateException("Local player not initialized, call ModCommon.initPlayer on the client side");
         }
 
-        return ModCommon.player;
+        return ModCommon.player.get();
     }
 
     static void registerEvents() {

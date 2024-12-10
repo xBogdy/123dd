@@ -46,7 +46,7 @@ public class ModClient {
 
     public static void init() {
         var mc = Minecraft.getInstance();
-        ModCommon.initPlayer(mc.player);
+        ModCommon.initPlayer(() -> mc.player);
         ReloadListenerRegistry.register(PackType.CLIENT_RESOURCES, RCTMod.getInstance().getClientDataManager());
         NetworkManager.registerReceiver(Side.S2C, PlayerStatePayload.TYPE, PlayerStatePayload.CODEC, ModClient::receivePlayerState);
         ClientTickEvent.CLIENT_LEVEL_PRE.register(ModClient::onClientWorldTick);
