@@ -116,8 +116,6 @@ public final class ModRegistries {
     }
 
     public static void init() {
-        ModCommon.LOG.info("INITIALIZING REGISTRIES: " + !ModRegistries.initialized);
-
         if(!ModRegistries.initialized) {
             Entities.REGISTRY.register();
             Blocks.REGISTRY.register();
