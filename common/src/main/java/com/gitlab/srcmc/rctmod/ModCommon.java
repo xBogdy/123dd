@@ -29,7 +29,6 @@ import com.cobblemon.mod.common.api.events.CobblemonEvents;
 import com.cobblemon.mod.common.api.events.battles.BattleVictoryEvent;
 import com.cobblemon.mod.common.api.events.pokemon.ExperienceGainedPreEvent;
 import com.gitlab.srcmc.rctapi.api.RCTApi;
-import com.gitlab.srcmc.rctapi.api.errors.RCTException;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.commands.PlayerCommands;
@@ -104,7 +103,6 @@ public class ModCommon {
     // LifecycleEvent
 
     static void onServerStarting(MinecraftServer server) {
-        ModCommon.LOG.info("###### SERVER STARTING: " + server.isRunning());
         RCTMod.getInstance().getTrainerSpawner().init(server.overworld());
         RCTMod.getInstance().getTrainerManager().notifyServerReady(server);
     }

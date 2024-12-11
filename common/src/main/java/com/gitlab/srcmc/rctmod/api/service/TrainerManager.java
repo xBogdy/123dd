@@ -265,7 +265,6 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
 
     @Override
     protected void apply(Map<ResourceLocation, JsonElement> object, ResourceManager resourceManager, ProfilerFiller profilerFiller) {
-        ModCommon.LOG.info("TRAINNER MANAGER APPLY");
         this.resourceManager = resourceManager;
         this.attemptReload();
     }
