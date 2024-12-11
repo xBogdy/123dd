@@ -147,7 +147,7 @@ public interface IServerConfig extends IModConfig {
      *  "cobblemon:focus_band" "elite_four_bruno_0050" "elite_four_bruno_0051",
      *  "cobblemon:dragon_fang" "elite_four_lance_0056" "elite_four_lance_0057",
      *  "cobblemon:never_melt_ice" "elite_four_lorelei_004d" "elite_four_lorelei_004e",
-     *  "cobblemon:life_orb" "champion_terry_01b6" "champion_terry_01b7" "champion_terry_01b8" "champion_terry_02e3" "champion_terry_02e4" "champion_terry_02e5"
+     *  "cobblemon:life_orb" "champion_terry_01b6" "champion_terry_01b7" "champion_terry_01b8"
      * ]
      */
     default Map<String, List<String>> trainerSpawnerItems() {

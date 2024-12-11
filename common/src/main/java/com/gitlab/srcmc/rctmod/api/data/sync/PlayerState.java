@@ -285,7 +285,7 @@ public class PlayerState implements Serializable {
             this.defeatedTrainerIds.addAll(tpd.getDefeatedTrainerIds());
 
             tm.getAllData().forEach(entry -> {
-                var defCount = tm.getBattleMemory(overworld, entry.getKey()).getDefeatByCount(player);
+                var defCount = tm.getBattleMemory(overworld, entry.getKey()).getDefeatByCount(this.player);
 
                 if(defCount > 0) {
                     var tt = entry.getValue().getType();

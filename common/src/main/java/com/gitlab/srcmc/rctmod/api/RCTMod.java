@@ -30,14 +30,21 @@ import com.gitlab.srcmc.rctmod.api.config.IServerConfig;
 import com.gitlab.srcmc.rctmod.api.data.pack.DataPackManager;
 import com.gitlab.srcmc.rctmod.api.service.TrainerManager;
 import com.gitlab.srcmc.rctmod.api.service.TrainerSpawner;
+import com.gitlab.srcmc.rctmod.client.ClientType;
 import com.gitlab.srcmc.rctmod.config.ClientConfig;
 import com.gitlab.srcmc.rctmod.config.ServerConfig;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
+
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.EnvironmentInterface;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.entity.player.Player;
 
-public final class RCTMod {
+@EnvironmentInterface(itf = ClientType.class, value = EnvType.CLIENT)
+public final class RCTMod implements ClientType {
+    public static final boolean IS_CLIENT_SIDE = ClientType.is(RCTMod.class);
+
     private static Supplier<RCTMod> instanceSupplier = () -> {
         var defaultInstance = new RCTMod(
             new TrainerManager(), new TrainerSpawner(),

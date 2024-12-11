@@ -32,11 +32,14 @@ public class FabricCommon implements ModInitializer {
         NeoForgeConfigRegistry.INSTANCE.register(ModCommon.MOD_ID, ModConfig.Type.SERVER, RCTMod.getInstance().getServerConfig().getSpec());
         NeoForgeModConfigEvents.loading(ModCommon.MOD_ID).register(FabricCommon::onConfigLoadingOrReloading);
         NeoForgeModConfigEvents.reloading(ModCommon.MOD_ID).register(FabricCommon::onConfigLoadingOrReloading);
+        ModCommon.LOG.info("######## COMMMON");
     }
 
     static void onConfigLoadingOrReloading(ModConfig config) {
+        ModCommon.LOG.info("######## CONFIG (RE)LOAD, CLIENT: " + RCTMod.IS_CLIENT_SIDE);
         if(config.getType() == ModConfig.Type.SERVER) {
             RCTMod.getInstance().getServerConfig().reload();
+            RCTMod.getInstance().getTrainerManager().notifyConfigReady();
         }
     }
 }

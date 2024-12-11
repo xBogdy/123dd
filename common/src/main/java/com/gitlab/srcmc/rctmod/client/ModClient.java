@@ -48,6 +48,7 @@ public class ModClient {
         var mc = Minecraft.getInstance();
         ModCommon.initPlayer(() -> mc.player);
         ReloadListenerRegistry.register(PackType.CLIENT_RESOURCES, RCTMod.getInstance().getClientDataManager());
+        ReloadListenerRegistry.register(PackType.CLIENT_RESOURCES, RCTMod.getInstance().getTrainerManager());
         NetworkManager.registerReceiver(Side.S2C, PlayerStatePayload.TYPE, PlayerStatePayload.CODEC, ModClient::receivePlayerState);
         ClientTickEvent.CLIENT_LEVEL_PRE.register(ModClient::onClientWorldTick);
         EntityRendererRegistry.register(ModRegistries.Entities.TRAINER, TrainerRenderer::new);

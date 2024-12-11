@@ -58,14 +58,43 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
 
     private Map<UUID, String> uuidToTrainerId = new HashMap<>();
     private Set<String> playerTrainerIds = new HashSet<>();
-    private MinecraftServer server;
+
+    private ResourceManager resourceManager;
+    private boolean configLoaded;
 
     public TrainerManager() {
         super(GSON, ModCommon.MOD_ID);
     }
 
-    public void init(MinecraftServer server) {
-        this.server = server;
+    public void notifyServerReady(MinecraftServer server) {
+        RCTApi.getInstance().getTrainerRegistry().init(server);
+        this.resourceManager = server.getResourceManager();
+        this.attemptReload();
+    }
+
+    public void notifyConfigReady() {
+        this.configLoaded = true;
+        this.attemptReload();
+    }
+
+    private boolean isReady() {
+        return this.configLoaded && this.resourceManager != null;
+    }
+
+    private void registerTrainer(String trainerId, TrainerMobData tmd) {
+        if(!RCTMod.IS_CLIENT_SIDE) {
+            var reg = RCTApi.getInstance().getTrainerRegistry();
+
+            try {
+                reg.registerNPC(trainerId, tmd.getTrainerTeam());
+            } catch(RCTException errors) {
+                ModCommon.LOG.error("Model validation failure for '" + trainerId + "'");
+                errors.getErrors().forEach(error -> ModCommon.LOG.error(error.message));
+            } catch(Exception e) {
+                // this.trainerMobs.remove(trainerId); // not that it really matters at this point
+                ModCommon.LOG.error("Failed to register trainer '" + trainerId + "'", e);
+            }
+        }
     }
 
     public String registerPlayer(Player player) {
@@ -193,22 +222,14 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
             TrainerBattleMemory.filePath(trainerId));
     }
 
-    public void forceReload() {
-        if(this.server != null && this.server.isRunning()) {
-            this.forceReload(this.server.getResourceManager());
+    protected void attemptReload() {
+        if(this.isReady()) {
+            this.forceReload(this.resourceManager);
         }
     }
 
     protected void forceReload(ResourceManager resourceManager) {
-        if(this.server == null || !this.server.isRunning()) {
-            ModCommon.LOG.info("Trainer data reload skipped (server not running)");
-            return;
-        }
-
         var dpm = RCTMod.getInstance().getServerDataManager();
-        var reg = RCTApi.getInstance().getTrainerRegistry();
-
-        reg.clearNPCs();
         dpm.init(resourceManager);
         this.trainerMobs.clear();
 
@@ -216,16 +237,8 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
             var trainerId = PathUtils.filename(rl.getPath());
 
             dpm.loadResource(trainerId, "mobs", tmd -> {
-                try {
-                    this.trainerMobs.put(trainerId, tmd);
-                    reg.registerNPC(trainerId, tmd.getTrainerTeam());
-                } catch(RCTException errors) {
-                    ModCommon.LOG.error("Model validation failure for '" + trainerId + "' in: " + rl.getPath());
-                    errors.getErrors().forEach(error -> ModCommon.LOG.error(error.message));
-                } catch(Exception e) {
-                    // this.trainerMobs.remove(trainerId); // not that it really matters at this point
-                    ModCommon.LOG.error("Failed to register trainer '" + trainerId + "': " + rl.getPath(), e);
-                }
+                this.trainerMobs.put(trainerId, tmd);
+                this.registerTrainer(trainerId, tmd);
             }, TrainerMobData.class);
         });
 
@@ -243,12 +256,17 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
             .map(tid -> this.trainerMobs.get(tid).getRequiredLevelCap())
             .max(Integer::compare).orElse(tmd.getRequiredLevelCap())));
 
-        ModCommon.LOG.info(String.format("Registered %d trainers", reg.getIds().size()));
+        if(!RCTMod.IS_CLIENT_SIDE) {
+            ModCommon.LOG.info(String.format("Registered %d trainers", RCTApi.getInstance().getTrainerRegistry().getIds().size()));
+        }
+
         dpm.close();
     }
 
     @Override
     protected void apply(Map<ResourceLocation, JsonElement> object, ResourceManager resourceManager, ProfilerFiller profilerFiller) {
-        this.forceReload(resourceManager);
+        ModCommon.LOG.info("TRAINNER MANAGER APPLY");
+        this.resourceManager = resourceManager;
+        this.attemptReload();
     }
 }
