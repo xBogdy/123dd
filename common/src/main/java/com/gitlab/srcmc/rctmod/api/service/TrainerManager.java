@@ -59,8 +59,9 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
     private Map<UUID, String> uuidToTrainerId = new HashMap<>();
     private Set<String> playerTrainerIds = new HashSet<>();
 
+    private MinecraftServer server;
     private ResourceManager resourceManager;
-    private boolean configLoaded;
+    private boolean configReady;
 
     public TrainerManager() {
         super(GSON, ModCommon.MOD_ID);
@@ -69,20 +70,32 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
     public void notifyServerReady(MinecraftServer server) {
         RCTApi.getInstance().getTrainerRegistry().init(server);
         this.resourceManager = server.getResourceManager();
+        this.server = server;
         this.attemptReload();
     }
 
+    public void notifyServerStop(MinecraftServer server) {
+        if(server == this.server) {
+            this.server = null;
+            this.configReady = false;
+        }
+    }
+
     public void notifyConfigReady() {
-        this.configLoaded = true;
+        this.configReady = true;
         this.attemptReload();
     }
 
     private boolean isReady() {
-        return this.configLoaded && this.resourceManager != null;
+        return this.configReady && this.resourceManager != null;
+    }
+
+    private boolean isServerRunning() {
+        return this.server != null && this.server.isRunning();
     }
 
     private void registerTrainer(String trainerId, TrainerMobData tmd) {
-        if(!RCTMod.IS_CLIENT_SIDE) {
+        if(this.isServerRunning()) {
             var reg = RCTApi.getInstance().getTrainerRegistry();
 
             try {
@@ -256,7 +269,7 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
             .map(tid -> this.trainerMobs.get(tid).getRequiredLevelCap())
             .max(Integer::compare).orElse(tmd.getRequiredLevelCap())));
 
-        if(!RCTMod.IS_CLIENT_SIDE) {
+        if(this.isServerRunning()) {
             ModCommon.LOG.info(String.format("Registered %d trainers", RCTApi.getInstance().getTrainerRegistry().getIds().size()));
         }
 
