@@ -12,7 +12,7 @@ Over **700** unique and **challenging** trainers, from the Pokemon rom hack *Rad
 
 ---
 
-**Story Mode**: Defeat leaders, bosses and many more to become the champion.
+**Story Mode**: Defeat leaders, rivals and many more to become the champion.
 
 ![trainer_battle_start](https://cdn.modrinth.com/data/lRwTUnD7/images/fc88a7cb14538738ca900eb965b74e40e7ecf42c.png)
 
@@ -56,8 +56,8 @@ The mod contains many config options and has an extensive data pack support. Ple
 ## Dependencies
 
 - [Cobblemon](https://modrinth.com/mod/cobblemon)
-- [CobblemonTrainers](https://modrinth.com/mod/cobblemontrainers)
-- [Forge Config API Port](https://modrinth.com/mod/forge-config-api-port)
+- [Radical Cobblemon Trainers API](https://modrinth.com/mod/rctapi)
+- [Forge Config API Port](https://modrinth.com/mod/forge-config-api-port) (**only on fabric**)
 
 ## Known Issues
 
@@ -69,9 +69,9 @@ The mod contains many config options and has an extensive data pack support. Ple
 - ~~More/Better/Fixed assets (Teams, Textures, Mobs, Dialogs, Loot tables, ...)~~
 - Clear distinction between male and female trainers (textures)
 - Clear distinction between adult and child trainers (models)
-- More config and datapack options to allow trainers beeing used in advancement like scenarios:
+- ~~More config and datapack options to allow trainers beeing used in advancement like scenarios:~~
   - ~~disable despawning~~
-  - max trainer defeats/wins per player
+  - ~~max trainer defeats/wins per player~~
   - ~~infinite trainer defeats/wins (e.g. by setting (global) max wins/defeats to `0`)~~
   - ~~loot condition for n'th (e.g. 1st) defeat (`defeat_count`)~~
 - ~~Advancements~~
