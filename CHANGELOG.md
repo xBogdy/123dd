@@ -2,7 +2,7 @@
 
 **Important**: The `level_cap` is not a value anymore that can be set per player but is rather derived from the current state of progress of that player. Because of the changes to the progression it is possible that when updating from an older version the level caps of players will be different (most likely lower)! Apart from that the progress of players should adapt to the changes but as a general advice **always make backups before updating mods**.
 
-## [0.13.0-beta] - 2024-12-05
+## [0.13.x-beta] - 2024-12-11
 
 ***Added***
 
