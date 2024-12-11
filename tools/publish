@@ -31,6 +31,7 @@ function assert() {
 
 function assert_curl() {
     response=$(curl "$@")
+    >&2 echo "response: $response"
 
     if [ -n "$(echo $response | grep '"error":')" ]; then
         assert "$response"
