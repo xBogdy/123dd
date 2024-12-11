@@ -4,51 +4,12 @@
 
 ## [0.13.x-beta] - 2024-12-11
 
-***Added***
-
-- Command: `player get progress [player]`: Outputs a list of all trainers a player has defeated that are part of the required progression
-- Command: `player set progress [player(s)] (before|after) <trainerId>`
-- Double battles
-- Server config `allowOverLeveling`: Specifies if players should be allowed to level their pokemon above their level cap (default: `false`)
-- Server config `trainerSpawnerItems`: Allows to specify what items can be used to configure a trainer spawner to summon specific trainers
-- Trainer (type) dependent battle rules: Currently allows to set item usage restrictions, leaders and bosses will by default not allow more than `2` item uses
-- Trainer Spawner (craftable) block: Can be attuned to spawn different trainers whenever a player is nearby (and the trainer is not already elsewhere), trainers will not move while standing on this block, what items will spawn what trainers can be configured (check out the [documentation](https://srcmc.gitlab.io/rct/docs/gameplay/blocks/#trainer-spawner) for more information)
-- `HomePos` block positon tag for trainer npcs: Trainers will stay/move to the defined position, trainers spawned from a Trainer Spawner block will have that block set as their home position (this is also the case for any trainers nearby a matching Trainer Spawner block)
-
 ***Changed***
 
-- Advancement defeat count trigger property `trainer_id` now an array `trainer_ids` (of which only one must be defeated for an advancement to be granted)
-- Advancment defeat count trigger now triggers if all trainers of a specified `trainer_type` are defeated if a negative `count` is given
-- Command: `trainer get required_defeats` now prints a list of required trainers
-- Core dependency "CobblemonTrainers" is now replaced by "RCTApi"
-- Data pack trainer format is now slightly different (see the docs for a full overview of changes)
-- Decreased trainer battle cooldown from `30` to `12` seconds
-- Increased battle attempts against leaders from `2` to `3` and against other trainers from `3` to `5`
-- Minor adjustments to spawn rates: Decreased boosted rates for never beaten leaders but increased the rates for never beaten trainers in general
-- Possible spawn locations of leaders now somewhat match their themes (rather than beeing able to spawn everywhere)
-- Progression: Added more required trainer fights, e.g. Rocket Admin Archer after Brock and all the rival fights
-- ServerConfig: Renamed `bonusLevelCap` -> `additiveLevelCapRequirement` (works slightly different but effectively serves the same purpose)
-- Some pokemon that are originally supposed to mega evolve (i.e. holding key stones) now hold other competetive held items as replacement (until mega evolutions are supported)
-- Some trainers might carry items that they may use in battles (e.g. potions)
-- Trainer Card GUI: Trainers that can be spawned with a trainer spawner will show the item(s) required to do so on the 'Spawning' info page
-- Trainer defeat counts are now per player, this means different players can now fight the same trainer in a row (trainers will still tend to walk away if defeated/exhausted once)
-- Trainers now follow players holding a Trainer Card in their main- or off hand
-- Update to Cobblemon 1.6, Minecraft 1.21, Fabric/Neoforge
-- `RIVAL` names are now colored gold
-
-***Fixed***
-
-- Some oversights in npc ai behaviour (e.g. player tracking not working properly)
-- Some pokemon missing held items
-- Some pokemon not having the correct regional form
-- Trainer Card now glows and renders the arrow regardless if the trainer spawned in naturally or was summoned in any other way
-- Trainer pokemon sometimes dropping loot, missing trainer pokemon send out and retrieve animations, and probably some other stuff
-
-***Removed***
-
-- Command: `player set level_cap` (see `player set progress` for alternative)
-- ServerConfig: `maxOverLevelCap` (too much of a corner case and barely useful, see `allowOverLeveling` and `additiveLevelCapRequirement` for alternatives)
-- Trainer type `BOSS` (former bosses are now either of type `RIVAL` or `TEAM_ROCKET`)
+- Replaced `CobblemonTrainers` dependency with `RCTApi`
+- `TrainerSpawner` block (build your own gyms)
+- Reworked some of the progression (more required battles)
+- and lots of other stuff... (I highly recommend to check out the changelog)
 
 ## [0.12.0-beta] - 2024-10-03
 
