@@ -29,7 +29,7 @@
 - Progression: Added more required trainer fights, e.g. Rocket Admin Archer after Brock and all the rival fights
 - ServerConfig: Renamed `bonusLevelCap` -> `additiveLevelCapRequirement` (works slightly different but effectively serves the same purpose)
 - Some pokemon that are originally supposed to mega evolve (i.e. holding key stones) now hold other competetive held items as replacement (until mega evolutions are supported)
-- Some trainers might carry items that they may use in battles (e.g. potions) (TODO)
+- Some trainers might carry items that they may use in battles (e.g. potions)
 - Trainer Card GUI: Trainers that can be spawned with a trainer spawner will show the item(s) required to do so on the 'Spawning' info page
 - Trainer defeat counts are now per player, this means different players can now fight the same trainer in a row (trainers will still tend to walk away if defeated/exhausted once)
 - Trainers now follow players holding a Trainer Card in their main- or off hand
