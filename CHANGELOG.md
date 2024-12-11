@@ -2,13 +2,13 @@
 
 **Important**: The `level_cap` is not a value anymore that can be set per player but is rather derived from the current state of progress of that player. Because of the changes to the progression it is possible that when updating from an older version the level caps of players will be different (most likely lower)! Apart from that the progress of players should adapt to the changes but as a general advice **always make backups before updating mods**.
 
-## [0.13.x-beta] - 2024-12-11
+## [0.13.0-beta] - 2024-12-11
 
 ***Changed***
 
 - Replaced `CobblemonTrainers` dependency with `RCTApi`
-- `TrainerSpawner` block (build your own gyms)
 - Reworked some of the progression (more required battles)
+- `TrainerSpawner` block (build your own gyms)
 - and lots of other stuff... (I highly recommend to check out the changelog)
 
 ## [0.12.0-beta] - 2024-10-03
