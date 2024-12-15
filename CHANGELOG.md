@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.0] - 2024-12-15
+
+***Fixed***
+
+- Desync issue with the TrainerCard (e.g. by switching dimensions)
+
 ## [0.12.0-beta] - 2024-10-03
 
 ***Added***
