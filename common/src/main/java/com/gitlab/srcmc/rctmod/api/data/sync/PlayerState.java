@@ -56,7 +56,13 @@ public class PlayerState implements Serializable {
 
         if(level.isClientSide) {
             if(player.isLocalPlayer()) {
-                return (localState == null || localState.player != player) ? (localState = new PlayerState(player)) : localState;
+                if(localState == null || !localState.player.equals(player)) {
+                    localState = new PlayerState(player);
+                } else {
+                    localState.player = player;
+                }
+                
+                return localState;
             }
 
             throw new IllegalArgumentException("Cannot retrieve player state of other players on this client");
