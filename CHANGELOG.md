@@ -6,7 +6,7 @@
 
 ***Fixed***
 
-- Potential crash caused by the Trainer Spawner Block (NullPointerException)
+- Suppressed crash caused by trainers being picked up with CarryOn (temporary solution)
 
 ## [0.13.1-beta] - 2024-12-15
 
