@@ -2,6 +2,13 @@
 
 **Important**: The `level_cap` is not a value anymore that can be set per player but is rather derived from the current state of progress of that player. Because of the changes to the progression it is possible that when updating from an older version the level caps of players will be different (most likely lower)! Apart from that the progress of players should adapt to the changes but as a general advice **always make backups before updating mods**.
 
+## [1.0.0] - 2024-12-24
+
+***Fixed***
+
+- "Solution" to prevent issues caused by trainers unexpectedly being removed from a world (e.g. picked up with CarryOn)
+- Some issues with updating config values or reloading data packs while a server is running
+
 ## [0.13.2-beta] - 2024-12-24
 
 ***Fixed***

@@ -54,6 +54,9 @@ dependencies {
     // Radical Cobblemon Trainers API
     modImplementation "curse.maven:radical-cobblemon-trainers-api-1152792:${rctapi_neoforge_version}"
 
+    // Carry On (testing)
+    // runtimeOnly "curse.maven:carry-on-274259:5649344"
+
     // runtimeOnly fg.deobf("curse.maven:simpletms-tms-and-trs-for-cobblemon-959184:${simpletms_version}")
     // runtimeOnly fg.deobf("curse.maven:pkgbadges-889895:${pkgbadges_version}")
     // runtimeOnly fg.deobf("curse.maven:patchouli-306770:${patchouli_version}")

@@ -28,6 +28,8 @@ import java.util.stream.Stream;
 import com.cobblemon.mod.common.Cobblemon;
 import com.gitlab.srcmc.rctapi.api.RCTApi;
 import com.gitlab.srcmc.rctapi.api.errors.RCTException;
+import com.gitlab.srcmc.rctapi.api.trainer.Trainer;
+import com.gitlab.srcmc.rctapi.api.trainer.TrainerNPC;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.TrainerBattle;
@@ -94,12 +96,17 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
         return this.server != null && this.server.isRunning();
     }
 
-    private void registerTrainer(String trainerId, TrainerMobData tmd) {
+    private void registerTrainer(String trainerId, TrainerMobData tmd, Map<String, Trainer> oldTrainers) {
         if(this.isServerRunning()) {
             var reg = RCTApi.getInstance().getTrainerRegistry();
 
             try {
-                reg.registerNPC(trainerId, tmd.getTrainerTeam());
+                var newTrainer = reg.registerNPC(trainerId, tmd.getTrainerTeam());
+                var oldTrainer = oldTrainers.get(trainerId);
+
+                if(oldTrainer != null) {
+                    newTrainer.setEntity(oldTrainer.getEntity());
+                }
             } catch(RCTException errors) {
                 ModCommon.LOG.error("Model validation failure for '" + trainerId + "'");
                 errors.getErrors().forEach(error -> ModCommon.LOG.error(error.message));
@@ -244,20 +251,33 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
     protected void forceReload(ResourceManager resourceManager) {
         var dpm = RCTMod.getInstance().getServerDataManager();
         dpm.init(resourceManager);
-        this.trainerMobs.clear();
+
+        var oldTrainers = new HashMap<String, Trainer>();
+        var newTrainerMobs = new HashMap<String, TrainerMobData>();
+
+        if(this.isServerRunning()) {
+            var reg = RCTApi.getInstance().getTrainerRegistry();
+
+            reg.getIds().stream()
+                .map(tid -> Map.<String, Trainer>entry(tid, reg.getById(tid)))
+                .filter(entry -> entry.getValue() instanceof TrainerNPC)
+                .forEach(entry -> oldTrainers.put(entry.getKey(), entry.getValue()));
+
+            reg.clearNPCs();
+        }
 
         dpm.listTrainerTeams((rl, io) -> {
             var trainerId = PathUtils.filename(rl.getPath());
 
             dpm.loadResource(trainerId, "mobs", tmd -> {
-                this.trainerMobs.put(trainerId, tmd);
-                this.registerTrainer(trainerId, tmd);
+                newTrainerMobs.put(trainerId, tmd);
+                this.registerTrainer(trainerId, tmd, oldTrainers);
             }, TrainerMobData.class);
         });
 
-        this.trainerMobs.forEach((trainerId, tmd) -> {
+        newTrainerMobs.forEach((trainerId, tmd) -> {
             tmd.getMissingRequirements(Set.of(), true).forEach(tid -> {
-                var tmd2 = this.trainerMobs.get(tid);
+                var tmd2 = newTrainerMobs.get(tid);
 
                 if(tmd2 != null) {
                     tmd2.addFollowedBy(trainerId);
@@ -265,9 +285,12 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
             });
         });
 
-        this.trainerMobs.values().forEach(tmd -> tmd.setRewardLevelCap(tmd.getFollowdBy().stream()
-            .map(tid -> this.trainerMobs.get(tid).getRequiredLevelCap())
+        newTrainerMobs.values().forEach(tmd -> tmd.setRewardLevelCap(tmd.getFollowdBy().stream()
+            .map(tid -> newTrainerMobs.get(tid).getRequiredLevelCap())
             .max(Integer::compare).orElse(tmd.getRequiredLevelCap())));
+
+        // atomic operation ensures 'valid' trainer ids are always properly initialized (when accessed from a different thread)
+        this.trainerMobs = newTrainerMobs;
 
         if(this.isServerRunning()) {
             ModCommon.LOG.info(String.format("Registered %d trainers", RCTApi.getInstance().getTrainerRegistry().getIds().size()));

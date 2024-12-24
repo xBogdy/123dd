@@ -509,6 +509,9 @@ public class TrainerMob extends PathfinderMob implements Npc {
         if(reason == RemovalReason.DISCARDED || reason == RemovalReason.KILLED) {
             RCTMod.getInstance().getTrainerSpawner().unregister(this);
             this.cancelBattle();
+        } else if(reason != RemovalReason.UNLOADED_TO_CHUNK) {
+            this.remove(RemovalReason.DISCARDED);
+            return;
         }
 
         super.remove(reason);
@@ -623,24 +626,26 @@ public class TrainerMob extends PathfinderMob implements Npc {
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
 
-        if(compoundTag.contains("Cooldown")) {
-            this.cooldown = compoundTag.getInt("Cooldown");
-        }
+        if(RCTMod.getInstance().getTrainerSpawner().isRegistered(this)) {
+            if(compoundTag.contains("Cooldown")) {
+                this.cooldown = compoundTag.getInt("Cooldown");
+            }
 
-        if(compoundTag.contains("TrainerId")) {
-            this.setTrainerId(compoundTag.getString("TrainerId"));
-        }
+            if(compoundTag.contains("TrainerId")) {
+                this.setTrainerId(compoundTag.getString("TrainerId"));
+            }
 
-        if(compoundTag.contains("HomePos")) {
-            this.setHomePos(BlockPos.of(compoundTag.getLong("HomePos")));
-        }
+            if(compoundTag.contains("HomePos")) {
+                this.setHomePos(BlockPos.of(compoundTag.getLong("HomePos")));
+            }
 
-        if(compoundTag.contains("OriginPlayer")) {
-            this.setOriginPlayer(compoundTag.getUUID("OriginPlayer"));
-        }
+            if(compoundTag.contains("OriginPlayer")) {
+                this.setOriginPlayer(compoundTag.getUUID("OriginPlayer"));
+            }
 
-        if(compoundTag.contains("Persistent")) {
-            this.setPersistent(compoundTag.getBoolean("Persistent"));
+            if(compoundTag.contains("Persistent")) {
+                this.setPersistent(compoundTag.getBoolean("Persistent"));
+            }
         }
     }
 

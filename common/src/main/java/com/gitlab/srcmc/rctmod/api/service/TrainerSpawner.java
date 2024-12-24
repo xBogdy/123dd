@@ -187,7 +187,7 @@ public class TrainerSpawner {
             var identity = RCTMod.getInstance().getTrainerManager().getData(mob).getTrainerTeam().getIdentity();
             var newIdentity = RCTMod.getInstance().getTrainerManager().getData(newTrainerId).getTrainerTeam().getIdentity();
             var identities = mob.isPersistenceRequired() ? this.persistentNames : this.identities;
-            identities.compute(identity, (key, value) -> value == null || value == 1 ? null : value - 1);
+            identities.compute(identity, (key, value) -> value == 1 ? null : value - 1);
             identities.compute(newIdentity, (key, value) -> value == null ? 1 : value + 1);
         }
     }
@@ -236,7 +236,7 @@ public class TrainerSpawner {
     public boolean attemptSpawnFor(Player player, String trainerId, BlockPos pos, boolean setHome) {
         var level = player.level();
 
-        if(TrainerSpawner.canSpawnAt(level, pos) && this.canSpawnFor(player)) {
+        if(RCTMod.getInstance().getTrainerManager().isValidId(trainerId) && TrainerSpawner.canSpawnAt(level, pos) && this.canSpawnFor(player)) {
             var tmd = RCTMod.getInstance().getTrainerManager().getData(trainerId);
 
             if(tmd != null && this.isUnique(tmd.getTrainerTeam().getIdentity())) {
