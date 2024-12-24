@@ -187,7 +187,7 @@ public class TrainerSpawner {
             var identity = RCTMod.getInstance().getTrainerManager().getData(mob).getTrainerTeam().getIdentity();
             var newIdentity = RCTMod.getInstance().getTrainerManager().getData(newTrainerId).getTrainerTeam().getIdentity();
             var identities = mob.isPersistenceRequired() ? this.persistentNames : this.identities;
-            identities.compute(identity, (key, value) -> value == 1 ? null : value - 1);
+            identities.compute(identity, (key, value) -> value == null || value == 1 ? null : value - 1);
             identities.compute(newIdentity, (key, value) -> value == null ? 1 : value + 1);
         }
     }

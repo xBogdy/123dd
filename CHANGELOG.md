@@ -2,6 +2,12 @@
 
 **Important**: The `level_cap` is not a value anymore that can be set per player but is rather derived from the current state of progress of that player. Because of the changes to the progression it is possible that when updating from an older version the level caps of players will be different (most likely lower)! Apart from that the progress of players should adapt to the changes but as a general advice **always make backups before updating mods**.
 
+## [1.0.0] - 2024-12-24
+
+***Fixed***
+
+- Potential crash caused by the Trainer Spawner Block (NullPointerException)
+
 ## [0.13.1-beta] - 2024-12-15
 
 ***Fixed***
