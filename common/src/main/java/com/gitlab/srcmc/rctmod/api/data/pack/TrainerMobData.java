@@ -117,7 +117,7 @@ public class TrainerMobData implements IDataPackObject {
 
     public int getRequiredLevelCap() {
         var cfg = RCTMod.getInstance().getServerConfig();
-        return Math.max(0, Math.min(100, Math.max(cfg.initialLevelCap(), this.getTrainerTeam().getTeam().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0)) + cfg.additiveLevelCapRequirement()));
+        return Math.max(0, Math.min(100, this.getTrainerTeam().getTeam().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0) + cfg.additiveLevelCapRequirement()));
     }
 
     public Stream<String> getMissingRequirements(Set<String> defeatedTrainerIds) {
