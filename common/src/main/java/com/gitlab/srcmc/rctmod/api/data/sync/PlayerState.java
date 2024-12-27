@@ -98,7 +98,7 @@ public class PlayerState implements Serializable {
         }
     }
 
-    public void setLevelCap(int levelCap) {
+    private void setLevelCap(int levelCap) {
         if(this.levelCap != levelCap) {
             this.levelCap = levelCap;
             this.updated.levelCap = levelCap;
@@ -107,6 +107,10 @@ public class PlayerState implements Serializable {
     }
 
     public int getLevelCap() {
+        if(!this.player.isLocalPlayer()) {
+            this.setLevelCap(RCTMod.getInstance().getTrainerManager().getData(this.player).getLevelCap());
+        }
+
         return this.levelCap;
     }
 

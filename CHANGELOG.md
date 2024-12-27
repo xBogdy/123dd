@@ -6,6 +6,7 @@
 
 ***Fixed***
 
+- Level cap related settings requiring a server restart before changes took effect
 - Setting the `initialLevelCap` to high values also affecting the *required level cap* of trainers, which could prevent trainers from spawning if players don't have pokemon close to that level
 
 ## [0.13.3-beta] - 2024-12-24

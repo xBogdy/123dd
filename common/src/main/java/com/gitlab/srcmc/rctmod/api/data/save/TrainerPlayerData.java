@@ -33,13 +33,21 @@ import net.minecraft.world.level.saveddata.SavedData;
 public class TrainerPlayerData extends SavedData {
     private Set<String> defeatedTrainerIds = new HashSet<>();
     private Player player;
-    private int levelCap;
+    private int initialLevelCap, additiveLevelCapRequirement, levelCap;
 
     public TrainerPlayerData(Player player) {
         this.player = player;
     }
 
     public int getLevelCap() {
+        var cfg = RCTMod.getInstance().getServerConfig();
+
+        if(cfg.initialLevelCap() != this.initialLevelCap || cfg.additiveLevelCapRequirement() != this.additiveLevelCapRequirement) {
+            this.additiveLevelCapRequirement = cfg.additiveLevelCapRequirement();
+            this.initialLevelCap = cfg.initialLevelCap();
+            this.updateLevelCap();
+        }
+
         return this.levelCap;
     }
 
@@ -63,7 +71,6 @@ public class TrainerPlayerData extends SavedData {
             var ps = PlayerState.get(this.player);
             this.updateLevelCap(trainerId);
             ps.addProgressDefeat(trainerId);
-            ps.setLevelCap(this.getLevelCap());
             this.setDirty();
             return true;
         }
@@ -76,7 +83,6 @@ public class TrainerPlayerData extends SavedData {
             var ps = PlayerState.get(this.player);
             this.updateLevelCap();
             ps.removeProgressDefeat(trainerId);
-            ps.setLevelCap(this.getLevelCap());
             this.setDirty();
             return true;
         }
@@ -90,7 +96,6 @@ public class TrainerPlayerData extends SavedData {
             this.defeatedTrainerIds.clear();
             this.updateLevelCap();
             ps.removeProgressDefeats();
-            ps.setLevelCap(this.getLevelCap());
             this.setDirty();
             return true;
         }

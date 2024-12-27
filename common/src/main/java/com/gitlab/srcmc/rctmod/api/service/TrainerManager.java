@@ -293,7 +293,7 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
         this.trainerMobs = newTrainerMobs;
 
         if(this.isServerRunning()) {
-            ModCommon.LOG.info(String.format("Registered %d trainers", RCTApi.getInstance().getTrainerRegistry().getIds().size()));
+            ModCommon.LOG.info(String.format("Registered %d trainers", this.trainerMobs.size()));
         }
 
         dpm.close();
