@@ -192,7 +192,7 @@ public class TrainerMobData implements IDataPackObject {
 
     @Override
     public void onLoad(DataPackManager dpm, String trainerId, String context) {
-        var lootTableResource = dpm.findResource(trainerId, "loot_tables");
+        var lootTableResource = dpm.findResource(trainerId, "loot_table");
         var textureResource = dpm.findResource(trainerId, "textures");
 
         if(textureResource.isPresent()) {
@@ -203,7 +203,7 @@ public class TrainerMobData implements IDataPackObject {
             // the loot table is loaded by net.minecraft.world.level.storage.loot.LootDataManager
             // which resolves a 'shorthand' resource location automatically.
             this.lootTableResource = ResourceLocation.fromNamespaceAndPath(ModCommon.MOD_ID, lootTableResource.get().getPath()
-                .replace("loot_tables/", "")
+                .replace("loot_table/", "")
                 .replace(".json", ""));
         }
 

@@ -61,7 +61,7 @@ public class DataPackManager extends SimpleJsonResourceReloadListener implements
     private final Map<String, DataLocator> contextMap = Map.ofEntries(
         Map.entry("mobs", new DataLocator(PackType.SERVER_DATA, ".json")),
         Map.entry("dialogs", new DataLocator(PackType.SERVER_DATA, ".json")),
-        Map.entry("loot_tables", new DataLocator(PackType.SERVER_DATA, ".json")),
+        Map.entry("loot_table", new DataLocator(PackType.SERVER_DATA, ".json")),
         Map.entry("textures", new DataLocator(PackType.CLIENT_RESOURCES, ".png"))
     );
 
