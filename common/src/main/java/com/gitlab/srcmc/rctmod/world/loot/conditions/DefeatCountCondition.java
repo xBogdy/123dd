@@ -39,7 +39,7 @@ public record DefeatCountCondition(Comparator comparator, int count) implements 
     public static final MapCodec<DefeatCountCondition> CODEC = RecordCodecBuilder.mapCodec(
         instance -> instance.group(
             Comparator.CODEC.optionalFieldOf("comparator", Comparator.EQUAL).forGetter(DefeatCountCondition::comparator),
-            Codec.INT.optionalFieldOf("count", 0).forGetter(DefeatCountCondition::count)
+            Codec.INT.optionalFieldOf("count", 1).forGetter(DefeatCountCondition::count)
         ).apply(instance, DefeatCountCondition::new)
     );
 
@@ -58,10 +58,12 @@ public record DefeatCountCondition(Comparator comparator, int count) implements 
     }
 
     public enum Comparator implements StringRepresentable {
-        EQUAL("equal", (a, b) -> a.equals(b)),
-        SMALLER("smaller", (a, b) -> a < b),
-        GREATER("greater", (a, b) -> a > b),
-        MODULO("modulo", (a, b) -> a % b == 0);
+        EQUAL("==", (a, b) -> a.equals(b)),
+        LESS("<", (a, b) -> a < b),
+        LESS_OR_EQUAL("<=", (a, b) -> a <= b),
+        GREATER(">", (a, b) -> a > b),
+        GREATER_OR_EQUAL(">=", (a, b) -> a >= b),
+        MODULO("%", (a, b) -> a % b == 0);
 
         public static final Codec<Comparator> CODEC = StringRepresentable.fromEnum(Comparator::values);
         private BiFunction<Integer, Integer, Boolean> testFunc;
@@ -69,6 +71,7 @@ public record DefeatCountCondition(Comparator comparator, int count) implements 
 
         Comparator(String name, BiFunction<Integer, Integer, Boolean> testFunc) {
             this.testFunc = testFunc;
+            this.name = name;
         }
 
         public boolean test(int a, int b) {

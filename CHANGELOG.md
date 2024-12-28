@@ -2,6 +2,16 @@
 
 **Important**: The `level_cap` is not a value anymore that can be set per player but is rather derived from the current state of progress of that player. Because of the changes to the progression it is possible that when updating from an older version the level caps of players will be different (most likely lower)! Apart from that the progress of players should adapt to the changes but as a general advice **always make backups before updating mods**.
 
+## [1.0.0] - 2024-12-28
+
+***Changed***
+
+- Renamed loot table `defeat_count` conditions `comparator` values (`EQUAL` -> `==`, `LESS` -> `<`, `<=` (new), `GREATER` -> `>`, `>=` (new), `MODULO` -> `%`), changed default `count` from `0` to `1` (default `comparator` is `==`)
+
+***Fixed***
+
+- Loot tables of custom data packs not working
+
 ## [0.13.4-beta] - 2024-12-27
 
 ***Fixed***

@@ -12,6 +12,7 @@
           "conditions": [
             {
               "condition": "rctmod:defeat_count",
+              "comparator": "==",
               "count": 1
             }
           ]
