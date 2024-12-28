@@ -10,6 +10,7 @@
 
 ***Fixed***
 
+- Custom `comparator` for loot table `defeat_count` condition causing a crash
 - Loot tables of custom data packs not working
 
 ## [0.13.4-beta] - 2024-12-27
