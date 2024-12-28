@@ -26,7 +26,7 @@ import net.minecraft.world.entity.ai.util.LandRandomPos;
 import net.minecraft.world.phys.Vec3;
 
 public class RandomStrollAwayGoal extends RandomStrollGoal {
-    private static final float STORLL_CHANCE = 0.0015f;
+    private static final float STROLL_CHANCE = 0.0015f;
 
     private int[] direction;
     private Supplier<Float> probability;
@@ -88,7 +88,7 @@ public class RandomStrollAwayGoal extends RandomStrollGoal {
             Vec3 vec3 = LandRandomPos.getPosTowards(this.mob, 15, 7, this.mob.getPosition(1F).add(this.direction[0], 0, this.direction[1]));
             return vec3 == null ? super.getPosition() : vec3;
         } else {
-            return this.mob.getRandom().nextFloat() > STORLL_CHANCE
+            return this.mob.getRandom().nextFloat() > STROLL_CHANCE
                 ? LandRandomPos.getPosTowards(this.mob, 10, 7, this.mob.getPosition(1F).add(this.direction[0], 0, this.direction[1]))
                 : super.getPosition();
         }
