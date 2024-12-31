@@ -20,7 +20,6 @@ package com.gitlab.srcmc.rctmod.api.config;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
 import net.minecraft.world.item.Item;
 
 public interface IServerConfig extends IModConfig {
@@ -38,12 +37,37 @@ public interface IServerConfig extends IModConfig {
     default double globalSpawnChance() { return 1.0; }
 
     /**
+     * The chance for a trainer to spawn close to a player will shrink based of how
+     * many trainers already spawned around that player in relation to
+     * maxTrainersPerPlayer. Setting this to a value greater or equal to
+     * globalSpawnChance will effectively disable this feature. The actual spawn chance
+     * is calculated like this: globalSpawnChanceMinimum + (max(globalSpawnChance,
+     * globalSpawnChanceMinimum) - globalSpawnChanceMinimum)*(1 - min(1,
+     * (numberOfTrainers + 1)/maxTrainersPerPlayer)).
+     * 
+     * range [0, 1]
+     * default: 0.15
+     */
+    default double globalSpawnChanceMinimum() { return 0.15; }
+
+    /**
      * The interval in ticks at which a spawn attempt is made per player.
      * 
      * range [1, inf]
-     * default 600
+     * default 100
      */
-    default int spawnIntervalTicks() { return 600; }
+    default int spawnIntervalTicks() { return 100; }
+
+    /**
+     * Determines the increase of spawnIntervalTicks for a player based of how many
+     * trainers already spawned for them. Setting this to 0 will disable this feature.
+     * The actual spawn interval for a player is calculated as follows:
+     * spawnIntervalTicks*(1 + (numberOfTrainers - 1)*spawnIntervalGrowthFactor).
+     * 
+     * range [0, inf]
+     * default 2
+     */
+    default double spawnIntervalGrowthFactor() { return 2; }
 
     /**
      * The min horizontal distance a trainer can spawn from players.

@@ -2,6 +2,26 @@
 
 **Important**: The `level_cap` is not a value anymore that can be set per player but is rather derived from the current state of progress of that player. Because of the changes to the progression it is possible that when updating from an older version the level caps of players will be different (most likely lower)! Apart from that the progress of players should adapt to the changes but as a general advice **always make backups before updating mods**.
 
+## [1.0.0] - 2024-12-31
+
+***Added***
+
+- Server config `globalSpawnChanceMinimum`: Minimum spawn chance for trainers based of how many trainers already spawned for a player
+- Server config `spawnIntervalGrowthFactor`: Determines the increase of spawnIntervalTicks for a player based of how many trainers already spawned for them
+
+***Changed***
+
+- Default value of `spawnIntervalTicks` from `600` to `100`
+- Some adjustments to trainer spawning behaviour, to sum it up: Trainers now spawn much more frequent around players (see change to `spawnIntervalTicks`) that have no or only a few trainers around them, trainer encounters should be more common while exploring yet on the other hand reaching higher numbers of trainers will gradually take more and more time when sticking to the same location (see added config options)
+- Trainer Spawner Block now ignores the `globalSpawnChance` and `maxTrainersPerPlayer` (TODO)
+- Trainers are now more resilient in wandering away when defeated (TODO)
+
+***Fixed***
+
+- Defeated trainers tracking towards (0, 0) instead of a random direction (TODO)
+- Trainer Card pointing towards defeated trainers (TODO)
+- `additiveLevelCapRequirement` being subtracted from `initialLevelCap` rather than added
+
 ## [0.13.5-beta] - 2024-12-28
 
 ***Changed***

@@ -37,7 +37,9 @@ import net.neoforged.neoforge.common.ModConfigSpec.ConfigValue;
 public class ServerConfig implements IServerConfig {
     // spawning
     private final ConfigValue<Double> globalSpawnChanceValue;
+    private final ConfigValue<Double> globalSpawnChanceMinimumValue;
     private final ConfigValue<Integer> spawnIntervalTicksValue;
+    private final ConfigValue<Double> spawnIntervalGrowthFactorValue;;
     private final ConfigValue<Integer> maxHorizontalDistanceToPlayersValue;
     private final ConfigValue<Integer> minHorizontalDistanceToPlayersValue;
     private final ConfigValue<Integer> maxVerticalDistanceToPlayersValue;
@@ -68,9 +70,17 @@ public class ServerConfig implements IServerConfig {
             .comment("A global factor that determines if a spawn attempt for a trainer is made.")
             .defineInRange("globalSpawnChance", IServerConfig.super.globalSpawnChance(), 0, 1);
 
+        this.globalSpawnChanceMinimumValue = builder
+            .comment("The chance for a trainer to spawn close to a player will shrink based of how many trainers already spawned around that player in relation to maxTrainersPerPlayer. Setting this to a value greater or equal to globalSpawnChance will effectively disable this feature. The actual spawn chance is calculated like this: globalSpawnChanceMinimum + (max(globalSpawnChance, globalSpawnChanceMinimum) - globalSpawnChanceMinimum)*(1 - min(1, (numberOfTrainers + 1)/maxTrainersPerPlayer)).")
+            .defineInRange("globalSpawnChanceMinimum", IServerConfig.super.globalSpawnChanceMinimum(), 0, 1);
+
         this.spawnIntervalTicksValue = builder
             .comment("The interval in ticks at which a spawn attempt is made per player.")
             .defineInRange("spawnIntervalTicks", IServerConfig.super.spawnIntervalTicks(), 1, Integer.MAX_VALUE - 1);
+
+        this.spawnIntervalGrowthFactorValue = builder
+            .comment("Determines the increase of spawnIntervalTicks for a player based of how many trainers already spawned for them. Setting this to 0 will disable this feature. The actual spawn interval for a player is calculated as follows: spawnIntervalTicks*(1 + (numberOfTrainers - 1)*spawnIntervalGrowthFactor).")
+            .defineInRange("spawnIntervalGrowthFactor", IServerConfig.super.spawnIntervalGrowthFactor(), 0, Integer.MAX_VALUE - 1);
 
         this.maxHorizontalDistanceToPlayersValue = builder
             .comment("The max horizontal distance a trainer can spawn from players.")
@@ -174,8 +184,18 @@ public class ServerConfig implements IServerConfig {
     }
 
     @Override
+    public double globalSpawnChanceMinimum() {
+        return this.globalSpawnChanceMinimumValue.get();
+    }
+
+    @Override
     public int spawnIntervalTicks() {
         return this.spawnIntervalTicksValue.get();
+    }
+
+    @Override
+    public double spawnIntervalGrowthFactor() {
+        return this.spawnIntervalGrowthFactorValue.get();
     }
 
     @Override

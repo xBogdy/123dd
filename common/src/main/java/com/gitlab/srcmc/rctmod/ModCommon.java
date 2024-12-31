@@ -119,9 +119,16 @@ public class ModCommon {
     }
 
     static void onServerWorldTick(ServerLevel level) {
+        var rct = RCTMod.getInstance();
+        var cfg = rct.getServerConfig();
+        var trs = rct.getTrainerSpawner();
+
         level.players().forEach(player -> {
-            if(player.tickCount % RCTMod.getInstance().getServerConfig().spawnIntervalTicks() == 0) {
-                RCTMod.getInstance().getTrainerSpawner().attemptSpawnFor(player);
+            var spawnIntervalTicks = (int)(cfg.spawnIntervalTicks()*(1 + trs.getSpawnCount(player.getUUID())*cfg.spawnIntervalGrowthFactor()));
+            ModCommon.LOG.info("SPAWN INTERVAL TICKS: " + spawnIntervalTicks + ", " + trs.getSpawnCount(player.getUUID()) + "/" + cfg.maxTrainersPerPlayer());
+
+            if(player.tickCount % spawnIntervalTicks == 0) {
+                rct.getTrainerSpawner().attemptSpawnFor(player);
             }
 
             if(player.tickCount % PlayerState.SYNC_INTERVAL_TICKS == 0) {
