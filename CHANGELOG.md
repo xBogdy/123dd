@@ -11,6 +11,7 @@
 
 ***Changed***
 
+- Default value of `maxTrainersTotal` from `24` to `42`
 - Default value of `spawnIntervalTicks` from `600` to `100`
 - Some adjustments to trainer spawning behaviour, to sum it up: Trainers now spawn much more frequent around players (see change to `spawnIntervalTicks`) that have no or only a few trainers around them, trainer encounters should be more common while exploring yet on the other hand reaching higher numbers of trainers will gradually take more and more time when sticking to the same location (see added config options)
 - Trainer Spawner Block now ignores the `globalSpawnChance` and `maxTrainersPerPlayer` (TODO)

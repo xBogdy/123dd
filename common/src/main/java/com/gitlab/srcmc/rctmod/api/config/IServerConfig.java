@@ -105,9 +105,9 @@ public interface IServerConfig extends IModConfig {
      * Total trainer spawn cap.
      * 
      * range [0, inf]
-     * default 24
+     * default 42
      */
-    default int maxTrainersTotal() { return 24; }
+    default int maxTrainersTotal() { return 42; }
 
     /**
      * The maximum level difference between the strongest pokemon in the team of a
