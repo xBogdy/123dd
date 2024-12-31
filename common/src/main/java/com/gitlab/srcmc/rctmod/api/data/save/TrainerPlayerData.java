@@ -53,7 +53,7 @@ public class TrainerPlayerData extends SavedData {
 
     private void updateLevelCap() {
         var cfg = RCTMod.getInstance().getServerConfig();
-        this.levelCap = Math.max(0, Math.min(100, cfg.initialLevelCap() - cfg.additiveLevelCapRequirement()));
+        this.levelCap = Math.max(0, Math.min(100, cfg.initialLevelCap() + cfg.additiveLevelCapRequirement()));
         this.defeatedTrainerIds.forEach(this::updateLevelCap);
     }
 
