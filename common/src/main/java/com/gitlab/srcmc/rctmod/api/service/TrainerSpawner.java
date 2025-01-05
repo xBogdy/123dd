@@ -282,17 +282,14 @@ public class TrainerSpawner {
 
     private boolean canSpawnFor(Player player) {
         var config = RCTMod.getInstance().getServerConfig();
-        var glob = config.globalSpawnChance();
-        var gmin = config.globalSpawnChanceMinimum();
-        var tcnt = this.getSpawnCount(player.getUUID());
-        var mcnt = config.maxTrainersPerPlayer();
+        var spawnCountPl = this.getSpawnCount(player.getUUID());
+        var maxCountPl = config.maxTrainersPerPlayer();
+        var chanceRange = Math.max(0, config.globalSpawnChance() - config.globalSpawnChanceMinimum());
 
-        ModCommon.LOG.info(String.format("GLOBAL CHANCE: %.2f, %d/%d", gmin + (Math.max(glob, gmin) - gmin)*(1 - Math.min(1, (tcnt + 1)/(double)mcnt)), tcnt, mcnt));
-
-        return tcnt < mcnt
+        return spawnCountPl < maxCountPl
             && this.getSpawnCount() < config.maxTrainersTotal()
             && RCTMod.getInstance().getTrainerManager().getPlayerLevel(player) > 0
-            && gmin + (Math.max(glob, gmin) - gmin)*(1 - Math.min(1, (tcnt + 1)/mcnt)) >= player.getRandom().nextFloat();
+            && config.globalSpawnChance() - chanceRange*(maxCountPl > 1 ? Math.min(1, spawnCountPl/(double)maxCountPl) : 1) >= player.getRandom().nextFloat();
     }
 
     private void spawnFor(Player player, String trainerId, BlockPos pos) {

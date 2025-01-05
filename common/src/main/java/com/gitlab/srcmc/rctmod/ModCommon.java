@@ -124,11 +124,16 @@ public class ModCommon {
         var trs = rct.getTrainerSpawner();
 
         level.players().forEach(player -> {
-            var spawnIntervalTicks = (int)(cfg.spawnIntervalTicks()*(1 + trs.getSpawnCount(player.getUUID())*cfg.spawnIntervalGrowthFactor()));
-            ModCommon.LOG.info("SPAWN INTERVAL TICKS: " + spawnIntervalTicks + ", " + trs.getSpawnCount(player.getUUID()) + "/" + cfg.maxTrainersPerPlayer());
+            var maxCountPl = cfg.maxTrainersPerPlayer();
+            
+            if(maxCountPl > 0) {
+                var spawnCountPl = trs.getSpawnCount(player.getUUID());
+                var ticksRange = Math.max(0, cfg.spawnIntervalTicksMaximum() - cfg.spawnIntervalTicks());
+                var spawnIntervalTicks = cfg.spawnIntervalTicks() + (int)(ticksRange*(maxCountPl > 1 ? Math.min(1, spawnCountPl/(float)(maxCountPl - 1)) : 1));
 
-            if(player.tickCount % spawnIntervalTicks == 0) {
-                rct.getTrainerSpawner().attemptSpawnFor(player);
+                if(spawnIntervalTicks == 0 || player.tickCount % spawnIntervalTicks == 0) {
+                    rct.getTrainerSpawner().attemptSpawnFor(player);
+                }
             }
 
             if(player.tickCount % PlayerState.SYNC_INTERVAL_TICKS == 0) {

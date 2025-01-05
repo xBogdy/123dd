@@ -32,18 +32,18 @@ public interface IServerConfig extends IModConfig {
      * A global factor that determines if a spawn attempt for a trainer is made.
      * 
      * range [0, 1]
-     * default 1.0
+     * default 0.85
      */
-    default double globalSpawnChance() { return 1.0; }
+    default double globalSpawnChance() { return 0.85; }
 
     /**
-     * The chance for a trainer to spawn close to a player will shrink based of how
-     * many trainers already spawned around that player in relation to
-     * maxTrainersPerPlayer. Setting this to a value greater or equal to
-     * globalSpawnChance will effectively disable this feature. The actual spawn chance
-     * is calculated like this: globalSpawnChanceMinimum + (max(globalSpawnChance,
-     * globalSpawnChanceMinimum) - globalSpawnChanceMinimum)*(1 - min(1,
-     * (numberOfTrainers + 1)/maxTrainersPerPlayer)).
+     * The chance for a trainer to spawn will shrink towards this value based of how
+     * many trainers are already spawned in for a player. For example if a player has 0
+     * trainers spawned for them the chance will be as configured by globalSpawnChance,
+     * if a player has barely filled up their spawn cap (maxTrainersPerPlayer), i.e.
+     * only one more free spot is left, the chance for the last trainer will be as
+     * configured by globalSpawnChanceMinimum. Set to any value equal to or above
+     * globalSpawnChance to disable (e.g. 1.0).
      * 
      * range [0, 1]
      * default: 0.15
@@ -54,20 +54,23 @@ public interface IServerConfig extends IModConfig {
      * The interval in ticks at which a spawn attempt is made per player.
      * 
      * range [1, inf]
-     * default 100
+     * default 60
      */
-    default int spawnIntervalTicks() { return 100; }
+    default int spawnIntervalTicks() { return 60; }
 
     /**
-     * Determines the increase of spawnIntervalTicks for a player based of how many
-     * trainers already spawned for them. Setting this to 0 will disable this feature.
-     * The actual spawn interval for a player is calculated as follows:
-     * spawnIntervalTicks*(1 + (numberOfTrainers - 1)*spawnIntervalGrowthFactor).
+     * The spawn interval ticks will grow towards this value based of how many trainers
+     * are already spawned in for a player. For example if a player has 0 trainers
+     * spawned for them the spawn interval ticks will be as configured by
+     * spawnIntervalTicks, if a player has barely filled up their spawn cap
+     * (maxTrainersPerPlayer), i.e. only one more free spot is left, the spawn interval
+     * for the last trainer will be as configured by spawnIntervalTicksMaximum. Set to
+     * any value equal to or below spawnIntervalTicks to disable (e.g. 0).
      * 
      * range [0, inf]
-     * default 2
+     * default: 800
      */
-    default double spawnIntervalGrowthFactor() { return 2; }
+    default int spawnIntervalTicksMaximum() { return 800; }
 
     /**
      * The min horizontal distance a trainer can spawn from players.
@@ -97,17 +100,18 @@ public interface IServerConfig extends IModConfig {
      * Spawn cap of trainers per player.
      * 
      * range [0, inf]
-     * default 8
+     * default 12
      */
-    default int maxTrainersPerPlayer() { return 8; }
+    default int maxTrainersPerPlayer() { return 12; }
 
     /**
-     * Total trainer spawn cap.
+     * Total trainer spawn cap. This value may be increased for servers with higher
+     * expected player numbers (> 4), for example (|players| + 1)*maxTrainersPerPlayer.
      * 
      * range [0, inf]
-     * default 42
+     * default 60
      */
-    default int maxTrainersTotal() { return 42; }
+    default int maxTrainersTotal() { return 60; }
 
     /**
      * The maximum level difference between the strongest pokemon in the team of a
