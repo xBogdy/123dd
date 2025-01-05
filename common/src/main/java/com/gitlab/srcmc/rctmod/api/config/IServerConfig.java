@@ -56,7 +56,7 @@ public interface IServerConfig extends IModConfig {
      * range [1, inf]
      * default 60
      */
-    default int spawnIntervalTicks() { return 60; }
+    default int spawnIntervalTicks() { return 120; }
 
     /**
      * The spawn interval ticks will grow towards this value based of how many trainers
@@ -70,7 +70,7 @@ public interface IServerConfig extends IModConfig {
      * range [0, inf]
      * default: 800
      */
-    default int spawnIntervalTicksMaximum() { return 800; }
+    default int spawnIntervalTicksMaximum() { return 1200; }
 
     /**
      * The min horizontal distance a trainer can spawn from players.

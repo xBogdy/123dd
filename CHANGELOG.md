@@ -2,20 +2,22 @@
 
 **Important**: The `level_cap` is not a value anymore that can be set per player but is rather derived from the current state of progress of that player. Because of the changes to the progression it is possible that when updating from an older version the level caps of players will be different (most likely lower)! Apart from that the progress of players should adapt to the changes but as a general advice **always make backups before updating mods**.
 
-## [1.0.0] - 2024-12-31
+## [0.13.6-beta] - 2025-01-05
 
 **Added:**
 
-- *#187* Server config `globalSpawnChanceMinimum`: Minimum spawn chance for trainers based of how many trainers already spawned for a player
-- *#186* Server config `spawnIntervalTicksMaximum`: Maximum spawn interval for trainers based of how many trainers already spawned for a player
+- *#189* Server config `globalSpawnChanceMinimum`: Minimum spawn chance for trainers based of how many trainers already spawned for a player
+- *#188* Server config `spawnIntervalTicksMaximum`: Maximum spawn interval for trainers based of how many trainers already spawned for a player
 
 **Changed:**
 
-- *#185* Default value of `globalSpawnChance` from `1` to `0.85`
-- *#184* Default value of `maxTrainersTotal` from `24` to `42`
-- *#183* Default value of `spawnIntervalTicks` from `600` to `100`
-- *#182* Some adjustments to trainer spawning behaviour, to sum it up: Trainers now spawn much more frequent around players (see change to `spawnIntervalTicks`) that have no or only a few trainers around them, trainer encounters should be more common while exploring yet on the other hand reaching higher numbers of trainers will gradually take more and more time when sticking to the same location (see *#186* and *#187*), **reminder**: defeating trainers will free up a players spawn cap!
-- *#181* Trainer Spawner Block now ignores the `globalSpawnChance` and trainer spawned by that block will not count towards a players spawn cap anymore (i.e. can still spawn even if a player has filled up their `maxTrainerPerPlayer`) (TODO)
+- *#187* Default value of `globalSpawnChance` from `1` to `0.85`
+- *#186* Default value of `maxTrainersPerPlayer` from `8` to `12`
+- *#185* Default value of `maxTrainersTotal` from `24` to `60`
+- *#184* Default value of `spawnIntervalTicks` from `600` to `120`
+- *#183* Some adjustments to trainer spawning behaviour, to sum it up: Trainers now spawn much more frequent for players (see change to *#184*) that have no or only a few trainers around them, trainer encounters should be more common while exploring, yet on the other hand reaching higher numbers of trainers will gradually take more and more time when sticking to the same location (see *#188* and *#189*). **Reminder**: Defeating trainers will free up a players spawn cap!
+- *#182* The increase of the spawn weight for key trainers is now based of how close pokemon of players are to that trainers **required level cap** rather than the players **current level cap** (especially helpful if `initialLevelCap` is set to `100`)
+- *#181* Trainer Spawner Block now ignores the `globalSpawnChance` and trainers spawned by that block will not count towards a players spawn cap anymore (i.e. can still spawn even if a player has filled up their `maxTrainerPerPlayer`)
 - *#180* Trainers are now more resilient in wandering away when defeated (TODO)
 
 **Fixed:**

@@ -160,7 +160,7 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
 
         for(var player : level.getNearbyPlayers(TargetingConditions.forNonCombat(), null, this.aabb)) {
             for(var trainerId : trainerIds) {
-                if(spawner.attemptSpawnFor(player, trainerId, this.getBlockPos().above(), true)) {
+                if(spawner.attemptSpawnFor(player, trainerId, this.getBlockPos().above(), true, true, 1.0, 1.0)) {
                     return;
                 }
             }

@@ -206,6 +206,10 @@ public class TrainerSpawner {
             if(newOriginPlayer != null) {
                 playerSpawns.compute(newOriginPlayer.toString(), (key, value) -> value == null ? 1 : value + 1);
             }
+
+            if(RCTMod.getInstance().getServerConfig().logSpawning()) {
+                ModCommon.LOG.info(String.format("Changed origin player for '%s': '%s' -> '%s'", mob.getTrainerId(), String.valueOf(originPlayer), String.valueOf(newOriginPlayer)));
+            }
         }
     }
 
@@ -230,18 +234,23 @@ public class TrainerSpawner {
     }
 
     public boolean attemptSpawnFor(Player player, String trainerId, BlockPos pos) {
-        return this.attemptSpawnFor(player, trainerId, pos, false);
+        return this.attemptSpawnFor(player, trainerId, pos, false, false);
     }
 
-    public boolean attemptSpawnFor(Player player, String trainerId, BlockPos pos, boolean setHome) {
+    public boolean attemptSpawnFor(Player player, String trainerId, BlockPos pos, boolean setHome, boolean noOrigin) {
+        var cfg = RCTMod.getInstance().getServerConfig();
+        return this.attemptSpawnFor(player, trainerId, pos, setHome, noOrigin, cfg.globalSpawnChance(), cfg.globalSpawnChanceMinimum());
+    }
+
+    public boolean attemptSpawnFor(Player player, String trainerId, BlockPos pos, boolean setHome, boolean noOrigin, double globalChance, double globalChanceMin) {
         var level = player.level();
 
-        if(RCTMod.getInstance().getTrainerManager().isValidId(trainerId) && TrainerSpawner.canSpawnAt(level, pos) && this.canSpawnFor(player)) {
+        if(RCTMod.getInstance().getTrainerManager().isValidId(trainerId) && TrainerSpawner.canSpawnAt(level, pos) && this.canSpawnFor(player, globalChance, globalChanceMin)) {
             var tmd = RCTMod.getInstance().getTrainerManager().getData(trainerId);
 
             if(tmd != null && this.isUnique(tmd.getTrainerTeam().getIdentity())) {
                 if(this.computeChance(player, trainerId, tmd) >= player.getRandom().nextDouble()) {
-                    this.spawnFor(player, trainerId, pos, setHome);
+                    this.spawnFor(player, trainerId, pos, setHome, noOrigin);
                     return true;
                 }
             }
@@ -251,7 +260,9 @@ public class TrainerSpawner {
     }
 
     public boolean attemptSpawnFor(Player player) {
-        if(this.canSpawnFor(player)) {
+        var cfg = RCTMod.getInstance().getServerConfig();
+
+        if(this.canSpawnFor(player, cfg.globalSpawnChance(), cfg.globalSpawnChanceMinimum())) {
             for(int i = 0; i < SPAWN_RETRIES; i++) {
                 var pos = this.nextPos(player);
 
@@ -280,29 +291,33 @@ public class TrainerSpawner {
         return !this.identities.containsKey(identity) && !this.persistentNames.containsKey(identity);
     }
 
-    private boolean canSpawnFor(Player player) {
+    private boolean canSpawnFor(Player player, double globalChance, double globalChanceMin) {
         var config = RCTMod.getInstance().getServerConfig();
         var spawnCountPl = this.getSpawnCount(player.getUUID());
         var maxCountPl = config.maxTrainersPerPlayer();
-        var chanceRange = Math.max(0, config.globalSpawnChance() - config.globalSpawnChanceMinimum());
+        var chanceRange = Math.max(0, globalChance - globalChanceMin);
 
         return spawnCountPl < maxCountPl
             && this.getSpawnCount() < config.maxTrainersTotal()
             && RCTMod.getInstance().getTrainerManager().getPlayerLevel(player) > 0
-            && config.globalSpawnChance() - chanceRange*(maxCountPl > 1 ? Math.min(1, spawnCountPl/(double)maxCountPl) : 1) >= player.getRandom().nextFloat();
+            && globalChance - chanceRange*(maxCountPl > 1 ? Math.min(1, spawnCountPl/(double)maxCountPl) : 1) >= player.getRandom().nextFloat();
     }
 
     private void spawnFor(Player player, String trainerId, BlockPos pos) {
-        this.spawnFor(player, trainerId, pos, false);
+        this.spawnFor(player, trainerId, pos, false, false);
     }
 
-    private void spawnFor(Player player, String trainerId, BlockPos pos, boolean setHome) {
+    private void spawnFor(Player player, String trainerId, BlockPos pos, boolean setHome, boolean noOrigin) {
         var config = RCTMod.getInstance().getServerConfig();
         var level = player.level();
         var mob = TrainerMob.getEntityType().create(level);
         mob.setPos(pos.getCenter().add(0, -0.5, 0));
         mob.setTrainerId(trainerId);
-        mob.setOriginPlayer(player.getUUID());
+
+        if(!noOrigin) {
+            mob.setOriginPlayer(player.getUUID());
+        }
+
         level.addFreshEntity(mob);
         this.register(mob);
 
@@ -493,7 +508,7 @@ public class TrainerSpawner {
 
         if(isKey) {
             var a = (10 - Math.min(9, levelCap/10))/2f;
-            var b = Math.max(0, levelCap - playerLevel)*a + 1;
+            var b = Math.max(0, reqLevelCap - playerLevel)*a + 1;
             keyTrainerFactor = KEY_TRAINER_SPAWN_WEIGHT_FACTOR/b;
         }
 
