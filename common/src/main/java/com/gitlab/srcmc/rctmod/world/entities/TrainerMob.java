@@ -17,7 +17,9 @@
  */
 package com.gitlab.srcmc.rctmod.world.entities;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
@@ -94,6 +96,10 @@ public class TrainerMob extends PathfinderMob implements Npc {
     private final static int MAX_PLAYER_TRACKING_RANGE = 128;
     private final static int TARGET_UPDATE_INTERVAL = 120;
 
+    private static final int AFK_CHECK_INTERVAL_TICKS = 2400;
+    private static final int AFK_CHECK_MAX_COUNT = 6;
+    private static final int AFK_PLAYER_MAX_COUNT = 3;
+
     private Map<UUID, int[]> winsAndDefeats = new HashMap<>();
     private int cooldown;
     private Player opponent;
@@ -101,6 +107,9 @@ public class TrainerMob extends PathfinderMob implements Npc {
     private boolean persistent;
     private int despawnTicks;
     private BlockPos homePos;
+
+    private List<PlayerTransform> nearestTransforms = new ArrayList<>();
+    private int nearestAfkCheckCount;
 
     protected TrainerMob(EntityType<? extends PathfinderMob> entityType, Level level) {
         super(entityType, level);
@@ -486,6 +495,8 @@ public class TrainerMob extends PathfinderMob implements Npc {
                     "Disabled persistence for unregistered trainer '%s' (%s)",
                     this.getTrainerId(), this.getStringUUID()));
             }
+
+            this.checkDespawnNearAfkPlayers();
         }
     }
 
@@ -697,5 +708,62 @@ public class TrainerMob extends PathfinderMob implements Npc {
         }
 
         return false;
+    }
+
+    private void checkDespawnNearAfkPlayers() {
+        if(!this.isPersistenceRequired() && this.tickCount % AFK_CHECK_INTERVAL_TICKS == 0) {
+            if(this.nearestAfkCheckCount >= AFK_CHECK_MAX_COUNT) {
+                this.discard();
+                return;
+            }
+
+            var level = this.level();
+            List<PlayerTransform> nextTransforms = level.getNearbyPlayers(TargetingConditions.forNonCombat(), this, this.getHitbox().inflate(RCTMod.getInstance().getServerConfig().maxHorizontalDistanceToPlayers()))
+                .stream().limit(AFK_PLAYER_MAX_COUNT)
+                .sorted((p1, p2) -> Integer.compare(p1.getId(), p2.getId()))
+                .map(PlayerTransform::new).toList();
+
+            if(this.nearestTransforms.size() > 0 && nextTransforms.size() == this.nearestTransforms.size() && nextTransforms.containsAll(this.nearestTransforms)) {
+                this.nearestAfkCheckCount++;
+            } else {
+                this.nearestTransforms = nextTransforms;
+                this.nearestAfkCheckCount = 0;
+            }
+        }
+    }
+
+    private class PlayerTransform {
+        public final float xRot, yRot;
+        public final double x, y, z;
+
+        public PlayerTransform(Player player) {
+            if(player != null) {
+                this.x = player.position().x;
+                this.y = player.position().y;
+                this.z = player.position().z;
+                this.xRot = player.getXRot();
+                this.yRot = player.getYRot();
+            } else {
+                this.x = 0;
+                this.y = 0;
+                this.z = 0;
+                this.xRot = 0;
+                this.yRot = 0;
+            }
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(this.x, this.y, this.z, this.xRot, this.yRot);
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if(o instanceof PlayerTransform t) {
+                return this.x == t.x && this.y == t.y && this.z == t.z && this.xRot == t.xRot && this.yRot == t.yRot;
+            }
+
+            return false;
+        }
     }
 }
