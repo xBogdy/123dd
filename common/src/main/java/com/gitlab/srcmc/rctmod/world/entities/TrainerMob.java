@@ -681,13 +681,13 @@ public class TrainerMob extends PathfinderMob implements Npc {
         this.goalSelector.addGoal(4, new LookAtPlayerAndWaitGoal(this, LivingEntity.class, 4.0F, 0.004F, 80, 160));
         this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, LivingEntity.class, 8.0F));
         this.goalSelector.addGoal(5, new MoveToHomePosGoal(this));
-        this.goalSelector.addGoal(6, new RandomStrollAwayGoal(this, 0.35, () -> 0.0025f, m -> { var tr = (TrainerMob)m; return !tr.wasExhausted(); }));
-        this.goalSelector.addGoal(8, new MoveCloseToTargetGoal(this, 0.35, () -> this.requiredBy(this.getTarget()) ? 0.25f : 0.0025f, maxTrackingDistance));
-        this.goalSelector.addGoal(10, new RandomStrollThroughVillageGoal(this, 0.35F, () -> 0.0025f));
+        this.goalSelector.addGoal(6, new MoveCloseToTargetGoal(this, 0.35, maxTrackingDistance));
+        this.goalSelector.addGoal(7, new RandomStrollThroughVillageGoal(this, 0.35f));
+        this.goalSelector.addGoal(8, new RandomStrollAwayGoal(this, 0.35));
         this.goalSelector.addGoal(12, new WaterAvoidingRandomStrollGoal(this, 0.35));
     }
 
-    public boolean requiredBy(LivingEntity entity) {
+    public boolean isRequiredBy(LivingEntity entity) {
         if(entity instanceof Player player) {
             var tmd = RCTMod.getInstance().getTrainerManager().getData(this);
             var tpd = RCTMod.getInstance().getTrainerManager().getData(player);

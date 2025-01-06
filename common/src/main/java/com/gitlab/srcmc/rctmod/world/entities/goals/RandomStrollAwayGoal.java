@@ -17,9 +17,6 @@
  */
 package com.gitlab.srcmc.rctmod.world.entities.goals;
 
-import java.util.function.Function;
-import java.util.function.Supplier;
-
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.ai.util.LandRandomPos;
@@ -27,51 +24,46 @@ import net.minecraft.world.phys.Vec3;
 
 public class RandomStrollAwayGoal extends RandomStrollGoal {
     private static final float STROLL_CHANCE = 0.0015f;
+    private static final int MAX_TARGET_FAILS = 16;
 
     private int[] direction;
-    private Supplier<Float> probability;
-    private Function<PathfinderMob, Boolean> predicate;
+    private float probability;
+    private int failCount;
 
-    public RandomStrollAwayGoal(PathfinderMob pathfinderMob, double d, Supplier<Float> p) {
-        this(pathfinderMob, d, p, m -> true);
+    public RandomStrollAwayGoal(PathfinderMob pathfinderMob, double d) {
+        this(pathfinderMob, d, 0.15f);
     }
 
-    public RandomStrollAwayGoal(PathfinderMob pathfinderMob, double d, Supplier<Float> p, Function<PathfinderMob, Boolean> predicate) {
+    public RandomStrollAwayGoal(PathfinderMob pathfinderMob, double d, float p) {
         super(pathfinderMob, d);
         this.probability = p;
-        this.predicate = predicate;
-
-        switch(pathfinderMob.getRandom().nextInt(4)) {
-            case 0:
-                direction = new int[]{100, 0}; // north
-                break;
-            case 1:
-                direction = new int[]{100, 100}; // north east
-                break;
-            case 2:
-                direction = new int[]{0, 100}; // east
-                break;
-            case 3:
-                direction = new int[]{-100, 100}; // south east
-                break;
-            case 4:
-                direction = new int[]{-100, 0}; // south
-                break;
-            case 5:
-                direction = new int[]{-100, -100}; // south west
-                break;
-            case 6:
-                direction = new int[]{0, -100}; // west
-                break;
-            case 7:
-                direction = new int[]{100, -100}; // north west
-                break;
-        }
+        this.updateDirection();
     }
 
     @Override
     public boolean canUse() {
-        return this.mob.getRandom().nextFloat() < this.probability.get() && this.predicate.apply(this.mob);
+        if(this.mob.hasControllingPassenger()
+        || this.mob.isPersistenceRequired()
+        || this.mob.getRandom().nextFloat() > this.probability) {
+            return false;
+        }
+
+        if(this.failCount > MAX_TARGET_FAILS) {
+            this.updateDirection();
+        }
+
+        var pos = this.getPosition();
+
+        if(pos == null) {
+            this.failCount++;
+            return false;
+        }
+
+        this.wantedX = pos.x;
+        this.wantedY = pos.y;
+        this.wantedZ = pos.z;
+        this.failCount = 0;
+        return true;
     }
 
     @Override
@@ -83,13 +75,16 @@ public class RandomStrollAwayGoal extends RandomStrollGoal {
         return super.canContinueToUse();
     }
 
+    @Override
     protected Vec3 getPosition() {
+        var r = this.mob.getRandom().nextFloat();
+
         if(this.mob.isInWaterOrBubble() || this.mob.isInLava()) {
-            Vec3 vec3 = LandRandomPos.getPosTowards(this.mob, 15, 7, this.mob.getPosition(1F).add(this.direction[0], 0, this.direction[1]));
+            Vec3 vec3 = LandRandomPos.getPosTowards(this.mob, 15, 7, this.mob.getPosition(1F).add((int)(r*this.direction[0]), 0, (int)(r*this.direction[1])));
             return vec3 == null ? super.getPosition() : vec3;
         } else {
             return this.mob.getRandom().nextFloat() > STROLL_CHANCE
-                ? LandRandomPos.getPosTowards(this.mob, 10, 7, this.mob.getPosition(1F).add(this.direction[0], 0, this.direction[1]))
+                ? LandRandomPos.getPosTowards(this.mob, 10, 7, this.mob.getPosition(1F).add((int)(r*this.direction[0]), 0, (int)(r*this.direction[1])))
                 : super.getPosition();
         }
     }
@@ -98,5 +93,34 @@ public class RandomStrollAwayGoal extends RandomStrollGoal {
     public void tick() {
         this.mob.getNavigation().setSpeedModifier(this.mob.isInWater() || this.mob.isInLava() ? 1 : this.speedModifier);
         super.tick();
+    }
+
+    private void updateDirection() {
+        switch(this.mob.getRandom().nextInt(8)) {
+            case 0:
+                this.direction = new int[]{1000, 0}; // north
+                break;
+            case 1:
+                this.direction = new int[]{1000, 1000}; // north east
+                break;
+            case 2:
+                this.direction = new int[]{0, 1000}; // east
+                break;
+            case 3:
+                this.direction = new int[]{-1000, 1000}; // south east
+                break;
+            case 4:
+                this.direction = new int[]{-1000, 0}; // south
+                break;
+            case 5:
+                this.direction = new int[]{-1000, -1000}; // south west
+                break;
+            case 6:
+                this.direction = new int[]{0, -1000}; // west
+                break;
+            case 7:
+                this.direction = new int[]{1000, -1000}; // north west
+                break;
+        }
     }
 }

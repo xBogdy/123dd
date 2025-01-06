@@ -18,13 +18,13 @@
 package com.gitlab.srcmc.rctmod.world.entities.goals;
 
 import java.util.List;
-import java.util.function.Supplier;
 import java.util.stream.Collectors;
+
+import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.SectionPos;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.ai.village.poi.PoiManager;
 import net.minecraft.world.entity.ai.village.poi.PoiManager.Occupancy;
@@ -39,15 +39,19 @@ public class RandomStrollThroughVillageGoal extends RandomStrollGoal {
     private static final int MAX_STROLL_TIME = 800;
     private static final int MIN_STROLL_TIME = 100;
 
-    private PathfinderMob mob;
+    private TrainerMob mob;
     private BlockPos target;
     private int idleTime, idleTimer;
     private int strollTime, strollTimer;
     private int prevMobTickCount;
     private SectionPos prevSection;
-    private Supplier<Float> probability;
+    private float probability;
 
-    public RandomStrollThroughVillageGoal(PathfinderMob pathfinderMob, float d, Supplier<Float> p) {
+    public RandomStrollThroughVillageGoal(TrainerMob pathfinderMob, double d) {
+        this(pathfinderMob, d, 0.5f);
+    }
+
+    public RandomStrollThroughVillageGoal(TrainerMob pathfinderMob, double d, float p) {
         super(pathfinderMob, d, 1, false);
         this.mob = pathfinderMob;
         this.probability = p;
@@ -67,7 +71,13 @@ public class RandomStrollThroughVillageGoal extends RandomStrollGoal {
     @Override
     public boolean canUse() {
         this.trigger(); // prevents cancel due to 'interval'
-        return this.mob.getRandom().nextFloat() < this.probability.get() && this.tryTargetInRandomSection() && super.canUse();
+        var can = this.mob.getRandom().nextFloat() < this.probability && this.tryTargetInRandomSection() && super.canUse();
+
+        if(can && !this.mob.isPersistenceRequired()) {
+            this.probability *= this.mob.wasExhausted() ? 0.25 : 0.75;
+        }
+
+        return can;
     }
 
     @Override
