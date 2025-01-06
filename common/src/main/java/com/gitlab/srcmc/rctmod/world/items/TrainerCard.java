@@ -51,8 +51,8 @@ public class TrainerCard extends Item {
     @Override
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int i, boolean bl) {
         if(level.isClientSide) {
-            if(level.getGameTime() % 60 == 0) {
-                if(entity instanceof Player player) {
+            if(entity.tickCount % 60 == 0) {
+                if(entity instanceof Player player && player.isLocalPlayer()) {
                     var cfg = RCTMod.getInstance().getServerConfig();
                     var ps = PlayerState.get(player);
                     var keyTrainers = level.getEntities(
