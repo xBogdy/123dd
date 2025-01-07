@@ -35,6 +35,8 @@ import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.Level;
 
 public class TrainerCard extends Item {
+    private static final CustomData EMPTY_DATA = CustomData.of(new CompoundTag());
+
     public TrainerCard() {
         super(new Properties().stacksTo(1).component(DataComponents.CUSTOM_DATA, CustomData.of(new CompoundTag())));
     }
@@ -45,7 +47,7 @@ public class TrainerCard extends Item {
 
     @Override
     public boolean isFoil(ItemStack stack) {
-        return super.isFoil(stack) || stack.get(DataComponents.CUSTOM_DATA).copyTag().getBoolean("foil");
+        return super.isFoil(stack) || stack.getOrDefault(DataComponents.CUSTOM_DATA, EMPTY_DATA).copyTag().getBoolean("foil");
     }
 
     @Override
