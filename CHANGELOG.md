@@ -6,7 +6,7 @@
 
 **Fixed:**
 
-- *#190* Potential crash with Trainer Card and some backpack mods for some reason
+- *#190* Potential crash with Trainer Card and some backpack mods (hopefully)
 
 ## [0.13.6-beta] - 2025-01-06
 
