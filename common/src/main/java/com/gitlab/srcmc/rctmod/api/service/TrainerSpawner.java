@@ -441,9 +441,9 @@ public class TrainerSpawner {
         var config = RCTMod.getInstance().getServerConfig();
 
         // Flag to skip dimension processing
-        boolean shouldSkip = config.dimensionBlacklist().contains(level.dimension().toString());
+        boolean dimensionBlacklisted = config.dimensionBlacklist().contains(level.dimension().toString());
 
-        if (!shouldSkip && config.biomeTagBlacklist().stream().noneMatch(tags::contains)
+        if (!dimensionBlacklisted && config.biomeTagBlacklist().stream().noneMatch(tags::contains)
                 && (config.biomeTagWhitelist().isEmpty() || config.biomeTagWhitelist().stream().anyMatch(tags::contains))) {
 
             RCTMod.getInstance().getTrainerManager().getAllData()
@@ -460,7 +460,7 @@ public class TrainerSpawner {
         }
 
         // Only return candidates if we have some and the dimension is not blacklisted
-        return (candidates.size() > 0 && !shouldSkip) ? this.selectRandom(player.getRandom(), candidates) : null;
+        return (candidates.size() > 0 && !dimensionBlacklisted) ? this.selectRandom(player.getRandom(), candidates) : null;
     }
 
     // based of: https://stackoverflow.com/a/6737362

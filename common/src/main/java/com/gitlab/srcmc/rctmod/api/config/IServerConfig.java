@@ -125,7 +125,7 @@ public interface IServerConfig extends IModConfig {
     default int maxLevelDiff() { return 25; }
 
     /**
-     * A comma separated list of dimensions (e.g. ["multiworld:spawn"]).
+     * A comma separated list of dimensions (e.g. ["multiworld:spawn" , "minecraft:the_end"]).
      * In these dimensions trainers will never spawn.
      *
      * default: []

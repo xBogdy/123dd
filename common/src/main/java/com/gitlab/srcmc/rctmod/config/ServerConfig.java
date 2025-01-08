@@ -109,7 +109,7 @@ public class ServerConfig implements IServerConfig {
 
         // TODO: proper value validation
         this.dimensionBlacklistValue = builder
-                .comment("A comma separated list of dimensions (e.g. [\"multiworld:spawn\"]). In these dimensions trainers will never spawn.")
+                .comment("A comma separated list of dimensions (e.g. [\"multiworld:spawn\", \"minecraft:the_end\"]). In these dimensions trainers will never spawn.")
                 .defineList("dimensionBlacklist", IServerConfig.super.dimensionBlacklist(), String::new, element -> true);
 
         this.biomeTagBlacklistValue = builder
