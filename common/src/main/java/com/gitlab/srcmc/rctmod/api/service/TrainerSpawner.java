@@ -441,7 +441,7 @@ public class TrainerSpawner {
         var config = RCTMod.getInstance().getServerConfig();
 
         // Flag to skip dimension processing
-        boolean dimensionBlacklisted = config.dimensionBlacklist().contains(level.dimension().toString());
+        boolean dimensionBlacklisted = config.dimensionBlacklist().contains(level.dimension().location().toString());
 
         if (!dimensionBlacklisted && config.biomeTagBlacklist().stream().noneMatch(tags::contains)
                 && (config.biomeTagWhitelist().isEmpty() || config.biomeTagWhitelist().stream().anyMatch(tags::contains))) {
