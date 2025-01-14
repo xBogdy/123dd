@@ -6,17 +6,18 @@
 
 **Added:**
 
-- *#195* Server config `dimensionBlacklist` (thanks Vaniron)
-- *#194* Server config `dimensionWhitelist`
+- *#196* Server config `dimensionBlacklist` (thanks Vaniron)
+- *#195* Server config `dimensionWhitelist`
 
 **Changed:**
 
-- *#193* Already defeated key trainers are now also "highlighted" in the Trainer Card list when required for the progression
-- *#192* Trainer Card arrow has now infinite range (the arrow will spin out of control if the target trainer is in a different dimension)
+- *#194* Already defeated key trainers are now also "highlighted" in the Trainer Card list when required for the progression
+- *#193* Trainer Card arrow has now infinite range (the arrow will spin out of control if the target trainer is in a different dimension)
 
 **Fixed:**
 
-- *#191* Fixed Trainer Spawner Block still taking `globalSpawnChance` and `maxTrainersPerPlayer` into account (see *#180*)
+- *#192* Fixed Trainer Spawner Block still taking `globalSpawnChance` and `maxTrainersPerPlayer` into account (see *#180*)
+- *#191* Trainer Card not recognizing alternative versions of key trainers no longer being required, if any of the versions has already been defeated (in certain circumstances)
 
 ## [0.13.7-beta] - 2025-01-07
 

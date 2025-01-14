@@ -126,8 +126,10 @@ public class TrainerMobData implements IDataPackObject {
 
     public Stream<String> getMissingRequirements(Set<String> defeatedTrainerIds, boolean includeAlternatives) {
         return this.requiredDefeats.stream().mapMulti((set, cons) -> {
-            if(includeAlternatives) {                
-                set.stream().filter(tid -> !defeatedTrainerIds.contains(tid)).forEach(cons);
+            if(includeAlternatives) {
+                if(set.stream().noneMatch(defeatedTrainerIds::contains)) {
+                    set.stream().forEach(cons);
+                }
             } else if(!set.isEmpty() && set.stream().noneMatch(defeatedTrainerIds::contains)) {
                 cons.accept(set.stream().findFirst().get());
             }

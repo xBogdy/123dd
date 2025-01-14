@@ -219,8 +219,8 @@ public class PlayerState implements Serializable {
 
         return tmd != null
             && tmd.getFollowdBy().size() > 0
-            && tmd.getFollowdBy().stream().noneMatch(sid -> tm.getData(sid).getMissingRequirements(this.defeatedTrainerIds).findFirst().isEmpty())
-            && tmd.getMissingRequirements(this.defeatedTrainerIds).findFirst().isEmpty();
+            && tmd.getMissingRequirements(this.defeatedTrainerIds).findFirst().isEmpty()
+            && tmd.getFollowdBy().stream().anyMatch(sid -> tm.getData(sid).getMissingRequirements(this.defeatedTrainerIds, true).anyMatch(rid -> trainerId.equals(rid)));
     }
 
     public boolean canBattle(String trainerId) {
