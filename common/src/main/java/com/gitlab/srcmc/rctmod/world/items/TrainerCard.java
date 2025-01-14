@@ -17,7 +17,6 @@
  */
 package com.gitlab.srcmc.rctmod.world.items;
 
-import com.gitlab.srcmc.rctmod.ModRegistries;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.client.ModClient;
@@ -55,18 +54,14 @@ public class TrainerCard extends Item {
         if(level.isClientSide) {
             if(entity.tickCount % 60 == 0) {
                 if(entity instanceof Player player && player.isLocalPlayer()) {
-                    var cfg = RCTMod.getInstance().getServerConfig();
                     var ps = PlayerState.get(player);
-                    var keyTrainers = level.getEntities(
-                        ModRegistries.Entities.TRAINER.get(),
-                        player.getBoundingBox().inflate(
-                            cfg.maxHorizontalDistanceToPlayers(),
-                            cfg.maxVerticalDistanceToPlayers(),
-                            cfg.maxHorizontalDistanceToPlayers()),
-                        t -> t.couldBattleAgainst(player) && ps.isKeyTrainer(t.getTrainerId()));
+                    var keyTrainer = RCTMod.getInstance().getTrainerSpawner().getSpawns()
+                        .stream().filter(t -> t.couldBattleAgainst(player) && ps.isKeyTrainer(t.getTrainerId()))
+                        .sorted((t1, t2) -> t1.level().dimension().location().equals(player.level().dimension().location()) ? Double.compare(t1.distanceToSqr(player), t2.distanceToSqr(player)) : 1)
+                        .findFirst();
 
-                    if(keyTrainers.size() > 0) {
-                        var t = keyTrainers.get(0);
+                    if(keyTrainer.isPresent()) {
+                        var t = keyTrainer.get();
                         this.setFoil(stack, true);
                         TargetArrowRenderer.getInstance().setTarget(player, t);
                     } else {

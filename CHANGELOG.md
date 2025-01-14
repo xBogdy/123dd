@@ -6,8 +6,12 @@
 
 **Added:**
 
-- *#193* Server config `dimensionBlacklist`
-- *#192* Server config `dimensionWhitelist`
+- *#194* Server config `dimensionBlacklist`
+- *#193* Server config `dimensionWhitelist`
+
+**Changed:**
+
+- *#192* Trainer Card arrow has now infinite range (the arrow will spin out of control if the target trainer is in a different dimension)
 
 **Fixed:**
 

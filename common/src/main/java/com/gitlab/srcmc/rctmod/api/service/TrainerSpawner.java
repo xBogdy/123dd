@@ -18,6 +18,7 @@
 package com.gitlab.srcmc.rctmod.api.service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -91,6 +92,10 @@ public class TrainerSpawner {
         if(RCTMod.getInstance().getServerConfig().logSpawning()) {
             ModCommon.LOG.info("Initialized trainer spawner" + this.persistentSpawns.keySet().stream().reduce("", (u1, u2) -> u1 + " " + u2));
         }
+    }
+
+    public Set<TrainerMob> getSpawns() {
+        return Collections.unmodifiableSet(this.mobs);
     }
 
     public void checkDespawns() {

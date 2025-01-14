@@ -37,7 +37,7 @@ public class ItemRendererMixin {
     @Inject(method = "render", at = @At("RETURN"), remap = true)
     public void onRender(ItemStack itemStack, ItemDisplayContext displayContext, boolean rotationReversed, PoseStack poseStack, MultiBufferSource bufferSource, int i1, int i2, BakedModel bakedModel, CallbackInfo ci) {
         if(displayContext == ItemDisplayContext.FIRST_PERSON_RIGHT_HAND && itemStack.getItem() instanceof TrainerCard) {
-            TargetArrowRenderer.getInstance().render(poseStack, 0);
+            TargetArrowRenderer.getInstance().render(poseStack);
         }
     }
 }

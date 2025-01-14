@@ -63,8 +63,10 @@ public class TargetArrowRenderer {
     public static double TX = -0.15, TY = 0.25, TZ = 0.03;
     private static final float SX = 0.009375f, SY = 0.03f, SZ = 0.01875f;
 
-    private Vector3f direction;
-    private int activationTicks, sourceTicks;
+    private Vector3f direction = new Vector3f(), partialDirection = new Vector3f();
+    private Quaternionf rotation = new Quaternionf();
+
+    private int activationTicks, ticks;
     private Entity source, target;
 
     // public static double x = 0.4, y = -0.27, z = -0.66; // with RenderHand
@@ -85,7 +87,6 @@ public class TargetArrowRenderer {
 
     public void tick() {
         if(this.source != null && this.target != null) {
-            this.sourceTicks = source.tickCount;
             this.updateDirection();
 
             if(this.activationTicks < TICKS_TO_ACTIVATE) {
@@ -95,6 +96,10 @@ public class TargetArrowRenderer {
             if(!this.target.isAlive()) {
                 this.setTarget(null, null);
             }
+
+            if(++this.ticks < 0) {
+                this.ticks = 0;
+            }
         } else {
             if(this.activationTicks > 0) {
                 this.activationTicks--;
@@ -102,25 +107,28 @@ public class TargetArrowRenderer {
         }
     }
 
-    public void render(PoseStack poseStack, float partialTick) {
+    public void render(PoseStack poseStack) {
         if(this.activationTicks > 0) {
             var mc = Minecraft.getInstance();
             var cam = mc.gameRenderer.getMainCamera();
-
+            
             if(cam.isInitialized()) {
+                var partialTick = Minecraft.getInstance().getTimer().getGameTimeDeltaPartialTick(false);
                 var t = Math.min(this.activationTicks + partialTick, TICKS_TO_ACTIVATE)/TICKS_TO_ACTIVATE;
-                var rotation = new Quaternionf();
-                PYRAMID_UP.rotationTo(this.direction, rotation);
+
+                this.partialDirection.lerp(this.direction, Math.min(0.05f, 0.2f*partialTick));
+                PYRAMID_UP.rotationTo(this.partialDirection, this.rotation);
 
                 poseStack.pushPose();
                 poseStack.translate(TX, TY, TZ);
-                poseStack.mulPose(cam.rotation().difference(rotation));
-                poseStack.mulPose(new Quaternionf().rotateY((float)Math.PI*(this.sourceTicks + partialTick)/TICKS_TO_ACTIVATE));
-                poseStack.scale(SX * t, (float)(SY + Math.sin((this.sourceTicks + partialTick)/10)*0.01) * t, SZ * t);
+                poseStack.mulPose(cam.rotation().difference(this.rotation));
+                poseStack.mulPose(new Quaternionf().rotateLocalY((float)Math.PI*(this.ticks + partialTick)/TICKS_TO_ACTIVATE));
+                poseStack.scale(SX * t, (float)(SY + Math.sin((this.ticks + partialTick)/10)*0.01) * t, SZ * t);
 
                 RenderSystem.disableCull();
                 RenderSystem.enableBlend();
                 RenderSystem.setShader(GameRenderer::getPositionColorShader);
+
                 var buffer = Tesselator.getInstance().begin(VertexFormat.Mode.TRIANGLE_STRIP, DefaultVertexFormat.POSITION_COLOR);
                 var m = poseStack.last().pose();
 
@@ -142,6 +150,11 @@ public class TargetArrowRenderer {
     }
 
     private void updateDirection() {
-        this.direction = this.target.position().subtract(this.source.position()).toVector3f();
+        if(this.target.level().dimension().location().equals(this.source.level().dimension().location())) {
+            this.direction.lerp(this.target.position().subtract(this.source.position()).toVector3f(), 0.2f);
+        } else {
+            var t = Math.PI * this.ticks / 20.0;
+            this.direction.lerp(new Vector3f((float)Math.sin(t), (float)Math.cos(t), 0), 0.05f);
+        }
     }
 }
