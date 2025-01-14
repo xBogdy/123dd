@@ -6,11 +6,12 @@
 
 **Added:**
 
-- *#194* Server config `dimensionBlacklist`
-- *#193* Server config `dimensionWhitelist`
+- *#195* Server config `dimensionBlacklist` (thanks Vaniron)
+- *#194* Server config `dimensionWhitelist`
 
 **Changed:**
 
+- *#193* Already defeated key trainers are now also "highlighted" in the Trainer Card list when required for the progression
 - *#192* Trainer Card arrow has now infinite range (the arrow will spin out of control if the target trainer is in a different dimension)
 
 **Fixed:**

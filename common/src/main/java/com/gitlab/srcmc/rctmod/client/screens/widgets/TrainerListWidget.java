@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
+
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.algorithm.IAlgorithm;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
@@ -36,7 +38,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Style;
 
 public class TrainerListWidget extends TrainerDataWidget {
-    public enum EntryState {UNKNOWN, HIDDEN, DISCOVERED}
+    public enum EntryState {UNKNOWN, HIDDEN_KEY, DISCOVERED, DISCOVERED_KEY}
 
     private static final int UPDATES_PER_TICK = 100;
     private static final int ENTRIES_PER_PAGE = 100;
@@ -92,6 +94,7 @@ public class TrainerListWidget extends TrainerDataWidget {
         public int i, c, x, y, w, h;
         public TrainerManager tdm;
         private boolean realtime;
+        private final Random rng = new Random();
 
         public UpdateState() {
             this(new HashMap<>());
@@ -117,7 +120,7 @@ public class TrainerListWidget extends TrainerDataWidget {
                 if(showAllTypes || this.tdm.getData(trainerId).getType() == trainerType) {
                     var count = this.playerState.getTrainerDefeatCount(trainerId);
                     var trMob = this.tdm.getData(trainerId);
-                    var isNextKeyTrainer = count == 0 && playerState.isKeyTrainer(trainerId) && playerState.canBattle(trainerId);
+                    var isNextKeyTrainer = playerState.isKeyTrainer(trainerId);
 
                     if(showUndefeated || isNextKeyTrainer || count > 0) {
                         p = this.c / ENTRIES_PER_PAGE;
@@ -127,7 +130,7 @@ public class TrainerListWidget extends TrainerDataWidget {
 
                         this.pages.computeIfAbsent(p, ArrayList::new).add(this.createEntry(
                             this.i + 1, trainerId,
-                            count > 0 ? EntryState.DISCOVERED : isNextKeyTrainer ? EntryState.HIDDEN : EntryState.UNKNOWN,
+                            count > 0 ? (isNextKeyTrainer ? EntryState.DISCOVERED_KEY : EntryState.DISCOVERED) : isNextKeyTrainer ? EntryState.HIDDEN_KEY : EntryState.UNKNOWN,
                             trMob, count, isNextKeyTrainer));
 
                         if(this.realtime) {
@@ -152,8 +155,13 @@ public class TrainerListWidget extends TrainerDataWidget {
         }
 
         private Entry createEntry(int trainerNr, String trainerId, EntryState entryState, TrainerMobData trMob, int defeatCount, boolean isKeyTrainer) {
-            var name = TextUtils.trim(isKeyTrainer || defeatCount > 0 ? trMob.getTrainerTeam().getName() : "???", MAX_NAME_LENGTH);
-            var nameComponent = (defeatCount == 0 && isKeyTrainer) ? toComponent(name).withStyle(ChatFormatting.OBFUSCATED) : toComponent(name);
+            var name = TextUtils.trim(entryState == EntryState.DISCOVERED || entryState == EntryState.DISCOVERED_KEY ? trMob.getTrainerTeam().getName() : "???", MAX_NAME_LENGTH);
+            var nameComponent = entryState == EntryState.HIDDEN_KEY ? toComponent(name).withStyle(ChatFormatting.OBFUSCATED) : toComponent(name);
+
+            if(entryState == EntryState.DISCOVERED_KEY && rng.nextFloat() < 0.35f) {
+                nameComponent = nameComponent.withStyle(ChatFormatting.OBFUSCATED);
+            }
+
             var numberWidget = new MultiStyleStringWidget(this.x, this.y, this.w, this.h, toComponent(String.format("%04d: ", trainerNr)), font).addStyle(Style.EMPTY.withColor(ChatFormatting.RED)).alignLeft();
             var nameWidget = new MultiStyleStringWidget((int)(this.x + this.w*0.18), this.y, (int)(this.w*0.62), this.h, nameComponent, font).addStyle(Style.EMPTY.withColor(ChatFormatting.RED)).alignLeft();
             var countWidget = new MultiStyleStringWidget(this.x, this.y, this.w, this.h,

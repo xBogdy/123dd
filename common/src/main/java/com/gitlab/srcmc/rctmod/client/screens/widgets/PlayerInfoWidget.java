@@ -270,6 +270,7 @@ public class PlayerInfoWidget extends AbstractWidget {
 
             this.nextPageButton.active = this.trainerInfo.getPage() < this.trainerInfo.getMaxPage();
             this.prevPageButton.active = this.trainerInfo.getPage() > 0;
+            this.trainerInfo.tick();
         }
     }
 

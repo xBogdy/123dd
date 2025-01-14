@@ -20,6 +20,7 @@ package com.gitlab.srcmc.rctmod.client.screens.widgets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.PriorityQueue;
+import java.util.Random;
 import java.util.Set;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
@@ -65,6 +66,7 @@ public class TrainerInfoWidget extends TrainerDataWidget {
     private String trainerId;
     private int page;
 
+    private EntryState entryState;
     private TrainerMobData trainer;
     private int innerHeight;
     private int w, h, y;
@@ -72,14 +74,40 @@ public class TrainerInfoWidget extends TrainerDataWidget {
     private List<PageContent> contents = new ArrayList<>();
     private HoverElement<MultiStyleStringWidget> back;
     private StringWidget number, name, aka, identity;
+    private Random rng = new Random();
+    private boolean obf;
 
     public TrainerInfoWidget(int x, int y, int w, int h, Font font) {
         super(x, y, w, h, font);
     }
 
+    public void tick() {
+        if(this.entryState == EntryState.DISCOVERED_KEY && this.name != null && this.rng.nextFloat() < (this.obf ? 0.05f : 0.025f)) {
+            var msg = this.name.getMessage().plainCopy().withStyle(ChatFormatting.GREEN);
+            this.obf = !obf;
+
+            if(this.obf) {
+                msg = msg.withStyle(ChatFormatting.OBFUSCATED);
+            }
+
+            this.name.setMessage(msg);
+
+            if(this.identity != null) {
+                msg = this.identity.getMessage().plainCopy().withStyle(ChatFormatting.GREEN);
+
+                if(this.obf) {
+                    msg = msg.withStyle(ChatFormatting.OBFUSCATED);
+                }
+
+                this.identity.setMessage(msg);
+            }
+        }
+    }
+
     public void initTrainerInfo(int trainerNr, String trainerId, EntryState entryState) {
         this.trainer = RCTMod.getInstance().getTrainerManager().getData(trainerId);
         this.trainerId = trainerId;
+        this.entryState = entryState;
 
         this.w = (int)((this.getWidth() - this.totalInnerPadding())/INNER_SCALE);
         this.h = this.getHeight() / 6;
@@ -94,13 +122,13 @@ public class TrainerInfoWidget extends TrainerDataWidget {
             msw -> msw.setStyle(1), msw -> msw.setStyle(0));
 
         this.number = new StringWidget(0, this.y, this.w, this.h, toComponent(String.format("%04d: ", trainerNr)), this.font).alignLeft();
-        this.name = new StringWidget((int)(this.w*0.18), this.y, (int)(this.w*0.72), this.h, entryState == EntryState.HIDDEN ? toComponent(displayName).withStyle(ChatFormatting.OBFUSCATED) : toComponent(displayName), this.font).alignLeft();
+        this.name = new StringWidget((int)(this.w*0.18), this.y, (int)(this.w*0.72), this.h, entryState == EntryState.HIDDEN_KEY ? toComponent(displayName).withStyle(ChatFormatting.OBFUSCATED) : toComponent(displayName), this.font).alignLeft();
 
         if(entryState != EntryState.DISCOVERED || identity.equals(displayName)) {
             this.aka = this.identity = null;
         } else {
             this.aka = new StringWidget(0, this.y += this.h, this.w, this.h, toComponent("aka"), this.font).alignLeft();
-            this.identity = new StringWidget((int)(this.w*0.18), this.y, this.w, this.h, entryState == EntryState.HIDDEN ? toComponent(identity).withStyle(ChatFormatting.OBFUSCATED) : toComponent(identity), this.font).alignLeft();
+            this.identity = new StringWidget((int)(this.w*0.18), this.y, this.w, this.h, entryState == EntryState.HIDDEN_KEY ? toComponent(identity).withStyle(ChatFormatting.OBFUSCATED) : toComponent(identity), this.font).alignLeft();
         }
 
         this.back.element.active = true;
