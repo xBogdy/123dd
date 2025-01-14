@@ -4,6 +4,11 @@
 
 ## [0.13.8-beta] - 2025-01-14
 
+**Added:**
+
+- *#193* Server config `dimensionBlacklist`
+- *#192* Server config `dimensionWhitelist`
+
 **Fixed:**
 
 - *#191* Fixed Trainer Spawner Block still taking `globalSpawnChance` and `maxTrainersPerPlayer` into account (see *#180*)

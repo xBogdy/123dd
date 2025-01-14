@@ -47,6 +47,7 @@ public class ServerConfig implements IServerConfig {
     private final ConfigValue<Integer> maxTrainersTotalValue;
     private final ConfigValue<Integer> maxLevelDiffValue;
     private final ConfigValue<List<? extends String>> dimensionBlacklistValue;
+    private final ConfigValue<List<? extends String>> dimensionWhitelistValue;
     private final ConfigValue<List<? extends String>> biomeTagBlacklistValue;
     private final ConfigValue<List<? extends String>> biomeTagWhitelistValue;
     private final ConfigValue<List<? extends String>> trainerSpawnerItems;
@@ -111,6 +112,10 @@ public class ServerConfig implements IServerConfig {
         this.dimensionBlacklistValue = builder
                 .comment("A comma separated list of dimensions (e.g. [\"multiworld:spawn\", \"minecraft:the_end\"]). In these dimensions trainers will never spawn.")
                 .defineList("dimensionBlacklist", IServerConfig.super.dimensionBlacklist(), String::new, element -> true);
+
+        this.dimensionWhitelistValue = builder
+                .comment("A comma separated list of dimensions (e.g. [\"multiworld:spawn\" , \"minecraft:the_end\"]). Trainers may only spawn in these dimensions (unless the list is empty).")
+                .defineList("dimensionWhitelist", IServerConfig.super.dimensionWhitelist(), String::new, element -> true);
 
         this.biomeTagBlacklistValue = builder
             .comment("A comma separated list of biome tags (e.g. [\"is_overworld\", \"is_forest\"]). A biome may not have any of the given tags attached to it, for a trainer to spawn in that biome. Trainers may also have additional tags defined by a data pack.")
@@ -236,6 +241,11 @@ public class ServerConfig implements IServerConfig {
     @Override
     public List<? extends String> dimensionBlacklist() {
         return this.dimensionBlacklistValue.get();
+    }
+
+    @Override
+    public List<? extends String> dimensionWhitelist() {
+        return this.dimensionWhitelistValue.get();
     }
 
     @Override

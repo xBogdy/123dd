@@ -430,37 +430,39 @@ public class TrainerSpawner {
         var candidates = new ArrayList<SpawnCandidate>();
         var level = player.level();
         var tags = level.getBiome(pos).tags()
-                .map(t -> t.location().getNamespace() + ":" + t.location().getPath())
-                .collect(Collectors.toSet());
+            .map(t -> t.location().getNamespace() + ":" + t.location().getPath())
+            .collect(Collectors.toSet());
 
         // given tags without namespace match with any namespace
         level.getBiome(pos).tags()
-                .map(t -> t.location().getPath())
-                .forEach(t -> tags.add(t));
+            .map(t -> t.location().getPath())
+            .forEach(t -> tags.add(t));
 
         var config = RCTMod.getInstance().getServerConfig();
 
-        // Flag to skip dimension processing
-        boolean dimensionBlacklisted = config.dimensionBlacklist().contains(level.dimension().location().toString());
+        // flags to skip dimension processing
+        var dimensionBlacklisted = config.dimensionBlacklist().contains(level.dimension().location().toString());
+        var dimensionWhitelisted = config.dimensionWhitelist().isEmpty() || config.dimensionWhitelist().contains(level.dimension().location().toString());
 
-        if (!dimensionBlacklisted && config.biomeTagBlacklist().stream().noneMatch(tags::contains)
-                && (config.biomeTagWhitelist().isEmpty() || config.biomeTagWhitelist().stream().anyMatch(tags::contains))) {
+        if(!dimensionBlacklisted && dimensionWhitelisted
+            && config.biomeTagBlacklist().stream().noneMatch(tags::contains)
+            && (config.biomeTagWhitelist().isEmpty() || config.biomeTagWhitelist().stream().anyMatch(tags::contains))) {
 
             RCTMod.getInstance().getTrainerManager().getAllData()
-                    .filter(e -> this.isUnique(e.getValue().getTrainerTeam().getIdentity())
-                            && e.getValue().getBiomeTagBlacklist().stream().noneMatch(tags::contains)
-                            && (e.getValue().getBiomeTagWhitelist().isEmpty() || e.getValue().getBiomeTagWhitelist().stream().anyMatch(tags::contains)))
-                    .forEach(e -> {
-                        var weight = this.computeWeight(player, e.getKey(), e.getValue());
+                .filter(e -> this.isUnique(e.getValue().getTrainerTeam().getIdentity())
+                    && e.getValue().getBiomeTagBlacklist().stream().noneMatch(tags::contains)
+                    && (e.getValue().getBiomeTagWhitelist().isEmpty() || e.getValue().getBiomeTagWhitelist().stream().anyMatch(tags::contains)))
+                .forEach(e -> {
+                    var weight = this.computeWeight(player, e.getKey(), e.getValue());
 
-                        if (weight > 0) {
-                            candidates.add(new SpawnCandidate(e.getKey(), weight));
-                        }
-                    });
+                    if (weight > 0) {
+                        candidates.add(new SpawnCandidate(e.getKey(), weight));
+                    }
+                });
         }
 
-        // Only return candidates if we have some and the dimension is not blacklisted
-        return (candidates.size() > 0 && !dimensionBlacklisted) ? this.selectRandom(player.getRandom(), candidates) : null;
+        // no candidates if dimension/biome blacklisted or not whitelisted
+        return candidates.size() > 0 ? this.selectRandom(player.getRandom(), candidates) : null;
     }
 
     // based of: https://stackoverflow.com/a/6737362
