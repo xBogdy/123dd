@@ -245,7 +245,7 @@ public class TrainerSpawner {
     public boolean attemptSpawnFor(Player player, String trainerId, BlockPos pos, boolean setHome, boolean noOrigin, double globalChance, double globalChanceMin) {
         var level = player.level();
 
-        if(RCTMod.getInstance().getTrainerManager().isValidId(trainerId) && TrainerSpawner.canSpawnAt(level, pos) && this.canSpawnFor(player, globalChance, globalChanceMin)) {
+        if(RCTMod.getInstance().getTrainerManager().isValidId(trainerId) && TrainerSpawner.canSpawnAt(level, pos) && this.canSpawnFor(player, noOrigin, globalChance, globalChanceMin)) {
             var tmd = RCTMod.getInstance().getTrainerManager().getData(trainerId);
 
             if(tmd != null && this.isUnique(tmd.getTrainerTeam().getIdentity())) {
@@ -262,7 +262,7 @@ public class TrainerSpawner {
     public boolean attemptSpawnFor(Player player) {
         var cfg = RCTMod.getInstance().getServerConfig();
 
-        if(this.canSpawnFor(player, cfg.globalSpawnChance(), cfg.globalSpawnChanceMinimum())) {
+        if(this.canSpawnFor(player, false, cfg.globalSpawnChance(), cfg.globalSpawnChanceMinimum())) {
             for(int i = 0; i < SPAWN_RETRIES; i++) {
                 var pos = this.nextPos(player);
 
@@ -291,16 +291,16 @@ public class TrainerSpawner {
         return !this.identities.containsKey(identity) && !this.persistentNames.containsKey(identity);
     }
 
-    private boolean canSpawnFor(Player player, double globalChance, double globalChanceMin) {
+    private boolean canSpawnFor(Player player, boolean noOrigin, double globalChance, double globalChanceMin) {
         var config = RCTMod.getInstance().getServerConfig();
         var spawnCountPl = this.getSpawnCount(player.getUUID());
         var maxCountPl = config.maxTrainersPerPlayer();
         var chanceRange = Math.max(0, globalChance - globalChanceMin);
 
-        return spawnCountPl < maxCountPl
-            && this.getSpawnCount() < config.maxTrainersTotal()
+        return this.getSpawnCount() < config.maxTrainersTotal()
             && RCTMod.getInstance().getTrainerManager().getPlayerLevel(player) > 0
-            && globalChance - chanceRange*(maxCountPl > 1 ? Math.min(1, spawnCountPl/(double)maxCountPl) : 1) >= player.getRandom().nextFloat();
+            && (noOrigin || (spawnCountPl < maxCountPl
+                && globalChance - chanceRange*(maxCountPl > 1 ? Math.min(1, spawnCountPl/(double)maxCountPl) : 1) >= player.getRandom().nextFloat()));
     }
 
     private void spawnFor(Player player, String trainerId, BlockPos pos) {
