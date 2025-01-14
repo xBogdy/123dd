@@ -125,6 +125,14 @@ public interface IServerConfig extends IModConfig {
     default int maxLevelDiff() { return 25; }
 
     /**
+     * A comma separated list of dimensions (e.g. ["multiworld:spawn" , "minecraft:the_end"]).
+     * In these dimensions trainers will never spawn.
+     *
+     * default: []
+     */
+    default List<? extends String> dimensionBlacklist() { return List.of(); }
+
+    /**
      * A comma separated list of biome tags (e.g. ["is_overworld", "is_forest"]). A
      * biome may not have any of the given tags attached to it, for a trainer to spawn
      * in that biome. Trainers may also have additional tags defined by a data pack.
