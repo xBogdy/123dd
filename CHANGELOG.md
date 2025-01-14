@@ -6,11 +6,12 @@
 
 **Added:**
 
-- *#196* Server config `dimensionBlacklist` (thanks Vaniron)
-- *#195* Server config `dimensionWhitelist`
+- *#197* Server config `dimensionBlacklist` (thanks Vaniron)
+- *#196* Server config `dimensionWhitelist`
 
 **Changed:**
 
+- *#195* Added hint to names of "Friendly Coaches" for what EVs their pokemon provide, tweaked their ai
 - *#194* Already defeated key trainers are now also "highlighted" in the Trainer Card list when required for the progression
 - *#193* Trainer Card arrow has now infinite range (the arrow will spin out of control if the target trainer is in a different dimension)
 

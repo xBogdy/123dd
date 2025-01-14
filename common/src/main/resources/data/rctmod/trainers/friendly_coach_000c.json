@@ -1,5 +1,14 @@
 {
-  "name": "Friendly Coach",
+  "name": "Friendly Coach (Spa)",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "moveBias": 1,
+      "statusMoveBias": 1,
+      "switchBias": 0,
+      "itemBias": 0
+    }
+  },
   "team": [
     {
       "species": "beautifly",
