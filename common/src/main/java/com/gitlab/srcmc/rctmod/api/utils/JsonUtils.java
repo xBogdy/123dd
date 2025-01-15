@@ -1,6 +1,6 @@
 /*
  * This file is part of Radical Cobblemon Trainers.
- * Copyright (c) 2024, HDainester, All rights reserved.
+ * Copyright (c) 2025, HDainester, All rights reserved.
  *
  * Radical Cobblemon Trainers is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
