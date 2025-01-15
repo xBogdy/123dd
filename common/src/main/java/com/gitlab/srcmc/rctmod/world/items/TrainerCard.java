@@ -17,43 +17,40 @@
  */
 package com.gitlab.srcmc.rctmod.world.items;
 
+import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.client.ModClient;
 import com.gitlab.srcmc.rctmod.client.renderer.TargetArrowRenderer;
+import com.gitlab.srcmc.rctmod.network.TrainerTargetPayload;
 
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.nbt.CompoundTag;
+import dev.architectury.networking.NetworkManager;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.Level;
 
 public class TrainerCard extends Item {
-    private static final CustomData EMPTY_DATA = CustomData.of(new CompoundTag());
+    public static final int SYNC_INTERVAL_TICKS = 5;
 
     public TrainerCard() {
-        super(new Properties().stacksTo(1).component(DataComponents.CUSTOM_DATA, CustomData.of(new CompoundTag())));
-    }
-
-    public void setFoil(ItemStack stack, boolean foil) {
-        stack.update(DataComponents.CUSTOM_DATA, CustomData.of(new CompoundTag()), d -> d.update(tag -> tag.putBoolean("foil", foil)));
+        super(new Properties().stacksTo(1));
     }
 
     @Override
     public boolean isFoil(ItemStack stack) {
-        return super.isFoil(stack) || stack.getOrDefault(DataComponents.CUSTOM_DATA, EMPTY_DATA).copyTag().getBoolean("foil");
+        return super.isFoil(stack) || (ModCommon.player != null && TargetArrowRenderer.getInstance().hasTarget() && ModCommon.player.get().getInventory().contains(stack));
     }
 
     @Override
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int i, boolean bl) {
-        if(level.isClientSide) {
-            if(entity.tickCount % 60 == 0) {
-                if(entity instanceof Player player && player.isLocalPlayer()) {
+        if(!level.isClientSide) {
+            if(entity.tickCount % SYNC_INTERVAL_TICKS == 0) {
+                if(entity instanceof ServerPlayer player) {
                     var ps = PlayerState.get(player);
                     var keyTrainer = RCTMod.getInstance().getTrainerSpawner().getSpawns()
                         .stream().filter(t -> t.couldBattleAgainst(player) && ps.isKeyTrainer(t.getTrainerId()))
@@ -62,14 +59,12 @@ public class TrainerCard extends Item {
 
                     if(keyTrainer.isPresent()) {
                         var t = keyTrainer.get();
-                        this.setFoil(stack, true);
-                        TargetArrowRenderer.getInstance().setTarget(player, t);
-                    } else {
-                        this.setFoil(stack, false);
-                        TargetArrowRenderer.getInstance().setTarget(null, null);
+                        NetworkManager.sendToPlayer(player, new TrainerTargetPayload(
+                            t.position().x,
+                            t.position().y,
+                            t.position().z,
+                            !t.level().dimension().location().equals(player.level().dimension().location())));
                     }
-                } else {
-                    this.setFoil(stack, false);
                 }
             }
         }

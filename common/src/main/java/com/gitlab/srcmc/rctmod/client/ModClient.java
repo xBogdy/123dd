@@ -29,6 +29,7 @@ import com.gitlab.srcmc.rctmod.client.renderer.TrainerRenderer;
 import com.gitlab.srcmc.rctmod.client.screens.IScreenManager;
 import com.gitlab.srcmc.rctmod.client.screens.ScreenManager;
 import com.gitlab.srcmc.rctmod.network.PlayerStatePayload;
+import com.gitlab.srcmc.rctmod.network.TrainerTargetPayload;
 
 import dev.architectury.event.events.client.ClientTickEvent;
 import dev.architectury.networking.NetworkManager;
@@ -39,6 +40,7 @@ import dev.architectury.registry.client.level.entity.EntityRendererRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 
 public class ModClient {
     public static final IScreenManager SCREENS = new ScreenManager();
@@ -50,6 +52,7 @@ public class ModClient {
         ReloadListenerRegistry.register(PackType.CLIENT_RESOURCES, RCTMod.getInstance().getClientDataManager());
         ReloadListenerRegistry.register(PackType.CLIENT_RESOURCES, RCTMod.getInstance().getTrainerManager());
         NetworkManager.registerReceiver(Side.S2C, PlayerStatePayload.TYPE, PlayerStatePayload.CODEC, ModClient::receivePlayerState);
+        NetworkManager.registerReceiver(Side.S2C, TrainerTargetPayload.TYPE, TrainerTargetPayload.CODEC, ModClient::receiveTrainerTarget);
         ClientTickEvent.CLIENT_LEVEL_PRE.register(ModClient::onClientWorldTick);
         EntityRendererRegistry.register(ModRegistries.Entities.TRAINER, TrainerRenderer::new);
         TargetArrowRenderer.init();
@@ -74,5 +77,9 @@ public class ModClient {
             // TODO: log error instead of exception
             throw new IllegalStateException("Failed to store player state updates");
         }
+    }
+
+    static void receiveTrainerTarget(TrainerTargetPayload tt, PacketContext context) {
+        TargetArrowRenderer.getInstance().setTarget(context.getPlayer(), new Vec3(tt.targetX(), tt.targetY(), tt.targetZ()), tt.otherDim());
     }
 }

@@ -18,11 +18,13 @@
 package com.gitlab.srcmc.rctmod.server;
 
 import com.gitlab.srcmc.rctmod.network.PlayerStatePayload;
+import com.gitlab.srcmc.rctmod.network.TrainerTargetPayload;
 
 import dev.architectury.networking.NetworkManager;
 
 public class ModServer {
     public static void init() {
         NetworkManager.registerS2CPayloadType(PlayerStatePayload.TYPE, PlayerStatePayload.CODEC);
+        NetworkManager.registerS2CPayloadType(TrainerTargetPayload.TYPE, TrainerTargetPayload.CODEC);
     }
 }

@@ -22,6 +22,7 @@ import java.util.function.Supplier;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
+import com.gitlab.srcmc.rctmod.world.items.TrainerCard;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.BufferUploader;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
@@ -32,6 +33,7 @@ import com.mojang.blaze3d.vertex.VertexFormat;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.phys.Vec3;
 
 public class TargetArrowRenderer {
     private static final float PYRAMID_STRIP[] = {
@@ -67,7 +69,10 @@ public class TargetArrowRenderer {
     private Quaternionf rotation = new Quaternionf();
 
     private int activationTicks, ticks;
-    private Entity source, target;
+    private Entity source;
+    private Vec3 target;
+    private boolean otherDim;
+    private int activeTicks;
 
     // public static double x = 0.4, y = -0.27, z = -0.66; // with RenderHand
     // public static double x = -0.15, y = 0.25, z = 0.03; // with ItemRenderer
@@ -86,24 +91,24 @@ public class TargetArrowRenderer {
     }
 
     public void tick() {
-        if(this.source != null && this.target != null) {
+        if(this.hasTarget()) {
             this.updateDirection();
 
             if(this.activationTicks < TICKS_TO_ACTIVATE) {
                 this.activationTicks++;
             }
 
-            if(!this.target.isAlive()) {
-                this.setTarget(null, null);
-            }
-
-            if(++this.ticks < 0) {
-                this.ticks = 0;
+            if(--this.activeTicks < 0) {
+                this.setTarget(null, null, false);
             }
         } else {
             if(this.activationTicks > 0) {
                 this.activationTicks--;
             }
+        }
+
+        if(++this.ticks < 0) {
+            this.ticks = 0;
         }
     }
 
@@ -143,15 +148,21 @@ public class TargetArrowRenderer {
             }
         }
     }
-
-    public void setTarget(Entity source, Entity target) {
+    
+    public void setTarget(Entity source, Vec3 target, boolean otherDim) {
         this.source = source;
         this.target = target;
+        this.otherDim = otherDim;
+        this.activeTicks = 4*TrainerCard.SYNC_INTERVAL_TICKS;
+    }
+
+    public boolean hasTarget() {
+        return this.source != null && this.target != null;
     }
 
     private void updateDirection() {
-        if(this.target.level().dimension().location().equals(this.source.level().dimension().location())) {
-            this.direction.lerp(this.target.position().subtract(this.source.position()).toVector3f(), 0.2f);
+        if(!this.otherDim) {
+            this.direction.lerp(this.target.subtract(this.source.position()).toVector3f(), 0.2f);
         } else {
             var t = Math.PI * this.ticks / 20.0;
             this.direction.lerp(new Vector3f((float)Math.sin(t), (float)Math.cos(t), 0), 0.05f);

@@ -2,6 +2,12 @@
 
 **Important**: The `level_cap` is not a value anymore that can be set per player but is rather derived from the current state of progress of that player. Because of the changes to the progression it is possible that when updating from an older version the level caps of players will be different (most likely lower)! Apart from that the progress of players should adapt to the changes but as a general advice **always make backups before updating mods**.
 
+## [0.13.9-beta] - 2025-01-15
+
+**Fixed:**
+
+- *#198* Trainer Card arrow and foil not working in multiplayer
+
 ## [0.13.8-beta] - 2025-01-14
 
 **Added:**
