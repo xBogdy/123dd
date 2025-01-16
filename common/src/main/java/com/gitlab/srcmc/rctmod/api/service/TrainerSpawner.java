@@ -31,7 +31,6 @@ import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
 import com.gitlab.srcmc.rctmod.api.data.save.collection.SavedMap;
 import com.gitlab.srcmc.rctmod.api.data.save.collection.SavedStringChunkPosMap;
-import com.gitlab.srcmc.rctmod.api.data.save.collection.SavedStringIntegerMap;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import com.google.common.collect.Sets;
@@ -41,6 +40,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.datafix.DataFixTypes;
+import net.minecraft.world.entity.Entity.RemovalReason;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
@@ -68,10 +68,6 @@ public class TrainerSpawner {
     private Map<String, Integer> spawns = new HashMap<>();
     private Map<String, Integer> identities = new HashMap<>();
     private Map<String, Integer> playerSpawns = new HashMap<>();
-    
-    private Map<String, Integer> persistentSpawns;
-    private Map<String, Integer> persistentNames;
-    private Map<String, Integer> persistentPlayerSpawns;
     private Map<String, ChunkPos> persistentChunks;
 
     private Set<TrainerMob> mobs = new HashSet<>();
@@ -83,18 +79,6 @@ public class TrainerSpawner {
         this.playerSpawns.clear();
         this.persistentMobs.clear();
         this.mobs.clear();
-
-        this.persistentSpawns = level.getDataStorage().computeIfAbsent(
-            new Factory<>(SavedStringIntegerMap::new, SavedStringIntegerMap::of, DataFixTypes.LEVEL),
-            SavedMap.filePath("spawn.uuids"));
-
-        this.persistentNames = level.getDataStorage().computeIfAbsent(
-            new Factory<>(SavedStringIntegerMap::new, SavedStringIntegerMap::of, DataFixTypes.LEVEL),
-            SavedMap.filePath("spawn.names"));
-
-        this.persistentPlayerSpawns = level.getDataStorage().computeIfAbsent(
-            new Factory<>(SavedStringIntegerMap::new, SavedStringIntegerMap::of, DataFixTypes.LEVEL),
-            SavedMap.filePath("spawn.counts"));
 
         this.persistentChunks = level.getDataStorage().computeIfAbsent(
             new Factory<>(SavedStringChunkPosMap::new, SavedStringChunkPosMap::of, DataFixTypes.LEVEL),
@@ -108,7 +92,7 @@ public class TrainerSpawner {
         });
 
         if(RCTMod.getInstance().getServerConfig().logSpawning()) {
-            ModCommon.LOG.info("Initialized trainer spawner" + this.persistentSpawns.keySet().stream().reduce("", (u1, u2) -> u1 + " " + u2));
+            ModCommon.LOG.info("Initialized Trainer Spawner service");
         }
     }
 
@@ -122,38 +106,32 @@ public class TrainerSpawner {
         while(it.hasNext()) {
             var mob = it.next();
 
-            if(mob.isRemoved()) {
-                it.remove();
-            } else if(mob.isPersistenceRequired()) {
-                this.persistentMobs.add(mob);
+            if(mob.isRemoved() || mob.isPersistenceRequired()) {
                 it.remove();
             } else if(mob.shouldDespawn()) {
-                mob.discard();
+                mob.remove(RemovalReason.UNLOADED_TO_CHUNK);
                 it.remove();
             }
         }
     }
 
     public void register(TrainerMob mob) {
-        var spawns = mob.isPersistenceRequired() ? this.persistentSpawns : this.spawns;
+        var identity = RCTMod.getInstance().getTrainerManager().getData(mob).getTrainerTeam().getIdentity();
 
         if(mob.isPersistenceRequired()) {
             this.persistentChunks.put(mob.getStringUUID(), mob.chunkPosition());
             this.persistentMobs.add(mob);
         }
 
-        if(!spawns.containsKey(mob.getStringUUID())) {
-            var identity = RCTMod.getInstance().getTrainerManager().getData(mob).getTrainerTeam().getIdentity();
-            var identities = mob.isPersistenceRequired() ? this.persistentNames : this.identities;
+        if(!this.spawns.containsKey(mob.getStringUUID())) {
             var originPlayer = mob.getOriginPlayer();
-            var playerSpawns = mob.isPersistenceRequired() ? this.persistentPlayerSpawns : this.playerSpawns;
 
             if(originPlayer != null) {
-                playerSpawns.compute(originPlayer.toString(), (key, value) -> value == null ? 1 : value + 1);
+                this.playerSpawns.compute(originPlayer.toString(), (key, value) -> value == null ? 1 : value + 1);
             }
 
-            identities.compute(identity, (key, value) -> value == null ? 1 : value + 1);
-            spawns.put(mob.getStringUUID(), 0);
+            this.identities.compute(identity, (key, value) -> value == null ? 1 : value + 1);
+            this.spawns.put(mob.getStringUUID(), 0);
 
             if(!mob.isPersistenceRequired()) {
                 this.mobs.add(mob);
@@ -172,20 +150,21 @@ public class TrainerSpawner {
     }
 
     public void unregister(TrainerMob mob) {
-        var spawns = mob.isPersistenceRequired() ? this.persistentSpawns : this.spawns;
-
-        if(spawns.containsKey(mob.getStringUUID())) {
+        if(this.spawns.containsKey(mob.getStringUUID())) {
             var identity = RCTMod.getInstance().getTrainerManager().getData(mob).getTrainerTeam().getIdentity();
-            var identities = mob.isPersistenceRequired() ? this.persistentNames : this.identities;
             var originPlayer = mob.getOriginPlayer();
-            var playerSpawns = mob.isPersistenceRequired() ? this.persistentPlayerSpawns : this.playerSpawns;
 
             if(originPlayer != null) {
-                playerSpawns.compute(originPlayer.toString(), (key, value) -> value == 1 ? null : value - 1);
+                this.playerSpawns.compute(originPlayer.toString(), (key, value) -> value <= 1 ? null : value - 1);
             }
 
-            identities.compute(identity, (key, value) -> value == 1 ? null : value - 1);
-            spawns.remove(mob.getStringUUID());
+            this.identities.compute(identity, (key, value) -> value <= 1 ? null : value - 1);
+            this.spawns.remove(mob.getStringUUID());
+
+            if(mob.isPersistenceRequired()) {
+                this.persistentChunks.remove(mob.getStringUUID());
+                this.persistentMobs.remove(mob);
+            }
 
             var config = RCTMod.getInstance().getServerConfig();
 
@@ -197,49 +176,41 @@ public class TrainerSpawner {
                     this.getSpawnCount(), config.maxTrainersTotal()));
             }
         }
-
-        this.unregisterPersistent(mob.getStringUUID());
-        this.persistentMobs.remove(mob);
     }
 
     public void unregisterPersistent(String mobUUID) {
-        this.persistentNames.remove(mobUUID);
-        this.persistentSpawns.remove(mobUUID);
-        this.persistentPlayerSpawns.remove(mobUUID);
-        this.persistentChunks.remove(mobUUID);
+        for(var m : this.persistentMobs) {
+            if(m.getStringUUID().equals(mobUUID)) {
+                m.setPersistent(false);
+                return;
+            }
+        }
     }
 
     public boolean isRegistered(TrainerMob mob) {
-        return this.spawns.containsKey(mob.getStringUUID()) || this.persistentSpawns.containsKey(mob.getStringUUID());
+        return this.spawns.containsKey(mob.getStringUUID());
     }
 
     public void notifyChangeTrainerId(TrainerMob mob, String newTrainerId) {
-        var spawns = mob.isPersistenceRequired() ? this.persistentSpawns : this.spawns;
-
-        if(spawns.containsKey(mob.getStringUUID())) {
+        if(this.spawns.containsKey(mob.getStringUUID())) {
             ModCommon.LOG.info(String.format("Changing trainer id '%s' -> '%s' (%s)", mob.getTrainerId(), newTrainerId, mob.getStringUUID()));
-
             var identity = RCTMod.getInstance().getTrainerManager().getData(mob).getTrainerTeam().getIdentity();
             var newIdentity = RCTMod.getInstance().getTrainerManager().getData(newTrainerId).getTrainerTeam().getIdentity();
-            var identities = mob.isPersistenceRequired() ? this.persistentNames : this.identities;
-            identities.compute(identity, (key, value) -> value == 1 ? null : value - 1);
-            identities.compute(newIdentity, (key, value) -> value == null ? 1 : value + 1);
+            this.identities.compute(identity, (key, value) -> value <= 1 ? null : value - 1);
+            this.identities.compute(newIdentity, (key, value) -> value == null ? 1 : value + 1);
         }
     }
 
     public void notifyChangeOriginPlayer(TrainerMob mob, UUID newOriginPlayer) {
-        var spawns = mob.isPersistenceRequired() ? this.persistentSpawns : this.spawns;
-
-        if(spawns.containsKey(mob.getStringUUID())) {
+        if(this.spawns.containsKey(mob.getStringUUID())) {
             var originPlayer = mob.getOriginPlayer();
-            var playerSpawns = mob.isPersistenceRequired() ? this.persistentPlayerSpawns : this.playerSpawns;
 
             if(originPlayer != null) {
-                playerSpawns.compute(originPlayer.toString(), (key, value) -> value == 1 ? null : value - 1);
+                this.playerSpawns.compute(originPlayer.toString(), (key, value) -> value <= 1 ? null : value - 1);
             }
 
             if(newOriginPlayer != null) {
-                playerSpawns.compute(newOriginPlayer.toString(), (key, value) -> value == null ? 1 : value + 1);
+                this.playerSpawns.compute(newOriginPlayer.toString(), (key, value) -> value == null ? 1 : value + 1);
             }
 
             if(RCTMod.getInstance().getServerConfig().logSpawning()) {
@@ -249,9 +220,9 @@ public class TrainerSpawner {
     }
 
     public void notifyChangePersistence(TrainerMob mob, boolean newPersistence) {
-        if(this.spawns.containsKey(mob.getStringUUID())) {
+        if(this.spawns.containsKey(mob.getStringUUID()) ) {
             this.unregister(mob);
-            mob.setPersistent(newPersistence);
+            mob.setPersistent(newPersistence, true);
             this.register(mob);
         }
     }
@@ -323,7 +294,7 @@ public class TrainerSpawner {
     }
 
     private boolean isUnique(String identity) {
-        return !this.identities.containsKey(identity) && !this.persistentNames.containsKey(identity);
+        return !this.identities.containsKey(identity);
     }
 
     private boolean canSpawnFor(Player player, boolean noOrigin, double globalChance, double globalChanceMin) {

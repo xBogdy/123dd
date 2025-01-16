@@ -488,20 +488,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
                 this.updateTarget();
             }
 
-            var ts = RCTMod.getInstance().getTrainerSpawner();
-
-            if(this.isPersistenceRequired()) {
-                if(!ts.isRegistered(this)) {
-                    this.setPersistent(false);
-
-                    ModCommon.LOG.info(String.format(
-                        "Disabled persistence for unregistered trainer '%s' (%s)",
-                        this.getTrainerId(), this.getStringUUID()));
-                } else {
-                    ts.register(this);
-                }
-            }
-
+            RCTMod.getInstance().getTrainerSpawner().register(this);
             this.checkDespawnNearAfkPlayers();
         }
     }
@@ -522,15 +509,9 @@ public class TrainerMob extends PathfinderMob implements Npc {
         if(RCTMod.getInstance().getServerConfig().logSpawning()) {
             ModCommon.LOG.info(String.format("Removed trainer '%s' (%s): %s", this.getTrainerId(), this.getStringUUID(), reason.toString()));
         }
-
-        if(reason == RemovalReason.DISCARDED || reason == RemovalReason.KILLED) {
-            RCTMod.getInstance().getTrainerSpawner().unregister(this);
-            this.cancelBattle();
-        } else if(reason != RemovalReason.UNLOADED_TO_CHUNK) {
-            this.remove(RemovalReason.DISCARDED);
-            return;
-        }
-
+        
+        RCTMod.getInstance().getTrainerSpawner().unregister(this);
+        this.cancelBattle();
         super.remove(reason);
     }
 
@@ -555,8 +536,15 @@ public class TrainerMob extends PathfinderMob implements Npc {
     }
 
     public void setPersistent(boolean persistent) {
+        this.setPersistent(persistent, false);
+    }
+
+    public void setPersistent(boolean persistent, boolean silent) {
         if(this.persistent != persistent) {
-            RCTMod.getInstance().getTrainerSpawner().notifyChangePersistence(this, persistent);
+            if(!silent) {
+                RCTMod.getInstance().getTrainerSpawner().notifyChangePersistence(this, persistent);
+            }
+
             this.persistent = persistent;
         }
     }
@@ -643,26 +631,24 @@ public class TrainerMob extends PathfinderMob implements Npc {
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
 
-        if(RCTMod.getInstance().getTrainerSpawner().isRegistered(this)) {
-            if(compoundTag.contains("Cooldown")) {
-                this.cooldown = compoundTag.getInt("Cooldown");
-            }
+        if(compoundTag.contains("Cooldown")) {
+            this.cooldown = compoundTag.getInt("Cooldown");
+        }
 
-            if(compoundTag.contains("TrainerId")) {
-                this.setTrainerId(compoundTag.getString("TrainerId"));
-            }
+        if(compoundTag.contains("TrainerId")) {
+            this.setTrainerId(compoundTag.getString("TrainerId"));
+        }
 
-            if(compoundTag.contains("HomePos")) {
-                this.setHomePos(BlockPos.of(compoundTag.getLong("HomePos")));
-            }
+        if(compoundTag.contains("HomePos")) {
+            this.setHomePos(BlockPos.of(compoundTag.getLong("HomePos")));
+        }
 
-            if(compoundTag.contains("OriginPlayer")) {
-                this.setOriginPlayer(compoundTag.getUUID("OriginPlayer"));
-            }
+        if(compoundTag.contains("OriginPlayer")) {
+            this.setOriginPlayer(compoundTag.getUUID("OriginPlayer"));
+        }
 
-            if(compoundTag.contains("Persistent")) {
-                this.setPersistent(compoundTag.getBoolean("Persistent"));
-            }
+        if(compoundTag.contains("Persistent")) {
+            this.setPersistent(compoundTag.getBoolean("Persistent"));
         }
     }
 

@@ -2,10 +2,11 @@
 
 **Important**: The `level_cap` is not a value anymore that can be set per player but is rather derived from the current state of progress of that player. Because of the changes to the progression it is possible that when updating from an older version the level caps of players will be different (most likely lower)! Apart from that the progress of players should adapt to the changes but as a general advice **always make backups before updating mods**.
 
-## [0.13.9-beta] - 2025-01-15
+## [0.13.9-beta] - 2025-01-16
 
 **Fixed:**
 
+- *#200* Some bugs with (un)registration of persistent trainers
 - *#199* Trainer Card arrow and foil effect not working in multiplayer
 - *#198* Trainer Card ignoring persistent trainers
 
