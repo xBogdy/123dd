@@ -42,7 +42,7 @@ public class TrainerPlayerData extends SavedData {
     public int getLevelCap() {
         var cfg = RCTMod.getInstance().getServerConfig();
 
-        if(cfg.initialLevelCap() != this.initialLevelCap || cfg.additiveLevelCapRequirement() != this.additiveLevelCapRequirement) {
+        if(RCTMod.getInstance().getTrainerManager().updateRequired(this.player) || cfg.initialLevelCap() != this.initialLevelCap || cfg.additiveLevelCapRequirement() != this.additiveLevelCapRequirement) {
             this.additiveLevelCapRequirement = cfg.additiveLevelCapRequirement();
             this.initialLevelCap = cfg.initialLevelCap();
             this.updateLevelCap();
@@ -53,13 +53,13 @@ public class TrainerPlayerData extends SavedData {
 
     private void updateLevelCap() {
         var cfg = RCTMod.getInstance().getServerConfig();
-        this.levelCap = Math.max(0, Math.min(100, cfg.initialLevelCap() + cfg.additiveLevelCapRequirement()));
+        this.levelCap = Math.max(RCTMod.getInstance().getTrainerManager().getMinRequiredLevelCap(), Math.min(100, cfg.initialLevelCap() + cfg.additiveLevelCapRequirement()));
         this.defeatedTrainerIds.forEach(this::updateLevelCap);
     }
 
     private void updateLevelCap(String trainerId) {
         var tmd = RCTMod.getInstance().getTrainerManager().getData(trainerId);
-        this.levelCap = Math.max(this.levelCap, Math.max(0, Math.min(100, Math.max(tmd.getRequiredLevelCap(), tmd.getRewardLevelCap()))));
+        this.levelCap = Math.max(this.levelCap, Math.max(1, Math.min(100, Math.max(tmd.getRequiredLevelCap(), tmd.getRewardLevelCap()))));
     }
 
     public Set<String> getDefeatedTrainerIds() {
@@ -67,7 +67,7 @@ public class TrainerPlayerData extends SavedData {
     }
 
     public boolean addProgressDefeat(String trainerId) {
-        if(this.defeatedTrainerIds.add(trainerId)) {
+        if(this.defeatedTrainerIds.add(trainerId) && PlayerState.get(player).isKeyTrainer(trainerId)) {
             var ps = PlayerState.get(this.player);
             this.updateLevelCap(trainerId);
             ps.addProgressDefeat(trainerId);
@@ -129,14 +129,17 @@ public class TrainerPlayerData extends SavedData {
             var tpd = new TrainerPlayerData(this.player);
 
             if(tag.contains("progressDefeats")) {
-                tpd.defeatedTrainerIds.addAll(tag.getCompound("progressDefeats").getAllKeys());
+                var tm = RCTMod.getInstance().getTrainerManager();
+                tpd.defeatedTrainerIds.addAll(tag.getCompound("progressDefeats")
+                    .getAllKeys().stream()
+                    .filter(tid -> !tm.getData(tid).getFollowdBy().isEmpty()/* || entry.getValue().getMissingRequirements(Set.of()).findFirst().isPresent()*/).toList());
             } else {
                 // legacy support: derive progress defeats from trainer defeat counts
                 var tm = RCTMod.getInstance().getTrainerManager();
                 var level = this.player.getServer().overworld();
 
                 tm.getAllData()
-                    .filter(entry -> !entry.getValue().getFollowdBy().isEmpty() || entry.getValue().getMissingRequirements(Set.of()).findFirst().isPresent())
+                    .filter(entry -> !entry.getValue().getFollowdBy().isEmpty()/* || entry.getValue().getMissingRequirements(Set.of()).findFirst().isPresent()*/)
                     .map(entry -> entry.getKey())
                     .filter(tid -> tm.getBattleMemory(level, tid).getDefeatByCount(this.player) > 0)
                     .forEach(tpd.defeatedTrainerIds::add);

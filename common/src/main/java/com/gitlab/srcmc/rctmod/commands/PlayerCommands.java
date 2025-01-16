@@ -104,7 +104,7 @@ public final class PlayerCommands {
 
     private static CompletableFuture<Suggestions> get_progress_trainer_suggestions(final CommandContext<CommandSourceStack> context, final SuggestionsBuilder builder) throws CommandSyntaxException {
         RCTMod.getInstance().getTrainerManager().getAllData()
-            .filter(e -> !e.getValue().getFollowdBy().isEmpty() || e.getValue().getMissingRequirements(Set.of()).findFirst().isPresent())
+            .filter(e -> !e.getValue().getFollowdBy().isEmpty()/* || e.getValue().getMissingRequirements(Set.of()).findFirst().isPresent() */)
             .map(e -> e.getKey()).forEach(builder::suggest);
 
         return builder.buildFuture();

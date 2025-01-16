@@ -107,7 +107,7 @@ public class PlayerState implements Serializable {
     }
 
     public int getLevelCap() {
-        if(!this.player.isLocalPlayer()) {
+        if(!this.player.level().isClientSide) {
             this.setLevelCap(RCTMod.getInstance().getTrainerManager().getData(this.player).getLevelCap());
         }
 

@@ -4,9 +4,17 @@
 
 ## [0.13.9-beta] - 2025-01-16
 
+**Changed:**
+
+- *#205* Some adjustments to configs to ensure that the initial level cap is always greater or equal to the required level cap of the first trainer and the last rewarded level cap will always be `100`
+
 **Fixed:**
 
-- *#200* Some bugs with (un)registration of persistent trainers
+- *#204* Config option `additiveLevelCapRequirement` having unwanted side effects when set to negative values
+- *#203* Config option `allowOverleveling` also allowing to battle trainers with pokemon above a players level cap when enabled (use `initialLevelCap` for that)
+- *#202* Issue with some config options not updating on clients in some occassions
+- *#201* Some bugs with (un)registration of persistent trainers
+- *#200* The *progression set* of players also being allowed to store non required trainers
 - *#199* Trainer Card arrow and foil effect not working in multiplayer
 - *#198* Trainer Card ignoring persistent trainers
 

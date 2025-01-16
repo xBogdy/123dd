@@ -131,7 +131,6 @@ public class TrainerMob extends PathfinderMob implements Npc {
         if(e instanceof Player player) {
             var rct = RCTMod.getInstance();
             var tm = rct.getTrainerManager();
-            var cfg = rct.getServerConfig();
             var tpd = tm.getData(player);
             var tmd = tm.getData(this);
 
@@ -140,7 +139,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
                 && !rct.isInBattle(player)
                 && tm.getActivePokemon(player) > 0
                 && tpd.getLevelCap() >= tmd.getRequiredLevelCap()
-                && (cfg.allowOverLeveling() || tm.getPlayerLevel(player) <= tpd.getLevelCap())
+                && tm.getPlayerLevel(player) <= tpd.getLevelCap()
                 && tmd.getMissingRequirements(tm.getData(player).getDefeatedTrainerIds()).findFirst().isEmpty()
                 && this.couldBattleAgainst(e);
         }
@@ -488,7 +487,10 @@ public class TrainerMob extends PathfinderMob implements Npc {
                 this.updateTarget();
             }
 
-            RCTMod.getInstance().getTrainerSpawner().register(this);
+            if(!this.isRemoved()) {
+                RCTMod.getInstance().getTrainerSpawner().register(this);
+            }
+
             this.checkDespawnNearAfkPlayers();
         }
     }

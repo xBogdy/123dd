@@ -60,10 +60,13 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
 
     private Map<UUID, String> uuidToTrainerId = new HashMap<>();
     private Set<String> playerTrainerIds = new HashSet<>();
+    private Set<Player> receivedUpdates = new HashSet<>();
 
     private MinecraftServer server;
     private ResourceManager resourceManager;
     private boolean configReady;
+
+    private int minRequiredLevelCap;
 
     public TrainerManager() {
         super(GSON, ModCommon.MOD_ID);
@@ -242,6 +245,14 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
             TrainerBattleMemory.filePath(trainerId));
     }
 
+    public boolean updateRequired(Player player) {
+        return this.receivedUpdates.add(player);
+    }
+
+    public int getMinRequiredLevelCap() {
+        return this.minRequiredLevelCap;
+    }
+
     protected void attemptReload() {
         if(this.isReady()) {
             this.forceReload(this.resourceManager);
@@ -285,9 +296,20 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
             });
         });
 
-        newTrainerMobs.values().forEach(tmd -> tmd.setRewardLevelCap(tmd.getFollowdBy().stream()
-            .map(tid -> newTrainerMobs.get(tid).getRequiredLevelCap())
-            .max(Integer::compare).orElse(tmd.getRequiredLevelCap())));
+        var mrlvlcap = new int[]{100};
+
+        newTrainerMobs.values().forEach(tmd -> {
+            tmd.setRewardLevelCap(tmd.getFollowdBy()
+                .stream().map(tid -> {
+                    var tm = newTrainerMobs.get(tid);
+                    var tl = tm.getTrainerTeam().getTeam().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0);
+                    return tl == 100 ? tl : tm.getRequiredLevelCap();
+                }).max(Integer::compare).orElse(tmd.getRequiredLevelCap()));
+            
+            if(!tmd.getFollowdBy().isEmpty()) {
+                mrlvlcap[0] = Math.min(mrlvlcap[0], tmd.getRequiredLevelCap());
+            }
+        });
 
         // atomic operation ensures 'valid' trainer ids are always properly initialized (when accessed from a different thread)
         this.trainerMobs = newTrainerMobs;
@@ -297,6 +319,8 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
         }
 
         dpm.close();
+        this.minRequiredLevelCap = mrlvlcap[0];
+        this.receivedUpdates = new HashSet<>();
     }
 
     @Override
