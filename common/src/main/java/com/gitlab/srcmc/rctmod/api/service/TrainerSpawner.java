@@ -49,11 +49,11 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.saveddata.SavedData.Factory;
 
 public class TrainerSpawner {
-    private static float KEY_TRAINER_SPAWN_WEIGHT_FACTOR = 8;
-    private static float UNDEFEATED_WEIGHT_FACTOR = 32;
-    private static final int SPAWN_RETRIES = 4;
+    private static float KEY_TRAINER_SPAWN_WEIGHT_FACTOR = 64;
+    private static float NON_KEY_TRAINER_SPAWN_CHANCE_DIV = 4;
+    private static final int SPAWN_RETRIES = 8;
     private static final boolean CAN_SPAWN_IN_WATER = false; // experimental
-    private static final double TRAINER_DIRECT_SPAWN_CHANCE = 0.35;
+    private static final double TRAINER_DIRECT_SPAWN_CHANCE = 0.42;
 
     private class SpawnCandidate {
         public final String id;
@@ -357,9 +357,9 @@ public class TrainerSpawner {
         var rng = player.getRandom();
         
         int d = config.maxHorizontalDistanceToPlayers() - config.minHorizontalDistanceToPlayers();
-        int dx = (config.minHorizontalDistanceToPlayers() + (Math.abs(rng.nextInt()) % d)) * (rng.nextInt() < 0 ? -1 : 1);
-        int dz = (config.minHorizontalDistanceToPlayers() + (Math.abs(rng.nextInt()) % d)) * (rng.nextInt() < 0 ? -1 : 1);
-        int dy = rng.nextInt() > 0 ? config.maxVerticalDistanceToPlayers() : -config.maxVerticalDistanceToPlayers();
+        int dx = (config.minHorizontalDistanceToPlayers() + (Math.abs(rng.nextInt()) % d)) * (rng.nextBoolean() ? -1 : 1);
+        int dz = (config.minHorizontalDistanceToPlayers() + (Math.abs(rng.nextInt()) % d)) * (rng.nextBoolean() ? -1 : 1);
+        int dy = rng.nextBoolean() ? config.maxVerticalDistanceToPlayers() : -config.maxVerticalDistanceToPlayers();
 
         int x = player.getBlockX() + dx;
         int z = player.getBlockZ() + dz;
@@ -500,8 +500,8 @@ public class TrainerSpawner {
         var levelCap = ps.getLevelCap();
         var chance = TRAINER_DIRECT_SPAWN_CHANCE;
 
-        if(tm.getBattleMemory((ServerLevel)player.level(), trainerId).getDefeatByCount(player) > 0) {
-            chance /= UNDEFEATED_WEIGHT_FACTOR;
+        if(!ps.isKeyTrainer(trainerId)) {
+            chance /= NON_KEY_TRAINER_SPAWN_CHANCE_DIV;
         }
 
         var e = (1.0  - Math.min(config.maxLevelDiff(), Math.abs(Math.min(playerLevel, levelCap) - reqLevelCap))/(double)config.maxLevelDiff());
@@ -529,8 +529,7 @@ public class TrainerSpawner {
             keyTrainerFactor = KEY_TRAINER_SPAWN_WEIGHT_FACTOR/b;
         }
 
-        var undefeatedFactor = isKey || ps.getTrainerDefeatCount(trainerId) == 0 ? UNDEFEATED_WEIGHT_FACTOR : 1f;
         int diff = Math.abs(Math.min(playerLevel, levelCap) - reqLevelCap);
-        return diff > config.maxLevelDiff() ? 0 : ((config.maxLevelDiff() + 1) - diff)*mobTr.getSpawnWeightFactor()*undefeatedFactor*keyTrainerFactor;
+        return diff > config.maxLevelDiff() ? 0 : ((config.maxLevelDiff() + 1) - diff)*mobTr.getSpawnWeightFactor()*keyTrainerFactor;
     }
 }
