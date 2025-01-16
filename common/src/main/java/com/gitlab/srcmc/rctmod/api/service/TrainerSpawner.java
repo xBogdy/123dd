@@ -18,7 +18,6 @@
 package com.gitlab.srcmc.rctmod.api.service;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -30,15 +29,20 @@ import java.util.stream.Collectors;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
+import com.gitlab.srcmc.rctmod.api.data.save.collection.SavedMap;
+import com.gitlab.srcmc.rctmod.api.data.save.collection.SavedStringChunkPosMap;
 import com.gitlab.srcmc.rctmod.api.data.save.collection.SavedStringIntegerMap;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
+import com.google.common.collect.Sets;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.datafix.DataFixTypes;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluids;
@@ -68,26 +72,40 @@ public class TrainerSpawner {
     private Map<String, Integer> persistentSpawns;
     private Map<String, Integer> persistentNames;
     private Map<String, Integer> persistentPlayerSpawns;
+    private Map<String, ChunkPos> persistentChunks;
 
     private Set<TrainerMob> mobs = new HashSet<>();
+    private Set<TrainerMob> persistentMobs = new HashSet<>();
 
     public void init(ServerLevel level) {
         this.spawns.clear();
         this.identities.clear();
         this.playerSpawns.clear();
+        this.persistentMobs.clear();
         this.mobs.clear();
 
         this.persistentSpawns = level.getDataStorage().computeIfAbsent(
             new Factory<>(SavedStringIntegerMap::new, SavedStringIntegerMap::of, DataFixTypes.LEVEL),
-            SavedStringIntegerMap.filePath("spawn.uuids"));
+            SavedMap.filePath("spawn.uuids"));
 
         this.persistentNames = level.getDataStorage().computeIfAbsent(
             new Factory<>(SavedStringIntegerMap::new, SavedStringIntegerMap::of, DataFixTypes.LEVEL),
-            SavedStringIntegerMap.filePath("spawn.names"));
+            SavedMap.filePath("spawn.names"));
 
         this.persistentPlayerSpawns = level.getDataStorage().computeIfAbsent(
             new Factory<>(SavedStringIntegerMap::new, SavedStringIntegerMap::of, DataFixTypes.LEVEL),
-            SavedStringIntegerMap.filePath("spawn.counts"));
+            SavedMap.filePath("spawn.counts"));
+
+        this.persistentChunks = level.getDataStorage().computeIfAbsent(
+            new Factory<>(SavedStringChunkPosMap::new, SavedStringChunkPosMap::of, DataFixTypes.LEVEL),
+            SavedMap.filePath("spawn.chunks"));
+
+        var server = level.getServer();
+
+        this.persistentChunks.values().forEach(cp -> {
+            // TODO: only force update the chunk in the level the trainer was actually in
+            server.getAllLevels().forEach(l -> l.getChunkSource().updateChunkForced(cp, true));
+        });
 
         if(RCTMod.getInstance().getServerConfig().logSpawning()) {
             ModCommon.LOG.info("Initialized trainer spawner" + this.persistentSpawns.keySet().stream().reduce("", (u1, u2) -> u1 + " " + u2));
@@ -95,7 +113,7 @@ public class TrainerSpawner {
     }
 
     public Set<TrainerMob> getSpawns() {
-        return Collections.unmodifiableSet(this.mobs);
+        return Sets.union(this.mobs, this.persistentMobs);
     }
 
     public void checkDespawns() {
@@ -104,17 +122,25 @@ public class TrainerSpawner {
         while(it.hasNext()) {
             var mob = it.next();
 
-            if(mob.isRemoved() || mob.isPersistenceRequired()) {
+            if(mob.isRemoved()) {
+                it.remove();
+            } else if(mob.isPersistenceRequired()) {
+                this.persistentMobs.add(mob);
                 it.remove();
             } else if(mob.shouldDespawn()) {
-                it.remove();
                 mob.discard();
+                it.remove();
             }
         }
     }
 
     public void register(TrainerMob mob) {
         var spawns = mob.isPersistenceRequired() ? this.persistentSpawns : this.spawns;
+
+        if(mob.isPersistenceRequired()) {
+            this.persistentChunks.put(mob.getStringUUID(), mob.chunkPosition());
+            this.persistentMobs.add(mob);
+        }
 
         if(!spawns.containsKey(mob.getStringUUID())) {
             var identity = RCTMod.getInstance().getTrainerManager().getData(mob).getTrainerTeam().getIdentity();
@@ -171,12 +197,16 @@ public class TrainerSpawner {
                     this.getSpawnCount(), config.maxTrainersTotal()));
             }
         }
+
+        this.unregisterPersistent(mob.getStringUUID());
+        this.persistentMobs.remove(mob);
     }
 
     public void unregisterPersistent(String mobUUID) {
         this.persistentNames.remove(mobUUID);
         this.persistentSpawns.remove(mobUUID);
         this.persistentPlayerSpawns.remove(mobUUID);
+        this.persistentChunks.remove(mobUUID);
     }
 
     public boolean isRegistered(TrainerMob mob) {

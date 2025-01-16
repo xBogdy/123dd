@@ -488,12 +488,18 @@ public class TrainerMob extends PathfinderMob implements Npc {
                 this.updateTarget();
             }
 
-            if(this.isPersistenceRequired() && !RCTMod.getInstance().getTrainerSpawner().isRegistered(this)) {
-                this.setPersistent(false);
+            var ts = RCTMod.getInstance().getTrainerSpawner();
 
-                ModCommon.LOG.error(String.format(
-                    "Disabled persistence for unregistered trainer '%s' (%s)",
-                    this.getTrainerId(), this.getStringUUID()));
+            if(this.isPersistenceRequired()) {
+                if(!ts.isRegistered(this)) {
+                    this.setPersistent(false);
+
+                    ModCommon.LOG.info(String.format(
+                        "Disabled persistence for unregistered trainer '%s' (%s)",
+                        this.getTrainerId(), this.getStringUUID()));
+                } else {
+                    ts.register(this);
+                }
             }
 
             this.checkDespawnNearAfkPlayers();

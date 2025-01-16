@@ -19,15 +19,16 @@ package com.gitlab.srcmc.rctmod.api.data.save.collection;
 
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.level.ChunkPos;
 
-public class SavedStringIntegerMap extends SavedMap<String, Integer, Integer> {
-    public static SavedStringIntegerMap of(CompoundTag tag, Provider provider) {
-        var map = new SavedStringIntegerMap();
+public class SavedStringChunkPosMap extends SavedMap<String, ChunkPos, int[]> {
+    public static SavedStringChunkPosMap of(CompoundTag tag, Provider provider) {
+        var map = new SavedStringChunkPosMap();
         map.load(tag);
         return map;
     }
 
-    public SavedStringIntegerMap() {
-        super(k -> k, t -> t, v -> v, t -> t, ct -> ct::putInt, ct -> ct::getInt);
+    public SavedStringChunkPosMap() {
+        super(k -> k, t -> t, v -> new int[]{v.x, v.z}, t -> new ChunkPos(t[0], t[1]), ct -> ct::putIntArray, ct -> ct::getIntArray);
     }
 }

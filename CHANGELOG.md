@@ -6,7 +6,8 @@
 
 **Fixed:**
 
-- *#198* Trainer Card arrow and foil not working in multiplayer
+- *#199* Trainer Card arrow and foil effect not working in multiplayer
+- *#198* Trainer Card ignoring persistent trainers
 
 ## [0.13.8-beta] - 2025-01-14
 
