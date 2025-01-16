@@ -228,7 +228,11 @@ public class TrainerSpawner {
     }
 
     public int getSpawnCount() {
-        return this.spawns.size();
+        return this.getSpawnCount(false);
+    }
+
+    public int getSpawnCount(boolean includePersistent) {
+        return this.spawns.size() - (includePersistent ? 0 : this.persistentMobs.size());
     }
 
     public int getSpawnCount(UUID playerId) {
