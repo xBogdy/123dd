@@ -18,19 +18,26 @@
 package com.gitlab.srcmc.rctmod.forge;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
+import com.gitlab.srcmc.rctmod.ModRegistries;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.config.ModConfigEvent;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 
 @Mod(ModCommon.MOD_ID)
 public class NeoForgeCommon {
     public NeoForgeCommon(ModContainer container) {
-        ModCommon.init();
+        ModRegistries.init();
         container.registerConfig(ModConfig.Type.SERVER, RCTMod.getInstance().getServerConfig().getSpec());
+        container.getEventBus().addListener(NeoForgeCommon::onCommonSetup);
         container.getEventBus().addListener(NeoForgeCommon::onConfigLoading);
         container.getEventBus().addListener(NeoForgeCommon::onConfigReloading);
+    }
+
+    static void onCommonSetup(FMLCommonSetupEvent event) {
+        ModCommon.init();
     }
 
     static void onConfigLoading(ModConfigEvent.Loading event) {

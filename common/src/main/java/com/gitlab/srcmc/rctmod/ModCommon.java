@@ -64,7 +64,6 @@ public class ModCommon {
     public static Supplier<Player> player;
 
     public static void init() {
-        ModRegistries.init();
         ModCommon.registerEvents();
         ReloadListenerRegistry.register(PackType.SERVER_DATA, RCTMod.getInstance().getTrainerManager());
     }

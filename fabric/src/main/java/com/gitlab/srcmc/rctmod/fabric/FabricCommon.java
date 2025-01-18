@@ -18,6 +18,7 @@
 package com.gitlab.srcmc.rctmod.fabric;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
+import com.gitlab.srcmc.rctmod.ModRegistries;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 
 import fuzs.forgeconfigapiport.fabric.api.neoforge.v4.NeoForgeConfigRegistry;
@@ -26,6 +27,10 @@ import net.fabricmc.api.ModInitializer;
 import net.neoforged.fml.config.ModConfig;
 
 public class FabricCommon implements ModInitializer {
+    public FabricCommon() {
+        ModRegistries.init();
+    }
+
     @Override
     public void onInitialize() {
         ModCommon.init();
