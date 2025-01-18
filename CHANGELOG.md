@@ -4,6 +4,10 @@
 
 ## [0.13.10-beta] - 2025-01-18
 
+**Changed:**
+
+- *#209* Update min requirement of `RCTApi` to version `0.10.6-beta` (better compatibility with mods using the same api)
+
 **Fixed:**
 
 - *#208* Slight adjustments to mod initialization (hopefully fixes *random* crashes on startup with neoforge)

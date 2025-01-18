@@ -61,6 +61,7 @@ public class ModCommon {
     public static final String MOD_ID = "rctmod";
     public static final String MOD_NAME = "Radical Cobblemon Trainers";
     public static final Logger LOG = LoggerFactory.getLogger(MOD_NAME);
+    public static final RCTApi RCT = RCTApi.initInstance(MOD_ID);
     public static Supplier<Player> player;
 
     public static void init() {
@@ -149,14 +150,14 @@ public class ModCommon {
     
     static void onPlayerJoin(ServerPlayer player) {
         var trainerId = RCTMod.getInstance().getTrainerManager().registerPlayer(player);
-        RCTApi.getInstance().getTrainerRegistry().registerPlayer(trainerId, player);
+        ModCommon.RCT.getTrainerRegistry().registerPlayer(trainerId, player);
         ModCommon.LOG.info(String.format("Registered trainer player: %s", trainerId));
     }
 
     static void onPlayerQuit(ServerPlayer player) {
         var trainerId = RCTMod.getInstance().getTrainerManager().unregisterPlayer(player);
 
-        if(RCTApi.getInstance().getTrainerRegistry().unregisterById(trainerId) != null) {
+        if(ModCommon.RCT.getTrainerRegistry().unregisterById(trainerId) != null) {
             ModCommon.LOG.info(String.format("Unregistered trainer player: %s", trainerId));
         }
     }

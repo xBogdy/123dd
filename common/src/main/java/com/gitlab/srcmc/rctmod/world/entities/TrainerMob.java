@@ -24,7 +24,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
 
-import com.gitlab.srcmc.rctapi.api.RCTApi;
 import com.gitlab.srcmc.rctapi.api.trainer.TrainerNPC;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.ModRegistries;
@@ -352,7 +351,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
     private void updateTrainerNPC(String trainerId) {
         try {
-            var trainer = RCTApi.getInstance().getTrainerRegistry().getById(trainerId, TrainerNPC.class);
+            var trainer = ModCommon.RCT.getTrainerRegistry().getById(trainerId, TrainerNPC.class);
 
             if(trainer != null) {
                 trainer.setEntity(this);

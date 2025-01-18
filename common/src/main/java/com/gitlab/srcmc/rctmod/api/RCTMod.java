@@ -21,7 +21,6 @@ import java.util.List;
 import java.util.function.Supplier;
 
 import com.cobblemon.mod.common.Cobblemon;
-import com.gitlab.srcmc.rctapi.api.RCTApi;
 import com.gitlab.srcmc.rctapi.api.trainer.TrainerNPC;
 import com.gitlab.srcmc.rctapi.api.trainer.TrainerPlayer;
 import com.gitlab.srcmc.rctmod.ModCommon;
@@ -98,7 +97,7 @@ public final class RCTMod {
     }
 
     public boolean makeBattle(TrainerMob mob, Player player) {
-        var reg = RCTApi.getInstance().getTrainerRegistry();
+        var reg = ModCommon.RCT.getTrainerRegistry();
 
         try {
             var trPlayer = reg.getById(RCTMod.getInstance().getTrainerManager().getTrainerId(player), TrainerPlayer.class);
@@ -110,7 +109,7 @@ public final class RCTMod {
                 ModCommon.LOG.error("Failed to start battle: No trainer registered for mob '" + mob.getDisplayName().getString() + "'");
             } else {
                 var team = RCTMod.getInstance().getTrainerManager().getData(mob).getTrainerTeam();
-                return RCTApi.getInstance().getBattleManager().start(List.of(trPlayer), List.of(trNPC), team.getBattleFormat(), team.getBattleRules());
+                return ModCommon.RCT.getBattleManager().start(List.of(trPlayer), List.of(trNPC), team.getBattleFormat(), team.getBattleRules());
             }
         } catch(IllegalArgumentException e) {
             ModCommon.LOG.error("Failed to start battle", e);

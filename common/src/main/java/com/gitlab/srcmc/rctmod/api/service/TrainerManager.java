@@ -26,7 +26,6 @@ import java.util.UUID;
 import java.util.stream.Stream;
 
 import com.cobblemon.mod.common.Cobblemon;
-import com.gitlab.srcmc.rctapi.api.RCTApi;
 import com.gitlab.srcmc.rctapi.api.errors.RCTException;
 import com.gitlab.srcmc.rctapi.api.trainer.Trainer;
 import com.gitlab.srcmc.rctapi.api.trainer.TrainerNPC;
@@ -73,7 +72,7 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
     }
 
     public void notifyServerReady(MinecraftServer server) {
-        RCTApi.getInstance().getTrainerRegistry().init(server);
+        ModCommon.RCT.getTrainerRegistry().init(server);
         this.resourceManager = server.getResourceManager();
         this.server = server;
         this.attemptReload();
@@ -101,7 +100,7 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
 
     private void registerTrainer(String trainerId, TrainerMobData tmd, Map<String, Trainer> oldTrainers) {
         if(this.isServerRunning()) {
-            var reg = RCTApi.getInstance().getTrainerRegistry();
+            var reg = ModCommon.RCT.getTrainerRegistry();
 
             try {
                 var newTrainer = reg.registerNPC(trainerId, tmd.getTrainerTeam());
@@ -267,7 +266,7 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
         var newTrainerMobs = new HashMap<String, TrainerMobData>();
 
         if(this.isServerRunning()) {
-            var reg = RCTApi.getInstance().getTrainerRegistry();
+            var reg = ModCommon.RCT.getTrainerRegistry();
 
             reg.getIds().stream()
                 .map(tid -> Map.<String, Trainer>entry(tid, reg.getById(tid)))
