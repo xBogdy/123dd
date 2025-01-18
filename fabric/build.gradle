@@ -54,6 +54,11 @@ dependencies {
     // modRuntimeOnly "mezz.jei:jei-${jei_mc_version}-fabric:${jei_version}"
 }
 
+tasks.named('runClient') {
+    // Set the username here
+    args '--username', 'Dev'
+}
+
 shadowJar {
     configurations = [project.configurations.shadowBundle]
     archiveClassifier = 'dev-shadow'

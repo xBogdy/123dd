@@ -67,7 +67,7 @@ public class TrainerPlayerData extends SavedData {
     }
 
     public boolean addProgressDefeat(String trainerId) {
-        if(this.defeatedTrainerIds.add(trainerId) && PlayerState.get(player).isKeyTrainer(trainerId)) {
+        if(PlayerState.get(this.player).isKeyTrainer(trainerId) && this.defeatedTrainerIds.add(trainerId)) {
             var ps = PlayerState.get(this.player);
             this.updateLevelCap(trainerId);
             ps.addProgressDefeat(trainerId);
