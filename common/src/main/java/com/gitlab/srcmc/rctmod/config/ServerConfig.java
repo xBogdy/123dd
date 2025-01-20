@@ -137,7 +137,7 @@ public class ServerConfig implements IServerConfig {
             .defineInRange("initialLevelCap", IServerConfig.super.initialLevelCap(), 1, 100);
 
         this.additiveLevelCapRequirement = builder
-            .comment("The required level cap for trainers is based of the strongest pokemon in their team. This value will be added to the derived level cap. Example: A trainer with a Pikachu at level 50 has a level cap requirement of 50. If the additiveLevelCapRequirement is `-10` the required level cap of that trainer becomes 40, if it is `10` the level cap requirement becomes `60`. Set to `-100` (or lower) to disable all level cap requirements.")
+            .comment("The required level cap for trainers is based of the strongest pokemon in their team. This value will be added to the derived level cap. Example: A trainer with a Pikachu at level 50 has a level cap requirement of 50. If the additiveLevelCapRequirement is -10 the required level cap of that trainer becomes 40, if it is 10 the level cap requirement becomes 60.")
             .define("additiveLevelCapRequirement", IServerConfig.super.additiveLevelCapRequirement());
 
         this.allowOverLeveling = builder

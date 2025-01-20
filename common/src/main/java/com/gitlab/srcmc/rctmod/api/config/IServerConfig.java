@@ -54,7 +54,7 @@ public interface IServerConfig extends IModConfig {
      * The interval in ticks at which a spawn attempt is made per player.
      * 
      * range [1, inf]
-     * default 60
+     * default 120
      */
     default int spawnIntervalTicks() { return 120; }
 
@@ -247,9 +247,8 @@ public interface IServerConfig extends IModConfig {
      * team. This value will be added to the derived level cap.
      * 
      * Example: A trainer with a Pikachu at level 50 has a level cap requirement of 50.
-     * If the additiveLevelCapRequirement is `-10` the required level cap of that
-     * trainer becomes 40, if it is `10` the level cap requirement becomes `60`. Set to
-     * `-100` (or lower) to disable all level cap requirements.
+     * If the additiveLevelCapRequirement is -10 the required level cap of that
+     * trainer becomes 40, if it is 10 the level cap requirement becomes 60.
      * 
      * default: 0
      */
