@@ -43,8 +43,6 @@ import dev.architectury.event.events.common.TickEvent.LevelTick;
 import dev.architectury.networking.NetworkManager;
 import dev.architectury.registry.ReloadListenerRegistry;
 import kotlin.Unit;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.EnvironmentInterface;
 import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands.CommandSelection;
@@ -54,10 +52,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.entity.player.Player;
 
-@EnvironmentInterface(itf = ModCommon.DedicatedServer.class, value = EnvType.SERVER)
 public class ModCommon {
-    interface DedicatedServer {}
-
     public static final String MOD_ID = "rctmod";
     public static final String MOD_NAME = "Radical Cobblemon Trainers";
     public static final Logger LOG = LoggerFactory.getLogger(MOD_NAME);
