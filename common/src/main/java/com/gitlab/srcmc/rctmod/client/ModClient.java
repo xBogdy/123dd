@@ -53,14 +53,20 @@ public class ModClient {
         ReloadListenerRegistry.register(PackType.CLIENT_RESOURCES, RCTMod.getInstance().getTrainerManager());
         NetworkManager.registerReceiver(Side.S2C, PlayerStatePayload.TYPE, PlayerStatePayload.CODEC, ModClient::receivePlayerState);
         NetworkManager.registerReceiver(Side.S2C, TrainerTargetPayload.TYPE, TrainerTargetPayload.CODEC, ModClient::receiveTrainerTarget);
-        ClientTickEvent.CLIENT_LEVEL_PRE.register(ModClient::onClientWorldTick);
+        ClientTickEvent.CLIENT_LEVEL_POST.register(ModClient::onClientLevelTick);
         EntityRendererRegistry.register(ModRegistries.Entities.TRAINER, TrainerRenderer::new);
         TargetArrowRenderer.init();
     }
 
     // ClientTickEvent
 
-    static void onClientWorldTick(Level level) {
+    static void onClientLevelTick(Level level) {
+        var tm = RCTMod.getInstance().getTrainerManager();
+
+        if(tm.isReloadRequired()) {
+            tm.loadTrainers();
+        }
+
         var psu = ModClient.playerStateUpdates.poll();
 
         if(psu != null) {

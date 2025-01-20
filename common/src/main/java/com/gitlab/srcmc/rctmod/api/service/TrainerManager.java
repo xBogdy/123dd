@@ -253,12 +253,11 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
     }
 
     public void loadTrainers() {
-        if(this.isServerRunning()) {
-            this.forceReload(this.resourceManager);
-        }
+        this.forceReload(this.resourceManager);
     }
 
     protected void forceReload(ResourceManager resourceManager) {
+        this.reloadRequired = false; // in case another thread happens to set it to true in the meantime
         var dpm = RCTMod.getInstance().getServerDataManager();
         dpm.init(resourceManager);
 
@@ -266,7 +265,6 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
         var newTrainerMobs = new HashMap<String, TrainerMobData>();
 
         if(this.isServerRunning()) {
-            this.reloadRequired = false; // in case another thread happens to set it to true in the meantime
             var reg = ModCommon.RCT.getTrainerRegistry();
 
             reg.getIds().stream()
@@ -326,6 +324,6 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
     @Override
     protected void apply(Map<ResourceLocation, JsonElement> object, ResourceManager resourceManager, ProfilerFiller profilerFiller) {
         this.resourceManager = resourceManager;
-        this.loadTrainers();
+        this.setReloadRequired();
     }
 }
