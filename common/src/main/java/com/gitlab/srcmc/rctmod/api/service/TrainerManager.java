@@ -63,7 +63,7 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
 
     private MinecraftServer server;
     private ResourceManager resourceManager;
-    private boolean configReady;
+    private boolean reloadRequired;
 
     private int minRequiredLevelCap;
 
@@ -71,27 +71,21 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
         super(GSON, ModCommon.MOD_ID);
     }
 
-    public void notifyServerReady(MinecraftServer server) {
-        ModCommon.RCT.getTrainerRegistry().init(server);
-        this.resourceManager = server.getResourceManager();
-        this.server = server;
-        this.attemptReload();
-    }
-
-    public void notifyServerStop(MinecraftServer server) {
-        if(server == this.server) {
-            this.server = null;
-            this.configReady = false;
+    public void setServer(MinecraftServer server) {
+        if(server != null) {
+            ModCommon.RCT.getTrainerRegistry().init(server);
+            this.resourceManager = server.getResourceManager();
+            this.server = server;
+            this.reloadRequired = true;
         }
     }
 
-    public void notifyConfigReady() {
-        this.configReady = true;
-        this.attemptReload();
+    public boolean isReloadRequired() {
+        return this.reloadRequired;
     }
 
-    private boolean isReady() {
-        return this.configReady && this.resourceManager != null;
+    public void setReloadRequired() {
+        this.reloadRequired = true;
     }
 
     private boolean isServerRunning() {
@@ -252,13 +246,15 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
         return this.minRequiredLevelCap;
     }
 
-    protected void attemptReload() {
-        if(this.isReady()) {
+    public void loadTrainers() {
+        if(this.isServerRunning()) {
             this.forceReload(this.resourceManager);
         }
     }
 
     protected void forceReload(ResourceManager resourceManager) {
+        this.reloadRequired = false; // in case another thread happens to set it to true in the meantime
+
         var dpm = RCTMod.getInstance().getServerDataManager();
         dpm.init(resourceManager);
 
@@ -325,6 +321,6 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
     @Override
     protected void apply(Map<ResourceLocation, JsonElement> object, ResourceManager resourceManager, ProfilerFiller profilerFiller) {
         this.resourceManager = resourceManager;
-        this.attemptReload();
+        this.loadTrainers();
     }
 }

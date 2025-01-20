@@ -42,7 +42,7 @@ public class FabricCommon implements ModInitializer {
     static void onConfigLoadingOrReloading(ModConfig config) {
         if(config.getType() == ModConfig.Type.SERVER) {
             RCTMod.getInstance().getServerConfig().reload();
-            RCTMod.getInstance().getTrainerManager().notifyConfigReady();
+            RCTMod.getInstance().getTrainerManager().setReloadRequired();
         }
     }
 }

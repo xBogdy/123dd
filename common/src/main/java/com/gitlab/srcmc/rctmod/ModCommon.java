@@ -85,7 +85,6 @@ public class ModCommon {
     static void registerEvents() {
         CommandRegistrationEvent.EVENT.register(ModCommon::onCommandRegistration);
         LifecycleEvent.SERVER_STARTING.register(ModCommon::onServerStarting);
-        LifecycleEvent.SERVER_STOPPING.register(ModCommon::onServerStopping);
         LevelTick.SERVER_LEVEL_PRE.register(ModCommon::onServerWorldTick);
         LevelTick.SERVER_PRE.register(ModCommon::onServerTick);
         PlayerEvent.PLAYER_JOIN.register(ModCommon::onPlayerJoin);
@@ -105,17 +104,20 @@ public class ModCommon {
 
     static void onServerStarting(MinecraftServer server) {
         RCTMod.getInstance().getTrainerSpawner().init(server.overworld());
-        RCTMod.getInstance().getTrainerManager().notifyServerReady(server);
-    }
-
-    static void onServerStopping(MinecraftServer server) {
-        RCTMod.getInstance().getTrainerManager().notifyServerStop(server);
+        RCTMod.getInstance().getTrainerManager().setServer(server);
     }
 
     // LevelTick
 
     static void onServerTick(MinecraftServer server) {
-        RCTMod.getInstance().getTrainerSpawner().checkDespawns();
+        if(server.isRunning()) {
+            RCTMod.getInstance().getTrainerSpawner().checkDespawns();
+            var tm = RCTMod.getInstance().getTrainerManager();
+
+            if(tm.isReloadRequired()) {
+                tm.loadTrainers();
+            }
+        }
     }
 
     static void onServerWorldTick(ServerLevel level) {
