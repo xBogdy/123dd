@@ -7,7 +7,7 @@
 **Changed:**
 
 - *#213* Adjusted how trainer data is (re)loaded (less error prone)
-- *#212* Update min requirement of `RCTApi` to version `0.10.7-beta` (further improvements to compatibility with other mods using the same api)
+- *#212* Update min requirement of `RCTApi` to version `0.10.7-beta` (further improvements to compatibility with other mods using the same api and some bugfixes)
 
 ## [0.13.12-beta] - 2025-01-20
 
