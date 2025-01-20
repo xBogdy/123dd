@@ -73,6 +73,12 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
 
     public void setServer(MinecraftServer server) {
         if(server != null) {
+            var bm = ModCommon.RCT.getBattleManager();
+            
+            bm.getStates()
+                .stream().toList() // copy to avoid concurrent modification
+                .forEach(bs -> bm.end(bs.getBattle().getBattleId(), true));
+
             ModCommon.RCT.getTrainerRegistry().init(server);
             this.resourceManager = server.getResourceManager();
             this.server = server;
@@ -253,8 +259,6 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
     }
 
     protected void forceReload(ResourceManager resourceManager) {
-        this.reloadRequired = false; // in case another thread happens to set it to true in the meantime
-
         var dpm = RCTMod.getInstance().getServerDataManager();
         dpm.init(resourceManager);
 
@@ -262,6 +266,7 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
         var newTrainerMobs = new HashMap<String, TrainerMobData>();
 
         if(this.isServerRunning()) {
+            this.reloadRequired = false; // in case another thread happens to set it to true in the meantime
             var reg = ModCommon.RCT.getTrainerRegistry();
 
             reg.getIds().stream()
