@@ -155,10 +155,10 @@ public class TrainerSpawner {
             var originPlayer = mob.getOriginPlayer();
 
             if(originPlayer != null) {
-                this.playerSpawns.compute(originPlayer.toString(), (key, value) -> value <= 1 ? null : value - 1);
+                this.playerSpawns.compute(originPlayer.toString(), (key, value) -> value == null || value <= 1 ? null : value - 1);
             }
 
-            this.identities.compute(identity, (key, value) -> value <= 1 ? null : value - 1);
+            this.identities.compute(identity, (key, value) -> value == null || value <= 1 ? null : value - 1);
             this.spawns.remove(mob.getStringUUID());
 
             if(mob.isPersistenceRequired()) {
@@ -196,7 +196,7 @@ public class TrainerSpawner {
             ModCommon.LOG.info(String.format("Changing trainer id '%s' -> '%s' (%s)", mob.getTrainerId(), newTrainerId, mob.getStringUUID()));
             var identity = RCTMod.getInstance().getTrainerManager().getData(mob).getTrainerTeam().getIdentity();
             var newIdentity = RCTMod.getInstance().getTrainerManager().getData(newTrainerId).getTrainerTeam().getIdentity();
-            this.identities.compute(identity, (key, value) -> value <= 1 ? null : value - 1);
+            this.identities.compute(identity, (key, value) -> value == null || value <= 1 ? null : value - 1);
             this.identities.compute(newIdentity, (key, value) -> value == null ? 1 : value + 1);
         }
     }
@@ -206,7 +206,7 @@ public class TrainerSpawner {
             var originPlayer = mob.getOriginPlayer();
 
             if(originPlayer != null) {
-                this.playerSpawns.compute(originPlayer.toString(), (key, value) -> value <= 1 ? null : value - 1);
+                this.playerSpawns.compute(originPlayer.toString(), (key, value) -> value == null || value <= 1 ? null : value - 1);
             }
 
             if(newOriginPlayer != null) {
