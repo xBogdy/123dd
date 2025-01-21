@@ -34,11 +34,12 @@ import net.neoforged.fml.config.ModConfig;
 public class NeoForgeClient {
     public NeoForgeClient(ModContainer container) {
         ModClient.init();
-        LifecycleEvent.SETUP.register(NeoForgeClient::onSetup);
         container.registerConfig(ModConfig.Type.CLIENT, RCTMod.getInstance().getClientConfig().getSpec());
+        LifecycleEvent.SETUP.register(this::onSetup);
     }
     
-    public static void onSetup() {
+    void onSetup() {
+        ModClient.setup();
         BlockEntityRendererRegistry.register(ModRegistries.BlockEntityTypes.TRAINER_SPAWNER.get(), TrainerSpawnerBlockEntityRenderer::new);
     }
 }

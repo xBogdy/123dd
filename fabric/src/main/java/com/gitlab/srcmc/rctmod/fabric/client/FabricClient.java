@@ -35,6 +35,7 @@ public class FabricClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         ModClient.init();
+        ModClient.setup();
         NeoForgeConfigRegistry.INSTANCE.register(ModCommon.MOD_ID, ModConfig.Type.CLIENT, RCTMod.getInstance().getClientConfig().getSpec());
         BlockEntityRendererRegistry.register(ModRegistries.BlockEntityTypes.TRAINER_SPAWNER.get(), TrainerSpawnerBlockEntityRenderer::new);
     }

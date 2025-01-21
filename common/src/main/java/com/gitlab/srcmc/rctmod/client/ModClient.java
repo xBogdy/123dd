@@ -53,12 +53,15 @@ public class ModClient {
         ModCommon.initPlayer(() -> mc.player);
         ReloadListenerRegistry.register(PackType.CLIENT_RESOURCES, RCTMod.getInstance().getClientDataManager());
         ReloadListenerRegistry.register(PackType.CLIENT_RESOURCES, RCTMod.getInstance().getTrainerManager());
+        EntityRendererRegistry.register(ModRegistries.Entities.TRAINER, TrainerRenderer::new);
+        TargetArrowRenderer.init();
+    }
+
+    public static void setup() {
         NetworkManager.registerReceiver(Side.S2C, PlayerStatePayload.TYPE, PlayerStatePayload.CODEC, ModClient::receivePlayerState);
         NetworkManager.registerReceiver(Side.S2C, TrainerTargetPayload.TYPE, TrainerTargetPayload.CODEC, ModClient::receiveTrainerTarget);
         ClientTickEvent.CLIENT_LEVEL_POST.register(ModClient::onClientLevelTick);
         ClientPlayerEvent.CLIENT_PLAYER_JOIN.register(ModClient::onClientPlayerJoin);
-        EntityRendererRegistry.register(ModRegistries.Entities.TRAINER, TrainerRenderer::new);
-        TargetArrowRenderer.init();
     }
 
     // ClientTickEvent
