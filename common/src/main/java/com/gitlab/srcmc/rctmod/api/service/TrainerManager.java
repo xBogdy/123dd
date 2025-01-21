@@ -32,28 +32,26 @@ import com.gitlab.srcmc.rctapi.api.trainer.TrainerNPC;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.TrainerBattle;
+import com.gitlab.srcmc.rctmod.api.data.pack.DataPackManager;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
 import com.gitlab.srcmc.rctmod.api.data.save.TrainerBattleMemory;
 import com.gitlab.srcmc.rctmod.api.data.save.TrainerPlayerData;
 import com.gitlab.srcmc.rctmod.api.utils.PathUtils;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
-import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
 import net.minecraft.util.datafix.DataFixTypes;
 import net.minecraft.util.profiling.ProfilerFiller;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.saveddata.SavedData.Factory;
 
-public class TrainerManager extends SimpleJsonResourceReloadListener {
-    private final static Gson GSON = new Gson();
-
+public class TrainerManager extends DataPackManager {
     private Map<String, TrainerMobData> trainerMobs = new HashMap<>();
     private Map<UUID, TrainerBattle> trainerBattles = new HashMap<>();
 
@@ -68,7 +66,7 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
     private int minRequiredLevelCap;
 
     public TrainerManager() {
-        super(GSON, ModCommon.MOD_ID);
+        super(PackType.SERVER_DATA);
     }
 
     public void setServer(MinecraftServer server) {
@@ -324,6 +322,7 @@ public class TrainerManager extends SimpleJsonResourceReloadListener {
     @Override
     protected void apply(Map<ResourceLocation, JsonElement> object, ResourceManager resourceManager, ProfilerFiller profilerFiller) {
         this.resourceManager = resourceManager;
+        super.apply(object, resourceManager, profilerFiller);
         this.setReloadRequired();
     }
 }

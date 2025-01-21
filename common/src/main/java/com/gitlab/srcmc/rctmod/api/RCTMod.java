@@ -42,7 +42,6 @@ public final class RCTMod {
         var defaultInstance = new RCTMod(
             new TrainerManager(), new TrainerSpawner(),
             new DataPackManager(PackType.CLIENT_RESOURCES),
-            new DataPackManager(PackType.SERVER_DATA),
             new ClientConfig(), new ServerConfig());
 
         RCTMod.instanceSupplier = () -> defaultInstance;
@@ -52,7 +51,6 @@ public final class RCTMod {
     private TrainerManager trainerManager;
     private TrainerSpawner trainerSpawner;
     private DataPackManager clientDataManager;
-    private DataPackManager serverDataManager;
     private IClientConfig clientConfig;
     private IServerConfig serverConfig;
 
@@ -60,14 +58,12 @@ public final class RCTMod {
         TrainerManager trainerManager,
         TrainerSpawner trainerSpawner,
         DataPackManager clientDataManager,
-        DataPackManager serverDataManager,
         IClientConfig clientConfig,
         IServerConfig serverConfig)
     {
         this.trainerManager = trainerManager;
         this.trainerSpawner = trainerSpawner;
         this.clientDataManager = clientDataManager;
-        this.serverDataManager = serverDataManager;
         this.clientConfig = clientConfig;
         this.serverConfig = serverConfig;
     }
@@ -81,7 +77,7 @@ public final class RCTMod {
     }
 
     public DataPackManager getServerDataManager() {
-        return this.serverDataManager;
+        return this.trainerManager;
     }
 
     public TrainerSpawner getTrainerSpawner() {
@@ -146,7 +142,7 @@ public final class RCTMod {
     {
         var instance = new RCTMod(
             trainerManager, trainerSpawner,
-            clientDataManager, serverDataManager,
+            clientDataManager,
             clientConfig, serverConfig);
 
         RCTMod.instanceSupplier = () -> instance;
