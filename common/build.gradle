@@ -31,4 +31,5 @@ dependencies {
 
     // Radical Cobblemon Trainers API
     modImplementation "curse.maven:radical-cobblemon-trainers-api-1152792:${rctapi_common_version}"
+    // modImplementation files("../tmp/libs/rctapi-common-1.21.1-${rctapi_min_version}.jar") // testing
 }
