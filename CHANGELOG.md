@@ -6,11 +6,12 @@
 
 **Changed:**
 
-- *#214* Adjusted how trainer data is (re)loaded (less error prone)
-- *#213* Update min requirement of `RCTApi` to version `0.10.7-beta` (further improvements to compatibility with other mods using the same api and some bugfixes)
+- *#215* Adjusted how trainer data is (re)loaded (less error prone)
+- *#214* Update min requirement of `RCTApi` to version `0.10.7-beta` (further improvements to compatibility with other mods using the same api and some bugfixes)
 
 **Fixed:**
 
+- *#213* *Workaround* to prevent issues with persistent trainer entites sometimes ticking before the trainers have been initialized on fabric
 - *#212* Synchronization issues with the TrainerCard when players switched between worlds
 
 ## [0.13.12-beta] - 2025-01-20

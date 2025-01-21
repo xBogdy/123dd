@@ -105,9 +105,10 @@ public class ModCommon {
     // LevelTick
 
     static void onServerTick(MinecraftServer server) {
+        var tm = RCTMod.getInstance().getTrainerManager();
+
         if(server.isRunning()) {
             RCTMod.getInstance().getTrainerSpawner().checkDespawns();
-            var tm = RCTMod.getInstance().getTrainerManager();
 
             if(tm.isReloadRequired()) {
                 tm.loadTrainers();
@@ -117,30 +118,33 @@ public class ModCommon {
 
     static void onServerWorldTick(ServerLevel level) {
         var rct = RCTMod.getInstance();
-        var cfg = rct.getServerConfig();
-        var trs = rct.getTrainerSpawner();
 
-        level.players().forEach(player -> {
-            var maxCountPl = cfg.maxTrainersPerPlayer();
-            
-            if(maxCountPl > 0) {
-                var spawnCountPl = trs.getSpawnCount(player.getUUID());
-                var ticksRange = Math.max(0, cfg.spawnIntervalTicksMaximum() - cfg.spawnIntervalTicks());
-                var spawnIntervalTicks = cfg.spawnIntervalTicks() + (int)(ticksRange*(maxCountPl > 1 ? Math.min(1, spawnCountPl/(float)(maxCountPl - 1)) : 1));
+        if(!rct.getTrainerManager().isReloadRequired()) {
+            var cfg = rct.getServerConfig();
+            var trs = rct.getTrainerSpawner();
 
-                if(spawnIntervalTicks == 0 || player.tickCount % spawnIntervalTicks == 0) {
-                    rct.getTrainerSpawner().attemptSpawnFor(player);
+            level.players().forEach(player -> {
+                var maxCountPl = cfg.maxTrainersPerPlayer();
+                
+                if(maxCountPl > 0) {
+                    var spawnCountPl = trs.getSpawnCount(player.getUUID());
+                    var ticksRange = Math.max(0, cfg.spawnIntervalTicksMaximum() - cfg.spawnIntervalTicks());
+                    var spawnIntervalTicks = cfg.spawnIntervalTicks() + (int)(ticksRange*(maxCountPl > 1 ? Math.min(1, spawnCountPl/(float)(maxCountPl - 1)) : 1));
+
+                    if(spawnIntervalTicks == 0 || player.tickCount % spawnIntervalTicks == 0) {
+                        rct.getTrainerSpawner().attemptSpawnFor(player);
+                    }
                 }
-            }
 
-            if(player.tickCount % PlayerState.SYNC_INTERVAL_TICKS == 0) {
-                var bytes = PlayerState.get(player).serializeUpdate();
+                if(player.tickCount % PlayerState.SYNC_INTERVAL_TICKS == 0) {
+                    var bytes = PlayerState.get(player).serializeUpdate();
 
-                if(bytes.length > 0) {
-                    NetworkManager.sendToPlayer(player, PlayerStatePayload.of(bytes));
+                    if(bytes.length > 0) {
+                        NetworkManager.sendToPlayer(player, PlayerStatePayload.of(bytes));
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     // PlayerEvent

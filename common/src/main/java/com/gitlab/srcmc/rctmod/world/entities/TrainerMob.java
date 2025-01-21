@@ -98,6 +98,8 @@ public class TrainerMob extends PathfinderMob implements Npc {
     private static final int AFK_CHECK_INTERVAL_TICKS = 2400;
     private static final int AFK_CHECK_MAX_COUNT = 6;
     private static final int AFK_PLAYER_MAX_COUNT = 3;
+    private static int MAX_TRAINER_ID_CHECK_RETRY_TICK = 600;
+    private static int TRAINER_ID_CHECK_RETRY_TICK = 20;
 
     private Map<UUID, int[]> winsAndDefeats = new HashMap<>();
     private int cooldown;
@@ -106,9 +108,11 @@ public class TrainerMob extends PathfinderMob implements Npc {
     private boolean persistent;
     private int despawnTicks;
     private BlockPos homePos;
-
     private List<PlayerTransform> nearestTransforms = new ArrayList<>();
     private int nearestAfkCheckCount;
+    private int trainerIdCheckRetryTicks;
+    private int trainerIdCheckFails;
+    private String targetTrainerid;
 
     protected TrainerMob(EntityType<? extends PathfinderMob> entityType, Level level) {
         super(entityType, level);
@@ -343,8 +347,9 @@ public class TrainerMob extends PathfinderMob implements Npc {
             if(!Objects.equals(currentId, trainerId)) {
                 RCTMod.getInstance().getTrainerSpawner().notifyChangeTrainerId(this, trainerId);
                 this.entityData.set(DATA_TRAINER_ID, trainerId);
+                this.targetTrainerid = trainerId;
+                this.trainerIdCheckFails = 0;
                 this.updateTrainerNPC(trainerId);
-                this.udpateCustomName();
             }
         }
     }
@@ -355,8 +360,11 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
             if(trainer != null) {
                 trainer.setEntity(this);
+                this.udpateCustomName();
+                this.trainerIdCheckFails = 0;
             } else {
-                ModCommon.LOG.error(String.format("Invalid trainer id '%s' (%s): not found", trainerId, this.getStringUUID()));
+                this.trainerIdCheckRetryTicks = Math.min(MAX_TRAINER_ID_CHECK_RETRY_TICK, (++this.trainerIdCheckFails) * TRAINER_ID_CHECK_RETRY_TICK);
+                ModCommon.LOG.error(String.format("Invalid trainer id '%s' (%s): not found (retry in %d ticks)", trainerId, this.getStringUUID(), this.trainerIdCheckRetryTicks));
             }
         } catch(IllegalArgumentException e) {
             ModCommon.LOG.error(String.format("Invalid trainer id '%s' (%s)", trainerId, this.getStringUUID()), e);
@@ -473,6 +481,10 @@ public class TrainerMob extends PathfinderMob implements Npc {
         if(!level.isClientSide) {
             if(this.cooldown > 0) {
                 this.cooldown--;
+            }
+
+            if(this.trainerIdCheckFails > 0) {
+                this.updateTrainerNPC(this.targetTrainerid);
             }
 
             if(this.isInBattle()) {
