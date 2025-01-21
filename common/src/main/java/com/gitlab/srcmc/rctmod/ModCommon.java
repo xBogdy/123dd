@@ -146,6 +146,7 @@ public class ModCommon {
     // PlayerEvent
     
     static void onPlayerJoin(ServerPlayer player) {
+        PlayerState.get(player, true);
         var trainerId = RCTMod.getInstance().getTrainerManager().registerPlayer(player);
         ModCommon.RCT.getTrainerRegistry().registerPlayer(trainerId, player);
         ModCommon.LOG.info(String.format("Registered trainer player: %s", trainerId));

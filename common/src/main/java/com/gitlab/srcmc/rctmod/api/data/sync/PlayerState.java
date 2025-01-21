@@ -52,11 +52,15 @@ public class PlayerState implements Serializable {
     private transient Map<TrainerMobData.Type, Integer> distinctTypeDefeatCounts = new HashMap<>();
 
     public static PlayerState get(Player player) {
+        return PlayerState.get(player, false);
+    }
+
+    public static PlayerState get(Player player, boolean forceNew) {
         var level = player.level();
 
         if(level.isClientSide) {
             if(player.isLocalPlayer()) {
-                if(localState == null || !localState.player.equals(player)) {
+                if(forceNew || localState == null || !localState.player.equals(player)) {
                     localState = new PlayerState(player);
                 } else {
                     localState.player = player;
@@ -68,7 +72,7 @@ public class PlayerState implements Serializable {
             throw new IllegalArgumentException("Cannot retrieve player state of other players on this client");
         }
 
-        return remoteStates.compute(player.getUUID(), (key, ps) -> ps == null || ps.player != player ? new PlayerState(player) : ps);
+        return remoteStates.compute(player.getUUID(), (key, ps) -> forceNew || ps == null || ps.player != player ? new PlayerState(player) : ps);
     }
 
     public byte[] serializeUpdate() {

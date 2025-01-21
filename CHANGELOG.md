@@ -2,12 +2,16 @@
 
 **Important**: The `level_cap` is not a value anymore that can be set per player but is rather derived from the current state of progress of that player. Because of the changes to the progression it is possible that when updating from an older version the level caps of players will be different (most likely lower)! Apart from that the progress of players should adapt to the changes but as a general advice **always make backups before updating mods**.
 
-## [0.13.13-beta] - 2025-01-20
+## [0.13.13-beta] - 2025-01-21
 
 **Changed:**
 
-- *#213* Adjusted how trainer data is (re)loaded (less error prone)
-- *#212* Update min requirement of `RCTApi` to version `0.10.7-beta` (further improvements to compatibility with other mods using the same api and some bugfixes)
+- *#214* Adjusted how trainer data is (re)loaded (less error prone)
+- *#213* Update min requirement of `RCTApi` to version `0.10.7-beta` (further improvements to compatibility with other mods using the same api and some bugfixes)
+
+**Fixed:**
+
+- *#212* Synchronization issues with the TrainerCard when players switched between worlds
 
 ## [0.13.12-beta] - 2025-01-20
 

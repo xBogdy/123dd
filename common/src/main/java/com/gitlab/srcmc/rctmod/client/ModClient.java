@@ -31,6 +31,7 @@ import com.gitlab.srcmc.rctmod.client.screens.ScreenManager;
 import com.gitlab.srcmc.rctmod.network.PlayerStatePayload;
 import com.gitlab.srcmc.rctmod.network.TrainerTargetPayload;
 
+import dev.architectury.event.events.client.ClientPlayerEvent;
 import dev.architectury.event.events.client.ClientTickEvent;
 import dev.architectury.networking.NetworkManager;
 import dev.architectury.networking.NetworkManager.PacketContext;
@@ -38,6 +39,7 @@ import dev.architectury.networking.NetworkManager.Side;
 import dev.architectury.registry.ReloadListenerRegistry;
 import dev.architectury.registry.client.level.entity.EntityRendererRegistry;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
@@ -54,6 +56,7 @@ public class ModClient {
         NetworkManager.registerReceiver(Side.S2C, PlayerStatePayload.TYPE, PlayerStatePayload.CODEC, ModClient::receivePlayerState);
         NetworkManager.registerReceiver(Side.S2C, TrainerTargetPayload.TYPE, TrainerTargetPayload.CODEC, ModClient::receiveTrainerTarget);
         ClientTickEvent.CLIENT_LEVEL_POST.register(ModClient::onClientLevelTick);
+        ClientPlayerEvent.CLIENT_PLAYER_JOIN.register(ModClient::onClientPlayerJoin);
         EntityRendererRegistry.register(ModRegistries.Entities.TRAINER, TrainerRenderer::new);
         TargetArrowRenderer.init();
     }
@@ -74,6 +77,12 @@ public class ModClient {
         }
         
         TargetArrowRenderer.getInstance().tick();
+    }
+
+    // ClientPlayerEvent
+
+    static void onClientPlayerJoin(LocalPlayer player) {
+        PlayerState.get(player, true);
     }
 
     // NetworkManager
