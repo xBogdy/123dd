@@ -93,7 +93,7 @@ public class TrainerManager extends DataPackManager {
     }
 
     private boolean isServerRunning() {
-        return this.server != null && this.server.isRunning();
+        return this.server != null && this.server.isRunning() && this.server.isSameThread();
     }
 
     private void registerTrainer(String trainerId, TrainerMobData tmd, Map<String, Trainer> oldTrainers) {

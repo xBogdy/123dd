@@ -6,7 +6,8 @@
 
 **Fixed:**
 
-- *#217* Crashes caused by potential attempts to access config values before they are (re)loaded
+- *#218* Crashes caused by potential attempts to access config values before they are (re)loaded
+- *#217* Some issues with other mods that also rely on *RCTApi* and attempt to (re)load trainers from this mod (i.e. *TBCS*)
 
 ## [0.13.14-beta] - 2025-01-21
 
