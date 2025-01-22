@@ -50,17 +50,37 @@ public class ServerConfig implements IServerConfig {
     private final ConfigValue<List<? extends String>> dimensionWhitelistValue;
     private final ConfigValue<List<? extends String>> biomeTagBlacklistValue;
     private final ConfigValue<List<? extends String>> biomeTagWhitelistValue;
-    private final ConfigValue<List<? extends String>> trainerSpawnerItems;
-    private final Map<String, List<String>> trainerSpawnerItemsParsed;
-    private final Map<String, Set<Item>> trainerIdToSpawnerItems;
+    private final ConfigValue<List<? extends String>> trainerSpawnerItemsValue;
+
+    private double globalSpawnChanceCached;
+    private double globalSpawnChanceMinimumCached;
+    private int spawnIntervalTicksCached;
+    private int spawnIntervalTicksMaximumCached;
+    private int maxHorizontalDistanceToPlayersCached;
+    private int minHorizontalDistanceToPlayersCached;
+    private int maxVerticalDistanceToPlayersCached;
+    private int maxTrainersPerPlayerCached;
+    private int maxTrainersTotalCached;
+    private int maxLevelDiffCached;
+    private List<? extends String> dimensionBlacklistCached;
+    private List<? extends String> dimensionWhitelistCached;
+    private List<? extends String> biomeTagBlacklistCached;
+    private List<? extends String> biomeTagWhitelistCached;
+    private Map<String, List<String>> trainerSpawnerItemsParsed;
+    private Map<String, Set<Item>> trainerIdToSpawnerItems;
 
     // players
     private final ConfigValue<Integer> initialLevelCapValue;
-    private final ConfigValue<Integer> additiveLevelCapRequirement;
-    private final ConfigValue<Boolean> allowOverLeveling;
+    private final ConfigValue<Integer> additiveLevelCapRequirementValue;
+    private final ConfigValue<Boolean> allowOverLevelingValue;
+
+    private int initialLevelCapCached;
+    private int additiveLevelCapRequirementCached;
+    private boolean allowOverLevelingCached;
 
     // debug
     private final ConfigValue<Boolean> logSpawningValue;
+    private boolean logSpawningCached;
 
     private final ModConfigSpec spec;
 
@@ -125,7 +145,7 @@ public class ServerConfig implements IServerConfig {
             .comment("A comma separated list of biome tags (e.g. [\"is_overworld\", \"is_forest\"]). A biome must have atleast one of the given tags attached to it, for a trainer to spawn in that biome (unless the list is empty). Trainers may also have additional tags defined by a data pack.")
             .defineList("biomeTagWhitelist", IServerConfig.super.biomeTagWhitelist(), String::new, element -> true);
         
-        this.trainerSpawnerItems = builder
+        this.trainerSpawnerItemsValue = builder
             .comment("A list of items that can be used to configure a trainer spawner to spawn specific trainers. Every entry must define an item followed by a space seperated list of trainer ids (of which one will be randomly chosen to spawn).")
             .defineList("trainerSpawnerItems", ServerConfig.trainerSpawnerItemList(IServerConfig.super.trainerSpawnerItems()), String::new, element -> true);
 
@@ -136,11 +156,11 @@ public class ServerConfig implements IServerConfig {
             .comment("Initial level cap of players. Pokemon will not gain any experience if at or above the level cap.")
             .defineInRange("initialLevelCap", IServerConfig.super.initialLevelCap(), 1, 100);
 
-        this.additiveLevelCapRequirement = builder
+        this.additiveLevelCapRequirementValue = builder
             .comment("The required level cap for trainers is based of the strongest pokemon in their team. This value will be added to the derived level cap. Example: A trainer with a Pikachu at level 50 has a level cap requirement of 50. If the additiveLevelCapRequirement is -10 the required level cap of that trainer becomes 40, if it is 10 the level cap requirement becomes 60.")
             .define("additiveLevelCapRequirement", IServerConfig.super.additiveLevelCapRequirement());
 
-        this.allowOverLeveling = builder
+        this.allowOverLevelingValue = builder
             .comment("If enabled the level cap of a players will not prevent their pokemon from gaining experience and leveling up. Trainers will still refuse to battle players that carry pokemon above their level cap!")
             .define("allowOverLeveling", IServerConfig.super.allowOverLeveling());
 
@@ -158,10 +178,10 @@ public class ServerConfig implements IServerConfig {
 
     @Override
     public void reload() {
-        this.trainerSpawnerItemsParsed.clear();
-        this.trainerIdToSpawnerItems.clear();
+        this.trainerSpawnerItemsParsed = new HashMap<>();
+        this.trainerIdToSpawnerItems = new HashMap<>();
 
-        for(var entry : this.trainerSpawnerItems.get()) {
+        for(var entry : this.trainerSpawnerItemsValue.get()) {
             ServerConfig.parseTrainerSpawnerItem(trainerSpawnerItemsParsed, entry);
         }
 
@@ -181,6 +201,29 @@ public class ServerConfig implements IServerConfig {
                 }));
             }
         });
+
+        this.updateCache();
+    }
+
+    private void updateCache() {
+        this.globalSpawnChanceCached = this.globalSpawnChanceValue.get();
+        this.globalSpawnChanceMinimumCached = this.globalSpawnChanceMinimumValue.get();
+        this.spawnIntervalTicksCached = this.spawnIntervalTicksValue.get();
+        this.spawnIntervalTicksMaximumCached = this.spawnIntervalTicksMaximumValue.get();
+        this.maxHorizontalDistanceToPlayersCached = this.maxHorizontalDistanceToPlayersValue.get();
+        this.minHorizontalDistanceToPlayersCached = this.minHorizontalDistanceToPlayersValue.get();
+        this.maxVerticalDistanceToPlayersCached = this.maxVerticalDistanceToPlayersValue.get();
+        this.maxTrainersPerPlayerCached = this.maxTrainersPerPlayerValue.get();
+        this.maxTrainersTotalCached = this.maxTrainersTotalValue.get();
+        this.maxLevelDiffCached = this.maxLevelDiffValue.get();
+        this.dimensionBlacklistCached = List.copyOf(this.dimensionBlacklistValue.get());
+        this.dimensionWhitelistCached = List.copyOf(this.dimensionWhitelistValue.get());
+        this.biomeTagBlacklistCached = List.copyOf(this.biomeTagBlacklistValue.get());
+        this.biomeTagWhitelistCached = List.copyOf(this.biomeTagWhitelistValue.get());
+        this.initialLevelCapCached = this.initialLevelCapValue.get();
+        this.additiveLevelCapRequirementCached = this.additiveLevelCapRequirementValue.get();
+        this.allowOverLevelingCached = this.allowOverLevelingValue.get();
+        this.logSpawningCached = this.logSpawningValue.get();
     }
 
     @Override
@@ -190,72 +233,72 @@ public class ServerConfig implements IServerConfig {
 
     @Override
     public double globalSpawnChance() {
-        return this.globalSpawnChanceValue.get();
+        return this.globalSpawnChanceCached;
     }
 
     @Override
     public double globalSpawnChanceMinimum() {
-        return this.globalSpawnChanceMinimumValue.get();
+        return this.globalSpawnChanceMinimumCached;
     }
 
     @Override
     public int spawnIntervalTicks() {
-        return this.spawnIntervalTicksValue.get();
+        return this.spawnIntervalTicksCached;
     }
 
     @Override
     public int spawnIntervalTicksMaximum() {
-        return this.spawnIntervalTicksMaximumValue.get();
+        return this.spawnIntervalTicksMaximumCached;
     }
 
     @Override
     public int maxHorizontalDistanceToPlayers() {
-        return this.maxHorizontalDistanceToPlayersValue.get();
+        return this.maxHorizontalDistanceToPlayersCached;
     }
 
     @Override
     public int minHorizontalDistanceToPlayers() {
-        return this.minHorizontalDistanceToPlayersValue.get();
+        return this.minHorizontalDistanceToPlayersCached;
     }
 
     @Override
     public int maxVerticalDistanceToPlayers() {
-        return this.maxVerticalDistanceToPlayersValue.get();
+        return this.maxVerticalDistanceToPlayersCached;
     }
 
     @Override
     public int maxTrainersPerPlayer() {
-        return this.maxTrainersPerPlayerValue.get();
+        return this.maxTrainersPerPlayerCached;
     }
 
     @Override
     public int maxTrainersTotal() {
-        return this.maxTrainersTotalValue.get();
+        return this.maxTrainersTotalCached;
     }
 
     @Override
     public int maxLevelDiff() {
-        return this.maxLevelDiffValue.get();
+        return this.maxLevelDiffCached;
     }
 
     @Override
     public List<? extends String> dimensionBlacklist() {
-        return this.dimensionBlacklistValue.get();
+        return this.dimensionBlacklistCached;
     }
 
     @Override
     public List<? extends String> dimensionWhitelist() {
-        return this.dimensionWhitelistValue.get();
+        return this.dimensionWhitelistCached;
     }
 
     @Override
     public List<? extends String> biomeTagBlacklist() {
-        return this.biomeTagBlacklistValue.get();
+        return this.biomeTagBlacklistCached;
     }
 
     @Override
     public List<? extends String> biomeTagWhitelist() {
-        return this.biomeTagWhitelistValue.get();
+        return this.biomeTagWhitelistCached;
     }
 
     @Override
@@ -270,22 +313,22 @@ public class ServerConfig implements IServerConfig {
 
     @Override
     public int initialLevelCap() {
-        return this.initialLevelCapValue.get();
+        return this.initialLevelCapCached;
     }
 
     @Override
     public int additiveLevelCapRequirement() {
-        return this.additiveLevelCapRequirement.get();
+        return this.additiveLevelCapRequirementCached;
     }
 
     @Override
     public boolean allowOverLeveling() {
-        return this.allowOverLeveling.get();
+        return this.allowOverLevelingCached;
     }
 
     @Override
     public boolean logSpawning() {
-        return this.logSpawningValue.get();
+        return this.logSpawningCached;
     }
 
     public static void parseTrainerSpawnerItem(Map<String, List<String>> target, String trainerSpawnerItem) {

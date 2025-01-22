@@ -40,9 +40,16 @@ public class FabricCommon implements ModInitializer {
     }
 
     static void onConfigLoadingOrReloading(ModConfig config) {
-        if(config.getType() == ModConfig.Type.SERVER) {
-            RCTMod.getInstance().getServerConfig().reload();
-            RCTMod.getInstance().getTrainerManager().setReloadRequired();
+        switch (config.getType()) {
+            case SERVER:
+                RCTMod.getInstance().getServerConfig().reload();
+                RCTMod.getInstance().getTrainerManager().setReloadRequired();
+                break;
+            case CLIENT:
+                RCTMod.getInstance().getClientConfig().reload();
+                break;
+            default:
+                break;
         }
     }
 }

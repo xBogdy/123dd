@@ -27,10 +27,17 @@ public class ClientConfig implements IClientConfig {
     private ConfigValue<Boolean> showTrainerTypeSymbolsValue;
     private ConfigValue<Boolean> showTrainerTypeColorsValue;
 
+    private boolean showTrainerTypeSymbolsCached;
+    private boolean showTrainerTypeColorsCached;
+
     // trainer card
     private ConfigValue<Integer> trainerCardPaddingValue;
     private ConfigValue<Double> trainerCardAlignmentXValue;
     private ConfigValue<Double> trainerCardAlignmentYValue;
+
+    private int trainerCardPaddingCached;
+    private float trainerCardAlignmentXCached;
+    private float trainerCardAlignmentYCached;
 
     private ModConfigSpec spec;
 
@@ -65,32 +72,45 @@ public class ClientConfig implements IClientConfig {
     }
 
     @Override
+    public void reload() {
+        this.updateCache();
+    }
+
+    private void updateCache() {
+        this.showTrainerTypeSymbolsCached = this.showTrainerTypeSymbolsValue.get();
+        this.showTrainerTypeColorsCached = this.showTrainerTypeColorsValue.get();
+        this.trainerCardPaddingCached = this.trainerCardPaddingValue.get();
+        this.trainerCardAlignmentXCached = this.trainerCardAlignmentXValue.get().floatValue();
+        this.trainerCardAlignmentYCached = this.trainerCardAlignmentYValue.get().floatValue();
+    }
+
+    @Override
     public ModConfigSpec getSpec() {
         return this.spec;
     }
 
     @Override
     public boolean showTrainerTypeSymbols() {
-        return this.showTrainerTypeSymbolsValue.get();
+        return this.showTrainerTypeSymbolsCached;
     }
 
     @Override
     public boolean showTrainerTypeColors() {
-        return this.showTrainerTypeColorsValue.get();
+        return this.showTrainerTypeColorsCached;
     }
 
     @Override
     public int trainerCardPadding() {
-        return this.trainerCardPaddingValue.get();
+        return this.trainerCardPaddingCached;
     }
 
     @Override
     public float trainerCardAlignmentX() {
-        return this.trainerCardAlignmentXValue.get().floatValue();
+        return this.trainerCardAlignmentXCached;
     }
 
     @Override
     public float trainerCardAlignmentY() {
-        return this.trainerCardAlignmentYValue.get().floatValue();
+        return this.trainerCardAlignmentYCached;
     }
 }
