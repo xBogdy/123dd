@@ -19,11 +19,15 @@ package com.gitlab.srcmc.rctmod.forge;
 
 import java.util.List;
 
+import com.cobblemon.mod.common.Cobblemon;
 import com.cobblemon.mod.common.api.battles.model.actor.BattleActor;
 import com.cobblemon.mod.common.api.events.battles.BattleVictoryEvent;
 import com.cobblemon.mod.common.api.events.pokemon.ExperienceGainedPreEvent;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import kotlin.Unit;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class CobblemonHandler {
     public static Unit handleBattleVictory(BattleVictoryEvent event) {
@@ -69,5 +73,22 @@ public class CobblemonHandler {
         }
 
         return false;
+    }
+
+    @SubscribeEvent
+    static void onLivingDeath(LivingDeathEvent event) {
+        if (!(event.getEntity() instanceof ServerPlayer player)) return;
+
+        var trainerBattle = RCTMod.get().getTrainerManager().getBattle(player.getUUID());
+
+        if (trainerBattle.isPresent()) {
+            var party = Cobblemon.INSTANCE.getStorage().getParty(player);
+
+            if (party.toGappyList().stream().allMatch(pokemon -> pokemon == null || pokemon.getCurrentHealth() == 0)) {
+                // all of their pokemon are fainted, consider this a loss
+                trainerBattle.get().distributeRewards(false);
+            }
+            RCTMod.get().getTrainerManager().removeBattle(player.getUUID());
+        }
     }
 }
