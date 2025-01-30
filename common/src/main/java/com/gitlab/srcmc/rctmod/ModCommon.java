@@ -60,8 +60,8 @@ public class ModCommon {
     public static Supplier<Player> player;
 
     public static void init() {
-        ModCommon.registerEvents();
         ReloadListenerRegistry.register(PackType.SERVER_DATA, RCTMod.getInstance().getTrainerManager());
+        ModCommon.registerEvents();
     }
 
     // call on client to supply Minecraft.getInstance().player

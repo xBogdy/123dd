@@ -172,7 +172,6 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
     protected void replyTo(Player player) {
         var tm = RCTMod.getInstance().getTrainerManager();
-        var cfg = RCTMod.getInstance().getServerConfig();
         var tmd = tm.getData(this);
         var tpd = tm.getData(player);
         var msr = tmd.getMissingRequirements(tm.getData(player).getDefeatedTrainerIds()).findFirst();
@@ -212,7 +211,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
             }
         } else if(tpd.getLevelCap() < tmd.getRequiredLevelCap()) {
             ChatUtils.reply(this, player, "low_level_cap");
-        } else if(tm.getPlayerLevel(player) > tpd.getLevelCap() && !cfg.allowOverLeveling()) {
+        } else if(tm.getPlayerLevel(player) > tpd.getLevelCap()) {
             ChatUtils.reply(this, player, "over_level_cap");
         } else if(tm.getActivePokemon(player) == 0) {
             ChatUtils.reply(this, player, "missing_pokemon");
