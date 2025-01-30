@@ -155,7 +155,7 @@ public class TrainerListWidget extends TrainerDataWidget {
         }
 
         private Entry createEntry(int trainerNr, String trainerId, EntryState entryState, TrainerMobData trMob, int defeatCount, boolean isKeyTrainer) {
-            var name = TextUtils.trim(entryState == EntryState.DISCOVERED || entryState == EntryState.DISCOVERED_KEY ? trMob.getTrainerTeam().getName() : "???", MAX_NAME_LENGTH);
+            var name = TextUtils.trim(entryState != EntryState.UNKNOWN ? trMob.getTrainerTeam().getName() : "???", MAX_NAME_LENGTH);
             var nameComponent = entryState == EntryState.HIDDEN_KEY ? toComponent(name).withStyle(ChatFormatting.OBFUSCATED) : toComponent(name);
 
             if(entryState == EntryState.DISCOVERED_KEY && rng.nextFloat() < 0.35f) {
