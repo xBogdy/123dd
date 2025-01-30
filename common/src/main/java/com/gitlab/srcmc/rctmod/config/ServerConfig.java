@@ -89,86 +89,122 @@ public class ServerConfig implements IServerConfig {
         builder.push("Spawning");
 
         this.globalSpawnChanceValue = builder
-            .comment("A global factor that determines if a spawn attempt for a trainer is made.")
+            .comment(SEPARATOR, "A global factor that determines if a spawn attempt for a trainer is made.")
             .defineInRange("globalSpawnChance", IServerConfig.super.globalSpawnChance(), 0, 1);
 
         this.globalSpawnChanceMinimumValue = builder
-            .comment("The chance for a trainer to spawn will shrink towards this value based of how many trainers are already spawned in for a player. For example if a player has 0 trainers spawned for them the chance will be as configured by globalSpawnChance, if a player has barely filled up their spawn cap (maxTrainersPerPlayer), i.e. only one more free spot is left, the chance for the last trainer will be as configured by globalSpawnChanceMinimum. Set to any value equal to or above globalSpawnChance to disable (e.g. 1.0).")
+            .comment(SEPARATOR,
+                "The chance for a trainer to spawn will shrink towards this value based of how many",
+                "trainers are already spawned in for a player. For example if a player has 0 trainers",
+                "spawned for them the chance will be as configured by globalSpawnChance if a player",
+                "has barely filled up their spawn cap (maxTrainersPerPlayer), i.e. only one more free",
+                "spot is left, the chance for the last trainer will be as configured by globalSpawnChanceMinimum.",
+                "Set to any value equal to or above globalSpawnChance to disable (e.g. 1.0).")
             .defineInRange("globalSpawnChanceMinimum", IServerConfig.super.globalSpawnChanceMinimum(), 0, 1);
 
         this.spawnIntervalTicksValue = builder
-            .comment("The interval in ticks at which a spawn attempt is made per player.")
+            .comment(SEPARATOR, "The interval in ticks at which a spawn attempt is made per player.")
             .defineInRange("spawnIntervalTicks", IServerConfig.super.spawnIntervalTicks(), 1, Integer.MAX_VALUE - 1);
 
         this.spawnIntervalTicksMaximumValue = builder
-            .comment("The spawn interval ticks will grow towards this value based of how many trainers are already spawned in for a player. For example if a player has 0 trainers spawned for them the spawn interval ticks will be as configured by spawnIntervalTicks, if a player has barely filled up their spawn cap (maxTrainersPerPlayer), i.e. only one more free spot is left, the spawn interval for the last trainer will be as configured by spawnIntervalTicksMaximum. Set to any value equal to or below spawnIntervalTicks to disable (e.g. 0).")
+            .comment(SEPARATOR,
+                "The spawn interval ticks will grow towards this value based of how many trainers are already",
+                "spawned in for a player. For example if a player has 0 trainers spawned for them the spawn",
+                "interval ticks will be as configured by spawnIntervalTicks, if a player has barely filled up their",
+                "spawn cap (maxTrainersPerPlayer), i.e. only one more free spot is left, the spawn interval for the",
+                "last trainer will be as configured by spawnIntervalTicksMaximum. Set to any value equal to or below",
+                "spawnIntervalTicks to disable (e.g. 0).")
             .defineInRange("spawnIntervalTicksMaximum", IServerConfig.super.spawnIntervalTicksMaximum(), 0, Integer.MAX_VALUE - 1);
 
         this.maxHorizontalDistanceToPlayersValue = builder
-            .comment("The max horizontal distance a trainer can spawn from players.")
+            .comment(SEPARATOR, "The max horizontal distance a trainer can spawn from players.")
             .defineInRange("maxHorizontalDistanceToPlayers", IServerConfig.super.maxHorizontalDistanceToPlayers(), 1, Integer.MAX_VALUE - 1);
 
         this.minHorizontalDistanceToPlayersValue = builder
-            .comment("The min horizontal distance a trainer can spawn from players.")
+            .comment(SEPARATOR, "The min horizontal distance a trainer can spawn from players.")
             .defineInRange("minHorizontalDistanceToPlayers", IServerConfig.super.minHorizontalDistanceToPlayers(), 1, Integer.MAX_VALUE - 1);
 
         this.maxVerticalDistanceToPlayersValue = builder
-            .comment("The max vertical distance a trainer can spawn from players.")
+            .comment(SEPARATOR, "The max vertical distance a trainer can spawn from players.")
             .defineInRange("maxVerticalDistanceToPlayers", IServerConfig.super.maxVerticalDistanceToPlayers(), 1, Integer.MAX_VALUE - 1);
 
         this.maxTrainersPerPlayerValue = builder
-            .comment("Spawn cap of trainers per player.")
+            .comment(SEPARATOR, "Spawn cap of trainers per player.")
             .defineInRange("maxTrainersPerPlayer", IServerConfig.super.maxTrainersPerPlayer(), 0, Integer.MAX_VALUE - 1);
 
         this.maxTrainersTotalValue = builder
-            .comment("Total trainer spawn cap. This value may be increased for servers with higher expected player numbers (> 4), for example (|players| + 1)*maxTrainersPerPlayer.")
+            .comment(SEPARATOR,
+                "Total trainer spawn cap. This value may be increased for servers with higher expected",
+                "player numbers (> 4), for example (|players| + 1)*maxTrainersPerPlayer.")
             .defineInRange("maxTrainersTotal", IServerConfig.super.maxTrainersTotal(), 0, Integer.MAX_VALUE - 1);
 
         this.maxLevelDiffValue = builder
-            .comment("The maximum level difference between the strongest pokemon in the team of a player and the strongest pokemon in the team of a trainer to spawn for that player. The spawn weight decreases with a higher level difference. Trainers with pokemon above the level cap of a player are excluded.")
+            .comment(SEPARATOR,
+                "The maximum level difference between the strongest pokemon in the team of a player and the strongest",
+                "pokemon in the team of a trainer to spawn for that player. The spawn weight decreases with a higher",
+                "level difference. Trainers with pokemon above the level cap of a player are excluded.")
             .defineInRange("maxLevelDiff", IServerConfig.super.maxLevelDiff(), 0, 100);
 
         // TODO: proper value validation
         this.dimensionBlacklistValue = builder
-                .comment("A comma separated list of dimensions (e.g. [\"multiworld:spawn\", \"minecraft:the_end\"]). In these dimensions trainers will never spawn.")
+                .comment(SEPARATOR,
+                    "A comma separated list of dimensions (e.g. [\"multiworld:spawn\", \"minecraft:the_end\"]).",
+                    "In these dimensions trainers will never spawn.")
                 .defineList("dimensionBlacklist", IServerConfig.super.dimensionBlacklist(), String::new, element -> true);
 
         this.dimensionWhitelistValue = builder
-                .comment("A comma separated list of dimensions (e.g. [\"multiworld:spawn\" , \"minecraft:the_end\"]). Trainers may only spawn in these dimensions (unless the list is empty).")
+                .comment(SEPARATOR,
+                    "A comma separated list of dimensions (e.g. [\"multiworld:spawn\" , \"minecraft:the_end\"]).",
+                    "Trainers may only spawn in these dimensions (unless the list is empty).")
                 .defineList("dimensionWhitelist", IServerConfig.super.dimensionWhitelist(), String::new, element -> true);
 
         this.biomeTagBlacklistValue = builder
-            .comment("A comma separated list of biome tags (e.g. [\"is_overworld\", \"is_forest\"]). A biome may not have any of the given tags attached to it, for a trainer to spawn in that biome. Trainers may also have additional tags defined by a data pack.")
+            .comment(SEPARATOR,
+                "A comma separated list of biome tags (e.g. [\"is_overworld\", \"is_forest\"]).",
+                "A biome may not have any of the given tags attached to it, for a trainer to spawn in that biome.",
+                "Trainers may also have additional tags defined by a data pack.")
             .defineList("biomeTagBlacklist", IServerConfig.super.biomeTagBlacklist(), String::new, element -> true);
 
         this.biomeTagWhitelistValue = builder
-            .comment("A comma separated list of biome tags (e.g. [\"is_overworld\", \"is_forest\"]). A biome must have atleast one of the given tags attached to it, for a trainer to spawn in that biome (unless the list is empty). Trainers may also have additional tags defined by a data pack.")
+            .comment(SEPARATOR,
+                "A comma separated list of biome tags (e.g. [\"is_overworld\", \"is_forest\"]).",
+                "A biome must have atleast one of the given tags attached to it, for a trainer to spawn in that",
+                "biome (unless the list is empty). Trainers may also have additional tags defined by a data pack.")
             .defineList("biomeTagWhitelist", IServerConfig.super.biomeTagWhitelist(), String::new, element -> true);
         
         this.trainerSpawnerItemsValue = builder
-            .comment("A list of items that can be used to configure a trainer spawner to spawn specific trainers. Every entry must define an item followed by a space seperated list of trainer ids (of which one will be randomly chosen to spawn).")
+            .comment(SEPARATOR,
+                "A list of items that can be used to configure a trainer spawner to spawn specific",
+                "trainers. Every entry must define an item followed by a space seperated list of",
+                "trainer ids (of which one will be randomly chosen to spawn).")
             .defineList("trainerSpawnerItems", ServerConfig.trainerSpawnerItemList(IServerConfig.super.trainerSpawnerItems()), String::new, element -> true);
 
         builder.pop();
         builder.push("Players");
 
         this.initialLevelCapValue = builder
-            .comment("Initial level cap of players. Pokemon will not gain any experience if at or above the level cap.")
+            .comment(SEPARATOR, "Initial level cap of players. Pokemon will not gain any experience if at or above the level cap.")
             .defineInRange("initialLevelCap", IServerConfig.super.initialLevelCap(), 1, 100);
 
         this.additiveLevelCapRequirementValue = builder
-            .comment("The required level cap for trainers is based of the strongest pokemon in their team. This value will be added to the derived level cap. Example: A trainer with a Pikachu at level 50 has a level cap requirement of 50. If the additiveLevelCapRequirement is -10 the required level cap of that trainer becomes 40, if it is 10 the level cap requirement becomes 60.")
+            .comment(SEPARATOR,
+                "The required level cap for trainers is based of the strongest pokemon in their team.",
+                "This value will be added to the derived level cap. Example: A trainer with a Pikachu at level 50",
+                "has a level cap requirement of 50. If the additiveLevelCapRequirement is -10 the required level cap",
+                "of that trainer becomes 40, if it is 10 the level cap requirement becomes 60.")
             .define("additiveLevelCapRequirement", IServerConfig.super.additiveLevelCapRequirement());
 
         this.allowOverLevelingValue = builder
-            .comment("If enabled the level cap of a players will not prevent their pokemon from gaining experience and leveling up. Trainers will still refuse to battle players that carry pokemon above their level cap!")
+            .comment(SEPARATOR,
+                "If enabled the level cap of a players will not prevent their pokemon from gaining experience and leveling up.",
+                "Trainers will still refuse to battle players that carry pokemon above their level cap!")
             .define("allowOverLeveling", IServerConfig.super.allowOverLeveling());
 
         builder.pop();
         builder.push("Debug");
 
         this.logSpawningValue = builder
-            .comment("If enabled additional information are printed to the log whenever a trainer spawns or despawns.")
+            .comment(SEPARATOR, "If enabled additional information are printed to the log whenever a trainer spawns or despawns.")
             .define("logSpawning", IServerConfig.super.logSpawning());
 
         this.spec = builder.build();

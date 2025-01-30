@@ -4,10 +4,14 @@
 
 ## [0.13.16-beta] - 2025-01-30
 
+**Changed:**
+
+- *#221* Adjusted comments format in config files
+
 **Fixed:**
 
-- *#220* Scrambled names only being 3 characters long
-- *#219* Trainers responding with "I'm done" instead complaining about players cayrrying pokemon above their level cap (if `allowOverleveling` was enabled)
+- *#220* Scrambled names in trainer card only being 3 characters long
+- *#219* Trainers responding with "I'm done" instead of complaining about players cayrrying pokemon above their level cap (if `allowOverleveling` was enabled)
 
 ## [0.13.15-beta] - 2025-01-22
 

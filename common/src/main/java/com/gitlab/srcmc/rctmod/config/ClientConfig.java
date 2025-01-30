@@ -46,26 +46,26 @@ public class ClientConfig implements IClientConfig {
         builder.push("Trainers");
 
         this.showTrainerTypeSymbolsValue = builder
-            .comment("Determines if symbols for trainer types are shown next to trainer names.")
+            .comment(SEPARATOR, "Determines if symbols for trainer types are shown next to trainer names.")
             .define("showTrainerTypeSymbols", IClientConfig.super.showTrainerTypeSymbols());
 
         this.showTrainerTypeColorsValue = builder
-            .comment("Determines if trainer names are colored based of their type.")
+            .comment(SEPARATOR, "Determines if trainer names are colored based of their type.")
             .define("showTrainerTypeColors", IClientConfig.super.showTrainerTypeColors());
 
         builder.pop();
         builder.push("Trainer Card");
 
         this.trainerCardPaddingValue = builder
-            .comment("Padding of the trainer card gui.")
+            .comment(SEPARATOR, "Padding of the trainer card gui.")
             .defineInRange("trainerCardPadding", IClientConfig.super.trainerCardPadding(), 0, Integer.MAX_VALUE - 1);
 
         this.trainerCardAlignmentXValue = builder
-            .comment("Horizontal alignment of the trainer card gui, i.e. 0=left, 0.5=center, 1=right.")
+            .comment(SEPARATOR, "Horizontal alignment of the trainer card gui, i.e. 0=left, 0.5=center, 1=right.")
             .defineInRange("trainerCardAlignmentX", IClientConfig.super.trainerCardAlignmentX(), 0, 1);
 
         this.trainerCardAlignmentYValue = builder
-            .comment("Vertical alignment of the trainer card gui, i.e. 0=top, 0.5=center, 1=bottom.")
+            .comment(SEPARATOR, "Vertical alignment of the trainer card gui, i.e. 0=top, 0.5=center, 1=bottom.")
             .defineInRange("trainerCardAlignmentY", IClientConfig.super.trainerCardAlignmentY(), 0, 1);
 
         this.spec = builder.build();
