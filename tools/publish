@@ -47,7 +47,7 @@ function get_version() {
     assert "$1", "get_version: missing version key"
     version_key="$1="
     
-    for file in "$(find -name gradle.properties)"; do
+    for file in $(find -name gradle.properties); do
         result=$(grep "^$version_key" "$file")
 
         if [ -n "$result" ]; then
@@ -73,7 +73,7 @@ function set_version() {
 function get_mod_id() {
     _mod_id_key="$mod_id_key="
 
-    for file in "$(find -name gradle.properties)"; do
+    for file in $(find -name gradle.properties); do
         result=$(grep "^$_mod_id_key" "$file")
 
         if [ -n "$result" ]; then
@@ -149,7 +149,7 @@ if [ -n "$(git tag -l $version_tag)" ]; then
 fi
 
 # update version in changelog (optional)
-changelog version $mod_version
+changelog update -t $mod_version
 
 # infer release type
 case $mod_version in
@@ -171,7 +171,7 @@ echo "- mod version: '$mod_version'"
 echo "- mod loaders: $(echo ${mod_loaders[@]} | sed 's/ /, /g')"
 read -p "Press <enter> to review the changelog..."
 echo "========================"
-changelog --cat 1
+changelog cat -e 0
 echo "========================"
 read -p "Type 'confirm' to continue: " answer
 
@@ -238,14 +238,15 @@ minecraft_version_ids=$(echo $minecraft_version_ids \
 assert "$minecraft_version_ids" "minecraft version '$minecraft_version' not found"
 minecraft_version_ids="${minecraft_version_ids:0:-1}" # trailing comma ','
 
-unset answer
-while [ "$answer" != "y" -a "$answer" != "n" ]; do
-    read -p "Do you wish to upload to Curseforge (y/n)?: " answer
-done
+# upload archives to curseforge
+for mod_loader in "${mod_loaders[@]}"; do
+    unset answer
 
-if [ "$answer" = "y" ]; then
-    # upload archives to curseforge
-    for mod_loader in "${mod_loaders[@]}"; do
+    while [ "$answer" != "y" -a "$answer" != "n" ]; do
+        read -p "Do you wish to upload '$mod_loader' to Curseforge (y/n)?: " answer
+    done
+
+    if [ "$answer" = "y" ]; then
         # curseforge api has trouble with empty relations...
         relations="$(cat publish/curseforge.$mod_loader.dependencies.json | tr -d "[:space:]")"
 
@@ -257,7 +258,7 @@ if [ "$answer" = "y" ]; then
 
         metadata="{
             $relations
-            \"changelog\": \"$(as_json "$(changelog --cat)")\",
+            \"changelog\": \"$(as_json "$(changelog cat)")\",
             \"changelogType\": \"markdown\",
             \"gameVersions\": [$minecraft_version_ids],
             \"releaseType\": \"$release_type\",
@@ -271,8 +272,8 @@ if [ "$answer" = "y" ]; then
             "$curseforge_url/api/projects/$CURSE_PROJECT_ID/upload-file")
 
         echo "Published '$mod_archive' to Curseforge: $response"
-    done
-fi
+    fi
+done
 
 #####################################################
 #                     Modrinth                      #
@@ -280,18 +281,19 @@ fi
 
 modrinth_url=https://api.modrinth.com/v2
 
-unset answer
-while [ "$answer" != "y" -a "$answer" != "n" ]; do
-    read -p "Do you wish to upload to Modrinth (y/n)?: " answer
-done
+# upload archives to modrinth
+for mod_loader in "${mod_loaders[@]}"; do
+    unset answer
 
-if [ "$answer" = "y" ]; then
-    # upload archives to modrinth
-    for mod_loader in "${mod_loaders[@]}"; do
+    while [ "$answer" != "y" -a "$answer" != "n" ]; do
+        read -p "Do you wish to upload '$mod_loader' to Modrinth (y/n)?: " answer
+    done
+
+    if [ "$answer" = "y" ]; then
         metadata="{
             \"name\": \"Version $mod_version\",
             \"version_number\": \"$mod_version\",
-            \"changelog\": \"$(as_json "$(changelog --cat 1)")\",
+            \"changelog\": \"$(as_json "$(changelog cat -e 0)")\",
             \"dependencies\": $(cat publish/modrinth.$mod_loader.dependencies.json | tr -d "[:space:]"),
             \"game_versions\": [\"$minecraft_version\"],
             \"version_type\": \"$release_type\",
@@ -309,8 +311,8 @@ if [ "$answer" = "y" ]; then
             "$modrinth_url/version")
 
         echo "Published '$mod_archive' to Modrinth: $response"
-    done
-fi
+    fi
+done
 
 #####################################################
 #                      Git Tag                      #
