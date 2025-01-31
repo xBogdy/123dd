@@ -1,361 +1,367 @@
 # Changelog
 
+## [0.12.2-beta] - 2025-01-31
+
+**Fixed:**
+
+- *#135* Trainer npcs not capable of rendering armor (thanks Renari)
+
 ## [0.12.1-beta] - 2024-12-15
 
-***Fixed***
+**Fixed:**
 
-- Desync issue with the TrainerCard (e.g. by switching dimensions)
+- *#134* Desync issue with the TrainerCard (e.g. by switching dimensions)
 
 ## [0.12.0-beta] - 2024-10-03
 
-***Added***
+**Added:**
 
-- Server Config `bonusLevelCap`: Adjust difficulty with a single value
-- Support for PKGBadges/CobbleBadges: Leaders will now drop badges from this mod when a player defeats them for their first time
-- Support for SimpleTMs: Some trainer types have a chance to drop a random TR
-- Trainer Card tracking feature: The Trainer Card will start to glow if the next key trainer (e.g. leader) spawns nearby and render an arrow that will lead towards them
-- Trainer textures: These were procedurally generated in advance and mapped to the trainers so that every *trainer identity* has a unique appearance, though some differences might be very subtle for now. Different versions of the same trainer will have the same body but will most likely wear different outfits
+- *#133* Server Config `bonusLevelCap`: Adjust difficulty with a single value
+- *#132* Support for PKGBadges/CobbleBadges: Leaders will now drop badges from this mod when a player defeats them for their first time
+- *#131* Support for SimpleTMs: Some trainer types have a chance to drop a random TR
+- *#130* Trainer Card tracking feature: The Trainer Card will start to glow if the next key trainer (e.g. leader) spawns nearby and render an arrow that will lead towards them
+- *#129* Trainer textures: These were procedurally generated in advance and mapped to the trainers so that every *trainer identity* has a unique appearance, though some differences might be very subtle for now. Different versions of the same trainer will have the same body but will most likely wear different outfits
 
-***Changed***
+**Changed:**
 
-- Drastically increased spawn chances for undefeated trainers (with *emphasized* names) and lowered the bonus spawn chance of key trainers (e.g. leaders) gained by players reaching their level cap
-- Increased trainer health from `20` to `30`
-- Loot table `defeat_count` condition now supports a `comparator` field (`EQUAL`, `SMALLER`, `GREATER` or `MODULO`)
-- Overhauled loot tables: Adjusted drop chances and item pools (see this [spreadsheet](https://docs.google.com/spreadsheets/d/10JjXPP1VvcgO1uat_QU2rwqvuxp5wveNq9U3YzwxzjY/edit?usp=sharing) for more info)
-- Prevent Trainer Card to open its GUI while holding an item in the other hand
-- Trainer Card GUI: Click on discovered trainers in the list to show more information (e.g. biomes the trainer spawns in)
-- Trainers now slowly regenerate health (about twice as fast as horses)
+- *#128* Drastically increased spawn chances for undefeated trainers (with *emphasized* names) and lowered the bonus spawn chance of key trainers (e.g. leaders) gained by players reaching their level cap
+- *#127* Increased trainer health from `20` to `30`
+- *#126* Loot table `defeat_count` condition now supports a `comparator` field (`EQUAL`, `SMALLER`, `GREATER` or `MODULO`)
+- *#125* Overhauled loot tables: Adjusted drop chances and item pools (see this [spreadsheet](https://docs.google.com/spreadsheets/d/10JjXPP1VvcgO1uat_QU2rwqvuxp5wveNq9U3YzwxzjY/edit?usp=sharing) for more info)
+- *#124* Prevent Trainer Card to open its GUI while holding an item in the other hand
+- *#123* Trainer Card GUI: Click on discovered trainers in the list to show more information (e.g. biomes the trainer spawns in)
+- *#122* Trainers now slowly regenerate health (about twice as fast as horses)
 
-***Fixed***
+**Fixed:**
 
-- Advancement defeat count trigger counting all instead of distinct defeats per trainer type
+- *#121* Advancement defeat count trigger counting all instead of distinct defeats per trainer type
 
 ## [0.11.1-alpha] - 2024-08-31
 
-***Fixed***
+**Fixed:**
 
-- Potential battle error for some players caused by missing 'damage source' for battle loot tables
+- *#120* Potential battle error for some players caused by missing 'damage source' for battle loot tables
 
 ## [0.11.0-alpha] - 2024-08-07
 
-***Changed***
+**Changed:**
 
-- Adjustments to trainer behavior (AI): Only undefeated key trainers (e.g. leaders) have a high chance to seek out players that can fight them (small chance for others), also trainers are now much stronger drawn towards villages in general and will most of the time mind own businesse (rather than stalking the player)
-- Server Config: Increasd default `maxTrainersPerPlayer` from `4` to `8` and `maxTrainersTotal` from `20` to `24` (since trainers should be more spread out due to the changes in they behaviour)
-- Trainers can now spawn on (layered) snow blocks
-- Update to CobblemonTrainers `0.1.1.11` (**dropped support for earlier versions so make sure to update both!**)
+- *#119* Adjustments to trainer behavior (AI): Only undefeated key trainers (e.g. leaders) have a high chance to seek out players that can fight them (small chance for others), also trainers are now much stronger drawn towards villages in general and will most of the time mind own businesse (rather than stalking the player)
+- *#118* Server Config: Increasd default `maxTrainersPerPlayer` from `4` to `8` and `maxTrainersTotal` from `20` to `24` (since trainers should be more spread out due to the changes in they behaviour)
+- *#117* Trainers can now spawn on (layered) snow blocks
+- *#116* Update to CobblemonTrainers `0.1.1.11` (**dropped support for earlier versions so make sure to update both!**)
 
-***Fixed***
+**Fixed:**
 
-- Potential desync of player states when switching between worlds (single-/multiplayer) in the same play session
+- *#115* Potential desync of player states when switching between worlds (single-/multiplayer) in the same play session
 
 ## [0.10.4-alpha] - 2024-07-17
 
-***Fixed***
+**Fixed:**
 
-- Trainer battles staying registered as *active battles* after the trainer npc was killed
+- *#114* Trainer battles staying registered as *active battles* after the trainer npc was killed
 
 ## [0.10.3-alpha] - 2024-07-15
 
-***Changed***
+**Changed:**
 
-- The death of a trainer will now end a battle immediately
+- *#113* The death of a trainer will now end a battle immediately
 
-***Fixed***
+**Fixed:**
 
-- Possibility of trainers despawning while in battle
-- Undefeated trainers not despawning in chunks that are always loaded (e.g. spawn chunks)
+- *#112* Possibility of trainers despawning while in battle
+- *#111* Undefeated trainers not despawning in chunks that are always loaded (e.g. spawn chunks)
 
 ## [0.10.2-alpha] - 2024-06-30
 
-***Added***
+**Added:**
 
-- A bunch more trainer chatter
-- Notification above the hotbar when pokemon at or above the level cap attempt to gain experience
+- *#110* A bunch more trainer chatter
+- *#109* Notification above the hotbar when pokemon at or above the level cap attempt to gain experience
 
-***Changed***
+**Changed:**
 
-- Server Config: Decreased default `spawnIntervalTicks` from `1200` to `600` (30 sec.) (you may remove the setting from the config file or delete the complete file to update)
-- Server Config: Increased default `maxTrainersPerPlayer` from `4` to `6` (you may remove the setting from the config file or delete the complete file to update)
-- Trainers capable of fighting now don't despawn unless really far away (i.e. completely unloaded)
+- *#108* Server Config: Decreased default `spawnIntervalTicks` from `1200` to `600` (30 sec.) (you may remove the setting from the config file or delete the complete file to update)
+- *#107* Server Config: Increased default `maxTrainersPerPlayer` from `4` to `6` (you may remove the setting from the config file or delete the complete file to update)
+- *#106* Trainers capable of fighting now don't despawn unless really far away (i.e. completely unloaded)
 
-***Fixed***
+**Fixed:**
 
-- Fixed trainers *accepting* battles against players that are already in another battle
+- *#105* Fixed trainers *accepting* battles against players that are already in another battle
 
 ## [0.10.1-alpha] - 2024-06-24
 
-***Added***
+**Added:**
 
-- Command `summon_persistent`: As the name suggests summons a trainer with the `Persistent` tag already set
-- Trainer `identity` can now be set per trainer with a data pack and is used instead of the `displayName` to determine if different trainers refer to the same person (if not defined falls back to `displayName`)
+- *#104* Command `summon_persistent`: As the name suggests summons a trainer with the `Persistent` tag already set
+- *#103* Trainer `identity` can now be set per trainer with a data pack and is used instead of the `displayName` to determine if different trainers refer to the same person (if not defined falls back to `displayName`)
 
-***Changed***
+**Changed:**
 
-- Repurposed 'Champion Lance' as regular trainer
+- *#102* Repurposed 'Champion Lance' as regular trainer
 
-***Fixed***
+**Fixed:**
 
-- `Persistent` trainers despawning on servers
+- *#101* `Persistent` trainers despawning on servers
 
-***Removed***
+**Removed:**
 
-- Hidden advancement for 'Champion Lance' as he is less of a challenge than his elite 4 version
+- *#100* Hidden advancement for 'Champion Lance' as he is less of a challenge than his elite 4 version
 
 ## [0.10.0-alpha] - 2024-06-19
 
-***Changed***
+**Changed:**
 
-- Adjusted name colors of trainer types: `LEADER`=green, `E4`=blue, `CHAMP`=light_purple, `TEAM_ROCKET`=dark_gray, `BOSS`=gold
-- Advancements have been slightly adjusted to reflect the latest changes in the progression (e.g. removed "Earth Badge" and added "Rising Badge")
-- Increased spawn chance for (undefeated) key trainers
-- Level cap progression now mostly mirrors the progression of the original game (Radical Red): There are now 9 additional bosses that have to be defeated to raise the level cap (refer to your advancement tab for a hint of what to expect next or check the table in the [mod description](https://modrinth.com/mod/rctmod))
-- Lowered level cap granted by Erika from `50` to `47`
-- Removed "Leader Giovanni" from his duty as 5th gym leader. Now "Leader Clair" grants the 8th badge
-- Removed (misleading) `TRAINER` trainer type and added `BOSS` trainer type
-- Removed misleading labels (e.g. "Leader") from trainers that do not actually count towards a players progression
-- Removed previously given *buff* for some trainers that do not account for the progression anymore
-- Repurposed some weaker versions of key trainers as trainers of different *types*
-- Slight adjustments to trainer ai behaviour (they now respect personal space a bit more, prefer to hang around in villages and tend to stroll away once done battling)
+- *#99* Adjusted name colors of trainer types: `LEADER`=green, `E4`=blue, `CHAMP`=light_purple, `TEAM_ROCKET`=dark_gray, `BOSS`=gold
+- *#98* Advancements have been slightly adjusted to reflect the latest changes in the progression (e.g. removed "Earth Badge" and added "Rising Badge")
+- *#97* Increased spawn chance for (undefeated) key trainers
+- *#96* Level cap progression now mostly mirrors the progression of the original game (Radical Red): There are now 9 additional bosses that have to be defeated to raise the level cap (refer to your advancement tab for a hint of what to expect next or check the table in the [mod description](https://modrinth.com/mod/rctmod))
+- *#95* Lowered level cap granted by Erika from `50` to `47`
+- *#94* Removed "Leader Giovanni" from his duty as 5th gym leader. Now "Leader Clair" grants the 8th badge
+- *#93* Removed (misleading) `TRAINER` trainer type and added `BOSS` trainer type
+- *#92* Removed misleading labels (e.g. "Leader") from trainers that do not actually count towards a players progression
+- *#91* Removed previously given *buff* for some trainers that do not account for the progression anymore
+- *#90* Repurposed some weaker versions of key trainers as trainers of different *types*
+- *#89* Slight adjustments to trainer ai behaviour (they now respect personal space a bit more, prefer to hang around in villages and tend to stroll away once done battling)
 
-***Fixed***
+**Fixed:**
 
-- Some key trainers (e.g. elite 4, bosses) not having an increased spawn chance when needed
-- Some key trainers beeing able to spawn before they could actually be battled with
-- `player set defeats` command failure when used for trainers that have never been interacted with
+- *#88* Some key trainers (e.g. elite 4, bosses) not having an increased spawn chance when needed
+- *#87* Some key trainers beeing able to spawn before they could actually be battled with
+- *#86* `player set defeats` command failure when used for trainers that have never been interacted with
 
 ## [0.9.3-alpha] - 2024-06-18
 
-***Added***
+**Added:**
 
-- Loot tables for (placeholder) badge items (see the [source repo](https://gitlab.com/srcmc/rct/mod/-/tree/1.20.1/common/src/main/resources/data/rctmod/loot_tables/trainers/single?ref_type=heads) for the loot tables, they can be overwritten with a data pack)
+- *#85* Loot tables for (placeholder) badge items (see the [source repo](https://gitlab.com/srcmc/rct/mod/-/tree/1.20.1/common/src/main/resources/data/rctmod/loot_tables/trainers/single?ref_type=heads) for the loot tables, they can be overwritten with a data pack)
 
-***Fixed***
+**Fixed:**
 
-- `defeat_count` loot condition not beeing registered
-- `player set defeats` command not changing values on the server side
+- *#84* `defeat_count` loot condition not beeing registered
+- *#83* `player set defeats` command not changing values on the server side
 
 ## [0.9.2-alpha] - 2024-06-17
 
-***Changed***
+**Changed:**
 
-- Removed battle count restriction (max wins/losses) for persistent trainers
+- *#82* Removed battle count restriction (max wins/losses) for persistent trainers
 
 ## [0.9.1-alpha] - 2024-06-16
 
-***Fixed***
+**Fixed:**
 
-- Hotifx: Potential crash caused by trainer battles
+- *#81* Hotifx: Potential crash caused by trainer battles
 
 ## [0.9.0-alpha] - 2024-06-15
 
-***Added***
+**Added:**
 
-- Command `unregister_persistent`: Utility command for server administrators to unregister persistent trainers manually
-- Data pack option for trainers to win/loose an infinite amount of times (set `maxTrainerWins` and/or `maxTrainerDefeats` to `0`)
-- Defeat count loot condition for data packs (e.g. have trainers drop special loot on first defeat)
-- `Persistent` tag for trainers (`0/false` by default). Persistent trainers will **never** despawn and do not count towards the spawn caps. Care must be taken when enabling this tag for trainers since other trainers will not spawn as long as another trainer with the same name exists.
+- *#80* Command `unregister_persistent`: Utility command for server administrators to unregister persistent trainers manually
+- *#79* Data pack option for trainers to win/loose an infinite amount of times (set `maxTrainerWins` and/or `maxTrainerDefeats` to `0`)
+- *#78* Defeat count loot condition for data packs (e.g. have trainers drop special loot on first defeat)
+- *#77* `Persistent` tag for trainers (`0/false` by default). Persistent trainers will **never** despawn and do not count towards the spawn caps. Care must be taken when enabling this tag for trainers since other trainers will not spawn as long as another trainer with the same name exists.
 
-***Changed***
+**Changed:**
 
-- Reformatted (spawner) debugging output
-- Removed redundant `"this"` property of defeat count condition for achievements
-- Reworked spawner system: Trainers now despawn when far away/beeing unloaded (similar to hostile mobs)
-- Server config: Lowered default `maxHorizontalDistanceToPlayers` from `80` to `70`
-- Server config: Lowered default `minHorizontalDistanceToPlayers` from `30` to `25`
-- Server config: Lowered default `spawnIntervalTicks` from `2400` to `1200` (1 min)
-- Server config: Raised default `maxTrainersTotal` from `15` to `20`
+- *#76* Reformatted (spawner) debugging output
+- *#75* Removed redundant `"this"` property of defeat count condition for achievements
+- *#74* Reworked spawner system: Trainers now despawn when far away/beeing unloaded (similar to hostile mobs)
+- *#73* Server config: Lowered default `maxHorizontalDistanceToPlayers` from `80` to `70`
+- *#72* Server config: Lowered default `minHorizontalDistanceToPlayers` from `30` to `25`
+- *#71* Server config: Lowered default `spawnIntervalTicks` from `2400` to `1200` (1 min)
+- *#70* Server config: Raised default `maxTrainersTotal` from `15` to `20`
 
-***Fixed***
+**Fixed:**
 
-- Potential crash if debugging is enabled in the server config
+- *#69* Potential crash if debugging is enabled in the server config
 
-***Removed***
+**Removed:**
 
-- Config option `despawnDelayTicks`
+- *#68* Config option `despawnDelayTicks`
 
 ## [0.8.4-alpha] - 2024-06-10
 
-***Added***
+**Added:**
 
-- Server Config `logSpawning`: Debugging option to log information about trainer (de)spawning (disabled by default)
-- Server Config options `biomeTagBlackList` and `biomeTagWhitelist` as global options for all trainers (in addition to the tags defined per trainer (group) with data packs)
+- *#67* Server Config `logSpawning`: Debugging option to log information about trainer (de)spawning (disabled by default)
+- *#66* Server Config options `biomeTagBlackList` and `biomeTagWhitelist` as global options for all trainers (in addition to the tags defined per trainer (group) with data packs)
 
-***Fixed***
+**Fixed:**
 
-- Trainers spawning causing a crash with c2me on fabric
+- *#65* Trainers spawning causing a crash with c2me on fabric
 
 ## [0.8.3-alpha] - 2024-06-03
 
-***Fixed***
+**Fixed:**
 
-- Trainers on cooldown not beeing counted towards a palyers spawn cap
+- *#64* Trainers on cooldown not beeing counted towards a palyers spawn cap
 
 ## [0.8.2-alpha] - 2024-05-31
 
-***Added***
+**Added:**
 
-- Trainer types `RIVAL` and `TRAINER`
+- *#63* Trainer types `RIVAL` and `TRAINER`
 
-***Changed***
+**Changed:**
 
-- Advancements have been reworked, some have been removed, some have been added, some have changed. Advancements will be granted again if a player repeats an action (e.g. beats a previous Leader again). They can also be granted manually with the vanilla `advancement` command.
-- Decreased minimum despawn distance (now equal to *spawning config* `minHorizontalDistanceToPlayers` which is `30` by default)
-- Trainers that cannot battle anymore now don't count towards a players spawn cap (they still count towards the global spawn cap)
+- *#62* Advancements have been reworked, some have been removed, some have been added, some have changed. Advancements will be granted again if a player repeats an action (e.g. beats a previous Leader again). They can also be granted manually with the vanilla `advancement` command.
+- *#61* Decreased minimum despawn distance (now equal to *spawning config* `minHorizontalDistanceToPlayers` which is `30` by default)
+- *#60* Trainers that cannot battle anymore now don't count towards a players spawn cap (they still count towards the global spawn cap)
 
-***Fixed***
+**Fixed:**
 
-- "Wrong way to battle" advancement beeing granted for any npc
-- Advancements not beeing granted
+- *#59* "Wrong way to battle" advancement beeing granted for any npc
+- *#58* Advancements not beeing granted
 
 ## [0.8.1-alpha] - 2024-05-29
 
-***Changed***
+**Changed:**
 
-- Reeneblad temporarily replaced switching moves (like uturn)
-- Update to Cobblemon 1.5.2 and CobblemonTrainers 1.1.7
+- *#57* Reeneblad temporarily replaced switching moves (like uturn)
+- *#56* Update to Cobblemon 1.5.2 and CobblemonTrainers 1.1.7
 
 ## [0.8.0-alpha] - 2024-05-29
 
-***Added***
+**Added:**
 
-- **84** new (endgame) trainers, which brings the total number up to **740**
-- Command: `player get defeats <trainerId> [<player>]`
-- Command: `player set defeats <trainerId> [<players>] <value>`
-- Command: `trainer get reward_level_cap <trainerId>`
-- Command: `trainer get type <trainerId>`
-- Item: Trainer Card (open player stats gui with right click, can be crafted)
+- *#55* **84** new (endgame) trainers, which brings the total number up to **740**
+- *#54* Command: `player get defeats <trainerId> [<player>]`
+- *#53* Command: `player set defeats <trainerId> [<players>] <value>`
+- *#52* Command: `trainer get reward_level_cap <trainerId>`
+- *#51* Command: `trainer get type <trainerId>`
+- *#50* Item: Trainer Card (open player stats gui with right click, can be crafted)
 
-***Changed***
+**Changed:**
 
-- Beating a champ now grants a level cap of `100`
-- Buffed weaker versions of key trainers (elite 4/champs)
-- Command: Renamed former `player get defeats ...` to `player get type_defeats <type> [<player>]`
-- Decreased battle cooldown from `2000` to `600` ticks
-- Increased spawn cap per player from `3` to `4`, decreased spawn interval from `3600` to `2400` ticks and decreased despawn delay from `24000` to `5000` ticks, in short higher spawn rates by default (**changed default values will not be applied to existing configs**)
-- Removed battle restrictions for some trainers
-- Spawn rates increased for key trainers not beaten by players (the closer a player gets to the level cap the higher the chance to spawn)
-- Trainer id system (now with proper unique ids). Saved data from previous versions will automatically migrate to the new system. **Important notes for migration:** Any trainers or trainer related data that has been modified with a **data- or resource pack** must be migrated manually (***groups* stay the same**) by changing the file names to the new ids. Any (**command block**) **commands** that refer to trainers by their old ids must be migrated manually by changing the commands to use the new ids. Any **trainer npcs** from a previous version will have an invalid id, you can let them either despawn, get rid of them otherwise or change the `TrainerId` tag manually using the `data` command. A list of all id changes can be found in the [documentation](https://srcmc.gitlab.io/rct/docs/configuration/legacy/).
+- *#49* Beating a champ now grants a level cap of `100`
+- *#48* Buffed weaker versions of key trainers (elite 4/champs)
+- *#47* Command: Renamed former `player get defeats ...` to `player get type_defeats <type> [<player>]`
+- *#46* Decreased battle cooldown from `2000` to `600` ticks
+- *#45* Increased spawn cap per player from `3` to `4`, decreased spawn interval from `3600` to `2400` ticks and decreased despawn delay from `24000` to `5000` ticks, in short higher spawn rates by default (**changed default values will not be applied to existing configs**)
+- *#44* Removed battle restrictions for some trainers
+- *#43* Spawn rates increased for key trainers not beaten by players (the closer a player gets to the level cap the higher the chance to spawn)
+- *#42* Trainer id system (now with proper unique ids). Saved data from previous versions will automatically migrate to the new system. **Important notes for migration:** Any trainers or trainer related data that has been modified with a **data- or resource pack** must be migrated manually (***groups* stay the same**) by changing the file names to the new ids. Any (**command block**) **commands** that refer to trainers by their old ids must be migrated manually by changing the commands to use the new ids. Any **trainer npcs** from a previous version will have an invalid id, you can let them either despawn, get rid of them otherwise or change the `TrainerId` tag manually using the `data` command. A list of all id changes can be found in the [documentation](https://srcmc.gitlab.io/rct/docs/configuration/legacy/).
 
-***Fixed***
+**Fixed:**
 
-- Many missing team members with different forms (e.g. 'alola')
-- Potential log spam for mobs with an invalid trainer id
-- Some missing ivs/evs, moves, abilities, etc. for most of the trainers
+- *#41* Many missing team members with different forms (e.g. 'alola')
+- *#40* Potential log spam for mobs with an invalid trainer id
+- *#39* Some missing ivs/evs, moves, abilities, etc. for most of the trainers
 
-***Removed***
+**Removed:**
 
-- Command: `player set defeats <type> [<players>]`
+- *#38* Command: `player set defeats <type> [<players>]`
 
 ## [0.7.4-alpha] - 2024-05-19
 
-***Fixed***
+**Fixed:**
 
-- **Temporarily** replaced *switching moves* with alternatives (since they cause a crash with Cobblemon 1.5.0 + CobblemonTrainers when switched pokemon get send back out again): uturn -> bugbite, voltswitch -> spark, flipturn -> bubble, teleport -> amnesia, partingshot -> amnesia, batonpass -> amnesia
+- *#37* **Temporarily** replaced *switching moves* with alternatives (since they cause a crash with Cobblemon 1.5.0 + CobblemonTrainers when switched pokemon get send back out again): uturn -> bugbite, voltswitch -> spark, flipturn -> bubble, teleport -> amnesia, partingshot -> amnesia, batonpass -> amnesia
 
 ## [0.7.3-alpha] - 2024-05-16
 
-***Fixed***
+**Fixed:**
 
-- Config option `maxTrainersTotalValue` setting a different config value `maxLevelDiff`
-- Missing config option `maxTrainersTotal` (this time actually)
-- Wrongly named config options: Removed "Value" suffixes. **Old config values with wrong names will be reverted to their default values with the changed name. Either remove the "Value" suffixes manually before updating or adjust the configs afterwards (if any changes where made).**
+- *#36* Config option `maxTrainersTotalValue` setting a different config value `maxLevelDiff`
+- *#35* Missing config option `maxTrainersTotal` (this time actually)
+- *#34* Wrongly named config options: Removed "Value" suffixes. **Old config values with wrong names will be reverted to their default values with the changed name. Either remove the "Value" suffixes manually before updating or adjust the configs afterwards (if any changes where made).**
 
 ## [0.7.2-alpha] - 2024-05-13
 
-***Fixed***
+**Fixed:**
 
-- Incompatibility with some optimization mods on fabric in ssp (e.g. Sodium)
+- *#33* Incompatibility with some optimization mods on fabric in ssp (e.g. Sodium)
 
 ## [0.7.1-alpha] - 2024-05-13
 
-***Fixed***
+**Fixed:**
 
-- Trainers not responding after a battle win
+- *#32* Trainers not responding after a battle win
 
 ## [0.7.0-alpha] - 2024-05-12
 
-***Added***
+**Added:**
 
-- Support for Cobblemon 1.5.0
+- *#31* Support for Cobblemon 1.5.0
 
 ## [0.6.0-alpha] - 2024-05-11
 
-***Added***
+**Added:**
 
-- Client configuration located at `config/rctmod-client.toml`. Options: `showTrainerTypeSymbols = false`, `showTrainerTypeColors = true`
-- Server config option `maxOverLevelCap`: Trainers will refuse to battle players that have pokemon in their party with a level greater than the set value + the level cap of the player (default `0`)
+- *#30* Client configuration located at `config/rctmod-client.toml`. Options: `showTrainerTypeSymbols = false`, `showTrainerTypeColors = true`
+- *#29* Server config option `maxOverLevelCap`: Trainers will refuse to battle players that have pokemon in their party with a level greater than the set value + the level cap of the player (default `0`)
 
-***Changed***
+**Changed:**
 
-- Small adjustments to trainer mob ai: They'll now eventually stop wandering when close to players
-- Trainer names are now colored based of their trainer type, i.e. LEADER: green, E4: light purple, CHAMP: golden, TEAM_ROCKET: dark gray, others: white (optional symbols that are appended to the trainer names can be enabled in the **client config**)
-- Trainer names are now shown *emphasized* to players that never have beaten them
+- *#28* Small adjustments to trainer mob ai: They'll now eventually stop wandering when close to players
+- *#27* Trainer names are now colored based of their trainer type, i.e. LEADER: green, E4: light purple, CHAMP: golden, TEAM_ROCKET: dark gray, others: white (optional symbols that are appended to the trainer names can be enabled in the **client config**)
+- *#26* Trainer names are now shown *emphasized* to players that never have beaten them
 
-***Fixed***
+**Fixed:**
 
-- Issue with data packs not beeing correctly synced to players that entered servers without ever having entered a singleplayer world before
-- Trainers getting softlocked in battles if player logs out or dies (now counts as trainer win)
+- *#25* Issue with data packs not beeing correctly synced to players that entered servers without ever having entered a singleplayer world before
+- *#24* Trainers getting softlocked in battles if player logs out or dies (now counts as trainer win)
 
 ## [0.5.4-alpha] - 2024-05-06
 
-***Changed***
+**Changed:**
 
-- Increased reward level cap of Leader Erika from `47` to `50` (fixes softlock at Leader Giovanni)
-- Minor buff to team of Leader Giovanni
+- *#23* Increased reward level cap of Leader Erika from `47` to `50` (fixes softlock at Leader Giovanni)
+- *#22* Minor buff to team of Leader Giovanni
 
-***Fixed***
+**Fixed:**
 
-- `trainer get required_level_cap` command returning reward level cap instead
+- *#21* `trainer get required_level_cap` command returning reward level cap instead
 
 ## [0.5.3-alpha] - 2024-05-05
 
-***Fixed***
+**Fixed:**
 
-- Trainer responses kicking players from servers in online-mode
+- *#20* Trainer responses kicking players from servers in online-mode
 
 ## [0.5.2-alpha] - 2024-05-04
 
-***Added***
+**Added:**
 
-- API: added RCTMod.makeBattle (battles are now started from code instead of by invoking the `trainers makebattle` command)
+- *#19* API: added RCTMod.makeBattle (battles are now started from code instead of by invoking the `trainers makebattle` command)
 
-***Changed***
+**Changed:**
 
-- API: deprecated ChatUtils.makebattle
+- *#18* API: deprecated ChatUtils.makebattle
 
-***Fixed***
+**Fixed:**
 
-- Trainers refusing to battle in case of issues with configurations from CobblemonTrainers
+- *#17* Trainers refusing to battle in case of issues with configurations from CobblemonTrainers
 
 ## [0.5.1-alpha] - 2024-05-01
 
-***Added***
+**Added:**
 
-- New chat context 'missing_pokemon' -> player has no pokemon capable of fighting in his team
+- *#16* New chat context 'missing_pokemon' -> player has no pokemon capable of fighting in his team
 
-***Changed***
+**Changed:**
 
-- Renamed trainer mobs `spawnChance` property to `spawnWeightFactor`
+- *#15* Renamed trainer mobs `spawnChance` property to `spawnWeightFactor`
 
-***Fixed***
+**Fixed:**
 
-- Trainers counting battles if right clicked without a team (or all pokemon defeated)
-- Trainers mobs sometimes not stopping movement at the start of a battle
-- `globalSpawnChance` config options not having any effect (changed default from `0.25` to `1.0`, **the config value from existing configs will not be changed**)
+- *#14* Trainers counting battles if right clicked without a team (or all pokemon defeated)
+- *#13* Trainers mobs sometimes not stopping movement at the start of a battle
+- *#12* `globalSpawnChance` config options not having any effect (changed default from `0.25` to `1.0`, **the config value from existing configs will not be changed**)
 
 ## [0.5.0-alpha] - 2024-04-26
 
-***Added***
+**Added:**
 
-- Advancements
-- Base trainer set (~650 trainers)
-- Battle requirements (e.g. level cap or badges)
-- Battle rewards (defined by loot tables)
-- Custom commands
-- Data pack: Loot table condition `level_range`
-- Data pack: advancement criteria `defeat_count`
-- Data/Resource pack support (textures, trainers, mobs, loot_tables, advancements, dialogs)
-- Level cap system (increase by defeating gym leaders)
-- Trainer dialog system (different responses based of their situation)
-- Trainer spawning system (different trainer types spawn in different biomes + only trainers matching a players strength will spawn in their vicinity)
+- *#11* Advancements
+- *#10* Base trainer set (~650 trainers)
+- *#9* Battle requirements (e.g. level cap or badges)
+- *#8* Battle rewards (defined by loot tables)
+- *#7* Custom commands
+- *#6* Data pack: Loot table condition `level_range`
+- *#5* Data pack: advancement criteria `defeat_count`
+- *#4* Data/Resource pack support (textures, trainers, mobs, loot_tables, advancements, dialogs)
+- *#3* Level cap system (increase by defeating gym leaders)
+- *#2* Trainer dialog system (different responses based of their situation)
+- *#1* Trainer spawning system (different trainer types spawn in different biomes + only trainers matching a players strength will spawn in their vicinity)
