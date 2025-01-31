@@ -32,6 +32,7 @@ import com.gitlab.srcmc.rctmod.forge.api.service.PlayerController;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -62,6 +63,7 @@ public class ModEventBus {
     static void onCommonSetup(FMLCommonSetupEvent event) {
         CobblemonEvents.BATTLE_VICTORY.subscribe(Priority.NORMAL, CobblemonHandler::handleBattleVictory);
         CobblemonEvents.EXPERIENCE_GAINED_EVENT_PRE.subscribe(Priority.HIGHEST, CobblemonHandler::handleExperienceGained);
+        MinecraftForge.EVENT_BUS.register(CobblemonHandler.class);
         event.enqueueWork(() -> CriteriaTriggers.register(DefeatCountTrigger.get()));
     }
 
