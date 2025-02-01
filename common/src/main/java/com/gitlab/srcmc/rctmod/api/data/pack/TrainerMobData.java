@@ -64,6 +64,7 @@ public class TrainerMobData implements IDataPackObject {
 
     private Type type = Type.NORMAL;
     private List<Set<String>> requiredDefeats = new ArrayList<>();
+    private Set<String> series = new HashSet<>();
     
     private int maxTrainerWins = 3;
     private int maxTrainerDefeats = 1;
@@ -118,6 +119,14 @@ public class TrainerMobData implements IDataPackObject {
     public int getRequiredLevelCap() {
         var cfg = RCTMod.getInstance().getServerConfig();
         return Math.max(1, Math.min(100, this.getTrainerTeam().getTeam().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0) + cfg.additiveLevelCapRequirement()));
+    }
+
+    public boolean isOfSeries(String seriesId) {
+        return this.series.isEmpty() || this.series.contains(seriesId);
+    }
+
+    public Stream<String> seriesStream() {
+        return this.series.stream();
     }
 
     public Stream<String> getMissingRequirements(Set<String> defeatedTrainerIds) {

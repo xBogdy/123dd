@@ -125,7 +125,7 @@ public class PlayerInfoWidget extends AbstractWidget {
         this.levelCapValue = new StringWidget(x + LEVEL_CAP_X, y + LEVEL_CAP_Y + LEVEL_CAP_H/8, LEVEL_CAP_W - LEVEL_CAP_PADDING, LEVEL_CAP_H, Component.empty(), this.font).alignRight();
         this.totalDefeatsLabel = new StringWidget(x + TOTAL_DEFEATS_X + TOTAL_DEFEATS_PADDING, y + TOTAL_DEFEATS_Y + TOTAL_DEFEATS_H/8, TOTAL_DEFEATS_W, TOTAL_DEFEATS_H, Component.literal("Total").withStyle(ChatFormatting.WHITE), this.font).alignLeft();
         this.totalDefeatsValue = new StringWidget(x + TOTAL_DEFEATS_X, y + TOTAL_DEFEATS_Y + TOTAL_DEFEATS_H/8, TOTAL_DEFEATS_W - TOTAL_DEFEATS_PADDING, TOTAL_DEFEATS_H, Component.empty(), this.font).alignRight();
-        this.trainerList = new TrainerListWidget(x + TRAINER_LIST_X, y + TRAINER_LIST_Y, TRAINER_LIST_W, TRAINER_LIST_H, font, sortedTrainerIds());
+        this.trainerList = new TrainerListWidget(x + TRAINER_LIST_X, y + TRAINER_LIST_Y, TRAINER_LIST_W, TRAINER_LIST_H, font, this.sortedTrainerIds());
         this.trainerInfo = new TrainerInfoWidget(x + TRAINER_LIST_X, y + TRAINER_LIST_Y, TRAINER_LIST_W, TRAINER_LIST_H, font);
 
         var types = new ArrayList<String>();
@@ -361,10 +361,12 @@ public class PlayerInfoWidget extends AbstractWidget {
         return playerState.getTrainerDefeatCount(trainerId);
     }
 
-    private static List<String> sortedTrainerIds() {
+    private List<String> sortedTrainerIds() {
+        var mc = Minecraft.getInstance();
+        var playerState = PlayerState.get(mc.player);
         var tdm = RCTMod.getInstance().getTrainerManager();
 
-        return tdm.getAllData().map(entry -> entry.getKey()).sorted((k1, k2) -> {
+        return tdm.getAllData(playerState.getCurrentSeries()).map(entry -> entry.getKey()).sorted((k1, k2) -> {
             var t1 = tdm.getData(k1);
             var t2 = tdm.getData(k2);
             var c = t1.getTrainerTeam().getTeam().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0)

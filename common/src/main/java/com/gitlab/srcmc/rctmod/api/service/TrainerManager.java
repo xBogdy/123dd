@@ -54,6 +54,8 @@ import net.minecraft.world.level.saveddata.SavedData.Factory;
 public class TrainerManager extends DataPackManager {
     private Map<String, TrainerMobData> trainerMobs = new HashMap<>();
     private Map<UUID, TrainerBattle> trainerBattles = new HashMap<>();
+    private Map<String, Integer> minRequiredLevelCaps = new HashMap<>();
+    private int globalMinRequiredLevelCap;
 
     private Map<UUID, String> uuidToTrainerId = new HashMap<>();
     private Set<String> playerTrainerIds = new HashSet<>();
@@ -62,8 +64,6 @@ public class TrainerManager extends DataPackManager {
     private MinecraftServer server;
     private ResourceManager resourceManager;
     private boolean reloadRequired;
-
-    private int minRequiredLevelCap;
 
     public TrainerManager() {
         super(PackType.SERVER_DATA);
@@ -228,8 +228,10 @@ public class TrainerManager extends DataPackManager {
             TrainerPlayerData.filePath(player));
     }
 
-    public Stream<Map.Entry<String, TrainerMobData>> getAllData() {
-        return this.trainerMobs.entrySet().stream();
+    public Stream<Map.Entry<String, TrainerMobData>> getAllData(String... series) {
+        return series.length > 0
+            ? this.trainerMobs.entrySet().stream().filter(e -> Stream.of(series).anyMatch(s -> e.getValue().isOfSeries(s)))
+            : this.trainerMobs.entrySet().stream();
     }
 
     public TrainerBattleMemory getBattleMemory(TrainerMob mob) {
@@ -246,8 +248,8 @@ public class TrainerManager extends DataPackManager {
         return this.receivedUpdates.add(player);
     }
 
-    public int getMinRequiredLevelCap() {
-        return this.minRequiredLevelCap;
+    public int getMinRequiredLevelCap(String series) {
+        return this.minRequiredLevelCaps.getOrDefault(series, this.globalMinRequiredLevelCap);
     }
 
     public void loadTrainers() {
@@ -255,7 +257,7 @@ public class TrainerManager extends DataPackManager {
     }
 
     protected void forceReload(ResourceManager resourceManager) {
-        this.reloadRequired = false; // in case another thread happens to set it to true in the meantime
+        this.reloadRequired = false;
         var dpm = RCTMod.getInstance().getServerDataManager();
         dpm.init(resourceManager);
 
@@ -292,7 +294,8 @@ public class TrainerManager extends DataPackManager {
             });
         });
 
-        var mrlvlcap = new int[]{100};
+        this.minRequiredLevelCaps = new HashMap<>();
+        var globalMin = new int[]{100};
 
         newTrainerMobs.values().forEach(tmd -> {
             tmd.setRewardLevelCap(tmd.getFollowdBy()
@@ -303,20 +306,26 @@ public class TrainerManager extends DataPackManager {
                 }).max(Integer::compare).orElse(tmd.getRequiredLevelCap()));
             
             if(!tmd.getFollowdBy().isEmpty()) {
-                mrlvlcap[0] = Math.min(mrlvlcap[0], tmd.getRequiredLevelCap());
+                if(tmd.seriesStream().findFirst().isEmpty()) {
+                    globalMin[0] = Math.min(globalMin[0], tmd.getRequiredLevelCap());
+                    this.minRequiredLevelCaps.replaceAll((k, v) -> Math.min(globalMin[0], v));
+                } else {
+                    tmd.seriesStream().forEach(s -> this.minRequiredLevelCaps.compute(s, (k, v) -> v == null
+                        ? Math.min(globalMin[0], tmd.getRequiredLevelCap())
+                        : Math.min(globalMin[0], Math.min(v, tmd.getRequiredLevelCap()))));
+                }
             }
         });
 
-        // atomic operation ensures 'valid' trainer ids are always properly initialized (when accessed from a different thread)
+        this.globalMinRequiredLevelCap = globalMin[0];
         this.trainerMobs = newTrainerMobs;
+        this.receivedUpdates = new HashSet<>();
 
         if(this.isServerRunning()) {
             ModCommon.LOG.info(String.format("Registered %d trainers", this.trainerMobs.size()));
         }
 
         dpm.close();
-        this.minRequiredLevelCap = mrlvlcap[0];
-        this.receivedUpdates = new HashSet<>();
     }
 
     @Override

@@ -44,6 +44,7 @@ public class PlayerState implements Serializable {
     private Map<TrainerMobData.Type, Integer> typeDefeatCounts = new HashMap<>();
     private Set<String> defeatedTrainerIds = new HashSet<>();
     private Set<String> removedDefeatedTrainerIds = new HashSet<>();
+    private String currentSeries;
     private int levelCap;
 
     private transient Player player;
@@ -116,6 +117,22 @@ public class PlayerState implements Serializable {
         }
 
         return this.levelCap;
+    }
+
+    private void setCurrentSeries(String seriesId) {
+        if(!this.currentSeries.equals(seriesId)) {
+            this.currentSeries = seriesId;
+            this.updated.currentSeries = seriesId;
+            this.hasChanges = true;
+        }
+    }
+
+    public String getCurrentSeries() {
+        if(!this.player.level().isClientSide) {
+            this.setCurrentSeries(RCTMod.getInstance().getTrainerManager().getData(this.player).getCurrentSeries());
+        }
+
+        return this.currentSeries;
     }
 
     public void addProgressDefeat(String trainerId) {
@@ -223,6 +240,7 @@ public class PlayerState implements Serializable {
 
         return tmd != null
             && tmd.getFollowdBy().size() > 0
+            && tmd.isOfSeries(this.getCurrentSeries())
             && tmd.getMissingRequirements(this.defeatedTrainerIds).findFirst().isEmpty()
             && tmd.getFollowdBy().stream().anyMatch(sid -> tm.getData(sid).getMissingRequirements(this.defeatedTrainerIds, true).anyMatch(rid -> trainerId.equals(rid)));
     }
@@ -250,6 +268,7 @@ public class PlayerState implements Serializable {
 
     private PlayerState(PlayerState template) {
         this.levelCap = template.levelCap;
+        this.currentSeries = template.currentSeries;
     }
 
     private void update(PlayerState updated) {
@@ -280,6 +299,7 @@ public class PlayerState implements Serializable {
         updated.defeatedTrainerIds.forEach(this.defeatedTrainerIds::add);
         updated.removedDefeatedTrainerIds.forEach(this.defeatedTrainerIds::remove);
         this.levelCap = updated.levelCap;
+        this.currentSeries = updated.currentSeries;
     }
 
     private void init() {
@@ -296,9 +316,10 @@ public class PlayerState implements Serializable {
             var tpd = tm.getData(this.player);
 
             this.levelCap = tpd.getLevelCap();
+            this.currentSeries = tpd.getCurrentSeries();
             this.defeatedTrainerIds.addAll(tpd.getDefeatedTrainerIds());
 
-            tm.getAllData().forEach(entry -> {
+            tm.getAllData(this.getCurrentSeries()).forEach(entry -> {
                 var defCount = tm.getBattleMemory(overworld, entry.getKey()).getDefeatByCount(this.player);
 
                 if(defCount > 0) {

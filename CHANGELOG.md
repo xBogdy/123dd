@@ -2,6 +2,25 @@
 
 **Important**: The `level_cap` is not a value anymore that can be set per player but is rather derived from the current state of progress of that player. Because of the changes to the progression it is possible that when updating from an older version the level caps of players will be different (most likely lower)! Apart from that the progress of players should adapt to the changes but as a general advice **always make backups before updating mods**.
 
+## [0.14.0-beta] - 2025-01-31
+
+**Added:**
+
+- *#226* Command `player get series [completed]`: Retrieves the current or all completed series of a player
+- *#225* Command `player set series <seriesId> [completed <count>]`: Updates the current or completed series of a player
+- *#224* Config option `playerMustCarryTrainerCard` (TODO)
+- *#223* Support for different *series*
+  - Every series has its own progression (i.e. chain of key trainers and level caps)
+  - Only trainers from the current series of a player will be listed in the trainer card of that player
+  - Only trainers from the current series of a player will spawn for that player
+  - Players now have a `currentSeries` property (defaults to `"radicalred"` if not set)
+  - Players now have statistics to keep track of completed series (the current and completed series of players can be inspected or modified with commands, see *#225* and *#226*)
+  - Trainer npcs now have a `series` property: A list of series ids the trainer belongs to (the trainer will belong to every series if empty or not set)
+
+**Fixed:**
+
+- *#222* Trainer npcs being incapable of rendering armor (thanks Renari)
+
 ## [0.13.16-beta] - 2025-01-30
 
 **Changed:**

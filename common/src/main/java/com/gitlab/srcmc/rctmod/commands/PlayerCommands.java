@@ -51,6 +51,14 @@ public final class PlayerCommands {
             .requires(css -> css.hasPermission(1))
             .then(Commands.literal("player")
                 .then(Commands.literal("get")
+                    .then(Commands.literal("series")
+                        .executes(PlayerCommands::player_get_current_series)
+                        .then(Commands.literal("completed")
+                            .executes(PlayerCommands::player_get_completed_series))
+                        .then(Commands.argument("target", EntityArgument.player())
+                            .executes(PlayerCommands::player_get_current_series_target)
+                            .then(Commands.literal("completed")
+                                .executes(PlayerCommands::player_get_completed_series_target))))
                     .then(Commands.literal("progress")
                         .executes(PlayerCommands::player_get_progress)
                         .then(Commands.argument("target", EntityArgument.player())
@@ -73,24 +81,36 @@ public final class PlayerCommands {
                                 .executes(PlayerCommands::player_get_type_defeats_target)))))
                 .then(Commands.literal("set")
                     .requires(css -> css.hasPermission(2))
+                    .then(Commands.literal("series")
+                        .then(Commands.argument("seriesId", StringArgumentType.string())
+                            .suggests(PlayerCommands::get_series_suggestions)
+                            .executes(PlayerCommands::player_set_current_series)
+                            .then(Commands.literal("completed")
+                                .then(Commands.argument("count", IntegerArgumentType.integer(0))
+                                    .executes(PlayerCommands::player_set_completed_series)))
+                            .then(Commands.argument("targets", EntityArgument.players())
+                                .executes(PlayerCommands::player_set_current_series_targets)
+                                .then(Commands.literal("completed")
+                                    .then(Commands.argument("count", IntegerArgumentType.integer(0))
+                                        .executes(PlayerCommands::player_set_completed_series_targets))))))
                     .then(Commands.literal("progress")
                         .then(Commands.literal("before")
                             .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainerId", StringArgumentType.string())
-                            .suggests(PlayerCommands::get_progress_trainer_suggestions)
-                            .executes(PlayerCommands::player_set_progress_before)))
+                                .suggests(PlayerCommands::get_progress_trainer_suggestions)
+                                .executes(PlayerCommands::player_set_progress_before)))
                         .then(Commands.literal("after")
                             .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainerId", StringArgumentType.string())
-                            .suggests(PlayerCommands::get_progress_trainer_suggestions)
-                            .executes(PlayerCommands::player_set_progress_after)))
+                                .suggests(PlayerCommands::get_progress_trainer_suggestions)
+                                .executes(PlayerCommands::player_set_progress_after)))
                         .then(Commands.argument("targets", EntityArgument.players())
                             .then(Commands.literal("before")
                                 .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainerId", StringArgumentType.string())
-                                .suggests(PlayerCommands::get_progress_trainer_suggestions)
-                                .executes(PlayerCommands::player_set_progress_targets_before)))
+                                    .suggests(PlayerCommands::get_progress_trainer_suggestions)
+                                    .executes(PlayerCommands::player_set_progress_targets_before)))
                             .then(Commands.literal("after")
                                 .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainerId", StringArgumentType.string())
-                                .suggests(PlayerCommands::get_progress_trainer_suggestions)
-                                .executes(PlayerCommands::player_set_progress_targets_after)))))
+                                    .suggests(PlayerCommands::get_progress_trainer_suggestions)
+                                    .executes(PlayerCommands::player_set_progress_targets_after)))))
                     .then(Commands.literal("defeats")
                         .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainerId", StringArgumentType.string())
                             .suggests(PlayerCommands::get_trainer_suggestions)
@@ -102,8 +122,25 @@ public final class PlayerCommands {
                 )));
     }
 
-    private static CompletableFuture<Suggestions> get_progress_trainer_suggestions(final CommandContext<CommandSourceStack> context, final SuggestionsBuilder builder) throws CommandSyntaxException {
+    private static CompletableFuture<Suggestions> get_series_suggestions(final CommandContext<CommandSourceStack> context, final SuggestionsBuilder builder) throws CommandSyntaxException {
         RCTMod.getInstance().getTrainerManager().getAllData()
+            .map(e -> e.getValue().seriesStream())
+            .reduce(Stream.empty(), (a, b) -> Stream.concat(a, b))
+            .distinct().forEach(builder::suggest);
+
+        return builder.buildFuture();
+    }
+
+    private static CompletableFuture<Suggestions> get_progress_trainer_suggestions(final CommandContext<CommandSourceStack> context, final SuggestionsBuilder builder) throws CommandSyntaxException {
+        Set<String> seriesSet = new HashSet<>();
+
+        if(context.getSource().getEntity() instanceof Player p) {
+            seriesSet.add(PlayerState.get(p).getCurrentSeries());
+        } else {
+            EntityArgument.getPlayers(context, "targets").forEach(p -> seriesSet.add(PlayerState.get(p).getCurrentSeries()));
+        }
+
+        RCTMod.getInstance().getTrainerManager().getAllData(seriesSet.toArray(new String[seriesSet.size()]))
             .filter(e -> !e.getValue().getFollowdBy().isEmpty()/* || e.getValue().getMissingRequirements(Set.of()).findFirst().isPresent() */)
             .map(e -> e.getKey()).forEach(builder::suggest);
 
@@ -118,6 +155,68 @@ public final class PlayerCommands {
     private static CompletableFuture<Suggestions> get_type_suggestions(final CommandContext<CommandSourceStack> context, final SuggestionsBuilder builder) throws CommandSyntaxException {
         Stream.of(Type.values()).map(Type::name).forEach(builder::suggest);
         return builder.buildFuture();
+    }
+
+    private static int player_get_current_series(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        if(context.getSource().getEntity() instanceof Player player) {
+            context.getSource().sendSuccess(() -> Component.literal(PlayerState.get(player).getCurrentSeries()), false);
+            return 0;
+        }
+        
+        context.getSource().sendFailure(Component.literal("caller is not a player"));
+        return -1;
+    }
+
+    private static int player_get_current_series_target(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        var player = EntityArgument.getPlayer(context, "target");
+        context.getSource().sendSuccess(() -> Component.literal(PlayerState.get(player).getCurrentSeries()), false);
+        return 0;
+    }
+
+    private static int player_get_completed_series(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        if(context.getSource().getEntity() instanceof Player player) {
+            var it = RCTMod.getInstance().getTrainerManager().getData(player).getCompletedSeries().entrySet().iterator();
+            var sb = new StringBuilder();
+            sb.append('[');
+            
+            if(it.hasNext()) {
+                var e = it.next();
+                sb.append(e.getKey()).append(':').append(e.getValue());
+            }
+            
+            while(it.hasNext()) {
+                var e = it.next();
+                sb.append(", ").append(e.getKey()).append(':').append(e.getValue());
+            }
+
+            sb.append(']');
+            context.getSource().sendSuccess(() -> Component.literal(String.valueOf(sb.toString())), false);
+            return 0;
+        }
+        
+        context.getSource().sendFailure(Component.literal("caller is not a player"));
+        return -1;
+    }
+
+    private static int player_get_completed_series_target(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        var player = EntityArgument.getPlayer(context, "target");
+        var it = RCTMod.getInstance().getTrainerManager().getData(player).getCompletedSeries().entrySet().iterator();
+        var sb = new StringBuilder();
+        sb.append('[');
+        
+        if(it.hasNext()) {
+            var e = it.next();
+            sb.append(e.getKey()).append(':').append(e.getValue());
+        }
+        
+        while(it.hasNext()) {
+            var e = it.next();
+            sb.append(", ").append(e.getKey()).append(':').append(e.getValue());
+        }
+
+        sb.append(']');
+        context.getSource().sendSuccess(() -> Component.literal(String.valueOf(sb.toString())), false);
+        return 0;
     }
 
     private static int player_get_progress(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
@@ -240,14 +339,48 @@ public final class PlayerCommands {
         }
     }
 
-    private static void add_progress(TrainerPlayerData tpd, String trainerId, Set<String> visited) {
-        if(!visited.contains(trainerId)) {
-            visited.add(trainerId);
-
-            var tmd = RCTMod.getInstance().getTrainerManager().getData(trainerId);
-            tmd.getMissingRequirements(Set.of()).forEach(tid -> PlayerCommands.add_progress(tpd, tid, visited));
-            tpd.addProgressDefeat(trainerId);
+    private static int player_set_completed_series(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        if(context.getSource().getEntity() instanceof Player player) {
+            var seriesid = StringArgumentType.getString(context, "seriesId");
+            var count = IntegerArgumentType.getInteger(context, "count");
+            var tpd = RCTMod.getInstance().getTrainerManager().getData(player);
+            var current = tpd.getCompletedSeries().getOrDefault(seriesid, 0);
+            tpd.addSeriesCompletion(seriesid, count - current);
+            return 0;
         }
+        
+        context.getSource().sendFailure(Component.literal("caller is not a player"));
+        return -1;
+    }
+
+    private static int player_set_completed_series_targets(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        for(var player : EntityArgument.getPlayers(context, "targets")) {
+            var seriesid = StringArgumentType.getString(context, "seriesId");
+            var count = IntegerArgumentType.getInteger(context, "count");
+            var tpd = RCTMod.getInstance().getTrainerManager().getData(player);
+            var current = tpd.getCompletedSeries().getOrDefault(seriesid, 0);
+            tpd.addSeriesCompletion(seriesid, count - current);
+        }
+
+        return 0;
+    }
+
+    private static int player_set_current_series(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        if(context.getSource().getEntity() instanceof Player player) {
+            RCTMod.getInstance().getTrainerManager().getData(player).setCurrentSeries(StringArgumentType.getString(context, "seriesId"));
+            return 0;
+        }
+        
+        context.getSource().sendFailure(Component.literal("caller is not a player"));
+        return -1;
+    }
+
+    private static int player_set_current_series_targets(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        for(var player : EntityArgument.getPlayers(context, "targets")) {
+            RCTMod.getInstance().getTrainerManager().getData(player).setCurrentSeries(StringArgumentType.getString(context, "seriesId"));
+        }
+        
+        return 0;
     }
 
     private static int player_set_progress_before(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
@@ -358,6 +491,16 @@ public final class PlayerCommands {
         } catch(IllegalArgumentException e) {
             context.getSource().sendFailure(Component.literal(e.getMessage()));
             return -1;
+        }
+    }
+
+    private static void add_progress(TrainerPlayerData tpd, String trainerId, Set<String> visited) {
+        if(!visited.contains(trainerId)) {
+            visited.add(trainerId);
+
+            var tmd = RCTMod.getInstance().getTrainerManager().getData(trainerId);
+            tmd.getMissingRequirements(Set.of()).forEach(tid -> PlayerCommands.add_progress(tpd, tid, visited));
+            tpd.addProgressDefeat(trainerId);
         }
     }
 }

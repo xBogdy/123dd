@@ -18,7 +18,9 @@
 package com.gitlab.srcmc.rctmod.api.data.save;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
@@ -32,6 +34,8 @@ import net.minecraft.world.level.saveddata.SavedData;
 
 public class TrainerPlayerData extends SavedData {
     private Set<String> defeatedTrainerIds = new HashSet<>();
+    private Map<String, Integer> completedSeries = new HashMap<>();
+    private String currentSeries = "";
     private Player player;
     private int initialLevelCap, additiveLevelCapRequirement, levelCap;
 
@@ -53,7 +57,7 @@ public class TrainerPlayerData extends SavedData {
 
     private void updateLevelCap() {
         var cfg = RCTMod.getInstance().getServerConfig();
-        this.levelCap = Math.max(RCTMod.getInstance().getTrainerManager().getMinRequiredLevelCap(), Math.min(100, cfg.initialLevelCap() + cfg.additiveLevelCapRequirement()));
+        this.levelCap = Math.max(RCTMod.getInstance().getTrainerManager().getMinRequiredLevelCap(this.getCurrentSeries()), Math.min(100, cfg.initialLevelCap() + cfg.additiveLevelCapRequirement()));
         this.defeatedTrainerIds.forEach(this::updateLevelCap);
     }
 
@@ -91,7 +95,11 @@ public class TrainerPlayerData extends SavedData {
     }
 
     public boolean removeProgressDefeats() {
-        if(this.defeatedTrainerIds.size() > 0) {
+        return this.removeProgressDefeats(false);
+    }
+
+    protected boolean removeProgressDefeats(boolean forceUpdate) {
+        if(forceUpdate || this.defeatedTrainerIds.size() > 0) {
             var ps = PlayerState.get(this.player);
             this.defeatedTrainerIds.clear();
             this.updateLevelCap();
@@ -103,12 +111,55 @@ public class TrainerPlayerData extends SavedData {
         return false;
     }
 
+    public String getCurrentSeries() {
+        return this.currentSeries;
+    }
+
+    public void setCurrentSeries(String seriesId) {
+        this.setCurrentSeries(seriesId, false);
+    }
+
+    public void setCurrentSeries(String seriesId, boolean keepProgress) {
+        if(!seriesId.equals(this.currentSeries)) {
+            this.currentSeries = seriesId;
+            this.setDirty();
+        }
+
+        if(!keepProgress) {
+            this.removeProgressDefeats(true);
+        }
+    }
+
+    public Map<String, Integer> getCompletedSeries() {
+        return Collections.unmodifiableMap(this.completedSeries);
+    }
+
+    public void addSeriesCompletion(String seriesId) {
+        this.addSeriesCompletion(seriesId, 1);
+    }
+
+    public void addSeriesCompletion(String seriesId, int n) {
+        this.completedSeries.compute(seriesId, (k, v) -> v == null ? (n > 0 ? n : null) : n + v > 0 ? n + v : null);
+    }
+
+    public void removeSeriesCompletion(String seriesId) {
+        this.removeSeriesCompletion(seriesId, this.completedSeries.getOrDefault(seriesId, 0));
+    }
+
+    public void removeSeriesCompletion(String seriesId, int n) {
+        this.addSeriesCompletion(seriesId, -n);
+    }
+
     @Override
     public CompoundTag save(CompoundTag compoundTag, Provider provider) {
         byte b = 0;
         var progressDefeats = new CompoundTag();
+        var completedSeries = new CompoundTag();
         this.defeatedTrainerIds.forEach(tid -> progressDefeats.putByte(tid, b));
+        this.completedSeries.forEach((s, c) -> completedSeries.putInt(s, c));
         compoundTag.put("progressDefeats", progressDefeats);
+        compoundTag.put("completedSeries", completedSeries);
+        compoundTag.putString("currentSeries", this.currentSeries);
         return compoundTag;
     }
 
@@ -143,6 +194,17 @@ public class TrainerPlayerData extends SavedData {
                     .map(entry -> entry.getKey())
                     .filter(tid -> tm.getBattleMemory(level, tid).getDefeatByCount(this.player) > 0)
                     .forEach(tpd.defeatedTrainerIds::add);
+            }
+
+            if(tag.contains("completedSeries")) {
+                var seriesTag = tag.getCompound("completedSeries");
+                seriesTag.getAllKeys().forEach(s -> tpd.completedSeries.put(s, tag.getInt(s)));
+            }
+
+            if(tag.contains("currentSeries")) {
+                tpd.currentSeries = tag.getString("currentSeries");
+            } else {
+                tpd.currentSeries = "radicalred";
             }
 
             tpd.updateLevelCap();

@@ -458,7 +458,7 @@ public class TrainerSpawner {
             && config.biomeTagBlacklist().stream().noneMatch(tags::contains)
             && (config.biomeTagWhitelist().isEmpty() || config.biomeTagWhitelist().stream().anyMatch(tags::contains))) {
 
-            RCTMod.getInstance().getTrainerManager().getAllData()
+            RCTMod.getInstance().getTrainerManager().getAllData(PlayerState.get(player).getCurrentSeries())
                 .filter(e -> this.isUnique(e.getValue().getTrainerTeam().getIdentity())
                     && e.getValue().getBiomeTagBlacklist().stream().noneMatch(tags::contains)
                     && (e.getValue().getBiomeTagWhitelist().isEmpty() || e.getValue().getBiomeTagWhitelist().stream().anyMatch(tags::contains)))
