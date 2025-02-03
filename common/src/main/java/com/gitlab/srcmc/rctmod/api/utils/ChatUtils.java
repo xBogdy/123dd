@@ -17,16 +17,24 @@
  */
 package com.gitlab.srcmc.rctmod.api.utils;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import net.minecraft.network.chat.ChatType;
 import net.minecraft.network.chat.OutgoingChatMessage;
 import net.minecraft.network.chat.PlayerChatMessage;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 
 public final class ChatUtils {
-    private ChatUtils() {}
+    private static Map<String, String[]> defaultDialog = new HashMap<>();
+
+    public static void initDefault(Map<String, String[]> defaultDialog) {
+        ChatUtils.defaultDialog = defaultDialog == null ? Map.of() : defaultDialog;
+    }
 
     public static void reply(TrainerMob source, Player target, String context) {
         var messages = RCTMod.getInstance().getTrainerManager().getData(source).getDialog().get(context);
@@ -38,4 +46,22 @@ public final class ChatUtils {
             target.createCommandSourceStack().sendChatMessage(OutgoingChatMessage.create(message), false, ChatType.bind(ChatType.CHAT, source));
         }
     }
+
+    public static void reply(LivingEntity source, Player target, String context) {
+        var messages = ChatUtils.defaultDialog.get(context);
+
+        if(messages == null) {
+            ModCommon.LOG.error(String.format("Invalid dialog context '%s'", context));
+        } else if(messages.length > 0) {
+            var message = PlayerChatMessage.system(messages[(target.getRandom().nextInt() & Integer.MAX_VALUE) % messages.length]);
+            target.createCommandSourceStack().sendChatMessage(OutgoingChatMessage.create(message), false, ChatType.bind(ChatType.CHAT, source));
+        }
+    }
+
+    public static void replyRaw(LivingEntity source, Player target, String rawMessage) {
+        var message = PlayerChatMessage.system(rawMessage);
+        target.createCommandSourceStack().sendChatMessage(OutgoingChatMessage.create(message), false, ChatType.bind(ChatType.CHAT, source));
+    }
+
+    private ChatUtils() {}
 }

@@ -23,6 +23,7 @@ import java.util.Optional;
 import java.util.function.Consumer;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
+import com.gitlab.srcmc.rctmod.api.utils.ChatUtils;
 import com.gitlab.srcmc.rctmod.api.utils.JsonUtils;
 import com.gitlab.srcmc.rctmod.api.utils.PathUtils;
 import com.google.gson.Gson;
@@ -237,6 +238,12 @@ public class DataPackManager extends SimpleJsonResourceReloadListener implements
     @Override
     protected void apply(Map<ResourceLocation, JsonElement> object, ResourceManager resourceManager, ProfilerFiller profilerFiller) {
         this.init(resourceManager);
+
+        // we'll load keep the default dialog for general purpose chats
+        this.loadResource("", "dialogs",
+            ChatUtils::initDefault,
+            new TypeToken<Map<String, String[]>>() {});
+
         this.close();
     }
 }
