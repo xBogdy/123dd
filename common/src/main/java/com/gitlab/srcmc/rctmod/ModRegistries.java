@@ -20,11 +20,11 @@ package com.gitlab.srcmc.rctmod;
 import com.gitlab.srcmc.rctmod.advancements.criteria.DefeatCountTrigger;
 import com.gitlab.srcmc.rctmod.world.blocks.TrainerSpawnerBlock;
 import com.gitlab.srcmc.rctmod.world.blocks.entities.TrainerSpawnerBlockEntity;
+import com.gitlab.srcmc.rctmod.world.entities.TrainerAssociation;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import com.gitlab.srcmc.rctmod.world.items.TrainerCard;
 import com.gitlab.srcmc.rctmod.world.loot.conditions.DefeatCountCondition;
 import com.gitlab.srcmc.rctmod.world.loot.conditions.LevelRangeCondition;
-
 import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.level.entity.EntityAttributeRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
@@ -45,9 +45,11 @@ public final class ModRegistries {
     public class Entities {
         public static final DeferredRegister<EntityType<?>> REGISTRY = DeferredRegister.create(ModCommon.MOD_ID, Registries.ENTITY_TYPE);
         public static final RegistrySupplier<EntityType<TrainerMob>> TRAINER;
+        public static final RegistrySupplier<EntityType<TrainerAssociation>> TRAINER_ASSOCIATION;
 
         static {
             TRAINER = REGISTRY.register(location("trainer"), TrainerMob::getEntityType);
+            TRAINER_ASSOCIATION = REGISTRY.register(location("trainer_association"), TrainerAssociation::getEntityType);
         }
     }
 
@@ -125,6 +127,7 @@ public final class ModRegistries {
             CriteriaTriggers.REGISTRY.register();
             CreativeTabs.REGISTRY.register();
             EntityAttributeRegistry.register(Entities.TRAINER, TrainerMob::createAttributes);
+            EntityAttributeRegistry.register(Entities.TRAINER_ASSOCIATION, TrainerAssociation::createAttributes);
             ModRegistries.initialized = true;
         }
     }

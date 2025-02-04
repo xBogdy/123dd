@@ -1,5 +1,6 @@
 {
   "itemGroup.rctmod": "Radical Cobblemon Trainers",
   "item.rctmod.trainer_card": "Trainer Card",
-  "block.rctmod.trainer_spawner": "Trainer Spawner"
+  "block.rctmod.trainer_spawner": "Trainer Spawner",
+  "entity.rctmod.trainer_association": "Trainer Association"
 }

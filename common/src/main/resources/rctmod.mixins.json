@@ -5,7 +5,8 @@
   "package": "${maven_group}.${mod_id}.mixins",
   "refmap": "${mod_id}.refmap.json",
   "mixins": [
-    "client.ItemRendererMixin"
+    "client.ItemRendererMixin",
+    "MerchantResultSlotMixin"
   ],
   "injectors": {
     "defaultRequire": 1
