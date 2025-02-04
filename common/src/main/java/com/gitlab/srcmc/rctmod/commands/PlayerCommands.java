@@ -123,11 +123,7 @@ public final class PlayerCommands {
     }
 
     private static CompletableFuture<Suggestions> get_series_suggestions(final CommandContext<CommandSourceStack> context, final SuggestionsBuilder builder) throws CommandSyntaxException {
-        RCTMod.getInstance().getTrainerManager().getAllData()
-            .map(e -> e.getValue().getSeries())
-            .reduce(Stream.empty(), (a, b) -> Stream.concat(a, b))
-            .distinct().forEach(builder::suggest);
-
+        RCTMod.getInstance().getSeriesManager().getSeriesIds().forEach(builder::suggest);
         return builder.buildFuture();
     }
 
