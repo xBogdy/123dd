@@ -45,6 +45,7 @@ public class DataPackManager extends SimpleJsonResourceReloadListener implements
     public static final String PATH_SINGLE = "trainers/single";
     public static final String PATH_DEFAULT = "trainers/default";
     public static final String PATH_TRAINERS = "trainers";
+    public static final String PATH_SERIES = "series";
 
     private static class DataLocator {
         public final Map<ResourceLocation, PackResources> groupData = new HashMap<>();
@@ -66,9 +67,10 @@ public class DataPackManager extends SimpleJsonResourceReloadListener implements
         Map.entry("textures", new DataLocator(PackType.CLIENT_RESOURCES, ".png"))
     );
 
-    // trainer teams are not layered (in groups/single/default) and are therefore
-    // handled a bit differently.
+    // trainer teams and series are not layered (in groups/single/default) and are
+    // therefore handled a bit differently.
     private Map<ResourceLocation, PackResources> trainerTeams = new HashMap<>();
+    private Map<ResourceLocation, PackResources> series = new HashMap<>();
     private PackType packType;
 
     public DataPackManager(PackType packType) {
@@ -86,6 +88,10 @@ public class DataPackManager extends SimpleJsonResourceReloadListener implements
 
     public void listTrainerTeams(ResourceOutput out) {
         this.trainerTeams.forEach((k, v) -> out.accept(k, v.getResource(this.packType, k)));
+    }
+
+    public void listSeries(ResourceOutput out) {
+        this.series.forEach((k, v) -> out.accept(k, v.getResource(this.packType, k)));
     }
 
     @Override
@@ -107,6 +113,10 @@ public class DataPackManager extends SimpleJsonResourceReloadListener implements
         for(var dp : this.trainerTeams.values()) {
             dp.close();
         }
+
+        for(var dp : this.series.values()) {
+            dp.close();
+        }
     }
 
     protected void clear() {
@@ -117,6 +127,7 @@ public class DataPackManager extends SimpleJsonResourceReloadListener implements
         }
 
         this.trainerTeams.clear();
+        this.series.clear();
     }
 
     public Optional<ResourceLocation> findResource(String trainerId, String context) {
@@ -155,6 +166,16 @@ public class DataPackManager extends SimpleJsonResourceReloadListener implements
         return Optional.empty();
     }
 
+    public Optional<SeriesMetaData> loadSeries(String seriesId) {
+        var seriesResource = ResourceLocation.fromNamespaceAndPath(ModCommon.MOD_ID, PATH_SERIES + "/" + seriesId + ".json");
+        
+        if(this.series.containsKey(seriesResource)) {
+            return Optional.of(JsonUtils.loadFromOrThrow(this.series.get(seriesResource).getResource(this.packType, seriesResource), SeriesMetaData.class));
+        }
+
+        return Optional.empty();
+    }
+
     // TODO: buffer loaded resources
     public <T> void loadResource(String trainerId, String context, Consumer<T> consumer, Class<T> type) {
         this.loadResource(trainerId, context, consumer, TypeToken.get(type));
@@ -186,6 +207,7 @@ public class DataPackManager extends SimpleJsonResourceReloadListener implements
     
     private void gather(PackResources dataPack) {
         this.gatherTrainers(dataPack);
+        this.gatherSeries(dataPack);
         this.gatherResources(dataPack);
         ModCommon.LOG.info("Data pack initialized: " + dataPack.packId());
     }
@@ -193,6 +215,12 @@ public class DataPackManager extends SimpleJsonResourceReloadListener implements
     private void gatherTrainers(PackResources dataPack) {
         dataPack.listResources(this.packType, ModCommon.MOD_ID, PATH_TRAINERS, (rl, io) -> {
             this.trainerTeams.put(rl, dataPack);
+        });
+    }
+
+    private void gatherSeries(PackResources dataPack) {
+        dataPack.listResources(this.packType, ModCommon.MOD_ID, PATH_SERIES, (rl, io) -> {
+            this.series.put(rl, dataPack);
         });
     }
 
@@ -239,7 +267,7 @@ public class DataPackManager extends SimpleJsonResourceReloadListener implements
     protected void apply(Map<ResourceLocation, JsonElement> object, ResourceManager resourceManager, ProfilerFiller profilerFiller) {
         this.init(resourceManager);
 
-        // we'll load keep the default dialog for general purpose chats
+        // we'll load the default dialog for general purpose chats
         this.loadResource("", "dialogs",
             ChatUtils::initDefault,
             new TypeToken<Map<String, String[]>>() {});

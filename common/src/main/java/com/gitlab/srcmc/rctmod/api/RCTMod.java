@@ -27,6 +27,7 @@ import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.config.IClientConfig;
 import com.gitlab.srcmc.rctmod.api.config.IServerConfig;
 import com.gitlab.srcmc.rctmod.api.data.pack.DataPackManager;
+import com.gitlab.srcmc.rctmod.api.service.SeriesManager;
 import com.gitlab.srcmc.rctmod.api.service.TrainerManager;
 import com.gitlab.srcmc.rctmod.api.service.TrainerSpawner;
 import com.gitlab.srcmc.rctmod.config.ClientConfig;
@@ -70,6 +71,10 @@ public final class RCTMod {
 
     public TrainerManager getTrainerManager() {
         return this.trainerManager;
+    }
+
+    public SeriesManager getSeriesManager() {
+        return this.trainerManager.getSeriesManager();
     }
 
     public DataPackManager getClientDataManager() {

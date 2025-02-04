@@ -65,8 +65,15 @@ public class TrainerManager extends DataPackManager {
     private ResourceManager resourceManager;
     private boolean reloadRequired;
 
+    private SeriesManager seriesManager;
+
     public TrainerManager() {
         super(PackType.SERVER_DATA);
+        this.seriesManager = new SeriesManager();
+    }
+
+    public SeriesManager getSeriesManager() {
+        return this.seriesManager;
     }
 
     public void setServer(MinecraftServer server) {
@@ -306,11 +313,11 @@ public class TrainerManager extends DataPackManager {
                 }).max(Integer::compare).orElse(tmd.getRequiredLevelCap()));
             
             if(!tmd.getFollowdBy().isEmpty()) {
-                if(tmd.seriesStream().findFirst().isEmpty()) {
+                if(tmd.getSeries().findFirst().isEmpty()) {
                     globalMin[0] = Math.min(globalMin[0], tmd.getRequiredLevelCap());
                     this.minRequiredLevelCaps.replaceAll((k, v) -> Math.min(globalMin[0], v));
                 } else {
-                    tmd.seriesStream().forEach(s -> this.minRequiredLevelCaps.compute(s, (k, v) -> v == null
+                    tmd.getSeries().forEach(s -> this.minRequiredLevelCaps.compute(s, (k, v) -> v == null
                         ? Math.min(globalMin[0], tmd.getRequiredLevelCap())
                         : Math.min(globalMin[0], Math.min(v, tmd.getRequiredLevelCap()))));
                 }
@@ -319,6 +326,7 @@ public class TrainerManager extends DataPackManager {
 
         this.globalMinRequiredLevelCap = globalMin[0];
         this.trainerMobs = newTrainerMobs;
+        this.seriesManager.onLoad(this);
         this.receivedUpdates = new HashSet<>();
 
         if(this.isServerRunning()) {

@@ -1,0 +1,6 @@
+{
+    "title": "Radical Red",
+    "description": "A difficult series taking place in the Kanto region. Are you up to the challenge?",
+    "difficulty": 9,
+    "requiredSeries": [["bdsp"]]
+}

@@ -125,7 +125,7 @@ public class TrainerMobData implements IDataPackObject {
         return this.series.isEmpty() || this.series.contains(seriesId);
     }
 
-    public Stream<String> seriesStream() {
+    public Stream<String> getSeries() {
         return this.series.stream();
     }
 
