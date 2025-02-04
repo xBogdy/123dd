@@ -23,6 +23,8 @@ import java.util.Map;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+
 import net.minecraft.network.chat.ChatType;
 import net.minecraft.network.chat.OutgoingChatMessage;
 import net.minecraft.network.chat.PlayerChatMessage;
@@ -61,6 +63,24 @@ public final class ChatUtils {
     public static void replyRaw(LivingEntity source, Player target, String rawMessage) {
         var message = PlayerChatMessage.system(rawMessage);
         target.createCommandSourceStack().sendChatMessage(OutgoingChatMessage.create(message), false, ChatType.bind(ChatType.CHAT, source));
+    }
+
+    public static void sendTitle(Player target, String title, String subtitle) {
+        try {
+            var cs = target.createCommandSourceStack().withPermission(2).withSuppressedOutput();
+
+            if(subtitle != null && !subtitle.isBlank()) {
+                cs.dispatcher().execute(String.format("title @s subtitle {\"text\": \"%s\", \"italic\": true}", subtitle), cs);
+            }
+
+            if(title == null) {
+                title = "";
+            }
+
+            cs.dispatcher().execute(String.format("title @s title {\"text\": \"%s\"}", title), cs);
+        } catch(CommandSyntaxException e) {
+            ModCommon.LOG.error(e.getMessage(), e);
+        }
     }
 
     private ChatUtils() {}

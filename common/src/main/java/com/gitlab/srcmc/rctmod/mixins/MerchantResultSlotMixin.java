@@ -25,6 +25,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
+import com.gitlab.srcmc.rctmod.api.utils.ChatUtils;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerAssociation;
 
 import net.minecraft.core.component.DataComponents;
@@ -69,6 +70,7 @@ public class MerchantResultSlotMixin {
                 }
 
                 RCTMod.getInstance().getTrainerManager().getData(player).setCurrentSeries(offer.getKey());
+                ChatUtils.sendTitle(player, "A new Journey", RCTMod.getInstance().getSeriesManager().getData(offer.getKey()).title());
                 ta.updateOffersFor(player);
             }
         }
