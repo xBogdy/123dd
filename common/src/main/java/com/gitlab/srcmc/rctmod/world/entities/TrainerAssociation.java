@@ -22,7 +22,8 @@ import java.util.Map;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.ModRegistries.Items;
-import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
+import com.gitlab.srcmc.rctmod.api.RCTMod;
+import com.gitlab.srcmc.rctmod.api.data.pack.SeriesMetaData;
 import com.gitlab.srcmc.rctmod.api.utils.ChatUtils;
 
 import net.minecraft.ChatFormatting;
@@ -96,31 +97,49 @@ public class TrainerAssociation extends WanderingTrader {
     }
 
     public void updateOffersFor(Player player) {
-        var ps = PlayerState.get(player);
+        var tpd = RCTMod.getInstance().getTrainerManager().getData(player);
+        var sm = RCTMod.getInstance().getSeriesManager();
         this.offers = new MerchantOffers();
 
-        // TODO: retrieve available seriesIds based of player progression (sorted by: difficulty (ascending) -> name (ascending))
-        if(!ps.getCurrentSeries().equals("radicalred")) {
-            this.offers.add(new SeriesSwitchOffer("radicalred"));
-        }
+        sm.getSeriesIds()
+            .stream().map(sid -> Map.entry(sid, sm.getData(sid)))
+            .sorted((e1, e2) -> e1.getValue().compareTo(e2.getValue()))
+            .forEach(e -> {
+                if(e.getValue().requiredSeries() != null) {
+                    for(var reqs : e.getValue().requiredSeries()) {
+                        var ok = false;
 
-        if(!ps.getCurrentSeries().equals("bdsp")) {
-            this.offers.add(new SeriesSwitchOffer("bdsp"));
-        }
+                        for(var s : reqs) {
+                            if(tpd.getCompletedSeries().containsKey(s)) {
+                                ok = true;
+                                break;
+                            }
+                        }
+
+                        if(!ok) {
+                            return;
+                        }
+                    }
+                }
+
+                this.offers.add(new SeriesSwitchOffer(e.getKey(), e.getValue()));
+            });
 
         this.stopTrading();
     }
 
     private class SeriesSwitchOffer extends MerchantOffer {
         private String seriesId;
+        private SeriesMetaData seriesData;
 
-        public SeriesSwitchOffer(String seriesId) {
-            super(new ItemCost(Items.TRAINER_CARD.get()), createOfferFor(seriesId), Integer.MAX_VALUE, Integer.MAX_VALUE, 1f);
+        public SeriesSwitchOffer(String seriesId, SeriesMetaData seriesData) {
+            super(new ItemCost(Items.TRAINER_CARD.get()), createOfferFor(seriesData), Integer.MAX_VALUE, Integer.MAX_VALUE, 1f);
             this.seriesId = seriesId;
+            this.seriesData = seriesData;
         }
 
         private SeriesSwitchOffer(SeriesSwitchOffer origin) {
-            this(origin.seriesId);
+            this(origin.seriesId, origin.seriesData);
         }
 
         @Override
@@ -139,31 +158,41 @@ public class TrainerAssociation extends WanderingTrader {
             return new SeriesSwitchOffer(this);
         }
 
-        private static ItemStack createOfferFor(String seriesId) {
+        // full_star: ★, left_half: ⯨ (not used), left_half_empty: ⯪, empty_star: ☆
+        private static String makeStars(int n, int m) {
+            n = Math.min(n, m);
+            var full = n / 2;
+            var half = n > 0 && n % 2 != 0;
+            var empty = (m - n) / 2;
+            var sb = new StringBuilder();
+
+            for(int i = 0; i < full; i++) {
+                sb.append('★'); // full_star
+            }
+
+            if(half) {
+                sb.append('⯪'); // left_half_empty
+            }
+
+            for(int i = 0; i < empty; i++) {
+                sb.append('☆'); // empty star
+            }
+
+            return sb.toString();
+        }
+
+        private static ItemStack createOfferFor(SeriesMetaData seriesData) {
             var card = new ItemStack(Items.TRAINER_CARD.get(), 1);
 
-            // TODO: retrieve series metadata by seriesId
-            if(seriesId.equals("radicalred")) {
-                card.applyComponents(DataComponentMap.builder()
-                    .set(DataComponents.CUSTOM_NAME, Component.literal("Radical Red"))
-                    .set(DataComponents.LORE, new ItemLore(List.of(
-                        Component.literal("A difficult series taking place in the Kanto region. Are you up to the challenge?"),
-                        Component.literal("Difficulty: ★★★★⯨"), // ★⯨☆
-                        Component.literal(""), // empty line
-                        Component.literal("Important").withStyle(ChatFormatting.BOLD).withStyle(ChatFormatting.GOLD),
-                        Component.literal("Switching a series will reset your progression and level cap!").withStyle(ChatFormatting.GOLD)
-                    ))).build());
-            } else {
-                card.applyComponents(DataComponentMap.builder()
-                    .set(DataComponents.CUSTOM_NAME, Component.literal("Brilliant Diamond/Shining Pearl"))
-                    .set(DataComponents.LORE, new ItemLore(List.of(
-                        Component.literal("A casual series but stil with decent difficulty. Are you ready to conquer Unova?"),
-                        Component.literal("Difficulty: ★★★⯨☆"), // ★⯨☆
-                        Component.literal(""), // empty line
-                        Component.literal("Important").withStyle(ChatFormatting.BOLD).withStyle(ChatFormatting.GOLD),
-                        Component.literal("Switching a series will reset your progression and level cap!").withStyle(ChatFormatting.GOLD)
-                    ))).build());
-            }
+            card.applyComponents(DataComponentMap.builder()
+                .set(DataComponents.CUSTOM_NAME, Component.literal(seriesData.title()))
+                .set(DataComponents.LORE, new ItemLore(List.of(
+                    Component.literal(seriesData.description()),
+                    Component.literal(String.format("Difficulty: %s", makeStars(seriesData.difficulty(), SeriesMetaData.MAX_DIFFICULTY))),
+                    Component.literal(""), // empty line
+                    Component.literal("Important").withStyle(ChatFormatting.BOLD).withStyle(ChatFormatting.GOLD),
+                    Component.literal("Starting a new series will reset your progression but in return permanently increase your luck for better loot from trainers!").withStyle(ChatFormatting.GOLD)
+                ))).build());
 
             return card;
         }
