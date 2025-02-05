@@ -203,8 +203,6 @@ public class TrainerPlayerData extends SavedData {
 
             if(tag.contains("currentSeries")) {
                 tpd.currentSeries = tag.getString("currentSeries");
-            } else {
-                tpd.currentSeries = "radicalred";
             }
 
             tpd.updateLevelCap();
