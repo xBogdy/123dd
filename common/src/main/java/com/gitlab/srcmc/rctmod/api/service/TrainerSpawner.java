@@ -249,17 +249,17 @@ public class TrainerSpawner {
 
     public boolean attemptSpawnFor(Player player, String trainerId, BlockPos pos, boolean setHome, boolean noOrigin) {
         var cfg = RCTMod.getInstance().getServerConfig();
-        return this.attemptSpawnFor(player, trainerId, pos, setHome, noOrigin, cfg.globalSpawnChance(), cfg.globalSpawnChanceMinimum());
+        return this.attemptSpawnFor(player, trainerId, pos, setHome, noOrigin, false, cfg.globalSpawnChance(), cfg.globalSpawnChanceMinimum());
     }
 
-    public boolean attemptSpawnFor(Player player, String trainerId, BlockPos pos, boolean setHome, boolean noOrigin, double globalChance, double globalChanceMin) {
+    public boolean attemptSpawnFor(Player player, String trainerId, BlockPos pos, boolean setHome, boolean noOrigin, boolean guaruantee, double globalChance, double globalChanceMin) {
         var level = player.level();
 
         if(RCTMod.getInstance().getTrainerManager().isValidId(trainerId) && TrainerSpawner.canSpawnAt(level, pos) && this.canSpawnFor(player, noOrigin, globalChance, globalChanceMin)) {
             var tmd = RCTMod.getInstance().getTrainerManager().getData(trainerId);
 
             if(tmd != null && this.isUnique(tmd.getTrainerTeam().getIdentity())) {
-                if(this.computeChance(player, trainerId, tmd) >= player.getRandom().nextDouble()) {
+                if(guaruantee || this.computeChance(player, trainerId, tmd) >= player.getRandom().nextDouble()) {
                     this.spawnFor(player, trainerId, pos, setHome, noOrigin);
                     return true;
                 }

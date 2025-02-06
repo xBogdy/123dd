@@ -23,6 +23,7 @@ import java.util.List;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.ModRegistries;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
+import com.gitlab.srcmc.rctmod.world.blocks.TrainerSpawnerBlock;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 
 import net.minecraft.core.BlockPos;
@@ -146,21 +147,22 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
         this.renderItemKey = renderItemKey;
     }
 
-    private void attemptSpawn(Level level, BlockPos blockPos) {
+    private void attemptSpawn(Level level, BlockPos blockPos, BlockState blockState) {
         var pos = blockPos.getCenter();
         var nearest = level.getNearestPlayer(TargetingConditions.forNonCombat(), null, pos.x, pos.y, pos.z);
 
-        if(nearest == null || nearest.distanceToSqr(pos) < Math.pow(this.minPlayerDistance, 2)/2) {
+        if(nearest == null || nearest.distanceToSqr(pos) < Math.pow(this.minPlayerDistance, 2)/2) { // TODO: why divided by 2 again?
             return;
         }
 
+        var guaruantee = TrainerSpawnerBlock.isPowered(blockState); /* && RCTMod.getInstance().getServerConfig().enableTrainerSpawnerRedstone() */
         var spawner = RCTMod.getInstance().getTrainerSpawner();
         var trainerIds = new ArrayList<>(this.getTrainerIds());
         Collections.shuffle(trainerIds);
 
         for(var player : level.getNearbyPlayers(TargetingConditions.forNonCombat(), null, this.aabb)) {
             for(var trainerId : trainerIds) {
-                if(spawner.attemptSpawnFor(player, trainerId, this.getBlockPos().above(), true, true, 1.0, 1.0)) {
+                if(spawner.attemptSpawnFor(player, trainerId, this.getBlockPos().above(), true, true, guaruantee, 1.0, 1.0)) {
                     return;
                 }
             }
@@ -181,7 +183,7 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
     public static void serverTick(Level level, BlockPos blockPos, BlockState blockState, TrainerSpawnerBlockEntity be) {
         if(be.getRenderItemKey() != null) {
             if(be.spawnTimer.passed(level.getGameTime()) >= SPAWN_INTERVAL_TICKS) {
-                be.attemptSpawn(level, blockPos);
+                be.attemptSpawn(level, blockPos, blockState);
                 be.spawnTimer.reset(level.getGameTime());
             }
 

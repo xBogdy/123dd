@@ -19,6 +19,7 @@ package com.gitlab.srcmc.rctmod.client.renderer;
 
 import org.joml.Quaternionf;
 
+import com.gitlab.srcmc.rctmod.world.blocks.TrainerSpawnerBlock;
 import com.gitlab.srcmc.rctmod.world.blocks.entities.TrainerSpawnerBlockEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 
@@ -29,6 +30,9 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider.Con
 import net.minecraft.world.item.ItemDisplayContext;
 
 public class TrainerSpawnerBlockEntityRenderer implements BlockEntityRenderer<TrainerSpawnerBlockEntity> {
+    private Quaternionf rotationY = new Quaternionf();
+    private double translationY = 0.425;
+
     public TrainerSpawnerBlockEntityRenderer(Context context) {
     }
 
@@ -37,11 +41,20 @@ public class TrainerSpawnerBlockEntityRenderer implements BlockEntityRenderer<Tr
         var item = be.getRenderItem();
 
         if(item != null) {
-            var p = (be.getLevel().getGameTime() + f) * Math.PI / 60;
+            var p = (be.getLevel().getGameTime() + f) * Math.PI / (TrainerSpawnerBlock.isPowered(be.getBlockState()) ? 20 : 60);
+            var targetRotationY = new Quaternionf().rotateLocalY((float)p);
+
+            if (this.rotationY.dot(targetRotationY) < 0) {
+                targetRotationY.conjugate();
+            }
+
+            this.rotationY.slerp(targetRotationY, 0.1f);
+            this.translationY = org.joml.Math.lerp(this.translationY, 0.425 + Math.sin(p/2) * 0.05, 0.1);
+
             poseStack.pushPose();
-            poseStack.translate(0.5, 0.425 + Math.sin(p/2) * 0.05, 0.5);
+            poseStack.translate(0.5, this.translationY, 0.5);
             poseStack.scale(0.75f, 0.75f, 0.75f);
-            poseStack.mulPose(new Quaternionf().rotateLocalY((float)p));
+            poseStack.mulPose(this.rotationY);
             Minecraft.getInstance().getItemRenderer().renderStatic(item.getDefaultInstance(), ItemDisplayContext.GROUND, i, j, poseStack, multiBufferSource, be.getLevel(), 0);
             poseStack.popPose();
         }
