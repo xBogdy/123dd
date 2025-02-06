@@ -65,6 +65,7 @@ public class TrainerMobData implements IDataPackObject {
     private Type type = Type.NORMAL;
     private List<Set<String>> requiredDefeats = new ArrayList<>();
     private Set<String> series = new HashSet<>();
+    private boolean optional;
     
     private int maxTrainerWins = 3;
     private int maxTrainerDefeats = 1;
@@ -92,6 +93,7 @@ public class TrainerMobData implements IDataPackObject {
         this.rewardLevelCap = origin.rewardLevelCap;
         this.requiredDefeats = List.copyOf(origin.requiredDefeats);
         this.followdBy = Set.copyOf(origin.followdBy);
+        this.optional = origin.optional;
         this.maxTrainerWins = origin.maxTrainerWins;
         this.maxTrainerDefeats = origin.maxTrainerDefeats;
         this.battleCooldownTicks = origin.battleCooldownTicks;
@@ -129,6 +131,10 @@ public class TrainerMobData implements IDataPackObject {
         return this.series.stream();
     }
 
+    public List<Set<String>> getRequiredDefeats() {
+        return Collections.unmodifiableList(this.requiredDefeats);
+    }
+
     public Stream<String> getMissingRequirements(Set<String> defeatedTrainerIds) {
         return this.getMissingRequirements(defeatedTrainerIds, false);
     }
@@ -143,6 +149,10 @@ public class TrainerMobData implements IDataPackObject {
                 cons.accept(set.stream().findFirst().get());
             }
         });
+    }
+
+    public boolean isOptional() {
+        return this.optional;
     }
 
     public int getMaxTrainerWins() {
