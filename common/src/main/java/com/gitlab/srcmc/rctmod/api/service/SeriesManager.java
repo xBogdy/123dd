@@ -55,8 +55,9 @@ public class SeriesManager {
         // ModCommon.LOG.info("ALL :" + this.seriesData.getOrDefault(seriesId, new SeriesData(seriesId)).toString());
 
         return this.seriesData
-            .getOrDefault(seriesId, new SeriesData(seriesId)).list
-            .stream().filter(tn -> !tn.isOptional(defeatedTrainers))
+            .getOrDefault(seriesId, new SeriesData(seriesId)).list.stream()
+            .filter(tn -> !defeatedTrainers.contains(tn.trainerId))
+            .filter(tn -> !tn.isOptional(defeatedTrainers))
             .map(tn -> tn.trainerId);
     }
 
@@ -190,6 +191,7 @@ public class SeriesManager {
             var sb = new StringBuilder();
 
             this.list.stream()
+                .filter(tn -> !trainerIds.contains(tn.trainerId))
                 .filter(tn -> !tn.isOptional(trainerIds))
                 .forEach(tn -> sb.append(" -> ").append(tn.trainerId));
 
