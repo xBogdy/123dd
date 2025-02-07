@@ -23,6 +23,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
@@ -49,9 +50,9 @@ public class SeriesManager {
     }
 
     public Stream<String> getRequiredDefeats(String seriesId, Set<String> defeatedTrainers, boolean includeOptionals) {
-        ModCommon.LOG.info("SERIES REQURIED: " + seriesId + ", " + String.valueOf(defeatedTrainers));
-        var sd = this.seriesData.getOrDefault(seriesId, new SeriesData(seriesId));
-        sd.list.reversed().forEach(tn -> ModCommon.LOG.info(" -> " + tn.trainerId));
+        ModCommon.LOG.info("SERIES TRAINERS: " + seriesId + ", " + String.valueOf(defeatedTrainers));
+        ModCommon.LOG.info("REQUIRED: " + this.seriesData.getOrDefault(seriesId, new SeriesData(seriesId)).toString(defeatedTrainers));
+        // ModCommon.LOG.info("ALL :" + this.seriesData.getOrDefault(seriesId, new SeriesData(seriesId)).toString());
 
         return this.seriesData
             .getOrDefault(seriesId, new SeriesData(seriesId)).list
@@ -62,6 +63,7 @@ public class SeriesManager {
     void onLoad(TrainerManager tm) {
         var seriesData = new HashMap<String, SeriesData>();
 
+        // gather series ids
         tm.listSeries((rl, io) -> {
             var sid = PathUtils.filename(rl.getPath());
             
@@ -70,6 +72,7 @@ public class SeriesManager {
             }
         });
 
+        // gather series ids and create trainer nodes
         tm.getAllData().forEach(e -> {
             e.getValue().getSeries().forEach(sid -> {
                 var sd = seriesData.computeIfAbsent(sid, SeriesData::new);
@@ -77,8 +80,18 @@ public class SeriesManager {
             });
         });
 
+        // create nodes for trainers that belong to all series
+        tm.getAllData()
+            .filter(e -> e.getValue().getSeries().findFirst().isEmpty())
+            .forEach(e -> seriesData.values().forEach(sd -> sd.map.put(e.getKey(), new TrainerNode(e.getKey(), e.getValue().isOptional()))));
+
+        // build graph
         tm.getAllData().forEach(e -> {
-            e.getValue().getSeries().forEach(sid -> {
+            var seriesIds = e.getValue().getSeries().findFirst().isPresent()
+                ? e.getValue().getSeries()
+                : seriesData.keySet().stream();
+
+            seriesIds.forEach(sid -> {
                 var sd = seriesData.get(sid);
                 var rd = e.getValue().getRequiredDefeats();
                 var nd = sd.map.get(e.getKey());
@@ -90,19 +103,17 @@ public class SeriesManager {
                         if(other != null) {
                             nd.ancestors.add(other);
                             other.successors.add(nd);
+                            tids.stream().filter(tid2 -> tid2 != tid)
+                                .map(tid2 -> sd.map.get(tid2))
+                                .forEach(other.siblings::add);
                         }
-
-                        tids.stream().filter(tid2 -> tid2 != tid)
-                            .map(tid2 -> sd.map.get(tid2))
-                            .forEach(other.siblings::add);
                     });
                 });
-
-                sd.sortGraph();
             });
         });
 
         this.seriesData = Collections.unmodifiableMap(seriesData);
+        this.seriesData.values().forEach(SeriesData::sortGraph);
     }
 
     private class SeriesData {
@@ -119,34 +130,94 @@ public class SeriesManager {
         }
 
         void sortGraph() {
-            var list = new ArrayList<TrainerNode>(this.map.values());
-            Collections.sort(list);
-            this.list = list;
+            var list = List.copyOf(this.map.values());
+            var succ = new HashMap<TrainerNode, Integer>();
+
+            // get rid of trainers that don't have any edges
+            var alone = list.stream()
+                .filter(TrainerNode::isAlone)
+                .sorted((tn1, tn2) -> tn1.trainerId.compareTo(tn2.trainerId)).toList();
+
+            list = list.stream()
+                .filter(tn -> !tn.isAlone())
+                .collect(Collectors.toList());
+
+            // initialize edge counts
+            list.stream()
+                .filter(tn -> tn.ancestors.isEmpty())
+                .forEach(tn -> this.initCount(tn, succ));
+
+            var sorted = new ArrayList<TrainerNode>();
+            var batch = new ArrayList<TrainerNode>();
+            
+            while(list.size() > 0) {
+                var it = list.iterator();
+
+                while(it.hasNext()) {
+                    var next = it.next();
+
+                    if(succ.compute(next, (k, v) -> v - 1) < 0) {
+                        batch.add(next);
+                        it.remove();
+                    }
+                }
+
+                batch.sort((tn1, tn2) -> tn1.trainerId.compareTo(tn2.trainerId));
+                sorted.addAll(batch);
+                batch.clear();
+            }
+
+            list.addAll(sorted);
+            list.addAll(alone);
+            this.list = List.copyOf(list);
+        }
+
+        private void initCount(TrainerNode start, Map<TrainerNode, Integer> succ) {
+            var c = succ.computeIfAbsent(start, k -> 0);
+
+            start.successors.forEach(stn -> {
+                succ.compute(stn, (k, v) -> v == null ? c + 1 : Math.max(c + 1, v));
+                this.initCount(stn, succ);
+            });
+        }
+
+        @Override
+        public String toString() {
+            return this.toString(Set.of());
+        }
+
+        public String toString(Set<String> trainerIds) {
+            var sb = new StringBuilder();
+
+            this.list.stream()
+                .filter(tn -> !tn.isOptional(trainerIds))
+                .forEach(tn -> sb.append(" -> ").append(tn.trainerId));
+
+            return sb.toString();
         }
     }
 
-    private class TrainerNode implements Comparable<TrainerNode> {
+    private class TrainerNode {
         private String trainerId;
         private boolean optional;
         private List<TrainerNode> ancestors = new ArrayList<>();
         private List<TrainerNode> siblings = new ArrayList<>();
         private List<TrainerNode> successors = new ArrayList<>();
 
-        private Set<String> prevTrainerIds;
-        private boolean cachedOptional;
-
         public TrainerNode(String trainerId, boolean optional) {
             this.trainerId = trainerId;
             this.optional = optional;
         }
 
-        public boolean isOptional(Set<String> trainerIds) {
-            if(trainerIds != this.prevTrainerIds) {
-                this.prevTrainerIds = trainerIds;
-                this.cachedOptional = this.optional || this.isOptionalFor(trainerIds) || this.successors.stream().anyMatch(successor -> successor.isOptional(trainerIds));
-            }
+        public boolean isAlone() {
+            return this.ancestors.isEmpty() && this.successors.isEmpty();
+        }
 
-            return this.cachedOptional;
+        public boolean isOptional(Set<String> trainerIds) {
+            return this.optional
+                || this.isAlone()
+                || this.isOptionalFor(trainerIds)
+                || this.successors.stream().anyMatch(successor -> successor.isOptional(trainerIds));
         }
 
         boolean isOptionalFor(Set<String> trainerIds) {
@@ -159,27 +230,18 @@ public class SeriesManager {
             return false;
         }
 
-        boolean isAncestor(TrainerNode other) {
-            for(var anc : this.ancestors) {
-                if(anc.isAncestor(other)) {
-                    return true;
-                }
-            }
+        // boolean isAncestor(TrainerNode other) {
+        //     if(other.ancestors.contains(this)) {
+        //         return true;
+        //     }
 
-            return false;
-        }
+        //     for(var anc : other.ancestors) {
+        //         if(this.isAncestor(anc)) {
+        //             return true;
+        //         }
+        //     }
 
-        @Override
-        public int compareTo(TrainerNode other) {
-            if(this.isAncestor(other)) {
-                return 1;
-            }
-
-            if(other.isAncestor(this)) {
-                return -1;
-            }
-
-            return this.trainerId.compareTo(other.trainerId);
-        }
+        //     return false;
+        // }
     }
 }
