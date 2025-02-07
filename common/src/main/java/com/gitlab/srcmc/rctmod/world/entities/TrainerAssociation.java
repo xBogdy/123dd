@@ -17,14 +17,18 @@
  */
 package com.gitlab.srcmc.rctmod.world.entities;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.ModRegistries.Items;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.pack.SeriesMetaData;
 import com.gitlab.srcmc.rctmod.api.utils.ChatUtils;
+import com.gitlab.srcmc.rctmod.world.items.TrainerCard;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponentMap;
@@ -47,6 +51,8 @@ import net.minecraft.world.item.trading.MerchantOffers;
 import net.minecraft.world.level.Level;
 
 public class TrainerAssociation extends WanderingTrader {
+    public static final int SPAWN_INTERVAL_TICKS = 200;
+
     private static final EntityType<TrainerAssociation> TYPE = EntityType.Builder
         .of(TrainerAssociation::new, MobCategory.MISC)
         .canSpawnFarFromPlayer()
@@ -63,10 +69,58 @@ public class TrainerAssociation extends WanderingTrader {
             .add(Attributes.MAX_HEALTH, 20);
     }
 
+    private static Set<UUID> playerSpawns = new HashSet<>();
+
+    public static boolean trySpawnFor(Player player) {
+        if(TrainerAssociation.shouldSpawnFor(player)) {
+            return spawnFor(player);
+        }
+
+        return false;
+    }
+
+    public static boolean spawnFor(Player player) {
+        var pos = RCTMod.getInstance().getTrainerSpawner().nextPos(player);
+        
+        if(pos != null) {
+            var level = player.level();
+            var ta = TrainerAssociation.TYPE.create(level);
+            TrainerAssociation.playerSpawns.add(player.getUUID());
+            ta.setPos(pos.getCenter());
+            ta.setTarget(player);
+            level.addFreshEntity(ta);
+            return true;
+        }
+
+        return false;
+    }
+
+    public static boolean shouldSpawnFor(Player player) {
+        var tpd = RCTMod.getInstance().getTrainerManager().getData(player);
+
+        return !TrainerAssociation.playerSpawns.contains(player.getUUID())
+            && TrainerCard.has(player)
+            && tpd.isSeriesCompleted();
+    }
+
     private Map.Entry<String, ItemStack> offer;
 
     public TrainerAssociation(EntityType<? extends WanderingTrader> entityType, Level level) {
         super(entityType, level);
+    }
+
+    @Override
+    public void remove(RemovalReason reason) {
+        if(reason == RemovalReason.DISCARDED || reason == RemovalReason.KILLED) {
+            TrainerAssociation.playerSpawns.remove(this.getTarget().getUUID());
+        }
+
+        super.remove(reason);
+    }
+
+    @Override
+    public boolean removeWhenFarAway(double d) {
+        return true;
     }
 
     @Override
@@ -75,6 +129,11 @@ public class TrainerAssociation extends WanderingTrader {
 
         if(!itemStack.is(net.minecraft.world.item.Items.VILLAGER_SPAWN_EGG) && this.isAlive() && !this.isTrading() && !this.isBaby()) {
             if(!this.level().isClientSide) {
+                // TODO: THIS IS A TEST
+                var should = TrainerAssociation.shouldSpawnFor(player);
+                ModCommon.LOG.info("SHOULD SPAWN: " + should);
+                ///////////////////////
+
                 this.updateOffersFor(player);
                 this.offer = null;
 

@@ -34,6 +34,7 @@ import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.commands.PlayerCommands;
 import com.gitlab.srcmc.rctmod.commands.TrainerCommands;
 import com.gitlab.srcmc.rctmod.network.PlayerStatePayload;
+import com.gitlab.srcmc.rctmod.world.entities.TrainerAssociation;
 import com.mojang.brigadier.CommandDispatcher;
 
 import dev.architectury.event.events.common.CommandRegistrationEvent;
@@ -134,6 +135,13 @@ public class ModCommon {
                     if(spawnIntervalTicks == 0 || player.tickCount % spawnIntervalTicks == 0) {
                         rct.getTrainerSpawner().attemptSpawnFor(player);
                     }
+                }
+
+                if(player.tickCount % TrainerAssociation.SPAWN_INTERVAL_TICKS == 0) {
+                    // TODO:
+                    // if(cfg.spawnTrainerAssociation()) {
+                    //     TrainerAssociation.trySpawnFor(player);
+                    // }
                 }
 
                 if(player.tickCount % PlayerState.SYNC_INTERVAL_TICKS == 0) {

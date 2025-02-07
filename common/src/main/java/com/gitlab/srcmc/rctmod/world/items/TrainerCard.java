@@ -18,6 +18,7 @@
 package com.gitlab.srcmc.rctmod.world.items;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
+import com.gitlab.srcmc.rctmod.ModRegistries.Items;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.client.ModClient;
@@ -36,6 +37,11 @@ import net.minecraft.world.level.Level;
 
 public class TrainerCard extends Item {
     public static final int SYNC_INTERVAL_TICKS = 5;
+
+    public static boolean has(Player player) {
+        var tc = Items.TRAINER_CARD.get();
+        return player.getInventory().contains(stack -> stack.is(tc));
+    }
 
     public TrainerCard() {
         super(new Properties().stacksTo(1));

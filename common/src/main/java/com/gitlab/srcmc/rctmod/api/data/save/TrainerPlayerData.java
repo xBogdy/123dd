@@ -111,6 +111,16 @@ public class TrainerPlayerData extends SavedData {
         return false;
     }
 
+    public boolean isSeriesCompleted() {
+        if(!this.currentSeries.isEmpty()) {
+            return RCTMod.getInstance().getSeriesManager()
+                .getRequiredDefeats(this.currentSeries, this.defeatedTrainerIds)
+                .findFirst().isEmpty();
+        }
+
+        return false;
+    }
+
     public String getCurrentSeries() {
         return this.currentSeries;
     }

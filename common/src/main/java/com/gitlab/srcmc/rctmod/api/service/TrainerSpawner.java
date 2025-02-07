@@ -351,7 +351,7 @@ public class TrainerSpawner {
     }
 
     @SuppressWarnings("unused")
-    private BlockPos nextPos(Player player) {
+    public BlockPos nextPos(Player player) {
         var config = RCTMod.getInstance().getServerConfig();
         var level = player.level();
         var rng = player.getRandom();
