@@ -138,10 +138,9 @@ public class ModCommon {
                 }
 
                 if(player.tickCount % TrainerAssociation.SPAWN_INTERVAL_TICKS == 0) {
-                    // TODO:
-                    // if(cfg.spawnTrainerAssociation()) {
-                    //     TrainerAssociation.trySpawnFor(player);
-                    // }
+                    if(cfg.spawnTrainerAssociation()) {
+                        TrainerAssociation.trySpawnFor(player);
+                    }
                 }
 
                 if(player.tickCount % PlayerState.SYNC_INTERVAL_TICKS == 0) {

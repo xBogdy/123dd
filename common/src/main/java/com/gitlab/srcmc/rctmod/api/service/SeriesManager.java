@@ -50,9 +50,8 @@ public class SeriesManager {
     }
 
     public Stream<String> getRequiredDefeats(String seriesId, Set<String> defeatedTrainers, boolean includeOptionals) {
-        ModCommon.LOG.info("SERIES TRAINERS: " + seriesId + ", " + String.valueOf(defeatedTrainers));
-        ModCommon.LOG.info("REQUIRED: " + this.seriesData.getOrDefault(seriesId, new SeriesData(seriesId)).toString(defeatedTrainers));
-        // ModCommon.LOG.info("ALL :" + this.seriesData.getOrDefault(seriesId, new SeriesData(seriesId)).toString());
+        // ModCommon.LOG.info("SERIES TRAINERS: " + seriesId + ", " + String.valueOf(defeatedTrainers));
+        // ModCommon.LOG.info("REQUIRED: " + this.seriesData.getOrDefault(seriesId, new SeriesData(seriesId)).toString(defeatedTrainers));
 
         return this.seriesData
             .getOrDefault(seriesId, new SeriesData(seriesId)).list.stream()
@@ -188,11 +187,15 @@ public class SeriesManager {
         }
 
         public String toString(Set<String> trainerIds) {
+            return this.toString(trainerIds, false);
+        }
+
+        public String toString(Set<String> trainerIds, boolean includeOptionals) {
             var sb = new StringBuilder();
 
             this.list.stream()
                 .filter(tn -> !trainerIds.contains(tn.trainerId))
-                .filter(tn -> !tn.isOptional(trainerIds))
+                .filter(tn -> includeOptionals || !tn.isOptional(trainerIds))
                 .forEach(tn -> sb.append(" -> ").append(tn.trainerId));
 
             return sb.toString();

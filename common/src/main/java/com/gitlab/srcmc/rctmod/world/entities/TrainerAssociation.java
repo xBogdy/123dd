@@ -28,12 +28,14 @@ import com.gitlab.srcmc.rctmod.ModRegistries.Items;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.pack.SeriesMetaData;
 import com.gitlab.srcmc.rctmod.api.utils.ChatUtils;
+import com.gitlab.srcmc.rctmod.world.entities.goals.RandomStrollThroughVillageGoal;
 import com.gitlab.srcmc.rctmod.world.items.TrainerCard;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntityType;
@@ -41,6 +43,9 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.targeting.TargetingConditions;
+import net.minecraft.world.entity.ai.village.poi.PoiTypes;
+import net.minecraft.world.entity.ai.village.poi.PoiManager.Occupancy;
 import net.minecraft.world.entity.npc.WanderingTrader;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -51,7 +56,9 @@ import net.minecraft.world.item.trading.MerchantOffers;
 import net.minecraft.world.level.Level;
 
 public class TrainerAssociation extends WanderingTrader {
-    public static final int SPAWN_INTERVAL_TICKS = 200;
+    public static final int SPAWN_INTERVAL_TICKS = 400;
+    public static final int UPDATE_INTERVAL_TICKS = 4;
+    public static final int POI_SCAN_RANGE = 48;
 
     private static final EntityType<TrainerAssociation> TYPE = EntityType.Builder
         .of(TrainerAssociation::new, MobCategory.MISC)
@@ -71,23 +78,36 @@ public class TrainerAssociation extends WanderingTrader {
 
     private static Set<UUID> playerSpawns = new HashSet<>();
 
+    public static void init(Level level) {
+        playerSpawns = new HashSet<>();
+    }
+
     public static boolean trySpawnFor(Player player) {
-        if(TrainerAssociation.shouldSpawnFor(player)) {
-            return spawnFor(player);
+        if(canSpawnNearby(player)) {
+            if(shouldSpawnNearby(player)) {
+                return spawnFor(player, false);
+            }
+
+            if(shouldSpawnFor(player)) {
+                return spawnFor(player, true);
+            }
         }
 
         return false;
     }
 
-    public static boolean spawnFor(Player player) {
+    public static boolean spawnFor(Player player, boolean target) {
         var pos = RCTMod.getInstance().getTrainerSpawner().nextPos(player);
         
         if(pos != null) {
             var level = player.level();
             var ta = TrainerAssociation.TYPE.create(level);
-            TrainerAssociation.playerSpawns.add(player.getUUID());
+
+            if(target) {
+                ta.setPlayerTarget(player);
+            }
+
             ta.setPos(pos.getCenter());
-            ta.setTarget(player);
             level.addFreshEntity(ta);
             return true;
         }
@@ -95,32 +115,118 @@ public class TrainerAssociation extends WanderingTrader {
         return false;
     }
 
-    public static boolean shouldSpawnFor(Player player) {
+    protected static boolean canSpawnNearby(Player player) {
+        var cfg = RCTMod.getInstance().getServerConfig();
+        var dim = player.level().dimension().location().toString();
+
+        return cfg.spawnTrainerAssociation()
+            && (cfg.dimensionWhitelist().isEmpty() || cfg.dimensionWhitelist().contains(dim)) && (!cfg.dimensionBlacklist().contains(dim))
+            && player.level().getNearestEntity(
+                TrainerAssociation.class, TargetingConditions.forCombat(),
+                player, player.getX(), player.getY(), player.getZ(),
+                player.getBoundingBox().inflate(cfg.maxHorizontalDistanceToPlayers())) == null;
+    }
+
+    protected static boolean shouldSpawnNearby(Player player) {
+        var poim = ((ServerLevel)player.level()).getPoiManager();
+        var bell = poim.findClosestWithType(poit -> poit.is(PoiTypes.MEETING), player.blockPosition(), POI_SCAN_RANGE, Occupancy.ANY);
+        var beds = poim.findAllWithType(poit -> poit.is(PoiTypes.HOME), bp -> true, player.blockPosition(), POI_SCAN_RANGE, Occupancy.IS_OCCUPIED);
+        return bell.isPresent() && beds.skip(2).findFirst().isPresent();
+    }
+
+    protected static boolean shouldSpawnFor(Player player) {
         var tpd = RCTMod.getInstance().getTrainerManager().getData(player);
 
         return !TrainerAssociation.playerSpawns.contains(player.getUUID())
             && TrainerCard.has(player)
-            && tpd.isSeriesCompleted();
+            && (tpd.isSeriesCompleted() || tpd.getCurrentSeries().isEmpty());
     }
 
     private Map.Entry<String, ItemStack> offer;
+    private Player playerTarget;
+    private int despawnTicks;
 
     public TrainerAssociation(EntityType<? extends WanderingTrader> entityType, Level level) {
         super(entityType, level);
     }
 
+    public Player getPlayerTarget() {
+        return this.playerTarget;
+    }
+
+    public void setPlayerTarget(Player player) {
+        if(player != this.playerTarget) {
+            if(this.playerTarget != null) {
+                TrainerAssociation.playerSpawns.remove(this.playerTarget.getUUID());
+            }
+
+            this.playerTarget = player;
+
+            if(this.playerTarget != null) {
+                TrainerAssociation.playerSpawns.add(this.playerTarget.getUUID());
+            }
+
+            this.setTarget(this.playerTarget);
+        }
+    }
+
     @Override
-    public void remove(RemovalReason reason) {
-        if(reason == RemovalReason.DISCARDED || reason == RemovalReason.KILLED) {
-            TrainerAssociation.playerSpawns.remove(this.getTarget().getUUID());
+    public void tick() {
+        if(!this.level().isClientSide) {
+            if(this.tickCount % UPDATE_INTERVAL_TICKS == 0) {
+                RCTMod.getInstance().getTrainerSpawner().register(this);
+            }
         }
 
+        super.tick();
+    }
+
+    @Override
+    public void remove(RemovalReason reason) {
+        ModCommon.LOG.info("TA REMOVED: " + reason);
+        RCTMod.getInstance().getTrainerSpawner().unregister(this);
+        this.setPlayerTarget(null);
         super.remove(reason);
     }
 
     @Override
+    public boolean shouldBeSaved() {
+        return this.isPersistenceRequired();
+    }
+
+    public boolean shouldDespawn() {
+        if(++this.despawnTicks % TrainerMob.DESPAWN_TICK_SCALE == 0) {
+            if(this.level().getNearestPlayer(this, Math.max(TrainerMob.DESPAWN_DISTANCE, RCTMod.getInstance().getServerConfig().maxHorizontalDistanceToPlayers())) == null) {
+                return this.despawnTicks >= TrainerMob.TICKS_TO_DESPAWN;
+            }
+
+            this.despawnTicks = 0;
+        }
+
+        return false;
+    }
+
+    @Override
+    public void setPersistenceRequired() {
+        ModCommon.LOG.info("PRESISTENCE REQUIRED");
+        if(!this.isPersistenceRequired()) {
+            super.setPersistenceRequired();
+            this.setPlayerTarget(null);
+            var ts = RCTMod.getInstance().getTrainerSpawner();
+            ts.unregister(this);
+            ts.register(this);
+        }
+    }
+
+    @Override
     public boolean removeWhenFarAway(double d) {
-        return true;
+        return false;
+    }
+
+    @Override
+    public void registerGoals() {
+        super.registerGoals();
+        this.goalSelector.addGoal(5, new RandomStrollThroughVillageGoal(this, 0.35));
     }
 
     @Override
@@ -192,7 +298,7 @@ public class TrainerAssociation extends WanderingTrader {
         private SeriesMetaData seriesData;
 
         public SeriesSwitchOffer(String seriesId, SeriesMetaData seriesData) {
-            super(new ItemCost(Items.TRAINER_CARD.get()), createOfferFor(seriesData), Integer.MAX_VALUE, Integer.MAX_VALUE, 1f);
+            super(new ItemCost(Items.TRAINER_CARD.get()), createOfferFor(TrainerAssociation.this.getTradingPlayer(), seriesId, seriesData), Integer.MAX_VALUE, Integer.MAX_VALUE, 1f);
             this.seriesId = seriesId;
             this.seriesData = seriesData;
         }
@@ -217,7 +323,7 @@ public class TrainerAssociation extends WanderingTrader {
             return new SeriesSwitchOffer(this);
         }
 
-        // full_star: ★, left_half: ⯨ (not used), left_half_empty: ⯪, empty_star: ☆
+        // full_star: ★, left_half: ⯪, empty_star: ☆
         private static String makeStars(int n, int m) {
             n = Math.min(n, m);
             var full = n / 2;
@@ -230,7 +336,7 @@ public class TrainerAssociation extends WanderingTrader {
             }
 
             if(half) {
-                sb.append('⯪'); // left_half_empty
+                sb.append('⯪'); // left_half
             }
 
             for(int i = 0; i < empty; i++) {
@@ -240,17 +346,19 @@ public class TrainerAssociation extends WanderingTrader {
             return sb.toString();
         }
 
-        private static ItemStack createOfferFor(SeriesMetaData seriesData) {
+        private static ItemStack createOfferFor(Player player, String seriesId, SeriesMetaData seriesData) {
             var card = new ItemStack(Items.TRAINER_CARD.get(), 1);
+            var completions = player != null ? RCTMod.getInstance().getTrainerManager().getData(player).getCompletedSeries().getOrDefault(seriesId, 0) : 0;
 
             card.applyComponents(DataComponentMap.builder()
                 .set(DataComponents.CUSTOM_NAME, Component.literal(seriesData.title()))
                 .set(DataComponents.LORE, new ItemLore(List.of(
                     Component.literal(seriesData.description()),
                     Component.literal(String.format("Difficulty: %s", makeStars(seriesData.difficulty(), SeriesMetaData.MAX_DIFFICULTY))),
+                    Component.literal(String.format("Completed: %d", completions)),
                     Component.literal(""), // empty line
                     Component.literal("Important").withStyle(ChatFormatting.BOLD).withStyle(ChatFormatting.GOLD),
-                    Component.literal("Starting a new series will reset your progression but in return permanently increase your luck for better loot from trainers!").withStyle(ChatFormatting.GOLD)
+                    Component.literal("Starting a new series will reset your current series progression! In return completing a series will grant a permanent increase of better odds for more valuable loot from trainers.").withStyle(ChatFormatting.GOLD)
                 ))).build());
 
             return card;

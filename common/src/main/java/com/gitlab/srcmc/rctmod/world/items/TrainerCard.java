@@ -57,19 +57,37 @@ public class TrainerCard extends Item {
         if(!level.isClientSide) {
             if(entity.tickCount % SYNC_INTERVAL_TICKS == 0) {
                 if(entity instanceof ServerPlayer player) {
-                    var ps = PlayerState.get(player);
-                    var keyTrainer = RCTMod.getInstance().getTrainerSpawner().getSpawns()
-                        .stream().filter(t -> t.couldBattleAgainst(player) && ps.isKeyTrainer(t.getTrainerId()))
-                        .sorted((t1, t2) -> t1.level().dimension().location().equals(player.level().dimension().location()) ? Double.compare(t1.distanceToSqr(player), t2.distanceToSqr(player)) : 1)
-                        .findFirst();
+                    var tpd = RCTMod.getInstance().getTrainerManager().getData(player);
+                    var ts = RCTMod.getInstance().getTrainerSpawner();
 
-                    if(keyTrainer.isPresent()) {
-                        var t = keyTrainer.get();
-                        NetworkManager.sendToPlayer(player, new TrainerTargetPayload(
-                            t.position().x,
-                            t.position().y,
-                            t.position().z,
-                            !t.level().dimension().location().equals(player.level().dimension().location())));
+                    if(tpd.getCurrentSeries().isEmpty() || tpd.isSeriesCompleted()) {
+                        var closestTA = ts.getTASpawns().stream()
+                            .sorted((t1, t2) -> t1.level().dimension().location().equals(player.level().dimension().location()) ? Double.compare(t1.distanceToSqr(player), t2.distanceToSqr(player)) : 1)
+                            .findFirst();
+
+                        if(closestTA.isPresent()) {
+                            var t = closestTA.get();
+                            NetworkManager.sendToPlayer(player, new TrainerTargetPayload(
+                                t.position().x,
+                                t.position().y,
+                                t.position().z,
+                                !t.level().dimension().location().equals(player.level().dimension().location())));                            
+                        }
+                    } else {
+                        var ps = PlayerState.get(player);
+                        var keyTrainer = ts.getSpawns()
+                            .stream().filter(t -> t.couldBattleAgainst(player) && ps.isKeyTrainer(t.getTrainerId()))
+                            .sorted((t1, t2) -> t1.level().dimension().location().equals(player.level().dimension().location()) ? Double.compare(t1.distanceToSqr(player), t2.distanceToSqr(player)) : 1)
+                            .findFirst();
+
+                        if(keyTrainer.isPresent()) {
+                            var t = keyTrainer.get();
+                            NetworkManager.sendToPlayer(player, new TrainerTargetPayload(
+                                t.position().x,
+                                t.position().y,
+                                t.position().z,
+                                !t.level().dimension().location().equals(player.level().dimension().location())));
+                        }
                     }
                 }
             }

@@ -25,6 +25,7 @@ import com.gitlab.srcmc.rctmod.ModRegistries;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.client.renderer.TargetArrowRenderer;
+import com.gitlab.srcmc.rctmod.client.renderer.TrainerAssociationRenderer;
 import com.gitlab.srcmc.rctmod.client.renderer.TrainerRenderer;
 import com.gitlab.srcmc.rctmod.client.screens.IScreenManager;
 import com.gitlab.srcmc.rctmod.client.screens.ScreenManager;
@@ -40,7 +41,6 @@ import dev.architectury.registry.ReloadListenerRegistry;
 import dev.architectury.registry.client.level.entity.EntityRendererRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.client.renderer.entity.WanderingTraderRenderer;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
@@ -55,7 +55,7 @@ public class ModClient {
         ReloadListenerRegistry.register(PackType.CLIENT_RESOURCES, RCTMod.getInstance().getClientDataManager());
         ReloadListenerRegistry.register(PackType.CLIENT_RESOURCES, RCTMod.getInstance().getTrainerManager());
         EntityRendererRegistry.register(ModRegistries.Entities.TRAINER, TrainerRenderer::new);
-        EntityRendererRegistry.register(ModRegistries.Entities.TRAINER_ASSOCIATION, WanderingTraderRenderer::new);
+        EntityRendererRegistry.register(ModRegistries.Entities.TRAINER_ASSOCIATION, TrainerAssociationRenderer::new);
         TargetArrowRenderer.init();
     }
 

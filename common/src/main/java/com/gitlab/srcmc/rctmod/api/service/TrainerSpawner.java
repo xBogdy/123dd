@@ -20,10 +20,12 @@ package com.gitlab.srcmc.rctmod.api.service;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
@@ -32,6 +34,7 @@ import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
 import com.gitlab.srcmc.rctmod.api.data.save.collection.SavedMap;
 import com.gitlab.srcmc.rctmod.api.data.save.collection.SavedStringChunkPosMap;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
+import com.gitlab.srcmc.rctmod.world.entities.TrainerAssociation;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import com.google.common.collect.Sets;
 
@@ -40,6 +43,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.datafix.DataFixTypes;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.Entity.RemovalReason;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.ChunkPos;
@@ -72,13 +76,19 @@ public class TrainerSpawner {
 
     private Set<TrainerMob> mobs = new HashSet<>();
     private Set<TrainerMob> persistentMobs = new HashSet<>();
+    private Set<TrainerAssociation> tas = new HashSet<>();
+    private Set<TrainerAssociation> persistentTas = new HashSet<>();
 
     public void init(ServerLevel level) {
+        TrainerAssociation.init(level);
+
         this.spawns.clear();
         this.identities.clear();
         this.playerSpawns.clear();
         this.persistentMobs.clear();
+        this.persistentTas.clear();
         this.mobs.clear();
+        this.tas.clear();
 
         this.persistentChunks = level.getDataStorage().computeIfAbsent(
             new Factory<>(SavedStringChunkPosMap::new, SavedStringChunkPosMap::of, DataFixTypes.LEVEL),
@@ -100,19 +110,67 @@ public class TrainerSpawner {
         return Sets.union(this.mobs, this.persistentMobs);
     }
 
+    public Set<TrainerAssociation> getTASpawns() {
+        return Sets.union(this.tas, this.persistentTas);
+    }
+
     public void checkDespawns() {
-        var it = this.mobs.iterator();
+        checkDespawns(this.mobs.iterator(), this.mobs.size(), TrainerSpawner::despawnTest);
+        checkDespawns(this.tas.iterator(), this.tas.size(), TrainerSpawner::despawnTest);
+    }
+
+    private static <T extends Mob> void checkDespawns(Iterator<T> it, int count, Predicate<T> despawnPred) {
+        var queue = new ArrayList<T>(count);
 
         while(it.hasNext()) {
             var mob = it.next();
 
             if(mob.isRemoved() || mob.isPersistenceRequired()) {
                 it.remove();
-            } else if(mob.shouldDespawn()) {
-                mob.remove(RemovalReason.UNLOADED_TO_CHUNK);
-                it.remove();
+            } else if(despawnPred.test(mob)) {
+                queue.add(mob);
             }
         }
+
+        for(var mob : queue) {
+            mob.remove(RemovalReason.UNLOADED_TO_CHUNK);
+        }
+    }
+
+    private static boolean despawnTest(TrainerMob t) {
+        return t.shouldDespawn();
+    }
+
+    private static boolean despawnTest(TrainerAssociation t) {
+        return t.shouldDespawn();
+    }
+
+    public void register(TrainerAssociation ta) {
+        if((ta.isPersistenceRequired() ? this.persistentTas.add(ta) : this.tas.add(ta)) && RCTMod.getInstance().getServerConfig().logSpawning()) {
+            ModCommon.LOG.info(String.format("Registered '%s' (%sTrainer Association) to spawner%s, at %s (%s)",
+                ta.getDisplayName().getString(),
+                ta.isPersistenceRequired() ? "persistent " : "",
+                ta.getPlayerTarget() != null ? (" for " + ta.getPlayerTarget().getDisplayName().getString()): "",
+                ta.blockPosition().toShortString(),
+                ta.level().dimension().location().toString()));
+        }
+
+        if(ta.isPersistenceRequired()) {
+            this.persistentChunks.put(ta.getStringUUID(), ta.chunkPosition());
+        }
+    }
+
+    public void unregister(TrainerAssociation ta) {
+        if((this.tas.remove(ta) | this.persistentTas.remove(ta)) && RCTMod.getInstance().getServerConfig().logSpawning()) {
+            ModCommon.LOG.info(String.format("Unregistered '%s' (%sTrainer Association) from spawner%s, at %s (%s)",
+                ta.getDisplayName().getString(),
+                ta.isPersistenceRequired() ? "persistent " : "",
+                ta.getPlayerTarget() != null ? (" for " + ta.getPlayerTarget().getDisplayName().getString()): "",
+                ta.blockPosition().toShortString(),
+                ta.level().dimension().location().toString()));
+        }
+
+        this.persistentChunks.remove(ta.getStringUUID());
     }
 
     public void register(TrainerMob mob) {
@@ -160,11 +218,9 @@ public class TrainerSpawner {
 
             this.identities.compute(identity, (key, value) -> value == null || value <= 1 ? null : value - 1);
             this.spawns.remove(mob.getStringUUID());
-
-            if(mob.isPersistenceRequired()) {
-                this.persistentChunks.remove(mob.getStringUUID());
-                this.persistentMobs.remove(mob);
-            }
+            this.persistentChunks.remove(mob.getStringUUID());
+            this.persistentMobs.remove(mob);
+            this.mobs.remove(mob);
 
             var config = RCTMod.getInstance().getServerConfig();
 
@@ -179,7 +235,7 @@ public class TrainerSpawner {
     }
 
     public void unregisterPersistent(String mobUUID) {
-        for(var m : this.persistentMobs) {
+        for(var m : List.copyOf(this.persistentMobs)) {
             if(m.getStringUUID().equals(mobUUID)) {
                 m.setPersistent(false);
                 return;
@@ -529,7 +585,7 @@ public class TrainerSpawner {
             keyTrainerFactor = KEY_TRAINER_SPAWN_WEIGHT_FACTOR/b;
         }
 
-        int diff = Math.abs(Math.min(playerLevel, levelCap) - reqLevelCap);
+        int diff = Math.abs(Math.min(playerLevel, levelCap) - reqLevelCap); // TODO: Math.min(mobLevel, reqLevelCap)
         return diff > config.maxLevelDiff() ? 0 : ((config.maxLevelDiff() + 1) - diff)*mobTr.getSpawnWeightFactor()*keyTrainerFactor;
     }
 }

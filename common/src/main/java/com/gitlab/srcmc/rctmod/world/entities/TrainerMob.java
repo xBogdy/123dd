@@ -89,17 +89,17 @@ public class TrainerMob extends PathfinderMob implements Npc {
         .canSpawnFarFromPlayer()
         .sized(0.6F, 1.95F).build("trainer");
 
-    private final static int TICKS_TO_DESPAWN = 600;
-    private final static int DESPAWN_TICK_SCALE = 20;
-    private final static int DESPAWN_DISTANCE = 128;
-    private final static int MAX_PLAYER_TRACKING_RANGE = 128;
-    private final static int TARGET_UPDATE_INTERVAL = 120;
+    final static int TICKS_TO_DESPAWN = 600;
+    final static int DESPAWN_TICK_SCALE = 20;
+    final static int DESPAWN_DISTANCE = 128;
+    final static int MAX_PLAYER_TRACKING_RANGE = 128;
+    final static int TARGET_UPDATE_INTERVAL = 120;
 
-    private static final int AFK_CHECK_INTERVAL_TICKS = 2400;
-    private static final int AFK_CHECK_MAX_COUNT = 6;
-    private static final int AFK_PLAYER_MAX_COUNT = 3;
-    private static int MAX_TRAINER_ID_CHECK_RETRY_TICK = 600;
-    private static int TRAINER_ID_CHECK_RETRY_TICK = 20;
+    static final int AFK_CHECK_INTERVAL_TICKS = 2400;
+    static final int AFK_CHECK_MAX_COUNT = 6;
+    static final int AFK_PLAYER_MAX_COUNT = 3;
+    static int MAX_TRAINER_ID_CHECK_RETRY_TICK = 600;
+    static int TRAINER_ID_CHECK_RETRY_TICK = 20;
 
     private Map<UUID, int[]> winsAndDefeats = new HashMap<>();
     private int cooldown;
@@ -697,7 +697,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
         this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, LivingEntity.class, 8.0F));
         this.goalSelector.addGoal(5, new MoveToHomePosGoal(this));
         this.goalSelector.addGoal(6, new MoveCloseToTargetGoal(this, 0.35, maxTrackingDistance));
-        this.goalSelector.addGoal(7, new RandomStrollThroughVillageGoal(this, 0.35f));
+        this.goalSelector.addGoal(7, new RandomStrollThroughVillageGoal(this, 0.35f, p -> this.wasExhausted() ? p * 0.25f : p * 0.75f));
         this.goalSelector.addGoal(8, new RandomStrollAwayGoal(this, 0.35));
         this.goalSelector.addGoal(12, new WaterAvoidingRandomStrollGoal(this, 0.35));
     }

@@ -18,13 +18,13 @@
 package com.gitlab.srcmc.rctmod.world.entities.goals;
 
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Collectors;
-
-import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.SectionPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.ai.village.poi.PoiManager;
 import net.minecraft.world.entity.ai.village.poi.PoiManager.Occupancy;
@@ -39,22 +39,32 @@ public class RandomStrollThroughVillageGoal extends RandomStrollGoal {
     private static final int MAX_STROLL_TIME = 800;
     private static final int MIN_STROLL_TIME = 100;
 
-    private TrainerMob mob;
+    private PathfinderMob mob;
     private BlockPos target;
     private int idleTime, idleTimer;
     private int strollTime, strollTimer;
     private int prevMobTickCount;
     private SectionPos prevSection;
     private float probability;
+    private Function<Float, Float> probabilityTransform;
 
-    public RandomStrollThroughVillageGoal(TrainerMob pathfinderMob, double d) {
+    public RandomStrollThroughVillageGoal(PathfinderMob pathfinderMob, double d) {
+        this(pathfinderMob, d, v -> v);
+    }
+
+    public RandomStrollThroughVillageGoal(PathfinderMob pathfinderMob, double d, Function<Float, Float> probabilityTransform) {
         this(pathfinderMob, d, 0.5f);
     }
 
-    public RandomStrollThroughVillageGoal(TrainerMob pathfinderMob, double d, float p) {
+    public RandomStrollThroughVillageGoal(PathfinderMob pathfinderMob, double d, float p) {
+        this(pathfinderMob, d, p, v -> v);
+    }
+
+    public RandomStrollThroughVillageGoal(PathfinderMob pathfinderMob, double d, float p, Function<Float, Float> probabilityTransform) {
         super(pathfinderMob, d, 1, false);
         this.mob = pathfinderMob;
         this.probability = p;
+        this.probabilityTransform = probabilityTransform;
     }
 
     @Override
@@ -74,7 +84,7 @@ public class RandomStrollThroughVillageGoal extends RandomStrollGoal {
         var can = this.mob.getRandom().nextFloat() < this.probability && this.tryTargetInRandomSection() && super.canUse();
 
         if(can && !this.mob.isPersistenceRequired()) {
-            this.probability *= this.mob.wasExhausted() ? 0.25 : 0.75;
+            this.probability = this.probabilityTransform.apply(this.probability);
         }
 
         return can;
@@ -107,7 +117,6 @@ public class RandomStrollThroughVillageGoal extends RandomStrollGoal {
                 this.start();
                 return true;
             }
-
 
             return false;
         }
@@ -185,7 +194,9 @@ public class RandomStrollThroughVillageGoal extends RandomStrollGoal {
         BlockState bs;
 
         while(pUp.getY() - pos.getY() < 24 && pos.getY() - pDn.getY() < 24
-        && pUp.getY() <= level.getMaxBuildHeight() && pDn.getY() >= level.getMinBuildHeight()) {
+            && pUp.getY() <= level.getMaxBuildHeight()
+            && pDn.getY() >= level.getMinBuildHeight())
+        {
             bs = level.getBlockState(pUp);
 
             if(bs.entityCanStandOn(level, pUp, this.mob)) {

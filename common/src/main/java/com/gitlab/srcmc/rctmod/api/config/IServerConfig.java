@@ -73,6 +73,17 @@ public interface IServerConfig extends IModConfig {
     default int spawnIntervalTicksMaximum() { return 1200; }
 
     /**
+     * If enabled trainer association npcs may spawn naturally nearby players that
+     * carry a trainer card and have not started a series, completed their current
+     * series or are in proximity to a village (at least 3 occupied beds and a village
+     * center). These can spawn everywhere but will respect the 'dimensionBlacklist'
+     * and 'dimensionWhitelist' settings.
+     * 
+     * default: true
+     */
+    default boolean spawnTrainerAssociation() { return true; }
+
+    /**
      * The min horizontal distance a trainer can spawn from players.
      * 
      * range [1, inf]
