@@ -6,6 +6,7 @@
 
 **Added:**
 
+- *#228* Command `player add progress (before|after)`: Update progress without resetting current progression (useful for optional/alternative progression paths)
 - *#227* Command `player get series [completed]`: Retrieves the current or all completed series of a player
 - *#226* Command `player set series <seriesId> [completed <count>]`: Updates the current or completed series of a player
 - *#225* Config option `playerMustCarryTrainerCard` (TODO)

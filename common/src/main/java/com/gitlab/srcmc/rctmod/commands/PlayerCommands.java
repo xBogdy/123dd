@@ -79,6 +79,26 @@ public final class PlayerCommands {
                             .executes(PlayerCommands::player_get_type_defeats)
                             .then(Commands.argument("target", EntityArgument.player())
                                 .executes(PlayerCommands::player_get_type_defeats_target)))))
+                .then(Commands.literal("add")
+                    .requires(css -> css.hasPermission(2))
+                    .then(Commands.literal("progress")
+                        .then(Commands.literal("before")
+                            .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainerId", StringArgumentType.string())
+                                .suggests(PlayerCommands::get_progress_trainer_suggestions)
+                                .executes(PlayerCommands::player_add_progress_before)))
+                        .then(Commands.literal("after")
+                            .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainerId", StringArgumentType.string())
+                                .suggests(PlayerCommands::get_progress_trainer_suggestions)
+                                .executes(PlayerCommands::player_add_progress_after)))
+                        .then(Commands.argument("targets", EntityArgument.players())
+                            .then(Commands.literal("before")
+                                .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainerId", StringArgumentType.string())
+                                    .suggests(PlayerCommands::get_progress_trainer_suggestions)
+                                    .executes(PlayerCommands::player_add_progress_targets_before)))
+                            .then(Commands.literal("after")
+                                .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainerId", StringArgumentType.string())
+                                    .suggests(PlayerCommands::get_progress_trainer_suggestions)
+                                    .executes(PlayerCommands::player_add_progress_targets_after))))))
                 .then(Commands.literal("set")
                     .requires(css -> css.hasPermission(2))
                     .then(Commands.literal("series")
@@ -399,6 +419,25 @@ public final class PlayerCommands {
         return -1;
     }
 
+    private static int player_add_progress_before(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        if(context.getSource().getEntity() instanceof Player player) {
+            var trainerId = StringArgumentType.getString(context, "trainerId");
+            var tm = RCTMod.getInstance().getTrainerManager();
+            var tmd = tm.getData(trainerId);
+
+            if(tmd != null) {
+                var tpd = RCTMod.getInstance().getTrainerManager().getData(player);
+                var visited = new HashSet<String>();
+                tmd.getMissingRequirements(Set.of()).forEach(tid -> PlayerCommands.add_progress(tpd, tid, visited));
+            }
+
+            return 0;
+        }
+        
+        context.getSource().sendFailure(Component.literal("caller is not a player"));
+        return -1;
+    }
+
     private static int player_set_progress_after(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         if(context.getSource().getEntity() instanceof Player player) {
             var trainerId = StringArgumentType.getString(context, "trainerId");
@@ -408,6 +447,24 @@ public final class PlayerCommands {
             if(tmd != null) {
                 var tpd = RCTMod.getInstance().getTrainerManager().getData(player);
                 tpd.removeProgressDefeats();
+                PlayerCommands.add_progress(tpd, trainerId, new HashSet<>());
+            }
+
+            return 0;
+        }
+        
+        context.getSource().sendFailure(Component.literal("caller is not a player"));
+        return -1;
+    }
+
+    private static int player_add_progress_after(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        if(context.getSource().getEntity() instanceof Player player) {
+            var trainerId = StringArgumentType.getString(context, "trainerId");
+            var tm = RCTMod.getInstance().getTrainerManager();
+            var tmd = tm.getData(trainerId);
+
+            if(tmd != null) {
+                var tpd = RCTMod.getInstance().getTrainerManager().getData(player);
                 PlayerCommands.add_progress(tpd, trainerId, new HashSet<>());
             }
 
@@ -437,6 +494,24 @@ public final class PlayerCommands {
         return 0;
     }
 
+    private static int player_add_progress_targets_before(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        var targets = EntityArgument.getPlayers(context, "targets");
+        var trainerId = StringArgumentType.getString(context, "trainerId");
+        var tm = RCTMod.getInstance().getTrainerManager();
+
+        for(var player : targets) {
+            var tmd = tm.getData(trainerId);
+
+            if(tmd != null) {
+                var tpd = RCTMod.getInstance().getTrainerManager().getData(player);
+                var visited = new HashSet<String>();
+                tmd.getMissingRequirements(Set.of()).forEach(tid -> PlayerCommands.add_progress(tpd, tid, visited));
+            }
+        }
+        
+        return 0;
+    }
+
     private static int player_set_progress_targets_after(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         var targets = EntityArgument.getPlayers(context, "targets");
         var trainerId = StringArgumentType.getString(context, "trainerId");
@@ -448,6 +523,23 @@ public final class PlayerCommands {
             if(tmd != null) {
                 var tpd = RCTMod.getInstance().getTrainerManager().getData(player);
                 tpd.removeProgressDefeats();
+                PlayerCommands.add_progress(tpd, trainerId, new HashSet<>());
+            }
+        }
+        
+        return 0;
+    }
+
+    private static int player_add_progress_targets_after(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        var targets = EntityArgument.getPlayers(context, "targets");
+        var trainerId = StringArgumentType.getString(context, "trainerId");
+        var tm = RCTMod.getInstance().getTrainerManager();
+
+        for(var player : targets) {
+            var tmd = tm.getData(trainerId);
+
+            if(tmd != null) {
+                var tpd = RCTMod.getInstance().getTrainerManager().getData(player);
                 PlayerCommands.add_progress(tpd, trainerId, new HashSet<>());
             }
         }
