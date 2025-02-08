@@ -29,6 +29,7 @@ import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.ModRegistries;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.TrainerBattle;
+import com.gitlab.srcmc.rctmod.api.data.pack.SeriesMetaData;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.api.utils.ChatUtils;
 import com.gitlab.srcmc.rctmod.world.entities.goals.LookAtPlayerAndWaitGoal;
@@ -459,7 +460,12 @@ public class TrainerMob extends PathfinderMob implements Npc {
             .withParameter(LootContextParams.THIS_ENTITY, this)
             .withParameter(LootContextParams.ORIGIN, this.position())
             .withParameter(LootContextParams.DAMAGE_SOURCE, level.damageSources().generic())
-            .withParameter(LootContextParams.LAST_DAMAGE_PLAYER, player);
+            .withParameter(LootContextParams.LAST_DAMAGE_PLAYER, player)
+            .withLuck(RCTMod.getInstance()
+                .getTrainerManager().getData(player)
+                .getBonusLuck((int)(player.getLuck() * SeriesMetaData.MAX_DIFFICULTY)));
+
+        ModCommon.LOG.info("PLAYER LUCK: " + player.getLuck() + ", " + RCTMod.getInstance().getTrainerManager().getData(player).getBonusLuck((int)(player.getLuck() * SeriesMetaData.MAX_DIFFICULTY)));
 
         lootTable.getRandomItems(
             builder.create(LootContextParamSets.ENTITY),

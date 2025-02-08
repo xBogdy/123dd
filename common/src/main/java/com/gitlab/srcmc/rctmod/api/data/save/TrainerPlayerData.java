@@ -26,6 +26,7 @@ import java.util.Set;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
+import com.gitlab.srcmc.rctmod.api.utils.ChatUtils;
 
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.nbt.CompoundTag;
@@ -38,6 +39,7 @@ public class TrainerPlayerData extends SavedData {
     private String currentSeries = "";
     private Player player;
     private int initialLevelCap, additiveLevelCapRequirement, levelCap;
+    private boolean currentSeriesCompleted;
 
     public TrainerPlayerData(Player player) {
         this.player = player;
@@ -75,6 +77,7 @@ public class TrainerPlayerData extends SavedData {
             var ps = PlayerState.get(this.player);
             this.updateLevelCap(trainerId);
             ps.addProgressDefeat(trainerId);
+            this.updateCurrentSeries();
             this.setDirty();
             return true;
         }
@@ -121,6 +124,27 @@ public class TrainerPlayerData extends SavedData {
         return false;
     }
 
+    // will only ever return true once after a series has been set and was completed
+    private boolean testSeriesCompleted() {
+        if(!this.currentSeries.isEmpty() && !this.currentSeriesCompleted) {
+            this.currentSeriesCompleted = RCTMod.getInstance().getSeriesManager()
+                .getRequiredDefeats(this.currentSeries, this.defeatedTrainerIds)
+                .findFirst().isEmpty();
+
+            return this.currentSeriesCompleted;
+        }
+
+        return false;
+    }
+
+    private void updateCurrentSeries() {
+        if(this.testSeriesCompleted()) {
+            this.addSeriesCompletion(this.getCurrentSeries());
+            ChatUtils.sendTitle(player, "Completed", RCTMod.getInstance().getSeriesManager().getData(this.getCurrentSeries()).title());
+            // ModRegistries.CriteriaTriggers.DEFEAT_COUNT.get().trigger((ServerPlayer)player, mob); // TODO: series completion advancements?
+        }
+    }
+
     public String getCurrentSeries() {
         return this.currentSeries;
     }
@@ -137,6 +161,7 @@ public class TrainerPlayerData extends SavedData {
 
         if(!keepProgress) {
             this.removeProgressDefeats(true);
+            this.currentSeriesCompleted = false;
         }
     }
 
@@ -160,6 +185,18 @@ public class TrainerPlayerData extends SavedData {
         this.addSeriesCompletion(seriesId, -n);
     }
 
+    public float getBonusLuck() {
+        return this.getBonusLuck(0);
+    }
+
+    public float getBonusLuck(int extra) {
+        var sm = RCTMod.getInstance().getSeriesManager();
+
+        return (float)calculateLuck(extra + this.getCompletedSeries().entrySet().stream()
+            .map(e -> sm.getData(e.getKey()).difficulty()*e.getValue())
+            .reduce(0, (a, b) -> a + b));
+    }
+
     @Override
     public CompoundTag save(CompoundTag compoundTag, Provider provider) {
         byte b = 0;
@@ -171,6 +208,19 @@ public class TrainerPlayerData extends SavedData {
         compoundTag.put("completedSeries", completedSeries);
         compoundTag.putString("currentSeries", this.currentSeries);
         return compoundTag;
+    }
+
+    // luck₀ := 0
+    // luckₙ := (1 - luckₙ₋₁) / (n * 8) with n > 0, converges to 1
+    static final int LUCK_DELTA = 8;
+    static double calculateLuck(int n) {
+        var r = 0.0;
+        
+        for(int i = 1; i <= n; i++) {
+            r += (1.0 - r) / (i * LUCK_DELTA);
+        }
+        
+        return r;
     }
 
     public static class Builder {
