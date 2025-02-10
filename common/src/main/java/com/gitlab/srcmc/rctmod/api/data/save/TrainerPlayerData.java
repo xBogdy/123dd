@@ -238,31 +238,45 @@ public class TrainerPlayerData extends SavedData {
 
         public TrainerPlayerData of(CompoundTag tag, Provider provider) {
             var tpd = new TrainerPlayerData(this.player);
+            var tm = RCTMod.getInstance().getTrainerManager();
+            var sm = RCTMod.getInstance().getSeriesManager();
 
-            if(tag.contains("progressDefeats")) {
-                var tm = RCTMod.getInstance().getTrainerManager();
-                tpd.defeatedTrainerIds.addAll(tag.getCompound("progressDefeats")
-                    .getAllKeys().stream()
-                    .filter(tid -> !tm.getData(tid).getFollowedBy().isEmpty()/* || entry.getValue().getMissingRequirements(Set.of()).findFirst().isPresent()*/).toList());
-            } else {
-                // legacy support: derive progress defeats from trainer defeat counts
-                var tm = RCTMod.getInstance().getTrainerManager();
-                var level = this.player.getServer().overworld();
-
-                tm.getAllData()
-                    .filter(entry -> !entry.getValue().getFollowedBy().isEmpty()/* || entry.getValue().getMissingRequirements(Set.of()).findFirst().isPresent()*/)
-                    .map(entry -> entry.getKey())
-                    .filter(tid -> tm.getBattleMemory(level, tid).getDefeatByCount(this.player) > 0)
-                    .forEach(tpd.defeatedTrainerIds::add);
+            if(tag.contains("currentSeries")) {
+                tpd.currentSeries = tag.getString("currentSeries");
             }
 
             if(tag.contains("completedSeries")) {
                 var seriesTag = tag.getCompound("completedSeries");
-                seriesTag.getAllKeys().forEach(s -> tpd.completedSeries.put(s, tag.getInt(s)));
+                seriesTag.getAllKeys().forEach(s -> tpd.completedSeries.put(s, seriesTag.getInt(s)));
             }
 
-            if(tag.contains("currentSeries")) {
-                tpd.currentSeries = tag.getString("currentSeries");
+            if(!tpd.currentSeries.isEmpty()) {
+                var required = sm.getRequiredDefeats(tpd.currentSeries, Set.of(), true).collect(HashSet::new, (s, v) -> s.add(v), (s1, s2) -> s1.addAll(s2));
+
+                if(tag.contains("progressDefeats")) {
+                    // tpd.defeatedTrainerIds.addAll(tag.getCompound("progressDefeats")
+                    //     .getAllKeys().stream()
+                    //     .filter(tid -> !tm.getData(tid).getFollowedBy().isEmpty()/* || entry.getValue().getMissingRequirements(Set.of()).findFirst().isPresent()*/).toList());
+
+                    tag.getCompound("progressDefeats")
+                        .getAllKeys().stream()
+                        .filter(required::contains)
+                        .forEach(tpd.defeatedTrainerIds::add);
+                } else {
+                    // legacy support: derive progress defeats from trainer defeat counts
+                    var level = this.player.getServer().overworld();
+
+                    // tm.getAllData()
+                    //     .filter(entry -> !entry.getValue().getFollowedBy().isEmpty()/* || entry.getValue().getMissingRequirements(Set.of()).findFirst().isPresent()*/)
+                    //     .map(entry -> entry.getKey())
+                    //     .filter(tid -> tm.getBattleMemory(level, tid).getDefeatByCount(this.player) > 0)
+                    //     .forEach(tpd.defeatedTrainerIds::add);
+                    tm.getAllData()
+                        .map(entry -> entry.getKey())
+                        .filter(required::contains)
+                        .filter(tid -> tm.getBattleMemory(level, tid).getDefeatByCount(this.player) > 0)
+                        .forEach(tpd.defeatedTrainerIds::add);
+                }
             }
 
             tpd.updateLevelCap();
