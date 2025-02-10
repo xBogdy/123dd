@@ -35,7 +35,10 @@ import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
 import net.minecraft.world.entity.player.Player;
 
 public class PlayerState implements Serializable {
-    public static final int SYNC_INTERVAL_TICKS = 60;
+    public static final int SYNC_INTERVAL_TICKS = 10;
+    public static final int MIN_BATCH_SIZE = 64;
+    public static final int MAX_BATCH_SIZE = 512;
+
     private static final long serialVersionUID = 0;
     private static final Map<UUID, PlayerState> remoteStates = new HashMap<>();
     private static PlayerState localState;
@@ -51,6 +54,7 @@ public class PlayerState implements Serializable {
     private transient PlayerState updated;
     private transient boolean hasChanges = true;
     private transient Map<TrainerMobData.Type, Integer> distinctTypeDefeatCounts = new HashMap<>();
+    private transient Map<String, Boolean> keyTrainerMap = new HashMap<>();
 
     public static PlayerState get(Player player) {
         return PlayerState.get(player, false);
@@ -98,6 +102,7 @@ public class PlayerState implements Serializable {
 
         try(var ois = new ObjectInputStream(buf)) {
             this.update((PlayerState)ois.readObject());
+            this.hasChanges = false;
         } catch(IOException | ClassNotFoundException e) {
             throw new IllegalStateException(e);
         }
@@ -123,6 +128,7 @@ public class PlayerState implements Serializable {
         if(!this.currentSeries.equals(seriesId)) {
             this.currentSeries = seriesId;
             this.updated.currentSeries = seriesId;
+            this.keyTrainerMap.clear();
             this.hasChanges = true;
         }
     }
@@ -139,6 +145,7 @@ public class PlayerState implements Serializable {
         if(this.defeatedTrainerIds.add(trainerId)) {
             this.updated.defeatedTrainerIds.add(trainerId);
             this.updated.removedDefeatedTrainerIds.remove(trainerId);
+            this.keyTrainerMap.clear();
             this.hasChanges = true;
         }
     }
@@ -147,6 +154,7 @@ public class PlayerState implements Serializable {
         if(this.defeatedTrainerIds.remove(trainerId)) {
             this.updated.removedDefeatedTrainerIds.add(trainerId);
             this.updated.defeatedTrainerIds.remove(trainerId);
+            this.keyTrainerMap.clear();
             this.hasChanges = true;
         }
     }
@@ -156,6 +164,7 @@ public class PlayerState implements Serializable {
             this.updated.removedDefeatedTrainerIds.addAll(this.defeatedTrainerIds);
             this.updated.defeatedTrainerIds.clear();
             this.defeatedTrainerIds.clear();
+            this.keyTrainerMap.clear();
             this.hasChanges = true;
         }
     }
@@ -173,6 +182,7 @@ public class PlayerState implements Serializable {
         }
 
         this.updated.typeDefeatCounts.put(tt, this.typeDefeatCounts.compute(tt, (k, v) -> v == null ? 1 : v == Integer.MAX_VALUE ? v : v + 1));
+        this.keyTrainerMap.clear();
         this.hasChanges = true;
     }
 
@@ -202,8 +212,9 @@ public class PlayerState implements Serializable {
                 }
             }
 
-            this.updated.trainerDefeatCounts.put(trainerId, defeats);            
+            this.updated.trainerDefeatCounts.put(trainerId, defeats);
             this.updated.typeDefeatCounts.put(tt, newTypeDefeats);
+            this.keyTrainerMap.clear();
             this.hasChanges = true;
         }
     }
@@ -235,13 +246,15 @@ public class PlayerState implements Serializable {
     }
 
     public boolean isKeyTrainer(String trainerId) {
-        var sm = RCTMod.getInstance().getSeriesManager();
-        var tmd = RCTMod.getInstance().getTrainerManager().getData(trainerId);
-
-        return tmd != null
-            && tmd.isOfSeries(this.getCurrentSeries())
-            && tmd.getMissingRequirements(this.defeatedTrainerIds).findFirst().isEmpty()
-            && sm.getRequiredDefeats(this.currentSeries, this.defeatedTrainerIds).anyMatch(tid -> tid.equals(trainerId));
+        return this.keyTrainerMap.computeIfAbsent(trainerId, k -> {
+            var sm = RCTMod.getInstance().getSeriesManager();
+            var tmd = RCTMod.getInstance().getTrainerManager().getData(trainerId);
+    
+            return tmd != null
+                && tmd.isOfSeries(this.getCurrentSeries())
+                && tmd.getMissingRequirements(this.defeatedTrainerIds).findFirst().isEmpty()
+                && sm.getRequiredDefeats(this.currentSeries, this.defeatedTrainerIds).anyMatch(tid -> tid.equals(trainerId));
+        });
     }
 
     public boolean canBattle(String trainerId) {
@@ -299,6 +312,7 @@ public class PlayerState implements Serializable {
         updated.removedDefeatedTrainerIds.forEach(this.defeatedTrainerIds::remove);
         this.levelCap = updated.levelCap;
         this.currentSeries = updated.currentSeries;
+        this.keyTrainerMap.clear();
     }
 
     private void init() {
@@ -307,6 +321,7 @@ public class PlayerState implements Serializable {
         this.distinctTypeDefeatCounts.clear();
         this.defeatedTrainerIds.clear();
         this.removedDefeatedTrainerIds.clear();
+        this.keyTrainerMap.clear();
         var level = this.player.level();
 
         if(!level.isClientSide) {

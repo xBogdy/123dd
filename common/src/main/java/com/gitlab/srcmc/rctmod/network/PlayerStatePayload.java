@@ -24,16 +24,27 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
 
-public record PlayerStatePayload(byte[] bytes) implements CustomPacketPayload {
+public record PlayerStatePayload(byte[] bytes, int remainingBatches) implements CustomPacketPayload {
     public static final Type<PlayerStatePayload> TYPE = new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(ModCommon.MOD_ID, "player_state"));
 
     public static final StreamCodec<RegistryFriendlyByteBuf, PlayerStatePayload> CODEC = StreamCodec.of(
-        (b, v) -> { b.writeByteArray(v.bytes()); },
-        b -> PlayerStatePayload.of(b.readByteArray())
+        (b, v) -> {
+            b.writeInt(v.remainingBatches());
+            b.writeByteArray(v.bytes());
+        },
+        b -> {
+            var i = b.readInt();
+            var a = b.readByteArray();
+            return PlayerStatePayload.of(a, i);
+        }
     );
 
     public static PlayerStatePayload of(byte[] bytes) {
-        return new PlayerStatePayload(bytes);
+        return of(bytes, 0);
+    }
+
+    public static PlayerStatePayload of(byte[] bytes, int remainingBatches) {
+        return new PlayerStatePayload(bytes, remainingBatches);
     }
 
     @Override

@@ -17,6 +17,8 @@
  */
 package com.gitlab.srcmc.rctmod.client;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
@@ -24,6 +26,7 @@ import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.ModRegistries;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
+import com.gitlab.srcmc.rctmod.api.utils.ArrUtils;
 import com.gitlab.srcmc.rctmod.client.renderer.TargetArrowRenderer;
 import com.gitlab.srcmc.rctmod.client.renderer.TrainerAssociationRenderer;
 import com.gitlab.srcmc.rctmod.client.renderer.TrainerRenderer;
@@ -87,16 +90,29 @@ public class ModClient {
     // ClientPlayerEvent
 
     static void onClientPlayerJoin(LocalPlayer player) {
+        PLAYER_STATE_PAYLOADS.clear();
         PlayerState.get(player, true);
     }
 
     // NetworkManager
 
+    static List<byte[]> PLAYER_STATE_PAYLOADS = new ArrayList<>();
+
     static void receivePlayerState(PlayerStatePayload pl, PacketContext context) {
-        if(!ModClient.playerStateUpdates.offer(pl.bytes())) {
-            // TODO: log error instead of exception
-            throw new IllegalStateException("Failed to store player state updates");
+        PLAYER_STATE_PAYLOADS.add(pl.bytes());
+
+        if(pl.remainingBatches() == 0) {
+            if(!ModClient.playerStateUpdates.offer(ArrUtils.combine(PLAYER_STATE_PAYLOADS))) {
+                ModCommon.LOG.error("Failed to store player state updates");
+            }
+
+            PLAYER_STATE_PAYLOADS.clear();
         }
+
+        // if(!ModClient.playerStateUpdates.offer(pl.bytes())) {
+        //     // TODO: log error instead of exception
+        //     throw new IllegalStateException("Failed to store player state updates");
+        // }
     }
 
     static void receiveTrainerTarget(TrainerTargetPayload tt, PacketContext context) {

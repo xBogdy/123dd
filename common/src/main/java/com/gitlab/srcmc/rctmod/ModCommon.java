@@ -17,9 +17,13 @@
  */
 package com.gitlab.srcmc.rctmod;
 
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Queue;
+import java.util.UUID;
 import java.util.function.Supplier;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,6 +35,7 @@ import com.cobblemon.mod.common.api.events.pokemon.ExperienceGainedPreEvent;
 import com.gitlab.srcmc.rctapi.api.RCTApi;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
+import com.gitlab.srcmc.rctmod.api.utils.ArrUtils;
 import com.gitlab.srcmc.rctmod.commands.PlayerCommands;
 import com.gitlab.srcmc.rctmod.commands.TrainerCommands;
 import com.gitlab.srcmc.rctmod.network.PlayerStatePayload;
@@ -54,6 +59,8 @@ import net.minecraft.server.packs.PackType;
 import net.minecraft.world.entity.player.Player;
 
 public class ModCommon {
+    private static final Map<UUID, Queue<Map.Entry<byte[], Integer>>> PLAYER_STATE_PAYLOADS = new HashMap<>();
+    
     public static final String MOD_ID = "rctmod";
     public static final String MOD_NAME = "Radical Cobblemon Trainers";
     public static final Logger LOG = LoggerFactory.getLogger(MOD_NAME);
@@ -99,6 +106,7 @@ public class ModCommon {
     // LifecycleEvent
 
     static void onServerStarting(MinecraftServer server) {
+        PLAYER_STATE_PAYLOADS.clear();
         RCTMod.getInstance().getTrainerSpawner().init(server.overworld());
         RCTMod.getInstance().getTrainerManager().setServer(server);
     }
@@ -145,9 +153,21 @@ public class ModCommon {
 
                 if(player.tickCount % PlayerState.SYNC_INTERVAL_TICKS == 0) {
                     var bytes = PlayerState.get(player).serializeUpdate();
+                    var payloads = PLAYER_STATE_PAYLOADS.computeIfAbsent(player.getUUID(), k -> new LinkedList<>());
 
                     if(bytes.length > 0) {
-                        NetworkManager.sendToPlayer(player, PlayerStatePayload.of(bytes));
+                        var batches = ArrUtils.split(bytes, Math.max(PlayerState.MIN_BATCH_SIZE, Math.min(PlayerState.MAX_BATCH_SIZE, bytes.length / PlayerState.SYNC_INTERVAL_TICKS)));
+                        int i = batches.size();
+
+                        for(var batch : batches) {
+                            payloads.offer(Map.entry(batch, --i));
+                        }
+                    }
+
+                    if(!payloads.isEmpty()) {
+                        var pl = payloads.poll();
+                        ModCommon.LOG.info("SENDING " + pl.getKey().length + " BYTES, BATCHES: " + pl.getValue());
+                        NetworkManager.sendToPlayer(player, PlayerStatePayload.of(pl.getKey(), pl.getValue()));
                     }
                 }
             });
