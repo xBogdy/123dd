@@ -18,18 +18,15 @@
 package com.gitlab.srcmc.rctmod.commands;
 
 import java.util.Set;
-import java.util.concurrent.CompletableFuture;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
+import com.gitlab.srcmc.rctmod.commands.utils.SuggestionUtils;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
@@ -56,48 +53,43 @@ public class TrainerCommands {
                 .then(Commands.literal("summon")
                     .requires(css -> css.hasPermission(2))
                     .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainer", StringArgumentType.string())
-                        .suggests(TrainerCommands::get_trainer_suggestions)
+                        .suggests(SuggestionUtils::get_trainer_suggestions)
                         .executes(TrainerCommands::mob_summon_trainer)
                         .then(Commands.argument("at", BlockPosArgument.blockPos())
                             .executes(TrainerCommands::mob_summon_trainer_at))))
                 .then(Commands.literal("summon_persistent")
                     .requires(css -> css.hasPermission(2))
                     .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainer", StringArgumentType.string())
-                        .suggests(TrainerCommands::get_trainer_suggestions)
+                        .suggests(SuggestionUtils::get_trainer_suggestions)
                         .executes(TrainerCommands::mob_summon_persistent_trainer)
                         .then(Commands.argument("at", BlockPosArgument.blockPos())
                             .executes(TrainerCommands::mob_summon_persistent_trainer_at))))
                 .then(Commands.literal("get")
                     .then(Commands.literal("type")
                         .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainer", StringArgumentType.string())
-                            .suggests(TrainerCommands::get_trainer_suggestions)
+                            .suggests(SuggestionUtils::get_trainer_suggestions)
                             .executes(TrainerCommands::mob_get_type)))
                     .then(Commands.literal("max_trainer_wins")
                         .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainer", StringArgumentType.string())
-                            .suggests(TrainerCommands::get_trainer_suggestions)
+                            .suggests(SuggestionUtils::get_trainer_suggestions)
                             .executes(TrainerCommands::mob_get_max_trainer_wins)))
                     .then(Commands.literal("max_trainer_defeats")
                         .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainer", StringArgumentType.string())
-                            .suggests(TrainerCommands::get_trainer_suggestions)
+                            .suggests(SuggestionUtils::get_trainer_suggestions)
                             .executes(TrainerCommands::mob_get_max_trainer_defeats)))
                     .then(Commands.literal("reward_level_cap")
                         .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainer", StringArgumentType.string())
-                            .suggests(TrainerCommands::get_trainer_suggestions)
+                            .suggests(SuggestionUtils::get_trainer_suggestions)
                             .executes(TrainerCommands::mob_get_reward_level_cap)))
                     .then(Commands.literal("required_level_cap")
                         .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainer", StringArgumentType.string())
-                            .suggests(TrainerCommands::get_trainer_suggestions)
+                            .suggests(SuggestionUtils::get_trainer_suggestions)
                             .executes(TrainerCommands::mob_get_required_level_cap)))
                     .then(Commands.literal("required_defeats")
                         .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainer", StringArgumentType.string())
-                            .suggests(TrainerCommands::get_trainer_suggestions)
+                            .suggests(SuggestionUtils::get_trainer_suggestions)
                             .executes(TrainerCommands::mob_get_required_defeats)))
         )));
-    }
-
-    private static CompletableFuture<Suggestions> get_trainer_suggestions(final CommandContext<CommandSourceStack> context, final SuggestionsBuilder builder) throws CommandSyntaxException {
-        RCTMod.getInstance().getTrainerManager().getAllData().map(e -> e.getKey()).forEach(builder::suggest);
-        return builder.buildFuture();
     }
 
     private static int mob_summon_trainer(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
