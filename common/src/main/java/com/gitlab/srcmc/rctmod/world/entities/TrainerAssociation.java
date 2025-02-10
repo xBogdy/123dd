@@ -354,6 +354,7 @@ public class TrainerAssociation extends WanderingTrader {
                 .set(DataComponents.CUSTOM_NAME, Component.literal(seriesData.title()))
                 .set(DataComponents.LORE, new ItemLore(List.of(
                     Component.literal(seriesData.description()),
+                    Component.literal(""), // empty line
                     Component.literal(String.format("Difficulty: %s", makeStars(seriesData.difficulty(), SeriesMetaData.MAX_DIFFICULTY))),
                     Component.literal(String.format("Completed: %d", completions)),
                     Component.literal(""), // empty line

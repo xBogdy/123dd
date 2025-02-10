@@ -243,14 +243,14 @@ public class TrainerPlayerData extends SavedData {
                 var tm = RCTMod.getInstance().getTrainerManager();
                 tpd.defeatedTrainerIds.addAll(tag.getCompound("progressDefeats")
                     .getAllKeys().stream()
-                    .filter(tid -> !tm.getData(tid).getFollowdBy().isEmpty()/* || entry.getValue().getMissingRequirements(Set.of()).findFirst().isPresent()*/).toList());
+                    .filter(tid -> !tm.getData(tid).getFollowedBy().isEmpty()/* || entry.getValue().getMissingRequirements(Set.of()).findFirst().isPresent()*/).toList());
             } else {
                 // legacy support: derive progress defeats from trainer defeat counts
                 var tm = RCTMod.getInstance().getTrainerManager();
                 var level = this.player.getServer().overworld();
 
                 tm.getAllData()
-                    .filter(entry -> !entry.getValue().getFollowdBy().isEmpty()/* || entry.getValue().getMissingRequirements(Set.of()).findFirst().isPresent()*/)
+                    .filter(entry -> !entry.getValue().getFollowedBy().isEmpty()/* || entry.getValue().getMissingRequirements(Set.of()).findFirst().isPresent()*/)
                     .map(entry -> entry.getKey())
                     .filter(tid -> tm.getBattleMemory(level, tid).getDefeatByCount(this.player) > 0)
                     .forEach(tpd.defeatedTrainerIds::add);

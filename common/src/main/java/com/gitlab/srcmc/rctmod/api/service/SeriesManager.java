@@ -50,14 +50,31 @@ public class SeriesManager {
     }
 
     public Stream<String> getRequiredDefeats(String seriesId, Set<String> defeatedTrainers, boolean includeOptionals) {
+        return this.getRequiredDefeats(seriesId, defeatedTrainers, includeOptionals, false);
+    }
+
+    public Stream<String> getRequiredDefeats(String seriesId, Set<String> defeatedTrainers, boolean includeOptionals, boolean includeSingles) {
         // ModCommon.LOG.info("SERIES TRAINERS: " + seriesId + ", " + String.valueOf(defeatedTrainers));
         // ModCommon.LOG.info("REQUIRED: " + this.seriesData.getOrDefault(seriesId, new SeriesData(seriesId)).toString(defeatedTrainers));
+        var sd = this.seriesData.getOrDefault(seriesId, new SeriesData(seriesId));
+        var stream = sd.required.list.stream();
 
-        return this.seriesData
-            .getOrDefault(seriesId, new SeriesData(seriesId)).list.stream()
-            .filter(tn -> !defeatedTrainers.contains(tn.trainerId))
-            .filter(tn -> !tn.isOptional(defeatedTrainers))
+        if(includeOptionals) {
+            stream = Stream.concat(stream, sd.optionals.list.stream()).distinct();
+        }
+
+        if(includeSingles) {
+            stream = Stream.concat(stream, sd.alone.list.stream()).distinct();
+        }
+
+        return stream
+            .filter(tn -> !defeatedTrainers.contains(tn.trainerId) && (includeOptionals || !tn.isOptional(defeatedTrainers)))
             .map(tn -> tn.trainerId);
+        // return this.seriesData
+        //     .getOrDefault(seriesId, new SeriesData(seriesId)).all.list.stream()
+        //     .filter(tn -> !defeatedTrainers.contains(tn.trainerId))
+        //     .filter(tn -> (includeSingles && tn.isAlone()) || !tn.isOptional(defeatedTrainers))
+        //     .map(tn -> tn.trainerId);
     }
 
     void onLoad(TrainerManager tm) {
@@ -76,14 +93,14 @@ public class SeriesManager {
         tm.getAllData().forEach(e -> {
             e.getValue().getSeries().forEach(sid -> {
                 var sd = seriesData.computeIfAbsent(sid, SeriesData::new);
-                sd.map.put(e.getKey(), new TrainerNode(e.getKey(), e.getValue().isOptional()));
+                sd.all.map.put(e.getKey(), new TrainerNode(e.getKey(), e.getValue().isOptional()));
             });
         });
 
         // create nodes for trainers that belong to all series
         tm.getAllData()
             .filter(e -> e.getValue().getSeries().findFirst().isEmpty())
-            .forEach(e -> seriesData.values().forEach(sd -> sd.map.put(e.getKey(), new TrainerNode(e.getKey(), e.getValue().isOptional()))));
+            .forEach(e -> seriesData.values().forEach(sd -> sd.all.map.put(e.getKey(), new TrainerNode(e.getKey(), e.getValue().isOptional()))));
 
         // build graph
         tm.getAllData().forEach(e -> {
@@ -94,17 +111,17 @@ public class SeriesManager {
             seriesIds.forEach(sid -> {
                 var sd = seriesData.get(sid);
                 var rd = e.getValue().getRequiredDefeats();
-                var nd = sd.map.get(e.getKey());
+                var nd = sd.all.map.get(e.getKey());
 
                 rd.forEach(tids -> {
                     tids.forEach(tid -> {
-                        var other = sd.map.get(tid);
+                        var other = sd.all.map.get(tid);
 
                         if(other != null) {
                             nd.ancestors.add(other);
                             other.successors.add(nd);
                             tids.stream().filter(tid2 -> tid2 != tid)
-                                .map(tid2 -> sd.map.get(tid2))
+                                .map(tid2 -> sd.all.map.get(tid2))
                                 .forEach(other.siblings::add);
                         }
                     });
@@ -117,9 +134,19 @@ public class SeriesManager {
     }
 
     private class SeriesData {
+        class Graph {
+            private Map<String, TrainerNode> map = new HashMap<>();
+            private List<TrainerNode> list = new ArrayList<>();            
+        }
+        
         private SeriesMetaData metaData;
-        private Map<String, TrainerNode> map = new HashMap<>();
-        private List<TrainerNode> list = List.of();
+        private Graph required = new Graph();
+        private Graph optionals = new Graph();
+        private Graph alone = new Graph();
+        private Graph all = new Graph();
+        
+        // private Map<String, TrainerNode> map = new HashMap<>();
+        // private List<TrainerNode> list = List.of();
 
         SeriesData(String seriesId) {
             this(new SeriesMetaData(seriesId));
@@ -130,7 +157,7 @@ public class SeriesManager {
         }
 
         void sortGraph() {
-            var list = List.copyOf(this.map.values());
+            var list = List.copyOf(this.all.map.values());
             var succ = new HashMap<TrainerNode, Integer>();
 
             // get rid of trainers that don't have any edges
@@ -169,7 +196,42 @@ public class SeriesManager {
 
             list.addAll(sorted);
             list.addAll(alone);
-            this.list = List.copyOf(list);
+            this.all.list = List.copyOf(list);
+            this.initSubGraphs();
+        }
+
+        void initSubGraphs() {
+            this.required = new Graph();
+            this.optionals = new Graph();
+            this.alone = new Graph();
+
+            this.all.map.entrySet().forEach(e -> {
+                if(e.getValue().optional) {
+                    this.optionals.map.put(e.getKey(), e.getValue());
+                }
+
+                if(e.getValue().isAlone()) {
+                    this.alone.map.put(e.getKey(), e.getValue());
+                }
+
+                if(!e.getValue().optional && !e.getValue().isAlone()) {
+                    this.required.map.put(e.getKey(), e.getValue());
+                }
+            });
+
+            this.all.list.forEach(tn -> {
+                if(tn.optional) {
+                    this.optionals.list.add(tn);
+                }
+
+                if(tn.isAlone()) {
+                    this.alone.list.add(tn);
+                }
+
+                if(!tn.optional && !tn.isAlone()) {
+                    this.required.list.add(tn);
+                }
+            });
         }
 
         private void initCount(TrainerNode start, Map<TrainerNode, Integer> succ) {
@@ -193,7 +255,7 @@ public class SeriesManager {
         public String toString(Set<String> trainerIds, boolean includeOptionals) {
             var sb = new StringBuilder();
 
-            this.list.stream()
+            this.all.list.stream()
                 .filter(tn -> !trainerIds.contains(tn.trainerId))
                 .filter(tn -> includeOptionals || !tn.isOptional(trainerIds))
                 .forEach(tn -> sb.append(" -> ").append(tn.trainerId));

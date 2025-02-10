@@ -17,6 +17,10 @@
  */
 package com.gitlab.srcmc.rctmod.world.items;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.ModRegistries.Items;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
@@ -43,6 +47,8 @@ public class TrainerCard extends Item {
         return player.getInventory().contains(stack -> stack.is(tc));
     }
 
+    private Map<UUID, Integer> playerInvTickCounts = new HashMap<>();
+
     public TrainerCard() {
         super(new Properties().stacksTo(1));
     }
@@ -56,7 +62,8 @@ public class TrainerCard extends Item {
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int i, boolean bl) {
         if(!level.isClientSide) {
             if(entity.tickCount % SYNC_INTERVAL_TICKS == 0) {
-                if(entity instanceof ServerPlayer player) {
+                if((entity instanceof ServerPlayer player) && entity.tickCount != this.playerInvTickCounts.getOrDefault(player, -1)) {
+                    this.playerInvTickCounts.put(player.getUUID(), entity.tickCount);
                     var tpd = RCTMod.getInstance().getTrainerManager().getData(player);
                     var ts = RCTMod.getInstance().getTrainerSpawner();
 

@@ -143,23 +143,30 @@ public final class PlayerCommands {
     }
 
     private static CompletableFuture<Suggestions> get_series_suggestions(final CommandContext<CommandSourceStack> context, final SuggestionsBuilder builder) throws CommandSyntaxException {
-        RCTMod.getInstance().getSeriesManager().getSeriesIds().forEach(builder::suggest);
+        Stream.concat(RCTMod.getInstance().getSeriesManager().getSeriesIds().stream(), Stream.of("")).forEach(builder::suggest);
         return builder.buildFuture();
     }
 
     private static CompletableFuture<Suggestions> get_progress_trainer_suggestions(final CommandContext<CommandSourceStack> context, final SuggestionsBuilder builder) throws CommandSyntaxException {
-        Set<String> seriesSet = new HashSet<>();
+        var sm = RCTMod.getInstance().getSeriesManager();
+        var tm = RCTMod.getInstance().getTrainerManager();
+        Stream<String> tidStream;
 
         if(context.getSource().getEntity() instanceof Player p) {
-            seriesSet.add(PlayerState.get(p).getCurrentSeries());
+            var tpd = tm.getData(p);
+            tidStream = sm.getRequiredDefeats(tpd.getCurrentSeries(), Set.of(), true);
         } else {
-            EntityArgument.getPlayers(context, "targets").forEach(p -> seriesSet.add(PlayerState.get(p).getCurrentSeries()));
+            var sb = Stream.<String>builder();
+
+            EntityArgument.getPlayers(context, "targets").forEach(p -> {
+                var tpd = tm.getData(p);
+                sm.getRequiredDefeats(tpd.getCurrentSeries(), Set.of(), true).forEach(sb::accept);
+            });
+
+            tidStream = sb.build();
         }
 
-        RCTMod.getInstance().getTrainerManager().getAllData(seriesSet.toArray(new String[seriesSet.size()]))
-            .filter(e -> !e.getValue().getFollowdBy().isEmpty()/* || e.getValue().getMissingRequirements(Set.of()).findFirst().isPresent() */)
-            .map(e -> e.getKey()).forEach(builder::suggest);
-
+        tidStream.distinct().forEach(builder::suggest);
         return builder.buildFuture();
     }
 

@@ -305,14 +305,14 @@ public class TrainerManager extends DataPackManager {
         var globalMin = new int[]{100};
 
         newTrainerMobs.values().forEach(tmd -> {
-            tmd.setRewardLevelCap(tmd.getFollowdBy()
+            tmd.setRewardLevelCap(tmd.getFollowedBy()
                 .stream().map(tid -> {
                     var tm = newTrainerMobs.get(tid);
                     var tl = tm.getTrainerTeam().getTeam().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0);
                     return tl == 100 ? tl : tm.getRequiredLevelCap();
                 }).max(Integer::compare).orElse(tmd.getRequiredLevelCap()));
             
-            if(!tmd.getFollowdBy().isEmpty()) {
+            if(!tmd.getFollowedBy().isEmpty()) {
                 if(tmd.getSeries().findFirst().isEmpty()) {
                     globalMin[0] = Math.min(globalMin[0], tmd.getRequiredLevelCap());
                     this.minRequiredLevelCaps.replaceAll((k, v) -> Math.min(globalMin[0], v));

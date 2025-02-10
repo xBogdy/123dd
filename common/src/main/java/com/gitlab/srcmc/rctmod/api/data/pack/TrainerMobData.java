@@ -179,7 +179,7 @@ public class TrainerMobData implements IDataPackObject {
         return Collections.unmodifiableSet(this.biomeTagWhitelist);
     }
 
-    public Set<String> getFollowdBy() {
+    public Set<String> getFollowedBy() {
         return Collections.unmodifiableSet(this.followdBy);
     }
     
