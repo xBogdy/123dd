@@ -43,55 +43,54 @@ import net.minecraft.resources.ResourceLocation;
 public class PlayerInfoWidget extends AbstractWidget {
     public enum Display { TRAINER_LIST, TRAINER_INFO }
 
-    private static final ResourceLocation TRAINER_CARD_IMAGE_LOCATION = ResourceLocation.fromNamespaceAndPath(ModCommon.MOD_ID, "textures/gui/trainer_card.png");
-    private static final int TRAINER_CARD_IMAGE_X = 0;
-    private static final int TRAINER_CARD_IMAGE_Y = 0;
-    private static final int TRAINER_CARD_IMAGE_W = 224;
-    private static final int TRAINER_CARD_IMAGE_H = 128;
+    public static final ResourceLocation TRAINER_CARD_IMAGE_LOCATION = ResourceLocation.fromNamespaceAndPath(ModCommon.MOD_ID, "textures/gui/trainer_card.png");
+    public static final int TRAINER_CARD_IMAGE_X = 0;
+    public static final int TRAINER_CARD_IMAGE_Y = 0;
+    public static final int TRAINER_CARD_IMAGE_W = 224;
+    public static final int TRAINER_CARD_IMAGE_H = 128;
 
-    private static final int SKIN_X = 13;
-    private static final int SKIN_Y = 32;
-    private static final int SKIN_SIZE = 72;
+    public static final int SKIN_X = 13;
+    public static final int SKIN_Y = 32;
+    public static final int SKIN_SIZE = 72;
 
-    private static final int DISPLAY_NAME_X = 8 + 8;
-    private static final int DISPLAY_NAME_Y = 8;
-    private static final int DISPLAY_NAME_W = 82 - 16;
-    private static final int DISPLAY_NAME_H = 16;
+    public static final int DISPLAY_NAME_X = 8 + 8;
+    public static final int DISPLAY_NAME_Y = 8;
+    public static final int DISPLAY_NAME_W = 82 - 16;
+    public static final int DISPLAY_NAME_H = 16;
 
-    private static final int LEVEL_CAP_X = 8;
-    private static final int LEVEL_CAP_Y = 104;
-    private static final int LEVEL_CAP_W = 82;
-    private static final int LEVEL_CAP_H = 16;
-    private static final int LEVEL_CAP_PADDING = 4;
+    public static final int LEVEL_CAP_X = 8;
+    public static final int LEVEL_CAP_Y = 104;
+    public static final int LEVEL_CAP_W = 82;
+    public static final int LEVEL_CAP_H = 16;
+    public static final int LEVEL_CAP_PADDING = 4;
 
-    private static final int TOTAL_DEFEATS_X = 96;
-    private static final int TOTAL_DEFEATS_Y = 104;
-    private static final int TOTAL_DEFEATS_W = 88;
-    private static final int TOTAL_DEFEATS_H = 16;
-    private static final int TOTAL_DEFEATS_PADDING = 4;
+    public static final int TOTAL_DEFEATS_X = 96;
+    public static final int TOTAL_DEFEATS_Y = 104;
+    public static final int TOTAL_DEFEATS_W = 88;
+    public static final int TOTAL_DEFEATS_H = 16;
+    public static final int TOTAL_DEFEATS_PADDING = 4;
 
-    private static final int TRAINER_LIST_X = 96;
-    private static final int TRAINER_LIST_Y = 32;
-    private static final int TRAINER_LIST_W = 112;
-    private static final int TRAINER_LIST_H = 72;
+    public static final int TRAINER_LIST_X = 96;
+    public static final int TRAINER_LIST_Y = 32;
+    public static final int TRAINER_LIST_W = 112;
+    public static final int TRAINER_LIST_H = 72;
 
-    private static final int TYPE_BUTTON_X = 96;
-    private static final int TYPE_BUTTON_Y = 8;
-    private static final int TYPE_BUTTON_W = 100;
-    private static final int TYPE_BUTTON_H = 16;
+    public static final int TYPE_BUTTON_X = 96;
+    public static final int TYPE_BUTTON_Y = 8;
+    public static final int TYPE_BUTTON_W = 100;
+    public static final int TYPE_BUTTON_H = 16;
 
-    private static final int CHECKBOX_X = 196;
-    private static final int CHECKBOX_Y = 8;
-    private static final int CHECKBOX_W = 20;
-    private static final int CHECKBOX_H = 16;
-    private static final List<String> CHECKBOX_VALUES = List.of(" ", "✔");
+    public static final int CHECKBOX_X = 196;
+    public static final int CHECKBOX_Y = 8;
+    public static final int CHECKBOX_W = 20;
+    public static final int CHECKBOX_H = 16;
+    public static final List<String> CHECKBOX_VALUES = List.of(" ", "✔");
 
+    public static final int NEXT_PAGE_BUTTON_X = 200;
+    public static final int NEXT_PAGE_BUTTON_Y = 104;
+    public static final int NEXT_PAGE_BUTTON_SIZE = 16;
 
-    private static final int NEXT_PAGE_BUTTON_X = 200;
-    private static final int NEXT_PAGE_BUTTON_Y = 104;
-    private static final int NEXT_PAGE_BUTTON_SIZE = 16;
-
-    private static final String ALL_TRAINER_TYPES_STR = "ALL";
+    static final String ALL_TRAINER_TYPES_STR = "ALL";
 
     private final StringWidget displayName;
     private final StringWidget levelCapLabel;

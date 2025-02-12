@@ -39,6 +39,14 @@ public abstract class TrainerDataWidget extends AbstractScrollWidget implements 
         this.font = font;
     }
 
+    public int getInnerPadding() {
+        return this.innerPadding();
+    }
+
+    public double getScrollAmount() {
+        return this.scrollAmount();
+    }
+
     @Override
     protected int getInnerHeight() {
         return this.getHeight() - this.totalInnerPadding();
@@ -93,12 +101,12 @@ public abstract class TrainerDataWidget extends AbstractScrollWidget implements 
         // TODO
     }
 
-    protected double localX(double x) {
-        return (x - this.getX()) / INNER_SCALE - this.innerPadding();
+    public double localX(double absX) {
+        return (absX - this.getX()) / INNER_SCALE - this.innerPadding();
     }
 
-    protected double localY(double y) {
-        return (y - this.getY() + this.scrollAmount()) / INNER_SCALE - this.innerPadding();
+    public double localY(double absY) {
+        return (absY - this.getY() + this.scrollAmount()) / INNER_SCALE - this.innerPadding();
     }
 
     protected static<T> MutableComponent toComponent(T value) {

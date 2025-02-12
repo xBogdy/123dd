@@ -21,16 +21,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
-
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.algorithm.IAlgorithm;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.api.service.TrainerManager;
 import com.gitlab.srcmc.rctmod.client.screens.widgets.text.MultiStyleStringWidget;
-import com.gitlab.srcmc.rctmod.client.screens.widgets.text.TextUtils;
-
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
@@ -40,9 +36,9 @@ import net.minecraft.network.chat.Style;
 public class TrainerListWidget extends TrainerDataWidget {
     public enum EntryState {UNKNOWN, HIDDEN_KEY, DISCOVERED, DISCOVERED_KEY}
 
-    private static final int UPDATES_PER_TICK = 100;
-    private static final int ENTRIES_PER_PAGE = 100;
-    private static final int MAX_NAME_LENGTH = 20;
+    public static final int UPDATES_PER_TICK = 100;
+    public static final int ENTRIES_PER_PAGE = 100;
+    public static final int OBFUSCATION_INTERVAL_TICKS = 30;
 
     private class Entry {
         public final EntryState state;
@@ -51,6 +47,8 @@ public class TrainerListWidget extends TrainerDataWidget {
         public final MultiStyleStringWidget number;
         public final MultiStyleStringWidget name;
         public final MultiStyleStringWidget count;
+        private boolean isObfuscated;
+        private int currentTicks;
 
         public Entry(int trainerNr, String trainerId, EntryState state, MultiStyleStringWidget number, MultiStyleStringWidget name, MultiStyleStringWidget count) {
             this.state = state;
@@ -59,20 +57,23 @@ public class TrainerListWidget extends TrainerDataWidget {
             this.number = number;
             this.name = name;
             this.count = count;
-            this.number.active = true;
-            this.name.active = true;
-            this.count.active = true;
+            this.isObfuscated = state == EntryState.DISCOVERED_KEY || state == EntryState.HIDDEN_KEY;
         }
 
         public void render(GuiGraphics guiGraphics, int x, int y, float f) {
+            if(this.state == EntryState.DISCOVERED_KEY  && ticks != this.currentTicks && ticks % OBFUSCATION_INTERVAL_TICKS == 0) {
+                this.isObfuscated = !this.isObfuscated;
+                this.currentTicks = ticks;
+            }
+
             if(this.isMouseOver(localX(x), localY(y))) {
                 this.number.setStyle(1);
-                this.name.setStyle(1);
+                this.name.setStyle(this.isObfuscated ? 3 : 1);
                 this.count.setStyle(1);
                 hovered = this;
             } else {
                 this.number.setStyle(0);
-                this.name.setStyle(0);
+                this.name.setStyle(this.isObfuscated ? 2 : 0);
                 this.count.setStyle(0);
             }
 
@@ -94,7 +95,6 @@ public class TrainerListWidget extends TrainerDataWidget {
         public int i, c, x, y, w, h;
         public TrainerManager tdm;
         private boolean realtime;
-        private final Random rng = new Random();
 
         public UpdateState() {
             this(new HashMap<>());
@@ -155,20 +155,22 @@ public class TrainerListWidget extends TrainerDataWidget {
         }
 
         private Entry createEntry(int trainerNr, String trainerId, EntryState entryState, TrainerMobData trMob, int defeatCount, boolean isKeyTrainer) {
-            var name = TextUtils.trim(entryState != EntryState.UNKNOWN ? trMob.getTrainerTeam().getName() : "???", MAX_NAME_LENGTH);
-            var nameComponent = entryState == EntryState.HIDDEN_KEY ? toComponent(name).withStyle(ChatFormatting.OBFUSCATED) : toComponent(name);
-
-            if(entryState == EntryState.DISCOVERED_KEY && rng.nextFloat() < 0.35f) {
-                nameComponent = nameComponent.withStyle(ChatFormatting.OBFUSCATED);
-            }
-
-            var numberWidget = new MultiStyleStringWidget(this.x, this.y, this.w, this.h, toComponent(String.format("%04d: ", trainerNr)), font).addStyle(Style.EMPTY.withColor(ChatFormatting.RED)).alignLeft();
-            var nameWidget = new MultiStyleStringWidget((int)(this.x + this.w*0.18), this.y, (int)(this.w*0.62), this.h, nameComponent, font).addStyle(Style.EMPTY.withColor(ChatFormatting.RED)).alignLeft();
-            var countWidget = new MultiStyleStringWidget(this.x, this.y, this.w, this.h,
+            var name = entryState != EntryState.UNKNOWN ? trMob.getTrainerTeam().getName() : "???";
+            var nameComponent = toComponent(name);
+            var numberWidget = new MultiStyleStringWidget(TrainerListWidget.this, this.x, this.y, this.w, this.h, toComponent(String.format("%04d: ", trainerNr)), font)
+                .addStyle(Style.EMPTY.withColor(ChatFormatting.RED))
+                .alignLeft();
+            var nameWidget = new MultiStyleStringWidget(TrainerListWidget.this, (int)(this.x + this.w*0.18), this.y, (int)(this.w*0.7), this.h, nameComponent, font)
+                .addStyle(Style.EMPTY.withColor(ChatFormatting.RED))
+                .addStyle(Style.EMPTY.withObfuscated(true))
+                .addStyle(Style.EMPTY.withColor(ChatFormatting.RED).withObfuscated(true))
+                .scrolling().alignLeft();
+            var countWidget = new MultiStyleStringWidget(TrainerListWidget.this, this.x, this.y, this.w, this.h,
                     defeatCount > 9000 ? toComponent(" >9k") :
                     defeatCount > 999 ? toComponent(((defeatCount % 1000) != 0 ? " >" : " ") + (defeatCount/1000) + "k") :
                     toComponent(" " + defeatCount), font)
-                .addStyle(Style.EMPTY.withColor(ChatFormatting.RED)).alignRight();
+                .addStyle(Style.EMPTY.withColor(ChatFormatting.RED))
+                .alignRight();
 
             return new Entry(trainerNr, trainerId, entryState, numberWidget, nameWidget, countWidget);
         }
@@ -187,6 +189,7 @@ public class TrainerListWidget extends TrainerDataWidget {
     private UpdateState updateState;
     private int page, maxPage;
     private Entry hovered, selected;
+    private int ticks;
     
     public TrainerListWidget(int x, int y, int w, int h, Font font, List<String> trainerIds) {
         super(x, y, w, h, font);
@@ -264,6 +267,8 @@ public class TrainerListWidget extends TrainerDataWidget {
         } else {
             this.updateState.tick();
         }
+
+        ++this.ticks;
     }
 
     @Override

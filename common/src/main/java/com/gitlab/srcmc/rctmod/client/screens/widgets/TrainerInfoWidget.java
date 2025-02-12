@@ -20,7 +20,6 @@ package com.gitlab.srcmc.rctmod.client.screens.widgets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.PriorityQueue;
-import java.util.Random;
 import java.util.Set;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
@@ -44,7 +43,6 @@ import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
 
 public class TrainerInfoWidget extends TrainerDataWidget {
-    private static final int MAX_NAME_LENGTH = 20;
     private static final int MAX_SPECIES_LENGTH = 28;
     private static final int MAX_BIOME_LENGTH = 24;
 
@@ -74,19 +72,19 @@ public class TrainerInfoWidget extends TrainerDataWidget {
     private List<PageContent> contents = new ArrayList<>();
     private HoverElement<MultiStyleStringWidget> back;
     private StringWidget number, name, aka, identity;
-    private Random rng = new Random();
-    private boolean obf;
+    private boolean obfuscated;
+    private int ticks;
 
     public TrainerInfoWidget(int x, int y, int w, int h, Font font) {
         super(x, y, w, h, font);
     }
 
     public void tick() {
-        if(this.entryState == EntryState.DISCOVERED_KEY && this.name != null && this.rng.nextFloat() < (this.obf ? 0.05f : 0.025f)) {
+        if(this.entryState == EntryState.DISCOVERED_KEY && this.name != null && this.ticks % TrainerListWidget.OBFUSCATION_INTERVAL_TICKS == 0) {
             var msg = this.name.getMessage().plainCopy().withStyle(ChatFormatting.GREEN);
-            this.obf = !obf;
+            this.obfuscated = !this.obfuscated;
 
-            if(this.obf) {
+            if(this.obfuscated) {
                 msg = msg.withStyle(ChatFormatting.OBFUSCATED);
             }
 
@@ -95,13 +93,15 @@ public class TrainerInfoWidget extends TrainerDataWidget {
             if(this.identity != null) {
                 msg = this.identity.getMessage().plainCopy().withStyle(ChatFormatting.GREEN);
 
-                if(this.obf) {
+                if(this.obfuscated) {
                     msg = msg.withStyle(ChatFormatting.OBFUSCATED);
                 }
 
                 this.identity.setMessage(msg);
             }
         }
+
+        ++this.ticks;
     }
 
     public void initTrainerInfo(int trainerNr, String trainerId, EntryState entryState) {
@@ -113,22 +113,24 @@ public class TrainerInfoWidget extends TrainerDataWidget {
         this.h = this.getHeight() / 6;
         this.y = 0;
 
-        var displayName = TextUtils.trim(entryState == EntryState.UNKNOWN ? "???" : trainer.getTrainerTeam().getName(), MAX_NAME_LENGTH);
-        var identity = TextUtils.trim(entryState == EntryState.UNKNOWN ? "???" : trainer.getTrainerTeam().getIdentity(), MAX_NAME_LENGTH);
+        var displayName = entryState == EntryState.UNKNOWN ? "???" : trainer.getTrainerTeam().getName();
+        var identity = entryState == EntryState.UNKNOWN ? "???" : trainer.getTrainerTeam().getIdentity();
         var backX = (int)(this.w*0.9);
 
         this.back = new HoverElement<>(
-            new MultiStyleStringWidget(backX, this.y, this.w - backX, h, toComponent("[X]"), this.font).addStyle(Style.EMPTY.withColor(ChatFormatting.RED)).alignRight(),
+            new MultiStyleStringWidget(this, backX, this.y, this.w - backX, h, toComponent("[X]"), this.font).addStyle(Style.EMPTY.withColor(ChatFormatting.RED)).alignRight(),
             msw -> msw.setStyle(1), msw -> msw.setStyle(0));
 
-        this.number = new StringWidget(0, this.y, this.w, this.h, toComponent(String.format("%04d: ", trainerNr)), this.font).alignLeft();
-        this.name = new StringWidget((int)(this.w*0.18), this.y, (int)(this.w*0.72), this.h, entryState == EntryState.HIDDEN_KEY ? toComponent(displayName).withStyle(ChatFormatting.OBFUSCATED) : toComponent(displayName), this.font).alignLeft();
+        this.number = new MultiStyleStringWidget(this, 0, this.y, this.w, this.h, toComponent(String.format("%04d: ", trainerNr)), this.font).alignLeft();
+        this.name = new MultiStyleStringWidget(this, (int)(this.w*0.18), this.y, (int)(this.w*0.72), this.h, entryState == EntryState.HIDDEN_KEY ? toComponent(displayName)
+            .withStyle(ChatFormatting.OBFUSCATED) : toComponent(displayName), this.font)
+            .scrolling().alignLeft();
 
         if(entryState != EntryState.DISCOVERED || identity.equals(displayName)) {
             this.aka = this.identity = null;
         } else {
-            this.aka = new StringWidget(0, this.y += this.h, this.w, this.h, toComponent("aka"), this.font).alignLeft();
-            this.identity = new StringWidget((int)(this.w*0.18), this.y, this.w, this.h, entryState == EntryState.HIDDEN_KEY ? toComponent(identity).withStyle(ChatFormatting.OBFUSCATED) : toComponent(identity), this.font).alignLeft();
+            this.aka = new MultiStyleStringWidget(this, 0, this.y += this.h, this.w, this.h, toComponent("aka"), this.font).alignLeft();
+            this.identity = new MultiStyleStringWidget(this, (int)(this.w*0.18), this.y, this.w, this.h, entryState == EntryState.HIDDEN_KEY ? toComponent(identity).withStyle(ChatFormatting.OBFUSCATED) : toComponent(identity), this.font).alignLeft();
         }
 
         this.back.element.active = true;
@@ -213,9 +215,10 @@ public class TrainerInfoWidget extends TrainerDataWidget {
                 .forEach(t -> tags.add(t));
 
             if(config.biomeTagBlacklist().stream().noneMatch(tags::contains)
-            && this.trainer.getBiomeTagBlacklist().stream().noneMatch(tags::contains)
-            && (config.biomeTagWhitelist().isEmpty() || config.biomeTagWhitelist().stream().anyMatch(tags::contains))
-            && (this.trainer.getBiomeTagWhitelist().isEmpty() || this.trainer.getBiomeTagWhitelist().stream().anyMatch(tags::contains))) {
+                && this.trainer.getBiomeTagBlacklist().stream().noneMatch(tags::contains)
+                && (config.biomeTagWhitelist().isEmpty() || config.biomeTagWhitelist().stream().anyMatch(tags::contains))
+                && (this.trainer.getBiomeTagWhitelist().isEmpty() || this.trainer.getBiomeTagWhitelist().stream().anyMatch(tags::contains)))
+            {
                 // see DebugScreenOverlay#printBiome
                 biomes.offer((ResourceLocation)holder.unwrap().map(
                     r -> r.location(), b -> ResourceLocation.fromNamespaceAndPath("[unregistered]", b.toString())));
