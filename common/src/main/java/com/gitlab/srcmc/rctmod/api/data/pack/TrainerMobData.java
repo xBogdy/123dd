@@ -65,6 +65,7 @@ public class TrainerMobData implements IDataPackObject {
     private Type type = Type.NORMAL;
     private List<Set<String>> requiredDefeats = new ArrayList<>();
     private Set<String> series = new HashSet<>();
+    private Set<String> substitutes = new HashSet<>();
     private boolean optional;
     
     private int maxTrainerWins = 3;
@@ -133,6 +134,10 @@ public class TrainerMobData implements IDataPackObject {
 
     public List<Set<String>> getRequiredDefeats() {
         return Collections.unmodifiableList(this.requiredDefeats);
+    }
+
+    public Set<String> getSubstitutes() {
+        return Collections.unmodifiableSet(this.substitutes);
     }
 
     public Stream<String> getMissingRequirements(Set<String> defeatedTrainerIds) {

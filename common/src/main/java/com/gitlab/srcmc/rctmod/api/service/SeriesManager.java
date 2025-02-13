@@ -110,8 +110,17 @@ public class SeriesManager {
 
             seriesIds.forEach(sid -> {
                 var sd = seriesData.get(sid);
+                var st = e.getValue().getSubstitutes();
                 var rd = e.getValue().getRequiredDefeats();
                 var nd = sd.all.map.get(e.getKey());
+
+                st.forEach(tid -> {
+                    var other = sd.all.map.get(tid);
+
+                    if(other != null) {
+                        nd.siblings.add(other);
+                    }
+                });
 
                 rd.forEach(tids -> {
                     tids.forEach(tid -> {
