@@ -31,6 +31,7 @@ import net.minecraft.world.item.ItemDisplayContext;
 
 public class TrainerSpawnerBlockEntityRenderer implements BlockEntityRenderer<TrainerSpawnerBlockEntity> {
     private Quaternionf rotationY = new Quaternionf();
+    private Quaternionf targetRotationY = new Quaternionf();
     private double translationY = 0.425;
 
     public TrainerSpawnerBlockEntityRenderer(Context context) {
@@ -44,12 +45,9 @@ public class TrainerSpawnerBlockEntityRenderer implements BlockEntityRenderer<Tr
             var p = (be.getLevel().getGameTime() + f) * Math.PI / (TrainerSpawnerBlock.isPowered(be.getBlockState()) ? 20 : 60);
             var targetRotationY = new Quaternionf().rotateLocalY((float)p);
 
-            if (this.rotationY.dot(targetRotationY) < 0) {
-                targetRotationY.conjugate();
-            }
-
-            this.rotationY.slerp(targetRotationY, 0.1f);
-            this.translationY = org.joml.Math.lerp(this.translationY, 0.425 + Math.sin(p/2) * 0.05, 0.1);
+            this.targetRotationY.slerp(targetRotationY, 0.05f);
+            this.rotationY.slerp(this.targetRotationY, 0.05f);
+            this.translationY = org.joml.Math.lerp(this.translationY, 0.425 + Math.sin(p/2) * 0.05, 0.025);
 
             poseStack.pushPose();
             poseStack.translate(0.5, this.translationY, 0.5);
