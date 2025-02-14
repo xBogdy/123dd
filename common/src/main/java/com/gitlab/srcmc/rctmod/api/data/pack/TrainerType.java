@@ -25,6 +25,7 @@ import java.util.Map;
 import java.util.Set;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
+import com.gitlab.srcmc.rctmod.api.utils.JsonUtils.Exclude;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
@@ -70,8 +71,11 @@ public class TrainerType implements Serializable {
     private final String symbol;
     private final Color color;
 
-    private transient String id = "";
-    private transient int numericId = -1;
+    @Exclude
+    private String id = "";
+
+    @Exclude
+    private int numericId = -1;
 
     public TrainerType() {
         this("UNKNOWN");
@@ -113,7 +117,7 @@ public class TrainerType implements Serializable {
 
     @Override
     public String toString() {
-        return this.name;
+        return String.format("0x%02x:%s/%s", this.numericId, this.id, this.name);
     }
 
     @Override

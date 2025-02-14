@@ -22,9 +22,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringReader;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 import java.nio.charset.StandardCharsets;
 
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerType;
+import com.google.gson.ExclusionStrategy;
+import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -35,6 +41,8 @@ public final class JsonUtils<T> {
     public static final Gson GSON = new GsonBuilder()
         .registerTypeAdapter(TrainerType.Color.class, new TrainerType.Color.Serializer())
         .registerTypeAdapter(TrainerType.Color.class, new TrainerType.Color.Deserializer())
+        .addSerializationExclusionStrategy(new AnnotationExclusionStrategy())
+        .addDeserializationExclusionStrategy(new AnnotationExclusionStrategy())
         .setPrettyPrinting()
         .disableHtmlEscaping()
         .setLenient().create();
@@ -66,6 +74,24 @@ public final class JsonUtils<T> {
     public static <T> String toJson(T obj) {
         return GSON.toJson(obj);
     }
+    
+    private JsonUtils() {
+    }
 
-    private JsonUtils() {}
+    // see: https://www.baeldung.com/gson-exclude-fields-serialization#3-with-a-custom-annotation
+    @Retention(RetentionPolicy.RUNTIME)
+    @Target(ElementType.FIELD)
+    public static @interface Exclude {}
+
+    static class AnnotationExclusionStrategy implements ExclusionStrategy {
+        @Override
+        public boolean shouldSkipClass(Class<?> clazz) {
+            return false;
+        }
+    
+        @Override
+        public boolean shouldSkipField(FieldAttributes field) {
+            return field.getAnnotation(Exclude.class) != null;
+        }
+    }
 }
