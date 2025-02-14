@@ -31,7 +31,8 @@ import java.util.Set;
 import java.util.UUID;
 
 import com.gitlab.srcmc.rctmod.api.RCTMod;
-import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
+import com.gitlab.srcmc.rctmod.api.data.pack.TrainerType;
+
 import net.minecraft.world.entity.player.Player;
 
 public class PlayerState implements Serializable {
@@ -44,7 +45,7 @@ public class PlayerState implements Serializable {
     private static PlayerState localState;
 
     private Map<String, Integer> trainerDefeatCounts = new HashMap<>();
-    private Map<TrainerMobData.Type, Integer> typeDefeatCounts = new HashMap<>();
+    private Map<TrainerType, Integer> typeDefeatCounts = new HashMap<>();
     private Set<String> defeatedTrainerIds = new HashSet<>();
     private Set<String> removedDefeatedTrainerIds = new HashSet<>();
     private String currentSeries;
@@ -53,7 +54,7 @@ public class PlayerState implements Serializable {
     private transient Player player;
     private transient PlayerState updated;
     private transient boolean hasChanges = true;
-    private transient Map<TrainerMobData.Type, Integer> distinctTypeDefeatCounts = new HashMap<>();
+    private transient Map<TrainerType, Integer> distinctTypeDefeatCounts = new HashMap<>();
     private transient Map<String, Boolean> keyTrainerMap = new HashMap<>();
 
     public static PlayerState get(Player player) {
@@ -219,11 +220,11 @@ public class PlayerState implements Serializable {
         }
     }
 
-    public long getTypeDefeatCount(TrainerMobData.Type type) {
+    public long getTypeDefeatCount(TrainerType type) {
         return this.getTypeDefeatCount(type, false);
     }
 
-    public long getTypeDefeatCount(TrainerMobData.Type type, boolean distinct) {
+    public long getTypeDefeatCount(TrainerType type, boolean distinct) {
         var count = distinct ? this.distinctTypeDefeatCounts.get(type) : this.typeDefeatCounts.get(type);
         return count == null ? 0 : count;
     }
@@ -268,7 +269,7 @@ public class PlayerState implements Serializable {
         return Collections.unmodifiableMap(this.trainerDefeatCounts);
     }
 
-    protected Map<TrainerMobData.Type, Integer> getTypeDefeatCounts() {
+    protected Map<TrainerType, Integer> getTypeDefeatCounts() {
         return Collections.unmodifiableMap(this.typeDefeatCounts);
     }
 

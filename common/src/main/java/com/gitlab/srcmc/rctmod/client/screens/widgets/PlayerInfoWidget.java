@@ -19,12 +19,14 @@ package com.gitlab.srcmc.rctmod.client.screens.widgets;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.Set;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
-import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
+import com.gitlab.srcmc.rctmod.api.algorithm.Algorithm;
+import com.gitlab.srcmc.rctmod.api.data.pack.TrainerType;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
+import com.gitlab.srcmc.rctmod.client.screens.widgets.controls.CycleButton;
 import com.gitlab.srcmc.rctmod.client.screens.widgets.text.AutoScaledStringWidget;
 
 import net.minecraft.ChatFormatting;
@@ -33,7 +35,6 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.CycleButton;
 import net.minecraft.client.gui.components.PlayerFaceRenderer;
 import net.minecraft.client.gui.components.StringWidget;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
@@ -90,7 +91,7 @@ public class PlayerInfoWidget extends AbstractWidget {
     public static final int NEXT_PAGE_BUTTON_Y = 104;
     public static final int NEXT_PAGE_BUTTON_SIZE = 16;
 
-    static final String ALL_TRAINER_TYPES_STR = "ALL";
+    static final TrainerType ALL_TRAINER_TYPES = new TrainerType("All");
 
     private final StringWidget displayName;
     private final StringWidget levelCapLabel;
@@ -100,7 +101,7 @@ public class PlayerInfoWidget extends AbstractWidget {
 
     private final TrainerListWidget trainerList;
     private final TrainerInfoWidget trainerInfo;
-    private final CycleButton<String> trainerTypeButton;
+    private final CycleButton<TrainerType> trainerTypeButton;
     private final Button nextPageButton;
     private final Button prevPageButton;
     private final CycleButton<String> showUndefeated;
@@ -113,6 +114,8 @@ public class PlayerInfoWidget extends AbstractWidget {
 
     private ResourceLocation skinLocation;
     private Font font;
+
+    private Algorithm trainerTypeFetcher;
 
     public PlayerInfoWidget(int x, int y, int w, int h, Font font) {
         super(x, y, w, h, Component.empty());
@@ -127,18 +130,16 @@ public class PlayerInfoWidget extends AbstractWidget {
         this.trainerList = new TrainerListWidget(x + TRAINER_LIST_X, y + TRAINER_LIST_Y, TRAINER_LIST_W, TRAINER_LIST_H, font, this.sortedTrainerIds());
         this.trainerInfo = new TrainerInfoWidget(x + TRAINER_LIST_X, y + TRAINER_LIST_Y, TRAINER_LIST_W, TRAINER_LIST_H, font);
 
-        var types = new ArrayList<String>();
-        types.add(ALL_TRAINER_TYPES_STR);
-        types.addAll(Stream.of(TrainerMobData.Type.values()).map(type -> type.name()).toList());
+        var types = new ArrayList<TrainerType>();
+        types.add(ALL_TRAINER_TYPES);
 
-        this.showUndefeated = CycleButton.<String>builder(t -> Component.literal(t))
-            .displayOnlyValue()
-            .withValues(CHECKBOX_VALUES).withInitialValue(CHECKBOX_VALUES.get(1))
-            .create(x + CHECKBOX_X, y + CHECKBOX_Y, CHECKBOX_W, CHECKBOX_H, Component.empty());
+        this.showUndefeated = CycleButton.create(
+            t -> Component.literal(t), CHECKBOX_VALUES, 1,
+            x + CHECKBOX_X, y + CHECKBOX_Y, CHECKBOX_W, CHECKBOX_H, true);
 
-        this.trainerTypeButton = CycleButton.<String>builder(t -> Component.literal(t))
-            .withValues(types).withInitialValue(ALL_TRAINER_TYPES_STR)
-            .create(x + TYPE_BUTTON_X, y + TYPE_BUTTON_Y, TYPE_BUTTON_W, TYPE_BUTTON_H, Component.empty());
+        this.trainerTypeButton = CycleButton.create(
+            t -> Component.literal(t.name()), types, 0,
+            x + TYPE_BUTTON_X, y + TYPE_BUTTON_Y, TYPE_BUTTON_W, TYPE_BUTTON_H, false);
         
         this.nextPageButton = Button
             .builder(Component.literal(">"), this::onNextPage)
@@ -233,6 +234,7 @@ public class PlayerInfoWidget extends AbstractWidget {
         var mc = Minecraft.getInstance();
         var playerState = PlayerState.get(mc.player);
         var levelCap = playerState.getLevelCap();
+        var sid = playerState.getCurrentSeries();
 
         this.skinLocation = mc.player.getSkin().texture();
         this.displayName.setMessage(Component.literal(mc.player.getDisplayName().getString()).withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.WHITE));
@@ -240,7 +242,9 @@ public class PlayerInfoWidget extends AbstractWidget {
             ? Component.literal(String.valueOf(levelCap)).withStyle(ChatFormatting.WHITE)
             : Component.literal("000").withStyle(ChatFormatting.OBFUSCATED).withStyle(ChatFormatting.WHITE));
             
-        if(this.trainerList.active) {
+        if(this.trainerList.active && sid != null) {
+            this.fetchTrainerTypes(sid);
+
             var totalDefeats = this.getTotalDefeats();
             this.totalDefeatsValue.setMessage(totalDefeats < 1000000
                 ? Component.literal(String.valueOf(totalDefeats)).withStyle(ChatFormatting.WHITE)
@@ -249,15 +253,11 @@ public class PlayerInfoWidget extends AbstractWidget {
             this.nextPageButton.active = this.trainerList.getPage() < this.trainerList.getMaxPage();
             this.prevPageButton.active = this.trainerList.getPage() > 0;
 
-            var trainerTypeStr = this.trainerTypeButton.getValue();
+            var trainerTypeIndex = this.trainerTypeButton.getIndex();
             var showUndefeated = this.isShowUndefeatedSelected();
-            var showAllTypes = trainerTypeStr.equals(ALL_TRAINER_TYPES_STR);
+            var showAllTypes = trainerTypeIndex == 0;
 
-            if(!showAllTypes) {
-                var trainerType = TrainerMobData.Type.valueOf(trainerTypeStr);
-                this.trainerList.setTrainerType(trainerType);
-            }
-
+            this.trainerList.setTrainerType(this.trainerTypeButton.getValue());
             this.trainerList.setShowAllTypes(showAllTypes);
             this.trainerList.setShowUndefeated(showUndefeated);
             this.trainerList.tick();
@@ -270,6 +270,26 @@ public class PlayerInfoWidget extends AbstractWidget {
             this.nextPageButton.active = this.trainerInfo.getPage() < this.trainerInfo.getMaxPage();
             this.prevPageButton.active = this.trainerInfo.getPage() > 0;
             this.trainerInfo.tick();
+        }
+    }
+
+    private void fetchTrainerTypes(String sid) {
+        if(sid != null) {
+            if(this.trainerTypeFetcher == null) {
+                var sm = RCTMod.getInstance().getSeriesManager();
+                var tm = RCTMod.getInstance().getTrainerManager();
+                var it = TrainerType.values().stream()
+                    .filter(t -> sm.getRequiredDefeats(sid, Set.of(), true, true).anyMatch(tid -> tm.getData(tid).getType().equals(t)))
+                    .sorted((t1, t2) -> t1.name().compareTo(t2.name())).iterator();
+
+                this.trainerTypeFetcher = new Algorithm(
+                    () -> this.trainerTypeButton.addValue(it.next()),
+                    () -> !it.hasNext());
+            }
+
+            if(!this.trainerTypeFetcher.finished()) {
+                this.trainerTypeFetcher.tick();
+            }
         }
     }
 
@@ -329,7 +349,7 @@ public class PlayerInfoWidget extends AbstractWidget {
         return playerState.getTrainerDefeatCount();
     }
 
-    private long getTotalDefeats(TrainerMobData.Type type) {
+    private long getTotalDefeats(TrainerType type) {
         var mc = Minecraft.getInstance();
         var playerState = PlayerState.get(mc.player);
         return playerState.getTypeDefeatCount(type);
@@ -341,14 +361,14 @@ public class PlayerInfoWidget extends AbstractWidget {
         int count = 0;
 
         // TODO: consider optimization (cache value) if more trainer types get introduced
-        for(var t : TrainerMobData.Type.values()) {
+        for(var t : TrainerType.values()) {
             count += playerState.getTypeDefeatCount(t, true);
         }
 
         return count;
     }
 
-    private long getDistinctDefeats(TrainerMobData.Type type) {
+    private long getDistinctDefeats(TrainerType type) {
         var mc = Minecraft.getInstance();
         var playerState = PlayerState.get(mc.player);
         return playerState.getTypeDefeatCount(type, true);

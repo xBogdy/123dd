@@ -6,21 +6,22 @@
 
 **Added:**
 
-- *#231* Command `player add progress (before|after)`: Update progress without resetting current progression (useful for optional/alternative progression paths)
-- *#230* Command `player get series [completed]`: Retrieves the current or all completed series of a player
-- *#229* Command `player set series <seriesId> [completed <count>]`: Updates the current or completed series of a player
-- *#228* Config option `playerMustCarryTrainerCard` (TODO)
-- *#227* Support for different *series*
+- *#232* Command `player add progress (before|after)`: Update progress without resetting current progression (useful for optional/alternative progression paths)
+- *#231* Command `player get series [completed]`: Retrieves the current or all completed series of a player
+- *#230* Command `player set series <seriesId> [completed <count>]`: Updates the current or completed series of a player
+- *#229* Config option `playerMustCarryTrainerCard` (TODO)
+- *#228* Support for different *series*
   - Every series has its own progression (i.e. chain of key trainers and level caps)
   - Only trainers from the current series of a player will be listed in the trainer card of that player
   - Only trainers from the current series of a player will spawn for that player
   - Players now have a `currentSeries` property (defaults to `"radicalred"` if not set)
-  - Players now have statistics to keep track of completed series (the current and completed series of players can be inspected or modified with commands, see *#229* and *#230*)
+  - Players now have statistics to keep track of completed series (the current and completed series of players can be inspected or modified with commands, see *#230* and *#231*)
   - Trainer npcs now have a `series` property: A list of series ids the trainer belongs to (the trainer will belong to every series if empty or not set)
-- *#226* Trainer mobs properties (`series` and `substitutes`)
+- *#227* Trainer mobs properties (`series` and `substitutes`)
 
 **Changed:**
 
+- *#226* Reworked trainer types: These are now data pack objects with common types being predefined by this mod (e.g. "leader" or "rival")
 - *#225* Trainer Card: Minor cosmetic adjustments (e.g. better handling of long trainer names)
 - *#224* Trainer Spawner block can now be *forced* to spawn their trainer by powering it with redstone (ignoring any level differences or other conditions to nearby players, this may only fail if a trainer with the same identity already exists in the world or the global spawn cap is full)
 

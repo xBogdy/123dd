@@ -24,6 +24,7 @@ import java.util.Map;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.algorithm.IAlgorithm;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
+import com.gitlab.srcmc.rctmod.api.data.pack.TrainerType;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.api.service.TrainerManager;
 import com.gitlab.srcmc.rctmod.client.screens.widgets.text.MultiStyleStringWidget;
@@ -117,7 +118,7 @@ public class TrainerListWidget extends TrainerDataWidget {
             for(; this.i < trainerIds.size() && u < UPDATES_PER_TICK; this.i++, u++) {
                 var trainerId = trainerIds.get(this.i);
 
-                if(showAllTypes || this.tdm.getData(trainerId).getType() == trainerType) {
+                if(showAllTypes || this.tdm.getData(trainerId).getType().equals(trainerType)) {
                     var count = this.playerState.getTrainerDefeatCount(trainerId);
                     var trMob = this.tdm.getData(trainerId);
                     var isNextKeyTrainer = playerState.isKeyTrainer(trainerId);
@@ -183,7 +184,7 @@ public class TrainerListWidget extends TrainerDataWidget {
     private int innerHeight, entryHeight;
     private List<String> trainerIds;
     private boolean showUndefeated, showAllTypes = true;
-    private TrainerMobData.Type trainerType;
+    private TrainerType trainerType = TrainerType.DEFAULT;
     private Map<Integer, List<Entry>> pages = new HashMap<>();
     private TrainerClickedConsumer trainerClickedHandler;
     private UpdateState updateState;
@@ -228,7 +229,7 @@ public class TrainerListWidget extends TrainerDataWidget {
         return this.showUndefeated;
     }
 
-    public TrainerMobData.Type getTrainerType() {
+    public TrainerType getTrainerType() {
         return this.trainerType;
     }
 
@@ -243,8 +244,8 @@ public class TrainerListWidget extends TrainerDataWidget {
         }
     }
 
-    public void setTrainerType(TrainerMobData.Type trainerType) {
-        if(this.trainerType != trainerType) {
+    public void setTrainerType(TrainerType trainerType) {
+        if(!this.trainerType.equals(trainerType)) {
             this.trainerType = trainerType;
             this.updateEntries();
         }

@@ -21,7 +21,7 @@ import java.util.HashSet;
 import java.util.Set;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
-import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData.Type;
+import com.gitlab.srcmc.rctmod.api.data.pack.TrainerType;
 import com.gitlab.srcmc.rctmod.api.data.save.TrainerPlayerData;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.commands.utils.SuggestionUtils;
@@ -282,7 +282,7 @@ public final class PlayerCommands {
     private static int player_get_type_defeats(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         if(context.getSource().getEntity() instanceof Player player) {
             try {
-                var type = Type.valueOf(context.getArgument("type", String.class));
+                var type = TrainerType.valueOf(context.getArgument("type", String.class));
                 var count = PlayerState.get(player).getTypeDefeatCount(type);
                 context.getSource().sendSuccess(() -> Component.literal(String.valueOf(count)), false);
                 return (int)count;
@@ -298,7 +298,7 @@ public final class PlayerCommands {
 
     private static int player_get_type_defeats_target(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         try {
-            var type = Type.valueOf(context.getArgument("type", String.class));
+            var type = TrainerType.valueOf(context.getArgument("type", String.class));
             var player = EntityArgument.getPlayer(context, "target");
             var count = PlayerState.get(player).getTypeDefeatCount(type);
             context.getSource().sendSuccess(() -> Component.literal(String.valueOf(count)), false);

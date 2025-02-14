@@ -24,6 +24,7 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.nio.charset.StandardCharsets;
 
+import com.gitlab.srcmc.rctmod.api.data.pack.TrainerType;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -31,9 +32,9 @@ import com.google.gson.reflect.TypeToken;
 import net.minecraft.server.packs.resources.IoSupplier;
 
 public final class JsonUtils<T> {
-    private JsonUtils() {}
-
-    private static final Gson GSON = new GsonBuilder()
+    public static final Gson GSON = new GsonBuilder()
+        .registerTypeAdapter(TrainerType.Color.class, new TrainerType.Color.Serializer())
+        .registerTypeAdapter(TrainerType.Color.class, new TrainerType.Color.Deserializer())
         .setPrettyPrinting()
         .disableHtmlEscaping()
         .setLenient().create();
@@ -65,4 +66,6 @@ public final class JsonUtils<T> {
     public static <T> String toJson(T obj) {
         return GSON.toJson(obj);
     }
+
+    private JsonUtils() {}
 }

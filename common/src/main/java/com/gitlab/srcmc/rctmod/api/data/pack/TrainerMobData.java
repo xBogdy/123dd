@@ -24,45 +24,17 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.google.gson.reflect.TypeToken;
 
-import net.minecraft.ChatFormatting;
 import net.minecraft.resources.ResourceLocation;
 
 public class TrainerMobData implements IDataPackObject {
-    public enum Type {
-        NORMAL, LEADER, E4, CHAMP, TEAM_ROCKET, RIVAL;
-
-        private static final Map<Type, String> symbols = Map.of(
-            LEADER, "[L]",
-            E4, "[E]",
-            CHAMP, "[C]",
-            TEAM_ROCKET, "[T]",
-            RIVAL, "[R]"
-        );
-
-        private static final Map<Type, Integer> colors = Map.of(
-            LEADER, ChatFormatting.GREEN.getColor(),
-            E4, ChatFormatting.DARK_AQUA.getColor(),
-            CHAMP, ChatFormatting.DARK_PURPLE.getColor(),
-            TEAM_ROCKET, ChatFormatting.GRAY.getColor(),
-            RIVAL, ChatFormatting.GOLD.getColor()
-        );
-
-        public String toString() {
-            return symbols.getOrDefault(this, "");
-        }
-
-        public int toColor() {
-            return colors.getOrDefault(this, ChatFormatting.WHITE.getColor());
-        }
-    }
-
-    private Type type = Type.NORMAL;
+    private String type = "normal";
     private List<Set<String>> requiredDefeats = new ArrayList<>();
     private Set<String> series = new HashSet<>();
     private Set<String> substitutes = new HashSet<>();
@@ -82,6 +54,11 @@ public class TrainerMobData implements IDataPackObject {
     private transient ResourceLocation textureResource;
     private transient ResourceLocation lootTableResource;
     private transient TrainerTeam trainerTeam;
+    private transient Supplier<TrainerType> lazyType = () -> {
+        var type = TrainerType.valueOf(this.type.toLowerCase());
+        this.lazyType = () -> type;
+        return this.lazyType.get();
+    };
 
     public TrainerMobData() {
         this.textureResource = ResourceLocation.fromNamespaceAndPath(ModCommon.MOD_ID, "textures/" + DataPackManager.PATH_DEFAULT + ".png");
@@ -106,8 +83,8 @@ public class TrainerMobData implements IDataPackObject {
         this.trainerTeam = origin.trainerTeam; // no need for deep copy since immutable
     }
 
-    public Type getType() {
-        return this.type;
+    public TrainerType getType() {
+        return this.lazyType.get();
     }
 
     public void setRewardLevelCap(int levelCap) {

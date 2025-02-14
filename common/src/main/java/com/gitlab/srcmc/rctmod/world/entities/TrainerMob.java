@@ -90,6 +90,17 @@ public class TrainerMob extends PathfinderMob implements Npc {
         .canSpawnFarFromPlayer()
         .sized(0.6F, 1.95F).build("trainer");
 
+    private static final String TRAINER_TYPE_DEFAULT_REPLY = "missing_beaten_trainer";
+    private static final Map<String, String> TRAINER_TYPE_REPLIES = Map.of(
+        "leader", "missing_badges",
+        "e4", "missing_beaten_e4",
+        "champ", "missing_beaten_champs",
+        "rival", "missing_beaten_rival",
+        "team_rocket", "missing_beaten_team_rocket",
+        "team_plasma", "missing_beaten_team_plasma",
+        "team_shadow", "missing_beaten_team_shadow"
+    );
+
     final static int TICKS_TO_DESPAWN = 600;
     final static int DESPAWN_TICK_SCALE = 20;
     final static int DESPAWN_DISTANCE = 128;
@@ -188,28 +199,9 @@ public class TrainerMob extends PathfinderMob implements Npc {
         } else if(RCTMod.getInstance().isInBattle(player)) {
             ChatUtils.reply(this, player, "player_busy");
         } else if(msr.isPresent()) {
-            var t = tm.getData(msr.get());
-
-            switch(t.getType()) {
-                case LEADER:
-                    ChatUtils.reply(this, player, "missing_badges");
-                    break;
-                case E4:
-                    ChatUtils.reply(this, player, "missing_beaten_e4");
-                    break;
-                case CHAMP:
-                    ChatUtils.reply(this, player, "missing_beaten_champs");
-                    break;
-                case RIVAL:
-                    ChatUtils.reply(this, player, "missing_beaten_rival");
-                    break;
-                case TEAM_ROCKET:
-                    ChatUtils.reply(this, player, "missing_beaten_team_rocket");
-                    break;
-                default:
-                    ModCommon.LOG.info("Unexpected reason for battle failure: " + player.getDisplayName().getString() + " vs " + this.getTrainerId());
-                    break;
-            }
+            ChatUtils.reply(this, player, TRAINER_TYPE_REPLIES.getOrDefault(
+                tm.getData(msr.get()).getType().id(),
+                TRAINER_TYPE_DEFAULT_REPLY));
         } else if(tpd.getLevelCap() < tmd.getRequiredLevelCap()) {
             ChatUtils.reply(this, player, "low_level_cap");
         } else if(tm.getPlayerLevel(player) > tpd.getLevelCap()) {
@@ -320,7 +312,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
         }
 
         if(showSymbols) {
-            var sym = tmd.getType().toString();
+            var sym = tmd.getType().symbol();
             
             if(sym.length() > 0) {
                 suffix.append(' ').append(sym);
@@ -328,7 +320,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
         }
 
         if(showColors) {
-            cmp.setStyle(cmp.getStyle().withColor(tmd.getType().toColor()));
+            cmp.setStyle(cmp.getStyle().withColor(tmd.getType().color()));
         }
 
         if(showItalic) {

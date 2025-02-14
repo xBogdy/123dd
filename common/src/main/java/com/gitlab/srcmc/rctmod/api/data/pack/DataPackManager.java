@@ -26,7 +26,6 @@ import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.utils.ChatUtils;
 import com.gitlab.srcmc.rctmod.api.utils.JsonUtils;
 import com.gitlab.srcmc.rctmod.api.utils.PathUtils;
-import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
 
@@ -39,12 +38,11 @@ import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
 import net.minecraft.util.profiling.ProfilerFiller;
 
 public class DataPackManager extends SimpleJsonResourceReloadListener implements AutoCloseable {
-    private final static Gson GSON = new Gson();
-    
     public static final String PATH_GROUPS = "trainers/groups";
     public static final String PATH_SINGLE = "trainers/single";
     public static final String PATH_DEFAULT = "trainers/default";
     public static final String PATH_TRAINERS = "trainers";
+    public static final String PATH_TRAINER_TYPES = "trainer_types";
     public static final String PATH_SERIES = "series";
 
     private static class DataLocator {
@@ -67,14 +65,15 @@ public class DataPackManager extends SimpleJsonResourceReloadListener implements
         Map.entry("textures", new DataLocator(PackType.CLIENT_RESOURCES, ".png"))
     );
 
-    // trainer teams and series are not layered (in groups/single/default) and are
-    // therefore handled a bit differently.
+    // trainer teams and type as well as series are not layered (in
+    // groups/single/default) and are therefore handled a bit differently.
     private Map<ResourceLocation, PackResources> trainerTeams = new HashMap<>();
+    private Map<ResourceLocation, PackResources> trainerTypes = new HashMap<>();
     private Map<ResourceLocation, PackResources> series = new HashMap<>();
     private PackType packType;
 
     public DataPackManager(PackType packType) {
-        super(GSON, ModCommon.MOD_ID);
+        super(JsonUtils.GSON, ModCommon.MOD_ID);
         this.packType = packType;
     }
 
@@ -88,6 +87,10 @@ public class DataPackManager extends SimpleJsonResourceReloadListener implements
 
     public void listTrainerTeams(ResourceOutput out) {
         this.trainerTeams.forEach((k, v) -> out.accept(k, v.getResource(this.packType, k)));
+    }
+
+    public void listTrainerTypes(ResourceOutput out) {
+        this.trainerTypes.forEach((k, v) -> out.accept(k, v.getResource(this.packType, k)));
     }
 
     public void listSeries(ResourceOutput out) {
@@ -114,6 +117,10 @@ public class DataPackManager extends SimpleJsonResourceReloadListener implements
             dp.close();
         }
 
+        for(var dp : this.trainerTypes.values()) {
+            dp.close();
+        }
+
         for(var dp : this.series.values()) {
             dp.close();
         }
@@ -127,6 +134,7 @@ public class DataPackManager extends SimpleJsonResourceReloadListener implements
         }
 
         this.trainerTeams.clear();
+        this.trainerTypes.clear();
         this.series.clear();
     }
 
@@ -161,6 +169,16 @@ public class DataPackManager extends SimpleJsonResourceReloadListener implements
         
         if(this.trainerTeams.containsKey(teamResource)) {
             return Optional.of(JsonUtils.loadFromOrThrow(this.trainerTeams.get(teamResource).getResource(this.packType, teamResource), TrainerTeam.class));
+        }
+
+        return Optional.empty();
+    }
+
+    public Optional<TrainerType> loadTrainerType(String typeId) {
+        var typeResource = ResourceLocation.fromNamespaceAndPath(ModCommon.MOD_ID, PATH_TRAINER_TYPES + "/" + typeId + ".json");
+        
+        if(this.trainerTypes.containsKey(typeResource)) {
+            return Optional.of(JsonUtils.loadFromOrThrow(this.trainerTypes.get(typeResource).getResource(this.packType, typeResource), TrainerType.class));
         }
 
         return Optional.empty();
@@ -207,6 +225,7 @@ public class DataPackManager extends SimpleJsonResourceReloadListener implements
     
     private void gather(PackResources dataPack) {
         this.gatherTrainers(dataPack);
+        this.gatherTrainerTypes(dataPack);
         this.gatherSeries(dataPack);
         this.gatherResources(dataPack);
         ModCommon.LOG.info("Data pack initialized: " + dataPack.packId());
@@ -215,6 +234,12 @@ public class DataPackManager extends SimpleJsonResourceReloadListener implements
     private void gatherTrainers(PackResources dataPack) {
         dataPack.listResources(this.packType, ModCommon.MOD_ID, PATH_TRAINERS, (rl, io) -> {
             this.trainerTeams.put(rl, dataPack);
+        });
+    }
+
+    private void gatherTrainerTypes(PackResources dataPack) {
+        dataPack.listResources(this.packType, ModCommon.MOD_ID, PATH_TRAINER_TYPES, (rl, io) -> {
+            this.trainerTypes.put(rl, dataPack);
         });
     }
 
@@ -267,7 +292,14 @@ public class DataPackManager extends SimpleJsonResourceReloadListener implements
     protected void apply(Map<ResourceLocation, JsonElement> object, ResourceManager resourceManager, ProfilerFiller profilerFiller) {
         this.init(resourceManager);
 
-        // we'll load the default dialog for general purpose chats
+        // load and register trainer types
+        TrainerType.clear();
+        this.listTrainerTypes((rl, io) -> {
+            var id = PathUtils.filename(rl.getPath());
+            TrainerType.register(id, this.loadTrainerType(id).get());
+        });
+
+        // load the default dialog for general purpose chats
         this.loadResource("", "dialogs",
             ChatUtils::initDefault,
             new TypeToken<Map<String, String[]>>() {});
