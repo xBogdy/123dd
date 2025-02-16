@@ -1,0 +1,50 @@
+{
+  "name": "Black Belt Davon",
+  "team": [
+    {
+      "species": "primeape",
+      "gender": "GENDERLESS",
+      "level": 58,
+      "nature": "adamant",
+      "ability": "vitalspirit",
+      "moveset": [
+        "finalgambit",
+        "closecombat",
+        "thrash",
+        "crosschop"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "hariyama",
+      "gender": "MALE",
+      "level": 59,
+      "nature": "adamant",
+      "ability": "thickfat",
+      "moveset": [
+        "fakeout",
+        "endure",
+        "reversal",
+        "heavyslam"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "hariyama",
+      "gender": "MALE",
+      "level": 60,
+      "nature": "adamant",
+      "ability": "guts",
+      "moveset": [
+        "fakeout",
+        "endure",
+        "reversal",
+        "heavyslam"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "name": "Veteran Harlan",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
+  "battleRules": {
+    "maxItemUses": 5
+  },
+  "bag": [
+    {
+      "item": "cobblemon:hyper_potion",
+      "quantity": 2
+    }
+  ],
+  "team": [
+    {
+      "species": "loudred",
+      "gender": "FEMALE",
+      "level": 56,
+      "nature": "hardy",
+      "ability": "soundproof",
+      "moveset": [
+        "uproar",
+        "supersonic",
+        "roar",
+        "stomp"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "donphan",
+      "gender": "GENDERLESS",
+      "level": 56,
+      "nature": "relaxed",
+      "ability": "sturdy",
+      "moveset": [
+        "earthquake",
+        "rocktomb",
+        "knockoff",
+        "rollout"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "tauros",
+      "gender": "GENDERLESS",
+      "level": 56,
+      "nature": "hardy",
+      "ability": "intimidate",
+      "moveset": [
+        "doubleedge",
+        "zenheadbutt",
+        "payback",
+        "swagger"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

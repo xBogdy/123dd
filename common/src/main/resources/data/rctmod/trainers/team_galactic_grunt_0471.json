@@ -1,0 +1,50 @@
+{
+  "name": "Team Galactic Grunt",
+  "team": [
+    {
+      "species": "croagunk",
+      "gender": "MALE",
+      "level": 35,
+      "nature": "quirky",
+      "ability": "anticipation",
+      "moveset": [
+        "taunt",
+        "revenge",
+        "suckerpunch",
+        "poisonjab"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "stunky",
+      "gender": "MALE",
+      "level": 35,
+      "nature": "hardy",
+      "ability": "aftermath",
+      "moveset": [
+        "poisongas",
+        "smokescreen",
+        "acidspray",
+        "bite"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "glameow",
+      "gender": "GENDERLESS",
+      "level": 35,
+      "nature": "docile",
+      "ability": "owntempo",
+      "moveset": [
+        "growl",
+        "hypnosis",
+        "aerialace",
+        "retaliate"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

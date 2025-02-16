@@ -1,0 +1,35 @@
+{
+  "name": "Swimmer Francisco",
+  "team": [
+    {
+      "species": "tentacool",
+      "gender": "GENDERLESS",
+      "level": 40,
+      "nature": "timid",
+      "ability": "clearbody",
+      "moveset": [
+        "waterpulse",
+        "hex",
+        "acidarmor",
+        "poisonjab"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "golduck",
+      "gender": "FEMALE",
+      "level": 42,
+      "nature": "jolly",
+      "ability": "damp",
+      "moveset": [
+        "furyswipes",
+        "zenheadbutt",
+        "aquatail",
+        "psychup"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

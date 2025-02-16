@@ -1,0 +1,21 @@
+{
+  "name": "Young Couple Nat",
+  "battleFormat": "GEN_9_DOUBLES",
+  "team": [
+    {
+      "species": "misdreavus",
+      "gender": "MALE",
+      "level": 19,
+      "nature": "calm",
+      "ability": "levitate",
+      "moveset": [
+        "growl",
+        "confusion",
+        "astonish",
+        "confuseray"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

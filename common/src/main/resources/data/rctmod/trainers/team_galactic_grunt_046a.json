@@ -1,0 +1,20 @@
+{
+  "name": "Team Galactic Grunt",
+  "team": [
+    {
+      "species": "bronzor",
+      "gender": "FEMALE",
+      "level": 39,
+      "nature": "serious",
+      "ability": "heatproof",
+      "moveset": [
+        "confuseray",
+        "extrasensory",
+        "heavyslam",
+        "irondefense"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

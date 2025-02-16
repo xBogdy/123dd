@@ -1,0 +1,35 @@
+{
+  "name": "Pokémon Ranger Kyler",
+  "team": [
+    {
+      "species": "exeggutor",
+      "gender": "FEMALE",
+      "level": 60,
+      "nature": "modest",
+      "ability": "chlorophyll",
+      "moveset": [
+        "worryseed",
+        "leechseed",
+        "leafstorm",
+        "psyshock"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "ursaring",
+      "gender": "GENDERLESS",
+      "level": 60,
+      "nature": "adamant",
+      "ability": "guts",
+      "moveset": [
+        "scaryface",
+        "rest",
+        "snore",
+        "thrash"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

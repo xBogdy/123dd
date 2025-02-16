@@ -1,0 +1,50 @@
+{
+  "name": "Ace Trainer Arthur",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
+  "battleRules": {
+    "maxItemUses": 5
+  },
+  "bag": [
+    {
+      "item": "cobblemon:hyper_potion",
+      "quantity": 2
+    }
+  ],
+  "team": [
+    {
+      "species": "raichu",
+      "gender": "GENDERLESS",
+      "level": 55,
+      "nature": "sassy",
+      "ability": "static",
+      "moveset": [
+        "thunderpunch",
+        "nuzzle",
+        "lightscreen",
+        "quickattack"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "gastrodon",
+      "gender": "MALE",
+      "level": 55,
+      "nature": "sassy",
+      "ability": "stormdrain",
+      "moveset": [
+        "recover",
+        "bodyslam",
+        "muddywater",
+        "earthpower"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

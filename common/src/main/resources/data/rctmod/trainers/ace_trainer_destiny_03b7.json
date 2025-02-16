@@ -1,0 +1,50 @@
+{
+  "name": "Ace Trainer Destiny",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
+  "battleRules": {
+    "maxItemUses": 5
+  },
+  "bag": [
+    {
+      "item": "cobblemon:hyper_potion",
+      "quantity": 2
+    }
+  ],
+  "team": [
+    {
+      "species": "kadabra",
+      "gender": "FEMALE",
+      "level": 44,
+      "nature": "timid",
+      "ability": "innerfocus",
+      "moveset": [
+        "reflect",
+        "psychic",
+        "shockwave",
+        "energyball"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "raichu",
+      "gender": "GENDERLESS",
+      "level": 44,
+      "nature": "jolly",
+      "ability": "static",
+      "moveset": [
+        "thunderpunch",
+        "thunderbolt",
+        "lightscreen",
+        "quickattack"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

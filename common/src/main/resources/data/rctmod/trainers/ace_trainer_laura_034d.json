@@ -1,0 +1,35 @@
+{
+  "name": "Ace Trainer Laura",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
+  "battleRules": {
+    "maxItemUses": 5
+  },
+  "bag": [
+    {
+      "item": "cobblemon:hyper_potion",
+      "quantity": 2
+    }
+  ],
+  "team": [
+    {
+      "species": "lopunny",
+      "gender": "FEMALE",
+      "level": 37,
+      "nature": "careful",
+      "ability": "cutecharm",
+      "moveset": [
+        "mirrorcoat",
+        "babydolleyes",
+        "doublekick",
+        "headbutt"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "name": "Ace Trainer Dennis",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
+  "battleRules": {
+    "maxItemUses": 5
+  },
+  "bag": [
+    {
+      "item": "cobblemon:hyper_potion",
+      "quantity": 2
+    }
+  ],
+  "team": [
+    {
+      "species": "monferno",
+      "gender": "FEMALE",
+      "level": 39,
+      "nature": "jolly",
+      "ability": "blaze",
+      "moveset": [
+        "leer",
+        "flamewheel",
+        "torment",
+        "closecombat"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "luxio",
+      "gender": "GENDERLESS",
+      "level": 39,
+      "nature": "jolly",
+      "ability": "intimidate",
+      "moveset": [
+        "leer",
+        "bite",
+        "spark",
+        "scaryface"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "gyarados",
+      "gender": "GENDERLESS",
+      "level": 39,
+      "nature": "hasty",
+      "ability": "intimidate",
+      "moveset": [
+        "leer",
+        "brine",
+        "raindance",
+        "aquatail"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

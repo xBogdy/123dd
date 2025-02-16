@@ -1,0 +1,50 @@
+{
+  "name": "Ace Trainer Kassandra",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
+  "battleRules": {
+    "maxItemUses": 5
+  },
+  "bag": [
+    {
+      "item": "cobblemon:hyper_potion",
+      "quantity": 2
+    }
+  ],
+  "team": [
+    {
+      "species": "stantler",
+      "gender": "GENDERLESS",
+      "level": 58,
+      "nature": "docile",
+      "ability": "intimidate",
+      "moveset": [
+        "doubleedge",
+        "lunge",
+        "zenheadbutt",
+        "hypnosis"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "carnivine",
+      "gender": "FEMALE",
+      "level": 58,
+      "nature": "serious",
+      "ability": "levitate",
+      "moveset": [
+        "powerwhip",
+        "crunch",
+        "stockpile",
+        "growth"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

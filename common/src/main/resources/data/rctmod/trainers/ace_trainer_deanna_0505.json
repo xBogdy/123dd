@@ -1,0 +1,50 @@
+{
+  "name": "Ace Trainer Deanna",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
+  "battleRules": {
+    "maxItemUses": 5
+  },
+  "bag": [
+    {
+      "item": "cobblemon:hyper_potion",
+      "quantity": 2
+    }
+  ],
+  "team": [
+    {
+      "species": "ampharos",
+      "gender": "GENDERLESS",
+      "level": 60,
+      "nature": "modest",
+      "ability": "static",
+      "moveset": [
+        "discharge",
+        "powergem",
+        "thunderwave",
+        "firepunch"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "tropius",
+      "gender": "MALE",
+      "level": 60,
+      "nature": "timid",
+      "ability": "chlorophyll",
+      "moveset": [
+        "leafstorm",
+        "airslash",
+        "sunnyday",
+        "growth"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

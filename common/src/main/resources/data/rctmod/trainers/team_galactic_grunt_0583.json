@@ -1,0 +1,19 @@
+{
+  "name": "Team Galactic Grunt",
+  "team": [
+    {
+      "species": "glameow",
+      "gender": "MALE",
+      "level": 11,
+      "nature": "bashful",
+      "ability": "limber",
+      "moveset": [
+        "fakeout",
+        "scratch",
+        "growl"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

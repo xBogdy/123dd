@@ -1,0 +1,35 @@
+{
+  "name": "Police Officer Alex",
+  "team": [
+    {
+      "species": "hoothoot",
+      "gender": "GENDERLESS",
+      "level": 18,
+      "nature": "sassy",
+      "ability": "keeneye",
+      "moveset": [
+        "growl",
+        "confusion",
+        "reflect",
+        "psychoshift"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "machop",
+      "gender": "GENDERLESS",
+      "level": 18,
+      "nature": "relaxed",
+      "ability": "noguard",
+      "moveset": [
+        "leer",
+        "revenge",
+        "lowsweep",
+        "knockoff"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

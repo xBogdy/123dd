@@ -1,0 +1,50 @@
+{
+  "name": "Ace Trainer Skyler",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
+  "battleRules": {
+    "maxItemUses": 5
+  },
+  "bag": [
+    {
+      "item": "cobblemon:hyper_potion",
+      "quantity": 2
+    }
+  ],
+  "team": [
+    {
+      "species": "loudred",
+      "gender": "GENDERLESS",
+      "level": 57,
+      "nature": "docile",
+      "ability": "soundproof",
+      "moveset": [
+        "hypervoice",
+        "roar",
+        "rest",
+        "sleeptalk"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "rampardos",
+      "gender": "GENDERLESS",
+      "level": 57,
+      "nature": "relaxed",
+      "ability": "moldbreaker",
+      "moveset": [
+        "zenheadbutt",
+        "takedown",
+        "assurance",
+        "swordsdance"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

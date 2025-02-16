@@ -1,0 +1,20 @@
+{
+  "name": "Team Galactic Grunt",
+  "team": [
+    {
+      "species": "golbat",
+      "gender": "MALE",
+      "level": 37,
+      "nature": "bashful",
+      "ability": "innerfocus",
+      "moveset": [
+        "screech",
+        "poisonfang",
+        "aircutter",
+        "bite"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

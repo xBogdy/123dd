@@ -1,0 +1,35 @@
+{
+  "name": "Pokémon Ranger Allison",
+  "team": [
+    {
+      "species": "aipom",
+      "gender": "GENDERLESS",
+      "level": 30,
+      "nature": "jolly",
+      "ability": "pickup",
+      "moveset": [
+        "astonish",
+        "tickle",
+        "furyswipes",
+        "swift"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "marill",
+      "gender": "GENDERLESS",
+      "level": 32,
+      "nature": "jolly",
+      "ability": "thickfat",
+      "moveset": [
+        "bubblebeam",
+        "slam",
+        "bounce",
+        "playrough"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

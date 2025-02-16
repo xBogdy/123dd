@@ -1,0 +1,50 @@
+{
+  "name": "Ace Trainer Rodolfo",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
+  "battleRules": {
+    "maxItemUses": 5
+  },
+  "bag": [
+    {
+      "item": "cobblemon:hyper_potion",
+      "quantity": 2
+    }
+  ],
+  "team": [
+    {
+      "species": "lickitung",
+      "gender": "MALE",
+      "level": 53,
+      "nature": "adamant",
+      "ability": "owntempo",
+      "moveset": [
+        "slam",
+        "knockoff",
+        "stomp",
+        "lick"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "miltank",
+      "gender": "MALE",
+      "level": 53,
+      "nature": "adamant",
+      "ability": "scrappy",
+      "moveset": [
+        "milkdrink",
+        "bodyslam",
+        "charm",
+        "playrough"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "name": "Ace Trainer Jasmin",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
+  "battleRules": {
+    "maxItemUses": 5
+  },
+  "bag": [
+    {
+      "item": "cobblemon:hyper_potion",
+      "quantity": 2
+    }
+  ],
+  "team": [
+    {
+      "species": "drapion",
+      "gender": "MALE",
+      "level": 59,
+      "nature": "impish",
+      "ability": "battlearmor",
+      "moveset": [
+        "crunch",
+        "xscissor",
+        "crosspoison",
+        "toxic"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

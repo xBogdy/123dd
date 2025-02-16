@@ -1,0 +1,33 @@
+{
+  "name": "Team Galactic Grunt",
+  "team": [
+    {
+      "species": "wurmple",
+      "gender": "MALE",
+      "level": 10,
+      "nature": "docile",
+      "ability": "shielddust",
+      "moveset": [
+        "tackle",
+        "stringshot",
+        "poisonsting"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "glameow",
+      "gender": "FEMALE",
+      "level": 10,
+      "nature": "serious",
+      "ability": "limber",
+      "moveset": [
+        "fakeout",
+        "scratch",
+        "growl"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

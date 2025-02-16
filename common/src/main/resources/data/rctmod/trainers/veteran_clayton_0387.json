@@ -1,0 +1,50 @@
+{
+  "name": "Veteran Clayton",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
+  "battleRules": {
+    "maxItemUses": 5
+  },
+  "bag": [
+    {
+      "item": "cobblemon:hyper_potion",
+      "quantity": 2
+    }
+  ],
+  "team": [
+    {
+      "species": "staraptor",
+      "gender": "MALE",
+      "level": 47,
+      "nature": "relaxed",
+      "ability": "intimidate",
+      "moveset": [
+        "quickattack",
+        "endeavor",
+        "aerialace",
+        "takedown"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "hippowdon",
+      "gender": "FEMALE",
+      "level": 47,
+      "nature": "relaxed",
+      "ability": "sandstream",
+      "moveset": [
+        "earthquake",
+        "crunch",
+        "icefang",
+        "yawn"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

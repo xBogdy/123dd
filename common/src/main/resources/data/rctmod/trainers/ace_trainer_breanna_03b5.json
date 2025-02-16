@@ -1,0 +1,35 @@
+{
+  "name": "Ace Trainer Breanna",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
+  "battleRules": {
+    "maxItemUses": 5
+  },
+  "bag": [
+    {
+      "item": "cobblemon:hyper_potion",
+      "quantity": 2
+    }
+  ],
+  "team": [
+    {
+      "species": "azumarill",
+      "gender": "FEMALE",
+      "level": 33,
+      "nature": "jolly",
+      "ability": "hugepower",
+      "moveset": [
+        "playrough",
+        "irontail",
+        "bulldoze",
+        "waterfall"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

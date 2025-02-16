@@ -1,0 +1,35 @@
+{
+  "name": "Team Galactic Grunt",
+  "team": [
+    {
+      "species": "beautifly",
+      "gender": "FEMALE",
+      "level": 25,
+      "nature": "hardy",
+      "ability": "swarm",
+      "moveset": [
+        "gust",
+        "stunspore",
+        "aircutter",
+        "leechlife"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "croagunk",
+      "gender": "GENDERLESS",
+      "level": 27,
+      "nature": "docile",
+      "ability": "anticipation",
+      "moveset": [
+        "mudslap",
+        "taunt",
+        "revenge",
+        "suckerpunch"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

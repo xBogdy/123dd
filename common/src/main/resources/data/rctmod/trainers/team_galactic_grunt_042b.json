@@ -1,0 +1,20 @@
+{
+  "name": "Team Galactic Grunt",
+  "team": [
+    {
+      "species": "silcoon",
+      "gender": "GENDERLESS",
+      "level": 15,
+      "nature": "hardy",
+      "ability": "shedskin",
+      "moveset": [
+        "tackle",
+        "stringshot",
+        "poisonsting",
+        "harden"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

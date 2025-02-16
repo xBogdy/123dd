@@ -1,0 +1,35 @@
+{
+  "name": "Dragon Tamer Andre",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
+  "battleRules": {
+    "maxItemUses": 5
+  },
+  "bag": [
+    {
+      "item": "cobblemon:hyper_potion",
+      "quantity": 2
+    }
+  ],
+  "team": [
+    {
+      "species": "gabite",
+      "gender": "FEMALE",
+      "level": 49,
+      "nature": "relaxed",
+      "ability": "sandveil",
+      "moveset": [
+        "sandtomb",
+        "sandattack",
+        "bite",
+        "dragonclaw"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

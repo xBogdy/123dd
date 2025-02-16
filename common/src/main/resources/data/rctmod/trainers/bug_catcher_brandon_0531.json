@@ -1,0 +1,32 @@
+{
+  "name": "Bug Catcher Brandon",
+  "team": [
+    {
+      "species": "kricketune",
+      "gender": "MALE",
+      "level": 29,
+      "nature": "timid",
+      "ability": "swarm",
+      "moveset": [
+        "strugglebug",
+        "absorb",
+        "sing",
+        "focusenergy"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "silcoon",
+      "gender": "MALE",
+      "level": 29,
+      "nature": "timid",
+      "ability": "shedskin",
+      "moveset": [
+        "harden"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

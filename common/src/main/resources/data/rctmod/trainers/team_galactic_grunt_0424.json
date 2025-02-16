@@ -1,0 +1,19 @@
+{
+  "name": "Team Galactic Grunt",
+  "team": [
+    {
+      "species": "wurmple",
+      "gender": "MALE",
+      "level": 9,
+      "nature": "docile",
+      "ability": "shielddust",
+      "moveset": [
+        "tackle",
+        "stringshot",
+        "poisonsting"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

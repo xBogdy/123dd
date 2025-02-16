@@ -1,0 +1,50 @@
+{
+  "name": "Ace Trainer Keenan",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
+  "battleRules": {
+    "maxItemUses": 5
+  },
+  "bag": [
+    {
+      "item": "cobblemon:hyper_potion",
+      "quantity": 2
+    }
+  ],
+  "team": [
+    {
+      "species": "primeape",
+      "gender": "FEMALE",
+      "level": 57,
+      "nature": "docile",
+      "ability": "vitalspirit",
+      "moveset": [
+        "finalgambit",
+        "outrage",
+        "closecombat",
+        "thrash"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "torkoal",
+      "gender": "GENDERLESS",
+      "level": 57,
+      "nature": "bold",
+      "ability": "drought",
+      "moveset": [
+        "flamethrower",
+        "lavaplume",
+        "clearsmog",
+        "rapidspin"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

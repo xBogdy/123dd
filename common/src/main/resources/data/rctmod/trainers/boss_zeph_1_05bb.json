@@ -1,0 +1,47 @@
+{
+  "name": "Boss Zeph",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
+  "battleRules": {
+    "maxItemUses": 2
+  },
+  "bag": [
+    {
+      "item": "cobblemon:full_restore",
+      "quantity": 2
+    }
+  ],
+  "team": [
+    {
+      "species": "houndoom",
+      "gender": "GENDERLESS",
+      "level": 33,
+      "nature": "adamant",
+      "ability": "solarpower",
+      "moveset": [
+        "firefang",
+        "thunderfang",
+        "suckerpunch",
+        "howl"
+      ],
+      "ivs": {
+        "hp": 31,
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
+      },
+      "evs": {
+        "hp": 6,
+        "atk": 252,
+        "spe": 252
+      },
+      "heldItem": "expert_belt"
+    }
+  ]
+}

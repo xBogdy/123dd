@@ -1,0 +1,126 @@
+{
+  "name": "Leader Vega",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
+  "battleRules": {
+    "maxItemUses": 2
+  },
+  "bag": [
+    {
+      "item": "cobblemon:full_restore",
+      "quantity": 2
+    }
+  ],
+  "team": [
+    {
+      "species": "liepard",
+      "gender": "GENDERLESS",
+      "level": 26,
+      "nature": "jolly",
+      "ability": "unburden",
+      "moveset": [
+        "thief",
+        "playrough",
+        "fakeout",
+        "pursuit"
+      ],
+      "ivs": {
+        "hp": 31,
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
+      },
+      "evs": {
+        "hp": 6,
+        "atk": 252,
+        "spe": 252
+      },
+      "heldItem": "lum_berry"
+    },
+    {
+      "species": "absol",
+      "gender": "GENDERLESS",
+      "level": 27,
+      "nature": "impish",
+      "ability": "pressure",
+      "moveset": [
+        "knockoff",
+        "psychocut",
+        "feint",
+        "pursuit"
+      ],
+      "ivs": {
+        "hp": 31,
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
+      },
+      "evs": {
+        "hp": 252,
+        "def": 252,
+        "spd": 4
+      }
+    },
+    {
+      "species": "weavile",
+      "gender": "GENDERLESS",
+      "level": 27,
+      "nature": "impish",
+      "ability": "pressure",
+      "moveset": [
+        "punishment",
+        "iceshard",
+        "swagger",
+        "fakeout"
+      ],
+      "ivs": {
+        "hp": 31,
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
+      },
+      "evs": {
+        "hp": 252,
+        "def": 252,
+        "spd": 4
+      },
+      "heldItem": "dark_gem"
+    },
+    {
+      "species": "honchkrow",
+      "gender": "FEMALE",
+      "level": 26,
+      "nature": "naughty",
+      "ability": "superluck",
+      "moveset": [
+        "punishment",
+        "aircutter",
+        "nightshade",
+        "swagger"
+      ],
+      "ivs": {
+        "hp": 31,
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
+      },
+      "evs": {
+        "atk": 128,
+        "spa": 128,
+        "spe": 252
+      }
+    }
+  ]
+}

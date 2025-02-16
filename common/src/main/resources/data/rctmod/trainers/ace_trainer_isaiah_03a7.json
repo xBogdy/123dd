@@ -1,0 +1,35 @@
+{
+  "name": "Ace Trainer Isaiah",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
+  "battleRules": {
+    "maxItemUses": 5
+  },
+  "bag": [
+    {
+      "item": "cobblemon:hyper_potion",
+      "quantity": 2
+    }
+  ],
+  "team": [
+    {
+      "species": "quagsire",
+      "gender": "FEMALE",
+      "level": 39,
+      "nature": "jolly",
+      "ability": "damp",
+      "moveset": [
+        "yawn",
+        "muddywater",
+        "icebeam",
+        "bulldoze"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

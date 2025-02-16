@@ -1,0 +1,65 @@
+{
+  "name": "Ace Trainer Ariana",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
+  "battleRules": {
+    "maxItemUses": 5
+  },
+  "bag": [
+    {
+      "item": "cobblemon:hyper_potion",
+      "quantity": 2
+    }
+  ],
+  "team": [
+    {
+      "species": "ambipom",
+      "gender": "GENDERLESS",
+      "level": 59,
+      "nature": "jolly",
+      "ability": "technician",
+      "moveset": [
+        "doublehit",
+        "astonish",
+        "agility",
+        "batonpass"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "rapidash",
+      "gender": "MALE",
+      "level": 59,
+      "nature": "adamant",
+      "ability": "flashfire",
+      "moveset": [
+        "flamewheel",
+        "poisonjab",
+        "smartstrike",
+        "flamecharge"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "chansey",
+      "gender": "FEMALE",
+      "level": 59,
+      "nature": "bold",
+      "ability": "naturalcure",
+      "moveset": [
+        "charm",
+        "softboiled",
+        "disarmingvoice",
+        "covet"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

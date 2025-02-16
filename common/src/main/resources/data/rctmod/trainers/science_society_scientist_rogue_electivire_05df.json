@@ -1,0 +1,114 @@
+{
+  "name": "Science Society Scientist",
+  "team": [
+    {
+      "species": "rotom",
+      "gender": "MALE",
+      "level": 57,
+      "nature": "modest",
+      "ability": "levitate",
+      "moveset": [
+        "thunderbolt",
+        "leafstorm",
+        "shadowball",
+        "thunderwave"
+      ],
+      "ivs": {
+        "hp": 31,
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
+      },
+      "evs": {
+        "hp": 252,
+        "spa": 252,
+        "spe": 6
+      },
+      "aspects": [
+        "mow"
+      ]
+    },
+    {
+      "species": "manectric",
+      "gender": "MALE",
+      "level": 59,
+      "nature": "timid",
+      "ability": "flareboost",
+      "moveset": [
+        "discharge",
+        "flamethrower",
+        "hiddenpower",
+        "protect"
+      ],
+      "ivs": {
+        "hp": 31,
+        "atk": 30,
+        "def": 31,
+        "spa": 30,
+        "spd": 31,
+        "spe": 31
+      },
+      "evs": {
+        "hp": 6,
+        "spa": 252,
+        "spe": 252
+      },
+      "heldItem": "flame_orb"
+    },
+    {
+      "species": "magnezone",
+      "gender": "MALE",
+      "level": 58,
+      "nature": "modest",
+      "ability": "sturdy",
+      "moveset": [
+        "thunderbolt",
+        "flashcannon",
+        "hiddenpower",
+        "magnetrise"
+      ],
+      "ivs": {
+        "hp": 30,
+        "atk": 31,
+        "def": 30,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
+      },
+      "evs": {
+        "hp": 252,
+        "spa": 252,
+        "spe": 6
+      },
+      "heldItem": "weakness_policy"
+    },
+    {
+      "species": "vikavolt",
+      "gender": "FEMALE",
+      "level": 59,
+      "nature": "modest",
+      "ability": "levitate",
+      "moveset": [
+        "bugbuzz",
+        "thunderbolt",
+        "airslash",
+        "energyball"
+      ],
+      "ivs": {
+        "hp": 31,
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
+      },
+      "evs": {
+        "hp": 252,
+        "spa": 252,
+        "spe": 6
+      }
+    }
+  ]
+}

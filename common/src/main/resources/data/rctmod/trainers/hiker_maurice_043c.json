@@ -1,0 +1,35 @@
+{
+  "name": "Hiker Maurice",
+  "team": [
+    {
+      "species": "graveler",
+      "gender": "FEMALE",
+      "level": 30,
+      "nature": "relaxed",
+      "ability": "rockhead",
+      "moveset": [
+        "defensecurl",
+        "rollout",
+        "smackdown",
+        "stealthrock"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "machoke",
+      "gender": "GENDERLESS",
+      "level": 32,
+      "nature": "relaxed",
+      "ability": "noguard",
+      "moveset": [
+        "leer",
+        "lowsweep",
+        "knockoff",
+        "strength"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "name": "Dragon Tamer Patrick",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
+  "battleRules": {
+    "maxItemUses": 5
+  },
+  "bag": [
+    {
+      "item": "cobblemon:hyper_potion",
+      "quantity": 2
+    }
+  ],
+  "team": [
+    {
+      "species": "gabite",
+      "gender": "FEMALE",
+      "level": 43,
+      "nature": "jolly",
+      "ability": "sandveil",
+      "moveset": [
+        "sandtomb",
+        "bulldoze",
+        "bite",
+        "dragonclaw"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "name": "Team Galactic Grunt",
+  "team": [
+    {
+      "species": "dustox",
+      "gender": "FEMALE",
+      "level": 38,
+      "nature": "quirky",
+      "ability": "shielddust",
+      "moveset": [
+        "lightscreen",
+        "toxic",
+        "bugbuzz",
+        "protect"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "croagunk",
+      "gender": "FEMALE",
+      "level": 38,
+      "nature": "hardy",
+      "ability": "anticipation",
+      "moveset": [
+        "revenge",
+        "venoshock",
+        "suckerpunch",
+        "toxic"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

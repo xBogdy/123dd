@@ -1,0 +1,35 @@
+{
+  "name": "Team Galactic Grunt",
+  "team": [
+    {
+      "species": "glameow",
+      "gender": "GENDERLESS",
+      "level": 33,
+      "nature": "bashful",
+      "ability": "owntempo",
+      "moveset": [
+        "aerialace",
+        "furyswipes",
+        "charm",
+        "taunt"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "croagunk",
+      "gender": "GENDERLESS",
+      "level": 33,
+      "nature": "quirky",
+      "ability": "anticipation",
+      "moveset": [
+        "taunt",
+        "revenge",
+        "suckerpunch",
+        "poisonjab"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

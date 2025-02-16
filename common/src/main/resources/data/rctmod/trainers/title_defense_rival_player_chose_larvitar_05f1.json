@@ -1,0 +1,171 @@
+{
+  "name": "Title Defense Rival Wayne",
+  "identity": "Rival Wayne",
+  "team": [
+    {
+      "species": "mamoswine",
+      "gender": "MALE",
+      "level": 78,
+      "nature": "adamant",
+      "ability": "thickfat",
+      "moveset": [
+        "iciclecrash",
+        "earthquake",
+        "iceshard",
+        "stealthrock"
+      ],
+      "ivs": {
+        "hp": 31,
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
+      },
+      "evs": {
+        "hp": 6,
+        "atk": 252,
+        "spe": 252
+      },
+      "heldItem": "focus_sash"
+    },
+    {
+      "species": "rotom",
+      "gender": "MALE",
+      "level": 78,
+      "nature": "modest",
+      "ability": "levitate",
+      "moveset": [
+        "leafstorm",
+        "thunderbolt",
+        "voltswitch",
+        "trick"
+      ],
+      "ivs": {
+        "hp": 31,
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
+      },
+      "evs": {
+        "hp": 6,
+        "spa": 252,
+        "spe": 252
+      },
+      "heldItem": "choice_scarf",
+      "aspects": [
+        "mow"
+      ]
+    },
+    {
+      "species": "vaporeon",
+      "gender": "GENDERLESS",
+      "level": 78,
+      "nature": "bold",
+      "ability": "waterabsorb",
+      "moveset": [
+        "scald",
+        "haze",
+        "wish",
+        "protect"
+      ],
+      "ivs": {
+        "hp": 31,
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
+      },
+      "evs": {
+        "hp": 252,
+        "def": 252,
+        "spd": 4
+      },
+      "heldItem": "leftovers"
+    },
+    {
+      "species": "haxorus",
+      "gender": "MALE",
+      "level": 79,
+      "nature": "jolly",
+      "ability": "moldbreaker",
+      "moveset": [
+        "outrage",
+        "earthquake",
+        "crunch",
+        "dragondance"
+      ],
+      "ivs": {
+        "hp": 31,
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
+      },
+      "evs": {
+        "hp": 6,
+        "atk": 252,
+        "spe": 252
+      },
+      "heldItem": "focus_sash"
+    },
+    {
+      "species": "metagross",
+      "gender": "MALE",
+      "level": 80,
+      "nature": "jolly",
+      "ability": "toughclaws",
+      "moveset": [
+        "meteormash",
+        "zenheadbutt",
+        "icepunch",
+        "agility"
+      ],
+      "ivs": {
+        "hp": 31,
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
+      },
+      "evs": {
+        "hp": 6,
+        "atk": 252,
+        "spe": 252
+      },
+      "heldItem": "assault_vest"
+    },
+    {
+      "species": "volcanion",
+      "gender": "MALE",
+      "level": 79,
+      "nature": "calm",
+      "ability": "steamengine",
+      "moveset": [
+        "steameruption",
+        "flamethrower",
+        "earthpower",
+        "substitute"
+      ],
+      "ivs": {
+        "hp": 31,
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
+      },
+      "evs": {
+        "hp": 252,
+        "def": 4,
+        "spd": 252
+      },
+      "heldItem": "life_orb"
+    }
+  ]
+}

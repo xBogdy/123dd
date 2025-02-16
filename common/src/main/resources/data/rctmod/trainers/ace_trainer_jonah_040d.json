@@ -1,0 +1,65 @@
+{
+  "name": "Ace Trainer Jonah",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
+  "battleRules": {
+    "maxItemUses": 5
+  },
+  "bag": [
+    {
+      "item": "cobblemon:hyper_potion",
+      "quantity": 2
+    }
+  ],
+  "team": [
+    {
+      "species": "ponyta",
+      "gender": "FEMALE",
+      "level": 31,
+      "nature": "sassy",
+      "ability": "runaway",
+      "moveset": [
+        "tailwhip",
+        "agility",
+        "flamewheel",
+        "stomp"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "haunter",
+      "gender": "GENDERLESS",
+      "level": 31,
+      "nature": "sassy",
+      "ability": "levitate",
+      "moveset": [
+        "shadowpunch",
+        "confuseray",
+        "meanlook",
+        "payback"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "floatzel",
+      "gender": "MALE",
+      "level": 34,
+      "nature": "relaxed",
+      "ability": "swiftswim",
+      "moveset": [
+        "tailwhip",
+        "bite",
+        "swift",
+        "aquajet"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Twins Tia",
+  "battleFormat": "GEN_9_SINGLES",
+  "team": [
+    {
+      "species": "clefairy",
+      "gender": "MALE",
+      "level": 21,
+      "nature": "timid",
+      "ability": "magicguard",
+      "moveset": [
+        "disarmingvoice",
+        "encore",
+        "defensecurl",
+        "lifedew"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

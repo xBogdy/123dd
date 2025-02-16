@@ -1,0 +1,50 @@
+{
+  "name": "Ace Trainer Sergio",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
+  "battleRules": {
+    "maxItemUses": 5
+  },
+  "bag": [
+    {
+      "item": "cobblemon:hyper_potion",
+      "quantity": 2
+    }
+  ],
+  "team": [
+    {
+      "species": "floatzel",
+      "gender": "FEMALE",
+      "level": 37,
+      "nature": "jolly",
+      "ability": "swiftswim",
+      "moveset": [
+        "icefang",
+        "crunch",
+        "tailwhip",
+        "aquajet"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "sneasel",
+      "gender": "MALE",
+      "level": 37,
+      "nature": "jolly",
+      "ability": "innerfocus",
+      "moveset": [
+        "metalclaw",
+        "icywind",
+        "honeclaws",
+        "aerialace"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

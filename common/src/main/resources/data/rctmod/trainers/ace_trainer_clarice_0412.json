@@ -1,0 +1,65 @@
+{
+  "name": "Ace Trainer Clarice",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
+  "battleRules": {
+    "maxItemUses": 5
+  },
+  "bag": [
+    {
+      "item": "cobblemon:hyper_potion",
+      "quantity": 2
+    }
+  ],
+  "team": [
+    {
+      "species": "lopunny",
+      "gender": "FEMALE",
+      "level": 54,
+      "nature": "calm",
+      "ability": "cutecharm",
+      "moveset": [
+        "charm",
+        "batonpass",
+        "headbutt",
+        "agility"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "pelipper",
+      "gender": "MALE",
+      "level": 54,
+      "nature": "bold",
+      "ability": "drizzle",
+      "moveset": [
+        "tailwind",
+        "wingattack",
+        "waterpulse",
+        "mist"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "quagsire",
+      "gender": "FEMALE",
+      "level": 54,
+      "nature": "impish",
+      "ability": "waterabsorb",
+      "moveset": [
+        "raindance",
+        "muddywater",
+        "toxic",
+        "earthquake"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "Ace Trainer Alicia",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
+  "battleRules": {
+    "maxItemUses": 5
+  },
+  "bag": [
+    {
+      "item": "cobblemon:hyper_potion",
+      "quantity": 2
+    }
+  ],
+  "team": [
+    {
+      "species": "sneasel",
+      "gender": "MALE",
+      "level": 37,
+      "nature": "jolly",
+      "ability": "innerfocus",
+      "moveset": [
+        "metalclaw",
+        "icywind",
+        "honeclaws",
+        "attract"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "tentacruel",
+      "gender": "FEMALE",
+      "level": 37,
+      "nature": "modest",
+      "ability": "clearbody",
+      "moveset": [
+        "bubblebeam",
+        "acidarmor",
+        "icebeam",
+        "sludgebomb"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

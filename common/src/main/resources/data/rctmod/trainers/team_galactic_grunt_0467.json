@@ -1,0 +1,35 @@
+{
+  "name": "Team Galactic Grunt",
+  "team": [
+    {
+      "species": "bronzor",
+      "gender": "MALE",
+      "level": 36,
+      "nature": "hardy",
+      "ability": "heatproof",
+      "moveset": [
+        "confuseray",
+        "gyroball",
+        "extrasensory",
+        "irondefense"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "stunky",
+      "gender": "FEMALE",
+      "level": 36,
+      "nature": "docile",
+      "ability": "aftermath",
+      "moveset": [
+        "bite",
+        "venoshock",
+        "toxic",
+        "nightslash"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

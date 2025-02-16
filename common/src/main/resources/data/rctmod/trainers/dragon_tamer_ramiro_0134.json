@@ -1,5 +1,20 @@
 {
   "name": "Dragon Tamer Ramiro",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
+  "battleRules": {
+    "maxItemUses": 5
+  },
+  "bag": [
+    {
+      "item": "cobblemon:hyper_potion",
+      "quantity": 2
+    }
+  ],
   "team": [
     {
       "species": "pikachu",

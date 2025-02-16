@@ -1,0 +1,50 @@
+{
+  "name": "Team Galactic Grunt",
+  "team": [
+    {
+      "species": "wurmple",
+      "gender": "MALE",
+      "level": 32,
+      "nature": "serious",
+      "ability": "shielddust",
+      "moveset": [
+        "tackle",
+        "stringshot",
+        "poisonsting",
+        "bugbite"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "cascoon",
+      "gender": "GENDERLESS",
+      "level": 34,
+      "nature": "bashful",
+      "ability": "shedskin",
+      "moveset": [
+        "stringshot",
+        "poisonsting",
+        "bugbite",
+        "harden"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "dustox",
+      "gender": "FEMALE",
+      "level": 36,
+      "nature": "quirky",
+      "ability": "shielddust",
+      "moveset": [
+        "psybeam",
+        "leechlife",
+        "toxic",
+        "bugbuzz"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "name": "Ninja Boy Antonio",
+  "team": [
+    {
+      "species": "zubat",
+      "gender": "GENDERLESS",
+      "level": 33,
+      "nature": "hasty",
+      "ability": "innerfocus",
+      "moveset": [
+        "supersonic",
+        "poisonfang",
+        "aircutter",
+        "bite"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "golbat",
+      "gender": "FEMALE",
+      "level": 33,
+      "nature": "hasty",
+      "ability": "innerfocus",
+      "moveset": [
+        "supersonic",
+        "astonish",
+        "poisonfang",
+        "aircutter"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "zubat",
+      "gender": "GENDERLESS",
+      "level": 34,
+      "nature": "hasty",
+      "ability": "innerfocus",
+      "moveset": [
+        "supersonic",
+        "poisonfang",
+        "aircutter",
+        "bite"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "croagunk",
+      "gender": "GENDERLESS",
+      "level": 36,
+      "nature": "docile",
+      "ability": "anticipation",
+      "moveset": [
+        "revenge",
+        "venoshock",
+        "suckerpunch",
+        "toxic"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "name": "Team Galactic Grunt",
+  "team": [
+    {
+      "species": "golbat",
+      "gender": "FEMALE",
+      "level": 36,
+      "nature": "serious",
+      "ability": "innerfocus",
+      "moveset": [
+        "poisonfang",
+        "quickguard",
+        "aircutter",
+        "bite"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "silcoon",
+      "gender": "FEMALE",
+      "level": 34,
+      "nature": "bashful",
+      "ability": "shedskin",
+      "moveset": [
+        "tackle",
+        "poisonsting",
+        "harden"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

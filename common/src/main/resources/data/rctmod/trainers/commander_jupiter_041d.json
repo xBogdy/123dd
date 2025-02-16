@@ -1,0 +1,67 @@
+{
+  "name": "Commander Jupiter",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
+  "battleRules": {
+    "maxItemUses": 2
+  },
+  "bag": [
+    {
+      "item": "cobblemon:full_restore",
+      "quantity": 2
+    }
+  ],
+  "team": [
+    {
+      "species": "zubat",
+      "gender": "FEMALE",
+      "level": 18,
+      "nature": "modest",
+      "ability": "innerfocus",
+      "moveset": [
+        "absorb",
+        "supersonic",
+        "meanlook",
+        "poisonfang"
+      ],
+      "ivs": {
+        "hp": 15,
+        "def": 15,
+        "spd": 15
+      },
+      "evs": {
+        "hp": 68,
+        "def": 68,
+        "spd": 68
+      }
+    },
+    {
+      "species": "skuntank",
+      "gender": "FEMALE",
+      "level": 20,
+      "nature": "modest",
+      "ability": "aftermath",
+      "moveset": [
+        "flamethrower",
+        "poisongas",
+        "acidspray",
+        "snarl"
+      ],
+      "ivs": {
+        "hp": 15,
+        "def": 15,
+        "spd": 15
+      },
+      "evs": {
+        "hp": 68,
+        "def": 68,
+        "spd": 68
+      },
+      "heldItem": "sitrus_berry"
+    }
+  ]
+}

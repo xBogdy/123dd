@@ -1,0 +1,35 @@
+{
+  "name": "Ace Trainer Graham",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
+  "battleRules": {
+    "maxItemUses": 5
+  },
+  "bag": [
+    {
+      "item": "cobblemon:hyper_potion",
+      "quantity": 2
+    }
+  ],
+  "team": [
+    {
+      "species": "skarmory",
+      "gender": "FEMALE",
+      "level": 56,
+      "nature": "relaxed",
+      "ability": "keeneye",
+      "moveset": [
+        "bravebird",
+        "steelwing",
+        "autotomize",
+        "metalsound"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

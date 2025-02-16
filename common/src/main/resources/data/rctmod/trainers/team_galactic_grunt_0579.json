@@ -1,0 +1,50 @@
+{
+  "name": "Team Galactic Grunt",
+  "team": [
+    {
+      "species": "cascoon",
+      "gender": "FEMALE",
+      "level": 28,
+      "nature": "quirky",
+      "ability": "shedskin",
+      "moveset": [
+        "tackle",
+        "stringshot",
+        "poisonsting",
+        "harden"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "dustox",
+      "gender": "MALE",
+      "level": 28,
+      "nature": "hardy",
+      "ability": "shielddust",
+      "moveset": [
+        "poisonpowder",
+        "venoshock",
+        "leechlife",
+        "lightscreen"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "beautifly",
+      "gender": "FEMALE",
+      "level": 28,
+      "nature": "docile",
+      "ability": "swarm",
+      "moveset": [
+        "gust",
+        "aircutter",
+        "leechlife",
+        "attract"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

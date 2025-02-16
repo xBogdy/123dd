@@ -1,0 +1,20 @@
+{
+  "name": "Gentleman Jeremy",
+  "team": [
+    {
+      "species": "chatot",
+      "gender": "GENDERLESS",
+      "level": 31,
+      "nature": "timid",
+      "ability": "tangledfeet",
+      "moveset": [
+        "hypervoice",
+        "chatter",
+        "confide",
+        "furyattack"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

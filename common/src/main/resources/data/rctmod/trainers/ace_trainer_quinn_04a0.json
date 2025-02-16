@@ -1,0 +1,50 @@
+{
+  "name": "Ace Trainer Quinn",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
+  "battleRules": {
+    "maxItemUses": 5
+  },
+  "bag": [
+    {
+      "item": "cobblemon:hyper_potion",
+      "quantity": 2
+    }
+  ],
+  "team": [
+    {
+      "species": "pinsir",
+      "gender": "GENDERLESS",
+      "level": 53,
+      "nature": "hardy",
+      "ability": "hypercutter",
+      "moveset": [
+        "superpower",
+        "xscissor",
+        "swordsdance",
+        "guillotine"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "mightyena",
+      "gender": "GENDERLESS",
+      "level": 53,
+      "nature": "hardy",
+      "ability": "intimidate",
+      "moveset": [
+        "crunch",
+        "suckerpunch",
+        "headbutt",
+        "scaryface"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

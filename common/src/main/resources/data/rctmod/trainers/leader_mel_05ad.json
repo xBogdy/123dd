@@ -1,0 +1,153 @@
+{
+  "name": "Leader Mel",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
+  "battleRules": {
+    "maxItemUses": 2
+  },
+  "bag": [
+    {
+      "item": "cobblemon:full_restore",
+      "quantity": 2
+    }
+  ],
+  "team": [
+    {
+      "species": "bewear",
+      "gender": "GENDERLESS",
+      "level": 36,
+      "nature": "adamant",
+      "ability": "fluffy",
+      "moveset": [
+        "facade",
+        "hammerarm",
+        "payback",
+        "icepunch"
+      ],
+      "ivs": {
+        "hp": 31,
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
+      },
+      "evs": {
+        "hp": 252,
+        "atk": 252,
+        "spe": 6
+      },
+      "heldItem": "normal_gem"
+    },
+    {
+      "species": "porygonz",
+      "gender": "MALE",
+      "level": 37,
+      "nature": "timid",
+      "ability": "adaptability",
+      "moveset": [
+        "round",
+        "signalbeam",
+        "psybeam",
+        "recover"
+      ],
+      "ivs": {
+        "hp": 31,
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
+      },
+      "evs": {
+        "hp": 6,
+        "spa": 252,
+        "spe": 252
+      }
+    },
+    {
+      "species": "miltank",
+      "gender": "GENDERLESS",
+      "level": 36,
+      "nature": "adamant",
+      "ability": "scrappy",
+      "moveset": [
+        "bodyslam",
+        "icepunch",
+        "poweruppunch",
+        "milkdrink"
+      ],
+      "ivs": {
+        "hp": 31,
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
+      },
+      "evs": {
+        "hp": 252,
+        "atk": 252,
+        "spe": 6
+      },
+      "heldItem": "sitrus_berry"
+    },
+    {
+      "species": "lopunny",
+      "gender": "FEMALE",
+      "level": 37,
+      "nature": "jolly",
+      "ability": "scrappy",
+      "moveset": [
+        "facade",
+        "brickbreak",
+        "poweruppunch",
+        "fakeout"
+      ],
+      "ivs": {
+        "hp": 31,
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
+      },
+      "evs": {
+        "hp": 6,
+        "atk": 252,
+        "spe": 252
+      },
+      "heldItem": "life_orb"
+    },
+    {
+      "species": "heliolisk",
+      "gender": "MALE",
+      "level": 35,
+      "nature": "modest",
+      "ability": "sandveil",
+      "moveset": [
+        "swift",
+        "paraboliccharge",
+        "grassknot",
+        "thunderwave"
+      ],
+      "ivs": {
+        "hp": 31,
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
+      },
+      "evs": {
+        "hp": 6,
+        "spa": 252,
+        "spe": 252
+      }
+    }
+  ]
+}

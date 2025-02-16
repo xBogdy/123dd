@@ -1,0 +1,34 @@
+{
+  "name": "Team Galactic Grunt",
+  "team": [
+    {
+      "species": "wurmple",
+      "gender": "GENDERLESS",
+      "level": 13,
+      "nature": "quirky",
+      "ability": "shielddust",
+      "moveset": [
+        "tackle",
+        "stringshot",
+        "poisonsting"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "cascoon",
+      "gender": "FEMALE",
+      "level": 13,
+      "nature": "hardy",
+      "ability": "shedskin",
+      "moveset": [
+        "tackle",
+        "stringshot",
+        "poisonsting",
+        "harden"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

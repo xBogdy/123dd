@@ -1,0 +1,17 @@
+{
+  "name": "Team Galactic Grunt",
+  "team": [
+    {
+      "species": "cascoon",
+      "gender": "MALE",
+      "level": 11,
+      "nature": "hardy",
+      "ability": "shedskin",
+      "moveset": [
+        "harden"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

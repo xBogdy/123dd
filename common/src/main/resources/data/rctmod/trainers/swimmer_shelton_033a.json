@@ -1,0 +1,50 @@
+{
+  "name": "Swimmer Shelton",
+  "team": [
+    {
+      "species": "gyarados",
+      "gender": "GENDERLESS",
+      "level": 30,
+      "nature": "sassy",
+      "ability": "intimidate",
+      "moveset": [
+        "leer",
+        "twister",
+        "whirlpool",
+        "raindance"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "gyarados",
+      "gender": "MALE",
+      "level": 29,
+      "nature": "sassy",
+      "ability": "intimidate",
+      "moveset": [
+        "leer",
+        "twister",
+        "brine",
+        "raindance"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "gyarados",
+      "gender": "GENDERLESS",
+      "level": 31,
+      "nature": "sassy",
+      "ability": "intimidate",
+      "moveset": [
+        "leer",
+        "twister",
+        "waterfall",
+        "raindance"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

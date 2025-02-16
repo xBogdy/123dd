@@ -1,0 +1,38 @@
+{
+  "name": "Pokémon Trainer Lucas",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
+  "battleRules": {
+    "maxItemUses": 2
+  },
+  "bag": [
+    {
+      "item": "cobblemon:full_restore",
+      "quantity": 2
+    }
+  ],
+  "team": [
+    {
+      "species": "piplup",
+      "gender": "GENDERLESS",
+      "level": 13,
+      "nature": "hardy",
+      "ability": "torrent",
+      "moveset": [
+        "pound",
+        "growl",
+        "watergun"
+      ],
+      "ivs": {
+        "hp": 31,
+        "def": 31,
+        "spd": 31
+      },
+      "evs": {}
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "name": "Ace Trainer Garrett",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
+  "battleRules": {
+    "maxItemUses": 5
+  },
+  "bag": [
+    {
+      "item": "cobblemon:hyper_potion",
+      "quantity": 2
+    }
+  ],
+  "team": [
+    {
+      "species": "mrmime",
+      "gender": "FEMALE",
+      "level": 33,
+      "nature": "sassy",
+      "ability": "filter",
+      "moveset": [
+        "copycat",
+        "batonpass",
+        "encore",
+        "psybeam"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "machoke",
+      "gender": "FEMALE",
+      "level": 34,
+      "nature": "relaxed",
+      "ability": "noguard",
+      "moveset": [
+        "leer",
+        "lowsweep",
+        "knockoff",
+        "strength"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "sneasel",
+      "gender": "MALE",
+      "level": 35,
+      "nature": "sassy",
+      "ability": "innerfocus",
+      "moveset": [
+        "leer",
+        "metalclaw",
+        "icywind",
+        "furyswipes"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

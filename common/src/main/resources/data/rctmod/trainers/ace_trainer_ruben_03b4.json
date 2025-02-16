@@ -1,0 +1,50 @@
+{
+  "name": "Ace Trainer Ruben",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
+  "battleRules": {
+    "maxItemUses": 5
+  },
+  "bag": [
+    {
+      "item": "cobblemon:hyper_potion",
+      "quantity": 2
+    }
+  ],
+  "team": [
+    {
+      "species": "poliwhirl",
+      "gender": "FEMALE",
+      "level": 54,
+      "nature": "relaxed",
+      "ability": "damp",
+      "moveset": [
+        "hydropump",
+        "hypnosis",
+        "earthpower",
+        "bodyslam"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "gyarados",
+      "gender": "MALE",
+      "level": 54,
+      "nature": "relaxed",
+      "ability": "intimidate",
+      "moveset": [
+        "dragondance",
+        "waterfall",
+        "icefang",
+        "crunch"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

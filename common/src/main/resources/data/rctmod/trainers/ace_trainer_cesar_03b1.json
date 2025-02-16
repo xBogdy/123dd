@@ -1,0 +1,50 @@
+{
+  "name": "Ace Trainer Cesar",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
+  "battleRules": {
+    "maxItemUses": 5
+  },
+  "bag": [
+    {
+      "item": "cobblemon:hyper_potion",
+      "quantity": 2
+    }
+  ],
+  "team": [
+    {
+      "species": "skorupi",
+      "gender": "FEMALE",
+      "level": 30,
+      "nature": "relaxed",
+      "ability": "battlearmor",
+      "moveset": [
+        "bite",
+        "pinmissile",
+        "toxic",
+        "irontail"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "steelix",
+      "gender": "GENDERLESS",
+      "level": 32,
+      "nature": "relaxed",
+      "ability": "rockhead",
+      "moveset": [
+        "thunderfang",
+        "icefang",
+        "curse",
+        "irontail"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

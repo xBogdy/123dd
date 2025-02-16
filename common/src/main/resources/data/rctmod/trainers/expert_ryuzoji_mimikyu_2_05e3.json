@@ -1,0 +1,47 @@
+{
+  "name": "Expert Ryuzoji",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
+  "battleRules": {
+    "maxItemUses": 5
+  },
+  "bag": [
+    {
+      "item": "cobblemon:hyper_potion",
+      "quantity": 2
+    }
+  ],
+  "team": [
+    {
+      "species": "mimikyu",
+      "gender": "MALE",
+      "level": 82,
+      "nature": "adamant",
+      "ability": "disguise",
+      "moveset": [
+        "playrough",
+        "bulkup",
+        "thunderwave",
+        "protect"
+      ],
+      "ivs": {
+        "hp": 31,
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
+      },
+      "evs": {
+        "hp": 6,
+        "atk": 252,
+        "def": 252
+      },
+      "heldItem": "sitrus_berry"
+    }
+  ]
+}

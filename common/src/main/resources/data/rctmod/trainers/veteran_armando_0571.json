@@ -1,0 +1,50 @@
+{
+  "name": "Veteran Armando",
+  "ai": {
+    "type": "rct",
+    "data": {
+      "maxSelectMargin": 0.15
+    }
+  },
+  "battleRules": {
+    "maxItemUses": 5
+  },
+  "bag": [
+    {
+      "item": "cobblemon:hyper_potion",
+      "quantity": 2
+    }
+  ],
+  "team": [
+    {
+      "species": "staraptor",
+      "gender": "GENDERLESS",
+      "level": 58,
+      "nature": "jolly",
+      "ability": "intimidate",
+      "moveset": [
+        "bravebird",
+        "closecombat",
+        "quickattack",
+        "takedown"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "pelipper",
+      "gender": "GENDERLESS",
+      "level": 58,
+      "nature": "modest",
+      "ability": "drizzle",
+      "moveset": [
+        "hurricane",
+        "roost",
+        "waterpulse",
+        "tailwind"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "name": "Psychic Chelsey",
+  "team": [
+    {
+      "species": "xatu",
+      "gender": "MALE",
+      "level": 56,
+      "nature": "calm",
+      "ability": "synchronize",
+      "moveset": [
+        "nightshade",
+        "psychic",
+        "wish",
+        "futuresight"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "mismagius",
+      "gender": "MALE",
+      "level": 58,
+      "nature": "bold",
+      "ability": "levitate",
+      "moveset": [
+        "mysticalfire",
+        "perishsong",
+        "powergem",
+        "magicalleaf"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}

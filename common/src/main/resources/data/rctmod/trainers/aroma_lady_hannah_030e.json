@@ -1,0 +1,35 @@
+{
+  "name": "Aroma Lady Hannah",
+  "team": [
+    {
+      "species": "combee",
+      "gender": "GENDERLESS",
+      "level": 16,
+      "nature": "bashful",
+      "ability": "honeygather",
+      "moveset": [
+        "sweetscent",
+        "gust",
+        "strugglebug",
+        "bugbite"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "roselia",
+      "gender": "GENDERLESS",
+      "level": 18,
+      "nature": "calm",
+      "ability": "poisonpoint",
+      "moveset": [
+        "poisonsting",
+        "megadrain",
+        "leechseed",
+        "magicalleaf"
+      ],
+      "ivs": {},
+      "evs": {}
+    }
+  ]
+}
