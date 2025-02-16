@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "cleffa",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 19,
       "nature": "calm",
       "ability": "cutecharm",
@@ -33,7 +33,7 @@
     },
     {
       "species": "happiny",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 18,
       "nature": "calm",
       "ability": "serenegrace",

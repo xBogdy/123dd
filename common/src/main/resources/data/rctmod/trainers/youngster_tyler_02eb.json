@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "magikarp",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 5,
       "nature": "naive",
       "ability": "swiftswim",
@@ -15,7 +15,7 @@
     },
     {
       "species": "starly",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 5,
       "nature": "docile",
       "ability": "keeneye",

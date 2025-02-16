@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "kricketot",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 7,
       "nature": "timid",
       "ability": "shedskin",
@@ -17,7 +17,7 @@
     },
     {
       "species": "wurmple",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 7,
       "nature": "timid",
       "ability": "shielddust",

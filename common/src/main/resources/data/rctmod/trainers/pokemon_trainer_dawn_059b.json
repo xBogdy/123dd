@@ -45,7 +45,7 @@
     },
     {
       "species": "arcanine",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 69,
       "nature": "adamant",
       "ability": "intimidate",
@@ -72,7 +72,7 @@
     },
     {
       "species": "mrmime",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 70,
       "nature": "timid",
       "ability": "filter",
@@ -152,7 +152,7 @@
     },
     {
       "species": "torterra",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 74,
       "nature": "brave",
       "ability": "overgrow",

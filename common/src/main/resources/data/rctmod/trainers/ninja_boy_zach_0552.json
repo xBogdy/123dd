@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "zubat",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 26,
       "nature": "jolly",
       "ability": "innerfocus",
@@ -33,7 +33,7 @@
     },
     {
       "species": "golbat",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 29,
       "nature": "timid",
       "ability": "innerfocus",

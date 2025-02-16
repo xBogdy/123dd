@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "monferno",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 39,
       "nature": "jolly",
       "ability": "blaze",
@@ -33,7 +33,7 @@
     },
     {
       "species": "luxio",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 39,
       "nature": "jolly",
       "ability": "intimidate",
@@ -48,7 +48,7 @@
     },
     {
       "species": "gyarados",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 39,
       "nature": "hasty",
       "ability": "intimidate",

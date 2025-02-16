@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "cherubi",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 15,
       "nature": "impish",
       "ability": "chlorophyll",
@@ -18,7 +18,7 @@
     },
     {
       "species": "roselia",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 15,
       "nature": "timid",
       "ability": "leafguard",

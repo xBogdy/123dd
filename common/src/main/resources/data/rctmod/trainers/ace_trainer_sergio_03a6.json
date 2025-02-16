@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "floatzel",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 37,
       "nature": "jolly",
       "ability": "swiftswim",
@@ -33,7 +33,7 @@
     },
     {
       "species": "sneasel",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 37,
       "nature": "jolly",
       "ability": "innerfocus",

@@ -19,7 +19,7 @@
   "team": [
     {
       "species": "abomasnow",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 68,
       "nature": "brave",
       "ability": "snowwarning",
@@ -100,7 +100,7 @@
     },
     {
       "species": "froslass",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 70,
       "nature": "modest",
       "ability": "snowcloak",

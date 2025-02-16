@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "diggersby",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 81,
       "nature": "adamant",
       "ability": "hugepower",
@@ -111,7 +111,7 @@
     },
     {
       "species": "porygonz",
-      "gender": "MALE",
+      "gender": "GENDERLESS",
       "level": 84,
       "nature": "timid",
       "ability": "adaptability",
@@ -138,7 +138,7 @@
     },
     {
       "species": "avalugg",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 82,
       "nature": "careful",
       "ability": "sturdy",

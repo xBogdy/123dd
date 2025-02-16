@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "mamoswine",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 63,
       "nature": "adamant",
       "ability": "thickfat",
@@ -30,7 +30,7 @@
     },
     {
       "species": "rotom",
-      "gender": "FEMALE",
+      "gender": "GENDERLESS",
       "level": 61,
       "nature": "modest",
       "ability": "levitate",
@@ -87,7 +87,7 @@
     },
     {
       "species": "haxorus",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 63,
       "nature": "jolly",
       "ability": "moldbreaker",
@@ -141,7 +141,7 @@
     },
     {
       "species": "metagross",
-      "gender": "FEMALE",
+      "gender": "GENDERLESS",
       "level": 65,
       "nature": "jolly",
       "ability": "toughclaws",

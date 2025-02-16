@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "pichu",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 18,
       "nature": "sassy",
       "ability": "static",
@@ -18,7 +18,7 @@
     },
     {
       "species": "pikachu",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 19,
       "nature": "sassy",
       "ability": "static",
@@ -33,7 +33,7 @@
     },
     {
       "species": "happiny",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 17,
       "nature": "sassy",
       "ability": "serenegrace",

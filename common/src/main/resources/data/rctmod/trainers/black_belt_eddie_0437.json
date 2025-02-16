@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "machoke",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 52,
       "nature": "relaxed",
       "ability": "noguard",
@@ -18,7 +18,7 @@
     },
     {
       "species": "machamp",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 58,
       "nature": "relaxed",
       "ability": "noguard",

@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "gastrodon",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 52,
       "nature": "calm",
       "ability": "stormdrain",
@@ -21,7 +21,7 @@
     },
     {
       "species": "gastrodon",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 53,
       "nature": "calm",
       "ability": "stormdrain",
@@ -39,7 +39,7 @@
     },
     {
       "species": "gastrodon",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 51,
       "nature": "calm",
       "ability": "stormdrain",

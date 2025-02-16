@@ -46,7 +46,7 @@
     },
     {
       "species": "sudowoodo",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 56,
       "nature": "adamant",
       "ability": "rockhead",
@@ -73,7 +73,7 @@
     },
     {
       "species": "golem",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 56,
       "nature": "jolly",
       "ability": "sturdy",
@@ -101,7 +101,7 @@
     },
     {
       "species": "whiscash",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 55,
       "nature": "modest",
       "ability": "hydration",

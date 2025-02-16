@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "luxio",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 56,
       "nature": "jolly",
       "ability": "intimidate",
@@ -18,7 +18,7 @@
     },
     {
       "species": "staraptor",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 57,
       "nature": "jolly",
       "ability": "intimidate",
@@ -33,7 +33,7 @@
     },
     {
       "species": "rapidash",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 58,
       "nature": "jolly",
       "ability": "flashfire",

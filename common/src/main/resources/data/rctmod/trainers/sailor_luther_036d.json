@@ -17,7 +17,7 @@
     },
     {
       "species": "machoke",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 40,
       "nature": "relaxed",
       "ability": "noguard",
@@ -32,7 +32,7 @@
     },
     {
       "species": "gastrodon",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 43,
       "nature": "sassy",
       "ability": "stormdrain",

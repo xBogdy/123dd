@@ -57,7 +57,7 @@
     },
     {
       "species": "hariyama",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 83,
       "nature": "adamant",
       "ability": "guts",
@@ -84,7 +84,7 @@
     },
     {
       "species": "snorlax",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 84,
       "nature": "adamant",
       "ability": "thickfat",
@@ -111,7 +111,7 @@
     },
     {
       "species": "aggron",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 83,
       "nature": "careful",
       "ability": "filter",
@@ -138,7 +138,7 @@
     },
     {
       "species": "guzzlord",
-      "gender": "MALE",
+      "gender": "GENDERLESS",
       "level": 82,
       "nature": "modest",
       "ability": "beastboost",

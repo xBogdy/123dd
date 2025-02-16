@@ -20,7 +20,7 @@
   "team": [
     {
       "species": "sableye",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 25,
       "nature": "impish",
       "ability": "prankster",
@@ -46,7 +46,7 @@
     },
     {
       "species": "shiftry",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 27,
       "nature": "modest",
       "ability": "pickpocket",

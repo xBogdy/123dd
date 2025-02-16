@@ -19,7 +19,7 @@
   "team": [
     {
       "species": "spiritomb",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 74,
       "nature": "quiet",
       "ability": "pressure",
@@ -46,7 +46,7 @@
     },
     {
       "species": "roserade",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 74,
       "nature": "timid",
       "ability": "poisonpoint",
@@ -72,7 +72,7 @@
     },
     {
       "species": "togekiss",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 76,
       "nature": "timid",
       "ability": "serenegrace",

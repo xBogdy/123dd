@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "goodra",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 74,
       "nature": "bold",
       "ability": "gooey",
@@ -45,7 +45,7 @@
     },
     {
       "species": "tyrantrum",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 75,
       "nature": "jolly",
       "ability": "rockhead",
@@ -125,7 +125,7 @@
     },
     {
       "species": "sceptile",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 76,
       "nature": "modest",
       "ability": "technician",
@@ -152,7 +152,7 @@
     },
     {
       "species": "latias",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 76,
       "nature": "modest",
       "ability": "levitate",

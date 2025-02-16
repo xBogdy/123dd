@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "noctowl",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 38,
       "nature": "timid",
       "ability": "keeneye",
@@ -18,7 +18,7 @@
     },
     {
       "species": "machoke",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 40,
       "nature": "jolly",
       "ability": "noguard",

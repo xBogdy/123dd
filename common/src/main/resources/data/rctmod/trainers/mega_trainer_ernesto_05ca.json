@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "archeops",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 59,
       "nature": "jolly",
       "ability": "klutz",
@@ -29,7 +29,7 @@
     },
     {
       "species": "walrein",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 59,
       "nature": "calm",
       "ability": "regenerator",
@@ -83,7 +83,7 @@
     },
     {
       "species": "leavanny",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 58,
       "nature": "jolly",
       "ability": "swarm",
@@ -110,7 +110,7 @@
     },
     {
       "species": "medicham",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 59,
       "nature": "jolly",
       "ability": "purepower",

@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "ponyta",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 22,
       "nature": "sassy",
       "ability": "runaway",
@@ -18,7 +18,7 @@
     },
     {
       "species": "ponyta",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 20,
       "nature": "sassy",
       "ability": "runaway",
@@ -33,7 +33,7 @@
     },
     {
       "species": "ponyta",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 24,
       "nature": "sassy",
       "ability": "runaway",

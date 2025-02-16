@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "mantyke",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 38,
       "nature": "sassy",
       "ability": "waterabsorb",
@@ -33,7 +33,7 @@
     },
     {
       "species": "mantine",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 42,
       "nature": "sassy",
       "ability": "waterabsorb",

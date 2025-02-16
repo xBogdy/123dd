@@ -30,7 +30,7 @@
     },
     {
       "species": "gardevoir",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 62,
       "nature": "timid",
       "ability": "pixilate",
@@ -84,7 +84,7 @@
     },
     {
       "species": "roserade",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 61,
       "nature": "timid",
       "ability": "naturalcure",

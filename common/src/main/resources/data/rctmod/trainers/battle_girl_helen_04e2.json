@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "medicham",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 38,
       "nature": "jolly",
       "ability": "purepower",
@@ -18,7 +18,7 @@
     },
     {
       "species": "machoke",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 40,
       "nature": "jolly",
       "ability": "noguard",

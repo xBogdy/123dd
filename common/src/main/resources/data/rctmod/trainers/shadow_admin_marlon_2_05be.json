@@ -83,7 +83,7 @@
     },
     {
       "species": "swoobat",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 39,
       "nature": "modest",
       "ability": "simple",
@@ -109,7 +109,7 @@
     },
     {
       "species": "krookodile",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 41,
       "nature": "adamant",
       "ability": "intimidate",

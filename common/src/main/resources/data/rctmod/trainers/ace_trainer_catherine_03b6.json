@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "misdreavus",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 30,
       "nature": "timid",
       "ability": "levitate",
@@ -33,7 +33,7 @@
     },
     {
       "species": "drifblim",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 30,
       "nature": "jolly",
       "ability": "flareboost",

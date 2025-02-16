@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "mamoswine",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 63,
       "nature": "adamant",
       "ability": "thickfat",
@@ -60,7 +60,7 @@
     },
     {
       "species": "vaporeon",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 62,
       "nature": "bold",
       "ability": "waterabsorb",
@@ -87,7 +87,7 @@
     },
     {
       "species": "haxorus",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 63,
       "nature": "jolly",
       "ability": "moldbreaker",

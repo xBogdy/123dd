@@ -45,7 +45,7 @@
     },
     {
       "species": "gliscor",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 31,
       "nature": "impish",
       "ability": "hypercutter",
@@ -98,7 +98,7 @@
     },
     {
       "species": "pinsir",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 33,
       "nature": "jolly",
       "ability": "aerilate",
@@ -125,7 +125,7 @@
     },
     {
       "species": "crobat",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 32,
       "nature": "modest",
       "ability": "infiltrator",

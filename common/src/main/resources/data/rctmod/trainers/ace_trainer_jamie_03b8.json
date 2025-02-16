@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "metagross",
-      "gender": "MALE",
+      "gender": "GENDERLESS",
       "level": 56,
       "nature": "jolly",
       "ability": "clearbody",

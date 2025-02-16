@@ -30,7 +30,7 @@
     },
     {
       "species": "hitmontop",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 78,
       "nature": "impish",
       "ability": "intimidate",
@@ -57,7 +57,7 @@
     },
     {
       "species": "magnezone",
-      "gender": "FEMALE",
+      "gender": "GENDERLESS",
       "level": 78,
       "nature": "modest",
       "ability": "sturdy",
@@ -84,7 +84,7 @@
     },
     {
       "species": "gastrodon",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 78,
       "nature": "calm",
       "ability": "stormdrain",
@@ -138,7 +138,7 @@
     },
     {
       "species": "moltres",
-      "gender": "MALE",
+      "gender": "GENDERLESS",
       "level": 79,
       "nature": "timid",
       "ability": "berserk",

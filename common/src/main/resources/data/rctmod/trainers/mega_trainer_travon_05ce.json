@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "claydol",
-      "gender": "FEMALE",
+      "gender": "GENDERLESS",
       "level": 57,
       "nature": "bold",
       "ability": "multiscale",
@@ -57,7 +57,7 @@
     },
     {
       "species": "cradily",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 58,
       "nature": "bold",
       "ability": "stormdrain",
@@ -111,7 +111,7 @@
     },
     {
       "species": "scizor",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 59,
       "nature": "adamant",
       "ability": "technician",

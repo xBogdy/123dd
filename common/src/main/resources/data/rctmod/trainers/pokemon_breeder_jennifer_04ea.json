@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "mimejr",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 28,
       "nature": "timid",
       "ability": "filter",
@@ -18,7 +18,7 @@
     },
     {
       "species": "roselia",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 27,
       "nature": "hasty",
       "ability": "poisonpoint",
@@ -33,7 +33,7 @@
     },
     {
       "species": "clefairy",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 29,
       "nature": "hasty",
       "ability": "cutecharm",

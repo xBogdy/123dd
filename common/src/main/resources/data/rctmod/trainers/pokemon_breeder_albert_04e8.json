@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "sudowoodo",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 37,
       "nature": "impish",
       "ability": "sturdy",
@@ -18,7 +18,7 @@
     },
     {
       "species": "roselia",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 38,
       "nature": "bold",
       "ability": "poisonpoint",
@@ -33,7 +33,7 @@
     },
     {
       "species": "pikachu",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 36,
       "nature": "bold",
       "ability": "static",

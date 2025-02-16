@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "mudsdale",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 52,
       "nature": "adamant",
       "ability": "stamina",
@@ -45,7 +45,7 @@
     },
     {
       "species": "pangoro",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 52,
       "nature": "adamant",
       "ability": "ironfist",
@@ -72,7 +72,7 @@
     },
     {
       "species": "snorlax",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 53,
       "nature": "adamant",
       "ability": "thickfat",

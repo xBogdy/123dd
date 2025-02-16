@@ -46,7 +46,7 @@
     },
     {
       "species": "kingdra",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 68,
       "nature": "timid",
       "ability": "swiftswim",
@@ -73,7 +73,7 @@
     },
     {
       "species": "ludicolo",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 68,
       "nature": "modest",
       "ability": "swiftswim",
@@ -100,7 +100,7 @@
     },
     {
       "species": "huntail",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 70,
       "nature": "jolly",
       "ability": "swiftswim",
@@ -154,7 +154,7 @@
     },
     {
       "species": "floatzel",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 72,
       "nature": "jolly",
       "ability": "swiftswim",

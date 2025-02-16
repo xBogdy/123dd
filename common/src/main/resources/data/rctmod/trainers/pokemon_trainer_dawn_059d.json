@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "togekiss",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 68,
       "nature": "timid",
       "ability": "serenegrace",
@@ -45,7 +45,7 @@
     },
     {
       "species": "bellossom",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 69,
       "nature": "modest",
       "ability": "chlorophyll",
@@ -72,7 +72,7 @@
     },
     {
       "species": "mamoswine",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 70,
       "nature": "adamant",
       "ability": "thickfat",
@@ -99,7 +99,7 @@
     },
     {
       "species": "typhlosion",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 69,
       "nature": "timid",
       "ability": "flashfire",
@@ -123,7 +123,7 @@
     },
     {
       "species": "lopunny",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 70,
       "nature": "careful",
       "ability": "klutz",
@@ -150,7 +150,7 @@
     },
     {
       "species": "empoleon",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 74,
       "nature": "hardy",
       "ability": "torrent",

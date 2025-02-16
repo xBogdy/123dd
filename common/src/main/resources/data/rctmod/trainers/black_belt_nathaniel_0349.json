@@ -18,7 +18,7 @@
     },
     {
       "species": "meditite",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 23,
       "nature": "hardy",
       "ability": "purepower",
@@ -33,7 +33,7 @@
     },
     {
       "species": "machop",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 22,
       "nature": "relaxed",
       "ability": "noguard",

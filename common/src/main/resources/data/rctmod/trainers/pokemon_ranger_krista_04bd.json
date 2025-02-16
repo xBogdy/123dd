@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "trapinch",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 54,
       "nature": "hardy",
       "ability": "hypercutter",
@@ -18,7 +18,7 @@
     },
     {
       "species": "vibrava",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 56,
       "nature": "impish",
       "ability": "levitate",

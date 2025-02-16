@@ -4,7 +4,7 @@
   "team": [
     {
       "species": "bonsly",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 19,
       "nature": "jolly",
       "ability": "rockhead",
@@ -19,7 +19,7 @@
     },
     {
       "species": "mimejr",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 19,
       "nature": "timid",
       "ability": "filter",

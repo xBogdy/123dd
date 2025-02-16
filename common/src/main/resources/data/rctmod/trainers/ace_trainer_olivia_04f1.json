@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "roselia",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 55,
       "nature": "calm",
       "ability": "poisonpoint",
@@ -33,7 +33,7 @@
     },
     {
       "species": "seaking",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 55,
       "nature": "jolly",
       "ability": "waterveil",

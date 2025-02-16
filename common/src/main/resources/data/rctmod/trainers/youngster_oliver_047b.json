@@ -18,7 +18,7 @@
     },
     {
       "species": "kricketune",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 16,
       "nature": "docile",
       "ability": "swarm",
@@ -33,7 +33,7 @@
     },
     {
       "species": "shellos",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 16,
       "nature": "hasty",
       "ability": "stormdrain",

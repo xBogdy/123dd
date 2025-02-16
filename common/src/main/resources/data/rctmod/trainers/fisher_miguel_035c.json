@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "gyarados",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 29,
       "nature": "timid",
       "ability": "intimidate",
@@ -18,7 +18,7 @@
     },
     {
       "species": "gyarados",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 29,
       "nature": "adamant",
       "ability": "intimidate",

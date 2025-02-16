@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "xatu",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 56,
       "nature": "calm",
       "ability": "synchronize",
@@ -18,7 +18,7 @@
     },
     {
       "species": "mismagius",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 58,
       "nature": "bold",
       "ability": "levitate",

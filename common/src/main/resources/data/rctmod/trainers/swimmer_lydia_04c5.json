@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "bibarel",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 52,
       "nature": "careful",
       "ability": "simple",
@@ -18,7 +18,7 @@
     },
     {
       "species": "azumarill",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 52,
       "nature": "impish",
       "ability": "thickfat",

@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "shellos",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 28,
       "nature": "calm",
       "ability": "stormdrain",
@@ -21,7 +21,7 @@
     },
     {
       "species": "shellos",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 27,
       "nature": "calm",
       "ability": "stormdrain",
@@ -39,7 +39,7 @@
     },
     {
       "species": "shellos",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 29,
       "nature": "calm",
       "ability": "stormdrain",

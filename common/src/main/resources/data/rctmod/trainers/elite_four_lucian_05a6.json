@@ -19,7 +19,7 @@
   "team": [
     {
       "species": "mrmime",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 79,
       "nature": "bold",
       "ability": "filter",
@@ -44,7 +44,7 @@
     },
     {
       "species": "espeon",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 81,
       "nature": "timid",
       "ability": "magicbounce",
@@ -93,7 +93,7 @@
     },
     {
       "species": "alakazam",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 82,
       "nature": "timid",
       "ability": "magicguard",
@@ -143,7 +143,7 @@
     },
     {
       "species": "gallade",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 85,
       "nature": "jolly",
       "ability": "justified",

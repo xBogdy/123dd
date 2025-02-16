@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "meowth",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 56,
       "nature": "careful",
       "ability": "technician",
@@ -33,7 +33,7 @@
     },
     {
       "species": "persian",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 56,
       "nature": "careful",
       "ability": "technician",

@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "toxicroak",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 61,
       "nature": "jolly",
       "ability": "poisontouch",
@@ -56,7 +56,7 @@
     },
     {
       "species": "incineroar",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 62,
       "nature": "adamant",
       "ability": "intimidate",
@@ -83,7 +83,7 @@
     },
     {
       "species": "alakazam",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 62,
       "nature": "timid",
       "ability": "trace",
@@ -110,7 +110,7 @@
     },
     {
       "species": "mandibuzz",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 62,
       "nature": "bold",
       "ability": "overcoat",
@@ -137,7 +137,7 @@
     },
     {
       "species": "eelektross",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 61,
       "nature": "modest",
       "ability": "levitate",

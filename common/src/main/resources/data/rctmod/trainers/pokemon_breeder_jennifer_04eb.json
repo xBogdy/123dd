@@ -18,7 +18,7 @@
     },
     {
       "species": "roselia",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 36,
       "nature": "hasty",
       "ability": "poisonpoint",
@@ -33,7 +33,7 @@
     },
     {
       "species": "clefairy",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 38,
       "nature": "hasty",
       "ability": "cutecharm",

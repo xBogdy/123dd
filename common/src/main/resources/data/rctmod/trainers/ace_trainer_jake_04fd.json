@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "staravia",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 55,
       "nature": "impish",
       "ability": "intimidate",
@@ -33,7 +33,7 @@
     },
     {
       "species": "girafarig",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 55,
       "nature": "timid",
       "ability": "innerfocus",

@@ -44,7 +44,7 @@
     },
     {
       "species": "gliscor",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 69,
       "nature": "adamant",
       "ability": "hypercutter",
@@ -69,7 +69,7 @@
     },
     {
       "species": "golem",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 68,
       "nature": "jolly",
       "ability": "sturdy",
@@ -120,7 +120,7 @@
     },
     {
       "species": "rhyperior",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 71,
       "nature": "adamant",
       "ability": "solidrock",

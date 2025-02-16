@@ -46,7 +46,7 @@
     },
     {
       "species": "hitmontop",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 83,
       "nature": "impish",
       "ability": "intimidate",
@@ -73,7 +73,7 @@
     },
     {
       "species": "magnezone",
-      "gender": "FEMALE",
+      "gender": "GENDERLESS",
       "level": 84,
       "nature": "modest",
       "ability": "sturdy",
@@ -127,7 +127,7 @@
     },
     {
       "species": "naganadel",
-      "gender": "FEMALE",
+      "gender": "GENDERLESS",
       "level": 85,
       "nature": "jolly",
       "ability": "beastboost",
@@ -154,7 +154,7 @@
     },
     {
       "species": "pyroar",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 84,
       "nature": "timid",
       "ability": "grimneigh",

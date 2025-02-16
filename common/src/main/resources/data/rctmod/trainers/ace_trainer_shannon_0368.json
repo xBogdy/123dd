@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "cherrim",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 30,
       "nature": "timid",
       "ability": "flowergift",
@@ -48,7 +48,7 @@
     },
     {
       "species": "lopunny",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 34,
       "nature": "jolly",
       "ability": "cutecharm",

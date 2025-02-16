@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "hippopotas",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 28,
       "nature": "impish",
       "ability": "sandstream",
@@ -18,7 +18,7 @@
     },
     {
       "species": "hippopotas",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 28,
       "nature": "jolly",
       "ability": "sandstream",
@@ -33,7 +33,7 @@
     },
     {
       "species": "hippopotas",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 34,
       "nature": "jolly",
       "ability": "sandstream",

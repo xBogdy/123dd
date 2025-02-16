@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "onix",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 30,
       "nature": "relaxed",
       "ability": "rockhead",
@@ -18,7 +18,7 @@
     },
     {
       "species": "steelix",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 32,
       "nature": "relaxed",
       "ability": "rockhead",

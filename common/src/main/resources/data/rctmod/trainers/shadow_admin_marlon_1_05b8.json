@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "duskull",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 26,
       "nature": "impish",
       "ability": "levitate",
@@ -30,7 +30,7 @@
     },
     {
       "species": "cacnea",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 27,
       "nature": "jolly",
       "ability": "waterabsorb",
@@ -56,7 +56,7 @@
     },
     {
       "species": "swoobat",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 28,
       "nature": "modest",
       "ability": "unaware",

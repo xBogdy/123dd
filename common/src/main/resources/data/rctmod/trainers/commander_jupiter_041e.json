@@ -41,7 +41,7 @@
     },
     {
       "species": "golbat",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 41,
       "nature": "modest",
       "ability": "innerfocus",
@@ -64,7 +64,7 @@
     },
     {
       "species": "skuntank",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 46,
       "nature": "modest",
       "ability": "aftermath",

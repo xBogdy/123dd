@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "krookodile",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 53,
       "nature": "adamant",
       "ability": "intimidate",
@@ -29,7 +29,7 @@
     },
     {
       "species": "ferrothorn",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 52,
       "nature": "adamant",
       "ability": "ironbarbs",

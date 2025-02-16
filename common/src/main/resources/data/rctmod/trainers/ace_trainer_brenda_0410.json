@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "pelipper",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 33,
       "nature": "bold",
       "ability": "keeneye",
@@ -33,7 +33,7 @@
     },
     {
       "species": "sudowoodo",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 33,
       "nature": "impish",
       "ability": "rockhead",

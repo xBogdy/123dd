@@ -33,7 +33,7 @@
     },
     {
       "species": "azumarill",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 54,
       "nature": "bashful",
       "ability": "thickfat",
@@ -48,7 +48,7 @@
     },
     {
       "species": "blissey",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 54,
       "nature": "calm",
       "ability": "serenegrace",

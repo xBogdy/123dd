@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "abomasnow",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 71,
       "nature": "modest",
       "ability": "snowwarning",
@@ -84,7 +84,7 @@
     },
     {
       "species": "glaceon",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 75,
       "nature": "modest",
       "ability": "snowcloak",
@@ -111,7 +111,7 @@
     },
     {
       "species": "mamoswine",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 71,
       "nature": "adamant",
       "ability": "snowcloak",
@@ -138,7 +138,7 @@
     },
     {
       "species": "jynx",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 74,
       "nature": "timid",
       "ability": "icescales",

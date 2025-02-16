@@ -30,7 +30,7 @@
     },
     {
       "species": "hydreigon",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 84,
       "nature": "timid",
       "ability": "levitate",
@@ -84,7 +84,7 @@
     },
     {
       "species": "greninja",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 83,
       "nature": "timid",
       "ability": "battlebond",

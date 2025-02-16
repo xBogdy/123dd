@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "pelipper",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 55,
       "nature": "bold",
       "ability": "drizzle",
@@ -18,7 +18,7 @@
     },
     {
       "species": "machamp",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 58,
       "nature": "adamant",
       "ability": "noguard",

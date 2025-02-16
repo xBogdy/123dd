@@ -19,7 +19,7 @@
   "team": [
     {
       "species": "spiritomb",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 84,
       "nature": "quiet",
       "ability": "pressure",
@@ -72,7 +72,7 @@
     },
     {
       "species": "togekiss",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 86,
       "nature": "timid",
       "ability": "serenegrace",
@@ -98,7 +98,7 @@
     },
     {
       "species": "lucario",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 86,
       "nature": "jolly",
       "ability": "innerfocus",
@@ -124,7 +124,7 @@
     },
     {
       "species": "milotic",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 84,
       "nature": "bold",
       "ability": "marvelscale",
@@ -150,7 +150,7 @@
     },
     {
       "species": "garchomp",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 88,
       "nature": "jolly",
       "ability": "roughskin",

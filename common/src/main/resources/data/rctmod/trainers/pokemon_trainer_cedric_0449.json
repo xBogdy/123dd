@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "starly",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 26,
       "nature": "jolly",
       "ability": "keeneye",
@@ -47,7 +47,7 @@
     },
     {
       "species": "buizel",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 26,
       "nature": "jolly",
       "ability": "swiftswim",
@@ -75,7 +75,7 @@
     },
     {
       "species": "roselia",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 27,
       "nature": "timid",
       "ability": "poisonpoint",
@@ -104,7 +104,7 @@
     },
     {
       "species": "monferno",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 31,
       "nature": "jolly",
       "ability": "blaze",

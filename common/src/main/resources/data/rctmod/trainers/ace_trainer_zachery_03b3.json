@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "steelix",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 44,
       "nature": "relaxed",
       "ability": "sturdy",
@@ -33,7 +33,7 @@
     },
     {
       "species": "medicham",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 44,
       "nature": "jolly",
       "ability": "purepower",

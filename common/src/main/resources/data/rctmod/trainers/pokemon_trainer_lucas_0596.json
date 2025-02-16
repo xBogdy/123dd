@@ -45,7 +45,7 @@
     },
     {
       "species": "kabutops",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 69,
       "nature": "adamant",
       "ability": "weakarmor",
@@ -72,7 +72,7 @@
     },
     {
       "species": "espeon",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 70,
       "nature": "modest",
       "ability": "magicbounce",
@@ -99,7 +99,7 @@
     },
     {
       "species": "rotom",
-      "gender": "FEMALE",
+      "gender": "GENDERLESS",
       "level": 69,
       "nature": "modest",
       "ability": "levitate",
@@ -129,7 +129,7 @@
     },
     {
       "species": "porygonz",
-      "gender": "FEMALE",
+      "gender": "GENDERLESS",
       "level": 70,
       "nature": "modest",
       "ability": "adaptability",
@@ -156,7 +156,7 @@
     },
     {
       "species": "infernape",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 74,
       "nature": "jolly",
       "ability": "blaze",

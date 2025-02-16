@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "seel",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 51,
       "nature": "calm",
       "ability": "thickfat",
@@ -18,7 +18,7 @@
     },
     {
       "species": "starmie",
-      "gender": "FEMALE",
+      "gender": "GENDERLESS",
       "level": 51,
       "nature": "timid",
       "ability": "naturalcure",

@@ -42,7 +42,7 @@
     },
     {
       "species": "bronzor",
-      "gender": "MALE",
+      "gender": "GENDERLESS",
       "level": 38,
       "nature": "relaxed",
       "ability": "levitate",
@@ -65,7 +65,7 @@
     },
     {
       "species": "toxicroak",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 40,
       "nature": "jolly",
       "ability": "dryskin",

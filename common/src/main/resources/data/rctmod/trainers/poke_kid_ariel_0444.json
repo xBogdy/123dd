@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "pikachu",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 15,
       "nature": "jolly",
       "ability": "static",
@@ -18,7 +18,7 @@
     },
     {
       "species": "pikachu",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 15,
       "nature": "timid",
       "ability": "static",

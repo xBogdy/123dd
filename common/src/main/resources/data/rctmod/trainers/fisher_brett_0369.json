@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "magikarp",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 39,
       "nature": "relaxed",
       "ability": "swiftswim",
@@ -17,7 +17,7 @@
     },
     {
       "species": "finneon",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 42,
       "nature": "sassy",
       "ability": "stormdrain",
@@ -32,7 +32,7 @@
     },
     {
       "species": "feebas",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 39,
       "nature": "sassy",
       "ability": "oblivious",

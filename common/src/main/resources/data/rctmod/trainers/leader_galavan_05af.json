@@ -19,7 +19,7 @@
   "team": [
     {
       "species": "bronzong",
-      "gender": "FEMALE",
+      "gender": "GENDERLESS",
       "level": 44,
       "nature": "impish",
       "ability": "heatproof",
@@ -75,7 +75,7 @@
     },
     {
       "species": "lanturn",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 45,
       "nature": "bold",
       "ability": "waterabsorb",
@@ -102,7 +102,7 @@
     },
     {
       "species": "ampharos",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 46,
       "nature": "modest",
       "ability": "moldbreaker",

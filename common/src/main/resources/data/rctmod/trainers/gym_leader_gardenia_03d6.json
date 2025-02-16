@@ -33,7 +33,7 @@
     },
     {
       "species": "turtwig",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 19,
       "nature": "relaxed",
       "ability": "shellarmor",
@@ -49,7 +49,7 @@
     },
     {
       "species": "roserade",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 22,
       "nature": "timid",
       "ability": "technician",

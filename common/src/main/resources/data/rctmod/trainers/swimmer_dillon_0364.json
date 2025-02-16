@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "shellos",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 30,
       "nature": "sassy",
       "ability": "stormdrain",
@@ -18,7 +18,7 @@
     },
     {
       "species": "gastrodon",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 32,
       "nature": "sassy",
       "ability": "stormdrain",

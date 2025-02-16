@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "snover",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 34,
       "nature": "hasty",
       "ability": "snowwarning",
@@ -48,7 +48,7 @@
     },
     {
       "species": "snover",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 35,
       "nature": "hasty",
       "ability": "snowwarning",

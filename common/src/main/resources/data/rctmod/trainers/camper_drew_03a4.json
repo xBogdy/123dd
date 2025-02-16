@@ -18,7 +18,7 @@
     },
     {
       "species": "gastly",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 27,
       "nature": "timid",
       "ability": "levitate",
@@ -33,7 +33,7 @@
     },
     {
       "species": "gastly",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 27,
       "nature": "timid",
       "ability": "levitate",

@@ -19,7 +19,7 @@
   "team": [
     {
       "species": "hitmontop",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 64,
       "nature": "adamant",
       "ability": "intimidate",
@@ -46,7 +46,7 @@
     },
     {
       "species": "breloom",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 66,
       "nature": "adamant",
       "ability": "technician",
@@ -100,7 +100,7 @@
     },
     {
       "species": "infernape",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 70,
       "nature": "lonely",
       "ability": "blaze",
@@ -154,7 +154,7 @@
     },
     {
       "species": "lucario",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 74,
       "nature": "modest",
       "ability": "justified",

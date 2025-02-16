@@ -73,7 +73,7 @@
     },
     {
       "species": "gallade",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 63,
       "nature": "adamant",
       "ability": "justified",
@@ -100,7 +100,7 @@
     },
     {
       "species": "magmortar",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 59,
       "nature": "modest",
       "ability": "vitalspirit",
@@ -127,7 +127,7 @@
     },
     {
       "species": "clefable",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 60,
       "nature": "timid",
       "ability": "unaware",
@@ -154,7 +154,7 @@
     },
     {
       "species": "torterra",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 64,
       "nature": "brave",
       "ability": "overgrow",

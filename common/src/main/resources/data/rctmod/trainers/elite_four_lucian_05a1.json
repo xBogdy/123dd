@@ -19,7 +19,7 @@
   "team": [
     {
       "species": "mrmime",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 69,
       "nature": "bold",
       "ability": "filter",
@@ -45,7 +45,7 @@
     },
     {
       "species": "espeon",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 71,
       "nature": "timid",
       "ability": "magicbounce",
@@ -71,7 +71,7 @@
     },
     {
       "species": "bronzong",
-      "gender": "MALE",
+      "gender": "GENDERLESS",
       "level": 70,
       "nature": "brave",
       "ability": "levitate",

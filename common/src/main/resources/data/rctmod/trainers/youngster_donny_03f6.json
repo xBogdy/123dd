@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "gastly",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 27,
       "nature": "timid",
       "ability": "levitate",
@@ -18,7 +18,7 @@
     },
     {
       "species": "haunter",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 29,
       "nature": "modest",
       "ability": "levitate",

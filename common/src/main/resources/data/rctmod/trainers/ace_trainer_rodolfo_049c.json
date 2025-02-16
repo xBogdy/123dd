@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "lickitung",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 53,
       "nature": "adamant",
       "ability": "owntempo",
@@ -33,7 +33,7 @@
     },
     {
       "species": "miltank",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 53,
       "nature": "adamant",
       "ability": "scrappy",

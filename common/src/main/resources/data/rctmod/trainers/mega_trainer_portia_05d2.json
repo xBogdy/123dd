@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "typhlosion",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 76,
       "nature": "timid",
       "ability": "drought",
@@ -30,7 +30,7 @@
     },
     {
       "species": "charizard",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 77,
       "nature": "timid",
       "ability": "drought",

@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "kingdra",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 82,
       "nature": "modest",
       "ability": "swiftswim",
@@ -57,7 +57,7 @@
     },
     {
       "species": "seaking",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 81,
       "nature": "adamant",
       "ability": "swiftswim",
@@ -84,7 +84,7 @@
     },
     {
       "species": "goodra",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 84,
       "nature": "adamant",
       "ability": "hydration",
@@ -111,7 +111,7 @@
     },
     {
       "species": "swampert",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 84,
       "nature": "adamant",
       "ability": "swiftswim",

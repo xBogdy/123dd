@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "wormadam",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 58,
       "nature": "adamant",
       "ability": "anticipation",
@@ -48,7 +48,7 @@
     },
     {
       "species": "milotic",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 59,
       "nature": "modest",
       "ability": "competitive",
@@ -75,7 +75,7 @@
     },
     {
       "species": "froslass",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 60,
       "nature": "timid",
       "ability": "cursedbody",
@@ -129,7 +129,7 @@
     },
     {
       "species": "clefable",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 60,
       "nature": "timid",
       "ability": "unaware",

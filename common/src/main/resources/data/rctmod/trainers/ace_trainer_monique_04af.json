@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "kangaskhan",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 57,
       "nature": "bashful",
       "ability": "scrappy",
@@ -33,7 +33,7 @@
     },
     {
       "species": "ursaring",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 57,
       "nature": "impish",
       "ability": "quickfeet",

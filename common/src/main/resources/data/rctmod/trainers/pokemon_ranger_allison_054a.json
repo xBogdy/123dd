@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "ambipom",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 61,
       "nature": "jolly",
       "ability": "pickup",
@@ -18,7 +18,7 @@
     },
     {
       "species": "azumarill",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 59,
       "nature": "jolly",
       "ability": "thickfat",

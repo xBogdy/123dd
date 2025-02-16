@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "bibarel",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 54,
       "nature": "hardy",
       "ability": "simple",
@@ -33,7 +33,7 @@
     },
     {
       "species": "rapidash",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 54,
       "nature": "sassy",
       "ability": "runaway",
@@ -48,7 +48,7 @@
     },
     {
       "species": "beautifly",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 54,
       "nature": "hardy",
       "ability": "swarm",

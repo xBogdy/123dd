@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "magikarp",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 10,
       "nature": "relaxed",
       "ability": "swiftswim",
@@ -15,7 +15,7 @@
     },
     {
       "species": "goldeen",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 13,
       "nature": "relaxed",
       "ability": "waterveil",
@@ -30,7 +30,7 @@
     },
     {
       "species": "magikarp",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 10,
       "nature": "relaxed",
       "ability": "swiftswim",

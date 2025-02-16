@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "machoke",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 25,
       "nature": "jolly",
       "ability": "guts",
@@ -18,7 +18,7 @@
     },
     {
       "species": "machoke",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 25,
       "nature": "impish",
       "ability": "guts",
@@ -33,7 +33,7 @@
     },
     {
       "species": "machoke",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 25,
       "nature": "impish",
       "ability": "guts",

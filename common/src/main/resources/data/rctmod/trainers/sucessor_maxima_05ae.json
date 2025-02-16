@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "azumarill",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 39,
       "nature": "adamant",
       "ability": "hugepower",
@@ -57,7 +57,7 @@
     },
     {
       "species": "empoleon",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 39,
       "nature": "adamant",
       "ability": "defiant",
@@ -83,7 +83,7 @@
     },
     {
       "species": "ninetales",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 40,
       "nature": "bold",
       "ability": "snowcloak",
@@ -112,7 +112,7 @@
     },
     {
       "species": "altaria",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 41,
       "nature": "bold",
       "ability": "pixilate",

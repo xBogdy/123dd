@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "sneasel",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 32,
       "nature": "adamant",
       "ability": "innerfocus",
@@ -29,7 +29,7 @@
     },
     {
       "species": "piloswine",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 37,
       "nature": "jolly",
       "ability": "snowcloak",
@@ -56,7 +56,7 @@
     },
     {
       "species": "glaceon",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 34,
       "nature": "timid",
       "ability": "snowcloak",

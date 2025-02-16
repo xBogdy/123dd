@@ -30,7 +30,7 @@
     },
     {
       "species": "gengar",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 59,
       "nature": "modest",
       "ability": "levitate",
@@ -57,7 +57,7 @@
     },
     {
       "species": "bellossom",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 57,
       "nature": "modest",
       "ability": "chlorophyll",
@@ -111,7 +111,7 @@
     },
     {
       "species": "alakazam",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 60,
       "nature": "modest",
       "ability": "trace",

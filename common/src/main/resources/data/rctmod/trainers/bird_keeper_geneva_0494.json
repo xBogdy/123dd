@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "golbat",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 53,
       "nature": "impish",
       "ability": "innerfocus",
@@ -18,7 +18,7 @@
     },
     {
       "species": "xatu",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 57,
       "nature": "calm",
       "ability": "synchronize",

@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "beautifly",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 25,
       "nature": "hardy",
       "ability": "swarm",
@@ -18,7 +18,7 @@
     },
     {
       "species": "croagunk",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 27,
       "nature": "docile",
       "ability": "anticipation",

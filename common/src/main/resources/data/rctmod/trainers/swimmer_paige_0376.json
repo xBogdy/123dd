@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "marill",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 39,
       "nature": "bashful",
       "ability": "thickfat",
@@ -18,7 +18,7 @@
     },
     {
       "species": "wingull",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 40,
       "nature": "bashful",
       "ability": "hydration",
@@ -33,7 +33,7 @@
     },
     {
       "species": "golduck",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 41,
       "nature": "calm",
       "ability": "damp",

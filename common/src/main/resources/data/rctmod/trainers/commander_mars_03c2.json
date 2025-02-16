@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "zubat",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 14,
       "nature": "jolly",
       "ability": "innerfocus",
@@ -37,7 +37,7 @@
     },
     {
       "species": "purugly",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 16,
       "nature": "jolly",
       "ability": "thickfat",

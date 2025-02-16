@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "accelgor",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 27,
       "nature": "modest",
       "ability": "hydration",
@@ -29,7 +29,7 @@
     },
     {
       "species": "grimer",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 28,
       "nature": "adamant",
       "ability": "poisontouch",
@@ -85,7 +85,7 @@
     },
     {
       "species": "koffing",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 26,
       "nature": "calm",
       "ability": "levitate",

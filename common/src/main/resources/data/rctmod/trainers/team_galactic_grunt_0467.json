@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "bronzor",
-      "gender": "MALE",
+      "gender": "GENDERLESS",
       "level": 36,
       "nature": "hardy",
       "ability": "heatproof",
@@ -18,7 +18,7 @@
     },
     {
       "species": "stunky",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 36,
       "nature": "docile",
       "ability": "aftermath",

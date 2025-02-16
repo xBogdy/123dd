@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "raichu",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 55,
       "nature": "sassy",
       "ability": "static",
@@ -33,7 +33,7 @@
     },
     {
       "species": "gastrodon",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 55,
       "nature": "sassy",
       "ability": "stormdrain",

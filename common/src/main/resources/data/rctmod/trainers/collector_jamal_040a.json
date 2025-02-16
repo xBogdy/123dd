@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "buizel",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 21,
       "nature": "relaxed",
       "ability": "swiftswim",
@@ -18,7 +18,7 @@
     },
     {
       "species": "buizel",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 21,
       "nature": "relaxed",
       "ability": "swiftswim",
@@ -33,7 +33,7 @@
     },
     {
       "species": "buizel",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 24,
       "nature": "relaxed",
       "ability": "swiftswim",

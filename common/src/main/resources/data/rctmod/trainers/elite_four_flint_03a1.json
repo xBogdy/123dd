@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "rapidash",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 58,
       "nature": "jolly",
       "ability": "flamebody",
@@ -46,7 +46,7 @@
     },
     {
       "species": "steelix",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 57,
       "nature": "adamant",
       "ability": "sheerforce",
@@ -100,7 +100,7 @@
     },
     {
       "species": "lopunny",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 57,
       "nature": "jolly",
       "ability": "cutecharm",
@@ -124,7 +124,7 @@
     },
     {
       "species": "infernape",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 61,
       "nature": "jolly",
       "ability": "ironfist",

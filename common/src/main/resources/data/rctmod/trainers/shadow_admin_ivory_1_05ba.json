@@ -29,7 +29,7 @@
     },
     {
       "species": "kadabra",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 32,
       "nature": "timid",
       "ability": "synchronize",
@@ -55,7 +55,7 @@
     },
     {
       "species": "persian",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 34,
       "nature": "adamant",
       "ability": "furcoat",

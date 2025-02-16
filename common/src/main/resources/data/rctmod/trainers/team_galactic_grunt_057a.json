@@ -18,7 +18,7 @@
     },
     {
       "species": "stunky",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 28,
       "nature": "bashful",
       "ability": "stench",
@@ -33,7 +33,7 @@
     },
     {
       "species": "croagunk",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 28,
       "nature": "quirky",
       "ability": "anticipation",

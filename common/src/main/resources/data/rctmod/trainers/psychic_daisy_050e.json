@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "slowbro",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 58,
       "nature": "bold",
       "ability": "owntempo",
@@ -18,7 +18,7 @@
     },
     {
       "species": "slowbro",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 60,
       "nature": "modest",
       "ability": "oblivious",

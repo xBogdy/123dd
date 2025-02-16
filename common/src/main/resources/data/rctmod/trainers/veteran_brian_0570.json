@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "floatzel",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 58,
       "nature": "jolly",
       "ability": "swiftswim",
@@ -33,7 +33,7 @@
     },
     {
       "species": "girafarig",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 59,
       "nature": "timid",
       "ability": "innerfocus",
@@ -48,7 +48,7 @@
     },
     {
       "species": "machamp",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 60,
       "nature": "jolly",
       "ability": "guts",

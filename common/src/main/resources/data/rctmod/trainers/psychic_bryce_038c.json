@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "haunter",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 43,
       "nature": "sassy",
       "ability": "levitate",
@@ -18,7 +18,7 @@
     },
     {
       "species": "alakazam",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 46,
       "nature": "sassy",
       "ability": "innerfocus",
@@ -33,7 +33,7 @@
     },
     {
       "species": "gengar",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 46,
       "nature": "sassy",
       "ability": "cursedbody",

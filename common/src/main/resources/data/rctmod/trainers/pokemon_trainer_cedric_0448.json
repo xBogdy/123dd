@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "starly",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 26,
       "nature": "jolly",
       "ability": "keeneye",
@@ -104,7 +104,7 @@
     },
     {
       "species": "grotle",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 31,
       "nature": "careful",
       "ability": "overgrow",

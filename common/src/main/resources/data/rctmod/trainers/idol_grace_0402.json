@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "pikachu",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 15,
       "nature": "careful",
       "ability": "static",
@@ -18,7 +18,7 @@
     },
     {
       "species": "clefairy",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 15,
       "nature": "calm",
       "ability": "cutecharm",

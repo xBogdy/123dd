@@ -3,21 +3,6 @@
   "team": [
     {
       "species": "pichu",
-      "gender": "GENDERLESS",
-      "level": 15,
-      "nature": "sassy",
-      "ability": "static",
-      "moveset": [
-        "thundershock",
-        "tailwhip",
-        "playnice",
-        "nuzzle"
-      ],
-      "ivs": {},
-      "evs": {}
-    },
-    {
-      "species": "pichu",
       "gender": "FEMALE",
       "level": 15,
       "nature": "sassy",
@@ -32,8 +17,23 @@
       "evs": {}
     },
     {
-      "species": "pikachu",
+      "species": "pichu",
       "gender": "MALE",
+      "level": 15,
+      "nature": "sassy",
+      "ability": "static",
+      "moveset": [
+        "thundershock",
+        "tailwhip",
+        "playnice",
+        "nuzzle"
+      ],
+      "ivs": {},
+      "evs": {}
+    },
+    {
+      "species": "pikachu",
+      "gender": "FEMALE",
       "level": 18,
       "nature": "sassy",
       "ability": "static",

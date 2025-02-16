@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "mothim",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 58,
       "nature": "timid",
       "ability": "tintedlens",
@@ -45,7 +45,7 @@
     },
     {
       "species": "tangrowth",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 59,
       "nature": "adamant",
       "ability": "regenerator",
@@ -72,7 +72,7 @@
     },
     {
       "species": "gallade",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 63,
       "nature": "adamant",
       "ability": "justified",
@@ -99,7 +99,7 @@
     },
     {
       "species": "milotic",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 59,
       "nature": "modest",
       "ability": "marvelscale",
@@ -127,7 +127,7 @@
     },
     {
       "species": "clefable",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 60,
       "nature": "timid",
       "ability": "unaware",
@@ -154,7 +154,7 @@
     },
     {
       "species": "infernape",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 64,
       "nature": "jolly",
       "ability": "blaze",

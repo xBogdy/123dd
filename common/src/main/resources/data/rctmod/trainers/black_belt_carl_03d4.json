@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "croagunk",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 52,
       "nature": "hardy",
       "ability": "dryskin",
@@ -18,7 +18,7 @@
     },
     {
       "species": "machamp",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 56,
       "nature": "sassy",
       "ability": "noguard",

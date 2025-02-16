@@ -45,7 +45,7 @@
     },
     {
       "species": "togedemaru",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 92,
       "nature": "timid",
       "ability": "sturdy",
@@ -72,7 +72,7 @@
     },
     {
       "species": "raichu",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 95,
       "nature": "modest",
       "ability": "surgesurfer",
@@ -128,7 +128,7 @@
     },
     {
       "species": "manectric",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 95,
       "nature": "timid",
       "ability": "intimidate",

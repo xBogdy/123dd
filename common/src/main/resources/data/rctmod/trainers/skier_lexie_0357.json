@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "marill",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 35,
       "nature": "quirky",
       "ability": "thickfat",
@@ -18,7 +18,7 @@
     },
     {
       "species": "clefairy",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 35,
       "nature": "timid",
       "ability": "cutecharm",

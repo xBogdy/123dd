@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "farfetchd",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 59,
       "nature": "jolly",
       "ability": "innerfocus",
@@ -18,7 +18,7 @@
     },
     {
       "species": "swellow",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 59,
       "nature": "jolly",
       "ability": "guts",

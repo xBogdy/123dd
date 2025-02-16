@@ -30,7 +30,7 @@
     },
     {
       "species": "cherrim",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 72,
       "nature": "timid",
       "ability": "flowergift",
@@ -57,7 +57,7 @@
     },
     {
       "species": "clefable",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 74,
       "nature": "modest",
       "ability": "magicguard",
@@ -111,7 +111,7 @@
     },
     {
       "species": "florges",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 73,
       "nature": "modest",
       "ability": "flowerveil",

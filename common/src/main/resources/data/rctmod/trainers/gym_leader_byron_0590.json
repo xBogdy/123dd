@@ -46,7 +46,7 @@
     },
     {
       "species": "steelix",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 69,
       "nature": "adamant",
       "ability": "sheerforce",
@@ -99,7 +99,7 @@
     },
     {
       "species": "empoleon",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 70,
       "nature": "modest",
       "ability": "torrent",
@@ -126,7 +126,7 @@
     },
     {
       "species": "aggron",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 71,
       "nature": "jolly",
       "ability": "rockhead",

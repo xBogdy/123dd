@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "wurmple",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 34,
       "nature": "serious",
       "ability": "shielddust",
@@ -18,7 +18,7 @@
     },
     {
       "species": "silcoon",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 36,
       "nature": "bashful",
       "ability": "shedskin",

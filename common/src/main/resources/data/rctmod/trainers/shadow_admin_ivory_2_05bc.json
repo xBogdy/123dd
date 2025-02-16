@@ -29,7 +29,7 @@
     },
     {
       "species": "mismagius",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 36,
       "nature": "impish",
       "ability": "magicbounce",
@@ -55,7 +55,7 @@
     },
     {
       "species": "alakazam",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 37,
       "nature": "modest",
       "ability": "synchronize",

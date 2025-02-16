@@ -18,7 +18,7 @@
     },
     {
       "species": "misdreavus",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 39,
       "nature": "timid",
       "ability": "levitate",
@@ -33,7 +33,7 @@
     },
     {
       "species": "kadabra",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 38,
       "nature": "timid",
       "ability": "synchronize",

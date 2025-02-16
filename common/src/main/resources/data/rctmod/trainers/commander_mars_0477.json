@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "bronzor",
-      "gender": "MALE",
+      "gender": "GENDERLESS",
       "level": 41,
       "nature": "sassy",
       "ability": "levitate",
@@ -64,7 +64,7 @@
     },
     {
       "species": "purugly",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 45,
       "nature": "jolly",
       "ability": "thickfat",

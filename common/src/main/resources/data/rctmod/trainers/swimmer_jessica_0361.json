@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "goldeen",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 28,
       "nature": "impish",
       "ability": "waterveil",
@@ -18,7 +18,7 @@
     },
     {
       "species": "goldeen",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 28,
       "nature": "impish",
       "ability": "waterveil",
@@ -33,7 +33,7 @@
     },
     {
       "species": "goldeen",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 28,
       "nature": "impish",
       "ability": "waterveil",
@@ -48,7 +48,7 @@
     },
     {
       "species": "goldeen",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 28,
       "nature": "impish",
       "ability": "waterveil",

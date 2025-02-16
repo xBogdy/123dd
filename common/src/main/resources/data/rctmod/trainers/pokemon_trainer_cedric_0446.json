@@ -46,7 +46,7 @@
     },
     {
       "species": "buizel",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 20,
       "nature": "jolly",
       "ability": "swiftswim",
@@ -73,7 +73,7 @@
     },
     {
       "species": "roselia",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 20,
       "nature": "timid",
       "ability": "poisonpoint",

@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "goldeen",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 22,
       "nature": "relaxed",
       "ability": "swiftswim",
@@ -18,7 +18,7 @@
     },
     {
       "species": "goldeen",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 22,
       "nature": "relaxed",
       "ability": "swiftswim",

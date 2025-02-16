@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "golbat",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 37,
       "nature": "jolly",
       "ability": "innerfocus",
@@ -41,7 +41,7 @@
     },
     {
       "species": "bronzor",
-      "gender": "FEMALE",
+      "gender": "GENDERLESS",
       "level": 37,
       "nature": "sassy",
       "ability": "levitate",
@@ -64,7 +64,7 @@
     },
     {
       "species": "purugly",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 39,
       "nature": "jolly",
       "ability": "thickfat",

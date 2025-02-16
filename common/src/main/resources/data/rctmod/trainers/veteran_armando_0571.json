@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "staraptor",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 58,
       "nature": "jolly",
       "ability": "intimidate",
@@ -33,7 +33,7 @@
     },
     {
       "species": "pelipper",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 58,
       "nature": "modest",
       "ability": "drizzle",

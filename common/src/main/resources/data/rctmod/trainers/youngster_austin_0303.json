@@ -18,7 +18,7 @@
     },
     {
       "species": "geodude",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 15,
       "nature": "naive",
       "ability": "rockhead",
@@ -33,7 +33,7 @@
     },
     {
       "species": "chimchar",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 18,
       "nature": "docile",
       "ability": "blaze",

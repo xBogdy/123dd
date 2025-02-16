@@ -45,7 +45,7 @@
     },
     {
       "species": "forretress",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 61,
       "nature": "careful",
       "ability": "sturdy",
@@ -72,7 +72,7 @@
     },
     {
       "species": "drapion",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 61,
       "nature": "impish",
       "ability": "superluck",
@@ -99,7 +99,7 @@
     },
     {
       "species": "volcarona",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 62,
       "nature": "modest",
       "ability": "flamebody",
@@ -153,7 +153,7 @@
     },
     {
       "species": "flygon",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 62,
       "nature": "adamant",
       "ability": "levitate",

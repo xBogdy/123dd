@@ -19,7 +19,7 @@
   "team": [
     {
       "species": "yanmega",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 65,
       "nature": "timid",
       "ability": "speedboost",
@@ -45,7 +45,7 @@
     },
     {
       "species": "scizor",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 65,
       "nature": "adamant",
       "ability": "technician",
@@ -70,7 +70,7 @@
     },
     {
       "species": "vespiquen",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 66,
       "nature": "adamant",
       "ability": "unnerve",
@@ -121,7 +121,7 @@
     },
     {
       "species": "drapion",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 69,
       "nature": "jolly",
       "ability": "sniper",

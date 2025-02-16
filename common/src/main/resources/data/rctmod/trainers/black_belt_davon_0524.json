@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "primeape",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 58,
       "nature": "adamant",
       "ability": "vitalspirit",
@@ -18,7 +18,7 @@
     },
     {
       "species": "hariyama",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 59,
       "nature": "adamant",
       "ability": "thickfat",
@@ -33,7 +33,7 @@
     },
     {
       "species": "hariyama",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 60,
       "nature": "adamant",
       "ability": "guts",

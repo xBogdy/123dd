@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "honchkrow",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 45,
       "nature": "jolly",
       "ability": "superluck",
@@ -66,7 +66,7 @@
     },
     {
       "species": "gyarados",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 45,
       "nature": "jolly",
       "ability": "intimidate",

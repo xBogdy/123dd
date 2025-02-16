@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "mantyke",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 26,
       "nature": "sassy",
       "ability": "waterabsorb",
@@ -18,7 +18,7 @@
     },
     {
       "species": "remoraid",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 29,
       "nature": "hardy",
       "ability": "sniper",
@@ -33,7 +33,7 @@
     },
     {
       "species": "tentacool",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 29,
       "nature": "sassy",
       "ability": "clearbody",

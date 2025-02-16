@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "mrmime",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 52,
       "nature": "timid",
       "ability": "filter",
@@ -18,7 +18,7 @@
     },
     {
       "species": "roselia",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 51,
       "nature": "hasty",
       "ability": "poisonpoint",
@@ -33,7 +33,7 @@
     },
     {
       "species": "clefable",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 53,
       "nature": "hasty",
       "ability": "cutecharm",

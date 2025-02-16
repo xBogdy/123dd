@@ -57,7 +57,7 @@
     },
     {
       "species": "rapidash",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 60,
       "nature": "jolly",
       "ability": "moxie",
@@ -84,7 +84,7 @@
     },
     {
       "species": "milotic",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 60,
       "nature": "modest",
       "ability": "multiscale",

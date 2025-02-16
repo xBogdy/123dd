@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "primeape",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 57,
       "nature": "docile",
       "ability": "vitalspirit",
@@ -33,7 +33,7 @@
     },
     {
       "species": "torkoal",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 57,
       "nature": "bold",
       "ability": "drought",

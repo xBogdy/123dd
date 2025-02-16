@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "roselia",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 20,
       "nature": "calm",
       "ability": "poisonpoint",
@@ -18,7 +18,7 @@
     },
     {
       "species": "roselia",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 22,
       "nature": "calm",
       "ability": "poisonpoint",
@@ -33,7 +33,7 @@
     },
     {
       "species": "roselia",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 24,
       "nature": "calm",
       "ability": "poisonpoint",

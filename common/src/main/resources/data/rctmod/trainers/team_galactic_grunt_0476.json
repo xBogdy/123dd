@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "stunky",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 38,
       "nature": "hardy",
       "ability": "aftermath",
@@ -18,7 +18,7 @@
     },
     {
       "species": "glameow",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 38,
       "nature": "docile",
       "ability": "owntempo",

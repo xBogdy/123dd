@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "snover",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 38,
       "nature": "relaxed",
       "ability": "snowwarning",
@@ -67,7 +67,7 @@
     },
     {
       "species": "medicham",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 40,
       "nature": "jolly",
       "ability": "purepower",

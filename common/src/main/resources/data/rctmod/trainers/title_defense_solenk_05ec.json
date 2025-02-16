@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "claydol",
-      "gender": "MALE",
+      "gender": "GENDERLESS",
       "level": 77,
       "nature": "calm",
       "ability": "multiscale",
@@ -30,7 +30,7 @@
     },
     {
       "species": "talonflame",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 79,
       "nature": "jolly",
       "ability": "galewings",
@@ -84,7 +84,7 @@
     },
     {
       "species": "primarina",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 79,
       "nature": "calm",
       "ability": "torrent",

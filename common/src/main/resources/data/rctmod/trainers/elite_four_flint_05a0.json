@@ -19,7 +19,7 @@
   "team": [
     {
       "species": "houndoom",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 68,
       "nature": "modest",
       "ability": "unnerve",
@@ -45,7 +45,7 @@
     },
     {
       "species": "flareon",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 71,
       "nature": "adamant",
       "ability": "flashfire",
@@ -70,7 +70,7 @@
     },
     {
       "species": "rapidash",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 69,
       "nature": "jolly",
       "ability": "flamebody",
@@ -122,7 +122,7 @@
     },
     {
       "species": "magmortar",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 73,
       "nature": "modest",
       "ability": "flamebody",

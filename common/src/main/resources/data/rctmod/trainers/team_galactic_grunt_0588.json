@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "beautifly",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 25,
       "nature": "hardy",
       "ability": "swarm",
@@ -18,7 +18,7 @@
     },
     {
       "species": "stunky",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 25,
       "nature": "docile",
       "ability": "stench",

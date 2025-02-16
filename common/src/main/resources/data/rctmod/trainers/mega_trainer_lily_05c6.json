@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "abomasnow",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 57,
       "nature": "modest",
       "ability": "snowwarning",
@@ -30,7 +30,7 @@
     },
     {
       "species": "ninetales",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 59,
       "nature": "timid",
       "ability": "snowcloak",
@@ -60,7 +60,7 @@
     },
     {
       "species": "glalie",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 60,
       "nature": "timid",
       "ability": "refrigerate",

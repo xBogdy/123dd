@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "bronzor",
-      "gender": "MALE",
+      "gender": "GENDERLESS",
       "level": 30,
       "nature": "relaxed",
       "ability": "heatproof",

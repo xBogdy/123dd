@@ -45,7 +45,7 @@
     },
     {
       "species": "magmortar",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 59,
       "nature": "modest",
       "ability": "vitalspirit",
@@ -72,7 +72,7 @@
     },
     {
       "species": "gallade",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 63,
       "nature": "adamant",
       "ability": "justified",
@@ -126,7 +126,7 @@
     },
     {
       "species": "clefable",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 60,
       "nature": "timid",
       "ability": "unaware",
@@ -153,7 +153,7 @@
     },
     {
       "species": "empoleon",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 64,
       "nature": "hardy",
       "ability": "torrent",

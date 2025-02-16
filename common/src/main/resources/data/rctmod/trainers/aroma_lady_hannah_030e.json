@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "combee",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 16,
       "nature": "bashful",
       "ability": "honeygather",
@@ -18,7 +18,7 @@
     },
     {
       "species": "roselia",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 18,
       "nature": "calm",
       "ability": "poisonpoint",

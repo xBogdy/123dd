@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "clefairy",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 25,
       "nature": "quiet",
       "ability": "cutecharm",
@@ -41,7 +41,7 @@
     },
     {
       "species": "kadabra",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 25,
       "nature": "modest",
       "ability": "synchronize",
@@ -64,7 +64,7 @@
     },
     {
       "species": "monferno",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 28,
       "nature": "jolly",
       "ability": "blaze",

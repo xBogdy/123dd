@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "misdreavus",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 52,
       "nature": "calm",
       "ability": "levitate",
@@ -18,7 +18,7 @@
     },
     {
       "species": "haunter",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 54,
       "nature": "timid",
       "ability": "levitate",

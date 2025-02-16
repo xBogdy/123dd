@@ -33,7 +33,7 @@
     },
     {
       "species": "haunter",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 28,
       "nature": "timid",
       "ability": "levitate",
@@ -48,7 +48,7 @@
     },
     {
       "species": "gengar",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 30,
       "nature": "timid",
       "ability": "cursedbody",

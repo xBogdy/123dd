@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "starly",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 26,
       "nature": "jolly",
       "ability": "keeneye",
@@ -47,7 +47,7 @@
     },
     {
       "species": "roselia",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 26,
       "nature": "timid",
       "ability": "naturalcure",
@@ -104,7 +104,7 @@
     },
     {
       "species": "prinplup",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 31,
       "nature": "timid",
       "ability": "torrent",

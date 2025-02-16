@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "kricketot",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 17,
       "nature": "timid",
       "ability": "shedskin",
@@ -18,7 +18,7 @@
     },
     {
       "species": "silcoon",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 17,
       "nature": "timid",
       "ability": "shedskin",

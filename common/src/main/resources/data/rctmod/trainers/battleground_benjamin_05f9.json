@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "scolipede",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 81,
       "nature": "adamant",
       "ability": "speedboost",
@@ -30,7 +30,7 @@
     },
     {
       "species": "drapion",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 83,
       "nature": "jolly",
       "ability": "superluck",
@@ -111,7 +111,7 @@
     },
     {
       "species": "scizor",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 84,
       "nature": "adamant",
       "ability": "technician",

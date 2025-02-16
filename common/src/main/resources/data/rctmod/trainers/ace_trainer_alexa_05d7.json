@@ -44,7 +44,7 @@
     },
     {
       "species": "magmar",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 36,
       "nature": "jolly",
       "ability": "flamebody",
@@ -97,7 +97,7 @@
     },
     {
       "species": "florges",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 37,
       "nature": "hardy",
       "ability": "flowerveil",
@@ -122,7 +122,7 @@
     },
     {
       "species": "gardevoir",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 37,
       "nature": "hardy",
       "ability": "synchronize",

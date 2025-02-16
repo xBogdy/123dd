@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "stunky",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 21,
       "nature": "impish",
       "ability": "stench",
@@ -18,7 +18,7 @@
     },
     {
       "species": "buizel",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 21,
       "nature": "impish",
       "ability": "swiftswim",

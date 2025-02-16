@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "baltoy",
-      "gender": "FEMALE",
+      "gender": "GENDERLESS",
       "level": 54,
       "nature": "calm",
       "ability": "levitate",
@@ -18,7 +18,7 @@
     },
     {
       "species": "grumpig",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 58,
       "nature": "bold",
       "ability": "thickfat",

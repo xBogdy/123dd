@@ -18,7 +18,7 @@
     },
     {
       "species": "budew",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 15,
       "nature": "bold",
       "ability": "poisonpoint",
@@ -33,7 +33,7 @@
     },
     {
       "species": "pichu",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 17,
       "nature": "bold",
       "ability": "static",

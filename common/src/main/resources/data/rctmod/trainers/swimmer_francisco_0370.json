@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "tentacool",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 40,
       "nature": "timid",
       "ability": "clearbody",
@@ -18,7 +18,7 @@
     },
     {
       "species": "golduck",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 42,
       "nature": "jolly",
       "ability": "damp",

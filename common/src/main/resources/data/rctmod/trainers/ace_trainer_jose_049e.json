@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "golduck",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 55,
       "nature": "sassy",
       "ability": "damp",
@@ -33,7 +33,7 @@
     },
     {
       "species": "sandslash",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 55,
       "nature": "relaxed",
       "ability": "sandveil",

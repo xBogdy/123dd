@@ -33,7 +33,7 @@
     },
     {
       "species": "machoke",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 34,
       "nature": "relaxed",
       "ability": "noguard",
@@ -48,7 +48,7 @@
     },
     {
       "species": "sneasel",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 35,
       "nature": "sassy",
       "ability": "innerfocus",

@@ -57,7 +57,7 @@
     },
     {
       "species": "clefable",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 74,
       "nature": "modest",
       "ability": "magicguard",
@@ -84,7 +84,7 @@
     },
     {
       "species": "gardevoir",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 75,
       "nature": "bold",
       "ability": "trace",
@@ -138,7 +138,7 @@
     },
     {
       "species": "liepard",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 72,
       "nature": "modest",
       "ability": "unburden",

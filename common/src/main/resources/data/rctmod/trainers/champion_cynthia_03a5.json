@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "spiritomb",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 61,
       "nature": "quiet",
       "ability": "pressure",
@@ -45,7 +45,7 @@
     },
     {
       "species": "roserade",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 60,
       "nature": "timid",
       "ability": "poisonpoint",
@@ -97,7 +97,7 @@
     },
     {
       "species": "lucario",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 63,
       "nature": "timid",
       "ability": "innerfocus",
@@ -123,7 +123,7 @@
     },
     {
       "species": "milotic",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 63,
       "nature": "bold",
       "ability": "marvelscale",

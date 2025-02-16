@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "zubat",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 18,
       "nature": "modest",
       "ability": "innerfocus",
@@ -41,7 +41,7 @@
     },
     {
       "species": "skuntank",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 20,
       "nature": "modest",
       "ability": "aftermath",

@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "magikarp",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 19,
       "nature": "relaxed",
       "ability": "swiftswim",
@@ -31,7 +31,7 @@
     },
     {
       "species": "gyarados",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 22,
       "nature": "sassy",
       "ability": "intimidate",

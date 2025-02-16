@@ -18,7 +18,7 @@
     },
     {
       "species": "remoraid",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 38,
       "nature": "hardy",
       "ability": "sniper",
@@ -33,7 +33,7 @@
     },
     {
       "species": "gyarados",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 41,
       "nature": "sassy",
       "ability": "intimidate",

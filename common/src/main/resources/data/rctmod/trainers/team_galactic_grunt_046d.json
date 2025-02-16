@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "croagunk",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 35,
       "nature": "bashful",
       "ability": "anticipation",
@@ -18,7 +18,7 @@
     },
     {
       "species": "stunky",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 38,
       "nature": "hardy",
       "ability": "aftermath",
@@ -33,7 +33,7 @@
     },
     {
       "species": "croagunk",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 38,
       "nature": "quirky",
       "ability": "anticipation",

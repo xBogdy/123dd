@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "ponyta",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 31,
       "nature": "sassy",
       "ability": "runaway",
@@ -33,7 +33,7 @@
     },
     {
       "species": "haunter",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 31,
       "nature": "sassy",
       "ability": "levitate",
@@ -48,7 +48,7 @@
     },
     {
       "species": "floatzel",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 34,
       "nature": "relaxed",
       "ability": "swiftswim",

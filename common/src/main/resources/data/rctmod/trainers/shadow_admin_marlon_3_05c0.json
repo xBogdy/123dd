@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "sableye",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 61,
       "nature": "bold",
       "ability": "prankster",
@@ -29,7 +29,7 @@
     },
     {
       "species": "tentacruel",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 61,
       "nature": "bold",
       "ability": "clearbody",
@@ -110,7 +110,7 @@
     },
     {
       "species": "dusknoir",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 62,
       "nature": "adamant",
       "ability": "ironfist",
@@ -136,7 +136,7 @@
     },
     {
       "species": "swoobat",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 61,
       "nature": "timid",
       "ability": "unaware",

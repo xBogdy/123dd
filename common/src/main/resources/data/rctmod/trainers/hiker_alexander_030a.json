@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "golbat",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 35,
       "nature": "sassy",
       "ability": "innerfocus",
@@ -18,7 +18,7 @@
     },
     {
       "species": "graveler",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 35,
       "nature": "relaxed",
       "ability": "rockhead",

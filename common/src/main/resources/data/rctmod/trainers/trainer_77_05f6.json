@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "empoleon",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 93,
       "nature": "adamant",
       "ability": "defiant",
@@ -45,7 +45,7 @@
     },
     {
       "species": "togedemaru",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 92,
       "nature": "timid",
       "ability": "sturdy",
@@ -102,7 +102,7 @@
     },
     {
       "species": "rotom",
-      "gender": "FEMALE",
+      "gender": "GENDERLESS",
       "level": 94,
       "nature": "modest",
       "ability": "motordrive",
@@ -159,7 +159,7 @@
     },
     {
       "species": "melmetal",
-      "gender": "FEMALE",
+      "gender": "GENDERLESS",
       "level": 94,
       "nature": "adamant",
       "ability": "ironfist",

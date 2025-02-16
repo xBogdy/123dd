@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "toucannon",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 32,
       "nature": "jolly",
       "ability": "skilllink",
@@ -29,7 +29,7 @@
     },
     {
       "species": "swinub",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 32,
       "nature": "adamant",
       "ability": "thickfat",
@@ -55,7 +55,7 @@
     },
     {
       "species": "pupitar",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 33,
       "nature": "adamant",
       "ability": "guts",

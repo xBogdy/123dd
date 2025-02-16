@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "buizel",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 15,
       "nature": "naive",
       "ability": "swiftswim",
@@ -18,7 +18,7 @@
     },
     {
       "species": "shinx",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 15,
       "nature": "docile",
       "ability": "intimidate",

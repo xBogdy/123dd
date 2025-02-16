@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "staravia",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 28,
       "nature": "jolly",
       "ability": "intimidate",
@@ -18,7 +18,7 @@
     },
     {
       "species": "staravia",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 30,
       "nature": "jolly",
       "ability": "intimidate",

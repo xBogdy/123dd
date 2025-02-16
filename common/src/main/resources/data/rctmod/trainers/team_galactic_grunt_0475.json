@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "golbat",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 37,
       "nature": "serious",
       "ability": "innerfocus",
@@ -18,7 +18,7 @@
     },
     {
       "species": "glameow",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 37,
       "nature": "bashful",
       "ability": "owntempo",
@@ -33,7 +33,7 @@
     },
     {
       "species": "bronzor",
-      "gender": "MALE",
+      "gender": "GENDERLESS",
       "level": 37,
       "nature": "quirky",
       "ability": "levitate",

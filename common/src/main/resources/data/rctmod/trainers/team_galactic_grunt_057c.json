@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "glameow",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 32,
       "nature": "hardy",
       "ability": "limber",
@@ -18,7 +18,7 @@
     },
     {
       "species": "stunky",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 32,
       "nature": "serious",
       "ability": "aftermath",
@@ -33,7 +33,7 @@
     },
     {
       "species": "croagunk",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 32,
       "nature": "docile",
       "ability": "anticipation",

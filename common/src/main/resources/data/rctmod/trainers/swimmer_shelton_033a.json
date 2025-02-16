@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "gyarados",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 30,
       "nature": "sassy",
       "ability": "intimidate",
@@ -33,7 +33,7 @@
     },
     {
       "species": "gyarados",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 31,
       "nature": "sassy",
       "ability": "intimidate",

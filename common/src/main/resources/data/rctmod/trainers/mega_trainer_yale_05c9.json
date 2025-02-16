@@ -30,7 +30,7 @@
     },
     {
       "species": "gigalith",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 41,
       "nature": "adamant",
       "ability": "sturdy",
@@ -57,7 +57,7 @@
     },
     {
       "species": "gastrodon",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 40,
       "nature": "modest",
       "ability": "stormdrain",
@@ -114,7 +114,7 @@
     },
     {
       "species": "camerupt",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 41,
       "nature": "modest",
       "ability": "sheerforce",

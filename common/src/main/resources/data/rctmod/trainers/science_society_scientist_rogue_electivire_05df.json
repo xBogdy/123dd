@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "rotom",
-      "gender": "MALE",
+      "gender": "GENDERLESS",
       "level": 57,
       "nature": "modest",
       "ability": "levitate",
@@ -59,7 +59,7 @@
     },
     {
       "species": "magnezone",
-      "gender": "MALE",
+      "gender": "GENDERLESS",
       "level": 58,
       "nature": "modest",
       "ability": "sturdy",
@@ -86,7 +86,7 @@
     },
     {
       "species": "vikavolt",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 59,
       "nature": "modest",
       "ability": "levitate",

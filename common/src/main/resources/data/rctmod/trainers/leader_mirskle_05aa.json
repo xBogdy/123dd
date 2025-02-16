@@ -19,7 +19,7 @@
   "team": [
     {
       "species": "floette",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 19,
       "nature": "careful",
       "ability": "flowerveil",
@@ -46,7 +46,7 @@
     },
     {
       "species": "gloom",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 21,
       "nature": "calm",
       "ability": "chlorophyll",
@@ -99,7 +99,7 @@
     },
     {
       "species": "comfey",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 18,
       "nature": "bold",
       "ability": "flowerveil",

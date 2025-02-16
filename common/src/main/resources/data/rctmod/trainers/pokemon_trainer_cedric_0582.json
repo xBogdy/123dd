@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "staraptor",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 68,
       "nature": "jolly",
       "ability": "intimidate",
@@ -47,7 +47,7 @@
     },
     {
       "species": "roserade",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 69,
       "nature": "timid",
       "ability": "naturalcure",
@@ -76,7 +76,7 @@
     },
     {
       "species": "heracross",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 70,
       "nature": "jolly",
       "ability": "swarm",

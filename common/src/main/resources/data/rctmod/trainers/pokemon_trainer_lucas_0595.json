@@ -96,7 +96,7 @@
     },
     {
       "species": "rotom",
-      "gender": "MALE",
+      "gender": "GENDERLESS",
       "level": 69,
       "nature": "modest",
       "ability": "levitate",
@@ -126,7 +126,7 @@
     },
     {
       "species": "dunsparce",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 70,
       "nature": "jolly",
       "ability": "serenegrace",
@@ -153,7 +153,7 @@
     },
     {
       "species": "torterra",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 74,
       "nature": "brave",
       "ability": "overgrow",

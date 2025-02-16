@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "mamoswine",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 46,
       "nature": "adamant",
       "ability": "thickfat",
@@ -30,7 +30,7 @@
     },
     {
       "species": "toucannon",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 45,
       "nature": "jolly",
       "ability": "skilllink",
@@ -56,7 +56,7 @@
     },
     {
       "species": "vaporeon",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 46,
       "nature": "bold",
       "ability": "waterabsorb",
@@ -83,7 +83,7 @@
     },
     {
       "species": "aggron",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 46,
       "nature": "adamant",
       "ability": "sturdy",
@@ -109,7 +109,7 @@
     },
     {
       "species": "gabite",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 47,
       "nature": "jolly",
       "ability": "roughskin",

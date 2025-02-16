@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "croagunk",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 28,
       "nature": "hardy",
       "ability": "anticipation",
@@ -18,7 +18,7 @@
     },
     {
       "species": "meditite",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 27,
       "nature": "hardy",
       "ability": "purepower",
@@ -33,7 +33,7 @@
     },
     {
       "species": "machoke",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 29,
       "nature": "relaxed",
       "ability": "noguard",

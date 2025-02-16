@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "loudred",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 56,
       "nature": "hardy",
       "ability": "soundproof",
@@ -33,7 +33,7 @@
     },
     {
       "species": "donphan",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 56,
       "nature": "relaxed",
       "ability": "sturdy",
@@ -48,7 +48,7 @@
     },
     {
       "species": "tauros",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 56,
       "nature": "hardy",
       "ability": "intimidate",

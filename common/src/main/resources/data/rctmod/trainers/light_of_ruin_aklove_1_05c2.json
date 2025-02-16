@@ -30,7 +30,7 @@
     },
     {
       "species": "roserade",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 51,
       "nature": "bold",
       "ability": "technician",
@@ -57,7 +57,7 @@
     },
     {
       "species": "primarina",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 53,
       "nature": "modest",
       "ability": "torrent",
@@ -84,7 +84,7 @@
     },
     {
       "species": "togekiss",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 52,
       "nature": "modest",
       "ability": "serenegrace",
@@ -140,7 +140,7 @@
     },
     {
       "species": "gardevoir",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 53,
       "nature": "timid",
       "ability": "pixilate",

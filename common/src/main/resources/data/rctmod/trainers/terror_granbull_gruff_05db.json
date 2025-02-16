@@ -57,7 +57,7 @@
     },
     {
       "species": "probopass",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 36,
       "nature": "modest",
       "ability": "analytic",
@@ -83,7 +83,7 @@
     },
     {
       "species": "crawdaunt",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 37,
       "nature": "jolly",
       "ability": "adaptability",

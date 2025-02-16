@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "dodrio",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 55,
       "nature": "impish",
       "ability": "earlybird",
@@ -33,7 +33,7 @@
     },
     {
       "species": "honchkrow",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 55,
       "nature": "docile",
       "ability": "insomnia",

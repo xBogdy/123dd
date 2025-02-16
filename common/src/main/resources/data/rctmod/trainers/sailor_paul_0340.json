@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "gyarados",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 31,
       "nature": "sassy",
       "ability": "intimidate",
@@ -18,7 +18,7 @@
     },
     {
       "species": "machop",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 31,
       "nature": "relaxed",
       "ability": "noguard",

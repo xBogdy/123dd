@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "ambipom",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 54,
       "nature": "jolly",
       "ability": "technician",
@@ -33,7 +33,7 @@
     },
     {
       "species": "rapidash",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 54,
       "nature": "adamant",
       "ability": "flashfire",

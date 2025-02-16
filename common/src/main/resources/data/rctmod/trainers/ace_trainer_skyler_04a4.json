@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "loudred",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 57,
       "nature": "docile",
       "ability": "soundproof",
@@ -33,7 +33,7 @@
     },
     {
       "species": "rampardos",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 57,
       "nature": "relaxed",
       "ability": "moldbreaker",

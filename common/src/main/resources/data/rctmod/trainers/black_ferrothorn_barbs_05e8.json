@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "honchkrow",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 57,
       "nature": "timid",
       "ability": "superluck",
@@ -29,7 +29,7 @@
     },
     {
       "species": "heracross",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 59,
       "nature": "jolly",
       "ability": "skilllink",

@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "bewear",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 36,
       "nature": "adamant",
       "ability": "fluffy",
@@ -45,7 +45,7 @@
     },
     {
       "species": "porygonz",
-      "gender": "MALE",
+      "gender": "GENDERLESS",
       "level": 37,
       "nature": "timid",
       "ability": "adaptability",
@@ -71,7 +71,7 @@
     },
     {
       "species": "miltank",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 36,
       "nature": "adamant",
       "ability": "scrappy",
@@ -98,7 +98,7 @@
     },
     {
       "species": "lopunny",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 37,
       "nature": "jolly",
       "ability": "scrappy",
@@ -125,7 +125,7 @@
     },
     {
       "species": "heliolisk",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 35,
       "nature": "modest",
       "ability": "sandveil",

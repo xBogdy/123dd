@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "mrmime",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 59,
       "nature": "bold",
       "ability": "filter",
@@ -72,7 +72,7 @@
     },
     {
       "species": "medicham",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 60,
       "nature": "brave",
       "ability": "purepower",
@@ -95,7 +95,7 @@
     },
     {
       "species": "alakazam",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 60,
       "nature": "timid",
       "ability": "magicguard",
@@ -119,7 +119,7 @@
     },
     {
       "species": "bronzong",
-      "gender": "MALE",
+      "gender": "GENDERLESS",
       "level": 63,
       "nature": "brave",
       "ability": "levitate",

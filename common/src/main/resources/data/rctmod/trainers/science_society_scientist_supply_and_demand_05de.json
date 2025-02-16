@@ -27,7 +27,7 @@
     },
     {
       "species": "electrode",
-      "gender": "MALE",
+      "gender": "GENDERLESS",
       "level": 53,
       "nature": "adamant",
       "ability": "aftermath",
@@ -51,7 +51,7 @@
     },
     {
       "species": "electrode",
-      "gender": "MALE",
+      "gender": "GENDERLESS",
       "level": 53,
       "nature": "adamant",
       "ability": "aftermath",

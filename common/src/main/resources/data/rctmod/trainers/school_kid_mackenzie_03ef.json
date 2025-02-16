@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "drifloon",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 28,
       "nature": "calm",
       "ability": "aftermath",
@@ -18,7 +18,7 @@
     },
     {
       "species": "drifloon",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 28,
       "nature": "timid",
       "ability": "flareboost",

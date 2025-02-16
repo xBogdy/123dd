@@ -18,7 +18,7 @@
     },
     {
       "species": "golbat",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 38,
       "nature": "hardy",
       "ability": "innerfocus",
@@ -33,7 +33,7 @@
     },
     {
       "species": "dustox",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 35,
       "nature": "quirky",
       "ability": "shielddust",

@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "stantler",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 58,
       "nature": "docile",
       "ability": "intimidate",
@@ -33,7 +33,7 @@
     },
     {
       "species": "carnivine",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 58,
       "nature": "serious",
       "ability": "levitate",

@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "mamoswine",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 63,
       "nature": "adamant",
       "ability": "thickfat",
@@ -30,7 +30,7 @@
     },
     {
       "species": "rotom",
-      "gender": "FEMALE",
+      "gender": "GENDERLESS",
       "level": 61,
       "nature": "timid",
       "ability": "motordrive",
@@ -87,7 +87,7 @@
     },
     {
       "species": "aggron",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 63,
       "nature": "adamant",
       "ability": "sturdy",
@@ -114,7 +114,7 @@
     },
     {
       "species": "chandelure",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 63,
       "nature": "timid",
       "ability": "shadowtag",

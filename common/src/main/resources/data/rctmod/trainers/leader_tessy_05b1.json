@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "toxapex",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 56,
       "nature": "bold",
       "ability": "regenerator",
@@ -45,7 +45,7 @@
     },
     {
       "species": "armaldo",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 57,
       "nature": "adamant",
       "ability": "swiftswim",
@@ -71,7 +71,7 @@
     },
     {
       "species": "kingdra",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 58,
       "nature": "modest",
       "ability": "swiftswim",
@@ -98,7 +98,7 @@
     },
     {
       "species": "seismitoad",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 57,
       "nature": "adamant",
       "ability": "swiftswim",
@@ -125,7 +125,7 @@
     },
     {
       "species": "gyarados",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 58,
       "nature": "jolly",
       "ability": "moldbreaker",
@@ -152,7 +152,7 @@
     },
     {
       "species": "seaking",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 57,
       "nature": "adamant",
       "ability": "swiftswim",

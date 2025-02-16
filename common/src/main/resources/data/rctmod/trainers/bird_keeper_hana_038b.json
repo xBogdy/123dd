@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "noctowl",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 46,
       "nature": "calm",
       "ability": "keeneye",
@@ -18,7 +18,7 @@
     },
     {
       "species": "staraptor",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 48,
       "nature": "impish",
       "ability": "intimidate",

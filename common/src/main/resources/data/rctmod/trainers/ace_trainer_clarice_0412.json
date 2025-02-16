@@ -33,7 +33,7 @@
     },
     {
       "species": "pelipper",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 54,
       "nature": "bold",
       "ability": "drizzle",
@@ -48,7 +48,7 @@
     },
     {
       "species": "quagsire",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 54,
       "nature": "impish",
       "ability": "waterabsorb",

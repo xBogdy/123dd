@@ -19,7 +19,7 @@
   "team": [
     {
       "species": "tyranitar",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 68,
       "nature": "adamant",
       "ability": "sandstream",
@@ -46,7 +46,7 @@
     },
     {
       "species": "aerodactyl",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 66,
       "nature": "jolly",
       "ability": "unnerve",
@@ -73,7 +73,7 @@
     },
     {
       "species": "armaldo",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 70,
       "nature": "adamant",
       "ability": "swiftswim",
@@ -100,7 +100,7 @@
     },
     {
       "species": "probopass",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 68,
       "nature": "modest",
       "ability": "sandforce",
@@ -127,7 +127,7 @@
     },
     {
       "species": "relicanth",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 64,
       "nature": "adamant",
       "ability": "rockhead",
@@ -151,7 +151,7 @@
     },
     {
       "species": "rampardos",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 72,
       "nature": "adamant",
       "ability": "sheerforce",

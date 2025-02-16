@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "mightyena",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 45,
       "nature": "jolly",
       "ability": "strongjaw",
@@ -44,7 +44,7 @@
     },
     {
       "species": "gengar",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 45,
       "nature": "timid",
       "ability": "shadowtag",
@@ -71,7 +71,7 @@
     },
     {
       "species": "umbreon",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 46,
       "nature": "bold",
       "ability": "synchronize",
@@ -98,7 +98,7 @@
     },
     {
       "species": "exploud",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 44,
       "nature": "modest",
       "ability": "punkrock",
@@ -125,7 +125,7 @@
     },
     {
       "species": "decidueye",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 46,
       "nature": "jolly",
       "ability": "longreach",

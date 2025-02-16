@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "munchlax",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 42,
       "nature": "adamant",
       "ability": "thickfat",
@@ -45,7 +45,7 @@
     },
     {
       "species": "staraptor",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 41,
       "nature": "jolly",
       "ability": "intimidate",
@@ -103,7 +103,7 @@
     },
     {
       "species": "heracross",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 43,
       "nature": "jolly",
       "ability": "swarm",
@@ -131,7 +131,7 @@
     },
     {
       "species": "ponyta",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 42,
       "nature": "jolly",
       "ability": "flashfire",

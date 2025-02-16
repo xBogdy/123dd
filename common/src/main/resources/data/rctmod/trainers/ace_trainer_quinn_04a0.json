@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "pinsir",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 53,
       "nature": "hardy",
       "ability": "hypercutter",
@@ -33,7 +33,7 @@
     },
     {
       "species": "mightyena",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 53,
       "nature": "hardy",
       "ability": "intimidate",

@@ -18,7 +18,7 @@
     },
     {
       "species": "skorupi",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 25,
       "nature": "naive",
       "ability": "battlearmor",
@@ -33,7 +33,7 @@
     },
     {
       "species": "zubat",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 23,
       "nature": "hasty",
       "ability": "innerfocus",
@@ -48,7 +48,7 @@
     },
     {
       "species": "golbat",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 25,
       "nature": "hasty",
       "ability": "innerfocus",

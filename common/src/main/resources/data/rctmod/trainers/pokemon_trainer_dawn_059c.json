@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "honchkrow",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 68,
       "nature": "jolly",
       "ability": "superluck",
@@ -45,7 +45,7 @@
     },
     {
       "species": "gorebyss",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 69,
       "nature": "modest",
       "ability": "swiftswim",
@@ -99,7 +99,7 @@
     },
     {
       "species": "sceptile",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 69,
       "nature": "lonely",
       "ability": "unburden",
@@ -126,7 +126,7 @@
     },
     {
       "species": "ambipom",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 70,
       "nature": "jolly",
       "ability": "technician",
@@ -153,7 +153,7 @@
     },
     {
       "species": "infernape",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 74,
       "nature": "jolly",
       "ability": "blaze",

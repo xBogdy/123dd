@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "larvitar",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 57,
       "nature": "impish",
       "ability": "guts",
@@ -33,7 +33,7 @@
     },
     {
       "species": "magcargo",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 57,
       "nature": "relaxed",
       "ability": "flamebody",

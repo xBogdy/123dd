@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "pelipper",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 38,
       "nature": "bold",
       "ability": "drizzle",
@@ -18,7 +18,7 @@
     },
     {
       "species": "machoke",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 38,
       "nature": "adamant",
       "ability": "noguard",
@@ -33,7 +33,7 @@
     },
     {
       "species": "gastrodon",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 44,
       "nature": "modest",
       "ability": "stormdrain",

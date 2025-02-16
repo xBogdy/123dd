@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "staravia",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 32,
       "nature": "jolly",
       "ability": "intimidate",
@@ -47,7 +47,7 @@
     },
     {
       "species": "roselia",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 33,
       "nature": "timid",
       "ability": "naturalcure",
@@ -76,7 +76,7 @@
     },
     {
       "species": "heracross",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 32,
       "nature": "jolly",
       "ability": "swarm",
@@ -104,7 +104,7 @@
     },
     {
       "species": "ponyta",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 34,
       "nature": "jolly",
       "ability": "flashfire",
@@ -133,7 +133,7 @@
     },
     {
       "species": "prinplup",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 37,
       "nature": "timid",
       "ability": "torrent",

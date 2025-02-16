@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "gastly",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 22,
       "nature": "timid",
       "ability": "levitate",
@@ -18,7 +18,7 @@
     },
     {
       "species": "misdreavus",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 23,
       "nature": "timid",
       "ability": "levitate",
@@ -33,7 +33,7 @@
     },
     {
       "species": "kadabra",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 24,
       "nature": "timid",
       "ability": "synchronize",

@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "dewgong",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 58,
       "nature": "calm",
       "ability": "thickfat",
@@ -18,7 +18,7 @@
     },
     {
       "species": "starmie",
-      "gender": "FEMALE",
+      "gender": "GENDERLESS",
       "level": 58,
       "nature": "timid",
       "ability": "naturalcure",

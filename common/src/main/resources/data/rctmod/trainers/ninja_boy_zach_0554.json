@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "golbat",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 51,
       "nature": "jolly",
       "ability": "innerfocus",
@@ -18,7 +18,7 @@
     },
     {
       "species": "crobat",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 52,
       "nature": "jolly",
       "ability": "innerfocus",
@@ -33,7 +33,7 @@
     },
     {
       "species": "crobat",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 53,
       "nature": "timid",
       "ability": "innerfocus",

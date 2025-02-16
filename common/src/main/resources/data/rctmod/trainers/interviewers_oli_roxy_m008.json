@@ -4,7 +4,7 @@
   "team": [
     {
       "species": "marill",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 17,
       "nature": "hardy",
       "ability": "thickfat",
@@ -19,7 +19,7 @@
     },
     {
       "species": "wooper",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 17,
       "nature": "impish",
       "ability": "waterabsorb",

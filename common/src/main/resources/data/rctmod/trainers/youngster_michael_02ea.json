@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "bidoof",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 5,
       "nature": "docile",
       "ability": "unaware",
@@ -17,7 +17,7 @@
     },
     {
       "species": "zubat",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 5,
       "nature": "hasty",
       "ability": "innerfocus",

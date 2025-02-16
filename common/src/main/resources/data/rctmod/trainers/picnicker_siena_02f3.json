@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "shinx",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 12,
       "nature": "jolly",
       "ability": "intimidate",
@@ -18,7 +18,7 @@
     },
     {
       "species": "pachirisu",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 12,
       "nature": "quirky",
       "ability": "pickup",

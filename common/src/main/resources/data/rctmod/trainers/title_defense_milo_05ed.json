@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "mrmime",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 78,
       "nature": "timid",
       "ability": "soundproof",
@@ -30,7 +30,7 @@
     },
     {
       "species": "emolga",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 78,
       "nature": "timid",
       "ability": "electricsurge",
@@ -57,7 +57,7 @@
     },
     {
       "species": "gallade",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 79,
       "nature": "jolly",
       "ability": "justified",
@@ -84,7 +84,7 @@
     },
     {
       "species": "clefable",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 78,
       "nature": "calm",
       "ability": "magicguard",
@@ -141,7 +141,7 @@
     },
     {
       "species": "audino",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 79,
       "nature": "bold",
       "ability": "regenerator",

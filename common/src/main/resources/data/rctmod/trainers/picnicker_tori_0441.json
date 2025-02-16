@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "silcoon",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 15,
       "nature": "jolly",
       "ability": "shedskin",
@@ -18,7 +18,7 @@
     },
     {
       "species": "beautifly",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 15,
       "nature": "timid",
       "ability": "swarm",

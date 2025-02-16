@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "skorupi",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 35,
       "nature": "naive",
       "ability": "battlearmor",
@@ -18,7 +18,7 @@
     },
     {
       "species": "golbat",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 35,
       "nature": "hasty",
       "ability": "innerfocus",

@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "wingull",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 37,
       "nature": "hardy",
       "ability": "hydration",
@@ -18,7 +18,7 @@
     },
     {
       "species": "quagsire",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 42,
       "nature": "relaxed",
       "ability": "waterabsorb",
@@ -33,7 +33,7 @@
     },
     {
       "species": "pelipper",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 41,
       "nature": "relaxed",
       "ability": "drizzle",

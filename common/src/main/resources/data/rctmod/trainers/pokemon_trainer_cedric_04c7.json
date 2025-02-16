@@ -45,7 +45,7 @@
     },
     {
       "species": "staraptor",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 41,
       "nature": "jolly",
       "ability": "intimidate",
@@ -74,7 +74,7 @@
     },
     {
       "species": "buizel",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 42,
       "nature": "jolly",
       "ability": "swiftswim",
@@ -103,7 +103,7 @@
     },
     {
       "species": "heracross",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 43,
       "nature": "jolly",
       "ability": "swarm",
@@ -131,7 +131,7 @@
     },
     {
       "species": "ponyta",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 42,
       "nature": "jolly",
       "ability": "flashfire",
@@ -160,7 +160,7 @@
     },
     {
       "species": "torterra",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 45,
       "nature": "careful",
       "ability": "overgrow",

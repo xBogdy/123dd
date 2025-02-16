@@ -19,7 +19,7 @@
   "team": [
     {
       "species": "drifblim",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 68,
       "nature": "modest",
       "ability": "flareboost",
@@ -46,7 +46,7 @@
     },
     {
       "species": "banette",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 65,
       "nature": "adamant",
       "ability": "cursedbody",
@@ -73,7 +73,7 @@
     },
     {
       "species": "dusknoir",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 70,
       "nature": "adamant",
       "ability": "pressure",
@@ -101,7 +101,7 @@
     },
     {
       "species": "mismagius",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 70,
       "nature": "timid",
       "ability": "levitate",
@@ -128,7 +128,7 @@
     },
     {
       "species": "froslass",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 72,
       "nature": "timid",
       "ability": "cursedbody",
@@ -155,7 +155,7 @@
     },
     {
       "species": "gengar",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 72,
       "nature": "timid",
       "ability": "cursedbody",

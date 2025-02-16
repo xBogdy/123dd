@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "bidoof",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 3,
       "nature": "jolly",
       "ability": "unaware",
@@ -16,7 +16,7 @@
     },
     {
       "species": "bidoof",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 3,
       "nature": "jolly",
       "ability": "unaware",

@@ -31,7 +31,7 @@
     },
     {
       "species": "rotom",
-      "gender": "MALE",
+      "gender": "GENDERLESS",
       "level": 78,
       "nature": "timid",
       "ability": "motordrive",
@@ -61,7 +61,7 @@
     },
     {
       "species": "vaporeon",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 78,
       "nature": "bold",
       "ability": "waterabsorb",
@@ -88,7 +88,7 @@
     },
     {
       "species": "aggron",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 79,
       "nature": "adamant",
       "ability": "sturdy",
@@ -142,7 +142,7 @@
     },
     {
       "species": "volcanion",
-      "gender": "FEMALE",
+      "gender": "GENDERLESS",
       "level": 79,
       "nature": "calm",
       "ability": "steamengine",

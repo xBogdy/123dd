@@ -4,7 +4,7 @@
   "team": [
     {
       "species": "meditite",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 19,
       "nature": "bashful",
       "ability": "purepower",
@@ -19,7 +19,7 @@
     },
     {
       "species": "machop",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 19,
       "nature": "impish",
       "ability": "noguard",

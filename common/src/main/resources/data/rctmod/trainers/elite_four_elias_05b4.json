@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "mimikyu",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 74,
       "nature": "jolly",
       "ability": "disguise",
@@ -44,7 +44,7 @@
     },
     {
       "species": "aegislash",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 75,
       "nature": "bold",
       "ability": "stancechange",
@@ -71,7 +71,7 @@
     },
     {
       "species": "trevenant",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 75,
       "nature": "impish",
       "ability": "harvest",
@@ -98,7 +98,7 @@
     },
     {
       "species": "cofagrigus",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 76,
       "nature": "bold",
       "ability": "mummy",
@@ -125,7 +125,7 @@
     },
     {
       "species": "banette",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 76,
       "nature": "impish",
       "ability": "prankster",
@@ -152,7 +152,7 @@
     },
     {
       "species": "blacephalon",
-      "gender": "FEMALE",
+      "gender": "GENDERLESS",
       "level": 76,
       "nature": "timid",
       "ability": "beastboost",

@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "cranidos",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 24,
       "nature": "relaxed",
       "ability": "moldbreaker",
@@ -18,7 +18,7 @@
     },
     {
       "species": "geodude",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 22,
       "nature": "relaxed",
       "ability": "sturdy",
@@ -33,7 +33,7 @@
     },
     {
       "species": "bronzor",
-      "gender": "FEMALE",
+      "gender": "GENDERLESS",
       "level": 23,
       "nature": "hardy",
       "ability": "levitate",

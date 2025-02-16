@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "staraptor",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 49,
       "nature": "jolly",
       "ability": "intimidate",
@@ -76,7 +76,7 @@
     },
     {
       "species": "heracross",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 51,
       "nature": "jolly",
       "ability": "swarm",
@@ -133,7 +133,7 @@
     },
     {
       "species": "snorlax",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 52,
       "nature": "adamant",
       "ability": "thickfat",
@@ -160,7 +160,7 @@
     },
     {
       "species": "infernape",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 55,
       "nature": "jolly",
       "ability": "blaze",

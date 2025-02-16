@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "staraptor",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 83,
       "nature": "adamant",
       "ability": "reckless",
@@ -30,7 +30,7 @@
     },
     {
       "species": "gliscor",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 82,
       "nature": "careful",
       "ability": "poisonheal",
@@ -84,7 +84,7 @@
     },
     {
       "species": "archeops",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 84,
       "nature": "adamant",
       "ability": "klutz",
@@ -111,7 +111,7 @@
     },
     {
       "species": "pidgeot",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 84,
       "nature": "modest",
       "ability": "noguard",
@@ -138,7 +138,7 @@
     },
     {
       "species": "thundurus",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 83,
       "nature": "modest",
       "ability": "voltabsorb",

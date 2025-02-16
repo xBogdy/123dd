@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "staraptor",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 49,
       "nature": "jolly",
       "ability": "intimidate",
@@ -47,7 +47,7 @@
     },
     {
       "species": "roserade",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 49,
       "nature": "timid",
       "ability": "naturalcure",
@@ -104,7 +104,7 @@
     },
     {
       "species": "rapidash",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 49,
       "nature": "jolly",
       "ability": "flashfire",
@@ -133,7 +133,7 @@
     },
     {
       "species": "snorlax",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 52,
       "nature": "adamant",
       "ability": "thickfat",

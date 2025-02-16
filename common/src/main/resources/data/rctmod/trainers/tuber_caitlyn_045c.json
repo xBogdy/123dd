@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "azurill",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 24,
       "nature": "timid",
       "ability": "sapsipper",
@@ -18,7 +18,7 @@
     },
     {
       "species": "marill",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 24,
       "nature": "adamant",
       "ability": "hugepower",

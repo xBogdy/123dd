@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "mantine",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 54,
       "nature": "calm",
       "ability": "waterabsorb",
@@ -18,7 +18,7 @@
     },
     {
       "species": "pelipper",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 52,
       "nature": "bold",
       "ability": "drizzle",

@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "murkrow",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 40,
       "nature": "jolly",
       "ability": "insomnia",
@@ -41,7 +41,7 @@
     },
     {
       "species": "golbat",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 40,
       "nature": "jolly",
       "ability": "innerfocus",
@@ -64,7 +64,7 @@
     },
     {
       "species": "sneasel",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 43,
       "nature": "jolly",
       "ability": "keeneye",

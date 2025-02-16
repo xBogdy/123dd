@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "barboach",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 17,
       "nature": "relaxed",
       "ability": "oblivious",
@@ -18,7 +18,7 @@
     },
     {
       "species": "barboach",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 18,
       "nature": "relaxed",
       "ability": "oblivious",
@@ -33,7 +33,7 @@
     },
     {
       "species": "shellos",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 20,
       "nature": "sassy",
       "ability": "stormdrain",
@@ -48,7 +48,7 @@
     },
     {
       "species": "barboach",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 17,
       "nature": "relaxed",
       "ability": "oblivious",

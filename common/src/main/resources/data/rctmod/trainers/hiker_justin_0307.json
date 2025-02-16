@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "geodude",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 16,
       "nature": "relaxed",
       "ability": "rockhead",
@@ -18,7 +18,7 @@
     },
     {
       "species": "bronzor",
-      "gender": "MALE",
+      "gender": "GENDERLESS",
       "level": 18,
       "nature": "hardy",
       "ability": "levitate",

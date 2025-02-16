@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "mamoswine",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 46,
       "nature": "adamant",
       "ability": "thickfat",
@@ -56,7 +56,7 @@
     },
     {
       "species": "vaporeon",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 46,
       "nature": "bold",
       "ability": "waterabsorb",
@@ -83,7 +83,7 @@
     },
     {
       "species": "fraxure",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 46,
       "nature": "jolly",
       "ability": "moldbreaker",
@@ -109,7 +109,7 @@
     },
     {
       "species": "pupitar",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 47,
       "nature": "adamant",
       "ability": "shedskin",

@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "geodude",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 23,
       "nature": "naive",
       "ability": "rockhead",
@@ -18,7 +18,7 @@
     },
     {
       "species": "geodude",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 23,
       "nature": "naive",
       "ability": "rockhead",

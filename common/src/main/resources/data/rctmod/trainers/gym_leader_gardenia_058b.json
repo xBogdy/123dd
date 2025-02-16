@@ -19,7 +19,7 @@
   "team": [
     {
       "species": "jumpluff",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 66,
       "nature": "timid",
       "ability": "chlorophyll",
@@ -72,7 +72,7 @@
     },
     {
       "species": "cherrim",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 69,
       "nature": "mild",
       "ability": "flowergift",
@@ -126,7 +126,7 @@
     },
     {
       "species": "torterra",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 68,
       "nature": "adamant",
       "ability": "overgrow",

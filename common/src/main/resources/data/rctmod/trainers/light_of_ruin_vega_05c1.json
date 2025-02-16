@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "liepard",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 45,
       "nature": "modest",
       "ability": "unburden",
@@ -30,7 +30,7 @@
     },
     {
       "species": "honchkrow",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 47,
       "nature": "timid",
       "ability": "superluck",
@@ -110,7 +110,7 @@
     },
     {
       "species": "spiritomb",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 47,
       "nature": "bold",
       "ability": "pressure",
@@ -137,7 +137,7 @@
     },
     {
       "species": "bisharp",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 47,
       "nature": "adamant",
       "ability": "defiant",

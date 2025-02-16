@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "toucannon",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 32,
       "nature": "jolly",
       "ability": "skilllink",
@@ -55,7 +55,7 @@
     },
     {
       "species": "metang",
-      "gender": "FEMALE",
+      "gender": "GENDERLESS",
       "level": 33,
       "nature": "jolly",
       "ability": "clearbody",

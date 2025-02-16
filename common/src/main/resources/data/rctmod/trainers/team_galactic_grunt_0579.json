@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "cascoon",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 28,
       "nature": "quirky",
       "ability": "shedskin",
@@ -33,7 +33,7 @@
     },
     {
       "species": "beautifly",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 28,
       "nature": "docile",
       "ability": "swarm",

@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "bidoof",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 14,
       "nature": "jolly",
       "ability": "unaware",
@@ -18,7 +18,7 @@
     },
     {
       "species": "bidoof",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 15,
       "nature": "jolly",
       "ability": "unaware",
@@ -33,7 +33,7 @@
     },
     {
       "species": "bidoof",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 16,
       "nature": "jolly",
       "ability": "unaware",
@@ -48,7 +48,7 @@
     },
     {
       "species": "bidoof",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 15,
       "nature": "jolly",
       "ability": "unaware",
@@ -63,7 +63,7 @@
     },
     {
       "species": "bidoof",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 15,
       "nature": "jolly",
       "ability": "unaware",

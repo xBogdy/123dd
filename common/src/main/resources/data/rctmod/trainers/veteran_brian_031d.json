@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "buizel",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 26,
       "nature": "jolly",
       "ability": "swiftswim",
@@ -48,7 +48,7 @@
     },
     {
       "species": "machoke",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 26,
       "nature": "jolly",
       "ability": "guts",

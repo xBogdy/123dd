@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "hoothoot",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 20,
       "nature": "timid",
       "ability": "keeneye",
@@ -18,7 +18,7 @@
     },
     {
       "species": "machop",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 20,
       "nature": "jolly",
       "ability": "noguard",

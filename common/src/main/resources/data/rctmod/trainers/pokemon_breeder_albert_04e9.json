@@ -18,7 +18,7 @@
     },
     {
       "species": "roselia",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 51,
       "nature": "bold",
       "ability": "poisonpoint",
@@ -33,7 +33,7 @@
     },
     {
       "species": "raichu",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 53,
       "nature": "bold",
       "ability": "static",

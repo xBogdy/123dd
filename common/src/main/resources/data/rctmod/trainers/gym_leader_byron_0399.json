@@ -43,7 +43,7 @@
     },
     {
       "species": "steelix",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 36,
       "nature": "brave",
       "ability": "sturdy",
@@ -67,7 +67,7 @@
     },
     {
       "species": "bastiodon",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 39,
       "nature": "relaxed",
       "ability": "sturdy",

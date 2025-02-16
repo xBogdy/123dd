@@ -29,7 +29,7 @@
     },
     {
       "species": "swinub",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 32,
       "nature": "adamant",
       "ability": "thickfat",
@@ -51,7 +51,7 @@
     },
     {
       "species": "gabite",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 33,
       "nature": "jolly",
       "ability": "roughskin",

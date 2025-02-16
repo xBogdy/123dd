@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "vibrava",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 57,
       "nature": "bashful",
       "ability": "levitate",
@@ -33,7 +33,7 @@
     },
     {
       "species": "seadra",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 57,
       "nature": "bold",
       "ability": "poisonpoint",
@@ -48,7 +48,7 @@
     },
     {
       "species": "dragonair",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 57,
       "nature": "serious",
       "ability": "shedskin",

@@ -47,7 +47,7 @@
     },
     {
       "species": "buizel",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 33,
       "nature": "jolly",
       "ability": "swiftswim",
@@ -104,7 +104,7 @@
     },
     {
       "species": "ponyta",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 34,
       "nature": "jolly",
       "ability": "flashfire",

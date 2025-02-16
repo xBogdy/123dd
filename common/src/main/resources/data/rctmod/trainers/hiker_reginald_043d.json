@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "geodude",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 15,
       "nature": "relaxed",
       "ability": "rockhead",
@@ -18,7 +18,7 @@
     },
     {
       "species": "machop",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 15,
       "nature": "relaxed",
       "ability": "noguard",

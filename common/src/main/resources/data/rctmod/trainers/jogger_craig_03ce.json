@@ -18,7 +18,7 @@
     },
     {
       "species": "staravia",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 21,
       "nature": "jolly",
       "ability": "intimidate",
@@ -33,7 +33,7 @@
     },
     {
       "species": "ponyta",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 20,
       "nature": "jolly",
       "ability": "flashfire",

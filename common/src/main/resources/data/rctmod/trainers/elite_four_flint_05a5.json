@@ -44,7 +44,7 @@
     },
     {
       "species": "houndoom",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 78,
       "nature": "modest",
       "ability": "unnerve",
@@ -69,7 +69,7 @@
     },
     {
       "species": "rapidash",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 79,
       "nature": "jolly",
       "ability": "flamebody",
@@ -94,7 +94,7 @@
     },
     {
       "species": "infernape",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 81,
       "nature": "jolly",
       "ability": "ironfist",
@@ -119,7 +119,7 @@
     },
     {
       "species": "arcanine",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 81,
       "nature": "jolly",
       "ability": "intimidate",
@@ -145,7 +145,7 @@
     },
     {
       "species": "magmortar",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 83,
       "nature": "modest",
       "ability": "flamebody",

@@ -19,7 +19,7 @@
   "team": [
     {
       "species": "pelipper",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 70,
       "nature": "modest",
       "ability": "drizzle",
@@ -100,7 +100,7 @@
     },
     {
       "species": "lanturn",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 66,
       "nature": "modest",
       "ability": "voltabsorb",
@@ -154,7 +154,7 @@
     },
     {
       "species": "electivire",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 75,
       "nature": "mild",
       "ability": "motordrive",

@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "politoed",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 58,
       "nature": "bold",
       "ability": "drizzle",
@@ -30,7 +30,7 @@
     },
     {
       "species": "blissey",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 57,
       "nature": "bold",
       "ability": "naturalcure",
@@ -57,7 +57,7 @@
     },
     {
       "species": "braviary",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 61,
       "nature": "jolly",
       "ability": "sheerforce",
@@ -84,7 +84,7 @@
     },
     {
       "species": "reuniclus",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 58,
       "nature": "modest",
       "ability": "regenerator",
@@ -111,7 +111,7 @@
     },
     {
       "species": "ampharos",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 59,
       "nature": "modest",
       "ability": "moldbreaker",

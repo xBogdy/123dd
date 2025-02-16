@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "starly",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 7,
       "nature": "jolly",
       "ability": "keeneye",
@@ -39,7 +39,7 @@
     },
     {
       "species": "chimchar",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 9,
       "nature": "jolly",
       "ability": "blaze",

@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "aipom",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 30,
       "nature": "jolly",
       "ability": "pickup",
@@ -18,7 +18,7 @@
     },
     {
       "species": "marill",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 32,
       "nature": "jolly",
       "ability": "thickfat",

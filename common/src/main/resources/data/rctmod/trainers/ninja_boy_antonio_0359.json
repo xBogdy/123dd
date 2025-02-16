@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "zubat",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 33,
       "nature": "hasty",
       "ability": "innerfocus",
@@ -33,7 +33,7 @@
     },
     {
       "species": "zubat",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 34,
       "nature": "hasty",
       "ability": "innerfocus",
@@ -48,7 +48,7 @@
     },
     {
       "species": "croagunk",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 36,
       "nature": "docile",
       "ability": "anticipation",

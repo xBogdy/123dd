@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "raichu",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 46,
       "nature": "timid",
       "ability": "static",
@@ -46,7 +46,7 @@
     },
     {
       "species": "ambipom",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 47,
       "nature": "naive",
       "ability": "technician",
@@ -104,7 +104,7 @@
     },
     {
       "species": "luxray",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 49,
       "nature": "jolly",
       "ability": "intimidate",

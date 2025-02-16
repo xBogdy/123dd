@@ -18,7 +18,7 @@
     },
     {
       "species": "barboach",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 23,
       "nature": "adamant",
       "ability": "hydration",
@@ -33,7 +33,7 @@
     },
     {
       "species": "gyarados",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 24,
       "nature": "timid",
       "ability": "intimidate",

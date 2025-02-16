@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "graveler",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 30,
       "nature": "relaxed",
       "ability": "rockhead",
@@ -18,7 +18,7 @@
     },
     {
       "species": "machoke",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 32,
       "nature": "relaxed",
       "ability": "noguard",

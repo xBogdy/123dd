@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "goldeen",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 36,
       "nature": "timid",
       "ability": "waterveil",
@@ -33,7 +33,7 @@
     },
     {
       "species": "seaking",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 38,
       "nature": "jolly",
       "ability": "waterveil",

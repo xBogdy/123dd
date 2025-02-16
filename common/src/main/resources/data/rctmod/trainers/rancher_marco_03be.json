@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "aipom",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 18,
       "nature": "jolly",
       "ability": "pickup",
@@ -33,7 +33,7 @@
     },
     {
       "species": "girafarig",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 17,
       "nature": "naive",
       "ability": "innerfocus",

@@ -19,7 +19,7 @@
   "team": [
     {
       "species": "whiscash",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 76,
       "nature": "brave",
       "ability": "hydration",
@@ -69,7 +69,7 @@
     },
     {
       "species": "nidoking",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 78,
       "nature": "modest",
       "ability": "sheerforce",
@@ -95,7 +95,7 @@
     },
     {
       "species": "hippowdon",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 78,
       "nature": "adamant",
       "ability": "sandstream",
@@ -120,7 +120,7 @@
     },
     {
       "species": "mamoswine",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 78,
       "nature": "adamant",
       "ability": "thickfat",
@@ -146,7 +146,7 @@
     },
     {
       "species": "rhyperior",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 81,
       "nature": "adamant",
       "ability": "solidrock",

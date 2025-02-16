@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "dusknoir",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 78,
       "nature": "adamant",
       "ability": "ironfist",
@@ -30,7 +30,7 @@
     },
     {
       "species": "machamp",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 78,
       "nature": "adamant",
       "ability": "guts",
@@ -84,7 +84,7 @@
     },
     {
       "species": "beedrill",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 79,
       "nature": "jolly",
       "ability": "adaptability",
@@ -111,7 +111,7 @@
     },
     {
       "species": "nihilego",
-      "gender": "MALE",
+      "gender": "GENDERLESS",
       "level": 79,
       "nature": "timid",
       "ability": "beastboost",

@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "meloetta",
-      "gender": "FEMALE",
+      "gender": "GENDERLESS",
       "level": 72,
       "nature": "timid",
       "ability": "serenegrace",
@@ -57,7 +57,7 @@
     },
     {
       "species": "manaphy",
-      "gender": "FEMALE",
+      "gender": "GENDERLESS",
       "level": 74,
       "nature": "timid",
       "ability": "soulheart",
@@ -84,7 +84,7 @@
     },
     {
       "species": "tapukoko",
-      "gender": "FEMALE",
+      "gender": "GENDERLESS",
       "level": 74,
       "nature": "jolly",
       "ability": "electricsurge",

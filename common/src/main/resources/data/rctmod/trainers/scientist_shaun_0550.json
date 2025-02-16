@@ -3,7 +3,7 @@
   "team": [
     {
       "species": "kadabra",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 40,
       "nature": "timid",
       "ability": "innerfocus",
@@ -18,7 +18,7 @@
     },
     {
       "species": "kadabra",
-      "gender": "MALE",
+      "gender": "FEMALE",
       "level": 36,
       "nature": "timid",
       "ability": "synchronize",

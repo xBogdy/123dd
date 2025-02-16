@@ -18,7 +18,7 @@
   "team": [
     {
       "species": "starly",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 19,
       "nature": "jolly",
       "ability": "keeneye",
@@ -46,7 +46,7 @@
     },
     {
       "species": "buizel",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 20,
       "nature": "jolly",
       "ability": "swiftswim",
@@ -73,7 +73,7 @@
     },
     {
       "species": "ponyta",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 20,
       "nature": "jolly",
       "ability": "flashfire",
@@ -100,7 +100,7 @@
     },
     {
       "species": "grotle",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 21,
       "nature": "careful",
       "ability": "overgrow",

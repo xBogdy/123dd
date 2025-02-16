@@ -18,7 +18,7 @@
     },
     {
       "species": "machop",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "level": 11,
       "nature": "relaxed",
       "ability": "noguard",
@@ -33,7 +33,7 @@
     },
     {
       "species": "geodude",
-      "gender": "GENDERLESS",
+      "gender": "FEMALE",
       "level": 11,
       "nature": "relaxed",
       "ability": "rockhead",
@@ -48,7 +48,7 @@
     },
     {
       "species": "bidoof",
-      "gender": "GENDERLESS",
+      "gender": "MALE",
       "level": 11,
       "nature": "hardy",
       "ability": "unaware",
