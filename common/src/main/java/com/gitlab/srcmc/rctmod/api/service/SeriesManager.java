@@ -58,7 +58,7 @@ public class SeriesManager {
         if(seriesId.isEmpty() && !this.seriesData.containsKey(seriesId)) {
             Stream<String>[] s = new Stream[1];
             s[0] = Stream.of();
-            this.seriesData.forEach((sid, sd) -> s[0] = Stream.concat(s[0], this.getRequiredDefeats(sid, defeatedTrainers, includeOptionals, includeSingles)));
+            this.seriesData.keySet().forEach(sid -> s[0] = Stream.concat(s[0], this.getRequiredDefeats(sid, defeatedTrainers, includeOptionals, includeSingles)));
             return s[0].distinct();
         }
 
