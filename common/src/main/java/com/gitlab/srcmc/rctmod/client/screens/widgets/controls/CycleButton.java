@@ -17,7 +17,6 @@
  */
 package com.gitlab.srcmc.rctmod.client.screens.widgets.controls;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
@@ -55,7 +54,7 @@ public class CycleButton<T> extends AbstractButton {
             prefix,
             selected,
             value,
-            new ArrayList<>(values),
+            values,
             componentFunc,
             c -> (MutableComponent) c.getMessage(),
             (c, v) -> {},
@@ -129,6 +128,18 @@ public class CycleButton<T> extends AbstractButton {
         this.updateValue(object);
     }
 
+    public boolean setValue(int i) {
+        i = Math.min(i, this.values.size() - 1);
+
+        if (i >= 0) {
+            this.index = i;
+            this.updateValue(this.values.get(i));
+            return true;
+        }
+
+        return false;
+    }
+
     public void addValue(T object) {
         this.values.add(object);
     }
@@ -175,12 +186,13 @@ public class CycleButton<T> extends AbstractButton {
         if (this.active) {
             T object = this.getCycledValue(1);
             Component component = this.createLabelForValue(object);
+
             if (this.isFocused()) {
                 narrationElementOutput.add(NarratedElementType.USAGE,
-                        Component.translatable("narration.cycle_button.usage.focused", new Object[] { component }));
+                    Component.translatable("narration.cycle_button.usage.focused", new Object[] { component }));
             } else {
                 narrationElementOutput.add(NarratedElementType.USAGE,
-                        Component.translatable("narration.cycle_button.usage.hovered", new Object[] { component }));
+                    Component.translatable("narration.cycle_button.usage.hovered", new Object[] { component }));
             }
         }
     }

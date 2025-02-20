@@ -18,6 +18,7 @@
 package com.gitlab.srcmc.rctmod.client.screens.widgets;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -114,13 +115,14 @@ public class TrainerListWidget extends TrainerDataWidget {
         @Override
         public void tick() {
             int u = 0, p = 0, r = 0;
+            var hasUpdate = false;
 
             for(; this.i < trainerIds.size() && u < UPDATES_PER_TICK; this.i++, u++) {
                 var trainerId = trainerIds.get(this.i);
+                var trMob = this.tdm.getData(trainerId);
 
-                if(showAllTypes || this.tdm.getData(trainerId).getType().equals(trainerType)) {
+                if(showAllTypes || trMob.getType().equals(trainerType)) {
                     var count = this.playerState.getTrainerDefeatCount(trainerId);
-                    var trMob = this.tdm.getData(trainerId);
                     var isNextKeyTrainer = playerState.isKeyTrainer(trainerId);
 
                     if(showUndefeated || isNextKeyTrainer || count > 0) {
@@ -134,18 +136,18 @@ public class TrainerListWidget extends TrainerDataWidget {
                             count > 0 ? (isNextKeyTrainer ? EntryState.DISCOVERED_KEY : EntryState.DISCOVERED) : isNextKeyTrainer ? EntryState.HIDDEN_KEY : EntryState.UNKNOWN,
                             trMob, count, isNextKeyTrainer));
 
-                        if(this.realtime) {
-                            TrainerListWidget.this.maxPage = p;
-                            updateInnerHeight();
-                        }
+                        hasUpdate = true;
                     }
                 }
             }
 
-            if(!realtime && this.finished()) {
+            if(!this.realtime && this.finished()) {
                 TrainerListWidget.this.pages = pages;
                 TrainerListWidget.this.maxPage = p;
                 TrainerListWidget.this.page = Math.max(0, Math.min(p, TrainerListWidget.this.page));
+                updateInnerHeight();
+            } else if(this.realtime && hasUpdate) {
+                TrainerListWidget.this.maxPage = p;
                 updateInnerHeight();
             }
         }
@@ -194,8 +196,13 @@ public class TrainerListWidget extends TrainerDataWidget {
     
     public TrainerListWidget(int x, int y, int w, int h, Font font, List<String> trainerIds) {
         super(x, y, w, h, font);
-        this.trainerIds = new ArrayList<>(trainerIds);
         this.entryHeight = this.getHeight()/8;
+        this.setTrainerIds(trainerIds);
+    }
+
+    public void setTrainerIds(Collection<String> trainerIds) {
+        this.trainerIds = List.copyOf(trainerIds);
+        this.pages = new HashMap<>();
         this.updateState = new UpdateState(this.pages);
         this.updateInnerHeight();
     }
