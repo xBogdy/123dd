@@ -22,6 +22,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
@@ -75,29 +76,46 @@ public class TrainerPlayerData extends SavedData {
     }
 
     public boolean addProgressDefeat(String trainerId) {
-        var ps = PlayerState.get(this.player);
+        var graph = RCTMod.getInstance().getSeriesManager().getGraph(this.currentSeries);
+        var node = graph.get(trainerId);
+        var updated = new boolean[]{false};
 
-        if(/* ps.isKeyTrainer(trainerId) && */ this.defeatedTrainerIds.add(trainerId)) {
-            this.updateLevelCap(trainerId);
-            ps.addProgressDefeat(trainerId);
-            this.updateCurrentSeries();
-            this.setDirty();
-            return true;
+        if(node != null) {
+            var ps = PlayerState.get(this.player);
+
+            Stream.concat(Stream.of(node), node.siblings()).filter(tn -> !tn.isAlone()).forEach(tn -> {
+                if(this.defeatedTrainerIds.add(tn.id())) {
+                    this.updateLevelCap(tn.id());
+                    ps.addProgressDefeat(tn.id());
+                    this.updateCurrentSeries();
+                    this.setDirty();
+                    updated[0] = true;
+                }
+            });
         }
 
-        return false;
+        return updated[0];
     }
 
     public boolean removeProgressDefeat(String trainerId) {
-        if(this.defeatedTrainerIds.remove(trainerId)) {
+        var graph = RCTMod.getInstance().getSeriesManager().getGraph(this.currentSeries);
+        var node = graph.get(trainerId);
+        var updated = new boolean[]{false};
+
+        if(node != null) {
             var ps = PlayerState.get(this.player);
-            this.updateLevelCap();
-            ps.removeProgressDefeat(trainerId);
-            this.setDirty();
-            return true;
+
+            Stream.concat(Stream.of(node), node.siblings()).forEach(tn -> {
+                if(this.defeatedTrainerIds.remove(tn.id())) {
+                    this.updateLevelCap();
+                    ps.removeProgressDefeat(tn.id());
+                    this.setDirty();
+                    updated[0] = true;
+                }
+            });
         }
 
-        return false;
+        return updated[0];
     }
 
     public boolean removeProgressDefeats() {
@@ -134,6 +152,10 @@ public class TrainerPlayerData extends SavedData {
                 .getSeriesManager().getGraph(this.currentSeries)
                 .getRemaining(this.defeatedTrainerIds).size() == 0;
 
+            if(this.currentSeriesCompleted) {
+                this.setDirty();
+            }
+
             return this.currentSeriesCompleted;
         }
 
@@ -165,7 +187,11 @@ public class TrainerPlayerData extends SavedData {
 
         if(!keepProgress) {
             this.removeProgressDefeats(true);
-            this.currentSeriesCompleted = false;
+
+            if(this.currentSeriesCompleted) {
+                this.currentSeriesCompleted = false;
+                this.setDirty();
+            }
         }
     }
 
@@ -216,6 +242,7 @@ public class TrainerPlayerData extends SavedData {
         compoundTag.put("progressDefeats", progressDefeats);
         compoundTag.put("completedSeries", completedSeries);
         compoundTag.putString("currentSeries", this.currentSeries);
+        compoundTag.putBoolean("currentSeriesCompleted", this.currentSeriesCompleted);
         return compoundTag;
     }
 
@@ -248,7 +275,6 @@ public class TrainerPlayerData extends SavedData {
         public TrainerPlayerData of(CompoundTag tag, Provider provider) {
             var tpd = new TrainerPlayerData(this.player);
             var tm = RCTMod.getInstance().getTrainerManager();
-            var sm = RCTMod.getInstance().getSeriesManager();
 
             if(tag.contains("currentSeries")) {
                 tpd.setCurrentSeries(tag.getString("currentSeries"));
@@ -259,23 +285,19 @@ public class TrainerPlayerData extends SavedData {
                 seriesTag.getAllKeys().forEach(s -> tpd.setSeriesCompletion(s, seriesTag.getInt(s)));
             }
 
+            if(tag.contains("currentSeriesCompleted")) {
+                tpd.currentSeriesCompleted = tag.getBoolean("currentSeriesCompleted");
+            }
+
             if(!tpd.currentSeries.isEmpty()) {
-                var required = sm.getGraph(tpd.currentSeries)
-                    .stream().filter(tn -> !tn.isAlone())
-                    .collect(HashSet::new, (s, v) -> s.add(v), (s1, s2) -> s1.addAll(s2));
-                
                 if(tag.contains("progressDefeats")) {
-                    tag.getCompound("progressDefeats")
-                        .getAllKeys().stream()
-                        .filter(required::contains)
-                        .forEach(tpd::addProgressDefeat);
+                    tag.getCompound("progressDefeats").getAllKeys().forEach(tpd::addProgressDefeat);
                 } else {
                     // legacy support: derive progress defeats from trainer defeat counts
                     var level = this.player.getServer().overworld();
                     
                     tm.getAllData()
                         .map(entry -> entry.getKey())
-                        .filter(required::contains)
                         .filter(tid -> tm.getBattleMemory(level, tid).getDefeatByCount(this.player) > 0)
                         .forEach(tpd::addProgressDefeat);
                 }

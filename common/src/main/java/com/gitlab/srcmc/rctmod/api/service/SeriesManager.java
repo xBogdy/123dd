@@ -130,6 +130,10 @@ public class SeriesManager {
             return this.list.stream();
         }
 
+        public TrainerNode get(String trainerId) {
+            return this.map.get(trainerId);
+        }
+
         public boolean contains(String trainerId) {
             return this.map.containsKey(trainerId);
         }
