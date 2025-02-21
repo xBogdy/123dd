@@ -20,6 +20,7 @@ package com.gitlab.srcmc.rctmod.api.service;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -293,20 +294,35 @@ public class SeriesManager {
         }
 
         public boolean isAlone() {
-            return this.ancestors.isEmpty() && this.successors.isEmpty()
-                && this.siblings.stream().allMatch(sib -> sib.ancestors.isEmpty() && sib.successors.isEmpty());
+            return this.isAlone(new HashSet<>());
         }
 
         public boolean isOptional() {
-            return this.optional
-                || this.siblings.stream().anyMatch(sib -> sib.optional)
-                || this.successors.stream().anyMatch(TrainerNode::isOptional);
+            return this.isOptional(new HashSet<>());
         }
 
         public boolean isDefeated(Set<String> trainerIds) {
-            return trainerIds.contains(this.trainerId)
-                || this.siblings.stream().anyMatch(sib -> trainerIds.contains(sib.trainerId))
-                || this.ancestors.stream().anyMatch(anc -> anc.isDefeated(trainerIds));
+            return this.isDefeated(trainerIds, new HashSet<>());
+        }
+
+        private boolean isAlone(Set<TrainerNode> visited) {
+            visited.add(this);
+
+            return this.ancestors.isEmpty() && this.successors.isEmpty() && this.siblings.stream()
+                .filter(sib -> !visited.contains(sib))
+                .allMatch(sib -> sib.isAlone(visited));
+        }
+
+        private boolean isOptional(Set<TrainerNode> visited) {
+            return visited.add(this) && (this.optional
+                || this.siblings.stream().anyMatch(sib -> sib.isOptional(visited))
+                || this.successors.stream().anyMatch(suc -> suc.isOptional(visited)));
+        }
+
+        private boolean isDefeated(Set<String> trainerIds, Set<TrainerNode> visited) {
+            return visited.add(this) && (trainerIds.contains(this.trainerId)
+                || this.siblings.stream().anyMatch(sib -> sib.isDefeated(trainerIds, visited))
+                || this.ancestors.stream().anyMatch(anc -> anc.isDefeated(trainerIds, visited)));
         }
     }
 }
