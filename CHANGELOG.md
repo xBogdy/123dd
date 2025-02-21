@@ -22,7 +22,7 @@
 
 **Changed:**
 
-- *#227* Improved command suggestions (better filtering) (TODO)
+- *#227* Improved command suggestions (better filtering)
 - *#226* Reworked trainer types: These are now data pack objects with common types being predefined by this mod (e.g. "leader" or "rival")
 - *#225* Trainer Card: Minor cosmetic adjustments (e.g. better handling of long trainer names)
 - *#224* Trainer Spawner block can now be *forced* to spawn their trainer **by powering it with redstone** (ignoring any level differences or other conditions to nearby players, this may only fail if a trainer with the same identity already exists in the world or the global spawn cap is full)

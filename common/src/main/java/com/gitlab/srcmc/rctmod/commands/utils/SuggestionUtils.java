@@ -65,6 +65,7 @@ public final class SuggestionUtils {
     public static CompletableFuture<Suggestions> get_progress_trainer_suggestions(final CommandContext<CommandSourceStack> context, final SuggestionsBuilder builder) throws CommandSyntaxException {
         var sm = RCTMod.getInstance().getSeriesManager();
         var tm = RCTMod.getInstance().getTrainerManager();
+        var remaining = builder.getRemainingLowerCase();
         Stream<String> tidStream;
 
         if(context.getSource().getEntity() instanceof Player p) {
@@ -81,12 +82,20 @@ public final class SuggestionUtils {
             tidStream = sb.build();
         }
 
-        tidStream.distinct().forEach(builder::suggest);
+        tidStream.distinct()
+            .filter(tid -> tid.startsWith(remaining))
+            .forEach(builder::suggest);
+
         return builder.buildFuture();
     }
 
     public static CompletableFuture<Suggestions> get_type_suggestions(final CommandContext<CommandSourceStack> context, final SuggestionsBuilder builder) throws CommandSyntaxException {
-        TrainerType.ids().forEach(builder::suggest);
+        var remaining = builder.getRemainingLowerCase();
+        
+        TrainerType.ids().stream()
+            .filter(id -> id.startsWith(remaining))
+            .forEach(builder::suggest);
+
         return builder.buildFuture();
     }
 
