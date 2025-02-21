@@ -2,28 +2,30 @@
 
 **Important**: The `level_cap` is not a value anymore that can be set per player but is rather derived from the current state of progress of that player. Because of the changes to the progression it is possible that when updating from an older version the level caps of players will be different (most likely lower)! Apart from that the progress of players should adapt to the changes but as a general advice **always make backups before updating mods**.
 
-## [0.14.0-beta] - 2025-02-13
+## [0.14.0-beta] - 2025-02-21
 
 **Added:**
 
-- *#232* Command `player add progress (before|after)`: Update progress without resetting current progression (useful for optional/alternative progression paths)
-- *#231* Command `player get series [completed]`: Retrieves the current or all completed series of a player
-- *#230* Command `player set series <seriesId> [completed <count>]`: Updates the current or completed series of a player
-- *#229* Config option `playerMustCarryTrainerCard` (TODO)
-- *#228* Support for different *series*
+- *#234* Command `player add progress (before|after)`: Update progress without resetting current progression (useful for optional/alternative progression paths)
+- *#233* Command `player get progress graph`: Generate a visual representation of a players series progression that can be viewed online (powered by PlantUML)
+- *#232* Command `player get series [completed]`: Retrieves the current or all completed series of a player
+- *#231* Command `player set series <seriesId> [completed <count>]`: Updates the current or completed series of a player
+- *#230* Config option `playerMustCarryTrainerCard` (TODO)
+- *#229* Support for different *series*
   - Every series has its own progression (i.e. chain of key trainers and level caps)
   - Only trainers from the current series of a player will be listed in the trainer card of that player
   - Only trainers from the current series of a player will spawn for that player
   - Players now have a `currentSeries` property (defaults to `"radicalred"` if not set)
-  - Players now have statistics to keep track of completed series (the current and completed series of players can be inspected or modified with commands, see *#230* and *#231*)
+  - Players now have statistics to keep track of completed series (the current and completed series of players can be inspected or modified with commands, see *#231* and *#232*)
   - Trainer npcs now have a `series` property: A list of series ids the trainer belongs to (the trainer will belong to every series if empty or not set)
-- *#227* Trainer mobs properties (`series` and `substitutes`)
+- *#228* Trainer mobs properties (`series` and `substitutes`)
 
 **Changed:**
 
+- *#227* Improved command suggestions (better filtering) (TODO)
 - *#226* Reworked trainer types: These are now data pack objects with common types being predefined by this mod (e.g. "leader" or "rival")
 - *#225* Trainer Card: Minor cosmetic adjustments (e.g. better handling of long trainer names)
-- *#224* Trainer Spawner block can now be *forced* to spawn their trainer by powering it with redstone (ignoring any level differences or other conditions to nearby players, this may only fail if a trainer with the same identity already exists in the world or the global spawn cap is full)
+- *#224* Trainer Spawner block can now be *forced* to spawn their trainer **by powering it with redstone** (ignoring any level differences or other conditions to nearby players, this may only fail if a trainer with the same identity already exists in the world or the global spawn cap is full)
 
 **Fixed:**
 

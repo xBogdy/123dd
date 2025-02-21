@@ -90,6 +90,52 @@ public final class SuggestionUtils {
         return builder.buildFuture();
     }
 
+    private static String[] GRAPH_FLAGS = {"defeated", "optionals", "singles"};
+    public static final int GF_INCLUDE_DEFEATED = 1<<(GRAPH_FLAGS.length - 1);
+    public static final int GF_INCLUDE_OPTIONALS = 1<<(GRAPH_FLAGS.length - 2);
+    public static final int GF_INCLUDE_SINGLES = 1<<(GRAPH_FLAGS.length - 3);
+
+    public static int getGraphFlags(String in) throws IllegalArgumentException {
+        var inFlags = in.toLowerCase().split("\s+");
+        int flags = 0;
+
+        for(var f : inFlags) {
+            var match = false;
+
+            for(int i = 0; i < GRAPH_FLAGS.length; i++) {
+                if(f.equals(GRAPH_FLAGS[i])) {
+                    flags |= (1<<(GRAPH_FLAGS.length - (i + 1)));
+                    match = true;
+                    break;
+                }
+            }
+
+            if(!match) {
+                throw new IllegalArgumentException(String.format("'%s' is not a valid graph flag", f));
+            }
+        }
+
+        return flags;
+    }
+
+    public static CompletableFuture<Suggestions> get_graph_flag_suggestions(final CommandContext<CommandSourceStack> context, final SuggestionsBuilder builder) throws CommandSyntaxException {
+        var newFlag = builder.getRemaining().endsWith(" ");
+        var remaining = builder.getRemainingLowerCase().split("\s+");
+        var sb = new StringBuilder();
+
+        for(int i = 0; i < remaining.length + (newFlag ? 0 : -1); i++) {
+            sb.append(remaining[i]).append(' ');
+        }
+
+        var pre = sb.toString();
+
+        Stream.of(GRAPH_FLAGS)
+            .filter(flag -> Stream.of(remaining).noneMatch(f -> flag.equals(f)) && (newFlag || Stream.of(remaining).anyMatch(f -> flag.startsWith(f))))
+            .forEach(f -> builder.suggest(pre + f));
+
+        return builder.buildFuture();
+    }
+
     public static int player_get_current_series(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         if(context.getSource().getEntity() instanceof Player player) {
             context.getSource().sendSuccess(() -> Component.literal(PlayerState.get(player).getCurrentSeries()), false);

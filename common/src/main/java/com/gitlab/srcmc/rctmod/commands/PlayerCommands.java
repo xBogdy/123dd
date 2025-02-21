@@ -24,6 +24,7 @@ import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerType;
 import com.gitlab.srcmc.rctmod.api.data.save.TrainerPlayerData;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
+import com.gitlab.srcmc.rctmod.api.utils.PlantUML;
 import com.gitlab.srcmc.rctmod.commands.utils.SuggestionUtils;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
@@ -31,10 +32,15 @@ import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+
+import net.minecraft.ChatFormatting;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
+import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.HoverEvent;
+import net.minecraft.network.chat.Style;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
 
@@ -56,8 +62,18 @@ public final class PlayerCommands {
                                 .executes(PlayerCommands::player_get_completed_series_target))))
                     .then(Commands.literal("progress")
                         .executes(PlayerCommands::player_get_progress)
+                        .then(Commands.literal("graph")
+                            .executes(PlayerCommands::player_get_progress_graph)
+                            .then(Commands.argument("graph_flags", StringArgumentType.greedyString())
+                                .suggests(SuggestionUtils::get_graph_flag_suggestions)
+                                .executes(PlayerCommands::player_get_progress_graph)))
                         .then(Commands.argument("target", EntityArgument.player())
-                            .executes(PlayerCommands::player_get_progress_target)))
+                            .executes(PlayerCommands::player_get_progress_target)
+                            .then(Commands.literal("graph")
+                                .executes(PlayerCommands::player_get_progress_graph)
+                                .then(Commands.argument("graph_flags", StringArgumentType.greedyString())
+                                    .suggests(SuggestionUtils::get_graph_flag_suggestions)
+                                    .executes(PlayerCommands::player_get_progress_graph_target)))))
                     .then(Commands.literal("level_cap")
                         .executes(PlayerCommands::player_get_level_cap)
                         .then(Commands.argument("target", EntityArgument.player())
@@ -229,6 +245,49 @@ public final class PlayerCommands {
         sb.append(']');
         context.getSource().sendSuccess(() -> Component.literal(String.valueOf(sb.toString())), false);
         return 0;
+    }
+
+    private static int player_get_progress_graph(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        if(context.getSource().getEntity() instanceof Player player) {
+            get_progress_graph(context, player);
+            return 0;
+        }
+        
+        context.getSource().sendFailure(Component.literal("caller is not a player"));
+        return -1;
+    }
+
+    private static int player_get_progress_graph_target(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        get_progress_graph(context, EntityArgument.getPlayer(context, "target"));
+        return 0;
+    }
+
+    private static void get_progress_graph(CommandContext<CommandSourceStack> context, Player player) {
+        var tpd = RCTMod.getInstance().getTrainerManager().getData(player);
+        var flagStr = "";
+        var flags = 0;
+
+        try {
+            flagStr = StringArgumentType.getString(context, "graph_flags");
+        } catch(IllegalArgumentException e) {
+            // ignore: default = "" 
+        }
+
+        if(!flagStr.isEmpty()) {
+            flags = SuggestionUtils.getGraphFlags(flagStr);
+        }
+        
+        var includeDefeated = (flags & SuggestionUtils.GF_INCLUDE_DEFEATED) != 0;
+        var includeOptionals = (flags & SuggestionUtils.GF_INCLUDE_OPTIONALS) != 0;
+        var includeSingles = (flags & SuggestionUtils.GF_INCLUDE_SINGLES) != 0;
+
+        var graph = RCTMod.getInstance().getSeriesManager().getGraph(tpd.getCurrentSeries()).getRemaining(tpd.getDefeatedTrainerIds(), includeOptionals, includeSingles);
+        var url = PlantUML.SERVER_URL + PlantUML.encode(graph);
+
+        context.getSource().sendSuccess(() -> Component.literal(String.format("%s's series progression graph (%s): ", player.getDisplayName().getString(), graph.getMetaData().title())).append(Component.literal(url).setStyle(Style.EMPTY
+            .applyFormats(ChatFormatting.UNDERLINE, ChatFormatting.GREEN)
+            .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Component.literal("Click on the link to open the graph in your browser")))
+            .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, url)))), false);
     }
 
     private static int player_get_level_cap(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {

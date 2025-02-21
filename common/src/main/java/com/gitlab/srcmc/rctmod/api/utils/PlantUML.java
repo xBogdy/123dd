@@ -111,7 +111,7 @@ public final class PlantUML {
             ng.successors().forEach(suc -> {
                 var sgp = group.get(suc);
 
-                if(!edges.contains(sgp.id())) {
+                if(sgp != null && !edges.contains(sgp.id())) {
                     sb.append(String.format("%s -%s-> %s\n", ng.origin.id(), arr, sgp.id()));
                     edges.add(sgp.id());
                 }
