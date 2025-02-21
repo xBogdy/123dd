@@ -25,74 +25,29 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.data.pack.SeriesMetaData;
 import com.gitlab.srcmc.rctmod.api.utils.PathUtils;
 
 public class SeriesManager {
-    private Map<String, SeriesData> seriesData = new HashMap<>();
+    private Map<String, SeriesGraph> seriesGraphs = new HashMap<>();
 
     public Set<String> getSeriesIds() {
-        return this.seriesData.keySet();
+        return this.seriesGraphs.keySet();
     }
 
-    public SeriesMetaData getData(String seriesId) {
-        return this.seriesData.getOrDefault(seriesId, new SeriesData(seriesId)).metaData;
-    }
-
-    public Stream<String> getRequiredDefeats(String seriesId) {
-        return this.getRequiredDefeats(seriesId, Set.of());
-    }
-
-    public Stream<String> getRequiredDefeats(String seriesId, Set<String> defeatedTrainers) {
-        return this.getRequiredDefeats(seriesId, defeatedTrainers, false);
-    }
-
-    public Stream<String> getRequiredDefeats(String seriesId, Set<String> defeatedTrainers, boolean includeOptionals) {
-        return this.getRequiredDefeats(seriesId, defeatedTrainers, includeOptionals, false);
-    }
-
-    @SuppressWarnings("unchecked")
-    public Stream<String> getRequiredDefeats(String seriesId, Set<String> defeatedTrainers, boolean includeOptionals, boolean includeSingles) {
-        if(seriesId.isEmpty() && !this.seriesData.containsKey(seriesId)) {
-            Stream<String>[] s = new Stream[1];
-            s[0] = Stream.of();
-            this.seriesData.keySet().forEach(sid -> s[0] = Stream.concat(s[0], this.getRequiredDefeats(sid, defeatedTrainers, includeOptionals, includeSingles)));
-            return s[0].distinct();
-        }
-
-        // ModCommon.LOG.info("SERIES TRAINERS: " + seriesId + ", " + String.valueOf(defeatedTrainers));
-        // ModCommon.LOG.info("REQUIRED: " + this.seriesData.getOrDefault(seriesId, new SeriesData(seriesId)).toString(defeatedTrainers));
-        var sd = this.seriesData.getOrDefault(seriesId, new SeriesData(seriesId));
-        var stream = sd.required.list.stream();
-
-        if(includeOptionals) {
-            stream = Stream.concat(stream, sd.optionals.list.stream()).distinct();
-        }
-
-        if(includeSingles) {
-            stream = Stream.concat(stream, sd.alone.list.stream()).distinct();
-        }
-
-        return stream
-            .filter(tn -> !defeatedTrainers.contains(tn.trainerId) && (includeOptionals || !tn.isOptional(defeatedTrainers)))
-            .map(tn -> tn.trainerId);
-        // return this.seriesData
-        //     .getOrDefault(seriesId, new SeriesData(seriesId)).all.list.stream()
-        //     .filter(tn -> !defeatedTrainers.contains(tn.trainerId))
-        //     .filter(tn -> (includeSingles && tn.isAlone()) || !tn.isOptional(defeatedTrainers))
-        //     .map(tn -> tn.trainerId);
+    public SeriesGraph getGraph(String seriesId) {
+        return this.seriesGraphs.getOrDefault(seriesId, new SeriesGraph(seriesId));
     }
 
     void onLoad(TrainerManager tm) {
-        var seriesData = new HashMap<String, SeriesData>();
+        var seriesGraphs = new HashMap<String, SeriesGraph>();
 
         // gather series ids
         tm.listSeries((rl, io) -> {
             var sid = PathUtils.filename(rl.getPath());
             
-            if(seriesData.put(sid, new SeriesData(tm.loadSeries(sid).get())) != null) {
+            if(seriesGraphs.put(sid, new SeriesGraph(tm.loadSeries(sid).get())) != null) {
                 ModCommon.LOG.error(String.format("duplicate series '%s'", sid));
             }
         });
@@ -100,30 +55,30 @@ public class SeriesManager {
         // gather series ids and create trainer nodes
         tm.getAllData().forEach(e -> {
             e.getValue().getSeries().forEach(sid -> {
-                var sd = seriesData.computeIfAbsent(sid, SeriesData::new);
-                sd.all.map.put(e.getKey(), new TrainerNode(e.getKey(), e.getValue().isOptional()));
+                var sg = seriesGraphs.computeIfAbsent(sid, SeriesGraph::new);
+                sg.map.put(e.getKey(), new TrainerNode(e.getKey(), e.getValue().isOptional()));
             });
         });
 
         // create nodes for trainers that belong to all series
         tm.getAllData()
             .filter(e -> e.getValue().getSeries().findFirst().isEmpty())
-            .forEach(e -> seriesData.values().forEach(sd -> sd.all.map.put(e.getKey(), new TrainerNode(e.getKey(), e.getValue().isOptional()))));
+            .forEach(e -> seriesGraphs.values().forEach(sd -> sd.map.put(e.getKey(), new TrainerNode(e.getKey(), e.getValue().isOptional()))));
 
         // build graph
         tm.getAllData().forEach(e -> {
             var seriesIds = e.getValue().getSeries().findFirst().isPresent()
                 ? e.getValue().getSeries()
-                : seriesData.keySet().stream();
+                : seriesGraphs.keySet().stream();
 
             seriesIds.forEach(sid -> {
-                var sd = seriesData.get(sid);
+                var sg = seriesGraphs.get(sid);
                 var st = e.getValue().getSubstitutes();
                 var rd = e.getValue().getRequiredDefeats();
-                var nd = sd.all.map.get(e.getKey());
+                var nd = sg.map.get(e.getKey());
 
                 st.forEach(tid -> {
-                    var other = sd.all.map.get(tid);
+                    var other = sg.map.get(tid);
 
                     if(other != null) {
                         nd.siblings.add(other);
@@ -132,13 +87,13 @@ public class SeriesManager {
 
                 rd.forEach(tids -> {
                     tids.forEach(tid -> {
-                        var other = sd.all.map.get(tid);
+                        var other = sg.map.get(tid);
 
                         if(other != null) {
-                            nd.ancestors.add(other);
-                            other.successors.add(nd);
+                            nd.successors.add(other);
+                            other.ancestors.add(nd);
                             tids.stream().filter(tid2 -> tid2 != tid)
-                                .map(tid2 -> sd.all.map.get(tid2))
+                                .map(tid2 -> sg.map.get(tid2))
                                 .forEach(other.siblings::add);
                         }
                     });
@@ -146,35 +101,107 @@ public class SeriesManager {
             });
         });
 
-        this.seriesData = Collections.unmodifiableMap(seriesData);
-        this.seriesData.values().forEach(SeriesData::sortGraph);
+        this.seriesGraphs = Collections.unmodifiableMap(seriesGraphs);
+        this.seriesGraphs.values().forEach(SeriesGraph::sortGraph);
     }
 
-    private class SeriesData {
-        class Graph {
-            private Map<String, TrainerNode> map = new HashMap<>();
-            private List<TrainerNode> list = new ArrayList<>();            
-        }
-        
+    public class SeriesGraph {
+        private Map<String, TrainerNode> map = new HashMap<>();
+        private List<TrainerNode> list = new ArrayList<>();            
         private SeriesMetaData metaData;
-        private Graph required = new Graph();
-        private Graph optionals = new Graph();
-        private Graph alone = new Graph();
-        private Graph all = new Graph();
-        
-        // private Map<String, TrainerNode> map = new HashMap<>();
-        // private List<TrainerNode> list = List.of();
 
-        SeriesData(String seriesId) {
+        SeriesGraph(String seriesId) {
             this(new SeriesMetaData(seriesId));
         }
 
-        SeriesData(SeriesMetaData metaData) {
+        SeriesGraph(SeriesMetaData metaData) {
             this.metaData = metaData;
         }
 
-        void sortGraph() {
-            var list = List.copyOf(this.all.map.values());
+        SeriesGraph(SeriesGraph origin) {
+            this.metaData = origin.metaData;
+        }
+
+        public SeriesMetaData getMetaData() {
+            return this.metaData;
+        }
+
+        public Stream<TrainerNode> stream() {
+            return this.list.stream();
+        }
+
+        public boolean contains(String trainerId) {
+            return this.map.containsKey(trainerId);
+        }
+
+        public int size() {
+            return this.list.size();
+        }
+
+        public SeriesGraph getNext(Set<String> defeats) {
+            return this.getNext(defeats, false, false);
+        }
+
+        public SeriesGraph getNext(boolean includeOptionals) {
+            return this.getNext(includeOptionals, false);
+        }
+
+        public SeriesGraph getNext(boolean includeOptionals, boolean includeSingles) {
+            return this.getNext(Set.of(), includeOptionals, includeSingles);
+        }
+
+        public SeriesGraph getNext(Set<String> defeats, boolean includeOptionals) {
+            return this.getNext(defeats, includeOptionals, false);
+        }
+
+        public SeriesGraph getNext(Set<String> defeats, boolean includeOptionals, boolean includeSingles) {
+            var copy = new SeriesGraph(this);
+
+            this.list.stream()
+                .filter(tn -> (includeSingles || !tn.isAlone())
+                    && (includeOptionals || !tn.isOptional()) && !tn.isDefeated(defeats)
+                    && tn.successors.stream().allMatch(suc -> suc.isDefeated(defeats)))
+                .forEach(tn -> {
+                    copy.list.add(tn);
+                    copy.map.put(tn.trainerId, tn);
+                });
+
+            return copy;
+        }
+
+        public SeriesGraph getRemaining(Set<String> defeats) {
+            return this.getRemaining(defeats, false);
+        }
+
+        public SeriesGraph getRemaining(boolean includeOptionals) {
+            return this.getRemaining(includeOptionals, false);
+        }
+
+        public SeriesGraph getRemaining(boolean includeOptionals, boolean includeSingles) {
+            return this.getRemaining(Set.of(), includeOptionals, includeSingles);
+        }
+
+        public SeriesGraph getRemaining(Set<String> defeats, boolean includeOptionals) {
+            return this.getRemaining(defeats, includeOptionals, false);
+        }
+
+        public SeriesGraph getRemaining(Set<String> defeats, boolean includeOptionals, boolean includeSingles) {
+            var copy = new SeriesGraph(this);
+
+            this.list.stream()
+                .filter(tn -> (includeSingles || !tn.isAlone())
+                    && (includeOptionals || !tn.isOptional()) && !tn.isDefeated(defeats))
+                .forEach(tn -> {
+                    copy.list.add(tn);
+                    copy.map.put(tn.trainerId, tn);
+                });
+
+            return copy;
+        }
+
+        // topological
+        private void sortGraph() {
+            var list = List.copyOf(this.map.values());
             var succ = new HashMap<TrainerNode, Integer>();
 
             // get rid of trainers that don't have any edges
@@ -213,42 +240,7 @@ public class SeriesManager {
 
             list.addAll(sorted);
             list.addAll(alone);
-            this.all.list = List.copyOf(list);
-            this.initSubGraphs();
-        }
-
-        void initSubGraphs() {
-            this.required = new Graph();
-            this.optionals = new Graph();
-            this.alone = new Graph();
-
-            this.all.map.entrySet().forEach(e -> {
-                if(e.getValue().optional) {
-                    this.optionals.map.put(e.getKey(), e.getValue());
-                }
-
-                if(e.getValue().isAlone()) {
-                    this.alone.map.put(e.getKey(), e.getValue());
-                }
-
-                if(!e.getValue().optional && !e.getValue().isAlone()) {
-                    this.required.map.put(e.getKey(), e.getValue());
-                }
-            });
-
-            this.all.list.forEach(tn -> {
-                if(tn.optional) {
-                    this.optionals.list.add(tn);
-                }
-
-                if(tn.isAlone()) {
-                    this.alone.list.add(tn);
-                }
-
-                if(!tn.optional && !tn.isAlone()) {
-                    this.required.list.add(tn);
-                }
-            });
+            this.list = List.copyOf(list);
         }
 
         private void initCount(TrainerNode start, Map<TrainerNode, Integer> succ) {
@@ -259,73 +251,58 @@ public class SeriesManager {
                 this.initCount(stn, succ);
             });
         }
-
+        
         @Override
         public String toString() {
-            return this.toString(Set.of());
-        }
-
-        public String toString(Set<String> trainerIds) {
-            return this.toString(trainerIds, false);
-        }
-
-        public String toString(Set<String> trainerIds, boolean includeOptionals) {
             var sb = new StringBuilder();
-
-            this.all.list.stream()
-                .filter(tn -> !trainerIds.contains(tn.trainerId))
-                .filter(tn -> includeOptionals || !tn.isOptional(trainerIds))
-                .forEach(tn -> sb.append(" -> ").append(tn.trainerId));
-
+            this.list.stream().forEach(tn -> sb.append(" -> ").append(tn.trainerId));
             return sb.toString();
         }
     }
 
-    private class TrainerNode {
+    public class TrainerNode {
+        private List<TrainerNode> ancestors = new ArrayList<>();
+        private List<TrainerNode> successors = new ArrayList<>();
+        private List<TrainerNode> siblings = new ArrayList<>();
         private String trainerId;
         private boolean optional;
-        private List<TrainerNode> ancestors = new ArrayList<>();
-        private List<TrainerNode> siblings = new ArrayList<>();
-        private List<TrainerNode> successors = new ArrayList<>();
 
         public TrainerNode(String trainerId, boolean optional) {
             this.trainerId = trainerId;
             this.optional = optional;
         }
 
+        public String id() {
+            return this.trainerId;
+        }
+
+        public Stream<TrainerNode> successors() {
+            return this.successors.stream();
+        }
+
+        public Stream<TrainerNode> ancestors() {
+            return this.ancestors.stream();
+        }
+
+        public Stream<TrainerNode> siblings() {
+            return this.siblings.stream();
+        }
+
         public boolean isAlone() {
-            return this.ancestors.isEmpty() && this.successors.isEmpty();
+            return this.ancestors.isEmpty() && this.successors.isEmpty()
+                && this.siblings.stream().allMatch(sib -> sib.ancestors.isEmpty() && sib.successors.isEmpty());
         }
 
-        public boolean isOptional(Set<String> trainerIds) {
+        public boolean isOptional() {
             return this.optional
-                || this.isAlone()
-                || this.isOptionalFor(trainerIds)
-                || this.successors.stream().anyMatch(successor -> successor.isOptional(trainerIds));
+                || this.siblings.stream().anyMatch(sib -> sib.optional)
+                || this.successors.stream().anyMatch(TrainerNode::isOptional);
         }
 
-        boolean isOptionalFor(Set<String> trainerIds) {
-            for(var sibling : this.siblings) {
-                if(trainerIds.contains(sibling.trainerId)) {
-                    return true;
-                }
-            }
-
-            return false;
+        public boolean isDefeated(Set<String> trainerIds) {
+            return trainerIds.contains(this.trainerId)
+                || this.siblings.stream().anyMatch(sib -> trainerIds.contains(sib.trainerId))
+                || this.ancestors.stream().anyMatch(anc -> anc.isDefeated(trainerIds));
         }
-
-        // boolean isAncestor(TrainerNode other) {
-        //     if(other.ancestors.contains(this)) {
-        //         return true;
-        //     }
-
-        //     for(var anc : other.ancestors) {
-        //         if(this.isAncestor(anc)) {
-        //             return true;
-        //         }
-        //     }
-
-        //     return false;
-        // }
     }
 }

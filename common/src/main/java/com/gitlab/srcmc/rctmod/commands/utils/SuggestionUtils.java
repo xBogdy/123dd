@@ -17,7 +17,6 @@
  */
 package com.gitlab.srcmc.rctmod.commands.utils;
 
-import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Stream;
 
@@ -70,13 +69,13 @@ public final class SuggestionUtils {
 
         if(context.getSource().getEntity() instanceof Player p) {
             var tpd = tm.getData(p);
-            tidStream = sm.getRequiredDefeats(tpd.getCurrentSeries(), Set.of(), true);
+            tidStream = sm.getGraph(tpd.getCurrentSeries()).stream().filter(tn -> !tn.isAlone()).map(tn -> tn.id());
         } else {
             var sb = Stream.<String>builder();
 
             EntityArgument.getPlayers(context, "targets").forEach(p -> {
                 var tpd = tm.getData(p);
-                sm.getRequiredDefeats(tpd.getCurrentSeries(), Set.of(), true).forEach(sb::accept);
+                sm.getGraph(tpd.getCurrentSeries()).stream().filter(tn -> !tn.isAlone()).map(tn -> tn.id()).forEach(sb::accept);
             });
 
             tidStream = sb.build();

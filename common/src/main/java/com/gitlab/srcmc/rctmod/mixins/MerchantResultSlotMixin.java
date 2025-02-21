@@ -70,7 +70,7 @@ public class MerchantResultSlotMixin {
                 }
 
                 RCTMod.getInstance().getTrainerManager().getData(player).setCurrentSeries(offer.getKey());
-                ChatUtils.sendTitle(player, "A new Journey", RCTMod.getInstance().getSeriesManager().getData(offer.getKey()).title());
+                ChatUtils.sendTitle(player, "A new Journey", RCTMod.getInstance().getSeriesManager().getGraph(offer.getKey()).getMetaData().title());
                 ta.updateOffersFor(player);
             }
         }

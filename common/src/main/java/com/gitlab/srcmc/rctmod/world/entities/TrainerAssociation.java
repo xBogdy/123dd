@@ -267,7 +267,7 @@ public class TrainerAssociation extends WanderingTrader {
         this.offers = new MerchantOffers();
 
         sm.getSeriesIds()
-            .stream().map(sid -> Map.entry(sid, sm.getData(sid)))
+            .stream().map(sid -> Map.entry(sid, sm.getGraph(sid).getMetaData()))
             .sorted((e1, e2) -> e1.getValue().compareTo(e2.getValue()))
             .forEach(e -> {
                 if(e.getValue().requiredSeries() != null) {

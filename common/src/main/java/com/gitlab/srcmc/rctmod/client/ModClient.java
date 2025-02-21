@@ -83,7 +83,7 @@ public class ModClient {
         if(psu != null) {
             PlayerState.get(ModCommon.localPlayer()).deserializeUpdate(psu);
         }
-        
+
         TargetArrowRenderer.getInstance().tick();
     }
 

@@ -18,12 +18,10 @@
 package com.gitlab.srcmc.rctmod.client.screens.widgets;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
-
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
-import com.gitlab.srcmc.rctmod.api.algorithm.Algorithm;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerType;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.client.screens.widgets.controls.CycleButton;
@@ -93,21 +91,21 @@ public class PlayerInfoWidget extends AbstractWidget {
 
     static final TrainerType ALL_TRAINER_TYPES = new TrainerType("All");
 
-    private final StringWidget displayName;
-    private final StringWidget levelCapLabel;
-    private final StringWidget levelCapValue;
-    private final StringWidget totalDefeatsLabel;
-    private final StringWidget totalDefeatsValue;
+    private StringWidget displayName;
+    private StringWidget levelCapLabel;
+    private StringWidget levelCapValue;
+    private StringWidget totalDefeatsLabel;
+    private StringWidget totalDefeatsValue;
 
-    private final TrainerListWidget trainerList;
-    private final TrainerInfoWidget trainerInfo;
-    private final CycleButton<TrainerType> trainerTypeButton;
-    private final Button nextPageButton;
-    private final Button prevPageButton;
-    private final CycleButton<String> showUndefeated;
+    private TrainerListWidget trainerList;
+    private TrainerInfoWidget trainerInfo;
+    private CycleButton<TrainerType> trainerTypeButton;
+    private Button nextPageButton;
+    private Button prevPageButton;
+    private CycleButton<String> showUndefeated;
 
-    private final AbstractWidget[] renderableWidgets;
-    private final AbstractWidget[] renderableOnlies;
+    private AbstractWidget[] renderableWidgets;
+    private AbstractWidget[] renderableOnlies;
 
     private Boolean trainerListShowUndefeated;
     private Component trainerListType;
@@ -115,13 +113,13 @@ public class PlayerInfoWidget extends AbstractWidget {
     private ResourceLocation skinLocation;
     private Font font;
 
-    private Algorithm trainerTypeFetcher;
+    private List<TrainerType> trainerTypes;
+    private String sid;
 
     public PlayerInfoWidget(int x, int y, int w, int h, Font font) {
         super(x, y, w, h, Component.empty());
         this.active = false;
         this.font = font;
-
         this.displayName = new AutoScaledStringWidget(x + DISPLAY_NAME_X, y + DISPLAY_NAME_Y, DISPLAY_NAME_W, DISPLAY_NAME_H, Component.empty(), this.font).alignCenter().fitting(true);
         this.levelCapLabel = new StringWidget(x + LEVEL_CAP_X + LEVEL_CAP_PADDING, y + LEVEL_CAP_Y + LEVEL_CAP_H/8, LEVEL_CAP_W, LEVEL_CAP_H, Component.literal("Level Cap").withStyle(ChatFormatting.WHITE), this.font).alignLeft();
         this.levelCapValue = new StringWidget(x + LEVEL_CAP_X, y + LEVEL_CAP_Y + LEVEL_CAP_H/8, LEVEL_CAP_W - LEVEL_CAP_PADDING, LEVEL_CAP_H, Component.empty(), this.font).alignRight();
@@ -129,16 +127,15 @@ public class PlayerInfoWidget extends AbstractWidget {
         this.totalDefeatsValue = new StringWidget(x + TOTAL_DEFEATS_X, y + TOTAL_DEFEATS_Y + TOTAL_DEFEATS_H/8, TOTAL_DEFEATS_W - TOTAL_DEFEATS_PADDING, TOTAL_DEFEATS_H, Component.empty(), this.font).alignRight();
         this.trainerList = new TrainerListWidget(x + TRAINER_LIST_X, y + TRAINER_LIST_Y, TRAINER_LIST_W, TRAINER_LIST_H, font, this.sortedTrainerIds());
         this.trainerInfo = new TrainerInfoWidget(x + TRAINER_LIST_X, y + TRAINER_LIST_Y, TRAINER_LIST_W, TRAINER_LIST_H, font);
-
-        var types = new ArrayList<TrainerType>();
-        types.add(ALL_TRAINER_TYPES);
+        this.trainerTypes = new ArrayList<>();
+        this.trainerTypes.add(ALL_TRAINER_TYPES);
 
         this.showUndefeated = CycleButton.create(
             t -> Component.literal(t), CHECKBOX_VALUES, 1,
             x + CHECKBOX_X, y + CHECKBOX_Y, CHECKBOX_W, CHECKBOX_H, true);
 
         this.trainerTypeButton = CycleButton.create(
-            t -> Component.literal(t.name()), types, 0,
+            t -> Component.literal(t.name()), this.trainerTypes, 0,
             x + TYPE_BUTTON_X, y + TYPE_BUTTON_Y, TYPE_BUTTON_W, TYPE_BUTTON_H, false);
         
         this.nextPageButton = Button
@@ -175,7 +172,14 @@ public class PlayerInfoWidget extends AbstractWidget {
         });
 
         this.trainerInfo.setOnBackClicked(i -> this.setDisplay(Display.TRAINER_LIST));
-        this.setDisplay(Display.TRAINER_LIST);
+        this.setDisplay(Display.TRAINER_LIST);  
+    }
+
+    private void resetTrainerTypes() {
+        this.trainerTypes.clear();
+        this.trainerTypes.add(ALL_TRAINER_TYPES);
+        this.trainerTypeButton.setValue(0);
+        this.updateTrainerTypes(this.sid);
     }
 
     public AbstractWidget[] getRenderableWidgets() {
@@ -243,7 +247,11 @@ public class PlayerInfoWidget extends AbstractWidget {
             : Component.literal("000").withStyle(ChatFormatting.OBFUSCATED).withStyle(ChatFormatting.WHITE));
             
         if(this.trainerList.active && sid != null) {
-            this.fetchTrainerTypes(sid);
+            if(this.sid == null || !sid.equals(this.sid)) {
+                this.sid = sid;
+                this.resetTrainerTypes();
+                this.trainerList.setTrainerIds(this.sortedTrainerIds());
+            }
 
             var totalDefeats = this.getTotalDefeats();
             this.totalDefeatsValue.setMessage(totalDefeats < 1000000
@@ -273,22 +281,24 @@ public class PlayerInfoWidget extends AbstractWidget {
         }
     }
 
-    private void fetchTrainerTypes(String sid) {
-        if(sid != null) {
-            if(this.trainerTypeFetcher == null) {
-                var sm = RCTMod.getInstance().getSeriesManager();
-                var tm = RCTMod.getInstance().getTrainerManager();
-                var it = TrainerType.values().stream()
-                    .filter(t -> sm.getRequiredDefeats(sid, Set.of(), true, true).anyMatch(tid -> tm.getData(tid).getType().equals(t)))
-                    .sorted((t1, t2) -> t1.name().compareTo(t2.name())).iterator();
+    private void updateTrainerTypes(String sid) {
+        var sm = RCTMod.getInstance().getSeriesManager();
+        var tm = RCTMod.getInstance().getTrainerManager();
+        // var it = sm.getRequiredDefeats(sid, Set.of(), true, true).iterator();
+        var it = sm.getGraph(sid).stream().iterator();
+        var open = new LinkedList<>(TrainerType.values());
 
-                this.trainerTypeFetcher = new Algorithm(
-                    () -> this.trainerTypeButton.addValue(it.next()),
-                    () -> !it.hasNext());
-            }
+        while(it.hasNext() && !open.isEmpty()) {
+            var tt = tm.getData(it.next().id()).getType();
+            var it2 = open.iterator();
 
-            if(!this.trainerTypeFetcher.finished()) {
-                this.trainerTypeFetcher.tick();
+            while(it2.hasNext()) {
+                var t = it2.next();
+
+                if(tt.equals(t)) {
+                    this.trainerTypeButton.addValue(t);
+                    it2.remove();
+                }
             }
         }
     }

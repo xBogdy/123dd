@@ -30,13 +30,16 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
+import org.spongepowered.include.com.google.common.base.Objects;
+
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerType;
+import com.gitlab.srcmc.rctmod.api.service.SeriesManager.SeriesGraph;
 
 import net.minecraft.world.entity.player.Player;
 
 public class PlayerState implements Serializable {
-    public static final int SYNC_INTERVAL_TICKS = 10;
+    public static final int SYNC_INTERVAL_TICKS = 5;
     public static final int MIN_BATCH_SIZE = 64;
     public static final int MAX_BATCH_SIZE = 512;
 
@@ -56,6 +59,7 @@ public class PlayerState implements Serializable {
     private transient boolean hasChanges = true;
     private transient Map<TrainerType, Integer> distinctTypeDefeatCounts = new HashMap<>();
     private transient Map<String, Boolean> keyTrainerMap = new HashMap<>();
+    private transient SeriesGraph nextGraph;
 
     public static PlayerState get(Player player) {
         return PlayerState.get(player, false);
@@ -109,7 +113,7 @@ public class PlayerState implements Serializable {
         }
     }
 
-    private void setLevelCap(int levelCap) {
+    public void setLevelCap(int levelCap) {
         if(this.levelCap != levelCap) {
             this.levelCap = levelCap;
             this.updated.levelCap = levelCap;
@@ -118,27 +122,21 @@ public class PlayerState implements Serializable {
     }
 
     public int getLevelCap() {
-        if(!this.player.level().isClientSide) {
-            this.setLevelCap(RCTMod.getInstance().getTrainerManager().getData(this.player).getLevelCap());
-        }
-
         return this.levelCap;
     }
 
-    private void setCurrentSeries(String seriesId) {
-        if(!this.currentSeries.equals(seriesId)) {
+    public void setCurrentSeries(String seriesId) {
+        if(!Objects.equal(this.currentSeries, seriesId)) {
             this.currentSeries = seriesId;
             this.updated.currentSeries = seriesId;
             this.keyTrainerMap.clear();
+            this.updateDefeatCounts();
+            this.nextGraph = null;
             this.hasChanges = true;
         }
     }
 
     public String getCurrentSeries() {
-        if(!this.player.level().isClientSide) {
-            this.setCurrentSeries(RCTMod.getInstance().getTrainerManager().getData(this.player).getCurrentSeries());
-        }
-
         return this.currentSeries;
     }
 
@@ -147,6 +145,7 @@ public class PlayerState implements Serializable {
             this.updated.defeatedTrainerIds.add(trainerId);
             this.updated.removedDefeatedTrainerIds.remove(trainerId);
             this.keyTrainerMap.clear();
+            this.nextGraph = null;
             this.hasChanges = true;
         }
     }
@@ -156,6 +155,7 @@ public class PlayerState implements Serializable {
             this.updated.removedDefeatedTrainerIds.add(trainerId);
             this.updated.defeatedTrainerIds.remove(trainerId);
             this.keyTrainerMap.clear();
+            this.nextGraph = null;
             this.hasChanges = true;
         }
     }
@@ -166,6 +166,7 @@ public class PlayerState implements Serializable {
             this.updated.defeatedTrainerIds.clear();
             this.defeatedTrainerIds.clear();
             this.keyTrainerMap.clear();
+            this.nextGraph = null;
             this.hasChanges = true;
         }
     }
@@ -184,6 +185,7 @@ public class PlayerState implements Serializable {
 
         this.updated.typeDefeatCounts.put(tt, this.typeDefeatCounts.compute(tt, (k, v) -> v == null ? 1 : v == Integer.MAX_VALUE ? v : v + 1));
         this.keyTrainerMap.clear();
+        this.nextGraph = null;
         this.hasChanges = true;
     }
 
@@ -216,6 +218,7 @@ public class PlayerState implements Serializable {
             this.updated.trainerDefeatCounts.put(trainerId, defeats);
             this.updated.typeDefeatCounts.put(tt, newTypeDefeats);
             this.keyTrainerMap.clear();
+            this.nextGraph = null;
             this.hasChanges = true;
         }
     }
@@ -245,19 +248,15 @@ public class PlayerState implements Serializable {
             return this.typeDefeatCounts.values().stream().mapToLong(i -> i).reduce(0, (i, j) -> i + j);
         }
     }
-
-    public boolean isKeyTrainer(String trainerId) {
-        var sid = this.getCurrentSeries();
-
-        return this.keyTrainerMap.computeIfAbsent(trainerId, k -> {
-            var sm = RCTMod.getInstance().getSeriesManager();
-            var tmd = RCTMod.getInstance().getTrainerManager().getData(trainerId);
     
-            return tmd != null
-                && tmd.isOfSeries(sid)
-                && tmd.getMissingRequirements(this.defeatedTrainerIds).findFirst().isEmpty()
-                && sm.getRequiredDefeats(this.currentSeries, this.defeatedTrainerIds).anyMatch(tid -> tid.equals(trainerId));
-        });
+    public boolean isKeyTrainer(String trainerId) {
+        if(this.nextGraph == null) {
+            this.nextGraph = RCTMod.getInstance().getSeriesManager()
+                .getGraph(this.currentSeries)
+                .getNext(this.defeatedTrainerIds);
+        }
+
+        return this.keyTrainerMap.computeIfAbsent(trainerId, k -> this.nextGraph.contains(trainerId));
     }
 
     public boolean canBattle(String trainerId) {
@@ -277,7 +276,6 @@ public class PlayerState implements Serializable {
 
     private PlayerState(Player player) {
         this.player = player;
-        this.init();
         this.updated = this;
     }
 
@@ -316,36 +314,26 @@ public class PlayerState implements Serializable {
         this.levelCap = updated.levelCap;
         this.currentSeries = updated.currentSeries;
         this.keyTrainerMap.clear();
+        this.nextGraph = null;
     }
 
-    private void init() {
+    private void updateDefeatCounts() {
         this.trainerDefeatCounts.clear();
         this.typeDefeatCounts.clear();
         this.distinctTypeDefeatCounts.clear();
-        this.defeatedTrainerIds.clear();
-        this.removedDefeatedTrainerIds.clear();
-        this.keyTrainerMap.clear();
-        var level = this.player.level();
 
-        if(!level.isClientSide) {
-            var tm = RCTMod.getInstance().getTrainerManager();
-            var overworld = this.player.getServer().overworld();
-            var tpd = tm.getData(this.player);
+        var tm = RCTMod.getInstance().getTrainerManager();
+        var overworld = this.player.getServer().overworld();
 
-            this.levelCap = tpd.getLevelCap();
-            this.currentSeries = tpd.getCurrentSeries();
-            this.defeatedTrainerIds.addAll(tpd.getDefeatedTrainerIds());
+        tm.getAllData(this.getCurrentSeries()).forEach(entry -> {
+            var defCount = tm.getBattleMemory(overworld, entry.getKey()).getDefeatByCount(this.player);
 
-            tm.getAllData(this.getCurrentSeries()).forEach(entry -> {
-                var defCount = tm.getBattleMemory(overworld, entry.getKey()).getDefeatByCount(this.player);
-
-                if(defCount > 0) {
-                    var tt = entry.getValue().getType();
-                    this.trainerDefeatCounts.put(entry.getKey(), defCount);
-                    this.typeDefeatCounts.compute(tt, (k, v) -> v == null ? defCount : v + defCount);
-                    this.distinctTypeDefeatCounts.compute(tt, (k, v) -> v == null ? 1 : v + 1);
-                }
-            });
-        }
+            if(defCount > 0) {
+                var tt = entry.getValue().getType();
+                this.trainerDefeatCounts.put(entry.getKey(), defCount);
+                this.typeDefeatCounts.compute(tt, (k, v) -> v == null ? defCount : v + defCount);
+                this.distinctTypeDefeatCounts.compute(tt, (k, v) -> v == null ? 1 : v + 1);
+            }
+        });
     }
 }
