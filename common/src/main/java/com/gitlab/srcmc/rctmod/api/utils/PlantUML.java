@@ -39,10 +39,22 @@ public final class PlantUML {
         + "hide stereotypes\n"
         + "skinparam linetype ortho\n"
         + "skinparam object {\n"
-        + "  ArrowColor Red\n"
-        + "  BackgroundColor LightBlue\n"
-        + "  BackgroundColor<<optional>> Orange\n"
-        + "}\n";
+        + "  arrowColor red\n"
+        + "  backgroundColor lightblue\n"
+        + "  backgroundColor<<optional>> orange\n"
+        + "  backgroundColor<<defeated>> lightgray\n"
+        + "}\n"
+        + "skinparam legend {\n"
+        + "  backgroundColor #FFFFFF\n"
+        + "  fontColor #000000\n"
+        + "  fontSize 11\n"
+        + "}\n"
+        + "legend top left\n"
+        + "<b>Legend</b>\n"
+        + "\n"
+        + "<back:#lightblue> Required </back> <back:#orange> Optional </back> <back:#lightgray> Defeated </back>\n"
+        + "endlegend\n";
+
 
     private static class NodeGroup {
         public final Set<TrainerNode> set = new HashSet<>();
@@ -74,6 +86,10 @@ public final class PlantUML {
     }
 
     public static String encode(SeriesGraph graph) {
+        return encode(graph, Set.of());
+    }
+
+    public static String encode(SeriesGraph graph, Set<String> defeats) {
         var nodes = new HashMap<TrainerNode, NodeGroup>();
         var group = new HashMap<TrainerNode, TrainerNode>();
         var directed = new HashMap<String, Set<String>>();
@@ -93,15 +109,16 @@ public final class PlantUML {
         });
 
         nodes.entrySet().forEach(e -> {
-            var optional = new boolean[]{e.getKey().isOptional()};
+            var optional_defeated = new boolean[]{e.getKey().isOptional(), e.getKey().isDefeated(defeats)};
             var id = new StringBuilder(e.getKey().id());
 
             e.getValue().set.stream().sorted((a, b) -> a.id().compareTo(b.id())).forEach(tn -> {
                 id.append("\\n").append(tn.id());
-                optional[0] = optional[0] || tn.isOptional();
+                optional_defeated[0] = optional_defeated[0] || tn.isOptional();
+                optional_defeated[1] = optional_defeated[1] || tn.isDefeated(defeats);
             });
 
-            sb.append(String.format("object \"%s\" as %s%s\n", id.toString(), e.getKey().id(), optional[0] ? "<<optional>>" : ""));
+            sb.append(String.format("object \"%s\" as %s%s\n", id.toString(), e.getKey().id(), optional_defeated[1] ? "<<defeated>>" : optional_defeated[0] ? "<<optional>>" : ""));
         });
 
         nodes.values().forEach(ng -> {

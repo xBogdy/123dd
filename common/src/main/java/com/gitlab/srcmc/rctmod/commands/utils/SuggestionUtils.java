@@ -90,7 +90,7 @@ public final class SuggestionUtils {
         return builder.buildFuture();
     }
 
-    private static String[] GRAPH_FLAGS = {"defeated", "optionals", "singles"};
+    private static String[] GRAPH_FLAGS = {"include_defeated", "include_optionals", "include_singles"};
     public static final int GF_INCLUDE_DEFEATED = 1<<(GRAPH_FLAGS.length - 1);
     public static final int GF_INCLUDE_OPTIONALS = 1<<(GRAPH_FLAGS.length - 2);
     public static final int GF_INCLUDE_SINGLES = 1<<(GRAPH_FLAGS.length - 3);

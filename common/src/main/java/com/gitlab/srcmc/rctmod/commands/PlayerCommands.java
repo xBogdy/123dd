@@ -280,9 +280,8 @@ public final class PlayerCommands {
         var includeDefeated = (flags & SuggestionUtils.GF_INCLUDE_DEFEATED) != 0;
         var includeOptionals = (flags & SuggestionUtils.GF_INCLUDE_OPTIONALS) != 0;
         var includeSingles = (flags & SuggestionUtils.GF_INCLUDE_SINGLES) != 0;
-
-        var graph = RCTMod.getInstance().getSeriesManager().getGraph(tpd.getCurrentSeries()).getRemaining(tpd.getDefeatedTrainerIds(), includeOptionals, includeSingles);
-        var url = PlantUML.SERVER_URL + PlantUML.encode(graph);
+        var graph = RCTMod.getInstance().getSeriesManager().getGraph(tpd.getCurrentSeries());
+        var url = PlantUML.SERVER_URL + PlantUML.encode(includeDefeated ? graph.getRemaining(includeOptionals, includeSingles) : graph.getRemaining(tpd.getDefeatedTrainerIds(), includeOptionals, includeSingles), tpd.getDefeatedTrainerIds());
 
         context.getSource().sendSuccess(() -> Component.literal(String.format("%s's series progression graph (%s): ", player.getDisplayName().getString(), graph.getMetaData().title())).append(Component.literal(url).setStyle(Style.EMPTY
             .applyFormats(ChatFormatting.UNDERLINE, ChatFormatting.GREEN)
