@@ -46,6 +46,8 @@ public class ServerConfig implements IServerConfig {
     private final ConfigValue<Integer> maxTrainersPerPlayerValue;
     private final ConfigValue<Integer> maxTrainersTotalValue;
     private final ConfigValue<Integer> maxLevelDiffValue;
+    private final ConfigValue<Boolean> spawningRequiresTrainerCardValue;
+    private final ConfigValue<Boolean> spawnTrainerAssociationValue;
     private final ConfigValue<List<? extends String>> dimensionBlacklistValue;
     private final ConfigValue<List<? extends String>> dimensionWhitelistValue;
     private final ConfigValue<List<? extends String>> biomeTagBlacklistValue;
@@ -62,6 +64,8 @@ public class ServerConfig implements IServerConfig {
     private int maxTrainersPerPlayerCached;
     private int maxTrainersTotalCached;
     private int maxLevelDiffCached;
+    private boolean spawningRequiresTrainerCardCached;
+    private boolean spawnTrainerAssociationCached;
     private List<? extends String> dimensionBlacklistCached;
     private List<? extends String> dimensionWhitelistCached;
     private List<? extends String> biomeTagBlacklistCached;
@@ -146,6 +150,20 @@ public class ServerConfig implements IServerConfig {
                 "pokemon in the team of a trainer to spawn for that player. The spawn weight decreases with a higher",
                 "level difference. Trainers with pokemon above the level cap of a player are excluded.")
             .defineInRange("maxLevelDiff", IServerConfig.super.maxLevelDiff(), 0, 100);
+
+        this.spawningRequiresTrainerCardValue = builder
+            .comment(SEPARATOR,
+                "If enabled trainers will only spawn naturally around players that have a trainer card",
+                "in their inventory (does not affect trainer spawners).")
+            .define("spawningRequiresTrainerCard", IServerConfig.super.spawningRequiresTrainerCard());
+
+        this.spawnTrainerAssociationValue = builder
+            .comment(SEPARATOR,
+                "If enabled a single trainer association npc may spawn naturally nearby players that carry a",
+                "trainer card and have not started a series, completed their current series or are in proximity",
+                "to a village (at least 3 occupied beds and a village center) These can spawn everywhere but will",
+                "respect the 'dimensionBlacklist' and 'dimensionWhitelist' settings.")
+            .define("spawnTrainerAssociation", IServerConfig.super.spawnTrainerAssociation());
 
         // TODO: proper value validation
         this.dimensionBlacklistValue = builder
@@ -262,6 +280,8 @@ public class ServerConfig implements IServerConfig {
         this.maxTrainersPerPlayerCached = this.maxTrainersPerPlayerValue.get();
         this.maxTrainersTotalCached = this.maxTrainersTotalValue.get();
         this.maxLevelDiffCached = this.maxLevelDiffValue.get();
+        this.spawningRequiresTrainerCardCached = this.spawningRequiresTrainerCardValue.get();
+        this.spawnTrainerAssociationCached = this.spawnTrainerAssociationValue.get();
         this.dimensionBlacklistCached = List.copyOf(this.dimensionBlacklistValue.get());
         this.dimensionWhitelistCached = List.copyOf(this.dimensionWhitelistValue.get());
         this.biomeTagBlacklistCached = List.copyOf(this.biomeTagBlacklistValue.get());
@@ -326,6 +346,16 @@ public class ServerConfig implements IServerConfig {
     @Override
     public int maxLevelDiff() {
         return this.maxLevelDiffCached;
+    }
+
+    @Override
+    public boolean spawningRequiresTrainerCard() {
+        return this.spawningRequiresTrainerCardCached;
+    }
+
+    @Override
+    public boolean spawnTrainerAssociation() {
+        return this.spawnTrainerAssociationCached;
     }
 
     @Override

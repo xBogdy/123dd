@@ -6,17 +6,18 @@
 
 **Added:**
 
-- *#235* Command `player add progress (before|after)`: Update progress without resetting current progression (useful for optional/alternative progression paths)
-- *#234* Command `player get progress graph`: Generate a visual representation of a players series progression that can be viewed online (powered by PlantUML)
-- *#233* Command `player get series [completed]`: Retrieves the current or all completed series of a player
-- *#232* Command `player set series <seriesId> [completed <count>]`: Updates the current or completed series of a player
-- *#231* Config option `playerMustCarryTrainerCard` (TODO)
+- *#236* Command `player add progress (before|after)`: Update progress without resetting current progression (useful for optional/alternative progression paths)
+- *#235* Command `player get progress graph`: Generate a visual representation of a players series progression that can be viewed online (powered by PlantUML)
+- *#234* Command `player get series [completed]`: Retrieves the current or all completed series of a player
+- *#233* Command `player set series <seriesId> [completed <count>]`: Updates the current or completed series of a player
+- *#232* Config option `spawnTrainerAssociation`
+- *#231* Config option `spawningRequiresTrainerCard`
 - *#230* Support for different *series*
   - Every series has its own progression (i.e. chain of key trainers and level caps)
   - Only trainers from the current series of a player will be listed in the trainer card of that player
   - Only trainers from the current series of a player will spawn for that player
   - Players now have a `currentSeries` property (defaults to the *empty series*)
-  - Players now have statistics to keep track of completed series (the current and completed series of players can be inspected or modified with commands, see *#232* and *#233*)
+  - Players now have statistics to keep track of completed series (the current and completed series of players can be inspected or modified with commands, see *#233* and *#234*)
   - Trainer npcs now have a `series` property: A list of series ids the trainer belongs to (the trainer will belong to every series if empty or not set)
 - *#229* Trainer mob properties (`series` and `substitutes`)
 

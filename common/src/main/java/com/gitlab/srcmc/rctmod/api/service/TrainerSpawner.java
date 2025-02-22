@@ -36,6 +36,7 @@ import com.gitlab.srcmc.rctmod.api.data.save.collection.SavedStringChunkPosMap;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerAssociation;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
+import com.gitlab.srcmc.rctmod.world.items.TrainerCard;
 import com.google.common.collect.Sets;
 
 import net.minecraft.core.BlockPos;
@@ -366,7 +367,8 @@ public class TrainerSpawner {
         return this.getSpawnCount() < config.maxTrainersTotal()
             && RCTMod.getInstance().getTrainerManager().getPlayerLevel(player) > 0
             && (noOrigin || (spawnCountPl < maxCountPl
-                && globalChance - chanceRange*(maxCountPl > 1 ? Math.min(1, spawnCountPl/(double)maxCountPl) : 1) >= player.getRandom().nextFloat()));
+                && globalChance - chanceRange*(maxCountPl > 1 ? Math.min(1, spawnCountPl/(double)maxCountPl) : 1) >= player.getRandom().nextFloat())
+                && (!config.spawningRequiresTrainerCard() || TrainerCard.has(player)));
     }
 
     private void spawnFor(Player player, String trainerId, BlockPos pos) {
