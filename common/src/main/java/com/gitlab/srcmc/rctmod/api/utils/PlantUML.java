@@ -25,6 +25,7 @@ import java.util.Set;
 import java.util.stream.Stream;
 import java.util.zip.Deflater;
 
+import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.service.SeriesManager.SeriesGraph;
 import com.gitlab.srcmc.rctmod.api.service.SeriesManager.TrainerNode;
 
@@ -35,19 +36,19 @@ public final class PlantUML {
         + "@startuml\n"
         + "!theme lightgray\n"
         + "title \"%s\"\n"
-        + "hide members\n"
         + "hide stereotypes\n"
+        + "hide members\n"
         + "skinparam linetype ortho\n"
         + "skinparam object {\n"
-        + "  arrowColor red\n"
-        + "  backgroundColor lightblue\n"
-        + "  backgroundColor<<optional>> orange\n"
-        + "  backgroundColor<<defeated>> lightgray\n"
+        + "arrowColor #red\n"
+        + "backgroundColor #lightblue\n"
+        + "backgroundColor<<optional>> #orange\n"
+        + "backgroundColor<<defeated>> #lightgray\n"
         + "}\n"
         + "skinparam legend {\n"
-        + "  backgroundColor #FFFFFF\n"
-        + "  fontColor #000000\n"
-        + "  fontSize 11\n"
+        + "backgroundColor #white\n"
+        + "fontColor #black\n"
+        + "fontSize 11\n"
         + "}\n"
         + "legend top left\n"
         + "<b>Legend</b>\n"
@@ -62,6 +63,11 @@ public final class PlantUML {
 
         public NodeGroup(TrainerNode origin) {
             this.origin = origin;
+        }
+
+        public int maxRequiredLevelCap() {
+            var tm = RCTMod.getInstance().getTrainerManager();
+            return Stream.concat(Stream.of(this.origin), set.stream()).map(tn -> tm.getData(tn.id()).getRequiredLevelCap()).max(Integer::compare).orElse(100);
         }
 
         public Stream<TrainerNode> successors() {
@@ -110,7 +116,7 @@ public final class PlantUML {
 
         nodes.entrySet().forEach(e -> {
             var optional_defeated = new boolean[]{e.getKey().isOptional(), e.getKey().isDefeated(defeats)};
-            var id = new StringBuilder(e.getKey().id());
+            var id = new StringBuilder(String.format("<b>%d</b>\\n%s", e.getValue().maxRequiredLevelCap(), e.getKey().id()));
 
             e.getValue().set.stream().sorted((a, b) -> a.id().compareTo(b.id())).forEach(tn -> {
                 id.append("\\n").append(tn.id());
