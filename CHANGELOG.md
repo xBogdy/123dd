@@ -31,7 +31,7 @@
 **Fixed:**
 
 - *#224* Some performance improvements to the trainer card
-- *#223* Some random synchronization issues when reloading data packs or changing configs
+- *#223* Some random synchronization issues when reloading data packs, changing configs and/or switching between multi- and singleplayer worlds
 - *#222* Trainer npcs being incapable of rendering armor (thanks Renari)
 
 ## [0.13.16-beta] - 2025-01-30

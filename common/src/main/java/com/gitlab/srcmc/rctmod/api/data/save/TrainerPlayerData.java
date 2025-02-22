@@ -232,17 +232,11 @@ public class TrainerPlayerData extends SavedData {
             .reduce(0, (a, b) -> a + b));
     }
 
-    public void reload() {
-        var currentSeries = this.currentSeries;
-        this.currentSeries = "";
-        this.setCurrentSeries(currentSeries);
-        var completedSeries = this.completedSeries;
-        this.completedSeries = new HashMap<>();
-        completedSeries.forEach((k, v) ->  this.setSeriesCompletion(k, v));
-        var progressDefeats = this.defeatedTrainerIds;
-        this.defeatedTrainerIds = new HashSet<>();
-        progressDefeats.forEach(this::addProgressDefeat);
-        this.updateLevelCap();
+    public void sync() {
+        var ps = PlayerState.get(this.player);
+        ps.setLevelCap(this.levelCap);
+        ps.setCurrentSeries(this.currentSeries);
+        this.defeatedTrainerIds.forEach(ps::addProgressDefeat);
         RCTMod.getInstance().getTrainerManager().requiresUpdate(this.player);
     }
 
@@ -257,6 +251,7 @@ public class TrainerPlayerData extends SavedData {
         compoundTag.put("completedSeries", completedSeries);
         compoundTag.putString("currentSeries", this.currentSeries);
         compoundTag.putBoolean("currentSeriesCompleted", this.currentSeriesCompleted);
+        ModCommon.LOG.info("TPD SAVED: " + this.getLevelCap());
         return compoundTag;
     }
 

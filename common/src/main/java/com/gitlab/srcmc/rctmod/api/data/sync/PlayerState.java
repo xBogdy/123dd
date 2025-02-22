@@ -70,7 +70,7 @@ public class PlayerState implements Serializable {
             PlayerState.localState = new PlayerState(player);
         } else {
             PlayerState.remoteStates.put(player.getUUID(), new PlayerState(player));
-            RCTMod.getInstance().getTrainerManager().getData(player).reload();
+            RCTMod.getInstance().getTrainerManager().getData(player).sync();
         }
     }
 
@@ -278,6 +278,10 @@ public class PlayerState implements Serializable {
     private PlayerState(Player player) {
         this.player = player;
         this.updated = this;
+        
+        if(!player.level().isClientSide) {
+            this.updateDefeatCounts();
+        }
     }
 
     private PlayerState(PlayerState template) {
