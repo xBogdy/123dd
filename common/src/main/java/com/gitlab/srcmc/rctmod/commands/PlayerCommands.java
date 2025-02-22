@@ -24,6 +24,7 @@ import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerType;
 import com.gitlab.srcmc.rctmod.api.data.save.TrainerPlayerData;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
+import com.gitlab.srcmc.rctmod.api.service.SeriesManager;
 import com.gitlab.srcmc.rctmod.api.utils.PlantUML;
 import com.gitlab.srcmc.rctmod.commands.utils.SuggestionUtils;
 import com.mojang.brigadier.CommandDispatcher;
@@ -370,6 +371,12 @@ public final class PlayerCommands {
     private static int player_set_completed_series(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         if(context.getSource().getEntity() instanceof Player player) {
             var seriesid = StringArgumentType.getString(context, "seriesId");
+
+            if(seriesid.equals(SeriesManager.EMPTY_SERIES_ID)) {
+                context.getSource().sendFailure(Component.literal("cannot complete empty series"));
+                return -1;
+            }
+
             var count = IntegerArgumentType.getInteger(context, "count");
             var tpd = RCTMod.getInstance().getTrainerManager().getData(player);
             var current = tpd.getCompletedSeries().getOrDefault(seriesid, 0);
@@ -382,9 +389,15 @@ public final class PlayerCommands {
     }
 
     private static int player_set_completed_series_targets(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        var seriesid = StringArgumentType.getString(context, "seriesId");
+        var count = IntegerArgumentType.getInteger(context, "count");
+
+        if(seriesid.equals(SeriesManager.EMPTY_SERIES_ID)) {
+            context.getSource().sendFailure(Component.literal("cannot complete empty series"));
+            return -1;
+        }
+
         for(var player : EntityArgument.getPlayers(context, "targets")) {
-            var seriesid = StringArgumentType.getString(context, "seriesId");
-            var count = IntegerArgumentType.getInteger(context, "count");
             var tpd = RCTMod.getInstance().getTrainerManager().getData(player);
             var current = tpd.getCompletedSeries().getOrDefault(seriesid, 0);
             tpd.addSeriesCompletion(seriesid, count - current);
@@ -395,7 +408,9 @@ public final class PlayerCommands {
 
     private static int player_set_current_series(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         if(context.getSource().getEntity() instanceof Player player) {
-            RCTMod.getInstance().getTrainerManager().getData(player).setCurrentSeries(StringArgumentType.getString(context, "seriesId"));
+            var seriesid = StringArgumentType.getString(context, "seriesId");
+            seriesid = seriesid.equals(SeriesManager.EMPTY_SERIES_ID) ? "" : seriesid;
+            RCTMod.getInstance().getTrainerManager().getData(player).setCurrentSeries(seriesid);
             return 0;
         }
         
@@ -404,8 +419,11 @@ public final class PlayerCommands {
     }
 
     private static int player_set_current_series_targets(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        var seriesid = StringArgumentType.getString(context, "seriesId");
+        seriesid = seriesid.equals(SeriesManager.EMPTY_SERIES_ID) ? "" : seriesid;
+
         for(var player : EntityArgument.getPlayers(context, "targets")) {
-            RCTMod.getInstance().getTrainerManager().getData(player).setCurrentSeries(StringArgumentType.getString(context, "seriesId"));
+            RCTMod.getInstance().getTrainerManager().getData(player).setCurrentSeries(seriesid);
         }
         
         return 0;

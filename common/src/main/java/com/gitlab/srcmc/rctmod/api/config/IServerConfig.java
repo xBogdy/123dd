@@ -275,6 +275,17 @@ public interface IServerConfig extends IModConfig {
     default boolean allowOverLeveling() { return false; }
 
     /**
+     * Can an empty series be considered completed or uncompletable? You tell me. If
+     * enabled an empty series will always be considered completed hence rewarding
+     * players immediately with a level cap of 100 otherwise the level cap of players
+     * will be as configured by initialLevelCap (and additiveLevelCapRequirement). Note
+     * that players will start with an empty series by default.
+     * 
+     * default: false
+     */
+    default boolean considerEmptySeriesCompleted() { return false; }
+
+    /**
      * If enabled additional information are printed to the log whenever a trainer
      * spawns or despawns.
      * 

@@ -29,7 +29,7 @@ import com.gitlab.srcmc.rctmod.api.service.SeriesManager.SeriesGraph;
 import com.gitlab.srcmc.rctmod.api.service.SeriesManager.TrainerNode;
 
 public final class PlantUML {
-    public static final String SERVER_URL = "https://www.plantuml.com/plantuml/svg/~1";
+    public static final String SERVER_URL = "https://www.plantuml.com/plantuml/svg/";
     private static final String BASE64_CHARS = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_";
     private static final String SERIES_GRAPH_HEADER = ""
         + "@startuml\n"
@@ -155,7 +155,7 @@ public final class PlantUML {
         }
 
         deflater.end();
-        return base64(outputStream.toByteArray());
+        return "~1" + base64(outputStream.toByteArray());
     }
 
     private static String base64(byte[] data) {

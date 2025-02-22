@@ -31,22 +31,32 @@ import com.gitlab.srcmc.rctmod.api.data.pack.SeriesMetaData;
 import com.gitlab.srcmc.rctmod.api.utils.PathUtils;
 
 public class SeriesManager {
+    public static final String EMPTY_SERIES_ID = "...";
+
     private Map<String, SeriesGraph> seriesGraphs = new HashMap<>();
+    private final SeriesGraph EMPTY_SERIES = new SeriesGraph(new SeriesMetaData("Empty Series"));
 
     public Set<String> getSeriesIds() {
         return this.seriesGraphs.keySet();
     }
 
     public SeriesGraph getGraph(String seriesId) {
-        return this.seriesGraphs.getOrDefault(seriesId, new SeriesGraph(seriesId));
+        return seriesId == null || seriesId.isBlank() ? this.EMPTY_SERIES : this.seriesGraphs.getOrDefault(seriesId, new SeriesGraph(seriesId));
     }
 
     void onLoad(TrainerManager tm) {
+        EMPTY_SERIES.clear();
+
         var seriesGraphs = new HashMap<String, SeriesGraph>();
+        seriesGraphs.put(EMPTY_SERIES_ID, EMPTY_SERIES);
 
         // gather series ids
         tm.listSeries((rl, io) -> {
             var sid = PathUtils.filename(rl.getPath());
+
+            if(sid.equals(EMPTY_SERIES_ID)) {
+                throw new IllegalStateException(String.format("series id '%s' already occupied by empty series", EMPTY_SERIES_ID));
+            }
             
             if(seriesGraphs.put(sid, new SeriesGraph(tm.loadSeries(sid).get())) != null) {
                 ModCommon.LOG.error(String.format("duplicate series '%s'", sid));
@@ -64,7 +74,7 @@ public class SeriesManager {
         // create nodes for trainers that belong to all series
         tm.getAllData()
             .filter(e -> e.getValue().getSeries().findFirst().isEmpty())
-            .forEach(e -> seriesGraphs.values().forEach(sd -> sd.map.put(e.getKey(), new TrainerNode(e.getKey(), e.getValue().isOptional()))));
+            .forEach(e -> seriesGraphs.values().stream().forEach(sd -> sd.map.put(e.getKey(), new TrainerNode(e.getKey(), e.getValue().isOptional()))));
 
         // build graph
         tm.getAllData().forEach(e -> {
@@ -121,6 +131,11 @@ public class SeriesManager {
 
         SeriesGraph(SeriesGraph origin) {
             this.metaData = origin.metaData;
+        }
+
+        void clear() {
+            this.map = new HashMap<>();
+            this.list = new ArrayList<>();
         }
 
         public SeriesMetaData getMetaData() {

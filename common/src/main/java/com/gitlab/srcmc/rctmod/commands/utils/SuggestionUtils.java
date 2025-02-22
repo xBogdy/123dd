@@ -23,6 +23,7 @@ import java.util.stream.Stream;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerType;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
+import com.gitlab.srcmc.rctmod.api.service.SeriesManager;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.suggestion.Suggestions;
@@ -58,7 +59,7 @@ public final class SuggestionUtils {
     }
 
     public static CompletableFuture<Suggestions> get_series_suggestions(final CommandContext<CommandSourceStack> context, final SuggestionsBuilder builder) throws CommandSyntaxException {
-        Stream.concat(RCTMod.getInstance().getSeriesManager().getSeriesIds().stream(), Stream.of("")).forEach(builder::suggest);
+        Stream.concat(Stream.of(SeriesManager.EMPTY_SERIES_ID), RCTMod.getInstance().getSeriesManager().getSeriesIds().stream()).forEach(builder::suggest);
         return builder.buildFuture();
     }
 

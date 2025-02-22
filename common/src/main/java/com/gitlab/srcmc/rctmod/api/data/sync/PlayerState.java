@@ -51,7 +51,7 @@ public class PlayerState implements Serializable {
     private Map<TrainerType, Integer> typeDefeatCounts = new HashMap<>();
     private Set<String> defeatedTrainerIds = new HashSet<>();
     private Set<String> removedDefeatedTrainerIds = new HashSet<>();
-    private String currentSeries;
+    private String currentSeries = "";
     private int levelCap;
 
     private transient Player player;

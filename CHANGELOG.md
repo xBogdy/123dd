@@ -15,10 +15,10 @@
   - Every series has its own progression (i.e. chain of key trainers and level caps)
   - Only trainers from the current series of a player will be listed in the trainer card of that player
   - Only trainers from the current series of a player will spawn for that player
-  - Players now have a `currentSeries` property (defaults to `"radicalred"` if not set)
+  - Players now have a `currentSeries` property (defaults to the *empty series*)
   - Players now have statistics to keep track of completed series (the current and completed series of players can be inspected or modified with commands, see *#231* and *#232*)
   - Trainer npcs now have a `series` property: A list of series ids the trainer belongs to (the trainer will belong to every series if empty or not set)
-- *#228* Trainer mobs properties (`series` and `substitutes`)
+- *#228* Trainer mob properties (`series` and `substitutes`)
 
 **Changed:**
 

@@ -302,7 +302,7 @@ public class TrainerManager extends DataPackManager {
         });
 
         this.minRequiredLevelCaps = new HashMap<>();
-        var globalMin = new int[]{100};
+        var globalMin = new int[]{Integer.MAX_VALUE};
 
         newTrainerMobs.values().forEach(tmd -> {
             tmd.setRewardLevelCap(tmd.getFollowedBy()
@@ -324,7 +324,8 @@ public class TrainerManager extends DataPackManager {
             }
         });
 
-        this.globalMinRequiredLevelCap = globalMin[0];
+        var cfg = RCTMod.getInstance().getServerConfig();
+        this.globalMinRequiredLevelCap = globalMin[0] == Integer.MAX_VALUE ? (cfg.considerEmptySeriesCompleted() ? 100 : Math.max(1, Math.min(100, cfg.initialLevelCap() + cfg.additiveLevelCapRequirement()))) : globalMin[0];
         this.trainerMobs = newTrainerMobs;
         this.seriesManager.onLoad(this);
         this.receivedUpdates = new HashSet<>();

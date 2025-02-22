@@ -72,10 +72,12 @@ public class ServerConfig implements IServerConfig {
     // players
     private final ConfigValue<Integer> initialLevelCapValue;
     private final ConfigValue<Integer> additiveLevelCapRequirementValue;
+    private final ConfigValue<Boolean> considerEmptySeriesCompletedValue;
     private final ConfigValue<Boolean> allowOverLevelingValue;
 
     private int initialLevelCapCached;
     private int additiveLevelCapRequirementCached;
+    private boolean considerEmptySeriesCompletedCached;
     private boolean allowOverLevelingCached;
 
     // debug
@@ -194,6 +196,14 @@ public class ServerConfig implements IServerConfig {
                 "of that trainer becomes 40, if it is 10 the level cap requirement becomes 60.")
             .define("additiveLevelCapRequirement", IServerConfig.super.additiveLevelCapRequirement());
 
+        this.considerEmptySeriesCompletedValue = builder
+            .comment(SEPARATOR,
+                "Can an empty series be considered completed or uncompletable? You tell me. If enabled an empty series",
+                "will always be considered completed hence rewarding players immediately with a level cap of 100 otherwise",
+                "the level cap of players will be as configured by initialLevelCap (and additiveLevelCapRequirement).",
+                "Note that players will start with an empty series by default.")
+            .define("considerEmptySeriesCompleted", IServerConfig.super.considerEmptySeriesCompleted());
+
         this.allowOverLevelingValue = builder
             .comment(SEPARATOR,
                 "If enabled the level cap of a players will not prevent their pokemon from gaining experience and leveling up.",
@@ -258,6 +268,7 @@ public class ServerConfig implements IServerConfig {
         this.biomeTagWhitelistCached = List.copyOf(this.biomeTagWhitelistValue.get());
         this.initialLevelCapCached = this.initialLevelCapValue.get();
         this.additiveLevelCapRequirementCached = this.additiveLevelCapRequirementValue.get();
+        this.considerEmptySeriesCompletedCached = this.considerEmptySeriesCompletedValue.get();
         this.allowOverLevelingCached = this.allowOverLevelingValue.get();
         this.logSpawningCached = this.logSpawningValue.get();
     }
@@ -355,6 +366,11 @@ public class ServerConfig implements IServerConfig {
     @Override
     public int additiveLevelCapRequirement() {
         return this.additiveLevelCapRequirementCached;
+    }
+
+    @Override
+    public boolean considerEmptySeriesCompleted() {
+        return this.considerEmptySeriesCompletedCached;
     }
 
     @Override
