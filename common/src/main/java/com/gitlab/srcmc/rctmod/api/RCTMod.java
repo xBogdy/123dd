@@ -137,22 +137,6 @@ public final class RCTMod {
         return Cobblemon.INSTANCE.getBattleRegistry().getBattleByParticipatingPlayerId(player.getUUID()) != null;
     }
 
-    public static void init(
-        TrainerManager trainerManager,
-        TrainerSpawner trainerSpawner,
-        DataPackManager clientDataManager,
-        DataPackManager serverDataManager,
-        IClientConfig clientConfig,
-        IServerConfig serverConfig)
-    {
-        var instance = new RCTMod(
-            trainerManager, trainerSpawner,
-            clientDataManager,
-            clientConfig, serverConfig);
-
-        RCTMod.instanceSupplier = () -> instance;
-    }
-
     public static RCTMod getInstance() {
         return RCTMod.instanceSupplier.get();
     }

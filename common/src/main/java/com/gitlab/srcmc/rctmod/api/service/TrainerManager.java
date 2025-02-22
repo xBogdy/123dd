@@ -19,6 +19,7 @@ package com.gitlab.srcmc.rctmod.api.service;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -29,6 +30,7 @@ import com.cobblemon.mod.common.Cobblemon;
 import com.gitlab.srcmc.rctapi.api.errors.RCTException;
 import com.gitlab.srcmc.rctapi.api.trainer.Trainer;
 import com.gitlab.srcmc.rctapi.api.trainer.TrainerNPC;
+import com.gitlab.srcmc.rctapi.api.trainer.TrainerPlayer;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.TrainerBattle;
@@ -86,9 +88,10 @@ public class TrainerManager extends DataPackManager {
 
             ModCommon.RCT.getTrainerRegistry().init(server);
             this.resourceManager = server.getResourceManager();
-            this.server = server;
             this.reloadRequired = true;
         }
+
+        this.server = server;
     }
 
     public boolean isReloadRequired() {
@@ -99,12 +102,8 @@ public class TrainerManager extends DataPackManager {
         this.reloadRequired = true;
     }
 
-    private boolean isServerRunning() {
-        return this.server != null && this.server.isRunning() && this.server.isSameThread();
-    }
-
     private void registerTrainer(String trainerId, TrainerMobData tmd, Map<String, Trainer> oldTrainers) {
-        if(this.isServerRunning()) {
+        if(this.server != null && this.server.isSameThread()) {
             var reg = ModCommon.RCT.getTrainerRegistry();
 
             try {
@@ -255,6 +254,10 @@ public class TrainerManager extends DataPackManager {
         return this.receivedUpdates.add(player);
     }
 
+    public boolean requiresUpdate(Player player) {
+        return this.receivedUpdates.remove(player);
+    }
+
     public int getMinRequiredLevelCap(String series) {
         return this.minRequiredLevelCaps.getOrDefault(series, this.globalMinRequiredLevelCap);
     }
@@ -264,23 +267,26 @@ public class TrainerManager extends DataPackManager {
     }
 
     protected void forceReload(ResourceManager resourceManager) {
+        if(this.server != null && !this.server.isSameThread()) {
+            return; // no reload in singleplayer client thread (same instance reloads in server thread)
+        }
+
         this.reloadRequired = false;
         var dpm = RCTMod.getInstance().getServerDataManager();
         dpm.init(resourceManager);
 
         var oldTrainers = new HashMap<String, Trainer>();
         var newTrainerMobs = new HashMap<String, TrainerMobData>();
+        var reg = ModCommon.RCT.getTrainerRegistry();
+        List<ServerPlayer> players = null;
 
-        if(this.isServerRunning()) {
-            var reg = ModCommon.RCT.getTrainerRegistry();
+        reg.getIds().stream()
+            .map(tid -> Map.<String, Trainer>entry(tid, reg.getById(tid)))
+            .filter(entry -> entry.getValue() instanceof TrainerNPC)
+            .forEach(entry -> oldTrainers.put(entry.getKey(), entry.getValue()));
 
-            reg.getIds().stream()
-                .map(tid -> Map.<String, Trainer>entry(tid, reg.getById(tid)))
-                .filter(entry -> entry.getValue() instanceof TrainerNPC)
-                .forEach(entry -> oldTrainers.put(entry.getKey(), entry.getValue()));
-
-            reg.clearNPCs();
-        }
+        reg.clearNPCs();
+        players = reg.getIds().stream().map(id -> reg.getById(id, TrainerPlayer.class).getPlayer()).toList();
 
         dpm.listTrainerTeams((rl, io) -> {
             var trainerId = PathUtils.filename(rl.getPath());
@@ -329,12 +335,10 @@ public class TrainerManager extends DataPackManager {
         this.trainerMobs = newTrainerMobs;
         this.seriesManager.onLoad(this);
         this.receivedUpdates = new HashSet<>();
-
-        if(this.isServerRunning()) {
-            ModCommon.LOG.info(String.format("Registered %d trainers", this.trainerMobs.size()));
-        }
-
+        
+        players.forEach(pl -> this.getData(pl).getLevelCap()); // forces update
         dpm.close();
+        ModCommon.LOG.info(String.format("Registered %d trainers", this.trainerMobs.size()));
     }
 
     @Override

@@ -61,28 +61,29 @@ public class PlayerState implements Serializable {
     private transient Map<String, Boolean> keyTrainerMap = new HashMap<>();
     private transient SeriesGraph nextGraph;
 
-    public static PlayerState get(Player player) {
-        return PlayerState.get(player, false);
-    }
-
-    public static PlayerState get(Player player, boolean forceNew) {
-        var level = player.level();
-
-        if(level.isClientSide) {
-            if(player.isLocalPlayer()) {
-                if(forceNew || localState == null || !localState.player.equals(player)) {
-                    localState = new PlayerState(player);
-                } else {
-                    localState.player = player;
-                }
-                
-                return localState;
+    public static void initFor(Player player) {
+        if(player.level().isClientSide) {
+            if(!player.isLocalPlayer()) {
+                throw new IllegalArgumentException("Cannot initialize player state of other players on this client");
             }
 
-            throw new IllegalArgumentException("Cannot retrieve player state of other players on this client");
+            PlayerState.localState = new PlayerState(player);
+        } else {
+            PlayerState.remoteStates.put(player.getUUID(), new PlayerState(player));
+            RCTMod.getInstance().getTrainerManager().getData(player).reload();
+        }
+    }
+
+    public static PlayerState get(Player player) {
+        if(player.level().isClientSide) {
+            if(!player.isLocalPlayer()) {
+                throw new IllegalArgumentException("Cannot retrieve player state of other players on this client");
+            }
+
+            return PlayerState.localState;
         }
 
-        return remoteStates.compute(player.getUUID(), (key, ps) -> forceNew || ps == null || ps.player != player ? new PlayerState(player) : ps);
+        return PlayerState.remoteStates.get(player.getUUID());
     }
 
     public byte[] serializeUpdate() {

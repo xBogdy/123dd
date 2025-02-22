@@ -91,7 +91,7 @@ public class ModClient {
 
     static void onClientPlayerJoin(LocalPlayer player) {
         PLAYER_STATE_PAYLOADS.clear();
-        PlayerState.get(player, true);
+        PlayerState.initFor(player);
     }
 
     // NetworkManager

@@ -88,6 +88,7 @@ public class ModCommon {
     static void registerEvents() {
         CommandRegistrationEvent.EVENT.register(ModCommon::onCommandRegistration);
         LifecycleEvent.SERVER_STARTING.register(ModCommon::onServerStarting);
+        LifecycleEvent.SERVER_STOPPED.register(ModCommon::onServerStopped);
         LevelTick.SERVER_LEVEL_PRE.register(ModCommon::onServerWorldTick);
         LevelTick.SERVER_PRE.register(ModCommon::onServerTick);
         PlayerEvent.PLAYER_JOIN.register(ModCommon::onPlayerJoin);
@@ -109,6 +110,10 @@ public class ModCommon {
         PLAYER_STATE_PAYLOADS.clear();
         RCTMod.getInstance().getTrainerSpawner().init(server.overworld());
         RCTMod.getInstance().getTrainerManager().setServer(server);
+    }
+
+    static void onServerStopped(MinecraftServer server) {
+        RCTMod.getInstance().getTrainerManager().setServer(null);
     }
 
     // LevelTick
@@ -177,7 +182,7 @@ public class ModCommon {
     // PlayerEvent
     
     static void onPlayerJoin(ServerPlayer player) {
-        PlayerState.get(player, true);
+        PlayerState.initFor(player);
         var trainerId = RCTMod.getInstance().getTrainerManager().registerPlayer(player);
         ModCommon.RCT.getTrainerRegistry().registerPlayer(trainerId, player);
         ModCommon.LOG.info(String.format("Registered trainer player: %s", trainerId));
