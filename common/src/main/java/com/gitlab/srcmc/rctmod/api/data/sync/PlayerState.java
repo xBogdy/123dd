@@ -26,6 +26,7 @@ import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
@@ -278,7 +279,7 @@ public class PlayerState implements Serializable {
     private PlayerState(Player player) {
         this.player = player;
         this.updated = this;
-        
+
         if(!player.level().isClientSide) {
             this.updateDefeatCounts();
         }
@@ -297,7 +298,7 @@ public class PlayerState implements Serializable {
 
             if(count == 0) {
                 if(this.trainerDefeatCounts.remove(trainerId) != null) {
-                    this.distinctTypeDefeatCounts.compute(tt, (k, v) -> v - 1);
+                    this.distinctTypeDefeatCounts.compute(tt, (k, v) -> v > 1 ? v - 1 : null);
                 }
             } else {
                 if(this.trainerDefeatCounts.put(trainerId, count) == null) {
@@ -323,22 +324,9 @@ public class PlayerState implements Serializable {
     }
 
     private void updateDefeatCounts() {
-        this.trainerDefeatCounts.clear();
-        this.typeDefeatCounts.clear();
-        this.distinctTypeDefeatCounts.clear();
-
         var tm = RCTMod.getInstance().getTrainerManager();
         var overworld = this.player.getServer().overworld();
-
-        tm.getAllData(this.getCurrentSeries()).forEach(entry -> {
-            var defCount = tm.getBattleMemory(overworld, entry.getKey()).getDefeatByCount(this.player);
-
-            if(defCount > 0) {
-                var tt = entry.getValue().getType();
-                this.trainerDefeatCounts.put(entry.getKey(), defCount);
-                this.typeDefeatCounts.compute(tt, (k, v) -> v == null ? defCount : v + defCount);
-                this.distinctTypeDefeatCounts.compute(tt, (k, v) -> v == null ? 1 : v + 1);
-            }
-        });
+        List.copyOf(this.trainerDefeatCounts.keySet()).forEach(tid -> this.setDefeats(tid, 0));
+        tm.getAllData(this.getCurrentSeries()).forEach(entry -> this.setDefeats(entry.getKey(), tm.getBattleMemory(overworld, entry.getKey()).getDefeatByCount(this.player)));
     }
 }
