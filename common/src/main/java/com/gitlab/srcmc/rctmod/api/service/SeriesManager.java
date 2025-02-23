@@ -34,7 +34,7 @@ public class SeriesManager {
     public static final String EMPTY_SERIES_ID = "...";
 
     private Map<String, SeriesGraph> seriesGraphs = new HashMap<>();
-    private final SeriesGraph EMPTY_SERIES = new SeriesGraph(new SeriesMetaData("Empty Series"));
+    private final SeriesGraph EMPTY_SERIES = new SeriesGraph(new SeriesMetaData("Empty Series", "", 0));
 
     public Set<String> getSeriesIds() {
         return this.seriesGraphs.keySet();
