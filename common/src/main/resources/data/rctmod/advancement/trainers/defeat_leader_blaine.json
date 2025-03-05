@@ -1,31 +1,38 @@
 {
-  "parent": "rctmod:trainers/defeat_trainer_may",
-  "display": {
-    "title": {
-      "text": "Volcano Badge"
-    },
-    "description": {
-      "text": "Defeat Leader Blaine"
-    },
-    "icon": {
-      "id": "cobblemon:poke_ball"
-    },
-    "announce_to_chat": true,
-    "show_toast": true,
-    "hidden": false,
-    "frame": "goal"
-  },
   "criteria": {
-    "first_defeat": {
+    "defeat_leader_blaine": {
       "conditions": {
-        "trainer_ids": ["leader_blaine_01a3"]
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "leader_blaine_01a3"
+        ],
+        "trainer_type": ""
       },
       "trigger": "rctmod:defeat_count"
     }
   },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Defeat Leader Blaine"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Volcano Badge"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_trainer_may",
   "requirements": [
     [
-      "first_defeat"
+      "defeat_leader_blaine"
     ]
   ]
 }

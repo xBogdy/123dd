@@ -1,31 +1,38 @@
 {
-  "parent": "rctmod:trainers/defeat_leader_sabrina",
-  "display": {
-    "title": {
-      "text": "Friendly competition"
-    },
-    "description": {
-      "text": "Defeat Trainer Brendan (again)"
-    },
-    "icon": {
-      "id": "cobblemon:poke_ball"
-    },
-    "announce_to_chat": false,
-    "show_toast": true,
-    "hidden": false,
-    "frame": "task"
-  },
   "criteria": {
-    "first_defeat": {
+    "defeat_trainer_brendan_2": {
       "conditions": {
-        "trainer_ids": ["trainer_brendan_0039"]
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "trainer_brendan_0039"
+        ],
+        "trainer_type": ""
       },
       "trigger": "rctmod:defeat_count"
     }
   },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Defeat Trainer Brendan (again)"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Friendly competition"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_leader_sabrina",
   "requirements": [
     [
-      "first_defeat"
+      "defeat_trainer_brendan_2"
     ]
   ]
 }

@@ -1,31 +1,40 @@
 {
-  "parent": "rctmod:trainers/defeat_trainer_may",
-  "display": {
-    "title": {
-      "text": "Who's got the edge?"
-    },
-    "description": {
-      "text": "Defeat Rival Terrys alternative team"
-    },
-    "icon": {
-      "id": "cobblemon:poke_ball"
-    },
-    "announce_to_chat": true,
-    "show_toast": true,
-    "hidden": true,
-    "frame": "task"
-  },
   "criteria": {
-    "first_defeat": {
+    "defeat_rival_terry_3": {
       "conditions": {
-        "trainer_ids": ["champion_terry_02e5", "champion_terry_02e4", "champion_terry_02e3"]
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "champion_terry_02e5",
+          "champion_terry_02e4",
+          "champion_terry_02e3"
+        ],
+        "trainer_type": ""
       },
       "trigger": "rctmod:defeat_count"
     }
   },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Defeat Rival Terrys alternative team"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Who's got the edge?"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_trainer_may",
   "requirements": [
     [
-      "first_defeat"
+      "defeat_rival_terry_3"
     ]
   ]
 }

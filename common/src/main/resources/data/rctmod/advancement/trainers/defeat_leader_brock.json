@@ -1,31 +1,38 @@
 {
-  "parent": "rctmod:trainers/defeat_any",
-  "display": {
-    "title": {
-      "text": "Boulder Badge"
-    },
-    "description": {
-      "text": "Defeat Leader Brock"
-    },
-    "icon": {
-      "id": "cobblemon:poke_ball"
-    },
-    "announce_to_chat": true,
-    "show_toast": true,
-    "hidden": false,
-    "frame": "goal"
-  },
   "criteria": {
-    "first_defeat": {
+    "defeat_leader_brock": {
       "conditions": {
-        "trainer_ids": ["leader_brock_019e"]
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "leader_brock_019e"
+        ],
+        "trainer_type": ""
       },
       "trigger": "rctmod:defeat_count"
     }
   },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Defeat Leader Brock"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Boulder Badge"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_any",
   "requirements": [
     [
-      "first_defeat"
+      "defeat_leader_brock"
     ]
   ]
 }

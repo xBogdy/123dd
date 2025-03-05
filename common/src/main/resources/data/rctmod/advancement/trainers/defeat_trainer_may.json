@@ -1,31 +1,38 @@
 {
-  "parent": "rctmod:trainers/defeat_leader_koga",
-  "display": {
-    "title": {
-      "text": "A different path"
-    },
-    "description": {
-      "text": "Defeat Trainer May"
-    },
-    "icon": {
-      "id": "cobblemon:poke_ball"
-    },
-    "announce_to_chat": true,
-    "show_toast": true,
-    "hidden": false,
-    "frame": "task"
-  },
   "criteria": {
-    "first_defeat": {
+    "defeat_trainer_may": {
       "conditions": {
-        "trainer_ids": ["trainer_may_003d"]
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "trainer_may_003d"
+        ],
+        "trainer_type": ""
       },
       "trigger": "rctmod:defeat_count"
     }
   },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Defeat Trainer May"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "A different path"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_leader_koga",
   "requirements": [
     [
-      "first_defeat"
+      "defeat_trainer_may"
     ]
   ]
 }

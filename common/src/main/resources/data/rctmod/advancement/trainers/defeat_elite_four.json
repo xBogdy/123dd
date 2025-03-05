@@ -1,50 +1,90 @@
 {
-  "parent": "rctmod:trainers/defeat_trainer_brendan_3",
-  "display": {
-    "title": {
-      "text": "Elite 4"
-    },
-    "description": {
-      "text": "Defeat 4 members of the Elite 4"
-    },
-    "icon": {
-      "id": "cobblemon:poke_ball"
-    },
-    "announce_to_chat": true,
-    "show_toast": true,
-    "hidden": false,
-    "frame": "goal"
-  },
   "criteria": {
-    "first_defeat_bruno": {
+    "defeat_agatha": {
       "conditions": {
-        "trainer_ids": ["elite_four_bruno_0051", "elite_four_bruno_0050"]
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "elite_four_agatha_0054",
+          "elite_four_agatha_0053"
+        ],
+        "trainer_type": ""
       },
       "trigger": "rctmod:defeat_count"
     },
-    "first_defeat_lance": {
+    "defeat_bruno": {
       "conditions": {
-        "trainer_ids": ["elite_four_lance_0057", "elite_four_lance_0056"]
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "elite_four_bruno_0051",
+          "elite_four_bruno_0050"
+        ],
+        "trainer_type": ""
       },
       "trigger": "rctmod:defeat_count"
     },
-    "first_defeat_lorelei": {
+    "defeat_lance": {
       "conditions": {
-        "trainer_ids": ["elite_four_lorelei_004e", "elite_four_lorelei_004d"]
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "elite_four_lance_0057",
+          "elite_four_lance_0056"
+        ],
+        "trainer_type": ""
       },
       "trigger": "rctmod:defeat_count"
     },
-    "first_defeat_agatha": {
+    "defeat_lorelei": {
       "conditions": {
-        "trainer_ids": ["elite_four_agatha_0054", "elite_four_agatha_0053"]
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "elite_four_lorelei_004e",
+          "elite_four_lorelei_004d"
+        ],
+        "trainer_type": ""
       },
       "trigger": "rctmod:defeat_count"
     }
   },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Defeat 4 members of the Elite 4"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Elite 4"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_trainer_brendan_3",
   "requirements": [
-    ["first_defeat_bruno"],
-    ["first_defeat_lance"],
-    ["first_defeat_lorelei"],
-    ["first_defeat_agatha"]
+    [
+      "defeat_bruno"
+    ],
+    [
+      "defeat_lance"
+    ],
+    [
+      "defeat_lorelei"
+    ],
+    [
+      "defeat_agatha"
+    ]
   ]
 }

@@ -1,31 +1,38 @@
 {
-  "parent": "rctmod:trainers/defeat_rival_terry_1",
-  "display": {
-    "title": {
-      "text": "Cascade Badge"
-    },
-    "description": {
-      "text": "Defeat Leader Misty"
-    },
-    "icon": {
-      "id": "cobblemon:poke_ball"
-    },
-    "announce_to_chat": true,
-    "show_toast": true,
-    "hidden": false,
-    "frame": "goal"
-  },
   "criteria": {
-    "first_defeat": {
+    "defeat_leader_misty": {
       "conditions": {
-        "trainer_ids": ["leader_misty_019f"]
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "leader_misty_019f"
+        ],
+        "trainer_type": ""
       },
       "trigger": "rctmod:defeat_count"
     }
   },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Defeat Leader Misty"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Cascade Badge"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_rival_terry_1",
   "requirements": [
     [
-      "first_defeat"
+      "defeat_leader_misty"
     ]
   ]
 }

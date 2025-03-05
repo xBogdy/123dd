@@ -1,26 +1,26 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "PPP",
-    "NGR",
-    "PPP"
-  ],
   "key": {
-    "P": {
-      "item": "minecraft:paper"
+    "G": {
+      "item": "minecraft:glass_pane"
     },
     "N": {
       "item": "minecraft:name_tag"
     },
-    "G": {
-      "item": "minecraft:glass_pane"
+    "P": {
+      "item": "minecraft:paper"
     },
     "R": {
       "item": "minecraft:redstone"
     }
   },
+  "pattern": [
+    "PPP",
+    "NGR",
+    "PPP"
+  ],
   "result": {
-    "id": "rctmod:trainer_card",
-    "count": 1
-  }
+    "count": 1,
+    "id": "rctmod:trainer_card"
+  },
+  "type": "minecraft:crafting_shaped"
 }

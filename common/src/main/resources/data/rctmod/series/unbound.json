@@ -1,6 +1,10 @@
 {
-    "title": "Unbound",
-    "description": "A mysterious team is causing trouble in the Borrious region. Who knows what destiny has in store for you.",
-    "difficulty": 9,
-    "requiredSeries": [["bdsp"]]
+  "description": "A mysterious team is causing trouble in the Borrious region. Who knows what destiny has in store for you.",
+  "difficulty": 9,
+  "requiredSeries": [
+    [
+      "bdsp"
+    ]
+  ],
+  "title": "Unbound"
 }

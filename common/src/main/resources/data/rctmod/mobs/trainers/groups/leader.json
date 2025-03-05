@@ -1,9 +1,17 @@
 {
-  "type": "NORMAL",
-  "maxTrainerWins": 3,
-  "maxTrainerDefeats": 1,
   "battleCooldownTicks": 240,
+  "biomeTagBlacklist": [
+    "is_void"
+  ],
+  "biomeTagWhitelist": [
+    "is_overworld",
+    "is_nether",
+    "has_structure/end_city"
+  ],
+  "maxTrainerDefeats": 1,
+  "maxTrainerWins": 3,
+  "requiredDefeats": [],
+  "series": [],
   "spawnWeightFactor": 0.75,
-  "biomeTagBlacklist": ["is_void"],
-  "biomeTagWhitelist": ["is_overworld", "is_nether", "has_structure/end_city"]
+  "type": "normal"
 }

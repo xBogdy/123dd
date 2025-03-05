@@ -1,9 +1,21 @@
 {
-  "type": "TEAM_ROCKET",
-  "maxTrainerWins": 5,
-  "maxTrainerDefeats": 1,
   "battleCooldownTicks": 240,
-  "spawnWeightFactor": 1.0,
-  "biomeTagBlacklist": ["is_void"],
-  "biomeTagWhitelist": ["is_nether", "has_structure/end_city", "is_badlands", "is_wasteland", "is_savanna"]
+  "biomeTagBlacklist": [
+    "is_void"
+  ],
+  "biomeTagWhitelist": [
+    "is_nether",
+    "has_structure/end_city",
+    "is_badlands",
+    "is_wasteland",
+    "is_savanna"
+  ],
+  "maxTrainerDefeats": 1,
+  "maxTrainerWins": 5,
+  "requiredDefeats": [],
+  "series": [
+    "radicalred"
+  ],
+  "spawnWeightFactor": 1,
+  "type": "team_rocket"
 }

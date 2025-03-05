@@ -1,31 +1,38 @@
 {
-  "parent": "rctmod:trainers/defeat_rival_terry_4",
-  "display": {
-    "title": {
-      "text": "Are you prepared?"
-    },
-    "description": {
-      "text": "Defeat Trainer Brendans final team"
-    },
-    "icon": {
-      "id": "cobblemon:poke_ball"
-    },
-    "announce_to_chat": true,
-    "show_toast": true,
-    "hidden": false,
-    "frame": "task"
-  },
   "criteria": {
-    "first_defeat": {
+    "defeat_trainer_brendan_3": {
       "conditions": {
-        "trainer_ids": ["trainer_brendan_001a"]
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "trainer_brendan_001a"
+        ],
+        "trainer_type": ""
       },
       "trigger": "rctmod:defeat_count"
     }
   },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Defeat Trainer Brendans final team"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Are you prepared?"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_rival_terry_4",
   "requirements": [
     [
-      "first_defeat"
+      "defeat_trainer_brendan_3"
     ]
   ]
 }

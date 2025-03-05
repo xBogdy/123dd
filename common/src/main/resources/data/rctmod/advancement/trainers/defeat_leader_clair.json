@@ -1,31 +1,38 @@
 {
-  "parent": "rctmod:trainers/defeat_boss_giovanni_3",
-  "display": {
-    "title": {
-      "text": "Rising Badge"
-    },
-    "description": {
-      "text": "Defeat Leader Clair"
-    },
-    "icon": {
-      "id": "cobblemon:poke_ball"
-    },
-    "announce_to_chat": true,
-    "show_toast": true,
-    "hidden": false,
-    "frame": "goal"
-  },
   "criteria": {
-    "first_defeat": {
+    "defeat_leader_clair": {
       "conditions": {
-        "trainer_ids": ["leader_clair_004a"]
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "leader_clair_004a"
+        ],
+        "trainer_type": ""
       },
       "trigger": "rctmod:defeat_count"
     }
   },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Defeat Leader Clair"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Rising Badge"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_boss_giovanni_3",
   "requirements": [
     [
-      "first_defeat"
+      "defeat_leader_clair"
     ]
   ]
 }

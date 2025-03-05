@@ -1,30 +1,33 @@
 {
-  "parent": "rctmod:trainers/defeat_any",
-  "display": {
-    "title": {
-      "text": "Wrong way to battle"
-    },
-    "description": {
-      "text": "'Defeat' any Trainer"
-    },
-    "icon": {
-      "id": "minecraft:iron_sword"
-    },
-    "announce_to_chat": false,
-    "show_toast": true,
-    "hidden": true,
-    "frame": "task"
-  },
   "criteria": {
     "kill_trainer": {
       "conditions": {
+        "count": 1,
         "entity": {
           "type": "rctmod:trainer"
-        }
+        },
+        "trainer_ids": [],
+        "trainer_type": ""
       },
       "trigger": "minecraft:player_killed_entity"
     }
   },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "'Defeat' any Trainer"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "id": "minecraft:iron_sword"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Wrong way to battle"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_any",
   "requirements": [
     [
       "kill_trainer"

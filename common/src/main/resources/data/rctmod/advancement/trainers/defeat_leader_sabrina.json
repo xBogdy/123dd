@@ -1,31 +1,38 @@
 {
-  "parent": "rctmod:trainers/defeat_boss_giovanni_2",
-  "display": {
-    "title": {
-      "text": "Marsh Badge"
-    },
-    "description": {
-      "text": "Defeat Leader Sabrina"
-    },
-    "icon": {
-      "id": "cobblemon:poke_ball"
-    },
-    "announce_to_chat": true,
-    "show_toast": true,
-    "hidden": false,
-    "frame": "goal"
-  },
   "criteria": {
-    "first_defeat": {
+    "defeat_leader_sabrina": {
       "conditions": {
-        "trainer_ids": ["leader_sabrina_01a4"]
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "leader_sabrina_01a4"
+        ],
+        "trainer_type": ""
       },
       "trigger": "rctmod:defeat_count"
     }
   },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Defeat Leader Sabrina"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Marsh Badge"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_boss_giovanni_2",
   "requirements": [
     [
-      "first_defeat"
+      "defeat_leader_sabrina"
     ]
   ]
 }

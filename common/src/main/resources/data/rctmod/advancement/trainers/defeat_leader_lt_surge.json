@@ -1,31 +1,38 @@
 {
-  "parent": "rctmod:trainers/defeat_trainer_brendan_1",
-  "display": {
-    "title": {
-      "text": "Thunder Badge"
-    },
-    "description": {
-      "text": "Defeat Leader Lt. Surge"
-    },
-    "icon": {
-      "id": "cobblemon:poke_ball"
-    },
-    "announce_to_chat": true,
-    "show_toast": true,
-    "hidden": false,
-    "frame": "goal"
-  },
   "criteria": {
-    "first_defeat": {
+    "defeat_leader_lt_surge": {
       "conditions": {
-        "trainer_ids": ["leader_lt_surge_01a0"]
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "leader_lt_surge_01a0"
+        ],
+        "trainer_type": ""
       },
       "trigger": "rctmod:defeat_count"
     }
   },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Defeat Leader Lt. Surge"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Thunder Badge"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_trainer_brendan_1",
   "requirements": [
     [
-      "first_defeat"
+      "defeat_leader_lt_surge"
     ]
   ]
 }

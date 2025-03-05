@@ -1,31 +1,38 @@
 {
-  "parent": "rctmod:trainers/defeat_boss_giovanni_2",
-  "display": {
-    "title": {
-      "text": "Left hand"
-    },
-    "description": {
-      "text": "Defeat Rocket Admin Archers single team"
-    },
-    "icon": {
-      "id": "cobblemon:poke_ball"
-    },
-    "announce_to_chat": true,
-    "show_toast": true,
-    "hidden": true,
-    "frame": "task"
-  },
   "criteria": {
-    "first_defeat": {
+    "defeat_rocket_admin_archer_2": {
       "conditions": {
-        "trainer_ids": ["rocket_admin_archer_0035"]
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "rocket_admin_archer_0035"
+        ],
+        "trainer_type": ""
       },
       "trigger": "rctmod:defeat_count"
     }
   },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Defeat Rocket Admin Archers single team"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Left hand"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_boss_giovanni_2",
   "requirements": [
     [
-      "first_defeat"
+      "defeat_rocket_admin_archer_2"
     ]
   ]
 }

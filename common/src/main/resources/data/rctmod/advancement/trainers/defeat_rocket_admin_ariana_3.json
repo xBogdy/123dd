@@ -1,31 +1,38 @@
 {
-  "parent": "rctmod:trainers/defeat_trainer_brendan_3",
-  "display": {
-    "title": {
-      "text": "Leftovers"
-    },
-    "description": {
-      "text": "Defeat Rocket Admin Arianas final team"
-    },
-    "icon": {
-      "id": "cobblemon:poke_ball"
-    },
-    "announce_to_chat": true,
-    "show_toast": true,
-    "hidden": true,
-    "frame": "task"
-  },
   "criteria": {
-    "first_defeat": {
+    "defeat_rocket_admin_ariana_3": {
       "conditions": {
-        "trainer_ids": ["rocket_admin_archer_002a"]
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "rocket_admin_ariana_0029"
+        ],
+        "trainer_type": ""
       },
       "trigger": "rctmod:defeat_count"
     }
   },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Defeat Rocket Admin Arianas final team"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Leftovers"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_trainer_brendan_3",
   "requirements": [
     [
-      "first_defeat"
+      "defeat_rocket_admin_ariana_3"
     ]
   ]
 }

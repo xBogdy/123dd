@@ -1,32 +1,36 @@
 {
-  "parent": "rctmod:trainers/defeat_trainer_red",
-  "display": {
-    "title": {
-      "text": "There can only be one"
-    },
-    "description": {
-      "text": "Defeat all rivals"
-    },
-    "icon": {
-      "id": "cobblemon:poke_ball"
-    },
-    "announce_to_chat": true,
-    "show_toast": true,
-    "hidden": true,
-    "frame": "challenge"
-  },
   "criteria": {
-    "first_defeat": {
+    "defeat_all_rival": {
       "conditions": {
-        "trainer_type": "RIVAL",
-        "count": -1
+        "count": -1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [],
+        "trainer_type": "rival"
       },
       "trigger": "rctmod:defeat_count"
     }
   },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Defeat all rivals"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "There can only be one"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_trainer_red",
   "requirements": [
     [
-      "first_defeat"
+      "defeat_all_rival"
     ]
   ]
 }

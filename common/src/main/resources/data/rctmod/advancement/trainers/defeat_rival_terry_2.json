@@ -1,31 +1,40 @@
 {
-  "parent": "rctmod:trainers/defeat_boss_giovanni_1",
-  "display": {
-    "title": {
-      "text": "We are on good terms... right?"
-    },
-    "description": {
-      "text": "Defeat Rival Terry (again)"
-    },
-    "icon": {
-      "id": "cobblemon:poke_ball"
-    },
-    "announce_to_chat": false,
-    "show_toast": true,
-    "hidden": false,
-    "frame": "task"
-  },
   "criteria": {
-    "first_defeat": {
+    "defeat_rival_terry_2": {
       "conditions": {
-        "trainer_ids": ["rival_terry_01b2", "rival_terry_01b1", "rival_terry_01b0"]
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "rival_terry_01b2",
+          "rival_terry_01b1",
+          "rival_terry_01b0"
+        ],
+        "trainer_type": ""
       },
       "trigger": "rctmod:defeat_count"
     }
   },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Defeat Rival Terry (again)"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "We are on good terms... right?"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_boss_giovanni_1",
   "requirements": [
     [
-      "first_defeat"
+      "defeat_rival_terry_2"
     ]
   ]
 }

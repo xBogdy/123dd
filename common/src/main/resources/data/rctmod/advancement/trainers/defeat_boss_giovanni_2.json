@@ -1,31 +1,38 @@
 {
-  "parent": "rctmod:trainers/defeat_rocket_admin_archer_and_ariana",
-  "display": {
-    "title": {
-      "text": "Fateful encounter"
-    },
-    "description": {
-      "text": "Defeat Boss Giovanni (again)"
-    },
-    "icon": {
-      "id": "cobblemon:poke_ball"
-    },
-    "announce_to_chat": true,
-    "show_toast": true,
-    "hidden": false,
-    "frame": "task"
-  },
   "criteria": {
-    "first_defeat": {
+    "defeat_boss_giovanni_2": {
       "conditions": {
-        "trainer_ids": ["boss_giovanni_015d"]
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "boss_giovanni_015d"
+        ],
+        "trainer_type": ""
       },
       "trigger": "rctmod:defeat_count"
     }
   },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Defeat Boss Giovanni (again)"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Fateful encounter"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_rocket_admin_archer_and_ariana",
   "requirements": [
     [
-      "first_defeat"
+      "defeat_boss_giovanni_2"
     ]
   ]
 }

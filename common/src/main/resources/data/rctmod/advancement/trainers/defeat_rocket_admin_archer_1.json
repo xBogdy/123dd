@@ -1,31 +1,38 @@
 {
-  "parent": "rctmod:trainers/defeat_leader_brock",
-  "display": {
-    "title": {
-      "text": "Shady organization"
-    },
-    "description": {
-      "text": "Defeat Rocket Admin Archer for the first time"
-    },
-    "icon": {
-      "id": "cobblemon:poke_ball"
-    },
-    "announce_to_chat": false,
-    "show_toast": true,
-    "hidden": false,
-    "frame": "task"
-  },
   "criteria": {
-    "first_defeat": {
+    "defeat_rocket_admin_archer_1": {
       "conditions": {
-        "trainer_ids": ["rocket_admin_archer_002e"]
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "rocket_admin_archer_002e"
+        ],
+        "trainer_type": ""
       },
       "trigger": "rctmod:defeat_count"
     }
   },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Defeat Rocket Admin Archer for the first time"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Shady organization"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_leader_brock",
   "requirements": [
     [
-      "first_defeat"
+      "defeat_rocket_admin_archer_1"
     ]
   ]
 }

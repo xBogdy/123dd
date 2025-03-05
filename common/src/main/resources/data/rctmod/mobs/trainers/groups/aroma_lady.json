@@ -1,9 +1,21 @@
 {
-  "type": "NORMAL",
-  "maxTrainerWins": 5,
-  "maxTrainerDefeats": 1,
   "battleCooldownTicks": 240,
-  "spawnWeightFactor": 1.0,
-  "biomeTagBlacklist": ["is_void", "is_nether", "is_end", "is_water", "is_underground"],
-  "biomeTagWhitelist": ["is_forest", "is_plains", "is_beach"]
+  "biomeTagBlacklist": [
+    "is_void",
+    "is_nether",
+    "is_end",
+    "is_water",
+    "is_underground"
+  ],
+  "biomeTagWhitelist": [
+    "is_forest",
+    "is_plains",
+    "is_beach"
+  ],
+  "maxTrainerDefeats": 1,
+  "maxTrainerWins": 5,
+  "requiredDefeats": [],
+  "series": [],
+  "spawnWeightFactor": 1,
+  "type": "normal"
 }

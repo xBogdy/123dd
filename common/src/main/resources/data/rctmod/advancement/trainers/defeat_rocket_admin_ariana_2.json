@@ -1,31 +1,38 @@
 {
-  "parent": "rctmod:trainers/defeat_rocket_admin_archer_3",
-  "display": {
-    "title": {
-      "text": "Alpha"
-    },
-    "description": {
-      "text": "Defeat Rocket Admin Ariana"
-    },
-    "icon": {
-      "id": "cobblemon:poke_ball"
-    },
-    "announce_to_chat": false,
-    "show_toast": true,
-    "hidden": false,
-    "frame": "task"
-  },
   "criteria": {
-    "first_defeat": {
+    "defeat_rocket_admin_ariana_2": {
       "conditions": {
-        "trainer_ids": ["rocket_admin_ariana_0044"]
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "rocket_admin_ariana_0044"
+        ],
+        "trainer_type": ""
       },
       "trigger": "rctmod:defeat_count"
     }
   },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Defeat Rocket Admin Ariana"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Alpha"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_rocket_admin_archer_3",
   "requirements": [
     [
-      "first_defeat"
+      "defeat_rocket_admin_ariana_2"
     ]
   ]
 }

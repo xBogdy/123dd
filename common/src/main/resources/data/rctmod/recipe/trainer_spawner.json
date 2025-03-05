@@ -1,26 +1,26 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "BSB",
-    "DRD",
-    "BSB"
-  ],
   "key": {
     "B": {
       "item": "minecraft:stone_bricks"
-    },
-    "S": {
-      "item": "minecraft:stone_brick_slab"
     },
     "D": {
       "item": "minecraft:diamond"
     },
     "R": {
       "item": "minecraft:redstone"
+    },
+    "S": {
+      "item": "minecraft:stone_brick_slab"
     }
   },
+  "pattern": [
+    "BSB",
+    "DRD",
+    "BSB"
+  ],
   "result": {
-    "id": "rctmod:trainer_spawner",
-    "count": 1
-  }
+    "count": 1,
+    "id": "rctmod:trainer_spawner"
+  },
+  "type": "minecraft:crafting_shaped"
 }

@@ -1,12 +1,25 @@
 {
-  "type": "RIVAL",
-  "requiredDefeats": [
-    ["leader_sabrina_01a4"]
-  ],
-  "maxTrainerWins": 3,
-  "maxTrainerDefeats": 1,
   "battleCooldownTicks": 240,
+  "biomeTagBlacklist": [
+    "is_void",
+    "is_end"
+  ],
+  "biomeTagWhitelist": [
+    "is_plains",
+    "is_sparse_vegetation",
+    "is_rare",
+    "is_underground"
+  ],
+  "maxTrainerDefeats": 1,
+  "maxTrainerWins": 3,
+  "requiredDefeats": [
+    [
+      "leader_sabrina_01a4"
+    ]
+  ],
+  "series": [
+    "radicalred"
+  ],
   "spawnWeightFactor": 0.25,
-  "biomeTagBlacklist": ["is_void", "is_end"],
-  "biomeTagWhitelist": ["is_plains", "is_sparse_vegetation", "is_rare", "is_underground"]
+  "type": "rival"
 }

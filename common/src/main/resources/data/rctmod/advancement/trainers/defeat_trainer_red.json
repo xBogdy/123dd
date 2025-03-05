@@ -1,31 +1,38 @@
 {
-  "parent": "rctmod:trainers/defeat_champion",
-  "display": {
-    "title": {
-      "text": "..."
-    },
-    "description": {
-      "text": "Defeat Trainer Red"
-    },
-    "icon": {
-      "id": "cobblemon:poke_ball"
-    },
-    "announce_to_chat": true,
-    "show_toast": true,
-    "hidden": true,
-    "frame": "challenge"
-  },
   "criteria": {
-    "first_defeat": {
+    "defeat_trainer_red": {
       "conditions": {
-        "trainer_ids": ["trainer_red_0003"]
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "trainer_red_0003"
+        ],
+        "trainer_type": ""
       },
       "trigger": "rctmod:defeat_count"
     }
   },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Defeat Trainer Red"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "..."
+    }
+  },
+  "parent": "rctmod:trainers/defeat_champion",
   "requirements": [
     [
-      "first_defeat"
+      "defeat_trainer_red"
     ]
   ]
 }

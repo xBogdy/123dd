@@ -1,5 +1,6 @@
 {
-    "title": "Brilliant Diamond/Shining Pearl",
-    "description": "A casual series but still with decent difficulty. Are you ready to conquer Unova?",
-    "difficulty": 6
+  "description": "A casual series but still with decent difficulty. Are you ready to conquer Unova?",
+  "difficulty": 5,
+  "requiredSeries": [],
+  "title": "Brilliant Diamond/Shining Pearl"
 }
