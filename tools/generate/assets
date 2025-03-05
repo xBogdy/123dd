@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# cleanup
+rm -rf "common/src/main/resources/data/rctmod/advancement"
+rm -rf "common/src/main/resources/data/rctmod/dialog"
+rm -rf "common/src/main/resources/data/rctmod/loot_table/trainers"
+rm -rf "common/src/main/resources/data/rctmod/mobs"
+rm -rf "common/src/main/resources/data/rctmod/recipe"
+rm -rf "common/src/main/resources/data/rctmod/series"
+rm -rf "common/src/main/resources/data/rctmod/trainer_types"
+
+# see https://gitlab.com/srcmc/rct/spreadsheets for more info
+curl -s -S "https://gitlab.com/srcmc/rct/spreadsheets/-/raw/master/jcy.all.yaml" | jcy -out "common/src/main/resources"
+
+rctltp -out "common/src/main/resources/data/rctmod/loot_table" \
+  -sheet_url_generic "https://gitlab.com/srcmc/rct/spreadsheets/-/raw/master/spreadsheet/loot_tables.csv" \
+  -sheet_url_groups "https://gitlab.com/srcmc/rct/spreadsheets/-/raw/master/spreadsheet/loot_table_groups.csv" \
+  -sheet_url_single "https://gitlab.com/srcmc/rct/spreadsheets/-/raw/master/spreadsheet/loot_table_singles.csv"
+
+echo "assets generated"
