@@ -3,7 +3,8 @@
 # cleanup
 rm -rf "common/src/main/resources/data/rctmod/advancement"
 rm -rf "common/src/main/resources/data/rctmod/dialog"
-rm -rf "common/src/main/resources/data/rctmod/loot_table/trainers"
+rm -rf "common/src/main/resources/data/rctmod/loot_table/trainers/groups"
+rm -rf "common/src/main/resources/data/rctmod/loot_table/trainers/single"
 rm -rf "common/src/main/resources/data/rctmod/mobs"
 rm -rf "common/src/main/resources/data/rctmod/recipe"
 rm -rf "common/src/main/resources/data/rctmod/series"
