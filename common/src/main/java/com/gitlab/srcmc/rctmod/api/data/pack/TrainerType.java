@@ -153,7 +153,9 @@ public class TrainerType implements Serializable {
                     } catch(NumberFormatException e) {
                         var s = json.getAsString().toLowerCase();
 
-                        if(s.startsWith("0x")) {
+                        if(s.isEmpty()) {
+                            s = "ffffff";
+                        } else if(s.startsWith("0x")) {
                             s = s.substring(2);
                         }
 
