@@ -2,13 +2,14 @@
 
 ## Dependencies
 # - rcttrp installed - https://gitlab.com/srcmc/rct/rcttrp
-# - trainer dump text file
 
 ## Config
-RCT_HOME="~/Documents/projects/srcmc/rct/rctmod"
-TRAINER_DUMP_FILE="~/Documents/projects/srcmc/rct/rcttrp/dumps/radical_red_3_02_trainers.txt"
+RADICALRED_SOURCE=${RADICALRED_SOURCE:-"https://gitlab.com/srcmc/rct/rcttrp/-/raw/master/dumps/radical_red_3_02_trainers.txt"}
+BDSP_SOURCE=${BDSP_SOURCE:-"https://docs.google.com/spreadsheets/d/1_uRpnFWroeCY3RaRi4lXeS9uZEDXiRIMBtTQVGrIZ3w/export?gid=773204596&format=csv"}
+UNBOUND_SOURCE=${UNBOUND_SOURCE:-"https://pastebin.com/raw/dRj8YnX0"}
+OUT="common/src/main/resources/data/rctmod/trainers"
 
 ## Commands
-rm -rf "$RCT_HOME/common/src/main/resources/data/rctmod/trainers"
-rcttrp "$TRAINER_DUMP_FILE" "$RCT_HOME/common/src/main/resources/data/rctmod/trainers"
+rm -rf "$OUT" && mkdir -p "$OUT"
+rcttrp -out "$OUT" -parse-radicalred "$RADICALRED_SOURCE" -parse-bdsp "$BDSP_SOURCE" -parse-unbound "$UNBOUND_SOURCE"
 echo "trainers generated"
