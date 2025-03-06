@@ -1,11 +1,12 @@
 {
-  "name": "Commander Mars",
+  "name": "Commander Mars \u0026 Jupiter",
   "ai": {
     "type": "rct",
     "data": {
       "maxSelectMargin": 0.15
     }
   },
+  "battleFormat": "GEN_9_DOUBLES",
   "battleRules": {
     "maxItemUses": 2
   },
@@ -17,16 +18,16 @@
   ],
   "team": [
     {
-      "species": "golbat",
-      "gender": "FEMALE",
-      "level": 37,
-      "nature": "jolly",
-      "ability": "innerfocus",
+      "species": "bronzor",
+      "gender": "GENDERLESS",
+      "level": 41,
+      "nature": "sassy",
+      "ability": "levitate",
       "moveset": [
-        "astonish",
-        "poisonfang",
-        "bite",
-        "uturn"
+        "confuseray",
+        "payback",
+        "gyroball",
+        "reflect"
       ],
       "ivs": {
         "hp": 15,
@@ -42,14 +43,14 @@
     {
       "species": "bronzor",
       "gender": "GENDERLESS",
-      "level": 37,
-      "nature": "sassy",
+      "level": 41,
+      "nature": "relaxed",
       "ability": "levitate",
       "moveset": [
         "confuseray",
         "payback",
-        "gyroball",
-        "irondefense"
+        "extrasensory",
+        "lightscreen"
       ],
       "ivs": {
         "hp": 15,
@@ -61,30 +62,6 @@
         "def": 68,
         "spd": 68
       }
-    },
-    {
-      "species": "purugly",
-      "gender": "MALE",
-      "level": 39,
-      "nature": "jolly",
-      "ability": "thickfat",
-      "moveset": [
-        "growl",
-        "aerialace",
-        "slash",
-        "uturn"
-      ],
-      "ivs": {
-        "hp": 15,
-        "def": 15,
-        "spd": 15
-      },
-      "evs": {
-        "hp": 68,
-        "def": 68,
-        "spd": 68
-      },
-      "heldItem": "sitrus_berry"
     }
   ]
 }

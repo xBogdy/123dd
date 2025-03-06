@@ -3,31 +3,31 @@
   "battleFormat": "GEN_9_DOUBLES",
   "team": [
     {
-      "species": "pikachu",
+      "species": "raichu",
       "gender": "FEMALE",
-      "level": 40,
+      "level": 60,
       "nature": "timid",
       "ability": "static",
       "moveset": [
         "nuzzle",
-        "growl",
-        "quickattack",
-        "lightscreen"
+        "thunderbolt",
+        "lightscreen",
+        "growl"
       ],
       "ivs": {},
       "evs": {}
     },
     {
-      "species": "clefairy",
+      "species": "clefable",
       "gender": "FEMALE",
-      "level": 40,
+      "level": 60,
       "nature": "timid",
       "ability": "magicguard",
       "moveset": [
-        "disarmingvoice",
-        "defensecurl",
         "lifedew",
-        "followme"
+        "followme",
+        "cosmicpower",
+        "moonblast"
       ],
       "ivs": {},
       "evs": {}

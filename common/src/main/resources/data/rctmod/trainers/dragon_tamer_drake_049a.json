@@ -7,11 +7,11 @@
     }
   },
   "battleRules": {
-    "maxItemUses": 5
+    "maxItemUses": 4
   },
   "bag": [
     {
-      "item": "cobblemon:hyper_potion",
+      "item": "cobblemon:superb_remedy",
       "quantity": 2
     }
   ],
