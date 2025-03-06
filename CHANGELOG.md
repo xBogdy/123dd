@@ -6,20 +6,21 @@
 
 **Added:**
 
-- *#243* *Luck* stat
+- *#244* *Luck* stat
   - Every player has a luck stat that influences the quality of loot from trainers
-  - Finishing a series (see *#242*) will permanently raise the luck of players based of the difficulty of the series (this can be repeated indefinetely, also for the same series, but with "diminishing returns")
-- *#242* *Series* system
+  - Finishing a series (see *#243*) will permanently raise the luck of players based of the difficulty of the series (this can be repeated indefinetely, also for the same series, but with "diminishing returns")
+- *#243* *Series* system
   - Every series has its own progression (i.e. chain of key trainers and level caps)
   - Only trainers from the current series of a player will be listed in the trainer card of that player
   - Only trainers from the current series of a player will spawn for that player
   - Players now have a `currentSeries` property (defaults to the *empty series*)
   - Players now have statistics to keep track of completed series (the current and completed series of players can be inspected or modified with commands, see *#237* and *#238*)
-- *#241* About ~800 trainers (see *#231* and *#229*)
-- *#240* Command: `player add progress (before|after)`: Update progress without resetting current progression (useful for optional/alternative progression paths)
-- *#239* Command: `player get progress graph`: Generate a visual representation of a players series progression that can be viewed online (powered by PlantUML)
-- *#238* Command: `player get series [completed]`: Retrieves the current or all completed series of a player
-- *#237* Command: `player set series <seriesId> [completed <count>]`: Updates the current or completed series of a player
+- *#242* About ~800 trainers (see *#231* and *#229*)
+- *#241* Command `player get luck`: Retrieves the accumulated luck of a player (based of how many sereis the player has completed)
+- *#240* Command `player add progress (before|after)`: Update progress without resetting current progression (useful for optional/alternative progression paths)
+- *#239* Command `player get progress graph`: Generate a visual representation of a players series progression that can be viewed online (powered by PlantUML)
+- *#238* Command `player get series [completed]`: Retrieves the current or all completed series of a player
+- *#237* Command `player set series <seriesId> [completed <count>]`: Updates the current or completed series of a player
 - *#236* Config option: `considerEmptySeriesCompleted`
 - *#235* Config option: `spawnTrainerAssociation`
 - *#234* Config option: `spawningRequiresTrainerCard`

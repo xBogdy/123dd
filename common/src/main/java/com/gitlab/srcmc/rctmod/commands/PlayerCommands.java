@@ -21,6 +21,7 @@ import java.util.HashSet;
 import java.util.Set;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
+import com.gitlab.srcmc.rctmod.api.data.pack.SeriesMetaData;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerType;
 import com.gitlab.srcmc.rctmod.api.data.save.TrainerPlayerData;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
@@ -53,8 +54,12 @@ public final class PlayerCommands {
             .requires(css -> css.hasPermission(1))
             .then(Commands.literal("player")
                 .then(Commands.literal("get")
+                    .then(Commands.literal("luck")
+                        .executes(PlayerCommands::player_get_luck)
+                        .then(Commands.argument("target", EntityArgument.player())
+                            .executes(PlayerCommands::player_get_luck_target)))
                     .then(Commands.literal("series")
-                        .executes(SuggestionUtils::player_get_current_series)
+                        .executes(PlayerCommands::player_get_current_series)
                         .then(Commands.literal("completed")
                             .executes(PlayerCommands::player_get_completed_series))
                         .then(Commands.argument("target", EntityArgument.player())
@@ -154,10 +159,46 @@ public final class PlayerCommands {
                 )));
     }
 
+    private static int player_get_luck(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        if(context.getSource().getEntity() instanceof Player player) {
+            var bsw = getluck(player);
+            context.getSource().sendSuccess(() -> Component.literal(bsw), false);
+            return 0;
+        }
+        
+        context.getSource().sendFailure(Component.literal("caller is not a player"));
+        return -1;
+    }
+
+    private static int player_get_luck_target(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        var player = EntityArgument.getPlayer(context, "target");
+        var bsw = getluck(player);
+        context.getSource().sendSuccess(() -> Component.literal(bsw), false);
+        return 0;
+    }
+
+    private static String getluck(Player player) {
+        var tpd = RCTMod.getInstance().getTrainerManager().getData(player);
+        var sm = RCTMod.getInstance().getSeriesManager();
+        return String.format("%d/%.4f",
+            tpd.getCompletedSeries().entrySet().stream().map(e -> sm.getGraph(e.getKey()).getMetaData().difficulty() * e.getValue()).reduce(0, (a, b) -> a + b),
+            tpd.getBonusLuck((int)(player.getLuck() * SeriesMetaData.MAX_DIFFICULTY)));
+    }
+
     private static int player_get_current_series_target(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         var player = EntityArgument.getPlayer(context, "target");
         context.getSource().sendSuccess(() -> Component.literal(PlayerState.get(player).getCurrentSeries()), false);
         return 0;
+    }
+
+    public static int player_get_current_series(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        if(context.getSource().getEntity() instanceof Player player) {
+            context.getSource().sendSuccess(() -> Component.literal(PlayerState.get(player).getCurrentSeries()), false);
+            return 0;
+        }
+        
+        context.getSource().sendFailure(Component.literal("caller is not a player"));
+        return -1;
     }
 
     private static int player_get_completed_series(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {

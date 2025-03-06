@@ -22,7 +22,6 @@ import java.util.stream.Stream;
 
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerType;
-import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.api.service.SeriesManager;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
@@ -31,7 +30,6 @@ import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 
 public final class SuggestionUtils {
@@ -144,16 +142,6 @@ public final class SuggestionUtils {
             .forEach(f -> builder.suggest(pre + f));
 
         return builder.buildFuture();
-    }
-
-    public static int player_get_current_series(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
-        if(context.getSource().getEntity() instanceof Player player) {
-            context.getSource().sendSuccess(() -> Component.literal(PlayerState.get(player).getCurrentSeries()), false);
-            return 0;
-        }
-        
-        context.getSource().sendFailure(Component.literal("caller is not a player"));
-        return -1;
     }
 
     private SuggestionUtils() {

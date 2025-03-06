@@ -455,7 +455,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
             .withParameter(LootContextParams.LAST_DAMAGE_PLAYER, player)
             .withLuck(RCTMod.getInstance()
                 .getTrainerManager().getData(player)
-                .getBonusLuck((int)(player.getLuck() * SeriesMetaData.MAX_DIFFICULTY)));
+                .getBonusLuck((int)(player.getLuck() * SeriesMetaData.MAX_DIFFICULTY))); // vanilla player luck stat will also boost trainer loot
 
         ModCommon.LOG.info("PLAYER LUCK: " + player.getLuck() + ", " + RCTMod.getInstance().getTrainerManager().getData(player).getBonusLuck((int)(player.getLuck() * SeriesMetaData.MAX_DIFFICULTY)));
 
