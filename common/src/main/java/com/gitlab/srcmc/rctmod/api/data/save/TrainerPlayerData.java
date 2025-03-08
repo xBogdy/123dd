@@ -287,6 +287,9 @@ public class TrainerPlayerData extends SavedData {
 
             if(tag.contains("currentSeries")) {
                 tpd.setCurrentSeries(tag.getString("currentSeries"));
+            } else {
+                // pre 0.14 -> assign to radicalred series
+                tpd.setCurrentSeries("radicalred");
             }
 
             if(tag.contains("completedSeries")) {

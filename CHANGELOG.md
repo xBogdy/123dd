@@ -1,8 +1,8 @@
 # Changelog
 
-**Important**: Version **0.14** introduces the **series system** and it is unfortunately not possible to automatically migrate the progression of players from previous versions. The progress of player can be manually updated with commands, see [here](https://srcmc.gitlab.io/rct/docs/0.14/guides/migration/) for a guidline/example.
+**Important**: Version **0.14** introduces the **series system**. Existing player saves will automatically be assigned to the *radicalred series*. New players will start with the *empty series* and have to unlock later series first by completing the *bdsp series* (see also *#233* Trainer Association).
 
-## [0.14.0-beta] - 2025-03-06
+## [0.14.0-beta] - 2025-03-08
 
 **Added:**
 
@@ -15,22 +15,23 @@
   - Only trainers from the current series of a player will spawn for that player
   - Players now have a `currentSeries` property (defaults to the *empty series*)
   - Players now have statistics to keep track of completed series (the current and completed series of players can be inspected or modified with commands, see *#238* and *#239*)
-- *#243* About ~800 trainers (see *#232* and *#230*)
+- *#243* About ~800 new trainers (see *#232* and *#230*)
 - *#242* Command `player add progress (before|after)`: Update progress without resetting current progression (useful for optional/alternative progression paths)
-- *#241* Command `player get luck`: Retrieves the accumulated luck of a player (based of how many sereis the player has completed)
+- *#241* Command `player get luck`: Retrieves the accumulated luck of a player (based of how many series the player has completed)
 - *#240* Command `player get progress graph`: Generate a visual representation of a players series progression that can be viewed online (powered by PlantUML)
 - *#239* Command `player get series [completed]`: Retrieves the current or all completed series of a player
 - *#238* Command `player set series <seriesId> [completed <count>]`: Updates the current or completed series of a player
 - *#237* Config option: `considerEmptySeriesCompleted`
 - *#236* Config option: `spawnTrainerAssociation`
 - *#235* Config option: `spawningRequiresTrainerCard`
-- *#234* Data pack: Trainer mob properties `series` and `substitutes`, a list of series ids the trainer belongs to (the trainer will belong to every series if empty or not set) and a list of trainers that may serve as replacement in terms a series progression
+- *#234* Data pack: Trainer mob properties `series` and `substitutes`, a list of series ids the trainer belongs to (the trainer will belong to every series if empty or not set) and a list of trainers that may serve as replacement in terms of series progression
 - *#233* Entity: "Trainer Association" (similar to the Wandering Trader)
   - Offers *trades* (options) for players to start (over) a new series (some offers may require to complete certain series first before they will appear)
   - Offers a Trainer Card trade
   - Only one npc per player can spawn at a time
   - Spawns close to players that carry a trainer card and have either not started or completed a series
   - Spawns nearby players that are close to a decently sized village (3 beds in proximity to a village center)
+  - The trainer card will glow and point towards the nearest Trainer Association entity for players that are in the *empty series* or have completed their series
   - Works like a regular minecraft npc (can be summoned with `/summon` and persisted by placing them in a boat or by naming them with a name tag)
 - *#232* Series *Brilliant Diamond/Shining Pearl*: A casual series from the main line games (TODO)
 - *#231* Series *Radical Red*: All trainers and progression as known from previous versions of this mod
