@@ -1,0 +1,23 @@
+#!/bin/bash
+# Supply trainer ids to print all distinct groups.
+# Example: ls trainers | lsgroups
+
+declare -A printed
+
+process_names() {
+    IFS='_' read -r -a names <<< "$1"
+    local name="${1%_*}"
+    
+    if [ ${#names[@]} -gt 1 ]; then
+        if [[ -z "${printed[$name]}" ]]; then
+            echo "$name"
+            printed["$name"]=1
+        fi
+        
+        process_names "$name"
+    fi
+}
+
+while IFS= read -r line; do
+    process_names $(basename "${line%_*}")
+done
