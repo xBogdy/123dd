@@ -33,7 +33,7 @@
   - Spawns nearby players that are close to a decently sized village (3 beds in proximity to a village center)
   - The trainer card will glow and point towards the nearest Trainer Association entity for players that are in the *empty series* or have completed their series
   - Works like a regular minecraft npc (can be summoned with `/summon` and persisted by placing them in a boat or by naming them with a name tag)
-- *#232* Series *Brilliant Diamond/Shining Pearl*: A casual series from the main line games (TODO)
+- *#232* Series *Brilliant Diamond/Shining Pearl* (bdsp): A casual series from the main line games
 - *#231* Series *Radical Red*: All trainers and progression as known from previous versions of this mod
 - *#230* Series *Unbound*: Difficult trainers and progression from the (incredible) rom hack "Unbound" (no seriously, play it) (TODO)
 
