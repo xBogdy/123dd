@@ -2,7 +2,7 @@
   "battleCooldownTicks": 240,
   "biomeTagBlacklist": [
     "is_void",
-    "is_end"
+    "is_nether"
   ],
   "biomeTagWhitelist": [
     "is_spooky",
@@ -10,6 +10,7 @@
   ],
   "maxTrainerDefeats": 1,
   "maxTrainerWins": 3,
+  "optional": false,
   "requiredDefeats": [
     [
       "boss_giovanni_015d"

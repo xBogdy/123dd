@@ -1,0 +1,20 @@
+{
+  "battleCooldownTicks": 240,
+  "biomeTagBlacklist": [
+    "is_void",
+    "is_end",
+    "is_nether"
+  ],
+  "biomeTagWhitelist": [
+    "is_badlands",
+    "is_wasteland",
+    "is_plains"
+  ],
+  "maxTrainerDefeats": 1,
+  "maxTrainerWins": 5,
+  "optional": true,
+  "requiredDefeats": [],
+  "series": [],
+  "spawnWeightFactor": 1,
+  "type": "normal"
+}

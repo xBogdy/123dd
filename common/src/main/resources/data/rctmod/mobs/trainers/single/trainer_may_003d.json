@@ -13,6 +13,7 @@
   ],
   "maxTrainerDefeats": 1,
   "maxTrainerWins": 3,
+  "optional": false,
   "requiredDefeats": [
     [
       "leader_koga_01a2"
@@ -21,6 +22,6 @@
   "series": [
     "radicalred"
   ],
-  "spawnWeightFactor": 0.025,
+  "spawnWeightFactor": 0.25,
   "type": "rival"
 }

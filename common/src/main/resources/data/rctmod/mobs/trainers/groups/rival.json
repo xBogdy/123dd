@@ -10,6 +10,7 @@
   ],
   "maxTrainerDefeats": 1,
   "maxTrainerWins": 3,
+  "optional": true,
   "requiredDefeats": [],
   "series": [
     "radicalred"

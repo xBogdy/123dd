@@ -2,17 +2,15 @@
   "battleCooldownTicks": 240,
   "biomeTagBlacklist": [
     "is_void",
-    "is_nether",
-    "is_end",
-    "is_water",
-    "is_underground"
+    "is_end"
   ],
   "biomeTagWhitelist": [
-    "is_plains",
-    "is_beach"
+    "is_badlands",
+    "is_wasteland"
   ],
   "maxTrainerDefeats": 1,
   "maxTrainerWins": 5,
+  "optional": true,
   "requiredDefeats": [],
   "series": [],
   "spawnWeightFactor": 1,

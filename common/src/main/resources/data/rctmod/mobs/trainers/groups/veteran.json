@@ -1,0 +1,18 @@
+{
+  "battleCooldownTicks": 240,
+  "biomeTagBlacklist": [
+    "is_void"
+  ],
+  "biomeTagWhitelist": [
+    "is_rare",
+    "has_structure/end_city",
+    "is_nether"
+  ],
+  "maxTrainerDefeats": 1,
+  "maxTrainerWins": 5,
+  "optional": true,
+  "requiredDefeats": [],
+  "series": [],
+  "spawnWeightFactor": 1,
+  "type": "normal"
+}

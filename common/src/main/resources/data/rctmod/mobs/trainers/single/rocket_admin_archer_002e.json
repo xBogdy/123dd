@@ -13,6 +13,7 @@
   ],
   "maxTrainerDefeats": 1,
   "maxTrainerWins": 3,
+  "optional": false,
   "requiredDefeats": [
     [
       "leader_brock_019e"

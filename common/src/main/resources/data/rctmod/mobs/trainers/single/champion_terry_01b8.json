@@ -9,6 +9,7 @@
   ],
   "maxTrainerDefeats": 1,
   "maxTrainerWins": 3,
+  "optional": false,
   "requiredDefeats": [
     [
       "elite_four_bruno_0050",

@@ -38,12 +38,6 @@
         },
         {
           "type": "minecraft:loot_table",
-          "value": "rctmod:generic/legendary/archeology",
-          "weight": 2,
-          "quality": 72
-        },
-        {
-          "type": "minecraft:loot_table",
           "value": "rctmod:generic/common/archeology",
           "weight": 500
         },
@@ -67,15 +61,9 @@
         },
         {
           "type": "minecraft:loot_table",
-          "value": "rctmod:generic/uncommon/evolution",
-          "weight": 150,
-          "quality": 350
-        },
-        {
-          "type": "minecraft:loot_table",
-          "value": "rctmod:generic/rare/evolution",
-          "weight": 40,
-          "quality": 220
+          "value": "rctmod:generic/legendary/archeology",
+          "weight": 2,
+          "quality": 72
         },
         {
           "type": "minecraft:loot_table",
@@ -88,6 +76,18 @@
           "value": "rctmod:generic/legendary/evolution",
           "weight": 2,
           "quality": 72
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/uncommon/evolution",
+          "weight": 150,
+          "quality": 350
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/rare/evolution",
+          "weight": 40,
+          "quality": 220
         }
       ]
     }

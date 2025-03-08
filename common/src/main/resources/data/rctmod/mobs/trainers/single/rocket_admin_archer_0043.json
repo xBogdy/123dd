@@ -12,6 +12,7 @@
   ],
   "maxTrainerDefeats": 1,
   "maxTrainerWins": 3,
+  "optional": false,
   "requiredDefeats": [
     [
       "leader_blaine_01a3"

@@ -8,7 +8,7 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "value": "rctmod:trainers/groups/boss_giovanni"
+          "value": "rctmod:trainers/groups/boss"
         }
       ]
     },

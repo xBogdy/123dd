@@ -1,0 +1,101 @@
+{
+  "pools": [
+    {
+      "rolls": {
+        "type": "minecraft:binomial",
+        "n": 2,
+        "p": 0.5
+      },
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/common/berries",
+          "weight": 500
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/uncommon/berries",
+          "weight": 150,
+          "quality": 350
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/rare/berries",
+          "weight": 40,
+          "quality": 220
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/epic/berries",
+          "weight": 20,
+          "quality": 60
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/legendary/berries",
+          "weight": 2,
+          "quality": 72
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/uncommon/nature",
+          "weight": 150,
+          "quality": 350
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/rare/nature",
+          "weight": 40,
+          "quality": 220
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/epic/nature",
+          "weight": 20,
+          "quality": 60
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/legendary/nature",
+          "weight": 2,
+          "quality": 72
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/common/nature",
+          "weight": 500
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/common/diverse",
+          "weight": 500
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/uncommon/diverse",
+          "weight": 150,
+          "quality": 350
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/rare/diverse",
+          "weight": 40,
+          "quality": 220
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/epic/diverse",
+          "weight": 20,
+          "quality": 60
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/legendary/diverse",
+          "weight": 2,
+          "quality": 72
+        }
+      ]
+    }
+  ],
+  "random_sequence": "rctmod:trainers/groups/bug_catcher"
+}

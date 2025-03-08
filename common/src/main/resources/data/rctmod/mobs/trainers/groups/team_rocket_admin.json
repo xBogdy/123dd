@@ -12,10 +12,11 @@
   ],
   "maxTrainerDefeats": 1,
   "maxTrainerWins": 5,
+  "optional": true,
   "requiredDefeats": [],
   "series": [
     "radicalred"
   ],
-  "spawnWeightFactor": 1,
+  "spawnWeightFactor": 0.25,
   "type": "team_rocket"
 }

@@ -1,0 +1,96 @@
+{
+  "pools": [
+    {
+      "rolls": {
+        "type": "minecraft:binomial",
+        "n": 2,
+        "p": 0.5
+      },
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/uncommon/evolution",
+          "weight": 150,
+          "quality": 350
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/rare/evolution",
+          "weight": 40,
+          "quality": 220
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/epic/evolution",
+          "weight": 20,
+          "quality": 60
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/legendary/evolution",
+          "weight": 2,
+          "quality": 72
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/legendary/nature",
+          "weight": 2,
+          "quality": 72
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/common/nature",
+          "weight": 500
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/uncommon/nature",
+          "weight": 150,
+          "quality": 350
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/rare/nature",
+          "weight": 40,
+          "quality": 220
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/epic/nature",
+          "weight": 20,
+          "quality": 60
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/rare/archeology",
+          "weight": 40,
+          "quality": 220
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/epic/archeology",
+          "weight": 20,
+          "quality": 60
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/legendary/archeology",
+          "weight": 2,
+          "quality": 72
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/common/archeology",
+          "weight": 500
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/uncommon/archeology",
+          "weight": 150,
+          "quality": 350
+        }
+      ]
+    }
+  ],
+  "random_sequence": "rctmod:trainers/groups/ruin_maniac"
+}

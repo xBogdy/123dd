@@ -1,0 +1,22 @@
+{
+  "battleCooldownTicks": 240,
+  "biomeTagBlacklist": [
+    "is_void"
+  ],
+  "biomeTagWhitelist": [
+    "is_nether",
+    "has_structure/end_city",
+    "is_badlands",
+    "is_wasteland",
+    "is_peak"
+  ],
+  "maxTrainerDefeats": 1,
+  "maxTrainerWins": 5,
+  "optional": true,
+  "requiredDefeats": [],
+  "series": [
+    "bdsp"
+  ],
+  "spawnWeightFactor": 1,
+  "type": "team_galactic"
+}

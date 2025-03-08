@@ -9,6 +9,30 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
+          "value": "rctmod:generic/legendary/training",
+          "weight": 2,
+          "quality": 72
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/uncommon/training",
+          "weight": 150,
+          "quality": 350
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/rare/training",
+          "weight": 40,
+          "quality": 220
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/epic/training",
+          "weight": 20,
+          "quality": 60
+        },
+        {
+          "type": "minecraft:loot_table",
           "value": "rctmod:generic/common/battle",
           "weight": 500
         },
@@ -59,30 +83,6 @@
           "value": "rctmod:generic/legendary/evolution",
           "weight": 2,
           "quality": 72
-        },
-        {
-          "type": "minecraft:loot_table",
-          "value": "rctmod:generic/uncommon/training",
-          "weight": 150,
-          "quality": 350
-        },
-        {
-          "type": "minecraft:loot_table",
-          "value": "rctmod:generic/rare/training",
-          "weight": 40,
-          "quality": 220
-        },
-        {
-          "type": "minecraft:loot_table",
-          "value": "rctmod:generic/epic/training",
-          "weight": 20,
-          "quality": 60
-        },
-        {
-          "type": "minecraft:loot_table",
-          "value": "rctmod:generic/legendary/training",
-          "weight": 2,
-          "quality": 72
         }
       ]
     },
@@ -102,5 +102,5 @@
       ]
     }
   ],
-  "random_sequence": "rctmod:trainers/groups/boss_giovanni"
+  "random_sequence": "rctmod:trainers/groups/title_defense"
 }

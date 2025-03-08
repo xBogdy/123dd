@@ -1,0 +1,24 @@
+{
+  "battleCooldownTicks": 240,
+  "biomeTagBlacklist": [
+    "is_void",
+    "is_nether",
+    "is_end"
+  ],
+  "biomeTagWhitelist": [
+    "is_cold"
+  ],
+  "maxTrainerDefeats": 1,
+  "maxTrainerWins": 3,
+  "optional": false,
+  "requiredDefeats": [
+    [
+      "commander_mars_041c"
+    ]
+  ],
+  "series": [
+    "bdsp"
+  ],
+  "spawnWeightFactor": 0.25,
+  "type": "leader"
+}

@@ -11,6 +11,7 @@
   ],
   "maxTrainerDefeats": 1,
   "maxTrainerWins": 5,
+  "optional": true,
   "requiredDefeats": [],
   "series": [],
   "spawnWeightFactor": 1,
