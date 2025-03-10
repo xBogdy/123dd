@@ -1,5 +1,6 @@
 {
-  "name": "Commander Mars \u0026 Jupiter",
+  "name": "Commanders Mars \u0026 Jupiter",
+  "identity": "Commander Mars",
   "ai": {
     "type": "rct",
     "data": {

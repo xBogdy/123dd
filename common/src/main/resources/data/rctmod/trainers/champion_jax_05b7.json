@@ -20,7 +20,7 @@
     {
       "species": "salamence",
       "gender": "MALE",
-      "level": 85,
+      "level": 76,
       "nature": "adamant",
       "ability": "aerilate",
       "moveset": [
@@ -47,7 +47,7 @@
     {
       "species": "hitmontop",
       "gender": "FEMALE",
-      "level": 83,
+      "level": 74,
       "nature": "impish",
       "ability": "intimidate",
       "moveset": [
@@ -74,7 +74,7 @@
     {
       "species": "magnezone",
       "gender": "GENDERLESS",
-      "level": 84,
+      "level": 75,
       "nature": "modest",
       "ability": "sturdy",
       "moveset": [
@@ -101,7 +101,7 @@
     {
       "species": "gastrodon",
       "gender": "MALE",
-      "level": 83,
+      "level": 74,
       "nature": "bold",
       "ability": "stormdrain",
       "moveset": [
@@ -128,7 +128,7 @@
     {
       "species": "naganadel",
       "gender": "GENDERLESS",
-      "level": 85,
+      "level": 76,
       "nature": "jolly",
       "ability": "beastboost",
       "moveset": [
@@ -155,7 +155,7 @@
     {
       "species": "pyroar",
       "gender": "FEMALE",
-      "level": 84,
+      "level": 75,
       "nature": "timid",
       "ability": "grimneigh",
       "moveset": [

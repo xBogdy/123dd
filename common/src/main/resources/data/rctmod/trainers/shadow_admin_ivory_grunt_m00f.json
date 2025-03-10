@@ -1,6 +1,16 @@
 {
-  "name": "Shadow Admin Ivory",
+  "name": "Shadow Admin Ivory \u0026 Grunt",
   "identity": "Shadow Admin Ivory",
+  "battleFormat": "GEN_9_DOUBLES",
+  "battleRules": {
+    "maxItemUses": 2
+  },
+  "bag": [
+    {
+      "item": "cobblemon:hyper_potion",
+      "quantity": 2
+    }
+  ],
   "team": [
     {
       "species": "incineroar",
@@ -29,6 +39,33 @@
       }
     },
     {
+      "species": "meowstic",
+      "gender": "MALE",
+      "level": 37,
+      "nature": "bold",
+      "ability": "prankster",
+      "moveset": [
+        "psyshock",
+        "helpinghand",
+        "reflect",
+        "psychicterrain"
+      ],
+      "ivs": {
+        "hp": 31,
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
+      },
+      "evs": {
+        "hp": 252,
+        "def": 252,
+        "spd": 4
+      },
+      "heldItem": "terrain_extender"
+    },
+    {
       "species": "mismagius",
       "gender": "MALE",
       "level": 36,
@@ -52,6 +89,32 @@
         "hp": 252,
         "def": 252,
         "spd": 4
+      }
+    },
+    {
+      "species": "oranguru",
+      "gender": "MALE",
+      "level": 38,
+      "nature": "calm",
+      "ability": "innerfocus",
+      "moveset": [
+        "zenheadbutt",
+        "instruct",
+        "lightscreen",
+        "psychicterrain"
+      ],
+      "ivs": {
+        "hp": 31,
+        "atk": 31,
+        "def": 31,
+        "spa": 31,
+        "spd": 31,
+        "spe": 31
+      },
+      "evs": {
+        "hp": 252,
+        "def": 4,
+        "spd": 252
       }
     },
     {

@@ -1,10 +1,10 @@
 {
-  "name": "Light of Ruin Leader Aklove",
+  "name": "Ruin Leader Aklove",
   "team": [
     {
       "species": "meloetta",
       "gender": "GENDERLESS",
-      "level": 72,
+      "level": 81,
       "nature": "timid",
       "ability": "serenegrace",
       "moveset": [
@@ -31,7 +31,7 @@
     {
       "species": "tapulele",
       "gender": "GENDERLESS",
-      "level": 74,
+      "level": 83,
       "nature": "timid",
       "ability": "psychicsurge",
       "moveset": [
@@ -58,7 +58,7 @@
     {
       "species": "manaphy",
       "gender": "GENDERLESS",
-      "level": 74,
+      "level": 83,
       "nature": "timid",
       "ability": "soulheart",
       "moveset": [
@@ -85,7 +85,7 @@
     {
       "species": "tapukoko",
       "gender": "GENDERLESS",
-      "level": 74,
+      "level": 83,
       "nature": "jolly",
       "ability": "electricsurge",
       "moveset": [
@@ -112,7 +112,7 @@
     {
       "species": "melmetal",
       "gender": "GENDERLESS",
-      "level": 74,
+      "level": 83,
       "nature": "adamant",
       "ability": "ironfist",
       "moveset": [
@@ -139,7 +139,7 @@
     {
       "species": "diancie",
       "gender": "GENDERLESS",
-      "level": 75,
+      "level": 84,
       "nature": "naive",
       "ability": "magicbounce",
       "moveset": [

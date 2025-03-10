@@ -1,22 +1,5 @@
 {
-  "name": "Shadow Grunt \u0026 Ivory",
-  "identity": "Shadow Admin Ivory",
-  "ai": {
-    "type": "rct",
-    "data": {
-      "maxSelectMargin": 0.15
-    }
-  },
-  "battleFormat": "GEN_9_DOUBLES",
-  "battleRules": {
-    "maxItemUses": 2
-  },
-  "bag": [
-    {
-      "item": "cobblemon:hyper_potion",
-      "quantity": 2
-    }
-  ],
+  "name": "Shadow Grunt",
   "team": [
     {
       "species": "meowstic",

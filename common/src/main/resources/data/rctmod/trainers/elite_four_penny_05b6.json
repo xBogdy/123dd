@@ -6,6 +6,7 @@
       "maxSelectMargin": 0.15
     }
   },
+  "battleFormat": "GEN_9_DOUBLES",
   "battleRules": {
     "maxItemUses": 2
   },

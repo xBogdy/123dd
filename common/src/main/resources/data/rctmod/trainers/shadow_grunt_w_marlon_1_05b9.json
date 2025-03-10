@@ -1,22 +1,5 @@
 {
-  "name": "Shadow Grunt \u0026 Marlon",
-  "identity": "Shadow Admin Marlon",
-  "ai": {
-    "type": "rct",
-    "data": {
-      "maxSelectMargin": 0.15
-    }
-  },
-  "battleFormat": "GEN_9_DOUBLES",
-  "battleRules": {
-    "maxItemUses": 2
-  },
-  "bag": [
-    {
-      "item": "cobblemon:super_potion",
-      "quantity": 2
-    }
-  ],
+  "name": "Shadow Grunt",
   "team": [
     {
       "species": "sableye",
