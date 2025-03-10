@@ -1,0 +1,24 @@
+{
+  "battleCooldownTicks": 240,
+  "biomeTagBlacklist": [
+    "is_void"
+  ],
+  "biomeTagWhitelist": [
+    "is_peak",
+    "has_structure/end_city",
+    "is_mountain"
+  ],
+  "maxTrainerDefeats": 1,
+  "maxTrainerWins": 3,
+  "optional": false,
+  "requiredDefeats": [
+    [
+      "leader_benjamin_05b2"
+    ]
+  ],
+  "series": [
+    "unbound"
+  ],
+  "spawnWeightFactor": 0.25,
+  "type": "e4"
+}

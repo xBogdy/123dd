@@ -1,0 +1,27 @@
+{
+  "battleCooldownTicks": 240,
+  "biomeTagBlacklist": [
+    "is_void",
+    "is_end"
+  ],
+  "biomeTagWhitelist": [
+    "is_nether",
+    "is_badlands",
+    "is_wasteland",
+    "is_savanna",
+    "has_structure/ancient_city"
+  ],
+  "maxTrainerDefeats": 1,
+  "maxTrainerWins": 3,
+  "optional": false,
+  "requiredDefeats": [
+    [
+      "shadow_admin_ivory_1_05ba"
+    ]
+  ],
+  "series": [
+    "unbound"
+  ],
+  "spawnWeightFactor": 0.25,
+  "type": "team_shadow"
+}

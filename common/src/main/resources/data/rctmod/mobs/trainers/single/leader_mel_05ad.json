@@ -1,0 +1,25 @@
+{
+  "battleCooldownTicks": 240,
+  "biomeTagBlacklist": [
+    "is_void",
+    "is_end",
+    "is_nether"
+  ],
+  "biomeTagWhitelist": [
+    "is_plains",
+    "is_sparse_vegetation"
+  ],
+  "maxTrainerDefeats": 1,
+  "maxTrainerWins": 3,
+  "optional": false,
+  "requiredDefeats": [
+    [
+      "leader_alice_05ac"
+    ]
+  ],
+  "series": [
+    "unbound"
+  ],
+  "spawnWeightFactor": 0.25,
+  "type": "leader"
+}

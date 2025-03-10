@@ -9,6 +9,12 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
+          "value": "rctmod:generic/uncommon/battle",
+          "weight": 150,
+          "quality": 350
+        },
+        {
+          "type": "minecraft:loot_table",
           "value": "rctmod:generic/rare/battle",
           "weight": 40,
           "quality": 220
@@ -29,12 +35,6 @@
           "type": "minecraft:loot_table",
           "value": "rctmod:generic/common/battle",
           "weight": 500
-        },
-        {
-          "type": "minecraft:loot_table",
-          "value": "rctmod:generic/uncommon/battle",
-          "weight": 150,
-          "quality": 350
         },
         {
           "type": "minecraft:loot_table",

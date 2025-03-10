@@ -9,7 +9,8 @@
   ],
   "biomeTagWhitelist": [
     "is_forest",
-    "is_jungle"
+    "is_jungle",
+    "is_dense_vegetation"
   ],
   "maxTrainerDefeats": 1,
   "maxTrainerWins": 5,

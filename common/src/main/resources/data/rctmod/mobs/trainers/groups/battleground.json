@@ -13,7 +13,9 @@
   "maxTrainerWins": 5,
   "optional": true,
   "requiredDefeats": [],
-  "series": [],
+  "series": [
+    "unbound"
+  ],
   "spawnWeightFactor": 1,
-  "type": "normal"
+  "type": "battleground"
 }

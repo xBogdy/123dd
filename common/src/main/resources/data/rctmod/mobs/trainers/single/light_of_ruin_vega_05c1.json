@@ -1,0 +1,26 @@
+{
+  "battleCooldownTicks": 240,
+  "biomeTagBlacklist": [
+    "is_void"
+  ],
+  "biomeTagWhitelist": [
+    "has_structure/ancient_city",
+    "has_structure/desert_pyramid",
+    "has_structure/end_city",
+    "has_structure/jungle_temple",
+    "has_structure/nether_fortress"
+  ],
+  "maxTrainerDefeats": 1,
+  "maxTrainerWins": 3,
+  "optional": false,
+  "requiredDefeats": [
+    [
+      "leader_galavan_05af"
+    ]
+  ],
+  "series": [
+    "unbound"
+  ],
+  "spawnWeightFactor": 0.25,
+  "type": "ligh_of_ruin"
+}

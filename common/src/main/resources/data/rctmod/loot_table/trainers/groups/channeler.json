@@ -38,12 +38,6 @@
         },
         {
           "type": "minecraft:loot_table",
-          "value": "rctmod:generic/rare/archeology",
-          "weight": 40,
-          "quality": 220
-        },
-        {
-          "type": "minecraft:loot_table",
           "value": "rctmod:generic/epic/archeology",
           "weight": 20,
           "quality": 60
@@ -64,6 +58,12 @@
           "value": "rctmod:generic/uncommon/archeology",
           "weight": 150,
           "quality": 350
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/rare/archeology",
+          "weight": 40,
+          "quality": 220
         },
         {
           "type": "minecraft:loot_table",

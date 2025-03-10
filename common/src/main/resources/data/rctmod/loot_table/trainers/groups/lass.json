@@ -67,11 +67,6 @@
         },
         {
           "type": "minecraft:loot_table",
-          "value": "rctmod:generic/common/diverse",
-          "weight": 500
-        },
-        {
-          "type": "minecraft:loot_table",
           "value": "rctmod:generic/uncommon/diverse",
           "weight": 150,
           "quality": 350
@@ -93,6 +88,11 @@
           "value": "rctmod:generic/legendary/diverse",
           "weight": 2,
           "quality": 72
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/common/diverse",
+          "weight": 500
         }
       ]
     }
