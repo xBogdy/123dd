@@ -41,6 +41,7 @@ public final class PlantUML {
         + "skinparam linetype ortho\n"
         + "skinparam object {\n"
         + "arrowColor #red\n"
+        + "arrowThickness 2\n"
         + "backgroundColor #lightblue\n"
         + "backgroundColor<<optional>> #orange\n"
         + "backgroundColor<<defeated>> #lightgray\n"
@@ -70,6 +71,10 @@ public final class PlantUML {
             return Stream.concat(Stream.of(this.origin), set.stream()).map(tn -> tm.getData(tn.id()).getRequiredLevelCap()).max(Integer::compare).orElse(100);
         }
 
+        public boolean isOptional() {
+            return this.origin.isOptional() && this.set.stream().allMatch(nd -> nd.isOptional());
+        }
+
         public Stream<TrainerNode> successors() {
             var s = this.origin.successors();
 
@@ -80,15 +85,15 @@ public final class PlantUML {
             return s.distinct();
         }
 
-        public Stream<TrainerNode> ancestors() {
-            var s = this.origin.ancestors();
+        // public Stream<TrainerNode> ancestors() {
+        //     var s = this.origin.ancestors();
 
-            for(var tn : set) {
-                s = Stream.concat(s, tn.ancestors());
-            }
+        //     for(var tn : set) {
+        //         s = Stream.concat(s, tn.ancestors());
+        //     }
 
-            return s.distinct();
-        }
+        //     return s.distinct();
+        // }
     }
 
     public static String encode(SeriesGraph graph) {
@@ -129,7 +134,7 @@ public final class PlantUML {
 
         nodes.values().forEach(ng -> {
             var edges = directed.computeIfAbsent(ng.origin.id(), k -> new HashSet<>());
-            var arr = ng.ancestors().findFirst().isPresent() ? "l" : "u";
+            var arr = ng.isOptional() ? "u" : "l";
 
             ng.successors().forEach(suc -> {
                 var sgp = group.get(suc);
