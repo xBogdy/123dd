@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "defeat_leader_big_mo": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "leader_big_mo_05b0"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Defeat Leader Big Mo"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Ring Badge"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_light_of_ruin_aklove_1",
+  "requirements": [
+    [
+      "defeat_leader_big_mo"
+    ]
+  ]
+}

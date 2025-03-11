@@ -9,6 +9,12 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
+          "value": "rctmod:generic/legendary/pokeballs",
+          "weight": 2,
+          "quality": 72
+        },
+        {
+          "type": "minecraft:loot_table",
           "value": "rctmod:generic/common/pokeballs",
           "weight": 500
         },
@@ -29,17 +35,6 @@
           "value": "rctmod:generic/epic/pokeballs",
           "weight": 20,
           "quality": 60
-        },
-        {
-          "type": "minecraft:loot_table",
-          "value": "rctmod:generic/legendary/pokeballs",
-          "weight": 2,
-          "quality": 72
-        },
-        {
-          "type": "minecraft:loot_table",
-          "value": "rctmod:generic/common/medicine",
-          "weight": 500
         },
         {
           "type": "minecraft:loot_table",
@@ -67,13 +62,7 @@
         },
         {
           "type": "minecraft:loot_table",
-          "value": "rctmod:generic/legendary/nature",
-          "weight": 2,
-          "quality": 72
-        },
-        {
-          "type": "minecraft:loot_table",
-          "value": "rctmod:generic/common/nature",
+          "value": "rctmod:generic/common/medicine",
           "weight": 500
         },
         {
@@ -93,6 +82,17 @@
           "value": "rctmod:generic/epic/nature",
           "weight": 20,
           "quality": 60
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/legendary/nature",
+          "weight": 2,
+          "quality": 72
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/common/nature",
+          "weight": 500
         }
       ]
     }

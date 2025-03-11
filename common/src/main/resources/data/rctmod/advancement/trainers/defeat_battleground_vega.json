@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "defeat_battleground_vega": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "battleground_vega_05f3"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Defeat Battleground Vega"
+    },
+    "frame": "goal",
+    "hidden": true,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Battleground Vega"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_title_defense_borrius",
+  "requirements": [
+    [
+      "defeat_battleground_vega"
+    ]
+  ]
+}

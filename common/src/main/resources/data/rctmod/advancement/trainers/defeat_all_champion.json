@@ -27,7 +27,7 @@
       "text": "True Champ"
     }
   },
-  "parent": "rctmod:trainers/defeat_champion",
+  "parent": "rctmod:trainers/defeat_title_defense_borrius",
   "requirements": [
     [
       "defeat_all_champ"

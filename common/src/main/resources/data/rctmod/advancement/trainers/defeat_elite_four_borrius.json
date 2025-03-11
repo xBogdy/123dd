@@ -1,56 +1,52 @@
 {
   "criteria": {
-    "defeat_agatha": {
+    "defeat_elite_four_arabella": {
       "conditions": {
         "count": 1,
         "entity": {
           "type": ""
         },
         "trainer_ids": [
-          "elite_four_agatha_0054",
-          "elite_four_agatha_0053"
+          "elite_four_arabella_05b5"
         ],
         "trainer_type": ""
       },
       "trigger": "rctmod:defeat_count"
     },
-    "defeat_bruno": {
+    "defeat_elite_four_elias": {
       "conditions": {
         "count": 1,
         "entity": {
           "type": ""
         },
         "trainer_ids": [
-          "elite_four_bruno_0051",
-          "elite_four_bruno_0050"
+          "elite_four_elias_05b4"
         ],
         "trainer_type": ""
       },
       "trigger": "rctmod:defeat_count"
     },
-    "defeat_lance": {
+    "defeat_elite_four_moleman": {
       "conditions": {
         "count": 1,
         "entity": {
           "type": ""
         },
         "trainer_ids": [
-          "elite_four_lance_0057",
-          "elite_four_lance_0056"
+          "elite_four_moleman_05b3"
         ],
         "trainer_type": ""
       },
       "trigger": "rctmod:defeat_count"
     },
-    "defeat_lorelei": {
+    "defeat_elite_four_penny": {
       "conditions": {
         "count": 1,
         "entity": {
           "type": ""
         },
         "trainer_ids": [
-          "elite_four_lorelei_004e",
-          "elite_four_lorelei_004d"
+          "elite_four_penny_05b6"
         ],
         "trainer_type": ""
       },
@@ -58,9 +54,9 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
+    "announce_to_chat": false,
     "description": {
-      "text": "Defeat 4 members of the Elite 4"
+      "text": "Defeat all members of the Borrius Elite 4"
     },
     "frame": "goal",
     "hidden": false,
@@ -69,22 +65,22 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Elite 4"
+      "text": "Borrius Elite"
     }
   },
-  "parent": "rctmod:trainers/defeat_trainer_brendan_3",
+  "parent": "rctmod:trainers/defeat_leader_benjamin",
   "requirements": [
     [
-      "defeat_bruno"
+      "defeat_elite_four_elias"
     ],
     [
-      "defeat_lance"
+      "defeat_elite_four_moleman"
     ],
     [
-      "defeat_lorelei"
+      "defeat_elite_four_penny"
     ],
     [
-      "defeat_agatha"
+      "defeat_elite_four_arabella"
     ]
   ]
 }

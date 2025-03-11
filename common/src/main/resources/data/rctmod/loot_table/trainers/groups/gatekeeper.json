@@ -38,6 +38,12 @@
         },
         {
           "type": "minecraft:loot_table",
+          "value": "rctmod:generic/uncommon/training",
+          "weight": 150,
+          "quality": 350
+        },
+        {
+          "type": "minecraft:loot_table",
           "value": "rctmod:generic/rare/training",
           "weight": 40,
           "quality": 220
@@ -56,7 +62,12 @@
         },
         {
           "type": "minecraft:loot_table",
-          "value": "rctmod:generic/uncommon/training",
+          "value": "rctmod:generic/common/archeology",
+          "weight": 500
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/uncommon/archeology",
           "weight": 150,
           "quality": 350
         },
@@ -77,17 +88,6 @@
           "value": "rctmod:generic/legendary/archeology",
           "weight": 2,
           "quality": 72
-        },
-        {
-          "type": "minecraft:loot_table",
-          "value": "rctmod:generic/common/archeology",
-          "weight": 500
-        },
-        {
-          "type": "minecraft:loot_table",
-          "value": "rctmod:generic/uncommon/archeology",
-          "weight": 150,
-          "quality": 350
         }
       ]
     },

@@ -27,7 +27,7 @@
       "text": "Elite Trainer"
     }
   },
-  "parent": "rctmod:trainers/defeat_elite_four",
+  "parent": "rctmod:trainers/defeat_elite_four_lucian_3",
   "requirements": [
     [
       "defeat_all_e4"

@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "defeat_leader_tessy": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "leader_tessy_05b1"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Defeat Leader Tessy"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Swamp Badge"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_leader_big_mo",
+  "requirements": [
+    [
+      "defeat_leader_tessy"
+    ]
+  ]
+}

@@ -9,12 +9,6 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "value": "rctmod:generic/legendary/pokeballs",
-          "weight": 2,
-          "quality": 72
-        },
-        {
-          "type": "minecraft:loot_table",
           "value": "rctmod:generic/common/pokeballs",
           "weight": 500
         },
@@ -38,19 +32,7 @@
         },
         {
           "type": "minecraft:loot_table",
-          "value": "rctmod:generic/rare/medicine",
-          "weight": 40,
-          "quality": 220
-        },
-        {
-          "type": "minecraft:loot_table",
-          "value": "rctmod:generic/epic/medicine",
-          "weight": 20,
-          "quality": 60
-        },
-        {
-          "type": "minecraft:loot_table",
-          "value": "rctmod:generic/legendary/medicine",
+          "value": "rctmod:generic/legendary/pokeballs",
           "weight": 2,
           "quality": 72
         },
@@ -67,13 +49,19 @@
         },
         {
           "type": "minecraft:loot_table",
-          "value": "rctmod:generic/epic/archeology",
+          "value": "rctmod:generic/rare/medicine",
+          "weight": 40,
+          "quality": 220
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/epic/medicine",
           "weight": 20,
           "quality": 60
         },
         {
           "type": "minecraft:loot_table",
-          "value": "rctmod:generic/legendary/archeology",
+          "value": "rctmod:generic/legendary/medicine",
           "weight": 2,
           "quality": 72
         },
@@ -93,6 +81,18 @@
           "value": "rctmod:generic/rare/archeology",
           "weight": 40,
           "quality": 220
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/epic/archeology",
+          "weight": 20,
+          "quality": 60
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/legendary/archeology",
+          "weight": 2,
+          "quality": 72
         }
       ]
     }

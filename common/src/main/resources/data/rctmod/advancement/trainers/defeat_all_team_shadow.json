@@ -15,7 +15,7 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "text": "Defeat all members of Team Shadow"
+      "text": "Defeat all members of The Shadows"
     },
     "frame": "challenge",
     "hidden": true,
@@ -27,7 +27,7 @@
       "text": "Lights off"
     }
   },
-  "parent": "rctmod:trainers/defeat_any",
+  "parent": "rctmod:trainers/defeat_boss_zeph_2",
   "requirements": [
     [
       "defeat_all_team_shadow"

@@ -17,7 +17,7 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "text": "Defeat Galactic Boss Cyrus a second time"
+      "text": "Defeat Galactic Boss Cyrus"
     },
     "frame": "challenge",
     "hidden": false,

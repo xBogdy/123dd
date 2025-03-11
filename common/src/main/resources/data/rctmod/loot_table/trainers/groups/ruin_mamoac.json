@@ -9,6 +9,18 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
+          "value": "rctmod:generic/rare/medicine",
+          "weight": 40,
+          "quality": 220
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/epic/medicine",
+          "weight": 20,
+          "quality": 60
+        },
+        {
+          "type": "minecraft:loot_table",
           "value": "rctmod:generic/legendary/medicine",
           "weight": 2,
           "quality": 72
@@ -23,18 +35,6 @@
           "value": "rctmod:generic/uncommon/medicine",
           "weight": 150,
           "quality": 350
-        },
-        {
-          "type": "minecraft:loot_table",
-          "value": "rctmod:generic/rare/medicine",
-          "weight": 40,
-          "quality": 220
-        },
-        {
-          "type": "minecraft:loot_table",
-          "value": "rctmod:generic/epic/medicine",
-          "weight": 20,
-          "quality": 60
         },
         {
           "type": "minecraft:loot_table",
@@ -62,18 +62,6 @@
         },
         {
           "type": "minecraft:loot_table",
-          "value": "rctmod:generic/epic/archeology",
-          "weight": 20,
-          "quality": 60
-        },
-        {
-          "type": "minecraft:loot_table",
-          "value": "rctmod:generic/legendary/archeology",
-          "weight": 2,
-          "quality": 72
-        },
-        {
-          "type": "minecraft:loot_table",
           "value": "rctmod:generic/common/archeology",
           "weight": 500
         },
@@ -88,6 +76,18 @@
           "value": "rctmod:generic/rare/archeology",
           "weight": 40,
           "quality": 220
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/epic/archeology",
+          "weight": 20,
+          "quality": 60
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/legendary/archeology",
+          "weight": 2,
+          "quality": 72
         }
       ]
     }

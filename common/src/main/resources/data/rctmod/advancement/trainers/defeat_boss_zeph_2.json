@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "defeat_boss_zeph_2": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "boss_zeph_2_05bf"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Defeat Shadow Boss Zeph"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Shadows"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_light_of_ruin_vega",
+  "requirements": [
+    [
+      "defeat_boss_zeph_2"
+    ]
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "criteria": {
+    "defeat_rival_wayne_3": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "rival_4_player_chose_beldum_05fe",
+          "rival_4_player_chose_gible_05fd",
+          "rival_4_player_chose_larvitar_05ff"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Defeat Rival Wayne a third time"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Are you prepared?"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_shadow_admin_marlon_2",
+  "requirements": [
+    [
+      "defeat_rival_wayne_3"
+    ]
+  ]
+}

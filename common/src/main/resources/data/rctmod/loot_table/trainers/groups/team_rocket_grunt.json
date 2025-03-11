@@ -9,18 +9,6 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "value": "rctmod:generic/epic/pokeballs",
-          "weight": 20,
-          "quality": 60
-        },
-        {
-          "type": "minecraft:loot_table",
-          "value": "rctmod:generic/legendary/pokeballs",
-          "weight": 2,
-          "quality": 72
-        },
-        {
-          "type": "minecraft:loot_table",
           "value": "rctmod:generic/common/pokeballs",
           "weight": 500
         },
@@ -38,15 +26,15 @@
         },
         {
           "type": "minecraft:loot_table",
-          "value": "rctmod:generic/uncommon/medicine",
-          "weight": 150,
-          "quality": 350
+          "value": "rctmod:generic/epic/pokeballs",
+          "weight": 20,
+          "quality": 60
         },
         {
           "type": "minecraft:loot_table",
-          "value": "rctmod:generic/rare/medicine",
-          "weight": 40,
-          "quality": 220
+          "value": "rctmod:generic/legendary/pokeballs",
+          "weight": 2,
+          "quality": 72
         },
         {
           "type": "minecraft:loot_table",
@@ -67,9 +55,15 @@
         },
         {
           "type": "minecraft:loot_table",
-          "value": "rctmod:generic/legendary/diverse",
-          "weight": 2,
-          "quality": 72
+          "value": "rctmod:generic/uncommon/medicine",
+          "weight": 150,
+          "quality": 350
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/rare/medicine",
+          "weight": 40,
+          "quality": 220
         },
         {
           "type": "minecraft:loot_table",
@@ -93,6 +87,12 @@
           "value": "rctmod:generic/epic/diverse",
           "weight": 20,
           "quality": 60
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/legendary/diverse",
+          "weight": 2,
+          "quality": 72
         }
       ]
     }

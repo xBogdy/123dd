@@ -9,11 +9,6 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "value": "rctmod:generic/common/nature",
-          "weight": 500
-        },
-        {
-          "type": "minecraft:loot_table",
           "value": "rctmod:generic/uncommon/nature",
           "weight": 150,
           "quality": 350
@@ -38,7 +33,7 @@
         },
         {
           "type": "minecraft:loot_table",
-          "value": "rctmod:generic/common/berries",
+          "value": "rctmod:generic/common/nature",
           "weight": 500
         },
         {
@@ -67,7 +62,7 @@
         },
         {
           "type": "minecraft:loot_table",
-          "value": "rctmod:generic/common/diverse",
+          "value": "rctmod:generic/common/berries",
           "weight": 500
         },
         {
@@ -93,6 +88,11 @@
           "value": "rctmod:generic/legendary/diverse",
           "weight": 2,
           "quality": 72
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/common/diverse",
+          "weight": 500
         }
       ]
     }

@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "defeat_elite_four_moleman": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "elite_four_moleman_05b3"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Defeat Elite 4 Moleman"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Borrius Elite Moleman"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_leader_benjamin",
+  "requirements": [
+    [
+      "defeat_elite_four_moleman"
+    ]
+  ]
+}

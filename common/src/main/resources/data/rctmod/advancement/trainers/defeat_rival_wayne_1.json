@@ -1,0 +1,40 @@
+{
+  "criteria": {
+    "defeat_rival_wayne_1": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "rival_2_player_chose_beldum_060a",
+          "rival_2_player_chose_gible_0609",
+          "rival_2_player_chose_larvitar_060b"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Defeat Rival Wayne for the first time"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Face-off"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_any",
+  "requirements": [
+    [
+      "defeat_rival_wayne_1"
+    ]
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "defeat_shadow_admin_ivory_1": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "shadow_admin_ivory_1_05ba"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Defeat Shadow Admin Ivory for the first time"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Shadow Pawn"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_leader_vega",
+  "requirements": [
+    [
+      "defeat_shadow_admin_ivory_1"
+    ]
+  ]
+}

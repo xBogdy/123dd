@@ -1,0 +1,40 @@
+{
+  "criteria": {
+    "defeat_rival_wayne_4": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "rival_5_player_chose_beldum_0601",
+          "rival_5_player_chose_gible_0600",
+          "rival_5_player_chose_larvitar_0602"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Defeat Rival Wayne a forth time"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Skill check"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_leader_tessy",
+  "requirements": [
+    [
+      "defeat_rival_wayne_4"
+    ]
+  ]
+}

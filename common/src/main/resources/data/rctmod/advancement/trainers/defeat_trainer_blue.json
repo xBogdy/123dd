@@ -1,15 +1,14 @@
 {
   "criteria": {
-    "defeat_champ": {
+    "defeat_trainer_blue": {
       "conditions": {
         "count": 1,
         "entity": {
           "type": ""
         },
         "trainer_ids": [
-          "champion_terry_01b8",
-          "champion_terry_01b7",
-          "champion_terry_01b6"
+          "trainer_92_0605",
+          "trainer_77_05f6"
         ],
         "trainer_type": ""
       },
@@ -19,22 +18,22 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "text": "Defeat Champion Terry"
+      "text": "Defeat Trainer Blue"
     },
     "frame": "challenge",
-    "hidden": false,
+    "hidden": true,
     "icon": {
       "id": "cobblemon:poke_ball"
     },
     "show_toast": true,
     "title": {
-      "text": "Champion"
+      "text": "Borrius Legend"
     }
   },
-  "parent": "rctmod:trainers/defeat_elite_four",
+  "parent": "rctmod:trainers/defeat_battleground_borrius",
   "requirements": [
     [
-      "defeat_champ"
+      "defeat_trainer_blue"
     ]
   ]
 }

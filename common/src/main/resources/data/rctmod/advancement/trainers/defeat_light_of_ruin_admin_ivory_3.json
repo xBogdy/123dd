@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "defeat_light_of_ruin_admin_ivory_3": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "light_of_ruin_admin_ivory_3_05c3"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Defeat Light of Ruin Admin Ivory"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Double Agent"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_rival_wayne_4",
+  "requirements": [
+    [
+      "defeat_light_of_ruin_admin_ivory_3"
+    ]
+  ]
+}

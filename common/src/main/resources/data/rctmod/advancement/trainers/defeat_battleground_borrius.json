@@ -1,0 +1,134 @@
+{
+  "criteria": {
+    "defeat_battleground_alice": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "battleground_alice_05f4"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "defeat_battleground_benjamin": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "battleground_benjamin_05f9"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "defeat_battleground_big_mo": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "battleground_big_mo_05f7"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "defeat_battleground_mel": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "battleground_mel_05f5"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "defeat_battleground_mirskle": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "battleground_mirskle_05f2"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "defeat_battleground_tessy": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "battleground_tessy_05f8"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    },
+    "defeat_battleground_vega": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "battleground_vega_05f3"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Defeat all Borrius Battleground Trainers"
+    },
+    "frame": "goal",
+    "hidden": true,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Borrius Battleground"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_title_defense_borrius",
+  "requirements": [
+    [
+      "defeat_battleground_vega"
+    ],
+    [
+      "defeat_battleground_alice"
+    ],
+    [
+      "defeat_battleground_mel"
+    ],
+    [
+      "defeat_battleground_big_mo"
+    ],
+    [
+      "defeat_battleground_tessy"
+    ],
+    [
+      "defeat_battleground_benjamin"
+    ],
+    [
+      "defeat_battleground_mirskle"
+    ]
+  ]
+}

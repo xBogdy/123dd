@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "defeat_leader_vega": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "leader_vega_05ab"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Defeat Leader Vega"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Vision Badge"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_shadow_admin_marlon_grunt",
+  "requirements": [
+    [
+      "defeat_leader_vega"
+    ]
+  ]
+}

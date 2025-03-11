@@ -1,0 +1,40 @@
+{
+  "criteria": {
+    "defeat_rival_wayne_2": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "rival_3_player_chose_beldum_05fb",
+          "rival_3_player_chose_gible_05fa",
+          "rival_3_player_chose_larvitar_05fc"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Defeat Rival Wayne a second time"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Hi. Lets fight!"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_boss_zeph_1",
+  "requirements": [
+    [
+      "defeat_rival_wayne_2"
+    ]
+  ]
+}

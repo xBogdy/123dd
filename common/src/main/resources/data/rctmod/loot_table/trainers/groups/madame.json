@@ -9,11 +9,6 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "value": "rctmod:generic/common/berries",
-          "weight": 500
-        },
-        {
-          "type": "minecraft:loot_table",
           "value": "rctmod:generic/uncommon/berries",
           "weight": 150,
           "quality": 350
@@ -38,13 +33,7 @@
         },
         {
           "type": "minecraft:loot_table",
-          "value": "rctmod:generic/legendary/nature",
-          "weight": 2,
-          "quality": 72
-        },
-        {
-          "type": "minecraft:loot_table",
-          "value": "rctmod:generic/common/nature",
+          "value": "rctmod:generic/common/berries",
           "weight": 500
         },
         {
@@ -67,9 +56,14 @@
         },
         {
           "type": "minecraft:loot_table",
-          "value": "rctmod:generic/legendary/medicine",
+          "value": "rctmod:generic/legendary/nature",
           "weight": 2,
           "quality": 72
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/common/nature",
+          "weight": 500
         },
         {
           "type": "minecraft:loot_table",
@@ -93,6 +87,12 @@
           "value": "rctmod:generic/epic/medicine",
           "weight": 20,
           "quality": 60
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/legendary/medicine",
+          "weight": 2,
+          "quality": 72
         }
       ]
     }

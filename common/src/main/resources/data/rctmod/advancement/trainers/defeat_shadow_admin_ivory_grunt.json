@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "defeat_shadow_admin_ivory_grunt": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "shadow_admin_ivory_grunt_m00f"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Defeat Shadow Admin Ivory \u0026 Grunt"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Dark Silhouettes"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_leader_mel",
+  "requirements": [
+    [
+      "defeat_shadow_admin_ivory_grunt"
+    ]
+  ]
+}

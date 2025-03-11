@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "defeat_title_defense_zeph": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "title_defense_zeph_05ea"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Defeat Title Defense Zeph"
+    },
+    "frame": "goal",
+    "hidden": true,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Title Defense Zeph"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_light_of_ruin_aklove_3",
+  "requirements": [
+    [
+      "defeat_title_defense_zeph"
+    ]
+  ]
+}

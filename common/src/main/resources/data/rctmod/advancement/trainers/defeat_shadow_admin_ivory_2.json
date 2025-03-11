@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "defeat_shadow_admin_ivory_2": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "shadow_admin_ivory_2_05bc"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Defeat Shadow Admin Ivory in a 1v1"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Alone in the Dark"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_shadow_admin_ivory_grunt",
+  "requirements": [
+    [
+      "defeat_shadow_admin_ivory_2"
+    ]
+  ]
+}

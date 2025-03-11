@@ -1,0 +1,40 @@
+{
+  "criteria": {
+    "defeat_champion_terry": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "champion_terry_01b8",
+          "champion_terry_01b7",
+          "champion_terry_01b6"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Defeat Champion Terry"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Kanto Champion"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_elite_four_kanto",
+  "requirements": [
+    [
+      "defeat_champion_terry"
+    ]
+  ]
+}

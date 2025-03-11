@@ -9,12 +9,6 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "value": "rctmod:generic/uncommon/diverse",
-          "weight": 150,
-          "quality": 350
-        },
-        {
-          "type": "minecraft:loot_table",
           "value": "rctmod:generic/rare/diverse",
           "weight": 40,
           "quality": 220
@@ -38,12 +32,7 @@
         },
         {
           "type": "minecraft:loot_table",
-          "value": "rctmod:generic/common/archeology",
-          "weight": 500
-        },
-        {
-          "type": "minecraft:loot_table",
-          "value": "rctmod:generic/uncommon/archeology",
+          "value": "rctmod:generic/uncommon/diverse",
           "weight": 150,
           "quality": 350
         },
@@ -67,15 +56,14 @@
         },
         {
           "type": "minecraft:loot_table",
-          "value": "rctmod:generic/epic/medicine",
-          "weight": 20,
-          "quality": 60
+          "value": "rctmod:generic/common/archeology",
+          "weight": 500
         },
         {
           "type": "minecraft:loot_table",
-          "value": "rctmod:generic/legendary/medicine",
-          "weight": 2,
-          "quality": 72
+          "value": "rctmod:generic/uncommon/archeology",
+          "weight": 150,
+          "quality": 350
         },
         {
           "type": "minecraft:loot_table",
@@ -93,6 +81,18 @@
           "value": "rctmod:generic/rare/medicine",
           "weight": 40,
           "quality": 220
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/epic/medicine",
+          "weight": 20,
+          "quality": 60
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/legendary/medicine",
+          "weight": 2,
+          "quality": 72
         }
       ]
     }

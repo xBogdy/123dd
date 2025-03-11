@@ -1,0 +1,39 @@
+{
+  "criteria": {
+    "defeat_elite_four_bruno": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "elite_four_bruno_0051",
+          "elite_four_bruno_0050"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Defeat Elite 4 Bruno"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Kanto Elite Bruno"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_trainer_brendan_3",
+  "requirements": [
+    [
+      "defeat_elite_four_bruno"
+    ]
+  ]
+}

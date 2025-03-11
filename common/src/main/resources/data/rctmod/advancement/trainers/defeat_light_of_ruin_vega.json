@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "defeat_light_of_ruin_vega": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "light_of_ruin_vega_05c1"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Defeat Ruin Agent Vega"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Twist"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_leader_galavan",
+  "requirements": [
+    [
+      "defeat_light_of_ruin_vega"
+    ]
+  ]
+}

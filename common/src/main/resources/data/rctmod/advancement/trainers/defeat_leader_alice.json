@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "defeat_leader_alice": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "leader_alice_05ac"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Defeat Leader Alice"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Wings Badge"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_rival_wayne_2",
+  "requirements": [
+    [
+      "defeat_leader_alice"
+    ]
+  ]
+}

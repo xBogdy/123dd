@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "defeat_title_defense_marlon": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "title_defense_marlon_05eb"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Defeat Title Defense Marlon"
+    },
+    "frame": "goal",
+    "hidden": true,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Title Defense Marlon"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_light_of_ruin_aklove_3",
+  "requirements": [
+    [
+      "defeat_title_defense_marlon"
+    ]
+  ]
+}

@@ -27,7 +27,7 @@
       "text": "My turf"
     }
   },
-  "parent": "rctmod:trainers/defeat_any",
+  "parent": "rctmod:trainers/defeat_battleground_borrius",
   "requirements": [
     [
       "defeat_all_battleground"

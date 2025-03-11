@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "defeat_leader_galavan": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "leader_galavan_05af"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Defeat Leader Galavan"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Battery Badge"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_rival_wayne_3",
+  "requirements": [
+    [
+      "defeat_leader_galavan"
+    ]
+  ]
+}

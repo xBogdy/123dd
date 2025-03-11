@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "defeat_leader_mirskle": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "leader_mirskle_05aa"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Defeat Leader Mirskle"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Leaf Badge"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_rival_wayne_1",
+  "requirements": [
+    [
+      "defeat_leader_mirskle"
+    ]
+  ]
+}

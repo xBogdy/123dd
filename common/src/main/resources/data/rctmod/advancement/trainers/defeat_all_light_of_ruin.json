@@ -27,7 +27,7 @@
       "text": "Ruined (sry)"
     }
   },
-  "parent": "rctmod:trainers/defeat_any",
+  "parent": "rctmod:trainers/defeat_light_of_ruin_aklove_3",
   "requirements": [
     [
       "defeat_all_ligh_of_ruin"

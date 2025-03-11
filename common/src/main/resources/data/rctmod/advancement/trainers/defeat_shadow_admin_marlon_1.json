@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "defeat_shadow_admin_marlon_1": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "shadow_admin_marlon_1_05b8"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Defeat Shadow Admin Marlon in a 1v1"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Single Shade"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_shadow_admin_marlon_grunt",
+  "requirements": [
+    [
+      "defeat_shadow_admin_marlon_1"
+    ]
+  ]
+}
