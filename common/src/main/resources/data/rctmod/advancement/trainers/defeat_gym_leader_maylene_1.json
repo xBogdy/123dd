@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "defeat_gym_leader_maylene_1": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "gym_leader_maylene_03d8"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Defeat Gym Leader Maylene"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Cobble Badge"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_pokemon_trainer_cedric_1",
+  "requirements": [
+    [
+      "defeat_gym_leader_maylene_1"
+    ]
+  ]
+}

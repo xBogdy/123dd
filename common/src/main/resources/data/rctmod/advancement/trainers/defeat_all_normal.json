@@ -15,7 +15,7 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "text": "Defeat all normal trainers"
+      "text": "Defeat all Normal trainers"
     },
     "frame": "challenge",
     "hidden": true,

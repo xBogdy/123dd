@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "defeat_commander_mars_1": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "commander_mars_03c2"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Defeat Commander Mars"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Mars"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_gym_leader_roark_1",
+  "requirements": [
+    [
+      "defeat_commander_mars_1"
+    ]
+  ]
+}

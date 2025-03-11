@@ -1,0 +1,36 @@
+{
+  "criteria": {
+    "defeat_all_team_shadow": {
+      "conditions": {
+        "count": -1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [],
+        "trainer_type": "team_shadow"
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Defeat all members of Team Shadow"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Lights off"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_any",
+  "requirements": [
+    [
+      "defeat_all_team_shadow"
+    ]
+  ]
+}

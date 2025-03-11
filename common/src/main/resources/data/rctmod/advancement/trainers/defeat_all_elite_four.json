@@ -15,7 +15,7 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "text": "Defeat all versions of Elite 4 Trainers"
+      "text": "Defeat all Elite 4 Trainers"
     },
     "frame": "challenge",
     "hidden": true,

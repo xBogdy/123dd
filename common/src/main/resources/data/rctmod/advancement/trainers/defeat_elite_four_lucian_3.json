@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "defeat_elite_four_lucian_3": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "elite_four_lucian_05a6"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Defeat Lucian in the final rematch"
+    },
+    "frame": "goal",
+    "hidden": true,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Lucian Rematch 2"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_elite_four_flint_3",
+  "requirements": [
+    [
+      "defeat_elite_four_lucian_3"
+    ]
+  ]
+}

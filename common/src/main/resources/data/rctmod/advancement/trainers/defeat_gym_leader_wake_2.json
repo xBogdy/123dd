@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "defeat_gym_leader_wake_2": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "gym_leader_wake_058c"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Defeat Wake in a rematch"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Fen Rematch"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_gym_leader_wake_1",
+  "requirements": [
+    [
+      "defeat_gym_leader_wake_2"
+    ]
+  ]
+}

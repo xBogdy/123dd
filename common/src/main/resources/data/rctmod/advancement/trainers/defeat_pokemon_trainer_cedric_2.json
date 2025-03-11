@@ -1,0 +1,40 @@
+{
+  "criteria": {
+    "defeat_pokemon_trainer_cedric_2": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "pokemon_trainer_cedric_0448",
+          "pokemon_trainer_cedric_0449",
+          "pokemon_trainer_cedric_044a"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Defeat Rival Cedrick a second time"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Best of 3"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_gym_leader_wake_1",
+  "requirements": [
+    [
+      "defeat_pokemon_trainer_cedric_2"
+    ]
+  ]
+}

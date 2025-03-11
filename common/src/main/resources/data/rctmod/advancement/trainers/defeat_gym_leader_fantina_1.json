@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "defeat_gym_leader_fantina_1": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "gym_leader_fantina_03d9"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Defeat Gym Leader Fantina"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Relic Badge"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_pokemon_trainer_cedric_2",
+  "requirements": [
+    [
+      "defeat_gym_leader_fantina_1"
+    ]
+  ]
+}

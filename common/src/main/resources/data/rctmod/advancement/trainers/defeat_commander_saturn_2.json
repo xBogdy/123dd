@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "defeat_commander_saturn_2": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "commander_saturn_0420"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Defeat Commander Saturn a second time"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Saturnus"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_team_galactic_boss_cyrus_1",
+  "requirements": [
+    [
+      "defeat_commander_saturn_2"
+    ]
+  ]
+}

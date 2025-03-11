@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "defeat_team_galactic_boss_cyrus_2": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "team_galactic_boss_cyrus_041b"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Defeat Galactic Boss Cyrus a second time"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Newton's Laws"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_commander_mars_jupiter",
+  "requirements": [
+    [
+      "defeat_team_galactic_boss_cyrus_2"
+    ]
+  ]
+}

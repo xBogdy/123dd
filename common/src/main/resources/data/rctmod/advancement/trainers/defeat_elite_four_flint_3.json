@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "defeat_elite_four_flint_3": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "elite_four_flint_05a5"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Defeat Fint in the final rematch"
+    },
+    "frame": "goal",
+    "hidden": true,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Flint Rematch 2"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_elite_four_bertha_3",
+  "requirements": [
+    [
+      "defeat_elite_four_flint_3"
+    ]
+  ]
+}

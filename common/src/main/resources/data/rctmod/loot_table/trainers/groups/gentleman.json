@@ -67,12 +67,6 @@
         },
         {
           "type": "minecraft:loot_table",
-          "value": "rctmod:generic/epic/pokeballs",
-          "weight": 20,
-          "quality": 60
-        },
-        {
-          "type": "minecraft:loot_table",
           "value": "rctmod:generic/legendary/pokeballs",
           "weight": 2,
           "quality": 72
@@ -93,6 +87,12 @@
           "value": "rctmod:generic/rare/pokeballs",
           "weight": 40,
           "quality": 220
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/epic/pokeballs",
+          "weight": 20,
+          "quality": 60
         }
       ]
     },

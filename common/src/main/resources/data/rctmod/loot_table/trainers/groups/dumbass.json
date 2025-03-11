@@ -9,6 +9,12 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
+          "value": "rctmod:generic/epic/training",
+          "weight": 20,
+          "quality": 60
+        },
+        {
+          "type": "minecraft:loot_table",
           "value": "rctmod:generic/legendary/training",
           "weight": 2,
           "quality": 72
@@ -24,12 +30,6 @@
           "value": "rctmod:generic/rare/training",
           "weight": 40,
           "quality": 220
-        },
-        {
-          "type": "minecraft:loot_table",
-          "value": "rctmod:generic/epic/training",
-          "weight": 20,
-          "quality": 60
         },
         {
           "type": "minecraft:loot_table",
@@ -57,6 +57,12 @@
         },
         {
           "type": "minecraft:loot_table",
+          "value": "rctmod:generic/uncommon/diverse",
+          "weight": 150,
+          "quality": 350
+        },
+        {
+          "type": "minecraft:loot_table",
           "value": "rctmod:generic/rare/diverse",
           "weight": 40,
           "quality": 220
@@ -77,12 +83,6 @@
           "type": "minecraft:loot_table",
           "value": "rctmod:generic/common/diverse",
           "weight": 500
-        },
-        {
-          "type": "minecraft:loot_table",
-          "value": "rctmod:generic/uncommon/diverse",
-          "weight": 150,
-          "quality": 350
         }
       ]
     },

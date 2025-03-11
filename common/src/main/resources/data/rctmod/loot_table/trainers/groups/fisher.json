@@ -9,11 +9,6 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "value": "rctmod:generic/common/berries",
-          "weight": 500
-        },
-        {
-          "type": "minecraft:loot_table",
           "value": "rctmod:generic/uncommon/berries",
           "weight": 150,
           "quality": 350
@@ -35,6 +30,11 @@
           "value": "rctmod:generic/legendary/berries",
           "weight": 2,
           "quality": 72
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/common/berries",
+          "weight": 500
         },
         {
           "type": "minecraft:loot_table",

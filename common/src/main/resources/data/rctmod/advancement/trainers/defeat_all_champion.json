@@ -15,7 +15,7 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "text": "Defeat all versions of Champion Terry"
+      "text": "Defeat all Champions"
     },
     "frame": "challenge",
     "hidden": true,

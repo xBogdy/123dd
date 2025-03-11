@@ -1,0 +1,40 @@
+{
+  "criteria": {
+    "defeat_pokemon_trainer_cedric_1": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "pokemon_trainer_cedric_0445",
+          "pokemon_trainer_cedric_0446",
+          "pokemon_trainer_cedric_0447"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Defeat Rival Cedrick for the first time"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Competition"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_gym_leader_gardenia_1",
+  "requirements": [
+    [
+      "defeat_pokemon_trainer_cedric_1"
+    ]
+  ]
+}

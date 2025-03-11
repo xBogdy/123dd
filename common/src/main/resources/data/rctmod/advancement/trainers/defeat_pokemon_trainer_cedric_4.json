@@ -1,0 +1,40 @@
+{
+  "criteria": {
+    "defeat_pokemon_trainer_cedric_4": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "pokemon_trainer_cedric_044e",
+          "pokemon_trainer_cedric_044f",
+          "pokemon_trainer_cedric_0450"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Defeat Rival Cedrick a forth time"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Double or nothing"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_gym_leader_volkner_1",
+  "requirements": [
+    [
+      "defeat_pokemon_trainer_cedric_4"
+    ]
+  ]
+}

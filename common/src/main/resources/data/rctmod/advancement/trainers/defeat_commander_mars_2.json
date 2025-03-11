@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "defeat_commander_mars_2": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "commander_mars_041c"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Defeat Commander Mars a second time"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Martius"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_commander_saturn_1",
+  "requirements": [
+    [
+      "defeat_commander_mars_2"
+    ]
+  ]
+}

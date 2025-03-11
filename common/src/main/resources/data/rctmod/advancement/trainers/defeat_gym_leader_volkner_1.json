@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "defeat_gym_leader_volkner_1": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "gym_leader_volkner_03db"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Defeat Gym Leader Volkner"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Beacon Badge"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_team_galactic_boss_cyrus_2",
+  "requirements": [
+    [
+      "defeat_gym_leader_volkner_1"
+    ]
+  ]
+}

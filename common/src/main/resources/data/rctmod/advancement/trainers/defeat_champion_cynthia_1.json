@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "defeat_champion_cynthia_1": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "champion_cynthia_03a5"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Defeat Champion Cynthia"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Sinnoh Champion"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_elite_four_lucian_1",
+  "requirements": [
+    [
+      "defeat_champion_cynthia_1"
+    ]
+  ]
+}

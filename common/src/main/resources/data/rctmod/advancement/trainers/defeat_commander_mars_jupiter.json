@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "defeat_commander_mars_jupiter": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "commander_mars_jupiter_m009"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Defeat Commander Mars \u0026 Jupiter"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "In Orbit"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_commander_saturn_2",
+  "requirements": [
+    [
+      "defeat_commander_mars_jupiter"
+    ]
+  ]
+}

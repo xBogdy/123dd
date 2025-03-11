@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "defeat_team_galactic_boss_cyrus_1": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "team_galactic_boss_cyrus_041a"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Defeat Galactic Boss Cyrus for the first time"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Red Dwarf"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_gym_leader_candice_1",
+  "requirements": [
+    [
+      "defeat_team_galactic_boss_cyrus_1"
+    ]
+  ]
+}

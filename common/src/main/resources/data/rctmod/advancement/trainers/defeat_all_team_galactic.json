@@ -1,0 +1,36 @@
+{
+  "criteria": {
+    "defeat_all_team_galactic": {
+      "conditions": {
+        "count": -1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [],
+        "trainer_type": "team_galactic"
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Defeat all members of Team Galactic"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Supernova"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_team_galactic_boss_cyrus_2",
+  "requirements": [
+    [
+      "defeat_all_team_galactic"
+    ]
+  ]
+}

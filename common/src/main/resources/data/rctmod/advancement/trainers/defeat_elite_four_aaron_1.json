@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "defeat_elite_four_aaron_1": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "elite_four_aaron_039f"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Defeat Elite 4 Aaron"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Sinnoh Elite Aaron"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_pokemon_trainer_cedric_4",
+  "requirements": [
+    [
+      "defeat_elite_four_aaron_1"
+    ]
+  ]
+}

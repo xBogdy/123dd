@@ -1,0 +1,36 @@
+{
+  "criteria": {
+    "defeat_all_battleground": {
+      "conditions": {
+        "count": -1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [],
+        "trainer_type": "battleground"
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Defeat all Battleground trainers"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "My turf"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_any",
+  "requirements": [
+    [
+      "defeat_all_battleground"
+    ]
+  ]
+}

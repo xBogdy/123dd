@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "defeat_elite_four_bertha_2": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "elite_four_bertha_059f"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Defeat Bertha in a rematch"
+    },
+    "frame": "goal",
+    "hidden": true,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Bertha Rematch 1"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_elite_four_aaron_2",
+  "requirements": [
+    [
+      "defeat_elite_four_bertha_2"
+    ]
+  ]
+}

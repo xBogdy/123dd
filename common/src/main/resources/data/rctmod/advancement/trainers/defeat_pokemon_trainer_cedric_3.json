@@ -1,0 +1,40 @@
+{
+  "criteria": {
+    "defeat_pokemon_trainer_cedric_3": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "pokemon_trainer_cedric_044b",
+          "pokemon_trainer_cedric_044c",
+          "pokemon_trainer_cedric_044d"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Defeat Rival Cedrick a third time"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "First to 3"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_gym_leader_fantina_1",
+  "requirements": [
+    [
+      "defeat_pokemon_trainer_cedric_3"
+    ]
+  ]
+}

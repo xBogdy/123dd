@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "defeat_commander_saturn_1": {
+      "conditions": {
+        "count": 1,
+        "entity": {
+          "type": ""
+        },
+        "trainer_ids": [
+          "commander_saturn_041f"
+        ],
+        "trainer_type": ""
+      },
+      "trigger": "rctmod:defeat_count"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Defeat Commander Saturn"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "cobblemon:poke_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Saturn"
+    }
+  },
+  "parent": "rctmod:trainers/defeat_gym_leader_byron_1",
+  "requirements": [
+    [
+      "defeat_commander_saturn_1"
+    ]
+  ]
+}
