@@ -4,9 +4,9 @@
 # - rcttrp installed - https://gitlab.com/srcmc/rct/rcttrp
 
 ## Config
-RADICALRED_SOURCE=${RADICALRED_SOURCE:-"https://gitlab.com/srcmc/rct/rcttrp/-/raw/master/dumps/radical_red_3_02_trainers.txt"}
-BDSP_SOURCE=${BDSP_SOURCE:-"https://docs.google.com/spreadsheets/d/1_uRpnFWroeCY3RaRi4lXeS9uZEDXiRIMBtTQVGrIZ3w/export?gid=773204596&format=csv"}
-UNBOUND_SOURCE=${UNBOUND_SOURCE:-"https://pastebin.com/raw/dRj8YnX0"}
+RADICALRED_SOURCE=${RADICALRED_SOURCE:-"https://gitlab.com/srcmc/rct/rcttrp/-/raw/master/dumps/radical_red_3_02_trainers.txt?ref_type=heads"}
+BDSP_SOURCE=${BDSP_SOURCE:-"https://gitlab.com/srcmc/rct/rcttrp/-/raw/master/dumps/bdsp_1_1.csv?ref_type=heads"}
+UNBOUND_SOURCE=${UNBOUND_SOURCE:-"https://gitlab.com/srcmc/rct/rcttrp/-/raw/master/dumps/unbound_2_0_3_2_modified.txt?ref_type=heads"}
 OUT="common/src/main/resources/data/rctmod/trainers"
 
 ## Commands

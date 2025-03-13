@@ -1,13 +1,3 @@
 {
-  "pools": [
-    {
-      "rolls": {
-        "type": "minecraft:binomial",
-        "n": 2,
-        "p": 0.5
-      },
-      "entries": []
-    }
-  ],
   "random_sequence": "rctmod:trainers/groups/friendly_coach"
 }

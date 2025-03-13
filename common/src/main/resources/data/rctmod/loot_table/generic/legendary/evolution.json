@@ -8,11 +8,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "cobblemon:upgrade"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:prism_scale"
+          "name": "cobblemon:dubious_disc"
         },
         {
           "type": "minecraft:item",
@@ -20,7 +16,11 @@
         },
         {
           "type": "minecraft:item",
-          "name": "cobblemon:dubious_disc"
+          "name": "cobblemon:prism_scale"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:upgrade"
         }
       ]
     }

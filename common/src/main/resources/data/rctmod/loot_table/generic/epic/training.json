@@ -8,15 +8,15 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "cobblemon:everstone"
-        },
-        {
-          "type": "minecraft:item",
           "name": "cobblemon:ability_capsule"
         },
         {
           "type": "minecraft:item",
           "name": "cobblemon:ability_patch"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:everstone"
         },
         {
           "type": "minecraft:item",

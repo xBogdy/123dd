@@ -3,18 +3,35 @@
     {
       "rolls": {
         "type": "minecraft:binomial",
-        "n": 2,
-        "p": 0.5
+        "n": 3,
+        "p": 0.15
       },
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "value": "rctmod:generic/common/archeology",
+          "value": "rctmod:generic/common/diverse",
+          "weight": 500
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/common/pokeballs",
           "weight": 500
         },
         {
           "type": "minecraft:loot_table",
           "value": "rctmod:generic/uncommon/archeology",
+          "weight": 150,
+          "quality": 350
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/uncommon/diverse",
+          "weight": 150,
+          "quality": 350
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/uncommon/pokeballs",
           "weight": 150,
           "quality": 350
         },
@@ -26,7 +43,31 @@
         },
         {
           "type": "minecraft:loot_table",
+          "value": "rctmod:generic/rare/diverse",
+          "weight": 40,
+          "quality": 220
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/rare/pokeballs",
+          "weight": 40,
+          "quality": 220
+        },
+        {
+          "type": "minecraft:loot_table",
           "value": "rctmod:generic/epic/archeology",
+          "weight": 20,
+          "quality": 60
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/epic/diverse",
+          "weight": 20,
+          "quality": 60
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/epic/pokeballs",
           "weight": 20,
           "quality": 60
         },
@@ -38,8 +79,49 @@
         },
         {
           "type": "minecraft:loot_table",
+          "value": "rctmod:generic/legendary/diverse",
+          "weight": 2,
+          "quality": 72
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/legendary/pokeballs",
+          "weight": 2,
+          "quality": 72
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "rctmod:level_range",
+          "range": {
+            "min": 1,
+            "max": 25
+          }
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "type": "minecraft:binomial",
+        "n": 3,
+        "p": 0.25
+      },
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
           "value": "rctmod:generic/common/diverse",
           "weight": 500
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/common/pokeballs",
+          "weight": 500
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/uncommon/archeology",
+          "weight": 150,
+          "quality": 350
         },
         {
           "type": "minecraft:loot_table",
@@ -49,32 +131,21 @@
         },
         {
           "type": "minecraft:loot_table",
-          "value": "rctmod:generic/rare/diverse",
+          "value": "rctmod:generic/uncommon/pokeballs",
+          "weight": 150,
+          "quality": 350
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/rare/archeology",
           "weight": 40,
           "quality": 220
         },
         {
           "type": "minecraft:loot_table",
-          "value": "rctmod:generic/epic/diverse",
-          "weight": 20,
-          "quality": 60
-        },
-        {
-          "type": "minecraft:loot_table",
-          "value": "rctmod:generic/legendary/diverse",
-          "weight": 2,
-          "quality": 72
-        },
-        {
-          "type": "minecraft:loot_table",
-          "value": "rctmod:generic/common/pokeballs",
-          "weight": 500
-        },
-        {
-          "type": "minecraft:loot_table",
-          "value": "rctmod:generic/uncommon/pokeballs",
-          "weight": 150,
-          "quality": 350
+          "value": "rctmod:generic/rare/diverse",
+          "weight": 40,
+          "quality": 220
         },
         {
           "type": "minecraft:loot_table",
@@ -84,15 +155,248 @@
         },
         {
           "type": "minecraft:loot_table",
+          "value": "rctmod:generic/epic/archeology",
+          "weight": 20,
+          "quality": 60
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/epic/diverse",
+          "weight": 20,
+          "quality": 60
+        },
+        {
+          "type": "minecraft:loot_table",
           "value": "rctmod:generic/epic/pokeballs",
           "weight": 20,
           "quality": 60
         },
         {
           "type": "minecraft:loot_table",
+          "value": "rctmod:generic/legendary/archeology",
+          "weight": 2,
+          "quality": 72
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/legendary/diverse",
+          "weight": 2,
+          "quality": 72
+        },
+        {
+          "type": "minecraft:loot_table",
           "value": "rctmod:generic/legendary/pokeballs",
           "weight": 2,
           "quality": 72
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "rctmod:level_range",
+          "range": {
+            "min": 26,
+            "max": 50
+          }
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "type": "minecraft:binomial",
+        "n": 3,
+        "p": 0.35
+      },
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/common/diverse",
+          "weight": 500
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/common/pokeballs",
+          "weight": 500
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/uncommon/archeology",
+          "weight": 150,
+          "quality": 350
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/uncommon/diverse",
+          "weight": 150,
+          "quality": 350
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/uncommon/pokeballs",
+          "weight": 150,
+          "quality": 350
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/rare/archeology",
+          "weight": 40,
+          "quality": 220
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/rare/diverse",
+          "weight": 40,
+          "quality": 220
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/rare/pokeballs",
+          "weight": 40,
+          "quality": 220
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/epic/archeology",
+          "weight": 20,
+          "quality": 60
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/epic/diverse",
+          "weight": 20,
+          "quality": 60
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/epic/pokeballs",
+          "weight": 20,
+          "quality": 60
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/legendary/archeology",
+          "weight": 2,
+          "quality": 72
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/legendary/diverse",
+          "weight": 2,
+          "quality": 72
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/legendary/pokeballs",
+          "weight": 2,
+          "quality": 72
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "rctmod:level_range",
+          "range": {
+            "min": 51,
+            "max": 75
+          }
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "type": "minecraft:binomial",
+        "n": 3,
+        "p": 0.45
+      },
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/common/diverse",
+          "weight": 500
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/common/pokeballs",
+          "weight": 500
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/uncommon/archeology",
+          "weight": 150,
+          "quality": 350
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/uncommon/diverse",
+          "weight": 150,
+          "quality": 350
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/uncommon/pokeballs",
+          "weight": 150,
+          "quality": 350
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/rare/archeology",
+          "weight": 40,
+          "quality": 220
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/rare/diverse",
+          "weight": 40,
+          "quality": 220
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/rare/pokeballs",
+          "weight": 40,
+          "quality": 220
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/epic/archeology",
+          "weight": 20,
+          "quality": 60
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/epic/diverse",
+          "weight": 20,
+          "quality": 60
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/epic/pokeballs",
+          "weight": 20,
+          "quality": 60
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/legendary/archeology",
+          "weight": 2,
+          "quality": 72
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/legendary/diverse",
+          "weight": 2,
+          "quality": 72
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "rctmod:generic/legendary/pokeballs",
+          "weight": 2,
+          "quality": 72
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "rctmod:level_range",
+          "range": {
+            "min": 76,
+            "max": 100
+          }
         }
       ]
     }

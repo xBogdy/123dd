@@ -4,18 +4,19 @@
       "conditions": {
         "count": 1,
         "entity": {
-          "type": ""
+          "type": null
         },
         "trainer_ids": [
           "title_defense_zeph_05ea"
         ],
-        "trainer_type": ""
+        "trainer_type": null
       },
       "trigger": "rctmod:defeat_count"
     }
   },
   "display": {
     "announce_to_chat": false,
+    "background": null,
     "description": {
       "text": "Defeat Title Defense Zeph"
     },

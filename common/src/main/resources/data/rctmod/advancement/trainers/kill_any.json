@@ -2,18 +2,19 @@
   "criteria": {
     "kill_trainer": {
       "conditions": {
-        "count": 1,
+        "count": null,
         "entity": {
           "type": "rctmod:trainer"
         },
         "trainer_ids": [],
-        "trainer_type": ""
+        "trainer_type": null
       },
       "trigger": "minecraft:player_killed_entity"
     }
   },
   "display": {
     "announce_to_chat": false,
+    "background": null,
     "description": {
       "text": "'Defeat' any Trainer"
     },

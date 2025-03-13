@@ -4,7 +4,7 @@
       "conditions": {
         "count": -1,
         "entity": {
-          "type": ""
+          "type": null
         },
         "trainer_ids": [],
         "trainer_type": "e4"
@@ -14,6 +14,7 @@
   },
   "display": {
     "announce_to_chat": true,
+    "background": null,
     "description": {
       "text": "Defeat all Elite 4 Trainers"
     },

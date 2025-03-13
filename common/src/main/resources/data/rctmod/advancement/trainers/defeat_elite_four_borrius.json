@@ -4,12 +4,12 @@
       "conditions": {
         "count": 1,
         "entity": {
-          "type": ""
+          "type": null
         },
         "trainer_ids": [
           "elite_four_arabella_05b5"
         ],
-        "trainer_type": ""
+        "trainer_type": null
       },
       "trigger": "rctmod:defeat_count"
     },
@@ -17,12 +17,12 @@
       "conditions": {
         "count": 1,
         "entity": {
-          "type": ""
+          "type": null
         },
         "trainer_ids": [
           "elite_four_elias_05b4"
         ],
-        "trainer_type": ""
+        "trainer_type": null
       },
       "trigger": "rctmod:defeat_count"
     },
@@ -30,12 +30,12 @@
       "conditions": {
         "count": 1,
         "entity": {
-          "type": ""
+          "type": null
         },
         "trainer_ids": [
           "elite_four_moleman_05b3"
         ],
-        "trainer_type": ""
+        "trainer_type": null
       },
       "trigger": "rctmod:defeat_count"
     },
@@ -43,18 +43,19 @@
       "conditions": {
         "count": 1,
         "entity": {
-          "type": ""
+          "type": null
         },
         "trainer_ids": [
           "elite_four_penny_05b6"
         ],
-        "trainer_type": ""
+        "trainer_type": null
       },
       "trigger": "rctmod:defeat_count"
     }
   },
   "display": {
     "announce_to_chat": false,
+    "background": null,
     "description": {
       "text": "Defeat all members of the Borrius Elite 4"
     },

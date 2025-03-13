@@ -14,13 +14,25 @@
     },
     {
       "rolls": {
-        "min": 1,
-        "max": 1
+        "type": "minecraft:binomial",
+        "n": 1,
+        "p": 1
       },
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "value": "rctmod:generic/unique/pokeballs"
+          "value": "rctmod:generic/legendary/masterball",
+          "weight": 2,
+          "quality": 72
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "rctmod:level_range",
+          "range": {
+            "min": 1,
+            "max": 100
+          }
         }
       ]
     }

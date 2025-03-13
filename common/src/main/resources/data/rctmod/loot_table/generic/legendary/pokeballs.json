@@ -8,15 +8,15 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "name": "cobblemon:ancient_origin_ball"
+        },
+        {
+          "type": "minecraft:item",
           "name": "cobblemon:beast_ball"
         },
         {
           "type": "minecraft:item",
           "name": "cobblemon:dream_ball"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:ancient_origin_ball"
         }
       ]
     }

@@ -4,18 +4,19 @@
       "conditions": {
         "count": 1,
         "entity": {
-          "type": ""
+          "type": null
         },
         "trainer_ids": [
           "rocket_admin_archer_0035"
         ],
-        "trainer_type": ""
+        "trainer_type": null
       },
       "trigger": "rctmod:defeat_count"
     }
   },
   "display": {
     "announce_to_chat": false,
+    "background": null,
     "description": {
       "text": "Defeat Rocket Admin Archers single team"
     },

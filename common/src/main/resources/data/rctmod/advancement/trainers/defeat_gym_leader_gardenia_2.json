@@ -4,18 +4,19 @@
       "conditions": {
         "count": 1,
         "entity": {
-          "type": ""
+          "type": null
         },
         "trainer_ids": [
           "gym_leader_gardenia_058b"
         ],
-        "trainer_type": ""
+        "trainer_type": null
       },
       "trigger": "rctmod:defeat_count"
     }
   },
   "display": {
     "announce_to_chat": true,
+    "background": null,
     "description": {
       "text": "Defeat Gardenia in a rematch"
     },

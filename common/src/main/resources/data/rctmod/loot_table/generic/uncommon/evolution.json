@@ -8,7 +8,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "cobblemon:thunder_stone"
+          "name": "cobblemon:fire_stone"
         },
         {
           "type": "minecraft:item",
@@ -16,11 +16,11 @@
         },
         {
           "type": "minecraft:item",
-          "name": "cobblemon:fire_stone"
+          "name": "cobblemon:leaf_stone"
         },
         {
           "type": "minecraft:item",
-          "name": "cobblemon:leaf_stone"
+          "name": "cobblemon:thunder_stone"
         },
         {
           "type": "minecraft:item",

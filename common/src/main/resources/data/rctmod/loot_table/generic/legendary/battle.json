@@ -8,7 +8,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "cobblemon:choice_scarf"
+          "name": "cobblemon:black_sludge"
         },
         {
           "type": "minecraft:item",
@@ -16,7 +16,11 @@
         },
         {
           "type": "minecraft:item",
-          "name": "cobblemon:black_sludge"
+          "name": "cobblemon:choice_scarf"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:choice_specs"
         },
         {
           "type": "minecraft:item",
@@ -24,7 +28,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "cobblemon:choice_specs"
+          "name": "cobblemon:leftovers"
         },
         {
           "type": "minecraft:item",
@@ -33,10 +37,6 @@
         {
           "type": "minecraft:item",
           "name": "cobblemon:toxic_orb"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:leftovers"
         }
       ]
     }

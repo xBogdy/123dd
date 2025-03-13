@@ -12,10 +12,6 @@
         },
         {
           "type": "minecraft:item",
-          "name": "cobblemon:revive"
-        },
-        {
-          "type": "minecraft:item",
           "name": "cobblemon:full_heal",
           "functions": [
             {
@@ -34,6 +30,14 @@
         {
           "type": "minecraft:item",
           "name": "cobblemon:pp_up"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:revival_herb"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:revive"
         },
         {
           "type": "minecraft:item",
@@ -56,10 +60,6 @@
               }
             }
           ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:revival_herb"
         }
       ]
     }

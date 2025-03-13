@@ -4,20 +4,21 @@
       "conditions": {
         "count": 1,
         "entity": {
-          "type": ""
+          "type": null
         },
         "trainer_ids": [
           "rival_4_player_chose_beldum_05fe",
           "rival_4_player_chose_gible_05fd",
           "rival_4_player_chose_larvitar_05ff"
         ],
-        "trainer_type": ""
+        "trainer_type": null
       },
       "trigger": "rctmod:defeat_count"
     }
   },
   "display": {
     "announce_to_chat": false,
+    "background": null,
     "description": {
       "text": "Defeat Rival Wayne a third time"
     },

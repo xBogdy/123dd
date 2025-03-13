@@ -4,20 +4,21 @@
       "conditions": {
         "count": 1,
         "entity": {
-          "type": ""
+          "type": null
         },
         "trainer_ids": [
           "rival_2_player_chose_beldum_060a",
           "rival_2_player_chose_gible_0609",
           "rival_2_player_chose_larvitar_060b"
         ],
-        "trainer_type": ""
+        "trainer_type": null
       },
       "trigger": "rctmod:defeat_count"
     }
   },
   "display": {
     "announce_to_chat": false,
+    "background": null,
     "description": {
       "text": "Defeat Rival Wayne for the first time"
     },

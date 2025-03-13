@@ -4,19 +4,20 @@
       "conditions": {
         "count": 1,
         "entity": {
-          "type": ""
+          "type": null
         },
         "trainer_ids": [
           "trainer_92_0605",
           "trainer_77_05f6"
         ],
-        "trainer_type": ""
+        "trainer_type": null
       },
       "trigger": "rctmod:defeat_count"
     }
   },
   "display": {
     "announce_to_chat": true,
+    "background": null,
     "description": {
       "text": "Defeat Trainer Blue"
     },

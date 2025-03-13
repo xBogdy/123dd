@@ -8,15 +8,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "cobblemon:power_weight"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:soothe_bell"
-        },
-        {
-          "type": "minecraft:item",
           "name": "cobblemon:power_anklet"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:power_band"
         },
         {
           "type": "minecraft:item",
@@ -24,15 +20,19 @@
         },
         {
           "type": "minecraft:item",
-          "name": "cobblemon:power_lens"
-        },
-        {
-          "type": "minecraft:item",
           "name": "cobblemon:power_bracer"
         },
         {
           "type": "minecraft:item",
-          "name": "cobblemon:power_band"
+          "name": "cobblemon:power_lens"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:power_weight"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:soothe_bell"
         }
       ]
     }

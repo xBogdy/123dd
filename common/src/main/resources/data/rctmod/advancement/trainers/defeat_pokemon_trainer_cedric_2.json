@@ -4,20 +4,21 @@
       "conditions": {
         "count": 1,
         "entity": {
-          "type": ""
+          "type": null
         },
         "trainer_ids": [
           "pokemon_trainer_cedric_0448",
           "pokemon_trainer_cedric_0449",
           "pokemon_trainer_cedric_044a"
         ],
-        "trainer_type": ""
+        "trainer_type": null
       },
       "trigger": "rctmod:defeat_count"
     }
   },
   "display": {
     "announce_to_chat": false,
+    "background": null,
     "description": {
       "text": "Defeat Rival Cedrick a second time"
     },

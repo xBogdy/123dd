@@ -4,30 +4,30 @@
       "conditions": {
         "count": 1,
         "entity": {
-          "type": ""
+          "type": null
         },
         "trainer_ids": [],
-        "trainer_type": ""
+        "trainer_type": null
       },
       "trigger": "rctmod:defeat_count"
     }
   },
   "display": {
     "announce_to_chat": false,
+    "background": "rctmod:textures/gui/advancements/backgrounds/rctmod.png",
     "description": {
       "text": "Defeat any Trainer"
     },
     "frame": "task",
     "hidden": false,
     "icon": {
-      "id": "cobblemon:poke_ball"
+      "id": "rctmod:trainer_card"
     },
     "show_toast": true,
     "title": {
       "text": "Radical Trainers"
     }
   },
-  "parent": "cobblemon:root",
   "requirements": [
     [
       "defeat_any"

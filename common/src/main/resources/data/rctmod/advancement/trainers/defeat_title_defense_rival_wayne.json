@@ -4,20 +4,21 @@
       "conditions": {
         "count": 1,
         "entity": {
-          "type": ""
+          "type": null
         },
         "trainer_ids": [
           "title_defense_rival_player_chose_beldum_05f0",
           "title_defense_rival_player_chose_gible_05ef",
           "title_defense_rival_player_chose_larvitar_05f1"
         ],
-        "trainer_type": ""
+        "trainer_type": null
       },
       "trigger": "rctmod:defeat_count"
     }
   },
   "display": {
     "announce_to_chat": false,
+    "background": null,
     "description": {
       "text": "Defeat Title Defense Wayne"
     },

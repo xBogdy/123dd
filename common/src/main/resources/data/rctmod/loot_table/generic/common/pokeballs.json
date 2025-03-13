@@ -8,7 +8,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "cobblemon:slate_ball",
+          "name": "cobblemon:azure_ball",
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -21,7 +21,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "cobblemon:verdant_ball",
+          "name": "cobblemon:citrine_ball",
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -47,19 +47,6 @@
         },
         {
           "type": "minecraft:item",
-          "name": "cobblemon:azure_ball",
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 1,
-                "max": 2
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
           "name": "cobblemon:roseate_ball",
           "functions": [
             {
@@ -73,7 +60,20 @@
         },
         {
           "type": "minecraft:item",
-          "name": "cobblemon:citrine_ball",
+          "name": "cobblemon:slate_ball",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:verdant_ball",
           "functions": [
             {
               "function": "minecraft:set_count",

@@ -8,15 +8,15 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "name": "cobblemon:dawn_stone"
+        },
+        {
+          "type": "minecraft:item",
           "name": "cobblemon:dusk_stone"
         },
         {
           "type": "minecraft:item",
-          "name": "cobblemon:sun_stone"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:dawn_stone"
+          "name": "cobblemon:moon_stone"
         },
         {
           "type": "minecraft:item",
@@ -24,7 +24,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "cobblemon:moon_stone"
+          "name": "cobblemon:sun_stone"
         }
       ]
     }

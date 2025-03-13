@@ -8,43 +8,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "cobblemon:helix_sherd"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:capture_sherd"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:tumblestone"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:dome_sherd"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:bygone_sherd"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:nostalgic_sherd"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:suspicious_sherd"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:black_tumblestone"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:relic_coin"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:ancient_wing_ball"
+          "name": "cobblemon:ancient_great_ball"
         },
         {
           "type": "minecraft:item",
@@ -52,7 +16,43 @@
         },
         {
           "type": "minecraft:item",
-          "name": "cobblemon:ancient_great_ball"
+          "name": "cobblemon:ancient_wing_ball"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:black_tumblestone"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:bygone_sherd"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:capture_sherd"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:dome_sherd"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:helix_sherd"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:nostalgic_sherd"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:relic_coin"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:suspicious_sherd"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:tumblestone"
         }
       ]
     }

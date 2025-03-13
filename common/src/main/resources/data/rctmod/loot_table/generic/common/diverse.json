@@ -8,11 +8,19 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "name": "cobblemon:leek_and_potato_stew"
+        },
+        {
+          "type": "minecraft:item",
           "name": "cobblemon:roasted_leek"
         },
         {
           "type": "minecraft:item",
-          "name": "cobblemon:leek_and_potato_stew"
+          "name": "minecraft:beetroot_soup"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:candle"
         },
         {
           "type": "minecraft:item",
@@ -42,26 +50,6 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:mushroom_stew"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:painting"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:milk_bucket"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:lead"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:beetroot_soup"
-        },
-        {
-          "type": "minecraft:item",
           "name": "minecraft:iron_nugget",
           "functions": [
             {
@@ -75,11 +63,23 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:suspicious_stew"
+          "name": "minecraft:lead"
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:candle"
+          "name": "minecraft:milk_bucket"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:mushroom_stew"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:painting"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:suspicious_stew"
         }
       ]
     }

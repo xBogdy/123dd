@@ -8,15 +8,23 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "name": "cobblemon:ancient_gigaton_ball"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:ancient_jet_ball"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:ancient_ultra_ball"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:relic_coin_pouch"
+        },
+        {
+          "type": "minecraft:item",
           "name": "cobblemon:root_fossil"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:sentry_armor_trim_smithing_template"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:dune_armor_trim_smithing_template"
         },
         {
           "type": "minecraft:item",
@@ -24,11 +32,11 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:wild_armor_trim_smithing_template"
+          "name": "minecraft:disc_fragment_5"
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:ward_armor_trim_smithing_template"
+          "name": "minecraft:dune_armor_trim_smithing_template"
         },
         {
           "type": "minecraft:item",
@@ -36,15 +44,11 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:vex_armor_trim_smithing_template"
+          "name": "minecraft:host_armor_trim_smithing_template"
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:tide_armor_trim_smithing_template"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:snout_armor_trim_smithing_template"
+          "name": "minecraft:raiser_armor_trim_smithing_template"
         },
         {
           "type": "minecraft:item",
@@ -52,11 +56,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:spire_armor_trim_smithing_template"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:wayfinder_armor_trim_smithing_template"
+          "name": "minecraft:sentry_armor_trim_smithing_template"
         },
         {
           "type": "minecraft:item",
@@ -68,31 +68,31 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:raiser_armor_trim_smithing_template"
+          "name": "minecraft:snout_armor_trim_smithing_template"
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:host_armor_trim_smithing_template"
+          "name": "minecraft:spire_armor_trim_smithing_template"
         },
         {
           "type": "minecraft:item",
-          "name": "cobblemon:relic_coin_pouch"
+          "name": "minecraft:tide_armor_trim_smithing_template"
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:disc_fragment_5"
+          "name": "minecraft:vex_armor_trim_smithing_template"
         },
         {
           "type": "minecraft:item",
-          "name": "cobblemon:ancient_gigaton_ball"
+          "name": "minecraft:ward_armor_trim_smithing_template"
         },
         {
           "type": "minecraft:item",
-          "name": "cobblemon:ancient_jet_ball"
+          "name": "minecraft:wayfinder_armor_trim_smithing_template"
         },
         {
           "type": "minecraft:item",
-          "name": "cobblemon:ancient_ultra_ball"
+          "name": "minecraft:wild_armor_trim_smithing_template"
         }
       ]
     }

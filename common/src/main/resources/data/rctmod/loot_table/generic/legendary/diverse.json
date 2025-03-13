@@ -8,6 +8,14 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "name": "minecraft:dragon_breath"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:nether_star"
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:netherite_scrap",
           "functions": [
             {
@@ -21,23 +29,11 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:nether_star"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:dragon_breath"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:totem_of_undying"
-        },
-        {
-          "type": "minecraft:item",
           "name": "minecraft:shulker_shell"
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:heart_of_the_sea"
+          "name": "minecraft:totem_of_undying"
         }
       ]
     }

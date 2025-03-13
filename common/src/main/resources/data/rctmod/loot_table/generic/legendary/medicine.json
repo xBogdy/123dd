@@ -8,14 +8,6 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "cobblemon:max_elixir"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "cobblemon:max_revive"
-        },
-        {
-          "type": "minecraft:item",
           "name": "cobblemon:exp_candy_xl",
           "conditions": [
             {
@@ -26,6 +18,14 @@
               }
             }
           ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:max_elixir"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cobblemon:max_revive"
         }
       ]
     }
