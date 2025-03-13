@@ -14,9 +14,12 @@ rm -rf "common/src/main/resources/data/rctmod/trainer_types"
 curl -s -S "https://gitlab.com/srcmc/rct/spreadsheets/-/raw/master/jcy.all.yaml" | jcy -out "common/src/main/resources"
 
 rctltp -out "common/src/main/resources/data/rctmod/loot_table" \
-  -sheet_url_generic "https://gitlab.com/srcmc/rct/spreadsheets/-/raw/master/spreadsheet/loot_tables.csv" \
-  -sheet_url_groups "https://gitlab.com/srcmc/rct/spreadsheets/-/raw/master/spreadsheet/loot_table_groups.csv" \
-  -sheet_url_single "https://gitlab.com/srcmc/rct/spreadsheets/-/raw/master/spreadsheet/loot_table_singles.csv" \
-  minecraft cobblemon
+  -sheet_url_items "https://gitlab.com/srcmc/rct/spreadsheets/-/raw/master/spreadsheet/loot_tables.csv" \
+  -sheet_url_distributions "https://gitlab.com/srcmc/rct/spreadsheets/-/raw/master/spreadsheet/loot_table_distributions.csv" \
+  -sheet_url_pools "https://gitlab.com/srcmc/rct/spreadsheets/-/raw/master/spreadsheet/loot_table_pools.csv" \
+  -sheet_url_categories "https://gitlab.com/srcmc/rct/spreadsheets/-/raw/master/spreadsheet/loot_table_categories.csv" \
+  -modIds "minecraft,cobblemon" \
+  -poolIds "default,masterball" \
+  -categoryIds "battle,berries,nature,fishing,medicine,pokeballs,training,evolution,archeology,diverse,masterball"
 
 echo "assets generated"
