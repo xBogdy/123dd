@@ -1,6 +1,6 @@
 # Radical Cobblemon Trainers
 
-Over **700** unique and **challenging** trainers, from the Pokemon rom hack *Radical Red* (v3.02), that will spawn naturally in your world.
+Over **1500** unique and **challenging** trainers, from the Pokemon rom hacks *Radical Red* (v3.02) and *Unbound* (v2.0.3.2) as well as the main series games *Brillian Diamond/Shining Pearl*, that will spawn naturally in your world.
 
 ## Description
 
@@ -12,13 +12,27 @@ Over **700** unique and **challenging** trainers, from the Pokemon rom hack *Rad
 
 ---
 
-**Story Mode**: Defeat leaders, rivals and many more to become the champion.
+**Story Mode**: Defeat leaders, rivals and many more to become the ultimate champion.
 
 ![trainer_battle_start](https://cdn.modrinth.com/data/lRwTUnD7/images/fc88a7cb14538738ca900eb965b74e40e7ecf42c.png)
 
 ---
 
 ![trainer_card_arrow](https://cdn.modrinth.com/data/lRwTUnD7/images/6fb1b46e6004992f928c19513e52e864bf945bd9.png)
+
+---
+
+**Choose your path**: Seek out the *Trainer Association* to start a journey of your choice.
+
+![trainer_association](https://cdn.modrinth.com/data/lRwTUnD7/images/93ac7a356f7254d2fdc11b186ac1266bbdbe8af7.png)
+
+---
+
+![trainer_association_trades](https://cdn.modrinth.com/data/lRwTUnD7/images/7fc5a4e06aeec77cc53477b24b2ac6a800571349.png)
+
+---
+
+![advancements](https://gitlab.com/srcmc/rct/docs/-/raw/0.14/docs/img/advancements.gif?ref_type=heads)
 
 ---
 
@@ -38,16 +52,17 @@ Over **700** unique and **challenging** trainers, from the Pokemon rom hack *Rad
 
 ---
 
-**Endgame**: There are many challenging trainers for you to encounter, even after the champion. Seek out stronger trainers for better loot!
+**Endgame**: There are many challenging trainers for you to encounter, even after becoming a champion. Seek out stronger trainers for better loot, or complete multiple series (again) to permanently boost your luck!
 
 ![trainer_silhouettes](https://cdn.modrinth.com/data/lRwTUnD7/images/87405f1ddcea4dd0db4c1a3a67603ec555cbff97.png)
 
 ---
 
-**Native support for other mods**:
+## Youtube Guides
 
-- [PKGBadges/CobbleBadges](https://modrinth.com/mod/pkgbadges): Leaders will drop badges from this mod
-- [SimpleTMs](https://modrinth.com/mod/simpletms-tms-and-trs-for-cobblemon): Some trainers have a chance to drop a random TR (note: there is currently a *bug* where pokemon of any trainers also have a chance to drop TRs, you may disable the chance for this to happen in the SimpleTMs config)
+Awesome guide by Jonathan's Playroom (**applies to version 0.13 for the most part**):
+
+![A Guide to "Radical Cobblemon Trainers" mod](https://www.youtube.com/watch?v=Dzk3DTmBQDE)
 
 ## Configuration/Documentation
 
@@ -61,8 +76,8 @@ The mod contains many config options and has an extensive data pack support. Ple
 
 ## Known Issues
 
-- Trainers fail to spawn with 'Convenient Decors' installed
-- I've had reports that some `Persistent` trainers randomly stopped accepting battles after a while (I could not reproduce this on my side yet)
+- Trainers fail to spawn with *Convenient Decors* installed
+- The Trainer Card arrow will not render when `emissiveTextures` is enabled in *Continuity*
 
 ## Planned features
 
