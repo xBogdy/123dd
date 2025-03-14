@@ -580,6 +580,11 @@ public class TrainerMob extends PathfinderMob implements Npc {
     }
 
     @Override
+    public boolean saveAsPassenger(CompoundTag tag) {
+        return this.isPersistenceRequired() && super.saveAsPassenger(tag);
+    }
+
+    @Override
     public boolean canChangeDimensions(Level level1, Level level2) {
         return false;
     }
