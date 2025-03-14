@@ -23,7 +23,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.utils.ChatUtils;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerAssociation;
@@ -43,7 +42,6 @@ public class MerchantResultSlotMixin {
     @Inject(method = "onTake", at = @At("RETURN"), remap = true)
     public void inject_onTake(Player player, ItemStack itemStack, CallbackInfo ci) {
         if(this.merchant instanceof TrainerAssociation ta) {
-            ModCommon.LOG.info("ONTAKE: " + itemStack.getDisplayName().getString());
             offerSeriesSwitch(ta, player, itemStack);
         }
     }
@@ -51,7 +49,6 @@ public class MerchantResultSlotMixin {
     @Inject(method = "onQuickCraft", at = @At("RETURN"), remap = true)
     protected void inject_onQuickCraft(ItemStack itemStack, int i, CallbackInfo ci) {
         if(this.merchant instanceof TrainerAssociation ta) {
-            ModCommon.LOG.info("ONQUICKCRAFT: " + itemStack.getDisplayName().getString());
             offerSeriesSwitch(ta, ta.getTradingPlayer(), itemStack);
         }
     }
@@ -61,8 +58,6 @@ public class MerchantResultSlotMixin {
             var offer = ta.takeOffer();
 
             if(offer != null) {
-                ModCommon.LOG.info("ITEM -> OFFER: " + itemStack.getDisplayName().getString() + " -> " + offer.getValue().getDisplayName().getString());
-
                 if(!replaceDummy(player, itemStack, offer.getValue())) {
                     itemStack.remove(DataComponents.CUSTOM_NAME);
                     itemStack.remove(DataComponents.LORE);
@@ -81,7 +76,6 @@ public class MerchantResultSlotMixin {
         var i = inv.findSlotMatchingItem(dummy);
 
         if(i >= 0) {
-            ModCommon.LOG.info("DUMMY ITEM REPLACED");
             inv.setItem(i, replacement);
             return true;
         }

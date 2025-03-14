@@ -171,7 +171,6 @@ public class ModCommon {
 
                     if(!payloads.isEmpty()) {
                         var pl = payloads.poll();
-                        ModCommon.LOG.info("SENDING " + pl.getKey().length + " BYTES, BATCHES: " + pl.getValue());
                         NetworkManager.sendToPlayer(player, PlayerStatePayload.of(pl.getKey(), pl.getValue()));
                     }
                 }

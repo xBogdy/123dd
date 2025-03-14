@@ -251,7 +251,6 @@ public class TrainerPlayerData extends SavedData {
         compoundTag.put("completedSeries", completedSeries);
         compoundTag.putString("currentSeries", this.currentSeries);
         compoundTag.putBoolean("currentSeriesCompleted", this.currentSeriesCompleted);
-        ModCommon.LOG.info("TPD SAVED: " + this.getLevelCap());
         return compoundTag;
     }
 

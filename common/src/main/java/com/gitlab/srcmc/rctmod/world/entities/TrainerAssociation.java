@@ -29,7 +29,6 @@ import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 import com.cobblemon.mod.common.api.apricorn.Apricorn;
-import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.ModRegistries.Items;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.pack.SeriesMetaData;
@@ -214,7 +213,6 @@ public class TrainerAssociation extends WanderingTrader {
 
     @Override
     public void remove(RemovalReason reason) {
-        ModCommon.LOG.info("TA REMOVED: " + reason);
         RCTMod.getInstance().getTrainerSpawner().unregister(this);
         this.setPlayerTarget(null);
         super.remove(reason);
@@ -239,7 +237,6 @@ public class TrainerAssociation extends WanderingTrader {
 
     @Override
     public void setPersistenceRequired() {
-        ModCommon.LOG.info("PRESISTENCE REQUIRED");
         if(!this.isPersistenceRequired()) {
             super.setPersistenceRequired();
             this.setPlayerTarget(null);
@@ -265,12 +262,7 @@ public class TrainerAssociation extends WanderingTrader {
         var itemStack = player.getItemInHand(interactionHand);
 
         if(!itemStack.is(net.minecraft.world.item.Items.VILLAGER_SPAWN_EGG) && this.isAlive() && !this.isTrading() && !this.isBaby()) {
-            if(!this.level().isClientSide) {
-                // TODO: THIS IS A TEST
-                var should = TrainerAssociation.shouldSpawnFor(player);
-                ModCommon.LOG.info("SHOULD SPAWN: " + should);
-                ///////////////////////
-                
+            if(!this.level().isClientSide) {                
                 if(this.itemOffers == null) {
                     this.updateTrades();
                 }
@@ -367,7 +359,6 @@ public class TrainerAssociation extends WanderingTrader {
         this.offers = new MerchantOffers();
 
         if(this.itemOffers != null) {
-            ModCommon.LOG.info("ADDING ITEM OFFERS: " + this.itemOffers.size());
             this.itemOffers.forEach(this.offers::add);
         }
 
@@ -417,7 +408,6 @@ public class TrainerAssociation extends WanderingTrader {
         public boolean satisfiedBy(ItemStack arg1, ItemStack arg2) {
             if(super.satisfiedBy(arg1, arg2)) {
                 TrainerAssociation.this.offer = Map.entry(this.seriesId, arg1.copy());
-                ModCommon.LOG.info("SATISFIED BY: " + TrainerAssociation.this.offer.getValue().getDisplayName().getString());
                 return true;
             }
             
@@ -484,7 +474,6 @@ public class TrainerAssociation extends WanderingTrader {
 
         public OfferBuilder secondary(Item item) {
             this.secondary = item;
-            ModCommon.LOG.info("SECONDARY: " + item);
             return this;
         }
 
