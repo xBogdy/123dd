@@ -22,6 +22,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.algorithm.IAlgorithm;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
@@ -205,6 +206,7 @@ public class TrainerListWidget extends TrainerDataWidget {
         this.pages = new HashMap<>();
         this.updateState = new UpdateState(this.pages);
         this.updateInnerHeight();
+        this.setScrollAmount(0);
     }
 
     public int size() {
@@ -227,8 +229,8 @@ public class TrainerListWidget extends TrainerDataWidget {
 
         if(nextPage != this.page) {
             this.page = nextPage;
-            this.setScrollAmount(0);
             this.updateInnerHeight();
+            this.setScrollAmount(0);
         }
     }
 
@@ -317,9 +319,10 @@ public class TrainerListWidget extends TrainerDataWidget {
     }
 
     private void updateEntries() {
-        this.setScrollAmount(0);
         this.pages.clear();
         this.page = this.maxPage = 0;
         this.updateState = new UpdateState(this.pages);
+        this.updateInnerHeight();
+        this.setScrollAmount(0);
     }
 }

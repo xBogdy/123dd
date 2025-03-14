@@ -68,7 +68,7 @@ public interface IServerConfig extends IModConfig {
      * any value equal to or below spawnIntervalTicks to disable (e.g. 0).
      * 
      * range [0, inf]
-     * default: 800
+     * default: 1200
      */
     default int spawnIntervalTicksMaximum() { return 1200; }
 
