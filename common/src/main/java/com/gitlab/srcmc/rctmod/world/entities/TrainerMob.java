@@ -355,8 +355,16 @@ public class TrainerMob extends PathfinderMob implements Npc {
                 this.udpateCustomName();
                 this.trainerIdCheckFails = 0;
             } else {
-                this.trainerIdCheckRetryTicks = Math.min(MAX_TRAINER_ID_CHECK_RETRY_TICK, (++this.trainerIdCheckFails) * TRAINER_ID_CHECK_RETRY_TICK);
-                ModCommon.LOG.error(String.format("Invalid trainer id '%s' (%s): not found (retry in %d ticks)", trainerId, this.getStringUUID(), this.trainerIdCheckRetryTicks));
+                var fails = this.trainerIdCheckFails + 1;
+                var ticks = fails * TRAINER_ID_CHECK_RETRY_TICK;
+
+                if(ticks <= MAX_TRAINER_ID_CHECK_RETRY_TICK) {
+                    this.trainerIdCheckRetryTicks = ticks;
+                    this.trainerIdCheckFails = fails;
+                    ModCommon.LOG.error(String.format("Invalid trainer id '%s' (%s): not found (retry in %d ticks)", trainerId, this.getStringUUID(), this.trainerIdCheckRetryTicks));
+                } else {
+                    throw new IllegalStateException(String.format("Failed to retrieve trainer '%s'. Was it successfully registered to the trainer registry?", trainerId));
+                }
             }
         } catch(IllegalArgumentException e) {
             ModCommon.LOG.error(String.format("Invalid trainer id '%s' (%s)", trainerId, this.getStringUUID()), e);
@@ -480,7 +488,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
                 this.cooldown--;
             }
 
-            if(this.trainerIdCheckFails > 0) {
+            if(this.trainerIdCheckFails > 0 && --this.trainerIdCheckRetryTicks < 0) {
                 this.updateTrainerNPC(this.targetTrainerid);
             }
 
