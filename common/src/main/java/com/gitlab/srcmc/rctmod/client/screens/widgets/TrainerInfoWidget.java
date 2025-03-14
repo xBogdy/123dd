@@ -80,7 +80,7 @@ public class TrainerInfoWidget extends TrainerDataWidget {
     }
 
     public void tick() {
-        if(this.entryState == EntryState.DISCOVERED_KEY && this.name != null && this.ticks % TrainerListWidget.OBFUSCATION_INTERVAL_TICKS == 0) {
+        if((this.entryState == EntryState.DISCOVERED_KEY || this.entryState == EntryState.HIDDEN_KEY) && this.name != null && this.ticks % TrainerListWidget.OBFUSCATION_INTERVAL_TICKS == 0) {
             var msg = this.name.getMessage().plainCopy().withStyle(ChatFormatting.GREEN);
             this.obfuscated = !this.obfuscated;
 
