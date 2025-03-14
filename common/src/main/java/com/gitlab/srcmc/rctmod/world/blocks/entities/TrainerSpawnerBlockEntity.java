@@ -57,10 +57,7 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
 
     public TrainerSpawnerBlockEntity(BlockPos blockPos, BlockState blockState) {
         super(ModRegistries.BlockEntityTypes.TRAINER_SPAWNER.get(), blockPos, blockState);
-
-        this.setPlayerDistanceThreshold(
-            RCTMod.getInstance().getServerConfig().minHorizontalDistanceToPlayers()*(2/3.0),
-            RCTMod.getInstance().getServerConfig().maxHorizontalDistanceToPlayers()*(2/3.0));
+        this.setPlayerDistanceThreshold(2, RCTMod.getInstance().getServerConfig().maxHorizontalDistanceToPlayers()*(2/3.0));
     }
 
     @Override
@@ -127,7 +124,7 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
     }
 
     protected void setPlayerDistanceThreshold(double min, double max) {
-        this.minPlayerDistance = min;
+        this.minPlayerDistance = Math.min(min, max);
         this.maxPlayerDistance = max;
         this.aabb = new AABB(this.getBlockPos()).inflate(max);
     }
