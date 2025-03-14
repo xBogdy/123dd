@@ -16,7 +16,7 @@
   - Players now have a `currentSeries` property (defaults to the *empty series*)
   - Players now have statistics to keep track of completed series (the current and completed series of players can be inspected or modified with commands, see *#243* and *#244*)
 - *#249* About ~800 new trainers (see *#237* and *#235*)
-- *#248* Advancements for the new series and moved all advancements to their own tab
+- *#248* Advancements for the new series and moved all advancements to their own tab (backround texture by [piiixl](https://piiixl.itch.io/))
 - *#247* Command `player add progress (before|after)`: Update progress without resetting current progression (useful for optional/alternative progression paths)
 - *#246* Command `player get luck`: Retrieves the accumulated luck of a player (based of how many series the player has completed)
 - *#245* Command `player get progress graph`: Generate a visual representation of a players series progression that can be viewed online (powered by PlantUML)
