@@ -159,10 +159,10 @@ public class ServerConfig implements IServerConfig {
 
         this.spawnTrainerAssociationValue = builder
             .comment(SEPARATOR,
-                "If enabled a single trainer association npc may spawn naturally nearby players that carry a",
-                "trainer card and have not started a series, completed their current series or are in proximity",
-                "to a village (at least 3 occupied beds and a village center) These can spawn everywhere but will",
-                "respect the 'dimensionBlacklist' and 'dimensionWhitelist' settings.")
+                "If enabled a single trainer association npc may spawn naturally nearby players that carry a trainer",
+                "card and have either not started a series or completed their current series. One may also spawn nearby",
+                "any player in proximity to a village (at least 3 occupied beds and a village center). These can",
+                "spawn everywhere but will respect the 'dimensionBlacklist' and 'dimensionWhitelist' settings.")
             .define("spawnTrainerAssociation", IServerConfig.super.spawnTrainerAssociation());
 
         // TODO: proper value validation

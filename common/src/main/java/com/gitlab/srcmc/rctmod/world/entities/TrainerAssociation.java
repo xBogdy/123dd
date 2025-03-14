@@ -455,7 +455,7 @@ public class TrainerAssociation extends WanderingTrader {
                     Component.literal(String.format("Completed: %d", completions)),
                     Component.literal(""), // empty line
                     Component.literal("Important").withStyle(ChatFormatting.BOLD).withStyle(ChatFormatting.GOLD),
-                    Component.literal("Starting a new series will reset your current series progression! In return completing a series will grant a permanent increase of better odds for more valuable loot from trainers.").withStyle(ChatFormatting.GOLD)
+                    Component.literal("Starting a new series will reset your current series progression! In return completing a series will permanently increase your luck for better loot from trainers.").withStyle(ChatFormatting.GOLD)
                 ))).build());
 
             return card;
