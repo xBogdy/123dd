@@ -6,27 +6,27 @@
 
 **Added:**
 
-- *#253* *Luck* stat
+- *#254* *Luck* stat
   - Every player has a luck stat that influences the quality of loot from trainers
-  - Finishing a series (see *#252*) will permanently raise the luck of players based of the difficulty of the series (this can be repeated indefinetely, also for the same series, but with "diminishing returns")
-- *#252* *Series* system
+  - Finishing a series (see *#253*) will permanently raise the luck of players based of the difficulty of the series (this can be repeated indefinetely, also for the same series, but with "diminishing returns")
+- *#253* *Series* system
   - Every series has its own progression (i.e. chain of key trainers and level caps)
   - Only trainers from the current series of a player will be listed in the trainer card of that player
   - Only trainers from the current series of a player will spawn for that player
   - Players now have a `currentSeries` property (defaults to the *empty series*)
-  - Players now have statistics to keep track of completed series (the current and completed series of players can be inspected or modified with commands, see *#245* and *#246*)
-- *#251* About ~800 new trainers (see *#239* and *#237*)
-- *#250* Advancements for the new series and moved all advancements to their own tab (backround texture by [piiixl](https://piiixl.itch.io/))
-- *#249* Command `player add progress (before|after)`: Update progress without resetting current progression (useful for optional/alternative progression paths)
-- *#248* Command `player get luck`: Retrieves the accumulated luck of a player (based of how many series the player has completed)
-- *#247* Command `player get progress graph`: Generate a visual representation of a players series progression that can be viewed online (powered by PlantUML)
-- *#246* Command `player get series [completed]`: Retrieves the current or all completed series of a player
-- *#245* Command `player set series <seriesId> [completed <count>]`: Updates the current or completed series of a player
-- *#244* Config option: `considerEmptySeriesCompleted`
-- *#243* Config option: `spawnTrainerAssociation`
-- *#242* Config option: `spawningRequiresTrainerCard`
-- *#241* Data pack: Trainer mob properties `series` and `substitutes`, a list of series ids the trainer belongs to (the trainer will belong to every series if empty or not set) and a list of trainers that may serve as replacement in terms of series progression
-- *#240* Entity: "Trainer Association" (similar to the Wandering Trader)
+  - Players now have statistics to keep track of completed series (the current and completed series of players can be inspected or modified with commands, see *#246* and *#247*)
+- *#252* About ~800 new trainers (see *#240* and *#238*)
+- *#251* Advancements for the new series and moved all advancements to their own tab (backround texture by [piiixl](https://piiixl.itch.io/))
+- *#250* Command `player add progress (before|after)`: Update progress without resetting current progression (useful for optional/alternative progression paths)
+- *#249* Command `player get luck`: Retrieves the accumulated luck of a player (based of how many series the player has completed)
+- *#248* Command `player get progress graph`: Generate a visual representation of a players series progression that can be viewed online (powered by PlantUML)
+- *#247* Command `player get series [completed]`: Retrieves the current or all completed series of a player
+- *#246* Command `player set series <seriesId> [completed <count>]`: Updates the current or completed series of a player
+- *#245* Config option: `considerEmptySeriesCompleted`
+- *#244* Config option: `spawnTrainerAssociation`
+- *#243* Config option: `spawningRequiresTrainerCard`
+- *#242* Data pack: Trainer mob properties `series` and `substitutes`, a list of series ids the trainer belongs to (the trainer will belong to every series if empty or not set) and a list of trainers that may serve as replacement in terms of series progression
+- *#241* Entity: "Trainer Association" (similar to the Wandering Trader)
   - Offers *trades* (options) for players to start (over) a new series (some offers may require to complete certain series first before they will appear)
   - Offers a Trainer Card trade
   - Only one npc per player can spawn at a time
@@ -34,12 +34,13 @@
   - Spawns nearby players that are close to a decently sized village (3 beds in proximity to a village center)
   - The trainer card will glow and point towards the nearest Trainer Association entity for players that are in the *empty series* or have completed their series
   - Works like a regular minecraft npc (can be summoned with `/summon` and persisted by placing them in a boat or by naming them with a name tag)
-- *#239* Series *Brilliant Diamond/Shining Pearl* (bdsp): A casual series from the main line games
-- *#238* Series *Radical Red*: All trainers and progression as known from previous versions of this mod
-- *#237* Series *Unbound*: Difficult trainers and progression from the (incredible) rom hack "Unbound" (no seriously, play it)
+- *#240* Series *Brilliant Diamond/Shining Pearl* (bdsp): A casual series from the main line games
+- *#239* Series *Radical Red*: All trainers and progression as known from previous versions of this mod
+- *#238* Series *Unbound*: Difficult trainers and progression from the (incredible) rom hack "Unbound" (no seriously, play it)
 
 **Changed:**
 
+- *#237* (Re)generated trainer textures for old and new trainers (which had the side effect that many trainers may have a different appearance than before)
 - *#236* Adjusted some trainer bag items to match their level range
 - *#235* Changed some trainer names to be more friendly for the younger audience
 - *#234* Forced crash after several failed attempts of retrieving a trainer id (instead of log spam and potentially other unexpected issues)

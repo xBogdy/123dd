@@ -8,8 +8,12 @@
 ## Config
 export RCT_HOME="~/Documents/projects/srcmc/rct/rctmod"
 export SKINS_PATH="~/.hdcode/msg/out/generated"
-export MSG_GEN_LIMIT=1000
+export MSG_GEN_LIMIT=2000
 export MSG_SEED=123
+
+# Clean
+rm -rf common/src/main/resources/assets/rctmod/textures/trainers/single && \
+mkdir -p common/src/main/resources/assets/rctmod/textures/trainers/single
 
 # Commands
 msg_genskins
