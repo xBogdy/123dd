@@ -53,6 +53,7 @@ public class MoveToHomePosGoal extends MoveToBlockGoal {
 
     @Override
     public boolean canUse() {
+        // TODO: check if mob still has HomePos
         return this.findNearestBlock() && this.isValidTarget(this.trainerMob.level(), this.blockPos);
     }
 
