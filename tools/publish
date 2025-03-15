@@ -258,7 +258,7 @@ for mod_loader in "${mod_loaders[@]}"; do
 
         metadata="{
             $relations
-            \"changelog\": \"$(as_json "$(changelog cat)")\",
+            \"changelog\": \"$(as_json "$(changelog cat -e 0)")\",
             \"changelogType\": \"markdown\",
             \"gameVersions\": [$minecraft_version_ids],
             \"releaseType\": \"$release_type\",
