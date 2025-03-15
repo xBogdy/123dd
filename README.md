@@ -32,7 +32,11 @@ Over **1500** unique and **challenging** trainers, from the Pokemon rom hacks *R
 
 ---
 
-![advancements](https://gitlab.com/srcmc/rct/docs/-/raw/0.14/docs/img/advancements.gif?ref_type=heads)
+<div style="text-align: center;">
+
+![advancements](https://srcmc.gitlab.io/rct/docs/latest/img/advancements.gif)
+
+</div>
 
 ---
 
@@ -60,9 +64,7 @@ Over **1500** unique and **challenging** trainers, from the Pokemon rom hacks *R
 
 ## Youtube Guides
 
-Awesome guide by Jonathan's Playroom (**applies to version 0.13 for the most part**):
-
-![A Guide to "Radical Cobblemon Trainers" mod](https://www.youtube.com/watch?v=Dzk3DTmBQDE)
+Awesome guide by Jonathan's Playroom (**applies to version 0.13 for the most part**): ![A Guide to "Radical Cobblemon Trainers" mod](https://www.youtube.com/watch?v=Dzk3DTmBQDE)
 
 ## Configuration/Documentation
 
