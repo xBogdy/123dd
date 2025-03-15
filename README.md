@@ -2,6 +2,10 @@
 
 Over **1500** unique and **challenging** trainers, from the Pokemon ROM hacks *Radical Red* (v3.02) and *Unbound* (v2.0.3.2) as well as the main series games *Brilliant Diamond/Shining Pearl*, that will spawn naturally in your world.
 
+## Supported By
+
+[![bisecthosting](https://www.bisecthosting.com/partners/custom-banners/5ea61298-7966-4331-945f-da7b80663a38.webp)](https://bisecthosting.com/hd42)
+
 ## Description
 
 **Trainer spawning**: Encounter different trainers in different biomes.
@@ -60,7 +64,9 @@ Over **1500** unique and **challenging** trainers, from the Pokemon ROM hacks *R
 
 ## Youtube Guides
 
-Awesome guide by Jonathan's Playroom (**applies to version 0.13 for the most part**): ![A Guide to "Radical Cobblemon Trainers" mod](https://www.youtube.com/watch?v=Dzk3DTmBQDE)
+Awesome guide by Jonathan's Playroom (**applies to version 0.13 for the most part**):
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Dzk3DTmBQDE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Configuration/Documentation
 
@@ -74,8 +80,9 @@ The mod contains many config options and has an extensive data pack support. Ple
 
 ## Known Issues
 
+- The Trainer Card arrow will not render when "Emissive Textures" is enabled in *Continuity*
 - Trainers fail to spawn with *Convenient Decors* installed
-- The Trainer Card arrow will not render when `emissiveTextures` is enabled in *Continuity*
+- There have been complications when trying to pick up trainers with mods like *Carry On* (trainers may not be temporarily removed from worlds or the spawing system can run into unexpected issues)
 
 ## Planned features
 
