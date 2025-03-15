@@ -1,6 +1,6 @@
 # Radical Cobblemon Trainers
 
-Over **1500** unique and **challenging** trainers, from the Pokemon rom hacks *Radical Red* (v3.02) and *Unbound* (v2.0.3.2) as well as the main series games *Brillian Diamond/Shining Pearl*, that will spawn naturally in your world.
+Over **1500** unique and **challenging** trainers, from the Pokemon ROM hacks *Radical Red* (v3.02) and *Unbound* (v2.0.3.2) as well as the main series games *Brilliant Diamond/Shining Pearl*, that will spawn naturally in your world.
 
 ## Description
 
@@ -32,11 +32,7 @@ Over **1500** unique and **challenging** trainers, from the Pokemon rom hacks *R
 
 ---
 
-<div style="text-align: center;">
-
 ![advancements](https://srcmc.gitlab.io/rct/docs/latest/img/advancements.gif)
-
-</div>
 
 ---
 
