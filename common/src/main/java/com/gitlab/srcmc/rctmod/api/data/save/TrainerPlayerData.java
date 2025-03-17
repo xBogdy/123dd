@@ -59,15 +59,28 @@ public class TrainerPlayerData extends SavedData {
     }
 
     private void updateLevelCap() {
-        var cfg = RCTMod.getInstance().getServerConfig();
-        this.levelCap = Math.max(RCTMod.getInstance().getTrainerManager().getMinRequiredLevelCap(this.getCurrentSeries()), Math.min(100, cfg.initialLevelCap() + cfg.additiveLevelCapRequirement()));
+        if(this.currentSeriesCompleted) {
+            this.levelCap = 100; // TODO: maybe something like 'maxSeriesLevel'?
+        } else {
+            var cfg = RCTMod.getInstance().getServerConfig();
+            this.levelCap = Math.max(RCTMod.getInstance().getTrainerManager().getMinRequiredLevelCap(this.getCurrentSeries()), Math.min(100, cfg.initialLevelCap() + cfg.additiveLevelCapRequirement()));
+        }
+
         PlayerState.get(this.player).setLevelCap(this.levelCap);
-        this.defeatedTrainerIds.forEach(this::updateLevelCap);
+
+        if(!this.currentSeriesCompleted) {
+            this.defeatedTrainerIds.forEach(this::updateLevelCap);
+        }
     }
 
     private void updateLevelCap(String trainerId) {
-        var tmd = RCTMod.getInstance().getTrainerManager().getData(trainerId);
-        this.levelCap = Math.max(this.levelCap, Math.max(1, Math.min(100, Math.max(tmd.getRequiredLevelCap(), tmd.getRewardLevelCap()))));
+        if(this.currentSeriesCompleted) {
+            this.levelCap = 100; // TODO: maybe something like 'maxSeriesLevel'?
+        } else {
+            var tmd = RCTMod.getInstance().getTrainerManager().getData(trainerId);
+            this.levelCap = Math.max(this.levelCap, Math.max(1, Math.min(100, Math.max(tmd.getRequiredLevelCap(), tmd.getRewardLevelCap()))));
+        }
+
         PlayerState.get(this.player).setLevelCap(this.levelCap);
     }
 
@@ -115,6 +128,10 @@ public class TrainerPlayerData extends SavedData {
             });
         }
 
+        if(!this.isSeriesCompleted()) {
+            this.currentSeriesCompleted = false; // must be 'dirty' or something else went wron earlier
+        }
+
         return updated[0];
     }
 
@@ -126,6 +143,7 @@ public class TrainerPlayerData extends SavedData {
         if(forceUpdate || this.defeatedTrainerIds.size() > 0) {
             var ps = PlayerState.get(this.player);
             this.defeatedTrainerIds.clear();
+            this.currentSeriesCompleted = false;
             this.updateLevelCap();
             ps.removeProgressDefeats();
             this.setDirty();

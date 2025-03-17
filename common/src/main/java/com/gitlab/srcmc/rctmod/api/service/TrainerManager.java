@@ -309,13 +309,14 @@ public class TrainerManager extends DataPackManager {
 
         this.minRequiredLevelCaps = new HashMap<>();
         var globalMin = new int[]{Integer.MAX_VALUE};
+        var alr = RCTMod.getInstance().getServerConfig().additiveLevelCapRequirement();
 
         newTrainerMobs.values().forEach(tmd -> {
             tmd.setRewardLevelCap(tmd
                 .getFollowedBy().stream()
                 .map(newTrainerMobs::get)
                 .filter(tm -> !tm.isOptional())
-                .map(tm -> tm.getTrainerTeam().getTeam().stream().map(p -> p.getLevel()).max(Integer::compare).orElse(0))
+                .map(tm -> tm.getTrainerTeam().getTeam().stream().map(p -> p.getLevel() + alr).max(Integer::compare).orElse(0))
                 .max(Integer::compare).orElse(tmd.getRequiredLevelCap())); // TODO: change to min?
             
             if(!tmd.isOptional() && !tmd.getFollowedBy().isEmpty()) {

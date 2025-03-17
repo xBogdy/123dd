@@ -2,6 +2,13 @@
 
 **Important**: Version **0.14** introduces the **series system**. Existing player saves will automatically be assigned to the *radicalred series*. New players will start with the *empty series* and have to unlock later series first by completing the *bdsp series* (see also *#233* Trainer Association).
 
+## [0.14.1-beta] - 2025-03-17
+
+**Fixed:**
+
+- *#256* Level cap not getting set to `100` after completing a series (without defeating all optional trainer as well)
+- *#255* `additiveLevelCapRequirement` setting having no effect for trainers other than the first of a series
+
 ## [0.14.0-beta] - 2025-03-14
 
 **Added:**
