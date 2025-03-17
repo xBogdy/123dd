@@ -10,7 +10,7 @@
 
 **Fixed:**
 
-- *#256* Level cap not getting set to `100` after completing a series (without defeating all optional trainer as well)
+- *#256* Level cap not getting set to `100` after completing a series (without defeating all optional trainers as well)
 - *#255* `additiveLevelCapRequirement` setting having no effect for trainers other than the first of a series
 
 ## [0.14.0-beta] - 2025-03-14
