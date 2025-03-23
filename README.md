@@ -68,6 +68,13 @@ Awesome guide by Jonathan's Playroom (**applies to version 0.13 for the most par
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Dzk3DTmBQDE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
+## Data Packs
+
+- Loot tables for badges from *Cobblemon Pokemon Badges*: [RCT Badges - Cobblemon Pokemon Badges](https://modrinth.com/datapack/rct-badges-cobblemonpokemonbadges)
+- Loot tables for badges from *PKGBadges*: [RCT Badges - PKGBadges](https://modrinth.com/datapack/rct-badges-pkgbadges)
+
+> Only install one of these.
+
 ## Configuration/Documentation
 
 The mod contains many config options and has an extensive data pack support. Please refer to the [documentation](https://srcmc.gitlab.io/rct/docs) for more information, guides and the FAQ.
