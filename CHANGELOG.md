@@ -6,8 +6,9 @@
 
 **Fixed:**
 
-- *#259* Clients sometimes being unable to join servers - `invalid stream header` (note: it was difficult to reliably reproduce this issue but I did not run it anymore in any of my tests after this *fix*)
-- *#258* Level cap sometimes not updating to `100` in the Trainer Card (without relog) after series completion
+- *#260* Clients sometimes being unable to join servers - `invalid stream header` (note: it was difficult to reliably reproduce this issue but I did not run it anymore in any of my tests after this *fix*)
+- *#259* Level cap sometimes not updating to `100` in the Trainer Card (without relog) after series completion
+- *#258* Trainer Card including defeat counts of (unlisted) trainers from other series
 
 ## [0.14.1-beta] - 2025-03-17
 
