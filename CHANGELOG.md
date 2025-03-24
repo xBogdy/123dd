@@ -2,6 +2,12 @@
 
 **Important**: Version **0.14** introduces the **series system**. Existing player saves will automatically be assigned to the *radicalred series*. New players will start with the *empty series* and have to pick a series first (see also *#233* Trainer Association).
 
+## [0.14.2-beta] - 2025-03-24
+
+**Fixed:**
+
+- *#258* Clients sometimes being unable to join servers - `invalid stream header` (note: it was difficult to reliably reproduce this issue but I did not run it anymore in any of my tests after this fix)
+
 ## [0.14.1-beta] - 2025-03-17
 
 **Changed:**

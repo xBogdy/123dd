@@ -108,11 +108,6 @@ public class ModClient {
 
             PLAYER_STATE_PAYLOADS.clear();
         }
-
-        // if(!ModClient.playerStateUpdates.offer(pl.bytes())) {
-        //     // TODO: log error instead of exception
-        //     throw new IllegalStateException("Failed to store player state updates");
-        // }
     }
 
     static void receiveTrainerTarget(TrainerTargetPayload tt, PacketContext context) {
