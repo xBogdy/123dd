@@ -183,6 +183,7 @@ public class TrainerPlayerData extends SavedData {
     private void updateCurrentSeries() {
         if(this.testSeriesCompleted()) {
             this.addSeriesCompletion(this.getCurrentSeries());
+            this.updateLevelCap();
             ChatUtils.sendTitle(player, "Completed", RCTMod.getInstance().getSeriesManager().getGraph(this.getCurrentSeries()).getMetaData().title());
             // ModRegistries.CriteriaTriggers.DEFEAT_COUNT.get().trigger((ServerPlayer)player, mob); // TODO: series completion advancements?
         }
