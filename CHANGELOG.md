@@ -4,6 +4,10 @@
 
 ## [0.14.2-beta] - 2025-03-24
 
+**Changed:**
+
+- *#261* Trainer Card UI will now open while holding another item in the off hand - if the Trainer Card is in the off hand the UI will only open if the item in the main hand is not in use - blocking with a shield will always prevent the UI from opening
+
 **Fixed:**
 
 - *#260* Clients sometimes being unable to join servers - `invalid stream header` (note: it was difficult to reliably reproduce this issue but I did not run it anymore in any of my tests after this *fix*)

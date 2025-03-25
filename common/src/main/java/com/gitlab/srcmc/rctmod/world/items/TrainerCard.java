@@ -37,6 +37,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ShieldItem;
 import net.minecraft.world.level.Level;
 
 public class TrainerCard extends Item {
@@ -106,7 +107,9 @@ public class TrainerCard extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
         if(level.isClientSide) {
-            if(interactionHand == InteractionHand.MAIN_HAND && player.getOffhandItem().isEmpty() || player.getMainHandItem().isEmpty()) {
+            var otherHand = interactionHand == InteractionHand.MAIN_HAND ? InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND;
+
+            if(!player.isUsingItem() && !player.isBlocking() && !(player.getItemInHand(otherHand).getItem() instanceof ShieldItem)) {
                 ModClient.SCREENS.openTrainerCardScreen();
             }
         }
