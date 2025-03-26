@@ -40,8 +40,8 @@ public class NeoForgeCommon {
     }
 
     static void onCommonSetup(FMLCommonSetupEvent event) {
-        ModCommon.init();
         ArgumentTypeInfos.registerByClass(TokenArgumentType.class, ModRegistries.ArgumentTypes.TOKEN_ARGUMENT_TYPE.get());
+        ModCommon.init();
     }
 
     static void onConfigLoading(ModConfigEvent.Loading event) {

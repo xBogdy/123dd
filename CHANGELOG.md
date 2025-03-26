@@ -6,7 +6,7 @@
 
 **Added:**
 
-- *#264* Special bulk selectors `/all`, `/types/<typeId>` and `/series/<seriesId>` for `set defeats command`
+- *#264* Special bulk selectors `/all`, `/types/<typeId>` and `/series/<seriesId>` for `set defeats` command
 
 **Changed:**
 
