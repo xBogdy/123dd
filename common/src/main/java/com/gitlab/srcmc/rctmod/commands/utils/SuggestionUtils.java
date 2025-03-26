@@ -17,10 +17,15 @@
  */
 package com.gitlab.srcmc.rctmod.commands.utils;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 import com.gitlab.srcmc.rctmod.api.RCTMod;
+import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerType;
 import com.gitlab.srcmc.rctmod.api.service.SeriesManager;
 import com.mojang.brigadier.context.CommandContext;
@@ -33,6 +38,48 @@ import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.world.entity.player.Player;
 
 public final class SuggestionUtils {
+    public static final String BULK_ALL = "/all";
+    public static final String BULK_TYPE = "/type";
+    public static final String BULK_SERIES = "/series";
+
+    private static final Map<String, Supplier<Stream<Map.Entry<String, TrainerMobData>>>> typeSuggestions = new HashMap<>();
+    private static final Map<String, Supplier<Stream<Map.Entry<String, TrainerMobData>>>> seriesSuggestions = new HashMap<>();
+
+    public static void initSuggestions() {
+        var tm = RCTMod.getInstance().getTrainerManager();
+        var sm = RCTMod.getInstance().getSeriesManager();
+
+        seriesSuggestions.clear();
+        typeSuggestions.clear();
+
+        sm.getSeriesIds().stream().forEach(s -> seriesSuggestions.put(
+            String.format("%s/%s", BULK_SERIES, s),
+            () -> tm.getAllData().filter(e -> e.getValue().isOfSeries(s))));
+        
+        tm.getAllData()
+            .map(e -> e.getValue().getType()).distinct()
+            .forEach(t -> typeSuggestions.put(String.format("%s/%s", BULK_TYPE, t.id()), () -> tm.getAllData().filter(e -> e.getValue().getType().equals(t))));
+    }
+
+    public static boolean executeBulk(String arg, Consumer<Stream<Map.Entry<String, TrainerMobData>>> consumer) {
+        if(BULK_ALL.equals(arg)) {
+            consumer.accept(RCTMod.getInstance().getTrainerManager().getAllData());
+            return true;
+        }
+
+        if(seriesSuggestions.containsKey(arg)) {
+            consumer.accept(seriesSuggestions.get(arg).get());
+            return true;
+        }
+
+        if(typeSuggestions.containsKey(arg)) {
+            consumer.accept(typeSuggestions.get(arg).get());
+            return true;
+        }
+
+        return false;
+    }
+
     public static CompletableFuture<Suggestions> get_trainer_suggestions(final CommandContext<CommandSourceStack> context, final SuggestionsBuilder builder) throws CommandSyntaxException {
         var remaining = builder.getRemaining();
 
@@ -56,8 +103,32 @@ public final class SuggestionUtils {
         return builder.buildFuture();
     }
 
+    public static CompletableFuture<Suggestions> get_trainer_suggestions_bulk(final CommandContext<CommandSourceStack> context, final SuggestionsBuilder builder) throws CommandSyntaxException {
+        var remaining = builder.getRemaining();
+        var tm = RCTMod.getInstance().getTrainerManager();
+
+        if(BULK_ALL.startsWith(remaining)) {
+            builder.suggest(BULK_ALL);
+        }
+
+        typeSuggestions.keySet().stream()
+            .filter(key -> key.startsWith(remaining))
+            .forEach(builder::suggest);
+
+        seriesSuggestions.keySet().stream()
+            .filter(key -> key.startsWith(remaining))
+            .forEach(builder::suggest);
+        
+        tm.getAllData()
+            .map(e -> e.getKey())
+            .filter(tid -> tid.startsWith(remaining))
+            .forEach(builder::suggest);
+
+        return builder.buildFuture();
+    }
+
     public static CompletableFuture<Suggestions> get_series_suggestions(final CommandContext<CommandSourceStack> context, final SuggestionsBuilder builder) throws CommandSyntaxException {
-        Stream.concat(Stream.of(SeriesManager.EMPTY_SERIES_ID), RCTMod.getInstance().getSeriesManager().getSeriesIds().stream()).forEach(builder::suggest);
+        Stream.concat(Stream.of(String.format("/%s", SeriesManager.EMPTY_SERIES_ID)), RCTMod.getInstance().getSeriesManager().getSeriesIds().stream()).forEach(builder::suggest);
         return builder.buildFuture();
     }
 

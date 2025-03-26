@@ -18,6 +18,7 @@
 package com.gitlab.srcmc.rctmod;
 
 import com.gitlab.srcmc.rctmod.advancements.criteria.DefeatCountTrigger;
+import com.gitlab.srcmc.rctmod.commands.arguments.TokenArgumentType;
 import com.gitlab.srcmc.rctmod.world.blocks.TrainerSpawnerBlock;
 import com.gitlab.srcmc.rctmod.world.blocks.entities.TrainerSpawnerBlockEntity;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerAssociation;
@@ -30,6 +31,8 @@ import dev.architectury.registry.level.entity.EntityAttributeRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.advancements.CriterionTrigger;
+import net.minecraft.commands.synchronization.ArgumentTypeInfo;
+import net.minecraft.commands.synchronization.SingletonArgumentInfo;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -42,6 +45,15 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 
 public final class ModRegistries {
+    public class ArgumentTypes {
+        public static final DeferredRegister<ArgumentTypeInfo<?, ?>> REGISTRY = DeferredRegister.create(ModCommon.MOD_ID, Registries.COMMAND_ARGUMENT_TYPE);
+        public static final RegistrySupplier<ArgumentTypeInfo<TokenArgumentType, ?>> TOKEN_ARGUMENT_TYPE;
+
+        static {
+            TOKEN_ARGUMENT_TYPE = REGISTRY.register(location("token_argument_type"), () -> SingletonArgumentInfo.contextFree(TokenArgumentType::token));
+        }
+    }
+    
     public class Entities {
         public static final DeferredRegister<EntityType<?>> REGISTRY = DeferredRegister.create(ModCommon.MOD_ID, Registries.ENTITY_TYPE);
         public static final RegistrySupplier<EntityType<TrainerMob>> TRAINER;
@@ -119,6 +131,7 @@ public final class ModRegistries {
 
     public static void init() {
         if(!ModRegistries.initialized) {
+            ArgumentTypes.REGISTRY.register();
             Entities.REGISTRY.register();
             Blocks.REGISTRY.register();
             Items.REGISTRY.register();
@@ -132,7 +145,7 @@ public final class ModRegistries {
         }
     }
 
-    private static ResourceLocation location(String key) {
+    public static ResourceLocation location(String key) {
         return ResourceLocation.fromNamespaceAndPath(ModCommon.MOD_ID, key);
     }
 

@@ -27,6 +27,7 @@ import com.gitlab.srcmc.rctmod.api.data.save.TrainerPlayerData;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.api.service.SeriesManager;
 import com.gitlab.srcmc.rctmod.api.utils.PlantUML;
+import com.gitlab.srcmc.rctmod.commands.arguments.TokenArgumentType;
 import com.gitlab.srcmc.rctmod.commands.utils.SuggestionUtils;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
@@ -119,7 +120,7 @@ public final class PlayerCommands {
                 .then(Commands.literal("set")
                     .requires(css -> css.hasPermission(2))
                     .then(Commands.literal("series")
-                        .then(Commands.argument("seriesId", StringArgumentType.string())
+                        .then(Commands.argument("seriesId", TokenArgumentType.token())
                             .suggests(SuggestionUtils::get_series_suggestions)
                             .executes(PlayerCommands::player_set_current_series)
                             .then(Commands.literal("completed")
@@ -149,8 +150,8 @@ public final class PlayerCommands {
                                     .suggests(SuggestionUtils::get_progress_trainer_suggestions)
                                     .executes(PlayerCommands::player_set_progress_targets_after)))))
                     .then(Commands.literal("defeats")
-                        .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainerId", StringArgumentType.string())
-                            .suggests(SuggestionUtils::get_trainer_suggestions)
+                        .then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("trainerId", TokenArgumentType.token())
+                            .suggests(SuggestionUtils::get_trainer_suggestions_bulk)
                             .then(Commands.argument("value", IntegerArgumentType.integer(0))
                                 .executes(PlayerCommands::player_set_defeats_value))
                             .then(Commands.argument("targets", EntityArgument.players())
@@ -623,7 +624,13 @@ public final class PlayerCommands {
             try {
                 var trainerId = context.getArgument("trainerId", String.class);
                 var count = IntegerArgumentType.getInteger(context, "value");
-                RCTMod.getInstance().getTrainerManager().getBattleMemory((ServerLevel)player.level(), trainerId).setDefeatedBy(trainerId, player, count);
+                var tm = RCTMod.getInstance().getTrainerManager();
+                var level = (ServerLevel)player.level();
+
+                if(!SuggestionUtils.executeBulk(trainerId, data -> data.map(e -> e.getKey()).forEach(tid -> tm.getBattleMemory(level, tid).setDefeatedBy(tid, player, count)))) {
+                    tm.getBattleMemory(level, trainerId).setDefeatedBy(trainerId, player, count);
+                }
+
                 return count;
             } catch(IllegalArgumentException e) {
                 context.getSource().sendFailure(Component.literal(e.getMessage()));
@@ -641,11 +648,23 @@ public final class PlayerCommands {
             var targets = EntityArgument.getPlayers(context, "targets");
             var count = IntegerArgumentType.getInteger(context, "value");
             var tm = RCTMod.getInstance().getTrainerManager();
+            var bulk = SuggestionUtils.executeBulk(trainerId, data -> {
+                for(var player : targets) {
+                    var level = (ServerLevel)player.level();
 
-            for(var player : targets) {
-                tm.getBattleMemory((ServerLevel)player.level(), trainerId).setDefeatedBy(trainerId, player, count);
+                    data.map(e -> e.getKey()).forEach(tid -> {
+                        tm.getBattleMemory(level, tid).setDefeatedBy(tid, player, count);
+                    });
+                }
+            });
+
+            if(!bulk) {
+                for(var player : targets) {
+                    var level = (ServerLevel)player.level();
+                    tm.getBattleMemory(level, trainerId).setDefeatedBy(trainerId, player, count);
+                }
             }
-            
+
             return count;
         } catch(IllegalArgumentException e) {
             context.getSource().sendFailure(Component.literal(e.getMessage()));

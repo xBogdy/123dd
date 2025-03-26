@@ -31,7 +31,7 @@ import com.gitlab.srcmc.rctmod.api.data.pack.SeriesMetaData;
 import com.gitlab.srcmc.rctmod.api.utils.PathUtils;
 
 public class SeriesManager {
-    public static final String EMPTY_SERIES_ID = "...";
+    public static final String EMPTY_SERIES_ID = "empty";
 
     private Map<String, SeriesGraph> seriesGraphs = new HashMap<>();
     private final SeriesGraph EMPTY_SERIES = new SeriesGraph(new SeriesMetaData("Empty Series", "", 0));

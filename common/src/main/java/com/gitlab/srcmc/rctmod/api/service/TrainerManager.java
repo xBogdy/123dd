@@ -39,6 +39,7 @@ import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
 import com.gitlab.srcmc.rctmod.api.data.save.TrainerBattleMemory;
 import com.gitlab.srcmc.rctmod.api.data.save.TrainerPlayerData;
 import com.gitlab.srcmc.rctmod.api.utils.PathUtils;
+import com.gitlab.srcmc.rctmod.commands.utils.SuggestionUtils;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import com.google.gson.JsonElement;
 
@@ -351,6 +352,7 @@ public class TrainerManager extends DataPackManager {
             TrainerBattleMemory.migrate(this.server, this);
         }
 
+        SuggestionUtils.initSuggestions();
         ModCommon.LOG.info(String.format("Registered %d trainers", this.trainerMobs.size()));
     }
 

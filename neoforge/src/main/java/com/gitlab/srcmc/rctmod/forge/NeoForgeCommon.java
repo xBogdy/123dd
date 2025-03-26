@@ -20,6 +20,9 @@ package com.gitlab.srcmc.rctmod.forge;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.ModRegistries;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
+import com.gitlab.srcmc.rctmod.commands.arguments.TokenArgumentType;
+
+import net.minecraft.commands.synchronization.ArgumentTypeInfos;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
@@ -38,6 +41,7 @@ public class NeoForgeCommon {
 
     static void onCommonSetup(FMLCommonSetupEvent event) {
         ModCommon.init();
+        ArgumentTypeInfos.registerByClass(TokenArgumentType.class, ModRegistries.ArgumentTypes.TOKEN_ARGUMENT_TYPE.get());
     }
 
     static void onConfigLoading(ModConfigEvent.Loading event) {
