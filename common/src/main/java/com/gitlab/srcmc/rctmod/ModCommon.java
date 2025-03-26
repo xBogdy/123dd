@@ -39,6 +39,7 @@ import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.api.utils.ArrUtils;
 import com.gitlab.srcmc.rctmod.commands.PlayerCommands;
 import com.gitlab.srcmc.rctmod.commands.TrainerCommands;
+import com.gitlab.srcmc.rctmod.commands.utils.SuggestionUtils;
 import com.gitlab.srcmc.rctmod.network.PlayerStatePayload;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerAssociation;
 import com.mojang.brigadier.CommandDispatcher;
@@ -134,6 +135,12 @@ public class ModCommon {
 
             if(tm.isReloadRequired()) {
                 tm.loadTrainers();
+
+                if(TrainerBattleMemory.getVersion(server.overworld().getDataStorage()).isOutdated()) {
+                    TrainerBattleMemory.migrate(server, tm);
+                }
+
+                SuggestionUtils.initSuggestions();
             }
         }
     }

@@ -39,7 +39,6 @@ import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
 import com.gitlab.srcmc.rctmod.api.data.save.TrainerBattleMemory;
 import com.gitlab.srcmc.rctmod.api.data.save.TrainerPlayerData;
 import com.gitlab.srcmc.rctmod.api.utils.PathUtils;
-import com.gitlab.srcmc.rctmod.commands.utils.SuggestionUtils;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import com.google.gson.JsonElement;
 
@@ -348,11 +347,6 @@ public class TrainerManager extends DataPackManager {
         players.forEach(pl -> this.getData(pl).getLevelCap()); // forces update
         dpm.close();
 
-        if(TrainerBattleMemory.getVersion(this.server.overworld().getDataStorage()).isOutdated()) {
-            TrainerBattleMemory.migrate(this.server, this);
-        }
-
-        SuggestionUtils.initSuggestions();
         ModCommon.LOG.info(String.format("Registered %d trainers", this.trainerMobs.size()));
     }
 
