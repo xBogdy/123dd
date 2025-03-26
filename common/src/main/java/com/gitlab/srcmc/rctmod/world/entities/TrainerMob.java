@@ -414,7 +414,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
                     for(var player : initiatorSidePlayer) {
                         ChatUtils.reply(this, player, "battle_lost");
-                        minWinsPlayer = minWinsPlayer == null || tm.getBattleMemory(this).getDefeatByCount(player) < tm.getBattleMemory(this).getDefeatByCount(player) ? player : minWinsPlayer;
+                        minWinsPlayer = minWinsPlayer == null || tm.getBattleMemory(this).getDefeatByCount(this.getTrainerId(), player) < tm.getBattleMemory(this).getDefeatByCount(this.getTrainerId(), minWinsPlayer) ? player : minWinsPlayer;
                     }
 
                     if(minWinsPlayer != null) {

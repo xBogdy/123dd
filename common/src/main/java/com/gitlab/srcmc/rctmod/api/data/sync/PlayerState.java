@@ -327,6 +327,6 @@ public class PlayerState implements Serializable {
         var tm = RCTMod.getInstance().getTrainerManager();
         var overworld = this.player.getServer().overworld();
         List.copyOf(this.trainerDefeatCounts.keySet()).forEach(tid -> this.setDefeats(tid, 0));
-        tm.getAllData(this.getCurrentSeries()).forEach(entry -> this.setDefeats(entry.getKey(), tm.getBattleMemory(overworld, entry.getKey()).getDefeatByCount(this.player)));
+        tm.getAllData(this.getCurrentSeries()).map(entry -> entry.getKey()).forEach(tid -> this.setDefeats(tid, tm.getBattleMemory(overworld, tid).getDefeatByCount(tid, this.player)));
     }
 }

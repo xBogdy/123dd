@@ -245,9 +245,16 @@ public class TrainerManager extends DataPackManager {
     }
 
     public TrainerBattleMemory getBattleMemory(ServerLevel level, String trainerId) {
-        return level.getServer().overworld().getDataStorage().computeIfAbsent(
+        var dds = level.getServer().overworld().getDataStorage();
+        var ver = TrainerBattleMemory.getVersion(dds);
+
+        if(ver.isOutdated()) {
+            TrainerBattleMemory.migrate(this.server, RCTMod.getInstance().getTrainerManager()); // just to be save
+        }
+
+        return dds.computeIfAbsent(
             new Factory<>(TrainerBattleMemory::new, TrainerBattleMemory::of, DataFixTypes.LEVEL),
-            TrainerBattleMemory.filePath(trainerId));
+            TrainerBattleMemory.filePath(trainerId, ver));
     }
 
     public boolean updateRequired(Player player) {
@@ -339,6 +346,11 @@ public class TrainerManager extends DataPackManager {
         
         players.forEach(pl -> this.getData(pl).getLevelCap()); // forces update
         dpm.close();
+
+        if(TrainerBattleMemory.getVersion(this.server.overworld().getDataStorage()).isOutdated()) {
+            TrainerBattleMemory.migrate(this.server, this);
+        }
+
         ModCommon.LOG.info(String.format("Registered %d trainers", this.trainerMobs.size()));
     }
 

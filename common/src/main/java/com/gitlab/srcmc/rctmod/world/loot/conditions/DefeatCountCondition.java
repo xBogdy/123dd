@@ -51,7 +51,7 @@ public record DefeatCountCondition(Comparator comparator, int count) implements 
         var player = lootContext.getParamOrNull(LootContextParams.LAST_DAMAGE_PLAYER);
 
         if(player != null && lootContext.getParamOrNull(LootContextParams.THIS_ENTITY) instanceof TrainerMob mob) {
-            return this.comparator.test(RCTMod.getInstance().getTrainerManager().getBattleMemory(mob).getDefeatByCount(player), this.count);
+            return this.comparator.test(RCTMod.getInstance().getTrainerManager().getBattleMemory(mob).getDefeatByCount(mob.getTrainerId(), player), this.count);
         }
         
         return false;

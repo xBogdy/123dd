@@ -2,15 +2,19 @@
 
 **Important**: Version **0.14** introduces the **series system**. Existing player saves will automatically be assigned to the *radicalred series*. New players will start with the *empty series* and have to pick a series first (see also *#233* Trainer Association).
 
-## [0.14.2-beta] - 2025-03-24
+## [0.14.2-beta] - 2025-03-26
 
 **Changed:**
 
+- *#262* Reworked how player battle statistics are stored
+  - **Important:** Migrating persistent data can always be a little bit scary, the automatic migration process is logged and ensures that old data will only be removed after the new data was saved. Regardless creating a backup of the `data` directory can be an additional safety measure
+  - Defeat statistics are now batched in groups per file (instead of one file per trainer)
+  - This significantly improves loading times (especially for servers with many players and overall greater amounts of defeats against trainers)
 - *#261* Trainer Card UI will now open while holding another item in the off hand - if the Trainer Card is in the off hand the UI will only open if the item in the main hand is not in use - blocking with a shield will always prevent the UI from opening
 
 **Fixed:**
 
-- *#260* Clients sometimes being unable to join servers - `invalid stream header` (note: it was difficult to reliably reproduce this issue but I did not run it anymore in any of my tests after this *fix*)
+- *#260* Clients sometimes being unable to join servers - `invalid stream header` (note: it was difficult to reliably reproduce this issue but I did not run it anymore in any of my tests after this *fix*, thanks to AGGStudios for helping out testing this)
 - *#259* Level cap sometimes not updating to `100` in the Trainer Card (without relog) after series completion
 - *#258* Trainer Card including defeat counts of (unlisted) trainers from other series
 

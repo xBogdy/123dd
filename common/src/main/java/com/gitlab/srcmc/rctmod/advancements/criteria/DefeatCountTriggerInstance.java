@@ -38,7 +38,7 @@ public record DefeatCountTriggerInstance(List<String> trainerIds, String trainer
         var playerState = PlayerState.get(player);
 
         if(!this.trainerIds.isEmpty() && this.trainerIds.contains(mob.getTrainerId())) {
-            return battleMem.getDefeatByCount(player) >= this.count;
+            return battleMem.getDefeatByCount(mob.getTrainerId(), player) >= this.count;
         }
 
         if(!this.trainerType.isEmpty() && this.trainerType.equals(mobTr.getType().name())) {
@@ -50,7 +50,7 @@ public record DefeatCountTriggerInstance(List<String> trainerIds, String trainer
         }
 
         return this.trainerIds.isEmpty() && this.trainerType.isEmpty()
-            && battleMem.getDefeatByCount(player) >= this.count;
+            && battleMem.getDefeatByCount(mob.getTrainerId(), player) >= this.count;
     }
 
     @Override

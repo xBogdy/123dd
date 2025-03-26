@@ -323,12 +323,12 @@ public class TrainerPlayerData extends SavedData {
                 if(tag.contains("progressDefeats")) {
                     tag.getCompound("progressDefeats").getAllKeys().forEach(tpd::addProgressDefeat);
                 } else {
-                    // legacy support: derive progress defeats from trainer defeat counts
+                    // legacy support (< 0.14): derive progress defeats from trainer defeat counts
                     var level = this.player.getServer().overworld();
                     
                     tm.getAllData()
                         .map(entry -> entry.getKey())
-                        .filter(tid -> tm.getBattleMemory(level, tid).getDefeatByCount(this.player) > 0)
+                        .filter(tid -> tm.getBattleMemory(level, tid).getDefeatByCount(tid, this.player) > 0)
                         .forEach(tpd::addProgressDefeat);
                 }
             }

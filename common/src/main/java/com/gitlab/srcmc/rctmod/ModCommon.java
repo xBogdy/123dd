@@ -34,6 +34,7 @@ import com.cobblemon.mod.common.api.events.battles.BattleVictoryEvent;
 import com.cobblemon.mod.common.api.events.pokemon.ExperienceGainedPreEvent;
 import com.gitlab.srcmc.rctapi.api.RCTApi;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
+import com.gitlab.srcmc.rctmod.api.data.save.TrainerBattleMemory;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.api.utils.ArrUtils;
 import com.gitlab.srcmc.rctmod.commands.PlayerCommands;
@@ -89,6 +90,7 @@ public class ModCommon {
         CommandRegistrationEvent.EVENT.register(ModCommon::onCommandRegistration);
         LifecycleEvent.SERVER_STARTING.register(ModCommon::onServerStarting);
         LifecycleEvent.SERVER_STOPPED.register(ModCommon::onServerStopped);
+        LifecycleEvent.SERVER_LEVEL_SAVE.register(ModCommon::onServerLevelSave);
         LevelTick.SERVER_LEVEL_PRE.register(ModCommon::onServerWorldTick);
         LevelTick.SERVER_PRE.register(ModCommon::onServerTick);
         PlayerEvent.PLAYER_JOIN.register(ModCommon::onPlayerJoin);
@@ -105,6 +107,12 @@ public class ModCommon {
     }
 
     // LifecycleEvent
+
+    static void onServerLevelSave(ServerLevel level) {
+        if(level.getServer().overworld() == level) {
+            TrainerBattleMemory.clearLegacyFiles();
+        }
+    }
 
     static void onServerStarting(MinecraftServer server) {
         PLAYER_STATE_PAYLOADS.clear();
