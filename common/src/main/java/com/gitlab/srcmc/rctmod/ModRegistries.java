@@ -130,8 +130,15 @@ public final class ModRegistries {
     }
 
     public static void init() {
+        ModRegistries.init(false);
+    }
+
+    public static void init(boolean skipArgumentType) {
         if(!ModRegistries.initialized) {
-            ArgumentTypes.REGISTRY.register();
+            if(!skipArgumentType) {
+                ArgumentTypes.REGISTRY.register();
+            }
+
             Entities.REGISTRY.register();
             Blocks.REGISTRY.register();
             Items.REGISTRY.register();
