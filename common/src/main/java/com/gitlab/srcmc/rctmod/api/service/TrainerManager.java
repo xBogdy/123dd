@@ -231,7 +231,7 @@ public class TrainerManager extends DataPackManager {
         
         return player.getServer().overworld().getDataStorage().computeIfAbsent(
             new Factory<>(builder::create, builder::of, DataFixTypes.LEVEL),
-            TrainerPlayerData.filePath(player));
+            TrainerPlayerData.filePath(player)).forPlayer(player);
     }
 
     public Stream<Map.Entry<String, TrainerMobData>> getAllData(String... series) {

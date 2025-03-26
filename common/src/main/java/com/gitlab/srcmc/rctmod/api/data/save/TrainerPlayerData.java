@@ -46,6 +46,11 @@ public class TrainerPlayerData extends SavedData {
         this.player = player;
     }
 
+    public TrainerPlayerData forPlayer(Player player) {
+        this.player = player;
+        return this;
+    }
+
     public int getLevelCap() {
         var cfg = RCTMod.getInstance().getServerConfig();
 
@@ -184,7 +189,7 @@ public class TrainerPlayerData extends SavedData {
         if(this.testSeriesCompleted()) {
             this.addSeriesCompletion(this.getCurrentSeries());
             this.updateLevelCap();
-            ChatUtils.sendTitle(player, "Completed", RCTMod.getInstance().getSeriesManager().getGraph(this.getCurrentSeries()).getMetaData().title());
+            ChatUtils.sendTitle(this.player, "Completed", RCTMod.getInstance().getSeriesManager().getGraph(this.getCurrentSeries()).getMetaData().title());
             // ModRegistries.CriteriaTriggers.DEFEAT_COUNT.get().trigger((ServerPlayer)player, mob); // TODO: series completion advancements?
         }
     }
