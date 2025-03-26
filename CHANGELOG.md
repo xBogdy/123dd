@@ -10,7 +10,7 @@
 
 **Changed:**
 
-- *#263* Empty series id in `set series` command: `...` -> `/empty`
+- *#263* Empty series id in `set series` command: `...` -> `empty`
 - *#262* Reworked how player battle statistics are stored
   - **Important:** Migrating persistent data can always be a little bit scary, the automatic migration process is logged and ensures that old data will only be removed after the new data was saved. Regardless creating a backup of the `data` directory can be an additional safety measure
   - Defeat statistics are now batched in groups per file (instead of one file per trainer)
