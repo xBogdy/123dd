@@ -9,6 +9,7 @@
   "battleRules": {
     "maxItemUses": 2
   },
+  "battleFormat": "GEN_9_DOUBLES",
   "bag": [
     {
       "item": "cobblemon:hyper_potion",
