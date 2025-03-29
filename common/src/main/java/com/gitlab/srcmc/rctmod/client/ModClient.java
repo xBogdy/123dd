@@ -25,6 +25,8 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.ModRegistries;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
+import com.gitlab.srcmc.rctmod.api.data.pack.DataPackManager;
+import com.gitlab.srcmc.rctmod.api.data.pack.TrainerType;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.api.utils.ArrUtils;
 import com.gitlab.srcmc.rctmod.client.renderer.TargetArrowRenderer;
@@ -32,8 +34,10 @@ import com.gitlab.srcmc.rctmod.client.renderer.TrainerAssociationRenderer;
 import com.gitlab.srcmc.rctmod.client.renderer.TrainerRenderer;
 import com.gitlab.srcmc.rctmod.client.screens.IScreenManager;
 import com.gitlab.srcmc.rctmod.client.screens.ScreenManager;
-import com.gitlab.srcmc.rctmod.network.PlayerStatePayload;
+import com.gitlab.srcmc.rctmod.network.BatchedPayload;
+import com.gitlab.srcmc.rctmod.network.BatchedPayloads;
 import com.gitlab.srcmc.rctmod.network.TrainerTargetPayload;
+import com.gitlab.srcmc.rctmod.network.BatchedPayload.Payload;
 
 import dev.architectury.event.events.client.ClientPlayerEvent;
 import dev.architectury.event.events.client.ClientTickEvent;
@@ -49,21 +53,21 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
 public class ModClient {
+    public static final DataPackManager RESOURCE_MANAGER = new DataPackManager(PackType.CLIENT_RESOURCES);
     public static final IScreenManager SCREENS = new ScreenManager();
-    private static Queue<byte[]> playerStateUpdates = new ConcurrentLinkedDeque<>();
 
     public static void init() {
         var mc = Minecraft.getInstance();
         ModCommon.initPlayer(() -> mc.player);
-        ReloadListenerRegistry.register(PackType.CLIENT_RESOURCES, RCTMod.getInstance().getClientDataManager());
-        ReloadListenerRegistry.register(PackType.CLIENT_RESOURCES, RCTMod.getInstance().getTrainerManager());
+        ReloadListenerRegistry.register(PackType.CLIENT_RESOURCES, RESOURCE_MANAGER);
         EntityRendererRegistry.register(ModRegistries.Entities.TRAINER, TrainerRenderer::new);
         EntityRendererRegistry.register(ModRegistries.Entities.TRAINER_ASSOCIATION, TrainerAssociationRenderer::new);
         TargetArrowRenderer.init();
     }
 
     public static void setup() {
-        NetworkManager.registerReceiver(Side.S2C, PlayerStatePayload.TYPE, PlayerStatePayload.CODEC, ModClient::receivePlayerState);
+        NetworkManager.registerReceiver(Side.S2C, BatchedPayloads.PLAYER_STATE.TYPE, BatchedPayloads.PLAYER_STATE.CODEC, ModClient::receivePlayerState);
+        NetworkManager.registerReceiver(Side.S2C, BatchedPayloads.TRAINER_MANAGER.TYPE, BatchedPayloads.TRAINER_MANAGER.CODEC, ModClient::receiveTrainerManager);
         NetworkManager.registerReceiver(Side.S2C, TrainerTargetPayload.TYPE, TrainerTargetPayload.CODEC, ModClient::receiveTrainerTarget);
         ClientTickEvent.CLIENT_LEVEL_POST.register(ModClient::onClientLevelTick);
         ClientPlayerEvent.CLIENT_PLAYER_JOIN.register(ModClient::onClientPlayerJoin);
@@ -72,16 +76,17 @@ public class ModClient {
     // ClientTickEvent
 
     static void onClientLevelTick(Level level) {
-        var tm = RCTMod.getInstance().getTrainerManager();
-
-        if(tm.isReloadRequired()) {
-            tm.loadTrainers();
-        }
-
         var psu = ModClient.playerStateUpdates.poll();
 
         if(psu != null) {
             PlayerState.get(ModCommon.localPlayer()).deserializeUpdate(psu);
+        }
+
+        var tmu = ModClient.trainerManagerUpdates.poll();
+
+        if(tmu != null) {
+            TrainerType.clear();
+            RCTMod.getInstance().getTrainerManager().fromPayloads(tmu);
         }
 
         TargetArrowRenderer.getInstance().tick();
@@ -91,14 +96,20 @@ public class ModClient {
 
     static void onClientPlayerJoin(LocalPlayer player) {
         PLAYER_STATE_PAYLOADS.clear();
+        TRAINER_MANAGER_PAYLOADS.clear();
+        RCTMod.getInstance().getTrainerManager().setLoading(true);
         PlayerState.initFor(player);
     }
 
     // NetworkManager
 
-    static List<byte[]> PLAYER_STATE_PAYLOADS = new ArrayList<>();
+    private static final Queue<byte[]> playerStateUpdates = new ConcurrentLinkedDeque<>();
+    private static final Queue<Payload[]> trainerManagerUpdates = new ConcurrentLinkedDeque<>();
 
-    static void receivePlayerState(PlayerStatePayload pl, PacketContext context) {
+    static List<byte[]> PLAYER_STATE_PAYLOADS = new ArrayList<>();
+    static List<Payload> TRAINER_MANAGER_PAYLOADS = new ArrayList<>();
+    
+    static void receivePlayerState(BatchedPayload.Payload pl, PacketContext context) {
         PLAYER_STATE_PAYLOADS.add(pl.bytes());
 
         if(pl.remainingBatches() == 0) {
@@ -107,6 +118,19 @@ public class ModClient {
             }
 
             PLAYER_STATE_PAYLOADS.clear();
+        }
+    }
+
+    static void receiveTrainerManager(BatchedPayload.Payload pl, PacketContext context) {
+        RCTMod.getInstance().getTrainerManager().setLoading(true);
+        TRAINER_MANAGER_PAYLOADS.add(pl);
+
+        if(pl.remainingBatches() == 0) {
+            if(!ModClient.trainerManagerUpdates.offer(TRAINER_MANAGER_PAYLOADS.toArray(new Payload[TRAINER_MANAGER_PAYLOADS.size()]))) {
+                ModCommon.LOG.error("Failed to store trainer manager updates");
+            }
+
+            TRAINER_MANAGER_PAYLOADS.clear();
         }
     }
 

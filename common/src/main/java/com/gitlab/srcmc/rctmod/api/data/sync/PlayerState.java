@@ -42,7 +42,7 @@ import net.minecraft.world.entity.player.Player;
 public class PlayerState implements Serializable {
     public static final int SYNC_INTERVAL_TICKS = 5;
     public static final int MIN_BATCH_SIZE = 64;
-    public static final int MAX_BATCH_SIZE = 512;
+    public static final int MAX_BATCH_SIZE = 2048;
 
     private static final long serialVersionUID = 0;
     private static final Map<UUID, PlayerState> remoteStates = new HashMap<>();
@@ -208,7 +208,7 @@ public class PlayerState implements Serializable {
 
             if(defeats == 0) {
                 this.trainerDefeatCounts.remove(trainerId);
-                this.distinctTypeDefeatCounts.compute(tt, (k, v) -> v - 1);
+                this.distinctTypeDefeatCounts.compute(tt, (k, v) -> v != null ? v - 1 : null);
             } else {
                 this.trainerDefeatCounts.put(trainerId, defeats);
 
@@ -298,7 +298,7 @@ public class PlayerState implements Serializable {
 
             if(count == 0) {
                 if(this.trainerDefeatCounts.remove(trainerId) != null) {
-                    this.distinctTypeDefeatCounts.compute(tt, (k, v) -> v > 1 ? v - 1 : null);
+                    this.distinctTypeDefeatCounts.compute(tt, (k, v) -> v != null && v > 1 ? v - 1 : null);
                 }
             } else {
                 if(this.trainerDefeatCounts.put(trainerId, count) == null) {

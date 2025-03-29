@@ -17,9 +17,11 @@
  */
 package com.gitlab.srcmc.rctmod.api.data.pack;
 
+import java.io.Serializable;
 import java.util.List;
 
-public record SeriesMetaData(String title, String description, int difficulty, List<List<String>> requiredSeries) implements Comparable<SeriesMetaData> {
+public record SeriesMetaData(String title, String description, int difficulty, List<List<String>> requiredSeries) implements Comparable<SeriesMetaData>, Serializable {
+    private static final long serialVersionUID = 0L;
     public static final int MIN_DIFFICULTY = 1;
     public static final int MAX_DIFFICULTY = 10;
 

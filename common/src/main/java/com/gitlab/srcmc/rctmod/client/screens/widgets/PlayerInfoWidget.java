@@ -20,6 +20,9 @@ package com.gitlab.srcmc.rctmod.client.screens.widgets;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+
+import org.spongepowered.include.com.google.common.base.Strings;
+
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerType;
@@ -89,6 +92,11 @@ public class PlayerInfoWidget extends AbstractWidget {
     public static final int NEXT_PAGE_BUTTON_Y = 104;
     public static final int NEXT_PAGE_BUTTON_SIZE = 16;
 
+    public static final int LOADING_W = TRAINER_LIST_W;
+    public static final int LOADING_H = 8;
+    public static final int LOADING_X = TRAINER_LIST_X;
+    public static final int LOADING_Y = TRAINER_LIST_Y + TRAINER_LIST_H/2 - LOADING_H/2;
+
     static final TrainerType ALL_TRAINER_TYPES = new TrainerType("All");
 
     private StringWidget displayName;
@@ -96,6 +104,7 @@ public class PlayerInfoWidget extends AbstractWidget {
     private StringWidget levelCapValue;
     private StringWidget totalDefeatsLabel;
     private StringWidget totalDefeatsValue;
+    private StringWidget loadingLabel;
 
     private TrainerListWidget trainerList;
     private TrainerInfoWidget trainerInfo;
@@ -116,6 +125,9 @@ public class PlayerInfoWidget extends AbstractWidget {
     private List<TrainerType> trainerTypes;
     private String sid;
 
+    private boolean trainerManagerLoading;
+    private int loadingTick;
+
     public PlayerInfoWidget(int x, int y, int w, int h, Font font) {
         super(x, y, w, h, Component.empty());
         this.active = false;
@@ -125,6 +137,7 @@ public class PlayerInfoWidget extends AbstractWidget {
         this.levelCapValue = new StringWidget(x + LEVEL_CAP_X, y + LEVEL_CAP_Y + LEVEL_CAP_H/8, LEVEL_CAP_W - LEVEL_CAP_PADDING, LEVEL_CAP_H, Component.empty(), this.font).alignRight();
         this.totalDefeatsLabel = new StringWidget(x + TOTAL_DEFEATS_X + TOTAL_DEFEATS_PADDING, y + TOTAL_DEFEATS_Y + TOTAL_DEFEATS_H/8, TOTAL_DEFEATS_W, TOTAL_DEFEATS_H, Component.literal("Total").withStyle(ChatFormatting.WHITE), this.font).alignLeft();
         this.totalDefeatsValue = new StringWidget(x + TOTAL_DEFEATS_X, y + TOTAL_DEFEATS_Y + TOTAL_DEFEATS_H/8, TOTAL_DEFEATS_W - TOTAL_DEFEATS_PADDING, TOTAL_DEFEATS_H, Component.empty(), this.font).alignRight();
+        this.loadingLabel = new AutoScaledStringWidget(x + LOADING_X, y + LOADING_Y, LOADING_W, LOADING_H, Component.empty(), this.font).alignCenter().scaled(0.65f);
         this.trainerList = new TrainerListWidget(x + TRAINER_LIST_X, y + TRAINER_LIST_Y, TRAINER_LIST_W, TRAINER_LIST_H, font, this.sortedTrainerIds());
         this.trainerInfo = new TrainerInfoWidget(x + TRAINER_LIST_X, y + TRAINER_LIST_Y, TRAINER_LIST_W, TRAINER_LIST_H, font);
         this.trainerTypes = new ArrayList<>();
@@ -163,6 +176,7 @@ public class PlayerInfoWidget extends AbstractWidget {
             this.levelCapValue,
             this.totalDefeatsLabel,
             this.totalDefeatsValue,
+            this.loadingLabel,
         };
 
         this.trainerList.setOnTrainerClicked((trainerNr, trainerId, entryState) -> {
@@ -179,7 +193,6 @@ public class PlayerInfoWidget extends AbstractWidget {
         this.trainerTypes.clear();
         this.trainerTypes.add(ALL_TRAINER_TYPES);
         this.trainerTypeButton.setValue(0);
-        this.updateTrainerTypes(this.sid);
     }
 
     public AbstractWidget[] getRenderableWidgets() {
@@ -234,6 +247,20 @@ public class PlayerInfoWidget extends AbstractWidget {
         }
     }
 
+    private void updateLoading() {
+        this.updateLoading(false);
+    }
+
+    private void updateLoading(boolean disable) {
+        if(disable) {
+            this.loadingLabel.setMessage(Component.empty());
+        } else {
+            var dots = Strings.repeat(".", (this.loadingTick/15) % 6);
+            this.loadingLabel.setMessage(Component.literal("Loading" + dots).withStyle(ChatFormatting.GREEN));
+            this.resetTrainerTypes();
+        }
+    }
+
     public void tick() {
         var mc = Minecraft.getInstance();
         var playerState = PlayerState.get(mc.player);
@@ -246,11 +273,25 @@ public class PlayerInfoWidget extends AbstractWidget {
             ? Component.literal(String.valueOf(levelCap)).withStyle(ChatFormatting.WHITE)
             : Component.literal("000").withStyle(ChatFormatting.OBFUSCATED).withStyle(ChatFormatting.WHITE));
             
-        if(this.trainerList.active && sid != null) {
-            if(this.sid == null || !sid.equals(this.sid)) {
+        if(this.trainerList.active) {
+            var tm = RCTMod.getInstance().getTrainerManager();
+
+            if(tm.isLoading() || sid == null) {
+                if(!this.trainerManagerLoading) {
+                    this.trainerList.setTrainerIds(List.of());
+                    this.trainerManagerLoading = tm.isLoading();
+                    this.loadingTick = 0;
+                }
+
+                this.updateLoading();
+                this.loadingTick++;
+            } else if(this.trainerManagerLoading || !sid.equals(this.sid)) {
                 this.sid = sid;
+                this.updateLoading(true);
                 this.resetTrainerTypes();
+                this.updateTrainerTypes(this.sid);
                 this.trainerList.setTrainerIds(this.sortedTrainerIds());
+                this.trainerManagerLoading = tm.isLoading();
             }
 
             var totalDefeats = this.getTotalDefeats();

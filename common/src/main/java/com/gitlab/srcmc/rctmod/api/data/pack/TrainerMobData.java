@@ -17,6 +17,10 @@
  */
 package com.gitlab.srcmc.rctmod.api.data.pack;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -29,11 +33,14 @@ import java.util.stream.Stream;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
+import com.gitlab.srcmc.rctmod.api.utils.JsonUtils.Exclude;
 import com.google.gson.reflect.TypeToken;
 
 import net.minecraft.resources.ResourceLocation;
 
-public class TrainerMobData implements IDataPackObject {
+public class TrainerMobData implements IDataPackObject, Serializable {
+    private static final long serialVersionUID = 0L;
+
     private String type = "normal";
     private List<Set<String>> requiredDefeats = new ArrayList<>();
     private Set<String> series = new HashSet<>();
@@ -47,23 +54,21 @@ public class TrainerMobData implements IDataPackObject {
     private float spawnWeightFactor = 1F; // >= 0
     private Set<String> biomeTagBlacklist = new HashSet<>();
     private Set<String> biomeTagWhitelist = new HashSet<>();
-    
-    private transient int rewardLevelCap;
-    private transient Set<String> followdBy = new HashSet<>();
-    private transient Map<String, String[]> dialog = new HashMap<>();
-    private transient ResourceLocation textureResource;
-    private transient ResourceLocation lootTableResource;
-    private transient TrainerTeam trainerTeam;
-    private transient Supplier<TrainerType> lazyType = () -> {
-        var type = TrainerType.valueOf(this.type.toLowerCase());
-        this.lazyType = () -> type;
-        return this.lazyType.get();
-    };
+
+    @Exclude private int rewardLevelCap;
+    @Exclude private Set<String> followdBy = new HashSet<>();
+    @Exclude private Map<String, String[]> dialog = new HashMap<>();
+    @Exclude private TrainerTeam trainerTeam;
+    @Exclude private RLWrapper textureResource;
+    @Exclude private RLWrapper lootTableResource;
+
+    private transient Supplier<TrainerType> lazyType;
 
     public TrainerMobData() {
-        this.textureResource = ResourceLocation.fromNamespaceAndPath(ModCommon.MOD_ID, "textures/" + DataPackManager.PATH_DEFAULT + ".png");
-        this.lootTableResource = ResourceLocation.fromNamespaceAndPath(ModCommon.MOD_ID, DataPackManager.PATH_DEFAULT);
+        this.textureResource = new RLWrapper(ResourceLocation.fromNamespaceAndPath(ModCommon.MOD_ID, "textures/" + DataPackManager.PATH_DEFAULT + ".png"));
+        this.lootTableResource = new RLWrapper(ResourceLocation.fromNamespaceAndPath(ModCommon.MOD_ID, DataPackManager.PATH_DEFAULT));
         this.trainerTeam = new TrainerTeam();
+        this.init();
     }
 
     public TrainerMobData(TrainerMobData origin) {
@@ -81,6 +86,26 @@ public class TrainerMobData implements IDataPackObject {
         this.textureResource = origin.textureResource;
         this.lootTableResource = origin.lootTableResource;
         this.trainerTeam = origin.trainerTeam; // no need for deep copy since immutable
+        this.init();
+    }
+
+    private void init() {
+        this.lazyType = () -> {
+            var type = TrainerType.valueOf(this.type.toLowerCase());
+            this.lazyType = () -> type;
+            return this.lazyType.get();
+        };
+    }
+
+    private void writeObject(ObjectOutputStream oos) throws IOException {
+        oos.defaultWriteObject();
+        oos.writeObject(this.getType());
+    }
+
+    private void readObject(ObjectInputStream ois) throws ClassNotFoundException, IOException {
+        ois.defaultReadObject();
+        var type = TrainerType.registerOrGet(this.type, (TrainerType)ois.readObject());
+        this.lazyType = () -> type;
     }
 
     public TrainerType getType() {
@@ -182,11 +207,11 @@ public class TrainerMobData implements IDataPackObject {
     }
 
     public ResourceLocation getTextureResource() {
-        return this.textureResource;
+        return this.textureResource.resourceLocation();
     }
 
     public ResourceLocation getLootTableResource() {
-        return this.lootTableResource;
+        return this.lootTableResource.resourceLocation();
     }
 
     public TrainerTeam getTrainerTeam() {
@@ -199,15 +224,15 @@ public class TrainerMobData implements IDataPackObject {
         var textureResource = dpm.findResource(trainerId, "textures");
 
         if(textureResource.isPresent()) {
-            this.textureResource = textureResource.get();
+            this.textureResource = new RLWrapper(textureResource.get());
         }
 
         if(lootTableResource.isPresent()) {
             // the loot table is loaded by net.minecraft.world.level.storage.loot.LootDataManager
             // which resolves a 'shorthand' resource location automatically.
-            this.lootTableResource = ResourceLocation.fromNamespaceAndPath(ModCommon.MOD_ID, lootTableResource.get().getPath()
+            this.lootTableResource = new RLWrapper(ResourceLocation.fromNamespaceAndPath(ModCommon.MOD_ID, lootTableResource.get().getPath()
                 .replace("loot_table/", "")
-                .replace(".json", ""));
+                .replace(".json", "")));
         }
 
         dpm.loadResource(trainerId, "dialogs",
@@ -222,6 +247,48 @@ public class TrainerMobData implements IDataPackObject {
 
         if(trainerTeam.isPresent()) {
             this.trainerTeam = trainerTeam.get();
+        }
+    }
+
+    class RLWrapper implements Serializable {
+        private static final long serialVersionUID = 0L;
+        
+        private transient Supplier<ResourceLocation> rlSup;
+        private transient ResourceLocation rl;
+        private String namespace, path;
+
+        public RLWrapper() {
+            this(null);
+        }
+
+        public RLWrapper(ResourceLocation rl) {
+            if(rl != null) {
+                this.namespace = rl.getNamespace();
+                this.path = rl.getPath();
+            }
+
+            this.rl = rl;
+            this.init();
+        }
+
+        private void readObject(ObjectInputStream ois) throws ClassNotFoundException, IOException {
+            ois.defaultReadObject();
+            this.init();
+        }
+
+        public ResourceLocation resourceLocation() {
+            return this.rlSup.get();
+        }
+
+        private void init() {
+            this.rlSup = () -> {
+                if(this.rl == null) {
+                    this.rl = ResourceLocation.fromNamespaceAndPath(this.namespace, this.path);
+                }
+                
+                this.rlSup = () -> this.rl;
+                return this.rl;
+            };
         }
     }
 }

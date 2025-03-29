@@ -50,6 +50,17 @@ public class TrainerType implements Serializable {
         }
     }
 
+    public static TrainerType registerOrGet(String id, TrainerType trainerType) {
+        var registered = REGISTRY.get(id);
+
+        if(registered != null) {
+            return registered;
+        }
+
+        register(id, trainerType);
+        return trainerType;
+    }
+
     public static Collection<TrainerType> values() {
         return REGISTRY.values();
     }

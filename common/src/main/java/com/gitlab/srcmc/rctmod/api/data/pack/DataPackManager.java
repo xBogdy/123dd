@@ -81,6 +81,7 @@ public class DataPackManager extends SimpleJsonResourceReloadListener implements
         this.clear();
 
         resourceManager.listPacks()
+            .filter(dp -> !dp.packId().startsWith("mod/generated_"))
             .filter(dp -> dp.getNamespaces(this.packType).contains(ModCommon.MOD_ID))
             .forEach(this::gather);
     }
@@ -288,8 +289,7 @@ public class DataPackManager extends SimpleJsonResourceReloadListener implements
         return key;
     }
 
-    @Override
-    protected void apply(Map<ResourceLocation, JsonElement> object, ResourceManager resourceManager, ProfilerFiller profilerFiller) {
+    protected void reload(ResourceManager resourceManager) {
         this.init(resourceManager);
 
         // load and register trainer types
@@ -305,5 +305,10 @@ public class DataPackManager extends SimpleJsonResourceReloadListener implements
             new TypeToken<Map<String, String[]>>() {});
 
         this.close();
+    }
+
+    @Override
+    protected void apply(Map<ResourceLocation, JsonElement> object, ResourceManager resourceManager, ProfilerFiller profilerFiller) {
+        this.reload(resourceManager);
     }
 }

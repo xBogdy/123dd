@@ -17,7 +17,7 @@
  */
 package com.gitlab.srcmc.rctmod.client.renderer;
 
-import com.gitlab.srcmc.rctmod.api.RCTMod;
+import com.gitlab.srcmc.rctmod.client.ModClient;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import com.mojang.blaze3d.vertex.PoseStack;
 
@@ -35,18 +35,18 @@ public class TrainerRenderer extends HumanoidMobRenderer<TrainerMob, PlayerModel
 
     public TrainerRenderer(EntityRendererProvider.Context pContext) {
         super(pContext, new PlayerModel<>(pContext.bakeLayer(ModelLayers.PLAYER), false), 1f);
+        
         this.addLayer(
-                new HumanoidArmorLayer<>(this,
-                        new HumanoidModel<>(pContext.bakeLayer(ModelLayers.PLAYER_INNER_ARMOR)),
-                        new HumanoidModel<>(pContext.bakeLayer(ModelLayers.PLAYER_OUTER_ARMOR)),
-                        pContext.getModelManager()
-                )
-        );
+            new HumanoidArmorLayer<>(this,
+                new HumanoidModel<>(pContext.bakeLayer(ModelLayers.PLAYER_INNER_ARMOR)),
+                new HumanoidModel<>(pContext.bakeLayer(ModelLayers.PLAYER_OUTER_ARMOR)),
+                pContext.getModelManager()
+            ));
     }
 
     @Override
     public ResourceLocation getTextureLocation(TrainerMob mob) {
-        return RCTMod.getInstance().getClientDataManager().findResource(mob.getTrainerId(), "textures").orElse(FALLBACK_TEXTURE);
+        return ModClient.RESOURCE_MANAGER.findResource(mob.getTrainerId(), "textures").orElse(FALLBACK_TEXTURE);
     }
 
     @Override

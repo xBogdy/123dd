@@ -2,6 +2,18 @@
 
 **Important**: Version **0.14** introduces the **series system**. Existing player saves will automatically be assigned to the *radicalred series*. New players will start with the *empty series* and have to pick a series first (see also *#233* Trainer Association).
 
+## [0.14.3-beta] - 2025-03-29
+
+**Changed:**
+
+- *#267* Updated min dependency of `rctapi` to `0.10.15-beta`
+
+**Fixed:**
+
+- *#266* Custom data packs not getting synchronized to clients (a potential cause for various issues in server environments, providing wrong or misleading information to clients)
+  - Added Trainer Card loading indicator
+  - Synchronization takes place on player log in or after `/reload`
+
 ## [0.14.2-beta] - 2025-03-26
 
 **Added:**

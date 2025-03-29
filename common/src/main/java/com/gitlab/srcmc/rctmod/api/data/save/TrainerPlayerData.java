@@ -279,7 +279,7 @@ public class TrainerPlayerData extends SavedData {
     }
 
     // luck₀ := 0
-    // luckₙ := (1 - luckₙ₋₁) / (n * 8) with n > 0, converges to 1
+    // luckₙ := luckₙ₋₁ + (1 - luckₙ₋₁) / (n * 8) with n > 0, converges to 1
     static final int LUCK_DELTA = 8;
     static double calculateLuck(int n) {
         var r = 0.0;

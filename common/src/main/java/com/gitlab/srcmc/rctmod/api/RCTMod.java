@@ -26,7 +26,6 @@ import com.gitlab.srcmc.rctapi.api.trainer.TrainerPlayer;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.config.IClientConfig;
 import com.gitlab.srcmc.rctmod.api.config.IServerConfig;
-import com.gitlab.srcmc.rctmod.api.data.pack.DataPackManager;
 import com.gitlab.srcmc.rctmod.api.service.SeriesManager;
 import com.gitlab.srcmc.rctmod.api.service.TrainerManager;
 import com.gitlab.srcmc.rctmod.api.service.TrainerSpawner;
@@ -35,14 +34,12 @@ import com.gitlab.srcmc.rctmod.config.ServerConfig;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.packs.PackType;
 import net.minecraft.world.entity.player.Player;
 
 public final class RCTMod {
     private static Supplier<RCTMod> instanceSupplier = () -> {
         var defaultInstance = new RCTMod(
             new TrainerManager(), new TrainerSpawner(),
-            new DataPackManager(PackType.CLIENT_RESOURCES),
             new ClientConfig(), new ServerConfig());
 
         RCTMod.instanceSupplier = () -> defaultInstance;
@@ -51,20 +48,17 @@ public final class RCTMod {
 
     private TrainerManager trainerManager;
     private TrainerSpawner trainerSpawner;
-    private DataPackManager clientDataManager;
     private IClientConfig clientConfig;
     private IServerConfig serverConfig;
 
     private RCTMod(
         TrainerManager trainerManager,
         TrainerSpawner trainerSpawner,
-        DataPackManager clientDataManager,
         IClientConfig clientConfig,
         IServerConfig serverConfig)
     {
         this.trainerManager = trainerManager;
         this.trainerSpawner = trainerSpawner;
-        this.clientDataManager = clientDataManager;
         this.clientConfig = clientConfig;
         this.serverConfig = serverConfig;
     }
@@ -75,14 +69,6 @@ public final class RCTMod {
 
     public SeriesManager getSeriesManager() {
         return this.trainerManager.getSeriesManager();
-    }
-
-    public DataPackManager getClientDataManager() {
-        return this.clientDataManager;
-    }
-
-    public DataPackManager getServerDataManager() {
-        return this.trainerManager;
     }
 
     public TrainerSpawner getTrainerSpawner() {

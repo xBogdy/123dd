@@ -17,6 +17,7 @@
  */
 package com.gitlab.srcmc.rctmod.api.data.pack;
 
+import java.io.Serializable;
 import java.util.List;
 
 import com.cobblemon.mod.common.api.battles.model.ai.BattleAI;
@@ -28,7 +29,9 @@ import com.gitlab.srcmc.rctapi.api.models.PokemonModel;
 import com.gitlab.srcmc.rctapi.api.models.TrainerModel;
 import com.gitlab.srcmc.rctapi.api.util.JTO;
 
-public class TrainerTeam extends TrainerModel {
+public class TrainerTeam extends TrainerModel implements Serializable {
+    private static final long serialVersionUID = 0L;
+
     private String identity;
     private BattleFormat battleFormat;
     private BattleRules battleRules;

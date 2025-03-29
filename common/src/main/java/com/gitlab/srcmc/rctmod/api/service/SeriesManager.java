@@ -17,6 +17,7 @@
  */
 package com.gitlab.srcmc.rctmod.api.service;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -30,11 +31,16 @@ import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.data.pack.SeriesMetaData;
 import com.gitlab.srcmc.rctmod.api.utils.PathUtils;
 
-public class SeriesManager {
+public class SeriesManager implements Serializable {
+    private static final long serialVersionUID = 0L;
     public static final String EMPTY_SERIES_ID = "empty";
 
+    private transient final SeriesGraph EMPTY_SERIES = new SeriesGraph(new SeriesMetaData("Empty Series", "", 0));
     private Map<String, SeriesGraph> seriesGraphs = new HashMap<>();
-    private final SeriesGraph EMPTY_SERIES = new SeriesGraph(new SeriesMetaData("Empty Series", "", 0));
+
+    public void copyFrom(SeriesManager sm) {
+        this.seriesGraphs = sm.seriesGraphs;
+    }
 
     public Set<String> getSeriesIds() {
         return this.seriesGraphs.keySet();
@@ -116,7 +122,9 @@ public class SeriesManager {
         this.seriesGraphs.values().forEach(SeriesGraph::sortGraph);
     }
 
-    public class SeriesGraph {
+    public class SeriesGraph implements Serializable {
+        private static final long serialVersionUID = 0L;
+
         private Map<String, TrainerNode> map = new HashMap<>();
         private List<TrainerNode> list = new ArrayList<>();            
         private SeriesMetaData metaData;
@@ -280,7 +288,9 @@ public class SeriesManager {
         }
     }
 
-    public class TrainerNode {
+    public class TrainerNode implements Serializable {
+        private static final long serialVersionUID = 0L;
+        
         private List<TrainerNode> ancestors = new ArrayList<>();
         private List<TrainerNode> successors = new ArrayList<>();
         private List<TrainerNode> siblings = new ArrayList<>();

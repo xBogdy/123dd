@@ -17,13 +17,16 @@
  */
 package com.gitlab.srcmc.rctmod.api.service;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Queue;
 import java.util.Set;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.stream.Stream;
 
 import com.cobblemon.mod.common.Cobblemon;
@@ -39,6 +42,9 @@ import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
 import com.gitlab.srcmc.rctmod.api.data.save.TrainerBattleMemory;
 import com.gitlab.srcmc.rctmod.api.data.save.TrainerPlayerData;
 import com.gitlab.srcmc.rctmod.api.utils.PathUtils;
+import com.gitlab.srcmc.rctmod.network.BatchedPayload;
+import com.gitlab.srcmc.rctmod.network.BatchedPayloads;
+import com.gitlab.srcmc.rctmod.server.ModServer;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import com.google.gson.JsonElement;
 
@@ -55,23 +61,71 @@ import net.minecraft.world.level.saveddata.SavedData.Factory;
 
 public class TrainerManager extends DataPackManager {
     private Map<String, TrainerMobData> trainerMobs = new HashMap<>();
-    private Map<UUID, TrainerBattle> trainerBattles = new HashMap<>();
     private Map<String, Integer> minRequiredLevelCaps = new HashMap<>();
     private int globalMinRequiredLevelCap;
+    private SeriesManager seriesManager;
 
+    private Queue<Thread> payloadUpdateThreads = new ConcurrentLinkedDeque<>();
     private Map<UUID, String> uuidToTrainerId = new HashMap<>();
     private Set<String> playerTrainerIds = new HashSet<>();
     private Set<Player> receivedUpdates = new HashSet<>();
-
+    private Map<UUID, TrainerBattle> trainerBattles = new HashMap<>();
     private MinecraftServer server;
     private ResourceManager resourceManager;
+    private boolean loading, isReloadedAsDatapack;
     private boolean reloadRequired;
 
-    private SeriesManager seriesManager;
+    record Payload(Map<String, TrainerMobData> trainerMobs, Map<String, Integer> minRequiredLevelCaps, int globalMinRequiredLevelCap, SeriesManager seriesManager) implements Serializable {
+        private static final long serialVersionUID = 0;
+    }
 
     public TrainerManager() {
         super(PackType.SERVER_DATA);
         this.seriesManager = new SeriesManager();
+    }
+
+    public void setLoading(boolean value) {
+        this.loading = !this.isReloadedAsDatapack && value;
+    }
+
+    public void setIsReloadedAsDatapack(boolean value) {
+        this.isReloadedAsDatapack = value;
+    }
+
+    public boolean isLoading() {
+        return this.loading;
+    }
+
+    public void fromPayloads(BatchedPayload.Payload[] pls) {
+        var t = new Thread(() -> {
+            Payload pl = BatchedPayloads.TRAINER_MANAGER.from(pls);
+            this.trainerMobs = pl.trainerMobs();
+            this.minRequiredLevelCaps = pl.minRequiredLevelCaps();
+            this.globalMinRequiredLevelCap = pl.globalMinRequiredLevelCap();
+            this.seriesManager.copyFrom(pl.seriesManager());
+            this.payloadUpdateThreads.poll(); // self
+
+            if(!this.payloadUpdateThreads.isEmpty()) {
+                this.payloadUpdateThreads.peek().start();
+            } else {
+                this.setLoading(false);
+            }
+        });
+
+        t.setPriority(Thread.NORM_PRIORITY / 2);
+        this.payloadUpdateThreads.add(t);
+
+        if(this.payloadUpdateThreads.size() == 1) {
+            t.start();
+        }
+    }
+
+    public BatchedPayload.Payload[] toPayloads() {
+        return BatchedPayloads.TRAINER_MANAGER.payloads(new Payload(
+            this.trainerMobs,
+            this.minRequiredLevelCaps,
+            this.globalMinRequiredLevelCap,
+            this.seriesManager));
     }
 
     public SeriesManager getSeriesManager() {
@@ -86,16 +140,14 @@ public class TrainerManager extends DataPackManager {
                 .stream().toList() // copy to avoid concurrent modification
                 .forEach(bs -> bm.end(bs.getBattle().getBattleId(), true));
 
-            ModCommon.RCT.getTrainerRegistry().init(server);
-            this.resourceManager = server.getResourceManager();
-            this.reloadRequired = true;
+            ModCommon.RCT.getTrainerRegistry().init(server);            // this.setReloadRequired();
         }
 
         this.server = server;
     }
 
     public boolean isReloadRequired() {
-        return this.reloadRequired;
+        return this.reloadRequired && this.resourceManager != null;
     }
 
     public void setReloadRequired() {
@@ -274,13 +326,8 @@ public class TrainerManager extends DataPackManager {
     }
 
     protected void forceReload(ResourceManager resourceManager) {
-        if(this.server != null && !this.server.isSameThread()) {
-            return; // no reload in singleplayer client thread (same instance reloads in server thread)
-        }
-
         this.reloadRequired = false;
-        var dpm = RCTMod.getInstance().getServerDataManager();
-        dpm.init(resourceManager);
+        this.reload(resourceManager);
 
         var oldTrainers = new HashMap<String, Trainer>();
         var newTrainerMobs = new HashMap<String, TrainerMobData>();
@@ -295,10 +342,10 @@ public class TrainerManager extends DataPackManager {
         reg.clearNPCs();
         players = reg.getIds().stream().map(id -> reg.getById(id, TrainerPlayer.class).getPlayer()).toList();
 
-        dpm.listTrainerTeams((rl, io) -> {
+        this.listTrainerTeams((rl, io) -> {
             var trainerId = PathUtils.filename(rl.getPath());
 
-            dpm.loadResource(trainerId, "mobs", tmd -> {
+            this.loadResource(trainerId, "mobs", tmd -> {
                 newTrainerMobs.put(trainerId, tmd);
                 this.registerTrainer(trainerId, tmd, oldTrainers);
             }, TrainerMobData.class);
@@ -345,7 +392,10 @@ public class TrainerManager extends DataPackManager {
         this.receivedUpdates = new HashSet<>();
         
         players.forEach(pl -> this.getData(pl).getLevelCap()); // forces update
-        dpm.close();
+        this.close();
+
+        ModServer.syncTrainerManger(this.server.getPlayerList().getPlayers());
+        this.setLoading(false);
 
         ModCommon.LOG.info(String.format("Registered %d trainers", this.trainerMobs.size()));
     }
@@ -353,7 +403,6 @@ public class TrainerManager extends DataPackManager {
     @Override
     protected void apply(Map<ResourceLocation, JsonElement> object, ResourceManager resourceManager, ProfilerFiller profilerFiller) {
         this.resourceManager = resourceManager;
-        super.apply(object, resourceManager, profilerFiller);
         this.setReloadRequired();
     }
 }
