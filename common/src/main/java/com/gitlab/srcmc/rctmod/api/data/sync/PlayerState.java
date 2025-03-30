@@ -61,6 +61,7 @@ public class PlayerState implements Serializable {
     private transient Map<TrainerType, Integer> distinctTypeDefeatCounts = new HashMap<>();
     private transient Map<String, Boolean> keyTrainerMap = new HashMap<>();
     private transient SeriesGraph nextGraph;
+    private transient boolean isLoading;
 
     public static void initFor(Player player) {
         if(player.level().isClientSide) {
@@ -87,6 +88,18 @@ public class PlayerState implements Serializable {
         return PlayerState.remoteStates.get(player.getUUID());
     }
 
+    public void setLoading() {
+        this.setLoading(true);
+    }
+
+    protected void setLoading(boolean value) {
+        this.isLoading = value;
+    }
+
+    public boolean isLoading() {
+        return this.isLoading;
+    }
+
     public byte[] serializeUpdate() {
         if(!this.hasChanges) {
             return new byte[]{};
@@ -110,6 +123,7 @@ public class PlayerState implements Serializable {
         try(var ois = new ObjectInputStream(buf)) {
             this.update((PlayerState)ois.readObject());
             this.hasChanges = false;
+            this.setLoading(false);
         } catch(IOException | ClassNotFoundException e) {
             throw new IllegalStateException(e);
         }

@@ -43,7 +43,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
 public class PlayerInfoWidget extends AbstractWidget {
-    public enum Display { TRAINER_LIST, TRAINER_INFO }
+    public enum Display { TRAINER_LIST, TRAINER_INFO, LOADING }
 
     public static final ResourceLocation TRAINER_CARD_IMAGE_LOCATION = ResourceLocation.fromNamespaceAndPath(ModCommon.MOD_ID, "textures/gui/trainer_card.png");
     public static final int TRAINER_CARD_IMAGE_X = 0;
@@ -125,7 +125,7 @@ public class PlayerInfoWidget extends AbstractWidget {
     private List<TrainerType> trainerTypes;
     private String sid;
 
-    private boolean trainerManagerLoading;
+    private Display currentDisplay;
     private int loadingTick;
 
     public PlayerInfoWidget(int x, int y, int w, int h, Font font) {
@@ -186,7 +186,7 @@ public class PlayerInfoWidget extends AbstractWidget {
         });
 
         this.trainerInfo.setOnBackClicked(i -> this.setDisplay(Display.TRAINER_LIST));
-        this.setDisplay(Display.TRAINER_LIST);  
+        this.setDisplay(Display.LOADING);
     }
 
     private void resetTrainerTypes() {
@@ -206,10 +206,17 @@ public class PlayerInfoWidget extends AbstractWidget {
     public void setDisplay(Display display) {
         switch (display) {
             case TRAINER_LIST:
+                if(this.currentDisplay == Display.LOADING) {
+                    this.resetTrainerTypes();
+                    this.updateTrainerTypes(this.sid);
+                    this.trainerList.setTrainerIds(this.sortedTrainerIds());
+                }
+
                 this.trainerInfo.visible = this.trainerInfo.active = false;
                 this.trainerList.visible = this.trainerList.active = true;
                 this.showUndefeated.active = true;
                 this.trainerTypeButton.active = true;
+                this.loadingLabel.setMessage(Component.empty());
 
                 if(this.trainerListShowUndefeated != null) {
                     if(this.trainerListShowUndefeated != this.isShowUndefeatedSelected()) {
@@ -240,61 +247,65 @@ public class PlayerInfoWidget extends AbstractWidget {
 
                 this.trainerInfo.visible = this.trainerInfo.active = true;
                 this.trainerList.visible = this.trainerList.active = false;
+                this.prevPageButton.active = false;
+                this.nextPageButton.active = false;
                 this.showUndefeated.active = false;
                 this.trainerTypeButton.active = false;
                 this.trainerTypeButton.setMessage(this.trainerInfo.getPageContent(this.trainerInfo.getPage()).title);
+                this.loadingLabel.setMessage(Component.empty());
+
+                break;
+            case LOADING:
+                if(this.isShowUndefeatedSelected()) {
+                    this.showUndefeated.onPress();
+                }
+
+                this.trainerInfo.visible = this.trainerInfo.active = false;
+                this.trainerList.visible = this.trainerList.active = true;
+                this.trainerListShowUndefeated = true;
+                this.showUndefeated.active = false;
+                this.trainerTypeButton.active = false;
+                this.trainerList.setTrainerIds(List.of());
+                this.trainerList.setPage(0);
+                this.resetTrainerTypes();
+
                 break;
         }
+
+        this.currentDisplay = display;
     }
 
     private void updateLoading() {
-        this.updateLoading(false);
-    }
-
-    private void updateLoading(boolean disable) {
-        if(disable) {
-            this.loadingLabel.setMessage(Component.empty());
-        } else {
-            var dots = Strings.repeat(".", (this.loadingTick/15) % 6);
-            this.loadingLabel.setMessage(Component.literal("Loading" + dots).withStyle(ChatFormatting.GREEN));
-            this.resetTrainerTypes();
-        }
+        this.loadingLabel.setMessage(Component.literal("Loading" + Strings.repeat(".", (this.loadingTick/15) % 6)).withStyle(ChatFormatting.GREEN));
     }
 
     public void tick() {
         var mc = Minecraft.getInstance();
-        var playerState = PlayerState.get(mc.player);
-        var levelCap = playerState.getLevelCap();
-        var sid = playerState.getCurrentSeries();
+        var ps = PlayerState.get(mc.player);
+        var tm = RCTMod.getInstance().getTrainerManager();
+        var levelCap = this.currentDisplay == Display.LOADING ? 0 : ps.getLevelCap();
 
+        this.sid = ps.getCurrentSeries();
         this.skinLocation = mc.player.getSkin().texture();
         this.displayName.setMessage(Component.literal(mc.player.getDisplayName().getString()).withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.WHITE));
         this.levelCapValue.setMessage(levelCap <= 100
             ? Component.literal(String.valueOf(levelCap)).withStyle(ChatFormatting.WHITE)
             : Component.literal("000").withStyle(ChatFormatting.OBFUSCATED).withStyle(ChatFormatting.WHITE));
-            
-        if(this.trainerList.active) {
-            var tm = RCTMod.getInstance().getTrainerManager();
 
-            if(tm.isLoading() || sid == null) {
-                if(!this.trainerManagerLoading) {
-                    this.trainerList.setTrainerIds(List.of());
-                    this.trainerManagerLoading = tm.isLoading();
-                    this.loadingTick = 0;
-                }
-
-                this.updateLoading();
-                this.loadingTick++;
-            } else if(this.trainerManagerLoading || !sid.equals(this.sid)) {
-                this.sid = sid;
-                this.updateLoading(true);
-                this.resetTrainerTypes();
-                this.updateTrainerTypes(this.sid);
-                this.trainerList.setTrainerIds(this.sortedTrainerIds());
-                this.trainerManagerLoading = tm.isLoading();
+        if(tm.isLoading() || ps.isLoading()) {
+            if(this.currentDisplay != Display.LOADING) {
+                this.setDisplay(Display.LOADING);
+                this.loadingTick = 0;
             }
 
-            var totalDefeats = this.getTotalDefeats();
+            this.updateLoading();
+            this.loadingTick++;
+        } else if(this.currentDisplay == Display.LOADING) {
+            this.setDisplay(Display.TRAINER_LIST);
+        }
+
+        if(this.trainerList.active) {
+            var totalDefeats = this.currentDisplay == Display.LOADING ? 0 : this.getTotalDefeats();
             this.totalDefeatsValue.setMessage(totalDefeats < 1000000
                 ? Component.literal(String.valueOf(totalDefeats)).withStyle(ChatFormatting.WHITE)
                 : Component.literal("1000000").withStyle(ChatFormatting.OBFUSCATED).withStyle(ChatFormatting.WHITE));
@@ -323,9 +334,10 @@ public class PlayerInfoWidget extends AbstractWidget {
     }
 
     private void updateTrainerTypes(String sid) {
+        sid = sid == null ? "" : sid;
+
         var sm = RCTMod.getInstance().getSeriesManager();
         var tm = RCTMod.getInstance().getTrainerManager();
-        // var it = sm.getRequiredDefeats(sid, Set.of(), true, true).iterator();
         var it = sm.getGraph(sid).stream().iterator();
         var open = new LinkedList<>(TrainerType.values());
 

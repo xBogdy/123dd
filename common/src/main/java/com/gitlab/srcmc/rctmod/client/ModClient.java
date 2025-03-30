@@ -26,7 +26,6 @@ import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.ModRegistries;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.pack.DataPackManager;
-import com.gitlab.srcmc.rctmod.api.data.pack.TrainerType;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.api.utils.ArrUtils;
 import com.gitlab.srcmc.rctmod.client.renderer.TargetArrowRenderer;
@@ -76,17 +75,14 @@ public class ModClient {
     // ClientTickEvent
 
     static void onClientLevelTick(Level level) {
-        var psu = ModClient.playerStateUpdates.poll();
+        var tm = RCTMod.getInstance().getTrainerManager();
 
-        if(psu != null) {
-            PlayerState.get(ModCommon.localPlayer()).deserializeUpdate(psu);
+        if(!ModClient.trainerManagerUpdates.isEmpty()) {
+            tm.fromPayloads(ModClient.trainerManagerUpdates.poll());
         }
 
-        var tmu = ModClient.trainerManagerUpdates.poll();
-
-        if(tmu != null) {
-            TrainerType.clear();
-            RCTMod.getInstance().getTrainerManager().fromPayloads(tmu);
+        if(!tm.isLoading() && !ModClient.playerStateUpdates.isEmpty()) {
+            PlayerState.get(ModCommon.localPlayer()).deserializeUpdate(ModClient.playerStateUpdates.poll());
         }
 
         TargetArrowRenderer.getInstance().tick();
@@ -110,6 +106,7 @@ public class ModClient {
     static List<Payload> TRAINER_MANAGER_PAYLOADS = new ArrayList<>();
     
     static void receivePlayerState(BatchedPayload.Payload pl, PacketContext context) {
+        PlayerState.get(ModCommon.localPlayer()).setLoading();
         PLAYER_STATE_PAYLOADS.add(pl.bytes());
 
         if(pl.remainingBatches() == 0) {

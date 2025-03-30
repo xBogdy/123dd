@@ -39,6 +39,7 @@ import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.TrainerBattle;
 import com.gitlab.srcmc.rctmod.api.data.pack.DataPackManager;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
+import com.gitlab.srcmc.rctmod.api.data.pack.TrainerType;
 import com.gitlab.srcmc.rctmod.api.data.save.TrainerBattleMemory;
 import com.gitlab.srcmc.rctmod.api.data.save.TrainerPlayerData;
 import com.gitlab.srcmc.rctmod.api.utils.PathUtils;
@@ -98,6 +99,7 @@ public class TrainerManager extends DataPackManager {
 
     public void fromPayloads(BatchedPayload.Payload[] pls) {
         var t = new Thread(() -> {
+            TrainerType.clear();
             Payload pl = BatchedPayloads.TRAINER_MANAGER.from(pls);
             this.trainerMobs = pl.trainerMobs();
             this.minRequiredLevelCaps = pl.minRequiredLevelCaps();

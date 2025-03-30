@@ -57,7 +57,7 @@ public class TrainerType implements Serializable {
             return registered;
         }
 
-        register(id, trainerType);
+        REGISTRY.put(id, trainerType);
         return trainerType;
     }
 
