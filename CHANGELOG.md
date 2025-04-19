@@ -6,9 +6,13 @@
 
 **Changed:**
 
-- *#268* Improved language support
-  - Updated/Added `en_us` language keys
+- *#269* Improved language support
   - The `title` and `description` of series, the `name` of trainer types and dialogs now alternatively accept a json object with a `translatable` and/or `literal` field as value (setting directly a string is equivalent to defining a object with a `literal` field having that string)
+  - Updated/Added `en_us` language keys
+
+**Fixed:**
+
+- *#268* Trainer battles getting softlocked at the start if the trainer happened to became attached to a different entity in an unloaded chunk
 
 ## [0.14.3-beta] - 2025-03-29
 

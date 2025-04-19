@@ -96,6 +96,7 @@ public final class RCTMod {
                 ModCommon.LOG.error("Failed to start battle: No trainer registered for mob '" + mob.getDisplayName().getString() + "'");
             } else {
                 var team = RCTMod.getInstance().getTrainerManager().getData(mob).getTrainerTeam();
+                trNPC.setEntity(mob); // safety measure to prevent a battle against entities in unloaded chunks
                 return ModCommon.RCT.getBattleManager().start(List.of(trPlayer), List.of(trNPC), team.getBattleFormat(), team.getBattleRules());
             }
         } catch(IllegalArgumentException e) {
