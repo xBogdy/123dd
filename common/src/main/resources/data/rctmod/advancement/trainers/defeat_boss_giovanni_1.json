@@ -18,7 +18,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Boss Giovanni for the first time"
+      "translate": "advancements.rctmod.defeat_boss_giovanni_1.description"
     },
     "frame": "task",
     "hidden": false,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Behind the scenes"
+      "translate": "advancements.rctmod.defeat_boss_giovanni_1.title"
     }
   },
   "parent": "rctmod:trainers/defeat_leader_erika",

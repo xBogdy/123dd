@@ -1,6 +1,10 @@
 {
-  "description": "A difficult series taking place in the Kanto region. Are you up to the challenge?",
+  "description": {
+    "translatable": "series.rctmod.radicalred.description"
+  },
   "difficulty": 9,
   "requiredSeries": [],
-  "title": "Radical Red"
+  "title": {
+    "translatable": "series.rctmod.radicalred.title"
+  }
 }

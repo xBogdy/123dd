@@ -18,7 +18,7 @@
     "announce_to_chat": true,
     "background": null,
     "description": {
-      "text": "Defeat Trainer Red"
+      "translate": "advancements.rctmod.defeat_trainer_red.description"
     },
     "frame": "challenge",
     "hidden": true,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Kanto Legend"
+      "translate": "advancements.rctmod.defeat_trainer_red.title"
     }
   },
   "parent": "rctmod:trainers/defeat_champion_terry",

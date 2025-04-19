@@ -61,7 +61,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat all members of the Kanto Elite 4"
+      "translate": "advancements.rctmod.defeat_elite_four_kanto.description"
     },
     "frame": "goal",
     "hidden": false,
@@ -70,7 +70,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Kanto Elite"
+      "translate": "advancements.rctmod.defeat_elite_four_kanto.title"
     }
   },
   "parent": "rctmod:trainers/defeat_trainer_brendan_3",

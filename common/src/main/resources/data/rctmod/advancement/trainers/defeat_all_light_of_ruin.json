@@ -16,7 +16,7 @@
     "announce_to_chat": true,
     "background": null,
     "description": {
-      "text": "Defeat all members from Light of Ruin"
+      "translate": "advancements.rctmod.defeat_all_light_of_ruin.description"
     },
     "frame": "challenge",
     "hidden": true,
@@ -25,7 +25,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Ruined (sry)"
+      "translate": "advancements.rctmod.defeat_all_light_of_ruin.title"
     }
   },
   "parent": "rctmod:trainers/defeat_light_of_ruin_aklove_3",

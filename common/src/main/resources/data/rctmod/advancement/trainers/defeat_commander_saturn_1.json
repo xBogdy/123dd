@@ -18,7 +18,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Commander Saturn"
+      "translate": "advancements.rctmod.defeat_commander_saturn_1.description"
     },
     "frame": "task",
     "hidden": false,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Saturn"
+      "translate": "advancements.rctmod.defeat_commander_saturn_1.title"
     }
   },
   "parent": "rctmod:trainers/defeat_gym_leader_byron_1",

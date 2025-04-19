@@ -18,7 +18,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Rocket Admin Archer \u0026 Ariana"
+      "translate": "advancements.rctmod.defeat_rocket_admin_archer_and_ariana.description"
     },
     "frame": "task",
     "hidden": false,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Double trouble"
+      "translate": "advancements.rctmod.defeat_rocket_admin_archer_and_ariana.title"
     }
   },
   "parent": "rctmod:trainers/defeat_rival_terry_2",

@@ -20,6 +20,7 @@ package com.gitlab.srcmc.rctmod.commands;
 import java.util.Set;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
+import com.gitlab.srcmc.rctmod.api.utils.LangKeys;
 import com.gitlab.srcmc.rctmod.commands.utils.SuggestionUtils;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import com.mojang.brigadier.CommandDispatcher;
@@ -108,7 +109,7 @@ public class TrainerCommands {
             return 0;
         }
         
-        context.getSource().sendFailure(Component.literal("caller is not a player"));
+        context.getSource().sendFailure(Component.translatable(LangKeys.COMMANDS_ERRORS_CALLER_NOT_A_PLAYER));
         return -1;
     }
 
@@ -139,7 +140,7 @@ public class TrainerCommands {
             return 0;
         }
         
-        context.getSource().sendFailure(Component.literal("caller is not a player"));
+        context.getSource().sendFailure(Component.translatable(LangKeys.COMMANDS_ERRORS_CALLER_NOT_A_PLAYER));
         return -1;
     }
 
@@ -165,7 +166,7 @@ public class TrainerCommands {
             return 0;
         }
         
-        context.getSource().sendFailure(Component.literal("caller is not a player"));
+        context.getSource().sendFailure(Component.translatable(LangKeys.COMMANDS_ERRORS_CALLER_NOT_A_PLAYER));
         return -1;
     }
 
@@ -180,7 +181,7 @@ public class TrainerCommands {
             return 0;
         }
 
-        context.getSource().sendFailure(Component.literal("target is not a player"));
+        context.getSource().sendFailure(Component.translatable(LangKeys.COMMANDS_ERRORS_TARGET_NOT_A_PLAYER));
         return -1;
     }
 
@@ -189,7 +190,7 @@ public class TrainerCommands {
             .getData(context.getArgument("trainer", String.class))
             .getType().name();
 
-        context.getSource().sendSuccess(() -> Component.literal(type), false);
+        context.getSource().sendSuccess(() -> type.asComponent(), false);
         return 0;
     }
 

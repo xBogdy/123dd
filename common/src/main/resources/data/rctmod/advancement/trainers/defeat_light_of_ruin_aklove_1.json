@@ -18,7 +18,7 @@
     "announce_to_chat": true,
     "background": null,
     "description": {
-      "text": "Defeat Ruin Leader Aklove for the first time"
+      "translate": "advancements.rctmod.defeat_light_of_ruin_aklove_1.description"
     },
     "frame": "challenge",
     "hidden": false,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Distortion"
+      "translate": "advancements.rctmod.defeat_light_of_ruin_aklove_1.title"
     }
   },
   "parent": "rctmod:trainers/defeat_boss_zeph_2",

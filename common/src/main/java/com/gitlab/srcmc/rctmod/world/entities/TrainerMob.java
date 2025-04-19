@@ -90,17 +90,6 @@ public class TrainerMob extends PathfinderMob implements Npc {
         .canSpawnFarFromPlayer()
         .sized(0.6F, 1.95F).build("trainer");
 
-    private static final String TRAINER_TYPE_DEFAULT_REPLY = "missing_beaten_trainer";
-    private static final Map<String, String> TRAINER_TYPE_REPLIES = Map.of(
-        "leader", "missing_badges",
-        "e4", "missing_beaten_e4",
-        "champ", "missing_beaten_champs",
-        "rival", "missing_beaten_rival",
-        "team_rocket", "missing_beaten_team_rocket",
-        "team_plasma", "missing_beaten_team_plasma",
-        "team_shadow", "missing_beaten_team_shadow"
-    );
-
     final static int TICKS_TO_DESPAWN = 600;
     final static int DESPAWN_TICK_SCALE = 20;
     final static int DESPAWN_DISTANCE = 128;
@@ -175,7 +164,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
             if(RCTMod.getInstance().makeBattle(this, player)) {
                 this.setOpponent(player);
                 RCTMod.getInstance().getTrainerManager().addBattle(player, this);
-                ChatUtils.reply(this, player, "battle_start");
+                ChatUtils.reply(this, player, "on_battle_start");
             }
         } else {
             this.replyTo(player);
@@ -189,19 +178,20 @@ public class TrainerMob extends PathfinderMob implements Npc {
         var msr = tmd.getMissingRequirements(tm.getData(player).getDefeatedTrainerIds()).findFirst();
 
         if(this.isInBattle()) {
-            ChatUtils.reply(this, player, "is_busy");
+            ChatUtils.reply(this, player, "trainer_busy");
         } else if(!this.isPersistenceRequired() && this.wasDefeatedBy(player.getUUID())) {
-            ChatUtils.reply(this, player, "done_looser");
+            ChatUtils.reply(this, player, "trainer_lost");
         } else if(!this.isPersistenceRequired() && this.wasVictoriousAgainst(player.getUUID())) {
-            ChatUtils.reply(this, player, "done_winner");
+            ChatUtils.reply(this, player, "trainer_won");
         } else if(this.getCooldown() > 0) {
             ChatUtils.reply(this, player, "on_cooldown");
         } else if(RCTMod.getInstance().isInBattle(player)) {
             ChatUtils.reply(this, player, "player_busy");
+        // TODO: wrong_series
+        // } else if(...) {
+        //     ChatUtils.reply(this, player, "wrong_series");
         } else if(msr.isPresent()) {
-            ChatUtils.reply(this, player, TRAINER_TYPE_REPLIES.getOrDefault(
-                tm.getData(msr.get()).getType().id(),
-                TRAINER_TYPE_DEFAULT_REPLY));
+            ChatUtils.reply(this, player, "missing_required_trainer_"  + tm.getData(msr.get()).getType().id(), "missing_required_trainer");
         } else if(tpd.getLevelCap() < tmd.getRequiredLevelCap()) {
             ChatUtils.reply(this, player, "low_level_cap");
         } else if(tm.getPlayerLevel(player) > tpd.getLevelCap()) {
@@ -209,7 +199,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
         } else if(tm.getActivePokemon(player) == 0) {
             ChatUtils.reply(this, player, "missing_pokemon");
         } else {
-            ChatUtils.reply(this, player, "done_generic");
+            ChatUtils.reply(this, player, "unknown_reason");
         }
     }
 
@@ -405,7 +395,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
             if(defeated) {
                 if(battle.getInitiatorSideMobs().contains(this)) {
                     battle.getTrainerSidePlayers().forEach(player -> {
-                        ChatUtils.reply(this, player, "battle_lost");
+                        ChatUtils.reply(this, player, "on_battle_lost");
                     });
                 } else {
                     var tm = RCTMod.getInstance().getTrainerManager();
@@ -413,7 +403,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
                     Player minWinsPlayer = null;
 
                     for(var player : initiatorSidePlayer) {
-                        ChatUtils.reply(this, player, "battle_lost");
+                        ChatUtils.reply(this, player, "on_battle_lost");
                         minWinsPlayer = minWinsPlayer == null || tm.getBattleMemory(this).getDefeatByCount(this.getTrainerId(), player) < tm.getBattleMemory(this).getDefeatByCount(this.getTrainerId(), minWinsPlayer) ? player : minWinsPlayer;
                     }
 
@@ -428,11 +418,11 @@ public class TrainerMob extends PathfinderMob implements Npc {
             } else {
                 if(battle.getInitiatorSideMobs().contains(this)) {
                     battle.getTrainerSidePlayers().forEach(player -> {
-                        ChatUtils.reply(this, player, "battle_won");
+                        ChatUtils.reply(this, player, "on_battle_won");
                     });
                 } else {
                     battle.getInitiatorSidePlayers().forEach(player -> {
-                        ChatUtils.reply(this, player, "battle_won");
+                        ChatUtils.reply(this, player, "on_battle_won");
                     });
                 }
 

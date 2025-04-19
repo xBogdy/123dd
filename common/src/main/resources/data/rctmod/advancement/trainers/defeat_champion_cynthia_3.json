@@ -18,7 +18,7 @@
     "announce_to_chat": true,
     "background": null,
     "description": {
-      "text": "Defeat Cynthia in the final rematch"
+      "translate": "advancements.rctmod.defeat_champion_cynthia_3.description"
     },
     "frame": "challenge",
     "hidden": true,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Sinnoh Legend"
+      "translate": "advancements.rctmod.defeat_champion_cynthia_3.title"
     }
   },
   "parent": "rctmod:trainers/defeat_elite_four_lucian_3",

@@ -18,7 +18,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Title Defense Solenk"
+      "translate": "advancements.rctmod.defeat_title_defense_solenk.description"
     },
     "frame": "goal",
     "hidden": true,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Title Defense Solenk"
+      "translate": "advancements.rctmod.defeat_title_defense_solenk.title"
     }
   },
   "parent": "rctmod:trainers/defeat_light_of_ruin_aklove_3",

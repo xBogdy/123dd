@@ -18,7 +18,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Elite 4 Arabella"
+      "translate": "advancements.rctmod.defeat_elite_four_arabella.description"
     },
     "frame": "goal",
     "hidden": false,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Borrius Elite Arabella"
+      "translate": "advancements.rctmod.defeat_elite_four_arabella.title"
     }
   },
   "parent": "rctmod:trainers/defeat_leader_benjamin",

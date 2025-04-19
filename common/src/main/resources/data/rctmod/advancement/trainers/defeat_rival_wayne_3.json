@@ -20,7 +20,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Rival Wayne a third time"
+      "translate": "advancements.rctmod.defeat_rival_wayne_3.description"
     },
     "frame": "task",
     "hidden": false,
@@ -29,7 +29,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Are you prepared?"
+      "translate": "advancements.rctmod.defeat_rival_wayne_3.title"
     }
   },
   "parent": "rctmod:trainers/defeat_shadow_admin_marlon_2",

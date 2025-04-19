@@ -25,9 +25,11 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.utils.ChatUtils;
+import com.gitlab.srcmc.rctmod.api.utils.LangKeys;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerAssociation;
 
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.MerchantContainer;
 import net.minecraft.world.inventory.MerchantResultSlot;
@@ -65,7 +67,7 @@ public class MerchantResultSlotMixin {
                 }
 
                 RCTMod.getInstance().getTrainerManager().getData(player).setCurrentSeries(offer.getKey());
-                ChatUtils.sendTitle(player, "A new Journey", RCTMod.getInstance().getSeriesManager().getGraph(offer.getKey()).getMetaData().title());
+                ChatUtils.sendTitle(player, Component.translatable(LangKeys.GUI_TITLE_SERIES_STARTED).getString(), RCTMod.getInstance().getSeriesManager().getGraph(offer.getKey()).getMetaData().title().asComponent().getString());
                 ta.updateOffersFor(player);
             }
         }

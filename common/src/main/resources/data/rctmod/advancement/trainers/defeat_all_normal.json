@@ -16,7 +16,7 @@
     "announce_to_chat": true,
     "background": null,
     "description": {
-      "text": "Defeat all Normal trainers"
+      "translate": "advancements.rctmod.defeat_all_normal.description"
     },
     "frame": "challenge",
     "hidden": true,
@@ -25,7 +25,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Peasants"
+      "translate": "advancements.rctmod.defeat_all_normal.title"
     }
   },
   "parent": "rctmod:trainers/defeat_any",

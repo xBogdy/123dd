@@ -20,7 +20,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Rival Cedrick a third time"
+      "translate": "advancements.rctmod.defeat_pokemon_trainer_cedric_3.description"
     },
     "frame": "task",
     "hidden": false,
@@ -29,7 +29,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "First to 3"
+      "translate": "advancements.rctmod.defeat_pokemon_trainer_cedric_3.title"
     }
   },
   "parent": "rctmod:trainers/defeat_gym_leader_fantina_1",

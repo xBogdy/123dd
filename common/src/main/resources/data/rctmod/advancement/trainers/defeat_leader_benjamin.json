@@ -18,7 +18,7 @@
     "announce_to_chat": true,
     "background": null,
     "description": {
-      "text": "Defeat Leader Benjamin"
+      "translate": "advancements.rctmod.defeat_leader_benjamin.description"
     },
     "frame": "goal",
     "hidden": false,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Time Badge"
+      "translate": "advancements.rctmod.defeat_leader_benjamin.title"
     }
   },
   "parent": "rctmod:trainers/defeat_shadow_admin_marlon_3",

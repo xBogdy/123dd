@@ -16,7 +16,7 @@
     "announce_to_chat": true,
     "background": null,
     "description": {
-      "text": "Defeat all members of The Shadows"
+      "translate": "advancements.rctmod.defeat_all_team_shadow.description"
     },
     "frame": "challenge",
     "hidden": true,
@@ -25,7 +25,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Lights off"
+      "translate": "advancements.rctmod.defeat_all_team_shadow.title"
     }
   },
   "parent": "rctmod:trainers/defeat_boss_zeph_2",

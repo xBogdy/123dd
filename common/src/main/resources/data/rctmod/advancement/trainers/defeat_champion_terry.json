@@ -20,7 +20,7 @@
     "announce_to_chat": true,
     "background": null,
     "description": {
-      "text": "Defeat Champion Terry"
+      "translate": "advancements.rctmod.defeat_champion_terry.description"
     },
     "frame": "challenge",
     "hidden": false,
@@ -29,7 +29,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Kanto Champion"
+      "translate": "advancements.rctmod.defeat_champion_terry.title"
     }
   },
   "parent": "rctmod:trainers/defeat_elite_four_kanto",

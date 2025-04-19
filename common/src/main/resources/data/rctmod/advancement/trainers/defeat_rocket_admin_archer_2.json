@@ -18,7 +18,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Rocket Admin Archers single team"
+      "translate": "advancements.rctmod.defeat_rocket_admin_archer_2.description"
     },
     "frame": "task",
     "hidden": true,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Left hand"
+      "translate": "advancements.rctmod.defeat_rocket_admin_archer_2.title"
     }
   },
   "parent": "rctmod:trainers/defeat_boss_giovanni_2",

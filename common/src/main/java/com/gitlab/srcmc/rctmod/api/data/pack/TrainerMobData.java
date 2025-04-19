@@ -33,6 +33,7 @@ import java.util.stream.Stream;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
+import com.gitlab.srcmc.rctmod.api.data.Text;
 import com.gitlab.srcmc.rctmod.api.utils.JsonUtils.Exclude;
 import com.google.gson.reflect.TypeToken;
 
@@ -57,7 +58,7 @@ public class TrainerMobData implements IDataPackObject, Serializable {
 
     @Exclude private int rewardLevelCap;
     @Exclude private Set<String> followdBy = new HashSet<>();
-    @Exclude private Map<String, String[]> dialog = new HashMap<>();
+    @Exclude private Map<String, Text[]> dialog = new HashMap<>();
     @Exclude private TrainerTeam trainerTeam;
     @Exclude private RLWrapper textureResource;
     @Exclude private RLWrapper lootTableResource;
@@ -202,7 +203,7 @@ public class TrainerMobData implements IDataPackObject, Serializable {
         this.followdBy.clear();
     }
 
-    public Map<String, String[]> getDialog() {
+    public Map<String, Text[]> getDialog() {
         return Collections.unmodifiableMap(this.dialog);
     }
 
@@ -237,7 +238,7 @@ public class TrainerMobData implements IDataPackObject, Serializable {
 
         dpm.loadResource(trainerId, "dialogs",
             dialog -> this.dialog = dialog,
-            new TypeToken<Map<String, String[]>>() {});
+            new TypeToken<Map<String, Text[]>>() {});
 
         if(this.dialog == null) {
             this.dialog = new HashMap<>();

@@ -1,5 +1,7 @@
 {
   "color": "55ff55",
-  "name": "Leader",
+  "name": {
+    "translatable": "trainer_type.rctmod.leader.title"
+  },
   "symbol": "[L]"
 }

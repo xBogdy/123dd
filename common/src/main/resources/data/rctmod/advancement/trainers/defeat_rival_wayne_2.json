@@ -20,7 +20,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Rival Wayne a second time"
+      "translate": "advancements.rctmod.defeat_rival_wayne_2.description"
     },
     "frame": "task",
     "hidden": false,
@@ -29,7 +29,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Hi. Lets fight!"
+      "translate": "advancements.rctmod.defeat_rival_wayne_2.title"
     }
   },
   "parent": "rctmod:trainers/defeat_boss_zeph_1",

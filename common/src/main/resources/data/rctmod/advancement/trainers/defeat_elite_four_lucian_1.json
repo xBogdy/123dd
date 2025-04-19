@@ -18,7 +18,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Elite 4 Lucian"
+      "translate": "advancements.rctmod.defeat_elite_four_lucian_1.description"
     },
     "frame": "goal",
     "hidden": false,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Sinnoh Elite Lucian"
+      "translate": "advancements.rctmod.defeat_elite_four_lucian_1.title"
     }
   },
   "parent": "rctmod:trainers/defeat_elite_four_flint_1",

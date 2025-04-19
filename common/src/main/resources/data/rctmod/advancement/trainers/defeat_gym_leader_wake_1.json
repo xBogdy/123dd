@@ -18,7 +18,7 @@
     "announce_to_chat": true,
     "background": null,
     "description": {
-      "text": "Defeat Gym Leader Wake"
+      "translate": "advancements.rctmod.defeat_gym_leader_wake_1.description"
     },
     "frame": "goal",
     "hidden": false,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Fen Badge"
+      "translate": "advancements.rctmod.defeat_gym_leader_wake_1.title"
     }
   },
   "parent": "rctmod:trainers/defeat_gym_leader_maylene_1",

@@ -18,7 +18,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Battleground Mel"
+      "translate": "advancements.rctmod.defeat_battleground_mel.description"
     },
     "frame": "goal",
     "hidden": true,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Battleground Mel"
+      "translate": "advancements.rctmod.defeat_battleground_mel.title"
     }
   },
   "parent": "rctmod:trainers/defeat_title_defense_borrius",

@@ -20,7 +20,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Rival Wayne a forth time"
+      "translate": "advancements.rctmod.defeat_rival_wayne_4.description"
     },
     "frame": "task",
     "hidden": false,
@@ -29,7 +29,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Skill check"
+      "translate": "advancements.rctmod.defeat_rival_wayne_4.title"
     }
   },
   "parent": "rctmod:trainers/defeat_leader_tessy",

@@ -18,7 +18,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Elite 4 Penny"
+      "translate": "advancements.rctmod.defeat_elite_four_penny.description"
     },
     "frame": "goal",
     "hidden": false,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Borrius Elite Penny"
+      "translate": "advancements.rctmod.defeat_elite_four_penny.title"
     }
   },
   "parent": "rctmod:trainers/defeat_leader_benjamin",

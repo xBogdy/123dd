@@ -18,7 +18,7 @@
     "announce_to_chat": true,
     "background": null,
     "description": {
-      "text": "Defeat Galactic Boss Cyrus"
+      "translate": "advancements.rctmod.defeat_team_galactic_boss_cyrus_2.description"
     },
     "frame": "challenge",
     "hidden": false,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Newton's Laws"
+      "translate": "advancements.rctmod.defeat_team_galactic_boss_cyrus_2.title"
     }
   },
   "parent": "rctmod:trainers/defeat_commander_mars_jupiter",

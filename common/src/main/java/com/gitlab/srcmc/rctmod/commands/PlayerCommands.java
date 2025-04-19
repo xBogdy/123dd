@@ -26,6 +26,7 @@ import com.gitlab.srcmc.rctmod.api.data.pack.TrainerType;
 import com.gitlab.srcmc.rctmod.api.data.save.TrainerPlayerData;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.api.service.SeriesManager;
+import com.gitlab.srcmc.rctmod.api.utils.LangKeys;
 import com.gitlab.srcmc.rctmod.api.utils.PlantUML;
 import com.gitlab.srcmc.rctmod.commands.arguments.TokenArgumentType;
 import com.gitlab.srcmc.rctmod.commands.utils.SuggestionUtils;
@@ -167,7 +168,7 @@ public final class PlayerCommands {
             return 0;
         }
         
-        context.getSource().sendFailure(Component.literal("caller is not a player"));
+        context.getSource().sendFailure(Component.translatable(LangKeys.COMMANDS_ERRORS_CALLER_NOT_A_PLAYER));
         return -1;
     }
 
@@ -198,7 +199,7 @@ public final class PlayerCommands {
             return 0;
         }
         
-        context.getSource().sendFailure(Component.literal("caller is not a player"));
+        context.getSource().sendFailure(Component.translatable(LangKeys.COMMANDS_ERRORS_CALLER_NOT_A_PLAYER));
         return -1;
     }
 
@@ -223,7 +224,7 @@ public final class PlayerCommands {
             return 0;
         }
         
-        context.getSource().sendFailure(Component.literal("caller is not a player"));
+        context.getSource().sendFailure(Component.translatable(LangKeys.COMMANDS_ERRORS_CALLER_NOT_A_PLAYER));
         return -1;
     }
 
@@ -267,7 +268,7 @@ public final class PlayerCommands {
             return 0;
         }
         
-        context.getSource().sendFailure(Component.literal("caller is not a player"));
+        context.getSource().sendFailure(Component.translatable(LangKeys.COMMANDS_ERRORS_CALLER_NOT_A_PLAYER));
         return -1;
     }
 
@@ -296,7 +297,7 @@ public final class PlayerCommands {
             return 0;
         }
         
-        context.getSource().sendFailure(Component.literal("caller is not a player"));
+        context.getSource().sendFailure(Component.translatable(LangKeys.COMMANDS_ERRORS_CALLER_NOT_A_PLAYER));
         return -1;
     }
 
@@ -326,10 +327,12 @@ public final class PlayerCommands {
         var graph = RCTMod.getInstance().getSeriesManager().getGraph(tpd.getCurrentSeries());
         var url = PlantUML.SERVER_URL + PlantUML.encode(includeDefeated ? graph.getRemaining(includeOptionals, includeSingles) : graph.getRemaining(tpd.getDefeatedTrainerIds(), includeOptionals, includeSingles), tpd.getDefeatedTrainerIds());
 
-        context.getSource().sendSuccess(() -> Component.literal(String.format("%s's series progression graph (%s): ", player.getDisplayName().getString(), graph.getMetaData().title())).append(Component.literal(url).setStyle(Style.EMPTY
-            .applyFormats(ChatFormatting.UNDERLINE, ChatFormatting.GREEN)
-            .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Component.literal("Click on the link to open the graph in your browser")))
-            .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, url)))), false);
+        context.getSource().sendSuccess(() -> Component.translatable(LangKeys.COMMANDS_FEEDBACK_SERIES_GRAPH, player.getDisplayName().getString(), graph.getMetaData().title().asComponent().getString())
+            .append(Component.literal(" "))
+            .append(Component.literal(url).setStyle(Style.EMPTY
+                .applyFormats(ChatFormatting.UNDERLINE, ChatFormatting.GREEN)
+                .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Component.translatable(LangKeys.COMMANDS_FEEDBACK_CLICK_LINK)))
+                .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, url)))), false);
     }
 
     private static int player_get_level_cap(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
@@ -339,7 +342,7 @@ public final class PlayerCommands {
             return level_cap;
         }
         
-        context.getSource().sendFailure(Component.literal("caller is not a player"));
+        context.getSource().sendFailure(Component.translatable(LangKeys.COMMANDS_ERRORS_CALLER_NOT_A_PLAYER));
         return -1;
     }
 
@@ -361,7 +364,7 @@ public final class PlayerCommands {
                 context.getSource().sendFailure(Component.literal(e.getMessage()));
             }
         } else {
-            context.getSource().sendFailure(Component.literal("caller is not a player"));
+            context.getSource().sendFailure(Component.translatable(LangKeys.COMMANDS_ERRORS_CALLER_NOT_A_PLAYER));
         }
 
         return -1;
@@ -391,7 +394,7 @@ public final class PlayerCommands {
                 context.getSource().sendFailure(Component.literal(e.getMessage()));
             }
         } else {
-            context.getSource().sendFailure(Component.literal("caller is not a player"));
+            context.getSource().sendFailure(Component.translatable(LangKeys.COMMANDS_ERRORS_CALLER_NOT_A_PLAYER));
         }
 
         return -1;
@@ -415,7 +418,7 @@ public final class PlayerCommands {
             var seriesid = StringArgumentType.getString(context, "seriesId");
 
             if(seriesid.equals(SeriesManager.EMPTY_SERIES_ID)) {
-                context.getSource().sendFailure(Component.literal("cannot complete empty series"));
+                context.getSource().sendFailure(Component.translatable(LangKeys.COMMANDS_ERRORS_EMPTY_SERIES));
                 return -1;
             }
 
@@ -426,7 +429,7 @@ public final class PlayerCommands {
             return 0;
         }
         
-        context.getSource().sendFailure(Component.literal("caller is not a player"));
+        context.getSource().sendFailure(Component.translatable(LangKeys.COMMANDS_ERRORS_CALLER_NOT_A_PLAYER));
         return -1;
     }
 
@@ -435,7 +438,7 @@ public final class PlayerCommands {
         var count = IntegerArgumentType.getInteger(context, "count");
 
         if(seriesid.equals(SeriesManager.EMPTY_SERIES_ID)) {
-            context.getSource().sendFailure(Component.literal("cannot complete empty series"));
+            context.getSource().sendFailure(Component.translatable(LangKeys.COMMANDS_ERRORS_EMPTY_SERIES));
             return -1;
         }
 
@@ -456,7 +459,7 @@ public final class PlayerCommands {
             return 0;
         }
         
-        context.getSource().sendFailure(Component.literal("caller is not a player"));
+        context.getSource().sendFailure(Component.translatable(LangKeys.COMMANDS_ERRORS_CALLER_NOT_A_PLAYER));
         return -1;
     }
 
@@ -487,7 +490,7 @@ public final class PlayerCommands {
             return 0;
         }
         
-        context.getSource().sendFailure(Component.literal("caller is not a player"));
+        context.getSource().sendFailure(Component.translatable(LangKeys.COMMANDS_ERRORS_CALLER_NOT_A_PLAYER));
         return -1;
     }
 
@@ -506,7 +509,7 @@ public final class PlayerCommands {
             return 0;
         }
         
-        context.getSource().sendFailure(Component.literal("caller is not a player"));
+        context.getSource().sendFailure(Component.translatable(LangKeys.COMMANDS_ERRORS_CALLER_NOT_A_PLAYER));
         return -1;
     }
 
@@ -525,7 +528,7 @@ public final class PlayerCommands {
             return 0;
         }
         
-        context.getSource().sendFailure(Component.literal("caller is not a player"));
+        context.getSource().sendFailure(Component.translatable(LangKeys.COMMANDS_ERRORS_CALLER_NOT_A_PLAYER));
         return -1;
     }
 
@@ -543,7 +546,7 @@ public final class PlayerCommands {
             return 0;
         }
         
-        context.getSource().sendFailure(Component.literal("caller is not a player"));
+        context.getSource().sendFailure(Component.translatable(LangKeys.COMMANDS_ERRORS_CALLER_NOT_A_PLAYER));
         return -1;
     }
 
@@ -636,7 +639,7 @@ public final class PlayerCommands {
                 context.getSource().sendFailure(Component.literal(e.getMessage()));
             }
         } else {
-            context.getSource().sendFailure(Component.literal("caller is not a player"));
+            context.getSource().sendFailure(Component.translatable(LangKeys.COMMANDS_ERRORS_CALLER_NOT_A_PLAYER));
         }
 
         return -1;

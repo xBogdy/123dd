@@ -20,7 +20,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Rival Cedrick for the first time"
+      "translate": "advancements.rctmod.defeat_pokemon_trainer_cedric_1.description"
     },
     "frame": "task",
     "hidden": false,
@@ -29,7 +29,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Competition"
+      "translate": "advancements.rctmod.defeat_pokemon_trainer_cedric_1.title"
     }
   },
   "parent": "rctmod:trainers/defeat_gym_leader_gardenia_1",

@@ -1,6 +1,10 @@
 {
-  "description": "A casual series but still with decent difficulty. Are you ready to conquer Sinnoh?",
+  "description": {
+    "translatable": "series.rctmod.bdsp.description"
+  },
   "difficulty": 5,
   "requiredSeries": [],
-  "title": "Brilliant Diamond/Shining Pearl"
+  "title": {
+    "translatable": "series.rctmod.bdsp.title"
+  }
 }

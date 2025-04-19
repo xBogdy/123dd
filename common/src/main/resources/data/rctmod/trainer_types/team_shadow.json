@@ -1,5 +1,7 @@
 {
   "color": "aaaaaa",
-  "name": "The Shadows",
+  "name": {
+    "translatable": "trainer_type.rctmod.team_shadow.title"
+  },
   "symbol": "[S]"
 }

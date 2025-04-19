@@ -18,7 +18,7 @@
     "announce_to_chat": true,
     "background": null,
     "description": {
-      "text": "Defeat Leader Misty"
+      "translate": "advancements.rctmod.defeat_leader_misty.description"
     },
     "frame": "goal",
     "hidden": false,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Cascade Badge"
+      "translate": "advancements.rctmod.defeat_leader_misty.title"
     }
   },
   "parent": "rctmod:trainers/defeat_rival_terry_1",

@@ -18,7 +18,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Ruin Agent Vega"
+      "translate": "advancements.rctmod.defeat_light_of_ruin_vega.description"
     },
     "frame": "task",
     "hidden": false,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Twist"
+      "translate": "advancements.rctmod.defeat_light_of_ruin_vega.title"
     }
   },
   "parent": "rctmod:trainers/defeat_leader_galavan",

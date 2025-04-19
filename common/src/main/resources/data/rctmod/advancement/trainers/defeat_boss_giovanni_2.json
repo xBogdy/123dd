@@ -18,7 +18,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Boss Giovanni (again)"
+      "translate": "advancements.rctmod.defeat_boss_giovanni_2.description"
     },
     "frame": "task",
     "hidden": false,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Fateful encounter"
+      "translate": "advancements.rctmod.defeat_boss_giovanni_2.title"
     }
   },
   "parent": "rctmod:trainers/defeat_rocket_admin_archer_and_ariana",

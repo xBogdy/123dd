@@ -20,7 +20,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Title Defense Wayne"
+      "translate": "advancements.rctmod.defeat_title_defense_rival_wayne.description"
     },
     "frame": "goal",
     "hidden": true,
@@ -29,7 +29,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Title Defense Wayne"
+      "translate": "advancements.rctmod.defeat_title_defense_rival_wayne.title"
     }
   },
   "parent": "rctmod:trainers/defeat_light_of_ruin_aklove_3",

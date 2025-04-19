@@ -18,7 +18,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Shadow Admin Ivory in a 1v1"
+      "translate": "advancements.rctmod.defeat_shadow_admin_ivory_2.description"
     },
     "frame": "task",
     "hidden": true,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Alone in the Dark"
+      "translate": "advancements.rctmod.defeat_shadow_admin_ivory_2.title"
     }
   },
   "parent": "rctmod:trainers/defeat_shadow_admin_ivory_grunt",

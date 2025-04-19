@@ -28,6 +28,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import java.nio.charset.StandardCharsets;
 
+import com.gitlab.srcmc.rctmod.api.data.Text;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerType;
 import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
@@ -41,6 +42,7 @@ public final class JsonUtils<T> {
     public static final Gson GSON = new GsonBuilder()
         .registerTypeAdapter(TrainerType.Color.class, new TrainerType.Color.Serializer())
         .registerTypeAdapter(TrainerType.Color.class, new TrainerType.Color.Deserializer())
+        .registerTypeAdapter(Text.class, new Text.Deserializer())
         .addSerializationExclusionStrategy(new AnnotationExclusionStrategy())
         .addDeserializationExclusionStrategy(new AnnotationExclusionStrategy())
         .setPrettyPrinting()

@@ -18,7 +18,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Leader Giovanni"
+      "translate": "advancements.rctmod.defeat_leader_giovanni.description"
     },
     "frame": "task",
     "hidden": true,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "A facade?"
+      "translate": "advancements.rctmod.defeat_leader_giovanni.title"
     }
   },
   "parent": "rctmod:trainers/defeat_leader_erika",

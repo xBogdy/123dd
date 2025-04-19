@@ -18,7 +18,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Battleground Tessy"
+      "translate": "advancements.rctmod.defeat_battleground_tessy.description"
     },
     "frame": "goal",
     "hidden": true,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Battleground Tessy"
+      "translate": "advancements.rctmod.defeat_battleground_tessy.title"
     }
   },
   "parent": "rctmod:trainers/defeat_title_defense_borrius",

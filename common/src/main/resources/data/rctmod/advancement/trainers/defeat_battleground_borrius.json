@@ -96,7 +96,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat all Borrius Battleground Trainers"
+      "translate": "advancements.rctmod.defeat_battleground_borrius.description"
     },
     "frame": "goal",
     "hidden": true,
@@ -105,7 +105,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Borrius Battleground"
+      "translate": "advancements.rctmod.defeat_battleground_borrius.title"
     }
   },
   "parent": "rctmod:trainers/defeat_title_defense_borrius",

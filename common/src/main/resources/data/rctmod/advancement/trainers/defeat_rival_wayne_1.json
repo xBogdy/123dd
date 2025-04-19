@@ -20,7 +20,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Rival Wayne for the first time"
+      "translate": "advancements.rctmod.defeat_rival_wayne_1.description"
     },
     "frame": "task",
     "hidden": false,
@@ -29,7 +29,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Face-off"
+      "translate": "advancements.rctmod.defeat_rival_wayne_1.title"
     }
   },
   "parent": "rctmod:trainers/defeat_any",

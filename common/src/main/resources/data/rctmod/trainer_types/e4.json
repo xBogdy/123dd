@@ -1,5 +1,7 @@
 {
   "color": "00aaaa",
-  "name": "E4",
+  "name": {
+    "translatable": "trainer_type.rctmod.e4.title"
+  },
   "symbol": "[E]"
 }

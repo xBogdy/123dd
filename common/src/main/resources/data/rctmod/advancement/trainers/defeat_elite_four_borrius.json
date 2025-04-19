@@ -57,7 +57,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat all members of the Borrius Elite 4"
+      "translate": "advancements.rctmod.defeat_elite_four_borrius.description"
     },
     "frame": "goal",
     "hidden": false,
@@ -66,7 +66,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Borrius Elite"
+      "translate": "advancements.rctmod.defeat_elite_four_borrius.title"
     }
   },
   "parent": "rctmod:trainers/defeat_leader_benjamin",

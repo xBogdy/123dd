@@ -19,7 +19,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Elite 4 Lorelei"
+      "translate": "advancements.rctmod.defeat_elite_four_lorelei.description"
     },
     "frame": "goal",
     "hidden": false,
@@ -28,7 +28,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Kanto Elite Lorelei"
+      "translate": "advancements.rctmod.defeat_elite_four_lorelei.title"
     }
   },
   "parent": "rctmod:trainers/defeat_trainer_brendan_3",

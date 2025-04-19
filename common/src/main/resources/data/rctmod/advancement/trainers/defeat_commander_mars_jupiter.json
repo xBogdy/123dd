@@ -18,7 +18,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Commander Mars \u0026 Jupiter"
+      "translate": "advancements.rctmod.defeat_commander_mars_jupiter.description"
     },
     "frame": "task",
     "hidden": false,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "In Orbit"
+      "translate": "advancements.rctmod.defeat_commander_mars_jupiter.title"
     }
   },
   "parent": "rctmod:trainers/defeat_commander_saturn_2",

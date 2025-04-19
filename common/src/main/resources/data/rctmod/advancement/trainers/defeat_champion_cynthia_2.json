@@ -18,7 +18,7 @@
     "announce_to_chat": true,
     "background": null,
     "description": {
-      "text": "Defeat Cynthia in a rematch"
+      "translate": "advancements.rctmod.defeat_champion_cynthia_2.description"
     },
     "frame": "challenge",
     "hidden": true,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Cynthia Rematch 1"
+      "translate": "advancements.rctmod.defeat_champion_cynthia_2.title"
     }
   },
   "parent": "rctmod:trainers/defeat_elite_four_lucian_2",

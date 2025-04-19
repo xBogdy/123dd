@@ -18,7 +18,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Title Defense Milo"
+      "translate": "advancements.rctmod.defeat_title_defense_milo.description"
     },
     "frame": "goal",
     "hidden": true,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Title Defense Milo"
+      "translate": "advancements.rctmod.defeat_title_defense_milo.title"
     }
   },
   "parent": "rctmod:trainers/defeat_light_of_ruin_aklove_3",

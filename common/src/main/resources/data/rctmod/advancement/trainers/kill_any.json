@@ -16,7 +16,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "'Defeat' any Trainer"
+      "translate": "advancements.rctmod.kill_any.description"
     },
     "frame": "task",
     "hidden": true,
@@ -25,7 +25,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Wrong way to battle"
+      "translate": "advancements.rctmod.kill_any.title"
     }
   },
   "parent": "rctmod:trainers/defeat_any",

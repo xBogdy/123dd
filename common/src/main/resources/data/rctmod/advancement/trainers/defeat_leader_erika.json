@@ -18,7 +18,7 @@
     "announce_to_chat": true,
     "background": null,
     "description": {
-      "text": "Defeat Leader Erika"
+      "translate": "advancements.rctmod.defeat_leader_erika.description"
     },
     "frame": "goal",
     "hidden": false,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Rainbow Badge"
+      "translate": "advancements.rctmod.defeat_leader_erika.title"
     }
   },
   "parent": "rctmod:trainers/defeat_leader_lt_surge",

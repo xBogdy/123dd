@@ -25,8 +25,10 @@ import org.spongepowered.include.com.google.common.base.Strings;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
+import com.gitlab.srcmc.rctmod.api.data.Text;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerType;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
+import com.gitlab.srcmc.rctmod.api.utils.LangKeys;
 import com.gitlab.srcmc.rctmod.client.screens.widgets.controls.CycleButton;
 import com.gitlab.srcmc.rctmod.client.screens.widgets.text.AutoScaledStringWidget;
 
@@ -97,7 +99,7 @@ public class PlayerInfoWidget extends AbstractWidget {
     public static final int LOADING_X = TRAINER_LIST_X;
     public static final int LOADING_Y = TRAINER_LIST_Y + TRAINER_LIST_H/2 - LOADING_H/2;
 
-    static final TrainerType ALL_TRAINER_TYPES = new TrainerType("All");
+    private final TrainerType ALL_TRAINER_TYPES = new TrainerType(new Text().setTranslatable(LangKeys.TRAINER_TYPE_TITLE("all")));
 
     private StringWidget displayName;
     private StringWidget levelCapLabel;
@@ -133,9 +135,9 @@ public class PlayerInfoWidget extends AbstractWidget {
         this.active = false;
         this.font = font;
         this.displayName = new AutoScaledStringWidget(x + DISPLAY_NAME_X, y + DISPLAY_NAME_Y, DISPLAY_NAME_W, DISPLAY_NAME_H, Component.empty(), this.font).alignCenter().fitting(true);
-        this.levelCapLabel = new StringWidget(x + LEVEL_CAP_X + LEVEL_CAP_PADDING, y + LEVEL_CAP_Y + LEVEL_CAP_H/8, LEVEL_CAP_W, LEVEL_CAP_H, Component.literal("Level Cap").withStyle(ChatFormatting.WHITE), this.font).alignLeft();
+        this.levelCapLabel = new StringWidget(x + LEVEL_CAP_X + LEVEL_CAP_PADDING, y + LEVEL_CAP_Y + LEVEL_CAP_H/8, LEVEL_CAP_W, LEVEL_CAP_H, Component.translatable(LangKeys.GUI_TRAINER_CARD_LEVEL_CAP).withStyle(ChatFormatting.WHITE), this.font).alignLeft();
         this.levelCapValue = new StringWidget(x + LEVEL_CAP_X, y + LEVEL_CAP_Y + LEVEL_CAP_H/8, LEVEL_CAP_W - LEVEL_CAP_PADDING, LEVEL_CAP_H, Component.empty(), this.font).alignRight();
-        this.totalDefeatsLabel = new StringWidget(x + TOTAL_DEFEATS_X + TOTAL_DEFEATS_PADDING, y + TOTAL_DEFEATS_Y + TOTAL_DEFEATS_H/8, TOTAL_DEFEATS_W, TOTAL_DEFEATS_H, Component.literal("Total").withStyle(ChatFormatting.WHITE), this.font).alignLeft();
+        this.totalDefeatsLabel = new StringWidget(x + TOTAL_DEFEATS_X + TOTAL_DEFEATS_PADDING, y + TOTAL_DEFEATS_Y + TOTAL_DEFEATS_H/8, TOTAL_DEFEATS_W, TOTAL_DEFEATS_H, Component.translatable(LangKeys.GUI_TRAINER_CARD_TOTAL).withStyle(ChatFormatting.WHITE), this.font).alignLeft();
         this.totalDefeatsValue = new StringWidget(x + TOTAL_DEFEATS_X, y + TOTAL_DEFEATS_Y + TOTAL_DEFEATS_H/8, TOTAL_DEFEATS_W - TOTAL_DEFEATS_PADDING, TOTAL_DEFEATS_H, Component.empty(), this.font).alignRight();
         this.loadingLabel = new AutoScaledStringWidget(x + LOADING_X, y + LOADING_Y, LOADING_W, LOADING_H, Component.empty(), this.font).alignCenter().scaled(0.65f);
         this.trainerList = new TrainerListWidget(x + TRAINER_LIST_X, y + TRAINER_LIST_Y, TRAINER_LIST_W, TRAINER_LIST_H, font, this.sortedTrainerIds());
@@ -148,7 +150,7 @@ public class PlayerInfoWidget extends AbstractWidget {
             x + CHECKBOX_X, y + CHECKBOX_Y, CHECKBOX_W, CHECKBOX_H, true);
 
         this.trainerTypeButton = CycleButton.create(
-            t -> Component.literal(t.name()), this.trainerTypes, 0,
+            t -> t.name().asComponent(), this.trainerTypes, 0,
             x + TYPE_BUTTON_X, y + TYPE_BUTTON_Y, TYPE_BUTTON_W, TYPE_BUTTON_H, false);
         
         this.nextPageButton = Button
@@ -276,7 +278,7 @@ public class PlayerInfoWidget extends AbstractWidget {
     }
 
     private void updateLoading() {
-        this.loadingLabel.setMessage(Component.literal("Loading" + Strings.repeat(".", (this.loadingTick/15) % 6)).withStyle(ChatFormatting.GREEN));
+        this.loadingLabel.setMessage(Component.literal(Component.translatable(LangKeys.GUI_TRAINER_CARD_LOADING).getString() + Strings.repeat(".", (this.loadingTick/15) % 6)).withStyle(ChatFormatting.GREEN));
     }
 
     public void tick() {

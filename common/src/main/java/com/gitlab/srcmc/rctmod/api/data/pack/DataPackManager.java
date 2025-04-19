@@ -23,6 +23,7 @@ import java.util.Optional;
 import java.util.function.Consumer;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
+import com.gitlab.srcmc.rctmod.api.data.Text;
 import com.gitlab.srcmc.rctmod.api.utils.ChatUtils;
 import com.gitlab.srcmc.rctmod.api.utils.JsonUtils;
 import com.gitlab.srcmc.rctmod.api.utils.PathUtils;
@@ -292,17 +293,19 @@ public class DataPackManager extends SimpleJsonResourceReloadListener implements
     protected void reload(ResourceManager resourceManager) {
         this.init(resourceManager);
 
-        // load and register trainer types
-        TrainerType.clear();
-        this.listTrainerTypes((rl, io) -> {
-            var id = PathUtils.filename(rl.getPath());
-            TrainerType.register(id, this.loadTrainerType(id).get());
-        });
+        if(this.packType.equals(PackType.SERVER_DATA)) {
+            // load and register trainer types
+            TrainerType.clear();
+            this.listTrainerTypes((rl, io) -> {
+                var id = PathUtils.filename(rl.getPath());
+                TrainerType.register(id, this.loadTrainerType(id).get());
+            });
 
-        // load the default dialog for general purpose chats
-        this.loadResource("", "dialogs",
-            ChatUtils::initDefault,
-            new TypeToken<Map<String, String[]>>() {});
+            // load the default dialog for general purpose chats
+            this.loadResource("", "dialogs",
+                ChatUtils::initDefault,
+                new TypeToken<Map<String, Text[]>>() {});
+        }
 
         this.close();
     }

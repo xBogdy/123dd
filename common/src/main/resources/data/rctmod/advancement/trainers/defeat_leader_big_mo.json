@@ -18,7 +18,7 @@
     "announce_to_chat": true,
     "background": null,
     "description": {
-      "text": "Defeat Leader Big Mo"
+      "translate": "advancements.rctmod.defeat_leader_big_mo.description"
     },
     "frame": "goal",
     "hidden": false,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Ring Badge"
+      "translate": "advancements.rctmod.defeat_leader_big_mo.title"
     }
   },
   "parent": "rctmod:trainers/defeat_light_of_ruin_aklove_1",

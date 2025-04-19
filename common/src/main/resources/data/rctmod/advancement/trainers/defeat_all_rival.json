@@ -16,7 +16,7 @@
     "announce_to_chat": true,
     "background": null,
     "description": {
-      "text": "Defeat all Rivals"
+      "translate": "advancements.rctmod.defeat_all_rival.description"
     },
     "frame": "challenge",
     "hidden": true,
@@ -25,7 +25,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "There can only be one"
+      "translate": "advancements.rctmod.defeat_all_rival.title"
     }
   },
   "parent": "rctmod:trainers/defeat_trainer_red",

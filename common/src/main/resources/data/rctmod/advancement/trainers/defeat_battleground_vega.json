@@ -18,7 +18,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Battleground Vega"
+      "translate": "advancements.rctmod.defeat_battleground_vega.description"
     },
     "frame": "goal",
     "hidden": true,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Battleground Vega"
+      "translate": "advancements.rctmod.defeat_battleground_vega.title"
     }
   },
   "parent": "rctmod:trainers/defeat_title_defense_borrius",

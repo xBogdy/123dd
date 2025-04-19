@@ -18,7 +18,7 @@
     "announce_to_chat": true,
     "background": null,
     "description": {
-      "text": "Defeat Champion Cynthia"
+      "translate": "advancements.rctmod.defeat_champion_cynthia_1.description"
     },
     "frame": "challenge",
     "hidden": false,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Sinnoh Champion"
+      "translate": "advancements.rctmod.defeat_champion_cynthia_1.title"
     }
   },
   "parent": "rctmod:trainers/defeat_elite_four_lucian_1",

@@ -18,7 +18,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Shadow Boss Zeph for the first time"
+      "translate": "advancements.rctmod.defeat_boss_zeph_1.description"
     },
     "frame": "task",
     "hidden": false,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Dark Omen"
+      "translate": "advancements.rctmod.defeat_boss_zeph_1.title"
     }
   },
   "parent": "rctmod:trainers/defeat_shadow_admin_ivory_1",

@@ -1,5 +1,7 @@
 {
   "color": "aaaaaa",
-  "name": "Team Rocket",
+  "name": {
+    "translatable": "trainer_type.rctmod.team_rocket.title"
+  },
   "symbol": "[T]"
 }

@@ -25,6 +25,8 @@ import java.util.Map;
 import java.util.Set;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
+import com.gitlab.srcmc.rctmod.api.utils.LangKeys;
+import com.gitlab.srcmc.rctmod.api.data.Text;
 import com.gitlab.srcmc.rctmod.api.utils.JsonUtils.Exclude;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
@@ -78,39 +80,39 @@ public class TrainerType implements Serializable {
         return REGISTRY.getOrDefault(id, DEFAULT);
     }
 
-    private final String name;
+    private final Text name;
     private final String symbol;
     private final Color color;
 
     @Exclude
-    private String id = "";
+    private String id = "unknown";
 
     @Exclude
     private int numericId = -1;
 
     public TrainerType() {
-        this("UNKNOWN");
+        this(new Text().setTranslatable(LangKeys.TRAINER_TYPE_TITLE("unknown")));
     }
 
-    public TrainerType(String name) {
+    public TrainerType(Text name) {
         this(name, new Color(0xffffff));
     }
 
-    public TrainerType(String name, Color color) {
+    public TrainerType(Text name, Color color) {
         this(name, "", color);
     }
 
-    public TrainerType(String name, String symbol) {
+    public TrainerType(Text name, String symbol) {
         this(name, symbol, new Color(0xffffff));
     }
 
-    public TrainerType(String name, String symbol, Color color) {
+    public TrainerType(Text name, String symbol, Color color) {
         this.name = name;
         this.symbol = symbol;
         this.color = color;
     }
 
-    public String name() {
+    public Text name() {
         return this.name;
     }
 

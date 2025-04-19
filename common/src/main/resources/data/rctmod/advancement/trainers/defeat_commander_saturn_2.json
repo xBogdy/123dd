@@ -18,7 +18,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Commander Saturn a second time"
+      "translate": "advancements.rctmod.defeat_commander_saturn_2.description"
     },
     "frame": "task",
     "hidden": false,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Saturnus"
+      "translate": "advancements.rctmod.defeat_commander_saturn_2.title"
     }
   },
   "parent": "rctmod:trainers/defeat_team_galactic_boss_cyrus_1",

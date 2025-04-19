@@ -18,7 +18,7 @@
     "announce_to_chat": true,
     "background": null,
     "description": {
-      "text": "Defeat Leader Koga"
+      "translate": "advancements.rctmod.defeat_leader_koga.description"
     },
     "frame": "goal",
     "hidden": false,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Soul Badge"
+      "translate": "advancements.rctmod.defeat_leader_koga.title"
     }
   },
   "parent": "rctmod:trainers/defeat_trainer_brendan_2",

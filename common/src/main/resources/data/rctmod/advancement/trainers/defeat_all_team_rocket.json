@@ -16,7 +16,7 @@
     "announce_to_chat": true,
     "background": null,
     "description": {
-      "text": "Defeat all members of Team Rocket"
+      "translate": "advancements.rctmod.defeat_all_team_rocket.description"
     },
     "frame": "challenge",
     "hidden": true,
@@ -25,7 +25,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Wrong side of the tracks"
+      "translate": "advancements.rctmod.defeat_all_team_rocket.title"
     }
   },
   "parent": "rctmod:trainers/defeat_boss_giovanni_3",

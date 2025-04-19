@@ -19,7 +19,7 @@
     "announce_to_chat": true,
     "background": null,
     "description": {
-      "text": "Defeat Trainer Blue"
+      "translate": "advancements.rctmod.defeat_trainer_blue.description"
     },
     "frame": "challenge",
     "hidden": true,
@@ -28,7 +28,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Borrius Legend"
+      "translate": "advancements.rctmod.defeat_trainer_blue.title"
     }
   },
   "parent": "rctmod:trainers/defeat_battleground_borrius",

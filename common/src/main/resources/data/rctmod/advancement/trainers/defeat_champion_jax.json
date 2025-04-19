@@ -18,7 +18,7 @@
     "announce_to_chat": true,
     "background": null,
     "description": {
-      "text": "Defeat Champion Jax"
+      "translate": "advancements.rctmod.defeat_champion_jax.description"
     },
     "frame": "challenge",
     "hidden": false,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Borrius Champion"
+      "translate": "advancements.rctmod.defeat_champion_jax.title"
     }
   },
   "parent": "rctmod:trainers/defeat_elite_four_borrius",

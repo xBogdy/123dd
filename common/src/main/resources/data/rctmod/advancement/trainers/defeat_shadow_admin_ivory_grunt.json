@@ -18,7 +18,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Shadow Admin Ivory \u0026 Grunt"
+      "translate": "advancements.rctmod.defeat_shadow_admin_ivory_grunt.description"
     },
     "frame": "task",
     "hidden": false,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Dark Silhouettes"
+      "translate": "advancements.rctmod.defeat_shadow_admin_ivory_grunt.title"
     }
   },
   "parent": "rctmod:trainers/defeat_leader_mel",

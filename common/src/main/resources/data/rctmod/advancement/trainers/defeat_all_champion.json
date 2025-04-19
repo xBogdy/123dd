@@ -16,7 +16,7 @@
     "announce_to_chat": true,
     "background": null,
     "description": {
-      "text": "Defeat all Champions"
+      "translate": "advancements.rctmod.defeat_all_champion.description"
     },
     "frame": "challenge",
     "hidden": true,
@@ -25,7 +25,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "True Champ"
+      "translate": "advancements.rctmod.defeat_all_champion.title"
     }
   },
   "parent": "rctmod:trainers/defeat_title_defense_borrius",

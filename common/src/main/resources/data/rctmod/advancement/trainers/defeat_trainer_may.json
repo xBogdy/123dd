@@ -18,7 +18,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Trainer May"
+      "translate": "advancements.rctmod.defeat_trainer_may.description"
     },
     "frame": "task",
     "hidden": false,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "A different path"
+      "translate": "advancements.rctmod.defeat_trainer_may.title"
     }
   },
   "parent": "rctmod:trainers/defeat_leader_koga",

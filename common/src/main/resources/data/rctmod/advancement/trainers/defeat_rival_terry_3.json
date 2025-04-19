@@ -20,7 +20,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Rival Terrys alternative team"
+      "translate": "advancements.rctmod.defeat_rival_terry_3.description"
     },
     "frame": "task",
     "hidden": true,
@@ -29,7 +29,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Who's got the edge?"
+      "translate": "advancements.rctmod.defeat_rival_terry_3.title"
     }
   },
   "parent": "rctmod:trainers/defeat_trainer_may",

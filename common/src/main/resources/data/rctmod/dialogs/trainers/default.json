@@ -1,1014 +1,1921 @@
 {
-  "battle_lost": [
-    "Oh no...",
-    "This was unexpected.",
-    "Impressive.",
-    "You got me this time.",
-    "Well played.",
-    "You're stronger than I thought.",
-    "I'll have to train harder.",
-    "I underestimated you.",
-    "You're quite the trainer.",
-    "I'll be back stronger next time.",
-    "You've bested me.",
-    "Good job.",
-    "I'll admit defeat.",
-    "Well done.",
-    "I need to rethink my strategy.",
-    "You're a skilled trainer.",
-    "Congratulations.",
-    "You're a tough opponent.",
-    "I'll have to try harder next time.",
-    "That was a good battle.",
-    "You earned that win.",
-    "I'll learn from this.",
-    "You've proven yourself.",
-    "I'll get you next time.",
-    "Nicely done.",
-    "You're a formidable opponent.",
-    "I'll train harder for our next battle.",
-    "You've got talent.",
-    "Well fought.",
-    "You've earned my respect.",
-    "I'll have to come back stronger.",
-    "You caught me off guard.",
-    "You're better than I expected.",
-    "I need to improve.",
-    "That was impressive.",
-    "You're a worthy adversary.",
-    "I'll need to rethink my strategy.",
-    "You fought well.",
-    "You're a skilled trainer.",
-    "I'll have to do better next time.",
-    "You've earned this victory.",
-    "I'll have to come back stronger next time.",
-    "You fought well.",
-    "You've proven yourself in battle.",
-    "I'll need to adjust my strategy.",
-    "You're stronger than you look.",
-    "I'll have to improve my team.",
-    "Well done, you deserve this win.",
-    "You're quite the opponent.",
-    "I'll have to work on my tactics.",
-    "You're a worthy challenger.",
-    "I'll have to train harder for our next match.",
-    "You're a skilled trainer.",
-    "I'll need to rethink my approach.",
-    "You fought well.",
-    "You're a formidable opponent.",
-    "I'll have to improve my team.",
-    "Well done, you deserve this win.",
-    "You're quite the opponent.",
-    "I'll have to work on my tactics.",
-    "You're a worthy challenger.",
-    "I'll have to train harder for our next match.",
-    "You're a skilled trainer.",
-    "I'll need to rethink my approach.",
-    "You fought well.",
-    "You're a formidable opponent."
-  ],
-  "battle_start": [
-    "I hope you have prepared yourself.",
-    "Let the battle begin!",
-    "May the best trainer win!",
-    "Prepare to face my team!",
-    "Are you ready for a challenge?",
-    "Let's see what you're made of!",
-    "Show me what you've got!",
-    "Let's do this!",
-    "Get ready for a tough battle!",
-    "This should be interesting!",
-    "I'm ready when you are!",
-    "Let's see who's stronger!",
-    "Time to battle!",
-    "I won't hold back!",
-    "Let the battle commence!",
-    "Get set for a battle!",
-    "Hope you're prepared!",
-    "Show me your skills!",
-    "I'm eager to battle!",
-    "Let's see if you're worthy!",
-    "Challenge accepted!",
-    "I've been waiting for this!",
-    "Prepare for defeat!",
-    "I'll give it my all!",
-    "This will be an epic battle!",
-    "Get ready to lose!",
-    "Let's see what you can do!",
-    "Time to prove yourself!",
-    "I'm ready to rumble!",
-    "It's battle time!",
-    "This should be a good fight!",
-    "Let's see who's the better trainer!",
-    "I'm pumped up and ready to go!",
-    "Let the best trainer win!",
-    "Prepare to face my strongest Pokémon!",
-    "Are you prepared to lose?",
-    "Let's make this a battle to remember!",
-    "Hope you're not scared!",
-    "I'm itching for a fight!",
-    "Time to show off my skills!",
-    "Let's battle it out!",
-    "Get ready to be defeated!",
-    "I'm ready for a challenge!",
-    "Let's see if you can handle this!",
-    "Get ready to taste defeat!",
-    "Let's see who comes out on top!",
-    "I'm not holding anything back!",
-    "Hope you're ready to lose!",
-    "Let's see if you have what it takes!",
-    "Bring it on!",
-    "I'm ready to take you down!",
-    "This will be a battle for the ages!",
-    "Let's see what you're made of!",
-    "Are you prepared for battle?",
-    "Time to test your skills!",
-    "Let's see if you're up to the challenge!",
-    "Hope you're ready to lose!",
-    "Let's see if you have what it takes!",
-    "Bring it on!",
-    "I'm ready to take you down!",
-    "This will be a battle for the ages!"
-  ],
-  "battle_won": [
-    "That was easy.",
-    "What do you say now?",
-    "I expected more of a challenge.",
-    "Too easy!",
-    "I barely broke a sweat.",
-    "Piece of cake!",
-    "I'm just too good.",
-    "Well, that was fun.",
-    "Better luck next time!",
-    "I'm unbeatable!",
-    "I'm on fire today!",
-    "I could do this all day.",
-    "I make it look easy.",
-    "Victory is sweet.",
-    "I'm the best there is!",
-    "Another win for me!",
-    "You didn't stand a chance.",
-    "I'm the champion!",
-    "That was too easy for me.",
-    "I'm unstoppable!",
-    "Looks like I win again.",
-    "I'm the ultimate trainer!",
-    "I'll take that win, thank you.",
-    "I'm in a league of my own.",
-    "I knew I'd win.",
-    "I'm on top of the world!",
-    "Another victory for me!",
-    "No one can beat me!",
-    "I'm the greatest!",
-    "I'm the champion!",
-    "That was too easy for me.",
-    "I'm unstoppable!",
-    "Looks like I win again.",
-    "I'm the ultimate trainer!",
-    "I'll take that win, thank you.",
-    "I'm in a league of my own.",
-    "I knew I'd win.",
-    "I'm on top of the world!",
-    "Another victory for me!",
-    "No one can beat me!",
-    "I'm the greatest!",
-    "I'm on a winning streak!",
-    "Easy as pie!",
-    "You're no match for me!",
-    "I'm too strong for you!",
-    "Looks like I'm the winner!",
-    "You didn't stand a chance against me!",
-    "I'm the best around!",
-    "I'm on top of my game!",
-    "That was too easy!",
-    "I'm on fire today!",
-    "You were no match for me!",
-    "Another win for the record!",
-    "I'm too good to lose!",
-    "I'm the champion of champions!",
-    "That was a walk in the park!",
-    "Looks like I'm the winner here!",
-    "I'm the undefeated champion!",
-    "I'm unbeatable!",
-    "You can't beat me!",
-    "Looks like I'm the winner!",
-    "I'm the best there is!",
-    "Another win for me!",
-    "You didn't stand a chance.",
-    "I'm the champion!",
-    "That was too easy for me.",
-    "I'm unstoppable!",
-    "Looks like I win again.",
-    "I'm the ultimate trainer!",
-    "I'll take that win, thank you.",
-    "I'm in a league of my own.",
-    "I knew I'd win.",
-    "I'm on top of the world!",
-    "Another victory for me!",
-    "No one can beat me!",
-    "I'm the greatest!",
-    "I'm on a winning streak!",
-    "Easy as pie!",
-    "You're no match for me!",
-    "I'm too strong for you!",
-    "Looks like I'm the winner!",
-    "You didn't stand a chance against me!",
-    "I'm the best around!",
-    "I'm on top of my game!",
-    "That was too easy!",
-    "I'm on fire today!",
-    "You were no match for me!",
-    "Another win for the record!",
-    "I'm too good to lose!",
-    "I'm the champion of champions!",
-    "That was a walk in the park!",
-    "Looks like I'm the winner here!",
-    "I'm the undefeated champion!"
-  ],
-  "done_generic": [
-    "I'm done."
-  ],
-  "done_looser": [
-    "You got me good this time.",
-    "This is not my day.",
-    "I will keep practicing.",
-    "That was impressive of you.",
-    "You really know your stuff!",
-    "I need to train harder.",
-    "That was an amazing battle!",
-    "You outsmarted me!",
-    "I'm impressed by your skills.",
-    "You've earned this victory.",
-    "I'll come back stronger.",
-    "That was a tough fight!",
-    "Your strategy was flawless.",
-    "I learned a lot from this battle.",
-    "You're on a whole different level!",
-    "I'll get you next time!",
-    "You really caught me off guard.",
-    "Your team is incredible!",
-    "I need to rethink my tactics.",
-    "You played brilliantly!",
-    "I underestimated you.",
-    "Your skills are unmatched.",
-    "I'll be ready for a rematch!",
-    "You've taught me a valuable lesson.",
-    "That was a clean win.",
-    "You deserve the victory.",
-    "Your Pokémon are so strong!",
-    "I'll regroup and try again.",
-    "You've got some serious talent!",
-    "I couldn't keep up!",
-    "That was a masterful performance.",
-    "You completely outplayed me!",
-    "I'll need to train much more.",
-    "You've got the upper hand today.",
-    "Your moves were spot on!",
-    "I'll work on my weaknesses.",
-    "I need to get better strategies.",
-    "You've raised the bar high!",
-    "Your battle skills are top-notch!",
-    "I need a new game plan.",
-    "You really know how to battle!",
-    "Your tactics were brilliant!",
-    "You've shown me my flaws.",
-    "I have a lot to learn from you.",
-    "You're a true Pokémon master!",
-    "I'm out of tricks this time.",
-    "You've bested me fair and square.",
-    "I'll be more prepared next time!",
-    "You read me like a book!",
-    "I concede to your expertise.",
-    "I need to train with you sometime!",
-    "You've mastered your team well.",
-    "You've got the better strategy.",
-    "I'll train harder for our next battle.",
-    "Your Pokémon were on point!",
-    "I need to step up my game.",
-    "You've shown me the gaps in my team.",
-    "I'm no match for you right now.",
-    "You've earned my respect today.",
-    "I've met my match in you.",
-    "You're truly a formidable trainer.",
-    "I'll take this as a learning experience.",
-    "You had the perfect counters!",
-    "I need to rethink my team composition.",
-    "Your battle style is unique and effective!",
-    "I'll be training while you celebrate!",
-    "You read my every move!",
-    "I'm humbled by your victory today."
-  ],
-  "done_winner": [
-    "I take this win.",
-    "I hope you have learned from this lesson.",
-    "You still have got a lot to learn.",
-    "Another day another win.",
-    "Better luck next time.",
-    "Victory is mine today.",
-    "You've got potential, but not today.",
-    "I'm undefeated for a reason.",
-    "Keep training, you'll get there.",
-    "This win is mine to keep.",
-    "Today just wasn't your day.",
-    "Come back when you're stronger.",
-    "This is just another trophy for me.",
-    "Challenge me again once you've trained more.",
-    "Another victory in the books.",
-    "You fought well, but not well enough.",
-    "Practice makes perfect, keep at it.",
-    "Maybe next time you'll win.",
-    "You'll need more experience to beat me.",
-    "A good battle, but not good enough.",
-    "I'll always be ready for your next attempt.",
-    "You put up a good fight, but I came out on top.",
-    "Your journey is just beginning.",
-    "I've already claimed today's victory.",
-    "Don't give up, you'll improve.",
-    "This was a good warm-up for me.",
-    "Today's not your day, try again.",
-    "I'm always up for a challenge, but not today.",
-    "Victory tastes sweet.",
-    "You've got spirit, but I've got skill.",
-    "You did well, just not well enough.",
-    "Come back when you're ready for a rematch.",
-    "You'll need more than that to defeat me.",
-    "Better luck in your next battle.",
-    "I've already secured my victory.",
-    "You're getting there, keep training.",
-    "You were close, but not close enough.",
-    "A win's a win, and today it's mine.",
-    "I'm taking this win with pride.",
-    "You're not quite ready to defeat me.",
-    "Your effort was valiant, but I remain undefeated.",
-    "Another day, another victory.",
-    "Keep trying, you'll catch up one day.",
-    "You'll have to train harder to beat me.",
-    "This battle was mine from the start.",
-    "I'm walking away with the win today.",
-    "You gave it your best, but it wasn't enough.",
-    "I've already proven myself today.",
-    "You'll improve with each battle.",
-    "I respect your effort, but victory is mine.",
-    "Another opponent down.",
-    "I've honed my skills for moments like this.",
-    "Your challenge ends in my victory.",
-    "I'm the champion today.",
-    "This is my day to shine.",
-    "You've got the spirit, but I've got the edge.",
-    "Keep battling, you'll get stronger.",
-    "I'm on a winning streak!",
-    "I came, I saw, I conquered.",
-    "Better luck next time, trainer.",
-    "Your skills are growing, keep it up.",
-    "The victory is mine, but you'll get there.",
-    "I've already secured today's win.",
-    "You'll need to bring more to the table.",
-    "Your Pokémon need more training.",
-    "I'm unbeatable today.",
-    "You're improving, but not enough to win.",
-    "This win adds to my collection.",
-    "I'll always be ready for your next challenge."
-  ],
-  "is_busy": [
-    "Can't you see I'm busy?",
-    "I am currently in another battle.",
-    "I gotta finish something else first.",
-    "Sorry, I'm tied up in a battle right now!",
-    "Hold on, I'm already battling someone!",
-    "Can't battle you now, I'm in the middle of a match.",
-    "I'm currently facing another trainer!",
-    "I'm occupied with a battle at the moment.",
-    "Another battle has my full attention!",
-    "Please wait, I'm battling right now!",
-    "I'm busy fighting someone else!",
-    "I'm locked in combat right now!",
-    "I need to finish this battle first!",
-    "I'll battle you after this one!",
-    "I'm currently in a heated match!",
-    "This battle requires my focus right now!",
-    "I'm preoccupied with another challenger!",
-    "Another battle has me occupied!",
-    "I can't accept a challenge at the moment!",
-    "I'm already in a battle, can't you see?",
-    "I'm battling someone else right now!",
-    "I'll take you on after this battle!",
-    "I'm focused on another match!",
-    "I have another opponent right now!",
-    "I'm in the middle of an epic battle!",
-    "I'll battle you as soon as I'm done here!",
-    "I'm busy with another battle right now.",
-    "I'm already caught up in a match!",
-    "Wait your turn, I'm battling right now!",
-    "I'm deep in battle, can't challenge now!",
-    "Currently occupied with another trainer!",
-    "I'm in the midst of a Pokémon battle!",
-    "Let me finish this battle first!",
-    "I'm already committed to another match.",
-    "I'm busy right now; another battle awaits!",
-    "I'm in a serious battle right now!",
-    "I'm battling someone else, please wait!",
-    "I'll accept your challenge after this battle!",
-    "Hold up, I'm battling another trainer!",
-    "This battle isn't over yet!",
-    "I'm engaged in another battle!",
-    "I'm preoccupied with a fierce match!",
-    "I'll take on your challenge next!",
-    "I'm currently occupied with another opponent!",
-    "I can't battle you right now, sorry!",
-    "I'm in the middle of another epic match!",
-    "Give me a moment, I'm in battle mode!",
-    "I'm in another battle; let's do this later!",
-    "I've got another challenger at the moment!",
-    "My Pokémon are already in another battle!",
-    "I'm busy right now, battling someone else!",
-    "Please hold on, I'm in a battle right now!",
-    "I'm already caught up with another trainer!",
-    "I'm battling someone right now, hang tight!",
-    "Can't battle now, I'm engaged elsewhere!",
-    "I'm tied up with a battle, check back later!",
-    "I'm already locked in another match!",
-    "I'm currently facing another Pokémon trainer!",
-    "I'll challenge you after this battle wraps up!",
-    "I'm battling someone else right now, sorry!",
-    "I can't take on another challenge right now!",
-    "I'm focused on another trainer, hold on!",
-    "I'm caught up in a battle, maybe later!",
-    "I'm already fighting another trainer!",
-    "I'm in the middle of a battle, wait a bit!",
-    "I'm preoccupied with a tough opponent!",
-    "Let me finish this battle and then I'm all yours!"
-  ],
   "low_level_cap": [
-    "You still need to train more.",
-    "Your Pokémon are too weak.",
-    "Level up your Pokémon before challenging me.",
-    "Train harder, your Pokémon aren't strong enough.",
-    "Your team needs more training.",
-    "Your Pokémon lack the strength to face me.",
-    "You need stronger Pokémon to battle me.",
-    "Your Pokémon aren't ready for this fight.",
-    "Train your Pokémon to a higher level first.",
-    "Your team isn't strong enough yet.",
-    "Level grind a bit more before challenging me.",
-    "Your Pokémon are underleveled for this challenge.",
-    "You need to raise your Pokémon's levels.",
-    "Train your team more before facing me.",
-    "Your Pokémon's levels are too low.",
-    "Level up your team before challenging me.",
-    "Your Pokémon need more experience.",
-    "Your team needs to level up before facing me.",
-    "Your Pokémon are too weak for this battle.",
-    "Level your Pokémon up some more before challenging me.",
-    "Your team isn't up to par for this fight.",
-    "Your Pokémon lack the experience to face me.",
-    "Your team needs more training before challenging me.",
-    "Your Pokémon aren't strong enough for this.",
-    "You need to raise your Pokémon's levels.",
-    "Your team isn't ready for this challenge.",
-    "Your Pokémon need more experience.",
-    "Level grind some more before challenging me.",
-    "Your team is not yet prepared for this.",
-    "Your Pokémon are not strong enough for this battle.",
-    "Level up your Pokémon some more.",
-    "Your team lacks the strength to face me.",
-    "Train your Pokémon more before challenging me.",
-    "Your Pokémon need more training.",
-    "Your team isn't ready for this.",
-    "Your Pokémon aren't strong enough yet.",
-    "Level grind a bit more before challenging me.",
-    "Your team needs more training before facing me.",
-    "Your Pokémon need to level up before challenging me.",
-    "You need stronger Pokémon to battle me.",
-    "Your Pokémon aren't ready for this fight.",
-    "Train your Pokémon to a higher level first.",
-    "Your team isn't strong enough yet.",
-    "Your Pokémon's levels are too low.",
-    "Train your team more before facing me.",
-    "Your Pokémon's levels need to be higher.",
-    "Level your Pokémon up some more before challenging me.",
-    "Your team isn't up to par for this fight.",
-    "Your Pokémon lack the experience to face me.",
-    "Your team needs more training before challenging me.",
-    "Your Pokémon aren't strong enough for this.",
-    "You need to raise your Pokémon's levels.",
-    "Your team isn't ready for this challenge.",
-    "Your Pokémon need more experience.",
-    "Level grind some more before challenging me.",
-    "Your team is not yet prepared for this.",
-    "Your Pokémon are not strong enough for this battle.",
-    "Level up your Pokémon some more.",
-    "Your team lacks the strength to face me.",
-    "Train your Pokémon more before challenging me."
-  ],
-  "missing_badges": [
-    "You might want to beat some leaders with lower levels first.",
-    "You should gather more badges first.",
-    "Your badge collection needs improvement.",
-    "Obtain more badges before challenging me.",
-    "Earn more badges to increase your strength.",
-    "Your badge count is insufficient for this challenge.",
-    "Challenge easier opponents to earn more badges.",
-    "You need to prove yourself against other leaders first.",
-    "Seek out weaker leaders to earn more badges.",
-    "A few more badges would help your cause.",
-    "Conquer other arenas to collect more badges.",
-    "You lack the badges required for this challenge.",
-    "I'm afraid you're lacking in badges.",
-    "Your badge count is too low for this match.",
-    "Defeat more leaders to enhance your skills.",
-    "Your badge count falls short for this match-up.",
-    "Challenge other leaders to improve your standing.",
-    "Your badge count is not enough for this bout.",
-    "Boost your badge count to face stronger trainers.",
-    "Your badges don't meet the requirement for this duel.",
-    "Additional badges would benefit your journey.",
-    "Your badge tally is insufficient for this encounter.",
-    "You're short on badges for this battle.",
-    "Increase your badge count to advance further.",
-    "Your badge total is below the threshold for this clash.",
-    "You lack the badges to face me.",
-    "Your badge level is inadequate for this showdown.",
-    "Challenge easier opponents to amass more badges.",
-    "Your badge collection needs expanding.",
-    "You need more badges to take me on.",
-    "Increase your badge total to challenge me.",
-    "You should aim for more badges first.",
-    "Your badge count isn't up to par for this fight.",
-    "Seek out weaker leaders to boost your badge count.",
-    "Your badge count doesn't meet the requirement.",
-    "You should aim for more badges before challenging me.",
-    "You need to earn more badges before facing me.",
-    "Your badge count is too low for this match-up.",
-    "I require trainers with more badges.",
-    "Your badge level is insufficient for this match.",
-    "You lack the badges necessary to face me.",
-    "Your badge count isn't high enough for this test.",
-    "You need more badges to prove your worth.",
-    "Gather more badges to strengthen your team.",
-    "You need to earn more badges before challenging me again.",
-    "Your badge count is lacking for this battle.",
-    "Face other leaders to earn more badges.",
-    "Your badge count doesn't meet the requirement for this duel.",
-    "You must earn more badges to face me.",
-    "Your badge total is below the required level.",
-    "Increase your badge count to match mine.",
-    "You need to earn more badges before challenging me.",
-    "Your badge count falls short for this challenge.",
-    "Challenge other leaders to improve your standing.",
-    "Your badge count is not enough for this bout.",
-    "Boost your badge count to face stronger trainers.",
-    "Your badges don't meet the requirement for this duel.",
-    "Additional badges would benefit your journey.",
-    "Your badge tally is insufficient for this encounter.",
-    "You're short on badges for this battle.",
-    "Increase your badge count to advance further.",
-    "Your badge total is below the threshold for this clash."
-  ],
-  "missing_beaten_champs": [
-    "...",
-    "...",
-    "...",
-    "...",
-    "...",
-    "...",
-    "...",
-    "...",
-    "...",
-    "...",
-    "...",
-    "You're not yet worthy of challenging me.",
-    "Defeat a champion before seeking me out.",
-    "Conquer a champion to prove your strength.",
-    "Only champions can challenge me.",
-    "You must surpass a champion first.",
-    "Return after defeating a champion.",
-    "Challenge a champion before facing me.",
-    "Your journey is not yet complete.",
-    "Defeat a champion to earn my respect.",
-    "You lack the experience to challenge me.",
-    "Beat a champion before attempting this.",
-    "Only those who best a champion can face me.",
-    "Prove yourself against a champion first.",
-    "Your skills are not yet at the required level.",
-    "You have not yet earned the right to face me.",
-    "Conquer a champion to earn your place.",
-    "You must defeat a champion to face me.",
-    "You must overcome a champion first.",
-    "Return after proving yourself against a champion.",
-    "You're not qualified to challenge me yet.",
-    "A champion stands between you and me.",
-    "Defeat a champion before seeking me out.",
-    "Only those who best a champion can challenge me.",
-    "A champion is your next hurdle.",
-    "You must overcome a champion to face me.",
-    "Prove yourself against a champion first.",
-    "Your journey is not yet complete.",
-    "Beat a champion before facing me.",
-    "You need more experience before challenging me.",
-    "Your skills are not yet at the required level.",
-    "You have not yet earned the right to face me.",
-    "Conquer a champion to prove your strength.",
-    "You must defeat a champion to face me.",
-    "You must overcome a champion first.",
-    "Return after proving yourself against a champion.",
-    "You're not qualified to challenge me yet.",
-    "A champion stands between you and me.",
-    "Defeat a champion before seeking me out.",
-    "Only those who best a champion can challenge me.",
-    "A champion is your next hurdle.",
-    "You must overcome a champion to face me.",
-    "Prove yourself against a champion first."
-  ],
-  "missing_beaten_e4": [
-    "You have not proven yourself worthy to face me.",
-    "Beat the Elite 4 first, then come talk to me again.",
-    "You lack the experience to challenge me.",
-    "Defeat the Elite 4 members before challenging me.",
-    "Your journey is not yet complete.",
-    "Conquer the Elite 4, then return.",
-    "Only champions can face me, and you're not there yet.",
-    "I only accept challenges from elite trainers.",
-    "Prove yourself against the Elite 4 first.",
-    "You must surpass the Elite 4 to challenge me.",
-    "You need more experience before facing me.",
-    "The Elite 4 stand between you and me.",
-    "You're not ready to face me yet.",
-    "Challenge the Elite 4 before attempting this.",
-    "Your skills are not yet at the required level.",
-    "You have not yet earned the right to face me.",
-    "Conquer the Elite 4 to prove your worth.",
-    "You must defeat the Elite 4 to face me.",
-    "You must overcome the Elite 4 first.",
-    "Return after proving yourself against the Elite 4.",
-    "You're not qualified to challenge me yet.",
-    "The Elite 4 are your current challenge.",
-    "Defeat the Elite 4 before seeking me out.",
-    "Only those who best the Elite 4 can challenge me.",
-    "The Elite 4 are your next hurdle.",
-    "You must overcome the Elite 4 to face me.",
-    "Prove yourself against the Elite 4 first.",
-    "Your journey is not yet complete.",
-    "Beat the Elite 4 before facing me.",
-    "You need more experience before challenging me.",
-    "Your skills are not yet at the required level.",
-    "You have not yet earned the right to face me.",
-    "Conquer the Elite 4 to prove your worth.",
-    "You must defeat the Elite 4 to face me.",
-    "You must overcome the Elite 4 first.",
-    "Return after proving yourself against the Elite 4.",
-    "You're not qualified to challenge me yet.",
-    "The Elite 4 are your current challenge.",
-    "Defeat the Elite 4 before seeking me out.",
-    "Only those who best the Elite 4 can challenge me.",
-    "The Elite 4 are your next hurdle.",
-    "You must overcome the Elite 4 to face me.",
-    "Prove yourself against the Elite 4 first."
-  ],
-  "missing_beaten_rival": [
-    "There is someone that you should face first.",
-    "Someone out there needs your attention more than me right now.",
-    "Isn't there something else that you should take care of first?",
-    "Come back when you've finished your businesse.",
-    "Somebody else is looking for you.",
-    "You have another challenge to conquer first.",
-    "There's another trainer waiting for you.",
-    "You need to prove yourself elsewhere first.",
-    "Someone else is ready to battle you before me.",
-    "There's another task you should complete.",
-    "Another trainer deserves your attention now.",
-    "You need to defeat someone else first.",
-    "Someone else awaits your challenge.",
-    "Come back after facing another opponent.",
-    "You must take care of other business first.",
-    "Another challenger stands in your way first.",
-    "A different trainer needs your focus.",
-    "Your path leads elsewhere before battling me.",
-    "There's another battle calling your name.",
-    "Seek out another trainer before returning.",
-    "Your journey requires a different challenge first.",
-    "Find the trainer who is your next test.",
-    "Your next opponent is not me, but another.",
-    "Face someone else before you challenge me.",
-    "There's a different trainer in need of a challenge.",
-    "Your adventure continues elsewhere for now.",
-    "Another battle awaits your skills.",
-    "Your challenge lies with another trainer first.",
-    "Seek out your next opponent before returning.",
-    "You need to earn a victory elsewhere first.",
-    "Another battle is meant for you before this one.",
-    "Your journey isn't here just yet.",
-    "There's a different trainer you should battle first.",
-    "Challenge another before you face me.",
-    "Your current test lies with someone else.",
-    "A different trainer has your next challenge.",
-    "There's another test for you out there.",
-    "Before you challenge me, face another.",
-    "Another trainer holds your next challenge.",
-    "You have unfinished business with someone else.",
-    "There's someone else who needs to battle you first.",
-    "You must defeat another before returning here.",
-    "Find your next challenge with another trainer.",
-    "Your path takes you to another trainer first.",
-    "A different battle awaits you before this one.",
-    "You have another trainer to face before me.",
-    "Your current challenge isn't with me.",
-    "Someone else is ready for your battle.",
-    "There's another trainer in line before me.",
-    "Seek out a different challenge first.",
-    "Your skills are needed elsewhere right now.",
-    "Another trainer awaits your challenge.",
-    "Your next test lies with someone else.",
-    "There's another trainer you need to face.",
-    "Your adventure requires a different focus first.",
-    "Challenge someone else before me.",
-    "There's a different battle waiting for you.",
-    "Your current task lies with another trainer.",
-    "Face another opponent before you return.",
-    "You have another battle ahead of you first.",
-    "Seek out another trainer's challenge.",
-    "Your next battle isn't with me, but someone else.",
-    "Your journey continues with another challenge.",
-    "Another opponent stands between us.",
-    "There's someone else you need to defeat first.",
-    "A different trainer awaits your skills.",
-    "Your next opponent is not me, but another.",
-    "You need to finish another battle before facing me.",
-    "Another trainer awaits your arrival."
-  ],
-  "missing_beaten_team_rocket": [
-    "I heard Team Rocket was looking for you.",
-    "I don't think its a good time for a battle right now, some ominous people were looking for you.",
-    "You seem to be caught in some trouble, sorry but I don't want to get targeted by them.",
-    "Someone was looking for you.",
-    "There's someone else you need to defeat first.",
-    "I saw some shady figures lurking around, and they seemed interested in you.",
-    "You seem to be in a bit of a bind, sorry but I don't want to get caught up in it.",
-    "Lets have a battle another time, there was someone looking for you you should meet first."
+    {
+      "translatable": "dialogs.rctmod.default.low_level_cap.0"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.low_level_cap.1"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.low_level_cap.2"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.low_level_cap.3"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.low_level_cap.4"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.low_level_cap.5"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.low_level_cap.6"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.low_level_cap.7"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.low_level_cap.8"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.low_level_cap.9"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.low_level_cap.10"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.low_level_cap.11"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.low_level_cap.12"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.low_level_cap.13"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.low_level_cap.14"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.low_level_cap.15"
+    }
   ],
   "missing_pokemon": [
-    "You do not seem to have any Pokémon capable fighting in your team.",
-    "Are your Pokémon fainted?",
-    "If you want a battle bring your Pokémon.",
-    "Looks like your Pokémon need a break!",
-    "Your team isn't ready for battle.",
-    "Come back when your Pokémon are healed.",
-    "It seems your Pokémon are out of commission.",
-    "You need a fighting-fit team to challenge me.",
-    "Your Pokémon look too tired to fight!",
-    "No challengers without battle-ready Pokémon!",
-    "Heal up your team before we battle!",
-    "Your Pokémon aren't in fighting condition.",
-    "Come back when your Pokémon have rested.",
-    "Is your team all fainted?",
-    "No Pokémon, no battle!",
-    "Your Pokémon are not ready to battle.",
-    "You can't battle without a healthy team!",
-    "Looks like your Pokémon are fainted.",
-    "Your Pokémon need some rest!",
-    "Your team isn't battle-ready.",
-    "Check your team; they don't look ready.",
-    "No fainted Pokémon allowed in battle!",
-    "You need to revive your Pokémon first.",
-    "Is your team knocked out?",
-    "Your Pokémon aren't in fighting shape.",
-    "You need healthy Pokémon for a challenge!",
-    "You're missing battle-ready Pokémon.",
-    "Your Pokémon need to recharge!",
-    "Come back with a strong team.",
-    "Are your Pokémon all knocked out?",
-    "Your team looks worn out.",
-    "You need capable Pokémon to battle me.",
-    "Make sure your Pokémon are ready!",
-    "Heal your team and try again!",
-    "Your Pokémon look fainted.",
-    "Without healthy Pokémon, there's no battle.",
-    "Your Pokémon need to recover first.",
-    "You can't challenge me with a fainted team.",
-    "Your Pokémon need some healing!",
-    "Bring back a fighting team!",
-    "Your team isn't up for a battle.",
-    "No battle without a capable team!",
-    "It seems your team is fainted.",
-    "Your Pokémon look too exhausted.",
-    "Make sure your team is ready to fight!",
-    "You need to revive your team.",
-    "Without capable Pokémon, there's no challenge.",
-    "Are your Pokémon all exhausted?",
-    "Looks like your team needs some care.",
-    "You need Pokémon that can battle!",
-    "Your Pokémon aren't ready for this.",
-    "Bring a team that's ready to fight.",
-    "Your Pokémon need a visit to the Pokémon Center.",
-    "No challengers with fainted Pokémon!",
-    "Come back when your team is ready.",
-    "Your Pokémon are too tired to battle.",
-    "Make sure your Pokémon are healthy!",
-    "Your team needs a little rest!",
-    "Revive your Pokémon before the battle.",
-    "Looks like your team isn't up for it.",
-    "No battle with fainted Pokémon!",
-    "Your Pokémon need some downtime.",
-    "Your team isn't in condition to fight.",
-    "Check your team, they look exhausted.",
-    "Your Pokémon need to heal up first!",
-    "Without capable Pokémon, there's no battle here."
+    {
+      "translatable": "dialogs.rctmod.default.missing_pokemon.0"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_pokemon.1"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_pokemon.2"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_pokemon.3"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_pokemon.4"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_pokemon.5"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_pokemon.6"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_pokemon.7"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_pokemon.8"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_pokemon.9"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_pokemon.10"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_pokemon.11"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_pokemon.12"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_pokemon.13"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_pokemon.14"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_pokemon.15"
+    }
+  ],
+  "missing_required_trainer": [
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.0"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.1"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.2"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.3"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.4"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.5"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.6"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.7"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.8"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.9"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.10"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.11"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.12"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.13"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.14"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.15"
+    }
+  ],
+  "missing_required_trainer_champ": [
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.champ.0"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.champ.1"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.champ.2"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.champ.3"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.champ.4"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.champ.5"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.champ.6"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.champ.7"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.champ.8"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.champ.9"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.champ.10"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.champ.11"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.champ.12"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.champ.13"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.champ.14"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.champ.15"
+    }
+  ],
+  "missing_required_trainer_e4": [
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.e4.0"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.e4.1"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.e4.2"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.e4.3"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.e4.4"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.e4.5"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.e4.6"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.e4.7"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.e4.8"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.e4.9"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.e4.10"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.e4.11"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.e4.12"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.e4.13"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.e4.14"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.e4.15"
+    }
+  ],
+  "missing_required_trainer_leader": [
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.leader.0"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.leader.1"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.leader.2"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.leader.3"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.leader.4"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.leader.5"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.leader.6"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.leader.7"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.leader.8"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.leader.9"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.leader.10"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.leader.11"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.leader.12"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.leader.13"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.leader.14"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.leader.15"
+    }
+  ],
+  "missing_required_trainer_light_of_ruin": [
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.light_of_ruin.0"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.light_of_ruin.1"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.light_of_ruin.2"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.light_of_ruin.3"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.light_of_ruin.4"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.light_of_ruin.5"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.light_of_ruin.6"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.light_of_ruin.7"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.light_of_ruin.8"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.light_of_ruin.9"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.light_of_ruin.10"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.light_of_ruin.11"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.light_of_ruin.12"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.light_of_ruin.13"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.light_of_ruin.14"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.light_of_ruin.15"
+    }
+  ],
+  "missing_required_trainer_rival": [
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.rival.0"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.rival.1"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.rival.2"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.rival.3"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.rival.4"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.rival.5"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.rival.6"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.rival.7"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.rival.8"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.rival.9"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.rival.10"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.rival.11"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.rival.12"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.rival.13"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.rival.14"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.rival.15"
+    }
+  ],
+  "missing_required_trainer_team_galactic": [
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_galactic.0"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_galactic.1"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_galactic.2"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_galactic.3"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_galactic.4"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_galactic.5"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_galactic.6"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_galactic.7"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_galactic.8"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_galactic.9"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_galactic.10"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_galactic.11"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_galactic.12"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_galactic.13"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_galactic.14"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_galactic.15"
+    }
+  ],
+  "missing_required_trainer_team_rocket": [
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_rocket.0"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_rocket.1"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_rocket.2"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_rocket.3"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_rocket.4"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_rocket.5"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_rocket.6"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_rocket.7"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_rocket.8"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_rocket.9"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_rocket.10"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_rocket.11"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_rocket.12"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_rocket.13"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_rocket.14"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_rocket.15"
+    }
+  ],
+  "missing_required_trainer_team_shadow": [
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_shadow.0"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_shadow.1"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_shadow.2"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_shadow.3"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_shadow.4"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_shadow.5"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_shadow.6"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_shadow.7"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_shadow.8"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_shadow.9"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_shadow.10"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_shadow.11"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_shadow.12"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_shadow.13"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_shadow.14"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.missing_required_trainer.team_shadow.15"
+    }
+  ],
+  "on_battle_lost": [
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.0"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.1"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.2"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.3"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.4"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.5"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.6"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.7"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.8"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.9"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.10"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.11"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.12"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.13"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.14"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.15"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.16"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.17"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.18"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.19"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.20"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.21"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.22"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.23"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.24"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.25"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.26"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.27"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.28"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.29"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.30"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.31"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.32"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.33"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.34"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.35"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.36"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.37"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.38"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.39"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.40"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.41"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.42"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.43"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.44"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.45"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.46"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.47"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.48"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.49"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.50"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.51"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.52"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.53"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.54"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.55"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.56"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.57"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.58"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.59"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.60"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.61"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.62"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_lost.63"
+    }
+  ],
+  "on_battle_start": [
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.0"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.1"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.2"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.3"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.4"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.5"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.6"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.7"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.8"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.9"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.10"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.11"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.12"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.13"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.14"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.15"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.16"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.17"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.18"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.19"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.20"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.21"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.22"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.23"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.24"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.25"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.26"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.27"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.28"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.29"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.30"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.31"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.32"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.33"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.34"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.35"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.36"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.37"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.38"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.39"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.40"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.41"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.42"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.43"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.44"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.45"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.46"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.47"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.48"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.49"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.50"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.51"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.52"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.53"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.54"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.55"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.56"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.57"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.58"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.59"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.60"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.61"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.62"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_start.63"
+    }
+  ],
+  "on_battle_won": [
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.0"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.1"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.2"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.3"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.4"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.5"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.6"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.7"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.8"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.9"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.10"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.11"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.12"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.13"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.14"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.15"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.16"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.17"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.18"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.19"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.20"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.21"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.22"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.23"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.24"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.25"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.26"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.27"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.28"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.29"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.30"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.31"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.32"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.33"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.34"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.35"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.36"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.37"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.38"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.39"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.40"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.41"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.42"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.43"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.44"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.45"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.46"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.47"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.48"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.49"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.50"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.51"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.52"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.53"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.54"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.55"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.56"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.57"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.58"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.59"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.60"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.61"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.62"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_battle_won.63"
+    }
   ],
   "on_cooldown": [
-    "Give me a break.",
-    "My Pokémon need to rest.",
-    "So tired...",
-    "I just battled, need to recover.",
-    "Can we do this later? I'm exhausted.",
-    "I need some time to recuperate.",
-    "Let's battle another time.",
-    "Sorry, but I need to rest my team.",
-    "I'm not up for it right now.",
-    "My Pokémon are too tired for a battle.",
-    "I'm in no condition to battle.",
-    "My Pokémon need a break.",
-    "I need to recharge my Pokémon.",
-    "I'm too fatigued to battle.",
-    "I can't battle right now, need to rest.",
-    "Let's postpone this battle.",
-    "I need to let my Pokémon recover.",
-    "I'm not feeling up to a battle right now.",
-    "My team needs some downtime.",
-    "I'm too worn out for a battle.",
-    "I'm not at my best, need to rest up.",
-    "I'm on cooldown, sorry.",
-    "I'm too exhausted for a battle.",
-    "My Pokémon are too drained to battle.",
-    "I need to take a breather.",
-    "Can we reschedule? I'm too tired.",
-    "I need to give my Pokémon a break.",
-    "Sorry, but I'm too tired to battle.",
-    "I'm not in the right shape for a battle.",
-    "My team needs to recover.",
-    "I need to take it easy for a while.",
-    "I'm too fatigued for a battle right now.",
-    "Sorry, I need to let my Pokémon rest.",
-    "I'm on cooldown, can't battle now.",
-    "I'm too worn out for a battle.",
-    "My Pokémon need some downtime.",
-    "I need to rest before I can battle again.",
-    "My team needs to recharge.",
-    "I'm too exhausted to battle.",
-    "I can't battle at the moment, need to rest.",
-    "Sorry, I'm not feeling up to it right now.",
-    "My team is too tired to battle.",
-    "I'm not at my best, need to rest up.",
-    "I'm on cooldown, can't battle now.",
-    "I'm too exhausted for a battle.",
-    "My Pokémon are too drained to battle.",
-    "I need to take a breather.",
-    "Can we reschedule? I'm too tired.",
-    "I need to give my Pokémon a break.",
-    "Sorry, but I'm too tired to battle.",
-    "I'm not in the right shape for a battle.",
-    "My team needs to recover.",
-    "I need to take it easy for a while.",
-    "I'm too fatigued for a battle right now.",
-    "Sorry, I need to let my Pokémon rest."
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.0"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.1"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.2"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.3"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.4"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.5"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.6"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.7"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.8"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.9"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.10"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.11"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.12"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.13"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.14"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.15"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.16"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.17"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.18"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.19"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.20"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.21"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.22"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.23"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.24"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.25"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.26"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.27"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.28"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.29"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.30"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.31"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.32"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.33"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.34"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.35"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.36"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.37"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.38"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.39"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.40"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.41"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.42"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.43"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.44"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.45"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.46"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.47"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.48"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.49"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.50"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.51"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.52"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.53"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.54"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.55"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.56"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.57"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.58"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.59"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.60"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.61"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.62"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.on_cooldown.63"
+    }
   ],
   "over_level_cap": [
-    "Some of your Pokémon do not seem to fully respect you.",
-    "Some Pokémon in your team appear to be too strong for you to handle.",
-    "Your Pokémon do not trust you. Maybe acquire more badges to prove them your worth?",
-    "You do not seem to be ready to fight with Pokémon of that level.",
-    "Maybe you should store some of your Pokémon that do not respect you yet, it seems dangerous to fight with them.",
-    "You do not seem to be ready to handle such strong Pokémon. You should store them until you have enough badges to prove them your strength.",
-    "Your Pokémon seem a bit too powerful for you right now.",
-    "It looks like your Pokémon aren't quite listening to you.",
-    "Gaining more badges might help you earn your Pokémon's respect.",
-    "Your Pokémon seem too strong for your current experience.",
-    "Perhaps your Pokémon need more proof of your skills.",
-    "You might find it hard to control such high-level Pokémon.",
-    "Earning more badges will show your Pokémon you're capable.",
-    "Your team seems to question your authority.",
-    "Your Pokémon's power might be overwhelming for you.",
-    "Gaining gym badges could improve your bond with them.",
-    "Your Pokémon are challenging your leadership.",
-    "You may not be ready to handle these powerful allies yet.",
-    "Building trust with your Pokémon starts with earning badges.",
-    "Some of your Pokémon don't seem to take you seriously.",
-    "Earn more badges to prove your strength to your team.",
-    "Your Pokémon might be out of your control right now.",
-    "It's tough to command respect without more gym badges.",
-    "Your Pokémon's level seems beyond your current ability.",
-    "Gaining gym badges will help your Pokémon respect you.",
-    "Your team needs more assurance of your leadership.",
-    "Consider earning more badges to gain their trust.",
-    "Your Pokémon seem to doubt your capabilities.",
-    "You may need more experience to handle those Pokémon.",
-    "Your bond with your Pokémon could use more development.",
-    "Maybe it's time to prove your worth to your Pokémon.",
-    "Your Pokémon seem hesitant to follow your lead.",
-    "It seems like your team questions your experience.",
-    "Earning badges will strengthen your connection with them.",
-    "Your Pokémon are powerful, but are you ready for them?",
-    "Show your team you're worthy by gaining more badges.",
-    "Your Pokémon may not listen until you prove yourself.",
-    "Consider storing high-level Pokémon until you're ready.",
-    "Your team is looking for a stronger leader.",
-    "Building trust takes time and gym victories.",
-    "Some Pokémon in your team are beyond your current skill.",
-    "You need more badges to command their respect.",
-    "Your Pokémon's strength requires more leadership.",
-    "Prove yourself to your Pokémon by earning more badges.",
-    "Your team needs a stronger display of leadership.",
-    "Your current experience may not suffice for those Pokémon.",
-    "They may not obey you until you gain more badges.",
-    "Earn more gym badges to command their loyalty.",
-    "Some Pokémon may challenge your authority without badges.",
-    "Your team needs more proof of your leadership skills.",
-    "You seem to lack the experience to lead high-level Pokémon.",
-    "Building trust with your Pokémon requires more badges.",
-    "Your Pokémon's respect may hinge on your badge count.",
-    "Gain more badges to earn the trust of your Pokémon.",
-    "Your Pokémon seem uncertain of your leadership.",
-    "Prove your capabilities by collecting more badges.",
-    "Your current badge count may not impress your Pokémon.",
-    "Your team needs to see more of your strength in battle.",
-    "High-level Pokémon need more experienced trainers.",
-    "Earning badges will show your Pokémon you're ready.",
-    "Some of your Pokémon may not be under your control.",
-    "Earn more badges to enhance your bond with them.",
-    "Your Pokémon's loyalty might depend on your badges.",
-    "Without more badges, your team may not respect you.",
-    "Show your strength by challenging more gym leaders.",
-    "Your Pokémon seem too strong for your badge level.",
-    "Earn gym badges to solidify your leadership.",
-    "Your current skill may not match your Pokémon's power.",
-    "You need more gym victories to lead those Pokémon.",
-    "Some Pokémon may not follow you until you earn more badges."
+    {
+      "translatable": "dialogs.rctmod.default.over_level_cap.0"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.over_level_cap.1"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.over_level_cap.2"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.over_level_cap.3"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.over_level_cap.4"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.over_level_cap.5"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.over_level_cap.6"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.over_level_cap.7"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.over_level_cap.8"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.over_level_cap.9"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.over_level_cap.10"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.over_level_cap.11"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.over_level_cap.12"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.over_level_cap.13"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.over_level_cap.14"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.over_level_cap.15"
+    }
   ],
   "player_busy": [
-    "You should finish your other battle first.",
-    "I am rooting for you.",
-    "You got this!",
-    "Focus on your current match first!",
-    "I'll be here when you're done!",
-    "Take your time, I'm not going anywhere.",
-    "Finish strong in that battle!",
-    "Your current battle looks intense!",
-    "Handle that one first, then we'll battle!",
-    "Keep your head in the game!",
-    "I'm excited to battle you next!",
-    "One battle at a time, champ!",
-    "Wrap up that fight before challenging me!",
-    "Don't split your focus, finish strong!",
-    "I believe in you, finish that match!",
-    "I can wait, no rush!",
-    "Concentrate on your opponent!",
-    "You're almost there, keep it up!",
-    "I'm here cheering you on!",
-    "Show them what you've got!",
-    "Finish that battle, then we can clash!",
-    "Don't lose sight of your current foe!",
-    "You'll have your chance to battle me soon!",
-    "Let's battle after you win this one!",
-    "Stay sharp, you're doing great!",
-    "I'll be ready when you are!",
-    "Give it your all in that battle!",
-    "Finish them off first, then we'll fight!",
-    "I'm excited to see how you finish!",
-    "Prove your strength there first!",
-    "Wrap up that match, I'm waiting!",
-    "I know you can handle this!",
-    "Your focus is your best weapon!",
-    "Stay in the moment, you've got this!",
-    "Finish your fight, then we can start!",
-    "Conquer your current opponent!",
-    "Don't rush, give it your best shot!",
-    "Win this one, then take me on!",
-    "I'm ready whenever you are!",
-    "Stay cool, victory is near!",
-    "One step at a time, finish up!",
-    "I'm rooting for your win!",
-    "Let's battle after you wrap this up!",
-    "Focus on your opponent first!",
-    "Victory is within your grasp!",
-    "I'm waiting for you to finish strong!",
-    "Keep your eyes on the prize!",
-    "I'll cheer you on from here!",
-    "Finish this fight with style!",
-    "Stay determined, I'll be next!",
-    "You can do it, stay focused!",
-    "Let's save our battle for after this!",
-    "Your opponent needs your full attention!",
-    "End this battle on a high note!",
-    "Give your current match your all!",
-    "Finish this one first, I believe in you!",
-    "Take down that opponent first!",
-    "I'm patient, finish your battle!",
-    "You're almost there, keep pushing!",
-    "Focus now, challenge me later!",
-    "I'll wait for your victory!",
-    "Stay strong, you're almost done!",
-    "End your current battle in triumph!",
-    "Keep up the good work!",
-    "Win this match first, then let's go!",
-    "I'm here, cheering for your success!",
-    "Finish your battle and then let's duel!"
+    {
+      "translatable": "dialogs.rctmod.default.player_busy.0"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.player_busy.1"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.player_busy.2"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.player_busy.3"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.player_busy.4"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.player_busy.5"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.player_busy.6"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.player_busy.7"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.player_busy.8"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.player_busy.9"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.player_busy.10"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.player_busy.11"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.player_busy.12"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.player_busy.13"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.player_busy.14"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.player_busy.15"
+    }
+  ],
+  "trainer_busy": [
+    {
+      "translatable": "dialogs.rctmod.default.trainer_busy.0"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_busy.1"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_busy.2"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_busy.3"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_busy.4"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_busy.5"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_busy.6"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_busy.7"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_busy.8"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_busy.9"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_busy.10"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_busy.11"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_busy.12"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_busy.13"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_busy.14"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_busy.15"
+    }
+  ],
+  "trainer_lost": [
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.0"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.1"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.2"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.3"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.4"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.5"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.6"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.7"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.8"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.9"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.10"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.11"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.12"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.13"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.14"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.15"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.16"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.17"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.18"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.19"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.20"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.21"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.22"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.23"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.24"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.25"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.26"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.27"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.28"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.29"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.30"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.31"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.32"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.33"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.34"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.35"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.36"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.37"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.38"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.39"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.40"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.41"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.42"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.43"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.44"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.45"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.46"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.47"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.48"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.49"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.50"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.51"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.52"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.53"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.54"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.55"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.56"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.57"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.58"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.59"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.60"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.61"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.62"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_lost.63"
+    }
+  ],
+  "trainer_won": [
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.0"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.1"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.2"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.3"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.4"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.5"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.6"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.7"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.8"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.9"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.10"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.11"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.12"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.13"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.14"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.15"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.16"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.17"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.18"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.19"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.20"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.21"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.22"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.23"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.24"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.25"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.26"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.27"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.28"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.29"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.30"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.31"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.32"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.33"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.34"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.35"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.36"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.37"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.38"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.39"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.40"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.41"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.42"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.43"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.44"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.45"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.46"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.47"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.48"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.49"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.50"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.51"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.52"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.53"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.54"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.55"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.56"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.57"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.58"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.59"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.60"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.61"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.62"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.trainer_won.63"
+    }
+  ],
+  "unknown_reason": [
+    {
+      "translatable": "dialogs.rctmod.default.unknown_reason"
+    }
+  ],
+  "wrong_series": [
+    {
+      "translatable": "dialogs.rctmod.default.wrong_series.0"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.wrong_series.1"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.wrong_series.2"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.wrong_series.3"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.wrong_series.4"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.wrong_series.5"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.wrong_series.6"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.wrong_series.7"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.wrong_series.8"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.wrong_series.9"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.wrong_series.10"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.wrong_series.11"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.wrong_series.12"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.wrong_series.13"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.wrong_series.14"
+    },
+    {
+      "translatable": "dialogs.rctmod.default.wrong_series.15"
+    }
   ]
 }

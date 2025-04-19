@@ -18,7 +18,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Bertha in a rematch"
+      "translate": "advancements.rctmod.defeat_elite_four_bertha_2.description"
     },
     "frame": "goal",
     "hidden": true,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Bertha Rematch 1"
+      "translate": "advancements.rctmod.defeat_elite_four_bertha_2.title"
     }
   },
   "parent": "rctmod:trainers/defeat_elite_four_aaron_2",

@@ -18,7 +18,7 @@
     "announce_to_chat": true,
     "background": null,
     "description": {
-      "text": "Defeat Ruin Leader Aklove"
+      "translate": "advancements.rctmod.defeat_light_of_ruin_aklove_3.description"
     },
     "frame": "challenge",
     "hidden": false,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Aklove"
+      "translate": "advancements.rctmod.defeat_light_of_ruin_aklove_3.title"
     }
   },
   "parent": "rctmod:trainers/defeat_champion_jax",

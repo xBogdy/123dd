@@ -34,6 +34,7 @@ import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.pack.SeriesMetaData;
 import com.gitlab.srcmc.rctmod.api.service.SeriesManager;
 import com.gitlab.srcmc.rctmod.api.utils.ChatUtils;
+import com.gitlab.srcmc.rctmod.api.utils.LangKeys;
 import com.gitlab.srcmc.rctmod.world.entities.goals.RandomStrollThroughVillageGoal;
 import com.gitlab.srcmc.rctmod.world.items.TrainerCard;
 import com.google.common.collect.Streams;
@@ -447,15 +448,15 @@ public class TrainerAssociation extends WanderingTrader {
             var completions = player != null ? RCTMod.getInstance().getTrainerManager().getData(player).getCompletedSeries().getOrDefault(seriesId, 0) : 0;
 
             card.applyComponents(DataComponentMap.builder()
-                .set(DataComponents.CUSTOM_NAME, Component.literal(seriesData.title()))
+                .set(DataComponents.CUSTOM_NAME, seriesData.title().asComponent())
                 .set(DataComponents.LORE, new ItemLore(List.of(
-                    Component.literal(seriesData.description()),
+                    seriesData.description().asComponent(),
                     Component.literal(""), // empty line
-                    Component.literal(String.format("Difficulty: %s", makeStars(seriesData.difficulty(), SeriesMetaData.MAX_DIFFICULTY))),
-                    Component.literal(String.format("Completed: %d", completions)),
+                    Component.literal(String.format("%s: %s", Component.translatable(LangKeys.GUI_TRAINER_ASSOCIATION_DIFFICULTY).getString(), makeStars(seriesData.difficulty(), SeriesMetaData.MAX_DIFFICULTY))),
+                    Component.literal(String.format("%s: %d", Component.translatable(LangKeys.GUI_TRAINER_ASSOCIATION_COMPLETED).getString(), completions)),
                     Component.literal(""), // empty line
-                    Component.literal("Important").withStyle(ChatFormatting.BOLD).withStyle(ChatFormatting.GOLD),
-                    Component.literal("Starting a new series will reset your current series progression! In return completing a series will permanently increase your luck for better loot from trainers.").withStyle(ChatFormatting.GOLD)
+                    Component.translatable(LangKeys.GUI_TRAINER_ASSOCIATION_IMPORTANT).withStyle(ChatFormatting.BOLD).withStyle(ChatFormatting.GOLD),
+                    Component.translatable(LangKeys.GUI_TRAINER_ASSOCIATION_SERIES_RESET).withStyle(ChatFormatting.GOLD)
                 ))).build());
 
             return card;

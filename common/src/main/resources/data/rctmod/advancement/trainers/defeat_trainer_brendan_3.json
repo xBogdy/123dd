@@ -18,7 +18,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Trainer Brendans final team"
+      "translate": "advancements.rctmod.defeat_trainer_brendan_3.description"
     },
     "frame": "task",
     "hidden": false,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Are you prepared?"
+      "translate": "advancements.rctmod.defeat_trainer_brendan_3.title"
     }
   },
   "parent": "rctmod:trainers/defeat_rival_terry_4",

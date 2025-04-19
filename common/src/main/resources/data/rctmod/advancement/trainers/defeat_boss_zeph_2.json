@@ -18,7 +18,7 @@
     "announce_to_chat": true,
     "background": null,
     "description": {
-      "text": "Defeat Shadow Boss Zeph"
+      "translate": "advancements.rctmod.defeat_boss_zeph_2.description"
     },
     "frame": "challenge",
     "hidden": false,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Shadows"
+      "translate": "advancements.rctmod.defeat_boss_zeph_2.title"
     }
   },
   "parent": "rctmod:trainers/defeat_light_of_ruin_vega",

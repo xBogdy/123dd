@@ -18,7 +18,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Successor Maxima"
+      "translate": "advancements.rctmod.defeat_sucessor_maxima.description"
     },
     "frame": "task",
     "hidden": false,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Proof of worth"
+      "translate": "advancements.rctmod.defeat_sucessor_maxima.title"
     }
   },
   "parent": "rctmod:trainers/defeat_shadow_admin_ivory_grunt",

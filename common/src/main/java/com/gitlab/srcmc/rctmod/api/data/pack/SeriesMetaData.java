@@ -20,24 +20,26 @@ package com.gitlab.srcmc.rctmod.api.data.pack;
 import java.io.Serializable;
 import java.util.List;
 
-public record SeriesMetaData(String title, String description, int difficulty, List<List<String>> requiredSeries) implements Comparable<SeriesMetaData>, Serializable {
+import com.gitlab.srcmc.rctmod.api.data.Text;
+
+public record SeriesMetaData(Text title, Text description, int difficulty, List<List<String>> requiredSeries) implements Comparable<SeriesMetaData>, Serializable {
     private static final long serialVersionUID = 0L;
     public static final int MIN_DIFFICULTY = 1;
     public static final int MAX_DIFFICULTY = 10;
 
-    public SeriesMetaData(String title) {
-        this(title, "", MIN_DIFFICULTY + (MAX_DIFFICULTY - MIN_DIFFICULTY) / 2);
+    public SeriesMetaData(Text title) {
+        this(title, new Text(), MIN_DIFFICULTY + (MAX_DIFFICULTY - MIN_DIFFICULTY) / 2);
     }
 
-    public SeriesMetaData(String title, String description) {
+    public SeriesMetaData(Text title, Text description) {
         this(title, description, MIN_DIFFICULTY + (MAX_DIFFICULTY - MIN_DIFFICULTY) / 2);
     }
 
-    public SeriesMetaData(String title, String description, int difficulty) {
+    public SeriesMetaData(Text title, Text description, int difficulty) {
         this(title, description, difficulty, List.of());
     }
 
-    public SeriesMetaData(String title, String description, int difficulty, List<List<String>> requiredSeries) {
+    public SeriesMetaData(Text title, Text description, int difficulty, List<List<String>> requiredSeries) {
         this.title = title;
         this.description = description;
         this.difficulty = Math.max(MIN_DIFFICULTY, Math.min(MAX_DIFFICULTY, difficulty));

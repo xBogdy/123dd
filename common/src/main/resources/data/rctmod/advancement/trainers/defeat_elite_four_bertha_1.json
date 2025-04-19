@@ -18,7 +18,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Elite 4 Bertha"
+      "translate": "advancements.rctmod.defeat_elite_four_bertha_1.description"
     },
     "frame": "goal",
     "hidden": false,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Sinnoh Elite Bertha"
+      "translate": "advancements.rctmod.defeat_elite_four_bertha_1.title"
     }
   },
   "parent": "rctmod:trainers/defeat_elite_four_aaron_1",

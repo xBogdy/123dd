@@ -18,7 +18,7 @@
     "announce_to_chat": true,
     "background": null,
     "description": {
-      "text": "Defeat Roark in a rematch"
+      "translate": "advancements.rctmod.defeat_gym_leader_roark_2.description"
     },
     "frame": "challenge",
     "hidden": true,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Coal Rematch"
+      "translate": "advancements.rctmod.defeat_gym_leader_roark_2.title"
     }
   },
   "parent": "rctmod:trainers/defeat_gym_leader_roark_1",

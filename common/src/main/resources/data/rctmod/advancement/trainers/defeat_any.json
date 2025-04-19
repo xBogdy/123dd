@@ -16,7 +16,7 @@
     "announce_to_chat": false,
     "background": "rctmod:textures/gui/advancements/backgrounds/rctmod.png",
     "description": {
-      "text": "Defeat any Trainer"
+      "translate": "advancements.rctmod.defeat_any.description"
     },
     "frame": "task",
     "hidden": false,
@@ -25,7 +25,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Radical Trainers"
+      "translate": "advancements.rctmod.defeat_any.title"
     }
   },
   "requirements": [

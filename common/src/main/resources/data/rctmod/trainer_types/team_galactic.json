@@ -1,5 +1,7 @@
 {
   "color": "aaaaaa",
-  "name": "Team Galactic",
+  "name": {
+    "translatable": "trainer_type.rctmod.team_galactic.title"
+  },
   "symbol": "[G]"
 }

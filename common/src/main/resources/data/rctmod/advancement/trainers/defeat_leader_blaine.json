@@ -18,7 +18,7 @@
     "announce_to_chat": true,
     "background": null,
     "description": {
-      "text": "Defeat Leader Blaine"
+      "translate": "advancements.rctmod.defeat_leader_blaine.description"
     },
     "frame": "goal",
     "hidden": false,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Volcano Badge"
+      "translate": "advancements.rctmod.defeat_leader_blaine.title"
     }
   },
   "parent": "rctmod:trainers/defeat_trainer_may",

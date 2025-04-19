@@ -20,7 +20,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Rival Terrys final (?) team"
+      "translate": "advancements.rctmod.defeat_rival_terry_4.description"
     },
     "frame": "task",
     "hidden": false,
@@ -29,7 +29,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "One last time?"
+      "translate": "advancements.rctmod.defeat_rival_terry_4.title"
     }
   },
   "parent": "rctmod:trainers/defeat_leader_clair",

@@ -1,5 +1,7 @@
 {
   "color": "aa00aa",
-  "name": "Champ",
+  "name": {
+    "translatable": "trainer_type.rctmod.champ.title"
+  },
   "symbol": "[C]"
 }

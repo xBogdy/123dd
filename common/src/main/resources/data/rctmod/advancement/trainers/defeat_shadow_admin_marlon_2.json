@@ -18,7 +18,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Shadow Admin Marlon"
+      "translate": "advancements.rctmod.defeat_shadow_admin_marlon_2.description"
     },
     "frame": "task",
     "hidden": false,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Shadow Minion"
+      "translate": "advancements.rctmod.defeat_shadow_admin_marlon_2.title"
     }
   },
   "parent": "rctmod:trainers/defeat_sucessor_maxima",

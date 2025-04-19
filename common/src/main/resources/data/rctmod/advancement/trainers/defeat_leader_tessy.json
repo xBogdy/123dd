@@ -18,7 +18,7 @@
     "announce_to_chat": true,
     "background": null,
     "description": {
-      "text": "Defeat Leader Tessy"
+      "translate": "advancements.rctmod.defeat_leader_tessy.description"
     },
     "frame": "goal",
     "hidden": false,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Swamp Badge"
+      "translate": "advancements.rctmod.defeat_leader_tessy.title"
     }
   },
   "parent": "rctmod:trainers/defeat_leader_big_mo",

@@ -16,7 +16,7 @@
     "announce_to_chat": true,
     "background": null,
     "description": {
-      "text": "Defeat all Elite 4 Trainers"
+      "translate": "advancements.rctmod.defeat_all_elite_four.description"
     },
     "frame": "challenge",
     "hidden": true,
@@ -25,7 +25,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Elite Trainer"
+      "translate": "advancements.rctmod.defeat_all_elite_four.title"
     }
   },
   "parent": "rctmod:trainers/defeat_elite_four_lucian_3",

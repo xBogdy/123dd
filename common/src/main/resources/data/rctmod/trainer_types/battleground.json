@@ -1,5 +1,7 @@
 {
   "color": "aa0088",
-  "name": "Battleground",
+  "name": {
+    "translatable": "trainer_type.rctmod.battleground.title"
+  },
   "symbol": "[B]"
 }

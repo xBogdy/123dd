@@ -16,7 +16,7 @@
     "announce_to_chat": true,
     "background": null,
     "description": {
-      "text": "Defeat all Battleground trainers"
+      "translate": "advancements.rctmod.defeat_all_battleground.description"
     },
     "frame": "challenge",
     "hidden": true,
@@ -25,7 +25,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "My turf"
+      "translate": "advancements.rctmod.defeat_all_battleground.title"
     }
   },
   "parent": "rctmod:trainers/defeat_battleground_borrius",

@@ -18,6 +18,7 @@
 package com.gitlab.srcmc.rctmod.client.screens;
 
 import com.gitlab.srcmc.rctmod.api.RCTMod;
+import com.gitlab.srcmc.rctmod.api.utils.LangKeys;
 import com.gitlab.srcmc.rctmod.client.screens.widgets.PlayerInfoWidget;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
@@ -30,7 +31,7 @@ public class TrainerCardScreen extends Screen {
     private PlayerInfoWidget playerInfo;
 
     public TrainerCardScreen() {
-        super(Component.literal("Trainer Card"));
+        super(Component.translatable(LangKeys.GUI_TRAINER_CARD_TITLE));
         var mc = Minecraft.getInstance();
         this.font = mc.font;
     }

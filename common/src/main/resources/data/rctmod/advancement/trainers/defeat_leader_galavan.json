@@ -18,7 +18,7 @@
     "announce_to_chat": true,
     "background": null,
     "description": {
-      "text": "Defeat Leader Galavan"
+      "translate": "advancements.rctmod.defeat_leader_galavan.description"
     },
     "frame": "goal",
     "hidden": false,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Battery Badge"
+      "translate": "advancements.rctmod.defeat_leader_galavan.title"
     }
   },
   "parent": "rctmod:trainers/defeat_rival_wayne_3",

@@ -18,7 +18,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Commander Mars a second time"
+      "translate": "advancements.rctmod.defeat_commander_mars_2.description"
     },
     "frame": "task",
     "hidden": false,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Martius"
+      "translate": "advancements.rctmod.defeat_commander_mars_2.title"
     }
   },
   "parent": "rctmod:trainers/defeat_commander_saturn_1",

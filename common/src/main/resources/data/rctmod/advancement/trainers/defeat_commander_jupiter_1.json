@@ -18,7 +18,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Commander Jupiter"
+      "translate": "advancements.rctmod.defeat_commander_jupiter_1.description"
     },
     "frame": "task",
     "hidden": false,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Jupiter"
+      "translate": "advancements.rctmod.defeat_commander_jupiter_1.title"
     }
   },
   "parent": "rctmod:trainers/defeat_commander_mars_1",

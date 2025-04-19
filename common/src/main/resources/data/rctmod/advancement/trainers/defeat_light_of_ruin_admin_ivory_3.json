@@ -18,7 +18,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Light of Ruin Admin Ivory"
+      "translate": "advancements.rctmod.defeat_light_of_ruin_admin_ivory_3.description"
     },
     "frame": "task",
     "hidden": false,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Double Agent"
+      "translate": "advancements.rctmod.defeat_light_of_ruin_admin_ivory_3.title"
     }
   },
   "parent": "rctmod:trainers/defeat_rival_wayne_4",

@@ -16,7 +16,7 @@
     "announce_to_chat": true,
     "background": null,
     "description": {
-      "text": "Defeat all members of Team Galactic"
+      "translate": "advancements.rctmod.defeat_all_team_galactic.description"
     },
     "frame": "challenge",
     "hidden": true,
@@ -25,7 +25,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Supernova"
+      "translate": "advancements.rctmod.defeat_all_team_galactic.title"
     }
   },
   "parent": "rctmod:trainers/defeat_team_galactic_boss_cyrus_2",

@@ -18,7 +18,7 @@
     "announce_to_chat": true,
     "background": null,
     "description": {
-      "text": "Defeat Leader Lt. Surge"
+      "translate": "advancements.rctmod.defeat_leader_lt_surge.description"
     },
     "frame": "goal",
     "hidden": false,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Thunder Badge"
+      "translate": "advancements.rctmod.defeat_leader_lt_surge.title"
     }
   },
   "parent": "rctmod:trainers/defeat_trainer_brendan_1",

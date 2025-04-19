@@ -1,5 +1,7 @@
 {
-  "description": "A dispute between two mysterious organizations is causing trouble in the Borrious region. Who knows what destiny has in store for you.",
+  "description": {
+    "translatable": "series.rctmod.unbound.description"
+  },
   "difficulty": 9,
   "requiredSeries": [
     [
@@ -7,5 +9,7 @@
       "radicalred"
     ]
   ],
-  "title": "Unbound"
+  "title": {
+    "translatable": "series.rctmod.unbound.title"
+  }
 }

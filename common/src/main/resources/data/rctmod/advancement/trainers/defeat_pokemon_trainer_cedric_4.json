@@ -20,7 +20,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Rival Cedrick a forth time"
+      "translate": "advancements.rctmod.defeat_pokemon_trainer_cedric_4.description"
     },
     "frame": "task",
     "hidden": false,
@@ -29,7 +29,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Double or nothing"
+      "translate": "advancements.rctmod.defeat_pokemon_trainer_cedric_4.title"
     }
   },
   "parent": "rctmod:trainers/defeat_gym_leader_volkner_1",

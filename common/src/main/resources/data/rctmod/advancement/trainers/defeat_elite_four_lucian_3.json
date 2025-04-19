@@ -18,7 +18,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Lucian in the final rematch"
+      "translate": "advancements.rctmod.defeat_elite_four_lucian_3.description"
     },
     "frame": "goal",
     "hidden": true,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Lucian Rematch 2"
+      "translate": "advancements.rctmod.defeat_elite_four_lucian_3.title"
     }
   },
   "parent": "rctmod:trainers/defeat_elite_four_flint_3",

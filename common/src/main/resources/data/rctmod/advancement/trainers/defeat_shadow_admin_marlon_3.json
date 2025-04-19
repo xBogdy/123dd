@@ -18,7 +18,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Ex-Shadow Admin Marlon"
+      "translate": "advancements.rctmod.defeat_shadow_admin_marlon_3.description"
     },
     "frame": "task",
     "hidden": false,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Change of mind"
+      "translate": "advancements.rctmod.defeat_shadow_admin_marlon_3.title"
     }
   },
   "parent": "rctmod:trainers/defeat_light_of_ruin_aklove_2",

@@ -22,6 +22,7 @@ import java.util.Map;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
+import com.gitlab.srcmc.rctmod.api.data.Text;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 
@@ -32,32 +33,47 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 
 public final class ChatUtils {
-    private static Map<String, String[]> defaultDialog = new HashMap<>();
+    private static Map<String, Text[]> defaultDialog = new HashMap<>();
 
-    public static void initDefault(Map<String, String[]> defaultDialog) {
+    public static void initDefault(Map<String, Text[]> defaultDialog) {
         ChatUtils.defaultDialog = defaultDialog == null ? Map.of() : defaultDialog;
     }
 
-    public static void reply(TrainerMob source, Player target, String context) {
-        var messages = RCTMod.getInstance().getTrainerManager().getData(source).getDialog().get(context);
+    public static void reply(TrainerMob source, Player target, String... contexts) {
+        for(var context : contexts) {
+            var messages = RCTMod.getInstance().getTrainerManager().getData(source).getDialog().get(context);
 
-        if(messages == null) {
-            ModCommon.LOG.error(String.format("Invalid dialog context '%s'", context));
-        } else if(messages.length > 0) {
-            var message = PlayerChatMessage.system(messages[(target.getRandom().nextInt() & Integer.MAX_VALUE) % messages.length]);
-            target.createCommandSourceStack().sendChatMessage(OutgoingChatMessage.create(message), false, ChatType.bind(ChatType.CHAT, source));
+            if(messages != null) {
+                if(messages.length > 0) {
+                    var message = PlayerChatMessage.system(messages[(target.getRandom().nextInt() & Integer.MAX_VALUE) % messages.length].asComponent().getString());
+                    target.createCommandSourceStack().sendChatMessage(OutgoingChatMessage.create(message), false, ChatType.bind(ChatType.CHAT, source));
+                    return;
+                } else {
+                    ModCommon.LOG.error(String.format("Empty dialog context '%s'", context));
+                    return;
+                }
+            }
         }
+
+        ModCommon.LOG.error(String.format("Invalid dialog contexts '%s'", String.valueOf(contexts)));
     }
 
-    public static void reply(LivingEntity source, Player target, String context) {
-        var messages = ChatUtils.defaultDialog.get(context);
+    public static void reply(LivingEntity source, Player target, String... contexts) {
+        for(var context : contexts) {
+            var messages = ChatUtils.defaultDialog.get(context);
 
-        if(messages == null) {
-            ModCommon.LOG.error(String.format("Invalid dialog context '%s'", context));
-        } else if(messages.length > 0) {
-            var message = PlayerChatMessage.system(messages[(target.getRandom().nextInt() & Integer.MAX_VALUE) % messages.length]);
-            target.createCommandSourceStack().sendChatMessage(OutgoingChatMessage.create(message), false, ChatType.bind(ChatType.CHAT, source));
+            if(messages != null) {
+                if(messages.length > 0) {
+                    var message = PlayerChatMessage.system(messages[(target.getRandom().nextInt() & Integer.MAX_VALUE) % messages.length].asComponent().getString());
+                    target.createCommandSourceStack().sendChatMessage(OutgoingChatMessage.create(message), false, ChatType.bind(ChatType.CHAT, source));
+                    return;
+                } else {
+                    ModCommon.LOG.error(String.format("Empty dialog context '%s'", context));
+                }
+            }
         }
+
+        ModCommon.LOG.error(String.format("Invalid dialog contexts '%s'", String.valueOf(contexts)));
     }
 
     public static void replyRaw(LivingEntity source, Player target, String rawMessage) {

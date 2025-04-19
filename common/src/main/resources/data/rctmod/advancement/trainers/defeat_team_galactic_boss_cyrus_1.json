@@ -18,7 +18,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Galactic Boss Cyrus for the first time"
+      "translate": "advancements.rctmod.defeat_team_galactic_boss_cyrus_1.description"
     },
     "frame": "task",
     "hidden": false,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Red Dwarf"
+      "translate": "advancements.rctmod.defeat_team_galactic_boss_cyrus_1.title"
     }
   },
   "parent": "rctmod:trainers/defeat_gym_leader_candice_1",

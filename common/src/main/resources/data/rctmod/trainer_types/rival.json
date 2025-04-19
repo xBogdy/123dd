@@ -1,5 +1,7 @@
 {
   "color": "ffaa00",
-  "name": "Rival",
+  "name": {
+    "translatable": "trainer_type.rctmod.rival.title"
+  },
   "symbol": "[R]"
 }

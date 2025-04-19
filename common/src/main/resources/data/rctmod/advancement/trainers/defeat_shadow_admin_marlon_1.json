@@ -18,7 +18,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat Shadow Admin Marlon in a 1v1"
+      "translate": "advancements.rctmod.defeat_shadow_admin_marlon_1.description"
     },
     "frame": "task",
     "hidden": true,
@@ -27,7 +27,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Single Shade"
+      "translate": "advancements.rctmod.defeat_shadow_admin_marlon_1.title"
     }
   },
   "parent": "rctmod:trainers/defeat_shadow_admin_marlon_grunt",

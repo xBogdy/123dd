@@ -28,15 +28,19 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import com.gitlab.srcmc.rctmod.ModCommon;
+import com.gitlab.srcmc.rctmod.api.data.Text;
 import com.gitlab.srcmc.rctmod.api.data.pack.SeriesMetaData;
+import com.gitlab.srcmc.rctmod.api.utils.LangKeys;
 import com.gitlab.srcmc.rctmod.api.utils.PathUtils;
 
 public class SeriesManager implements Serializable {
     private static final long serialVersionUID = 0L;
-    public static final String EMPTY_SERIES_ID = "empty";
 
-    private transient final SeriesGraph EMPTY_SERIES = new SeriesGraph(new SeriesMetaData("Empty Series", "", 0));
+    public static final String EMPTY_SERIES_ID = "empty";
     private Map<String, SeriesGraph> seriesGraphs = new HashMap<>();
+    private transient final SeriesGraph EMPTY_SERIES = new SeriesGraph(new SeriesMetaData(
+        new Text().setTranslatable(LangKeys.SERIES_TITLE(EMPTY_SERIES_ID)),
+        new Text().setTranslatable(LangKeys.SERIES_DESCRIPTION(EMPTY_SERIES_ID)), 0));
 
     public void copyFrom(SeriesManager sm) {
         this.seriesGraphs = sm.seriesGraphs;
@@ -130,7 +134,9 @@ public class SeriesManager implements Serializable {
         private SeriesMetaData metaData;
 
         SeriesGraph(String seriesId) {
-            this(new SeriesMetaData(seriesId));
+            this(new SeriesMetaData(
+                new Text().setTranslatable(LangKeys.SERIES_TITLE(seriesId)),
+                new Text().setTranslatable(LangKeys.SERIES_DESCRIPTION(seriesId))));
         }
 
         SeriesGraph(SeriesMetaData metaData) {

@@ -85,7 +85,7 @@
     "announce_to_chat": false,
     "background": null,
     "description": {
-      "text": "Defeat all Borrius Title Defense Trainers"
+      "translate": "advancements.rctmod.defeat_title_defense_borrius.description"
     },
     "frame": "goal",
     "hidden": true,
@@ -94,7 +94,7 @@
     },
     "show_toast": true,
     "title": {
-      "text": "Borrius Title"
+      "translate": "advancements.rctmod.defeat_title_defense_borrius.title"
     }
   },
   "parent": "rctmod:trainers/defeat_light_of_ruin_aklove_3",

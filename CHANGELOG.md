@@ -2,6 +2,14 @@
 
 **Important**: Version **0.14** introduces the **series system**. Existing player saves will automatically be assigned to the *radicalred series*. New players will start with the *empty series* and have to pick a series first (see also *#233* Trainer Association).
 
+## [0.15.0-beta] - 2025-04-17
+
+**Changed:**
+
+- *#268* Improved language support
+  - Updated/Added `en_us` language keys
+  - The `title` and `description` of series, the `name` of trainer types and dialogs now alternatively accept a json object with a `translatable` and/or `literal` field as value (setting directly a string is equivalent to defining a object with a `literal` field having that string)
+
 ## [0.14.3-beta] - 2025-03-29
 
 **Changed:**
