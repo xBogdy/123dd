@@ -2,7 +2,11 @@
 
 **Important**: Version **0.14** introduces the **series system**. Existing player saves will automatically be assigned to the *radicalred series*. New players will start with the *empty series* and have to pick a series first (see also *#233* Trainer Association).
 
-## [0.15.0-beta] - 2025-04-17
+## [0.15.0-beta] - 2025-04-19
+
+**Added:**
+
+- *#270* *Trainer Repel Rod*: Prevents trainers from naturally spawning in a `7x7` chunk area
 
 **Changed:**
 

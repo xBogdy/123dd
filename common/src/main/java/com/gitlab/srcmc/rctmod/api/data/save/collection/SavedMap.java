@@ -38,6 +38,7 @@ public class SavedMap<K, V, U> extends SavedData implements Map<K, V> {
     private Function<U, V> tagToValue;
     private Function<CompoundTag, BiConsumer<String, U>> tagConsumer;
     private Function<CompoundTag, Function<String, U>> tagSupplier;
+    private SavedMap<?, ?, ?> parent;
 
     public SavedMap(Function<K, String> keyToTag, Function<String, K> tagToKey, Function<V, U> valuetoTag, Function<U, V> tagToValue, Function<CompoundTag, BiConsumer<String, U>> tagConsumer, Function<CompoundTag, Function<String, U>> tagSupplier) {
         this.keyToTag = keyToTag;
@@ -60,6 +61,15 @@ public class SavedMap<K, V, U> extends SavedData implements Map<K, V> {
         }
 
         return tag;
+    }
+
+    @Override
+    public void setDirty(boolean value) {
+        if(value && !this.isDirty() && this.parent != null) {
+            this.parent.setDirty();
+        }
+
+        super.setDirty(value);
     }
 
     @Override
@@ -92,6 +102,7 @@ public class SavedMap<K, V, U> extends SavedData implements Map<K, V> {
         var prev = this.map.put(key, value);
 
         if((prev == null && value != null) || (prev != null && !prev.equals(value))) {
+            setParent(value, this);
             this.setDirty();
         }
 
@@ -103,6 +114,7 @@ public class SavedMap<K, V, U> extends SavedData implements Map<K, V> {
         var removed = this.map.remove(key);
 
         if(removed != null) {
+            setParent(removed, null);
             this.setDirty();
         }
 
@@ -111,13 +123,16 @@ public class SavedMap<K, V, U> extends SavedData implements Map<K, V> {
 
     @Override
     public void putAll(Map<? extends K, ? extends V> m) {
-        this.map.putAll(m);
-        this.setDirty();
+        m.forEach(this::put);
     }
 
     @Override
     public void clear() {
         if(!this.map.isEmpty()) {
+            if(this.map.values().stream().findFirst().get() instanceof SavedMap<?, ?, ?>) {
+                this.map.values().forEach(v -> setParent(v, null));
+            }
+
             this.map.clear();
             this.setDirty();
         }
@@ -136,6 +151,12 @@ public class SavedMap<K, V, U> extends SavedData implements Map<K, V> {
     @Override
     public Set<Entry<K, V>> entrySet() {
         return this.map.entrySet();
+    }
+
+    private static <V> void setParent(V value, SavedMap<?, ?, ?> parent) {
+        if(value instanceof SavedMap<?, ?, ?> child) {
+            child.parent = parent;
+        }
     }
 
     public static String filePath(String context) {

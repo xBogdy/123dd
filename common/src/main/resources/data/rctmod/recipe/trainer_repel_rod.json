@@ -1,0 +1,23 @@
+{
+  "key": {
+    "C": {
+      "item": "minecraft:copper_ingot"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "T": {
+      "item": "minecraft:redstone_torch"
+    }
+  },
+  "pattern": [
+    " T ",
+    " I ",
+    " C "
+  ],
+  "result": {
+    "count": 1,
+    "id": "rctmod:trainer_repel_rod"
+  },
+  "type": "minecraft:crafting_shaped"
+}

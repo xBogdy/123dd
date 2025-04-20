@@ -19,6 +19,7 @@ package com.gitlab.srcmc.rctmod;
 
 import com.gitlab.srcmc.rctmod.advancements.criteria.DefeatCountTrigger;
 import com.gitlab.srcmc.rctmod.commands.arguments.TokenArgumentType;
+import com.gitlab.srcmc.rctmod.world.blocks.TrainerRepelRodBlock;
 import com.gitlab.srcmc.rctmod.world.blocks.TrainerSpawnerBlock;
 import com.gitlab.srcmc.rctmod.world.blocks.entities.TrainerSpawnerBlockEntity;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerAssociation;
@@ -69,19 +70,23 @@ public final class ModRegistries {
         public static final DeferredRegister<Item> REGISTRY = DeferredRegister.create(ModCommon.MOD_ID, Registries.ITEM);
         public static final RegistrySupplier<TrainerCard> TRAINER_CARD;
         public static final RegistrySupplier<BlockItem> TRAINER_SPAWNER;
+        public static final RegistrySupplier<BlockItem> TRAINER_REPEL_ROD;
 
         static {
             TRAINER_CARD = REGISTRY.register(location("trainer_card"), TrainerCard::new);
             TRAINER_SPAWNER = REGISTRY.register(location("trainer_spawner"), () -> new BlockItem(Blocks.TRAINER_SPAWNER.get(), new Item.Properties()));
+            TRAINER_REPEL_ROD = REGISTRY.register(location("trainer_repel_rod"), () -> new BlockItem(Blocks.TRAINER_REPEL_ROD.get(), new Item.Properties()));
         }
     }
 
     public class Blocks {
         public static final DeferredRegister<Block> REGISTRY = DeferredRegister.create(ModCommon.MOD_ID, Registries.BLOCK);
         public static final RegistrySupplier<TrainerSpawnerBlock> TRAINER_SPAWNER;
+        public static final RegistrySupplier<TrainerRepelRodBlock> TRAINER_REPEL_ROD;
 
         static {
             TRAINER_SPAWNER = REGISTRY.register(location("trainer_spawner"), TrainerSpawnerBlock::new);
+            TRAINER_REPEL_ROD = REGISTRY.register(location("trainer_repel_rod"), TrainerRepelRodBlock::new);
         }
     }
 
@@ -125,6 +130,7 @@ public final class ModRegistries {
                 .displayItems((context, entries) ->{
                     entries.accept(Items.TRAINER_CARD.get().getDefaultInstance());
                     entries.accept(Items.TRAINER_SPAWNER.get().getDefaultInstance());
+                    entries.accept(Items.TRAINER_REPEL_ROD.get().getDefaultInstance());
                 }).build()));
         }
     }

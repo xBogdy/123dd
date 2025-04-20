@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/lightning_rod",
+  "textures": {
+    "texture": "rctmod:block/trainer_repel_rod",
+    "particle": "rctmod:block/trainer_repel_rod"
+  }
+}

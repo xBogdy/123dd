@@ -29,8 +29,11 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import com.gitlab.srcmc.rctmod.ModCommon;
+import com.gitlab.srcmc.rctmod.ModRegistries;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
+import com.gitlab.srcmc.rctmod.api.data.save.collection.SavedBlockPosIntegerMap;
+import com.gitlab.srcmc.rctmod.api.data.save.collection.SavedDimensionBlockPosIntegerMap;
 import com.gitlab.srcmc.rctmod.api.data.save.collection.SavedMap;
 import com.gitlab.srcmc.rctmod.api.data.save.collection.SavedStringChunkPosMap;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
@@ -41,6 +44,7 @@ import com.google.common.collect.Sets;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.datafix.DataFixTypes;
@@ -59,6 +63,7 @@ public class TrainerSpawner {
     private static final int SPAWN_RETRIES = 8;
     private static final boolean CAN_SPAWN_IN_WATER = false; // experimental
     private static final double TRAINER_DIRECT_SPAWN_CHANCE = 0.42;
+    private static final int CHUNK_REPEL_RADIUS = 3; // 7x7
 
     private class SpawnCandidate {
         public final String id;
@@ -74,6 +79,8 @@ public class TrainerSpawner {
     private Map<String, Integer> identities = new HashMap<>();
     private Map<String, Integer> playerSpawns = new HashMap<>();
     private Map<String, ChunkPos> persistentChunks;
+    private Map<ResourceLocation, SavedBlockPosIntegerMap> trainerRepelBlocks;
+    private Map<ResourceLocation, Map<ChunkPos, Integer>> markedChunks = new HashMap<>();
 
     private Set<TrainerMob> mobs = new HashSet<>();
     private Set<TrainerMob> persistentMobs = new HashSet<>();
@@ -95,7 +102,32 @@ public class TrainerSpawner {
             new Factory<>(SavedStringChunkPosMap::new, SavedStringChunkPosMap::of, DataFixTypes.LEVEL),
             SavedMap.filePath("spawn.chunks"));
 
+        this.trainerRepelBlocks = level.getDataStorage().computeIfAbsent(
+            new Factory<>(SavedDimensionBlockPosIntegerMap::new, SavedDimensionBlockPosIntegerMap::of, DataFixTypes.LEVEL),
+            SavedMap.filePath("spawn.chunks.repel"));
+
         var server = level.getServer();
+        var levels = server.getAllLevels();
+        var trpbs = Map.copyOf(this.trainerRepelBlocks);
+
+        this.trainerRepelBlocks.clear();
+        this.markedChunks.clear();
+
+        trpbs.entrySet().forEach(e -> {
+            for(var l : levels) {
+                if(l.dimension().location().equals(e.getKey())) {
+                    e.getValue().entrySet().forEach(v -> {
+                        var bs = l.getBlockState(v.getKey());
+    
+                        if(bs.is(ModRegistries.Blocks.TRAINER_REPEL_ROD.get())) {
+                            this.markChunks(l, v.getKey(), true, CHUNK_REPEL_RADIUS);
+                        }
+                    });
+
+                    break;
+                }
+            }
+        });
 
         this.persistentChunks.values().forEach(cp -> {
             // TODO: only force update the chunk in the level the trainer was actually in
@@ -105,6 +137,67 @@ public class TrainerSpawner {
         if(RCTMod.getInstance().getServerConfig().logSpawning()) {
             ModCommon.LOG.info("Initialized Trainer Spawner service");
         }
+    }
+
+    public void markChunks(Level level, BlockPos blockPos, boolean canSpawn) {
+        if(canSpawn) {
+            this.markChunks(level, blockPos, canSpawn, CHUNK_REPEL_RADIUS);
+        } else {
+            var positions = this.trainerRepelBlocks.get(level.dimension().location());
+
+            if(positions != null) {
+                var r = positions.get(blockPos);
+
+                if(r != null) {
+                    this.markChunks(level, blockPos, canSpawn, r);
+                }
+            }
+        }
+    }
+
+    protected void markChunks(Level level, BlockPos blockPos, boolean canSpawn, int radius) {
+        var c = level.getChunkAt(blockPos).getPos();
+        var l = level.dimension().location();
+        var m = this.markedChunks.computeIfAbsent(l, k -> new HashMap<>());
+        var x1 = c.x - radius;
+        var x2 = c.x + radius;
+        var z1 = c.z - radius;
+        var z2 = c.z + radius;
+
+        for(int x = x1; x <= x2; x++) {
+            for(int z = z1; z <= z2; z++) {
+                m.compute(new ChunkPos(x, z), (k, v) -> {
+                    if(canSpawn) {
+                        return (v == null || v < 1) ? 1 : (v + 1);
+                    }
+
+                    return (v == null || v < 2) ? null : (v - 1);
+                });
+            }
+        }
+
+        if(m.isEmpty()) {
+            this.markedChunks.remove(l);
+        }
+
+        // persist trainer repel block position
+        var rpl = this.trainerRepelBlocks.computeIfAbsent(l, k -> new SavedBlockPosIntegerMap());
+
+        if(canSpawn) {
+            rpl.put(blockPos, radius);
+        } else {
+            rpl.remove(blockPos);
+        }
+
+        if(rpl.isEmpty()) {
+            this.trainerRepelBlocks.remove(l);
+        }
+    }
+
+    public boolean isMarkedAt(Level level, BlockPos pos) {
+        return this.markedChunks
+            .getOrDefault(level.dimension().location(), Map.of())
+            .getOrDefault(level.getChunkAt(pos).getPos(), 0) > 0;
     }
 
     public Set<TrainerMob> getSpawns() {
@@ -312,7 +405,7 @@ public class TrainerSpawner {
     public boolean attemptSpawnFor(Player player, String trainerId, BlockPos pos, boolean setHome, boolean noOrigin, boolean guaruantee, double globalChance, double globalChanceMin) {
         var level = player.level();
 
-        if(RCTMod.getInstance().getTrainerManager().isValidId(trainerId) && TrainerSpawner.canSpawnAt(level, pos) && this.canSpawnFor(player, noOrigin, globalChance, globalChanceMin)) {
+        if(RCTMod.getInstance().getTrainerManager().isValidId(trainerId) && (noOrigin || !this.isMarkedAt(level, pos)) && TrainerSpawner.canSpawnAt(level, pos) && this.canSpawnFor(player, noOrigin, globalChance, globalChanceMin)) {
             var tmd = RCTMod.getInstance().getTrainerManager().getData(trainerId);
 
             if(tmd != null && this.isUnique(tmd.getTrainerTeam().getIdentity())) {
@@ -328,12 +421,13 @@ public class TrainerSpawner {
 
     public boolean attemptSpawnFor(Player player) {
         var cfg = RCTMod.getInstance().getServerConfig();
+        var level = player.level();
 
         if(this.canSpawnFor(player, false, cfg.globalSpawnChance(), cfg.globalSpawnChanceMinimum())) {
             for(int i = 0; i < SPAWN_RETRIES; i++) {
                 var pos = this.nextPos(player);
 
-                if(pos != null) {
+                if(pos != null && !this.isMarkedAt(level, pos)) {
                     var spawnCandidate = this.nextSpawnCandidate(player, pos);
                     
                     if(spawnCandidate != null) {
