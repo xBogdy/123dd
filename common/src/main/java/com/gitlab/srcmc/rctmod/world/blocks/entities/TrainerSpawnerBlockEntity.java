@@ -19,7 +19,11 @@ package com.gitlab.srcmc.rctmod.world.blocks.entities;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
+import java.util.UUID;
+
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.ModRegistries;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
@@ -36,6 +40,7 @@ import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -43,16 +48,24 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 
 public class TrainerSpawnerBlockEntity extends BlockEntity {
+    private static final int OWNER_UPDATE_INTERVAL_TICKS = 40;
     private static final int SPAWN_INTERVAL_TICKS = 80;
     private static final int SCAN_INTERVAL_TICKS = 200;
-    
-    private String renderItemKey;
+    private static final double HOME_SWITCH_CHANCE = 0.1;
+
+    public final RenderState renderState = new RenderState();
+    private Set<String> trainerIds = new HashSet<>();
+    private TrainerMob ownerTrainer;
+    private UUID ownerUUID;
+
     private double minPlayerDistance;
     private double maxPlayerDistance;
+    private boolean blockUpdated;
 
+    private Set<Item> renderItems = new HashSet<>();
+    private Timer ownerUpdateTimer = new Timer();
     private Timer spawnTimer = new Timer();
     private Timer scanTimer = new Timer();
-    private Item renderItem;
     private AABB aabb;
 
     public TrainerSpawnerBlockEntity(BlockPos blockPos, BlockState blockState) {
@@ -76,35 +89,136 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
     public void saveAdditional(CompoundTag tag, HolderLookup.Provider provider) {
         super.saveAdditional(tag, provider);
 
-        if(this.renderItemKey != null) {
-            tag.putString("renderItemKey", this.renderItemKey);
+        if(this.ownerUUID != null) {
+            tag.putUUID("OwnerUUID", this.ownerUUID);
         }
+
+        var tids = new CompoundTag();
+        this.trainerIds.forEach(tid -> tids.putByte(tid, (byte)0));
+        tag.put("TrainerIds", tids);
     }
 
     @Override
     public void loadAdditional(CompoundTag tag, HolderLookup.Provider provider) {
         super.loadAdditional(tag, provider);
+        this.trainerIds.clear();
+        this.ownerUUID = tag.contains("OwnerUUID") ? tag.getUUID("OwnerUUID") : null;
 
-        if(tag.contains("renderItemKey")) {
-            this.setRenderItemKey(tag.getString("renderItemKey"));
-        } else {
-            this.setRenderItemKey(null);
+        if(tag.contains("TrainerIds")) {
+            this.trainerIds.addAll(tag.getCompound("TrainerIds").getAllKeys());
         }
+
+        this.updateRenderItems();
+        this.updateOwner();
     }
 
-    public void setRenderItem(String renderItemKey) {
-        this.setRenderItemKey(renderItemKey);
-        this.spawnTimer.reset(this.level.getGameTime());
-        this.scanTimer.reset(this.level.getGameTime());
-        this.setChanged();
+    private void updateRenderItems() {
+        this.renderItems.clear();
+        var tm = RCTMod.getInstance().getTrainerManager();
 
-        if(!this.level.isClientSide) {
+        this.trainerIds.forEach(tid -> {
+            var renderItemKey = tm.getData(tid).getSignatureItem();
+
+            if(renderItemKey != null && !renderItemKey.isBlank()) {
+                var rl = ResourceLocation.parse(renderItemKey);
+
+                if(!BuiltInRegistries.ITEM.containsKey(rl)) {
+                    ModCommon.LOG.info(String.format("Invalid Trainer Spawner item for '%s': %s", tid, rl.toString()));
+                } else {
+                    this.renderItems.add(BuiltInRegistries.ITEM.get(rl));
+                }
+            }
+        });
+
+        this.blockUpdated = true;
+    }
+
+    private void syncToClients(Level level) {
+        if(this.blockUpdated) {
             this.level.sendBlockUpdated(this.getBlockPos(), this.getBlockState(), this.getBlockState(), Block.UPDATE_CLIENTS);
+            this.blockUpdated = false;
         }
     }
 
-    public List<String> getTrainerIds() {
-        return Collections.unmodifiableList(RCTMod.getInstance().getServerConfig().trainerSpawnerItems().getOrDefault(this.renderItemKey, List.of()));
+    public void setOwner(TrainerMob ownerTrainer) {
+        if(ownerTrainer != this.ownerTrainer) {
+            if(this.ownerTrainer != null) {
+                this.ownerTrainer.setHomeSpawner(null);
+            }
+
+            this.ownerTrainer = ownerTrainer;
+
+            if(this.ownerTrainer != null) {
+                var oldSpawner = this.ownerTrainer.getHomeSpawner();
+
+                if(oldSpawner != this && oldSpawner != null) {
+                    oldSpawner.setOwner(null);
+                }
+
+                this.ownerTrainer.setHomeSpawner(this);
+                this.setOwnerUUID(this.ownerTrainer.getUUID());
+            }
+        }
+
+        if(this.ownerTrainer == null) {
+            this.setOwnerUUID(null);
+        }
+    }
+
+    protected void setOwnerUUID(UUID ownerUUID) {
+        if(!Objects.equals(this.ownerUUID, ownerUUID)) {
+            this.ownerUUID = ownerUUID;
+            this.setChanged();
+        }
+    }
+
+    public TrainerMob getOwner() {
+        return this.ownerTrainer;
+    }
+
+    protected void updateOwner() {
+        if(this.ownerUUID != null) {
+            if(this.ownerTrainer == null) {
+                RCTMod.getInstance().getTrainerSpawner().getSpawns().stream()
+                    .filter(tm -> tm.getUUID().equals(this.ownerUUID))
+                    .findAny().ifPresent(tm -> this.ownerTrainer = tm);
+            }
+            
+            if(this.ownerTrainer == null || !this.ownerTrainer.isAlive()) {
+                this.setOwner(null);
+            } else {
+                this.setOwner(this.ownerTrainer);
+            }
+        }
+    }
+
+    public boolean addTrainerIdsFromItem(ItemStack item) {
+        var tm = RCTMod.getInstance().getTrainerManager();
+        var itemId = item.getItem().arch$registryName().toString();
+        var added = new boolean[]{false};
+
+        tm.getAllData()
+            .filter(e -> itemId.equals(e.getValue().getSignatureItem()))
+            .forEach(e -> {
+                if(this.trainerIds.add(e.getKey())) {
+                    added[0] = true;
+                }
+            });
+
+        if(added[0]) {
+            this.updateRenderItems();
+            this.setChanged();
+        }
+
+        return added[0];
+    }
+
+    public Set<String> getTrainerIds() {
+        return this.trainerIds;
+    }
+
+    public Set<Item> getRenderItems() {
+        return this.renderItems;
     }
 
     public double getMinPlayerDistance() {
@@ -115,33 +229,10 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
         return this.maxPlayerDistance;
     }
 
-    public String getRenderItemKey() {
-        return this.renderItemKey;
-    }
-
-    public Item getRenderItem() {
-        return this.renderItem;
-    }
-
     protected void setPlayerDistanceThreshold(double min, double max) {
         this.minPlayerDistance = Math.min(min, max);
         this.maxPlayerDistance = max;
         this.aabb = new AABB(this.getBlockPos()).inflate(max);
-    }
-
-    protected void setRenderItemKey(String renderItemKey) {
-        if(renderItemKey != null) {
-            var rl = ResourceLocation.parse(renderItemKey);
-
-            if(!BuiltInRegistries.ITEM.containsKey(rl)) {
-                ModCommon.LOG.info("Invalid render item for Trainer Spawner: " + rl.toString());
-                this.renderItem = null;
-            } else {
-                this.renderItem = BuiltInRegistries.ITEM.get(rl);
-            }
-        }
-
-        this.renderItemKey = renderItemKey;
     }
 
     private void attemptSpawn(Level level, BlockPos blockPos, BlockState blockState) {
@@ -159,7 +250,10 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
 
         for(var player : level.getNearbyPlayers(TargetingConditions.forNonCombat(), null, this.aabb)) {
             for(var trainerId : trainerIds) {
-                if(spawner.attemptSpawnFor(player, trainerId, this.getBlockPos().above(), true, true, guaruantee, 1.0, 1.0)) {
+                var m = spawner.attemptSpawnFor(player, trainerId, this.getBlockPos().above(), true, true, guaruantee, 1.0, 1.0);
+
+                if(m != null) {
+                    this.setOwner(m);
                     return;
                 }
             }
@@ -168,23 +262,34 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
 
     private void scanForTrainerNearby(Level level) {
         var trainerIds = this.getTrainerIds();
+        // ModCommon.LOG.info("SCAN: " + this.hashCode() + ": " + level.getGameTime() + ", " + this.scanTimer.passed(level.getGameTime()));
 
         level.getNearbyEntities(
                 TrainerMob.class,
                 TargetingConditions.forNonCombat(),
-                null, this.aabb)
-            .stream().filter(t -> trainerIds.contains(t.getTrainerId()))
-            .forEach(t -> t.setHomePos(this.getBlockPos().above()));
+                null, this.aabb).stream()
+            .filter(t -> trainerIds.contains(t.getTrainerId()))
+            .filter(t -> t.getHomePos() == null || t.getRandom().nextDouble() < HOME_SWITCH_CHANCE)
+            // .map(t -> { ModCommon.LOG.info("SELECT: " + t.getTrainerId() + ", " + t.getHomePos()); return t; })
+            .findAny().ifPresent(t -> this.setOwner(t));
     }
 
     public static void serverTick(Level level, BlockPos blockPos, BlockState blockState, TrainerSpawnerBlockEntity be) {
-        if(be.getRenderItemKey() != null) {
-            if(be.spawnTimer.passed(level.getGameTime()) >= SPAWN_INTERVAL_TICKS) {
+        // be.syncToClients(level); // TODO
+
+        if(be.ownerUpdateTimer.passed(level.getGameTime()) >= OWNER_UPDATE_INTERVAL_TICKS) {
+            be.updateOwner();
+            be.ownerUpdateTimer.reset(level.getGameTime());
+        }
+
+        if(be.getTrainerIds().size() > 0) {
+            if(be.ownerUUID == null && be.spawnTimer.passed(level.getGameTime()) >= SPAWN_INTERVAL_TICKS) {
+                // ModCommon.LOG.info("SPAWN ATTEMPT: " + be.hashCode() + ": " + be.ownerUUID + ", " + be.ownerTrainer);
                 be.attemptSpawn(level, blockPos, blockState);
                 be.spawnTimer.reset(level.getGameTime());
             }
 
-            if(be.scanTimer.passed(level.getGameTime()) >= SCAN_INTERVAL_TICKS) {
+            if(be.ownerUUID == null && be.scanTimer.passed(level.getGameTime()) >= SCAN_INTERVAL_TICKS) {
                 be.scanForTrainerNearby(level);
                 be.scanTimer.reset(level.getGameTime());
             }
@@ -192,6 +297,10 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
     }
 
     public static void clientTick(Level level, BlockPos blockPos, BlockState blockState, TrainerSpawnerBlockEntity be) {
+    }
+
+    public class RenderState {
+        public double p, targetP;
     }
 
     class Timer {

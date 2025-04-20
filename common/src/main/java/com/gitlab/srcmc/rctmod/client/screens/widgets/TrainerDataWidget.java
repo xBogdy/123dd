@@ -110,7 +110,7 @@ public abstract class TrainerDataWidget extends AbstractScrollWidget implements 
     }
 
     protected static<T> MutableComponent toComponent(T value) {
-        return Component.literal(String.valueOf(value)).withStyle(ChatFormatting.GREEN);
+        return ((value instanceof MutableComponent c) ? c : Component.literal(String.valueOf(value))).withStyle(ChatFormatting.GREEN);
     }
 
     protected abstract void renderPage(GuiGraphics guiGraphics, int x, int y, float f);

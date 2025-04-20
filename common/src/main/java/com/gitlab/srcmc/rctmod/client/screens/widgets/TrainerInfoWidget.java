@@ -37,10 +37,13 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Renderable;
 import net.minecraft.client.gui.components.StringWidget;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 
 public class TrainerInfoWidget extends TrainerDataWidget {
     private static final int MAX_SPECIES_LENGTH = 28;
@@ -166,7 +169,7 @@ public class TrainerInfoWidget extends TrainerDataWidget {
         this.y = this.identity == null ? 0 : this.h;
 
         pc.renderables.add(new StringWidget(8, this.y += this.h, this.w, this.h, toComponent("Type: "), this.font).alignLeft());
-        pc.renderables.add(new StringWidget(8, this.y, (int)(this.w*0.9), this.h, toComponent(this.trainer.getType().name()), this.font).alignRight());
+        pc.renderables.add(new StringWidget(8, this.y, (int)(this.w*0.9), this.h, toComponent(this.trainer.getType().name().asComponent().getString()), this.font).alignRight());
 
         pc.renderables.add(new StringWidget(8, this.y += this.h, this.w, this.h, toComponent("Level Caps: "), this.font).alignLeft());
         pc.renderables.add(new StringWidget(8, this.y, (int)(this.w*0.9), this.h, toComponent(String.format("%d -> %d", this.trainer.getRequiredLevelCap(), this.trainer.getRewardLevelCap())), this.font).alignRight());
@@ -195,7 +198,8 @@ public class TrainerInfoWidget extends TrainerDataWidget {
         });
 
         this.y = this.identity == null ? 0 : this.h;
-        var spawnerItems = config.spawnerItemsFor(this.trainerId);
+        var sigItem = BuiltInRegistries.ITEM.get(ResourceLocation.parse(this.trainer.getSignatureItem()));
+        var spawnerItems = (sigItem != null && !Items.AIR.equals(sigItem)) ? List.of(sigItem) : List.<Item>of();
         
         if(spawnerItems.size() > 0) {
             pc.renderables.add(new StringWidget(8, this.y += this.h , this.w, this.h, toComponent("Items:"), this.font).alignLeft());

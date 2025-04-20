@@ -32,6 +32,7 @@ import com.gitlab.srcmc.rctmod.api.data.TrainerBattle;
 import com.gitlab.srcmc.rctmod.api.data.pack.SeriesMetaData;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.api.utils.ChatUtils;
+import com.gitlab.srcmc.rctmod.world.blocks.entities.TrainerSpawnerBlockEntity;
 import com.gitlab.srcmc.rctmod.world.entities.goals.LookAtPlayerAndWaitGoal;
 import com.gitlab.srcmc.rctmod.world.entities.goals.MoveCloseToTargetGoal;
 import com.gitlab.srcmc.rctmod.world.entities.goals.MoveToHomePosGoal;
@@ -109,6 +110,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
     private boolean persistent;
     private int despawnTicks;
     private BlockPos homePos;
+    private TrainerSpawnerBlockEntity homeSpawner;
     private List<PlayerTransform> nearestTransforms = new ArrayList<>();
     private int nearestAfkCheckCount;
     private int trainerIdCheckRetryTicks;
@@ -373,12 +375,22 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
             if(!Objects.equals(currentHome, blockPos)) {
                 this.homePos = blockPos;
+                ModCommon.LOG.info("NEW HOME " + this.getTrainerId() + ", " + this.homePos);
             }
         }
     }
 
+    public void setHomeSpawner(TrainerSpawnerBlockEntity be) {
+        this.homeSpawner = be;
+        this.setHomePos(be != null ? be.getBlockPos().above() : null);
+    }
+
     public BlockPos getHomePos() {
         return this.homePos;
+    }
+
+    public TrainerSpawnerBlockEntity getHomeSpawner() {
+        return this.homeSpawner;
     }
 
     public void finishBattle(TrainerBattle battle, boolean defeated) {

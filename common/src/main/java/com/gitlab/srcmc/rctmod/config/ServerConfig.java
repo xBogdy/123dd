@@ -52,7 +52,7 @@ public class ServerConfig implements IServerConfig {
     private final ConfigValue<List<? extends String>> dimensionWhitelistValue;
     private final ConfigValue<List<? extends String>> biomeTagBlacklistValue;
     private final ConfigValue<List<? extends String>> biomeTagWhitelistValue;
-    private final ConfigValue<List<? extends String>> trainerSpawnerItemsValue;
+    // private final ConfigValue<List<? extends String>> trainerSpawnerItemsValue;
 
     private double globalSpawnChanceCached;
     private double globalSpawnChanceMinimumCached;
@@ -70,8 +70,8 @@ public class ServerConfig implements IServerConfig {
     private List<? extends String> dimensionWhitelistCached;
     private List<? extends String> biomeTagBlacklistCached;
     private List<? extends String> biomeTagWhitelistCached;
-    private Map<String, List<String>> trainerSpawnerItemsParsed;
-    private Map<String, Set<Item>> trainerIdToSpawnerItems;
+    // private Map<String, List<String>> trainerSpawnerItemsParsed;
+    // private Map<String, Set<Item>> trainerIdToSpawnerItems;
 
     // players
     private final ConfigValue<Integer> initialLevelCapValue;
@@ -192,12 +192,12 @@ public class ServerConfig implements IServerConfig {
                 "biome (unless the list is empty). Trainers may also have additional tags defined by a data pack.")
             .defineList("biomeTagWhitelist", IServerConfig.super.biomeTagWhitelist(), String::new, element -> true);
         
-        this.trainerSpawnerItemsValue = builder
-            .comment(SEPARATOR,
-                "A list of items that can be used to configure a trainer spawner to spawn specific",
-                "trainers. Every entry must define an item followed by a space seperated list of",
-                "trainer ids (of which one will be randomly chosen to spawn).")
-            .defineList("trainerSpawnerItems", ServerConfig.trainerSpawnerItemList(IServerConfig.super.trainerSpawnerItems()), String::new, element -> true);
+        // this.trainerSpawnerItemsValue = builder
+        //     .comment(SEPARATOR,
+        //         "A list of items that can be used to configure a trainer spawner to spawn specific",
+        //         "trainers. Every entry must define an item followed by a space seperated list of",
+        //         "trainer ids (of which one will be randomly chosen to spawn).")
+        //     .defineList("trainerSpawnerItems", ServerConfig.trainerSpawnerItemList(IServerConfig.super.trainerSpawnerItems()), String::new, element -> true);
 
         builder.pop();
         builder.push("Players");
@@ -236,35 +236,35 @@ public class ServerConfig implements IServerConfig {
             .define("logSpawning", IServerConfig.super.logSpawning());
 
         this.spec = builder.build();
-        this.trainerSpawnerItemsParsed = new HashMap<>();
-        this.trainerIdToSpawnerItems = new HashMap<>();
+        // this.trainerSpawnerItemsParsed = new HashMap<>();
+        // this.trainerIdToSpawnerItems = new HashMap<>();
     }
 
     @Override
     public void reload() {
-        this.trainerSpawnerItemsParsed = new HashMap<>();
-        this.trainerIdToSpawnerItems = new HashMap<>();
+        // this.trainerSpawnerItemsParsed = new HashMap<>();
+        // this.trainerIdToSpawnerItems = new HashMap<>();
 
-        for(var entry : this.trainerSpawnerItemsValue.get()) {
-            ServerConfig.parseTrainerSpawnerItem(trainerSpawnerItemsParsed, entry);
-        }
+        // for(var entry : this.trainerSpawnerItemsValue.get()) {
+        //     ServerConfig.parseTrainerSpawnerItem(trainerSpawnerItemsParsed, entry);
+        // }
 
-        this.trainerSpawnerItemsParsed.forEach((itemKey, tids) -> {
-            var itemRl = ResourceLocation.parse(itemKey);
+        // this.trainerSpawnerItemsParsed.forEach((itemKey, tids) -> {
+        //     var itemRl = ResourceLocation.parse(itemKey);
 
-            if(BuiltInRegistries.ITEM.containsKey(itemRl)) {
-                var item = BuiltInRegistries.ITEM.get(itemRl);
+        //     if(BuiltInRegistries.ITEM.containsKey(itemRl)) {
+        //         var item = BuiltInRegistries.ITEM.get(itemRl);
 
-                tids.forEach(tid -> this.trainerIdToSpawnerItems.compute(tid, (k, v) -> {
-                    if(v == null) {
-                        v = new HashSet<>();
-                    }
+        //         tids.forEach(tid -> this.trainerIdToSpawnerItems.compute(tid, (k, v) -> {
+        //             if(v == null) {
+        //                 v = new HashSet<>();
+        //             }
 
-                    v.add(item);
-                    return v;
-                }));
-            }
-        });
+        //             v.add(item);
+        //             return v;
+        //         }));
+        //     }
+        // });
 
         this.updateCache();
     }
@@ -378,15 +378,15 @@ public class ServerConfig implements IServerConfig {
         return this.biomeTagWhitelistCached;
     }
 
-    @Override
-    public Map<String, List<String>> trainerSpawnerItems() {
-        return Collections.unmodifiableMap(this.trainerSpawnerItemsParsed);
-    }
+    // @Override
+    // public Map<String, List<String>> trainerSpawnerItems() {
+    //     return Collections.unmodifiableMap(this.trainerSpawnerItemsParsed);
+    // }
 
-    @Override
-    public Set<Item> spawnerItemsFor(String trainerId) {
-        return Collections.unmodifiableSet(this.trainerIdToSpawnerItems.getOrDefault(trainerId, Set.of()));
-    }
+    // @Override
+    // public Set<Item> spawnerItemsFor(String trainerId) {
+    //     return Collections.unmodifiableSet(this.trainerIdToSpawnerItems.getOrDefault(trainerId, Set.of()));
+    // }
 
     @Override
     public int initialLevelCap() {
@@ -413,22 +413,22 @@ public class ServerConfig implements IServerConfig {
         return this.logSpawningCached;
     }
 
-    public static void parseTrainerSpawnerItem(Map<String, List<String>> target, String trainerSpawnerItem) {
-        var values = trainerSpawnerItem.split(" ");
+    // public static void parseTrainerSpawnerItem(Map<String, List<String>> target, String trainerSpawnerItem) {
+    //     var values = trainerSpawnerItem.split(" ");
 
-        if(values.length > 1) {
-            // TODO: log errors (validation here?)
-            target.put(values[0], Arrays.stream(values).skip(1).toList());
-        }
-    }
+    //     if(values.length > 1) {
+    //         // TODO: log errors (validation here?)
+    //         target.put(values[0], Arrays.stream(values).skip(1).toList());
+    //     }
+    // }
 
-    public static List<String> trainerSpawnerItemList(Map<String, List<String>> trainerSpawnerItems) {
-        var list = new ArrayList<String>();
+    // public static List<String> trainerSpawnerItemList(Map<String, List<String>> trainerSpawnerItems) {
+    //     var list = new ArrayList<String>();
 
-        for(var entry : trainerSpawnerItems.entrySet()) {
-            list.add(String.format("%s%s", entry.getKey(), entry.getValue().stream().reduce("", (a, b) -> a + ' ' + b)));
-        }
+    //     for(var entry : trainerSpawnerItems.entrySet()) {
+    //         list.add(String.format("%s%s", entry.getKey(), entry.getValue().stream().reduce("", (a, b) -> a + ' ' + b)));
+    //     }
 
-        return list;
-    }
+    //     return list;
+    // }
 }

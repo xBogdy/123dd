@@ -214,44 +214,44 @@ public interface IServerConfig extends IModConfig {
      *  "cobblemon:life_orb" "champion_terry_01b6" "champion_terry_01b7" "champion_terry_01b8"
      * ]
      */
-    default Map<String, List<String>> trainerSpawnerItems() {
-        return Map.<String, List<String>>ofEntries(
-            Map.<String, List<String>>entry("cobblemon:hard_stone", List.of("leader_brock_019e")),
-            Map.<String, List<String>>entry("cobblemon:black_tumblestone", List.of("rocket_admin_archer_002e")),
-            Map.<String, List<String>>entry("minecraft:gold_nugget", List.of("rival_terry_014c", "rival_terry_014d", "rival_terry_014e")),
-            Map.<String, List<String>>entry("cobblemon:mystic_water", List.of("leader_misty_019f")),
-            Map.<String, List<String>>entry("cobblemon:silk_scarf", List.of("trainer_brendan_0032")),
-            Map.<String, List<String>>entry("cobblemon:magnet", List.of("leader_lt_surge_01a0")),
-            Map.<String, List<String>>entry("cobblemon:miracle_seed", List.of("leader_erika_01a1")),
-            Map.<String, List<String>>entry("cobblemon:upgrade", List.of("boss_giovanni_015c")),
-            Map.<String, List<String>>entry("cobblemon:soothe_bell", List.of("rival_terry_01b0", "rival_terry_01b1", "rival_terry_01b2")),
-            Map.<String, List<String>>entry("cobblemon:black_sludge", List.of("rocket_admin_archer_ariana_m000")),
-            Map.<String, List<String>>entry("cobblemon:dubious_disc", List.of("boss_giovanni_015d")),
-            Map.<String, List<String>>entry("cobblemon:twisted_spoon", List.of("leader_sabrina_01a4")),
-            Map.<String, List<String>>entry("cobblemon:expert_belt", List.of("trainer_brendan_0039")),
-            Map.<String, List<String>>entry("cobblemon:poison_barb", List.of("leader_koga_01a2")),
-            Map.<String, List<String>>entry("cobblemon:vivichoke", List.of("trainer_may_003d")),
-            Map.<String, List<String>>entry("cobblemon:charcoal_stick", List.of("leader_blaine_01a3")),
-            Map.<String, List<String>>entry("cobblemon:covert_cloak", List.of("rocket_admin_archer_0043")),
-            Map.<String, List<String>>entry("cobblemon:utility_umbrella", List.of("rocket_admin_ariana_0044")),
-            Map.<String, List<String>>entry("cobblemon:destiny_knot", List.of("boss_giovanni_0045")),
-            Map.<String, List<String>>entry("cobblemon:dragon_scale", List.of("leader_clair_004a")),
-            Map.<String, List<String>>entry("cobblemon:lucky_egg", List.of("rival_terry_01b3", "rival_terry_01b4", "rival_terry_01b5")),
-            Map.<String, List<String>>entry("cobblemon:choice_scarf", List.of("trainer_brendan_001a")),
-            Map.<String, List<String>>entry("cobblemon:cleanse_tag", List.of("elite_four_agatha_0053", "elite_four_agatha_0054")),
-            Map.<String, List<String>>entry("cobblemon:focus_band", List.of("elite_four_bruno_0050", "elite_four_bruno_0051")),
-            Map.<String, List<String>>entry("cobblemon:dragon_fang", List.of("elite_four_lance_0056", "elite_four_lance_0057")),
-            Map.<String, List<String>>entry("cobblemon:never_melt_ice", List.of("elite_four_lorelei_004d", "elite_four_lorelei_004e")),
-            Map.<String, List<String>>entry("cobblemon:life_orb", List.of("champion_terry_01b6", "champion_terry_01b7", "champion_terry_01b8"))
-        );
-    }
+    // default Map<String, List<String>> trainerSpawnerItems() {
+    //     return Map.<String, List<String>>ofEntries(
+    //         Map.<String, List<String>>entry("cobblemon:hard_stone", List.of("leader_brock_019e")),
+    //         Map.<String, List<String>>entry("cobblemon:black_tumblestone", List.of("rocket_admin_archer_002e")),
+    //         Map.<String, List<String>>entry("minecraft:gold_nugget", List.of("rival_terry_014c", "rival_terry_014d", "rival_terry_014e")),
+    //         Map.<String, List<String>>entry("cobblemon:mystic_water", List.of("leader_misty_019f")),
+    //         Map.<String, List<String>>entry("cobblemon:silk_scarf", List.of("trainer_brendan_0032")),
+    //         Map.<String, List<String>>entry("cobblemon:magnet", List.of("leader_lt_surge_01a0")),
+    //         Map.<String, List<String>>entry("cobblemon:miracle_seed", List.of("leader_erika_01a1")),
+    //         Map.<String, List<String>>entry("cobblemon:upgrade", List.of("boss_giovanni_015c")),
+    //         Map.<String, List<String>>entry("cobblemon:soothe_bell", List.of("rival_terry_01b0", "rival_terry_01b1", "rival_terry_01b2")),
+    //         Map.<String, List<String>>entry("cobblemon:black_sludge", List.of("rocket_admin_archer_ariana_m000")),
+    //         Map.<String, List<String>>entry("cobblemon:dubious_disc", List.of("boss_giovanni_015d")),
+    //         Map.<String, List<String>>entry("cobblemon:twisted_spoon", List.of("leader_sabrina_01a4")),
+    //         Map.<String, List<String>>entry("cobblemon:expert_belt", List.of("trainer_brendan_0039")),
+    //         Map.<String, List<String>>entry("cobblemon:poison_barb", List.of("leader_koga_01a2")),
+    //         Map.<String, List<String>>entry("cobblemon:vivichoke", List.of("trainer_may_003d")),
+    //         Map.<String, List<String>>entry("cobblemon:charcoal_stick", List.of("leader_blaine_01a3")),
+    //         Map.<String, List<String>>entry("cobblemon:covert_cloak", List.of("rocket_admin_archer_0043")),
+    //         Map.<String, List<String>>entry("cobblemon:utility_umbrella", List.of("rocket_admin_ariana_0044")),
+    //         Map.<String, List<String>>entry("cobblemon:destiny_knot", List.of("boss_giovanni_0045")),
+    //         Map.<String, List<String>>entry("cobblemon:dragon_scale", List.of("leader_clair_004a")),
+    //         Map.<String, List<String>>entry("cobblemon:lucky_egg", List.of("rival_terry_01b3", "rival_terry_01b4", "rival_terry_01b5")),
+    //         Map.<String, List<String>>entry("cobblemon:choice_scarf", List.of("trainer_brendan_001a")),
+    //         Map.<String, List<String>>entry("cobblemon:cleanse_tag", List.of("elite_four_agatha_0053", "elite_four_agatha_0054")),
+    //         Map.<String, List<String>>entry("cobblemon:focus_band", List.of("elite_four_bruno_0050", "elite_four_bruno_0051")),
+    //         Map.<String, List<String>>entry("cobblemon:dragon_fang", List.of("elite_four_lance_0056", "elite_four_lance_0057")),
+    //         Map.<String, List<String>>entry("cobblemon:never_melt_ice", List.of("elite_four_lorelei_004d", "elite_four_lorelei_004e")),
+    //         Map.<String, List<String>>entry("cobblemon:life_orb", List.of("champion_terry_01b6", "champion_terry_01b7", "champion_terry_01b8"))
+    //     );
+    // }
 
-    /**
-     * Retrieves a set of spawner items that are configured to spawn a trainer with the
-     * given trainer id. This values is not a config value but derived from {@link
-     * IServerConfig#trainerSpawnerItems()} on config reload.
-     */
-    default Set<Item> spawnerItemsFor(String trainerId) { return Set.of(); }
+    // /**
+    //  * Retrieves a set of spawner items that are configured to spawn a trainer with the
+    //  * given trainer id. This values is not a config value but derived from {@link
+    //  * IServerConfig#trainerSpawnerItems()} on config reload.
+    //  */
+    // default Set<Item> spawnerItemsFor(String trainerId) { return Set.of(); }
 
     /**
      * Initial level cap of players. Pokemon will not gain any experience if at or

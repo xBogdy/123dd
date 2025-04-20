@@ -43,6 +43,7 @@ public class TrainerMobData implements IDataPackObject, Serializable {
     private static final long serialVersionUID = 0L;
 
     private String type = "normal";
+    private String signatureItem = "";
     private List<Set<String>> requiredDefeats = new ArrayList<>();
     private Set<String> series = new HashSet<>();
     private Set<String> substitutes = new HashSet<>();
@@ -74,6 +75,7 @@ public class TrainerMobData implements IDataPackObject, Serializable {
 
     public TrainerMobData(TrainerMobData origin) {
         this.type = origin.type;
+        this.signatureItem = origin.signatureItem;
         this.rewardLevelCap = origin.rewardLevelCap;
         this.requiredDefeats = List.copyOf(origin.requiredDefeats);
         this.followdBy = Set.copyOf(origin.followdBy);
@@ -217,6 +219,10 @@ public class TrainerMobData implements IDataPackObject, Serializable {
 
     public TrainerTeam getTrainerTeam() {
         return this.trainerTeam;
+    }
+
+    public String getSignatureItem() {
+        return this.signatureItem;
     }
 
     @Override

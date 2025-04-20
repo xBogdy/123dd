@@ -393,16 +393,16 @@ public class TrainerSpawner {
         return 0;
     }
 
-    public boolean attemptSpawnFor(Player player, String trainerId, BlockPos pos) {
+    public TrainerMob attemptSpawnFor(Player player, String trainerId, BlockPos pos) {
         return this.attemptSpawnFor(player, trainerId, pos, false, false);
     }
 
-    public boolean attemptSpawnFor(Player player, String trainerId, BlockPos pos, boolean setHome, boolean noOrigin) {
+    public TrainerMob attemptSpawnFor(Player player, String trainerId, BlockPos pos, boolean setHome, boolean noOrigin) {
         var cfg = RCTMod.getInstance().getServerConfig();
         return this.attemptSpawnFor(player, trainerId, pos, setHome, noOrigin, false, cfg.globalSpawnChance(), cfg.globalSpawnChanceMinimum());
     }
 
-    public boolean attemptSpawnFor(Player player, String trainerId, BlockPos pos, boolean setHome, boolean noOrigin, boolean guaruantee, double globalChance, double globalChanceMin) {
+    public TrainerMob attemptSpawnFor(Player player, String trainerId, BlockPos pos, boolean setHome, boolean noOrigin, boolean guaruantee, double globalChance, double globalChanceMin) {
         var level = player.level();
 
         if(RCTMod.getInstance().getTrainerManager().isValidId(trainerId) && (noOrigin || !this.isMarkedAt(level, pos)) && TrainerSpawner.canSpawnAt(level, pos) && this.canSpawnFor(player, noOrigin, globalChance, globalChanceMin)) {
@@ -410,13 +410,12 @@ public class TrainerSpawner {
 
             if(tmd != null && this.isUnique(tmd.getTrainerTeam().getIdentity())) {
                 if(guaruantee || this.computeChance(player, trainerId, tmd) >= player.getRandom().nextDouble()) {
-                    this.spawnFor(player, trainerId, pos, setHome, noOrigin);
-                    return true;
+                    return this.spawnFor(player, trainerId, pos, setHome, noOrigin);
                 }
             }
         }
 
-        return false;
+        return null;
     }
 
     public boolean attemptSpawnFor(Player player) {
@@ -465,11 +464,11 @@ public class TrainerSpawner {
                 && (!config.spawningRequiresTrainerCard() || TrainerCard.has(player)));
     }
 
-    private void spawnFor(Player player, String trainerId, BlockPos pos) {
-        this.spawnFor(player, trainerId, pos, false, false);
+    private TrainerMob spawnFor(Player player, String trainerId, BlockPos pos) {
+        return this.spawnFor(player, trainerId, pos, false, false);
     }
 
-    private void spawnFor(Player player, String trainerId, BlockPos pos, boolean setHome, boolean noOrigin) {
+    private TrainerMob spawnFor(Player player, String trainerId, BlockPos pos, boolean setHome, boolean noOrigin) {
         var config = RCTMod.getInstance().getServerConfig();
         var level = player.level();
         var mob = TrainerMob.getEntityType().create(level);
@@ -500,6 +499,8 @@ public class TrainerSpawner {
                 dim.location().getPath(),
                 biome.tags().map(t -> t.location().getPath()).reduce("", (t1, t2) -> t1 + " " + t2)));
         }
+
+        return mob;
     }
 
     @SuppressWarnings("unused")

@@ -30,31 +30,43 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider.Con
 import net.minecraft.world.item.ItemDisplayContext;
 
 public class TrainerSpawnerBlockEntityRenderer implements BlockEntityRenderer<TrainerSpawnerBlockEntity> {
-    private Quaternionf rotationY = new Quaternionf();
-    private Quaternionf targetRotationY = new Quaternionf();
-    private double translationY = 0.425;
+    private static final double PI2 = 2*org.joml.Math.PI;
 
     public TrainerSpawnerBlockEntityRenderer(Context context) {
     }
 
     @Override
     public void render(TrainerSpawnerBlockEntity be, float f, PoseStack poseStack, MultiBufferSource multiBufferSource, int i, int j) {
-        var item = be.getRenderItem();
+        double m = be.getRenderItems().size();
+        int n = 0;
 
-        if(item != null) {
-            var p = (be.getLevel().getGameTime() + f) * Math.PI / (TrainerSpawnerBlock.isPowered(be.getBlockState()) ? 20 : 60);
-            var targetRotationY = new Quaternionf().rotateLocalY((float)p);
+        var t = (be.getLevel().getGameTime() + f)/(TrainerSpawnerBlock.isPowered(be.getBlockState()) ? 20.0 : 60.0);
+        var d = (int)t;
 
-            this.targetRotationY.slerp(targetRotationY, 0.05f);
-            this.rotationY.slerp(this.targetRotationY, 0.05f);
-            this.translationY = org.joml.Math.lerp(this.translationY, 0.425 + Math.sin(p/2) * 0.05, 0.025);
+        be.renderState.targetP = ((d%2) + (t - d)) * org.joml.Math.PI;
+        be.renderState.p = wlerp(be.renderState.p, be.renderState.targetP, 0.05f, PI2);
+
+        var rotationY = new Quaternionf().rotateLocalY((float)be.renderState.p);
+        var translationY = 0.425 + org.joml.Math.sin(be.renderState.p/2) * 0.05;
+
+        for(var item : be.getRenderItems()) {
+            var x = m > 1 ? (0.5 + 0.15 * org.joml.Math.cos(be.renderState.p + PI2*n/m)) : 0.5;
+            var z = m > 1 ? (0.5 + 0.15 * org.joml.Math.sin(be.renderState.p + PI2*n/m)) : 0.5;
 
             poseStack.pushPose();
-            poseStack.translate(0.5, this.translationY, 0.5);
+            poseStack.translate(x, translationY, z);
             poseStack.scale(0.75f, 0.75f, 0.75f);
-            poseStack.mulPose(this.rotationY);
+            poseStack.mulPose(rotationY);
             Minecraft.getInstance().getItemRenderer().renderStatic(item.getDefaultInstance(), ItemDisplayContext.GROUND, i, j, poseStack, multiBufferSource, be.getLevel(), 0);
             poseStack.popPose();
+            n++;
         }
+    }
+
+    // neither 'from', 'to' or 'f' may be greater than max
+    private static double wlerp(double from, double to, double f, double max) {
+        var d = from > to ? (to + max - from) : (to - from);
+        var t = from + d*f;
+        return t > max ? t - max : t;
     }
 }

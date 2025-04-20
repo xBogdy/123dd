@@ -17,6 +17,9 @@
  */
 package com.gitlab.srcmc.rctmod.world.blocks;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.jetbrains.annotations.Nullable;
 
 import com.gitlab.srcmc.rctmod.ModRegistries;
@@ -26,11 +29,14 @@ import com.mojang.serialization.MapCodec;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
@@ -45,11 +51,14 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.Property;
+import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
 
 public class TrainerSpawnerBlock extends BaseEntityBlock {
     public static final MapCodec<TrainerSpawnerBlock> CODEC = TrainerSpawnerBlock.simpleCodec(TrainerSpawnerBlock::new);
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
+    public static final BooleanProperty LOOTABLE = BooleanProperty.create("lootable");
 
     public static boolean isPowered(BlockState blockState) {
         return blockState.getValue(POWERED);
@@ -57,6 +66,14 @@ public class TrainerSpawnerBlock extends BaseEntityBlock {
 
     static BlockState setPowered(BlockState blockState, boolean value) {
         return blockState.setValue(POWERED, value);
+    }
+
+    public static boolean isLootable(BlockState blockState) {
+        return blockState.getValue(LOOTABLE);
+    }
+
+    static BlockState setLootable(BlockState blockState, boolean value) {
+        return blockState.setValue(LOOTABLE, value);
     }
 
     // sub-optimal for ai pathing (TODO: adjust model?)
@@ -74,17 +91,54 @@ public class TrainerSpawnerBlock extends BaseEntityBlock {
 
     public TrainerSpawnerBlock(BlockBehaviour.Properties properties) {
         super(properties);
-        this.registerDefaultState((BlockState)this.defaultBlockState().setValue(POWERED, false));
+        this.registerDefaultState(this.defaultBlockState()
+            .setValue(POWERED, false)
+            .setValue(LOOTABLE, true));
     }
 
     @Override
     protected void onPlace(BlockState blockState, Level level, BlockPos blockPos, BlockState blockState2, boolean bl) {
         checkNeighbour(blockState, level, blockPos);
+        super.onPlace(blockState, level, blockPos, blockState2, bl);
+    }
+
+    @Override
+    protected void onRemove(BlockState blockState, Level level, BlockPos blockPos, BlockState blockState2, boolean bl) {
+        if(!blockState.is(blockState2.getBlock())) {
+            level.getBlockEntity(blockPos, ModRegistries.BlockEntityTypes.TRAINER_SPAWNER.get()).ifPresent(be -> be.setOwner(null));
+        }
+
+        super.onRemove(blockState, level, blockPos, blockState2, bl);
+    }
+
+    @Override
+    protected List<ItemStack> getDrops(BlockState blockState, LootParams.Builder builder) {
+        if(isLootable(blockState)) {
+            var be = builder.getOptionalParameter(LootContextParams.BLOCK_ENTITY);
+
+            if(be instanceof TrainerSpawnerBlockEntity sbe) {
+                var drops = new ArrayList<>(super.getDrops(blockState, builder));
+                var tm = RCTMod.getInstance().getTrainerManager();
+                var reg = BuiltInRegistries.ITEM;
+
+                sbe.getTrainerIds().stream().map(tm::getData)
+                    .filter(t -> t.getSignatureItem() != null && !t.getSignatureItem().isBlank())
+                    .map(t -> reg.get(ResourceLocation.parse(t.getSignatureItem())))
+                    .distinct().filter(i -> i != null && i != Items.AIR)
+                    .map(i -> i.getDefaultInstance())
+                    .forEach(drops::add);
+
+                return drops;
+            }
+        }
+
+        return super.getDrops(blockState, builder);
     }
 
     @Override
     protected void neighborChanged(BlockState blockState, Level level, BlockPos blockPos, Block block, BlockPos blockPos2, boolean bl) {
         checkNeighbour(blockState, level, blockPos);
+        super.neighborChanged(blockState, level, blockPos, block, blockPos2, bl);
     }
 
     private static void checkNeighbour(BlockState blockState, Level level, BlockPos blockPos) {
@@ -107,7 +161,7 @@ public class TrainerSpawnerBlock extends BaseEntityBlock {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(new Property[]{POWERED});
+        builder.add(new Property[]{POWERED, LOOTABLE});
     }
 
     @Override
@@ -115,18 +169,12 @@ public class TrainerSpawnerBlock extends BaseEntityBlock {
         var result = ItemInteractionResult.FAIL;
 
         if(level.getBlockEntity(blockPos) instanceof TrainerSpawnerBlockEntity be) {
-            if(be.getRenderItemKey() == null) {
-                var spawnerItems = RCTMod.getInstance().getServerConfig().trainerSpawnerItems();
-                var itemKey = itemStack.getItem().arch$registryName().toString();
-
-                if(spawnerItems.keySet().contains(itemKey)) {
-                    if(!level.isClientSide) {
-                        be.setRenderItem(itemKey);
-                        itemStack.consume(1, player);
-                    }
-                    
-                    result = ItemInteractionResult.SUCCESS;
+            if(be.addTrainerIdsFromItem(itemStack)) {
+                if(!level.isClientSide) {
+                    itemStack.consume(1, player);
                 }
+                
+                result = ItemInteractionResult.SUCCESS;
             }
         }
 
