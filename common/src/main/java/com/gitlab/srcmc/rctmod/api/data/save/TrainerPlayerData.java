@@ -235,7 +235,7 @@ public class TrainerPlayerData extends SavedData {
     }
 
     public void addSeriesCompletion(String seriesId, int n) {
-        this.completedSeries.compute(seriesId, (k, v) -> v == null ? (n > 0 ? n : null) : n + v > 0 ? n + v : null);
+        this.completedSeries.compute(seriesId, (k, v) -> v == null ? (n > 0 ? n : null) : (n + v) > 0 ? (n + v) : null);
     }
 
     public void removeSeriesCompletion(String seriesId) {
