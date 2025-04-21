@@ -60,6 +60,7 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
 
     private double minPlayerDistance;
     private double maxPlayerDistance;
+    private boolean updated;
 
     private Set<Item> renderItems = new HashSet<>();
     private Timer ownerUpdateTimer = new Timer();
@@ -113,11 +114,11 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
             this.trainerIds.addAll(tag.getCompound("TrainerIds").getAllKeys());
         }
 
-        this.updateRenderItems();
         this.updateOwner();
+        this.updated = true;
     }
 
-    private void updateRenderItems() {
+    private void updateRenderItems(Level level) {
         this.renderItems.clear();
         var tm = RCTMod.getInstance().getTrainerManager();
 
@@ -128,9 +129,10 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
                 var rl = ResourceLocation.parse(renderItemKey);
 
                 if(!BuiltInRegistries.ITEM.containsKey(rl)) {
-                    ModCommon.LOG.info(String.format("Invalid Trainer Spawner item for '%s': %s", tid, rl.toString()));
+                    ModCommon.LOG.error(String.format("Invalid Trainer Spawner item for '%s': %s", tid, rl.toString()));
                 } else {
-                    this.renderItems.add(BuiltInRegistries.ITEM.get(rl));
+                    var item = BuiltInRegistries.ITEM.get(rl);
+                    this.renderItems.add(item);
                 }
             }
         });
@@ -209,7 +211,6 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
             });
 
         if(added[0]) {
-            this.updateRenderItems();
             this.setChanged();
             this.syncToClients();
         }
@@ -296,6 +297,10 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
     }
 
     public static void clientTick(Level level, BlockPos blockPos, BlockState blockState, TrainerSpawnerBlockEntity be) {
+        if(be.updated && !RCTMod.getInstance().getTrainerManager().isLoading()) {
+            be.updateRenderItems(level);
+            be.updated = false;
+        }
     }
 
     public class RenderState {
