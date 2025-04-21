@@ -243,12 +243,14 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
     public boolean wasDefeatedBy(UUID opponentUUID) {
         var wd = this.winsAndDefeats.get(opponentUUID);
-        return wd != null && wd[1] >= RCTMod.getInstance().getTrainerManager().getData(this).getMaxTrainerDefeats();
+        var md =  RCTMod.getInstance().getTrainerManager().getData(this).getMaxTrainerDefeats();
+        return md >= 0 && wd != null && wd[1] >= md;
     }
 
     public boolean wasVictoriousAgainst(UUID opponentUUID) {
         var wd = this.winsAndDefeats.get(opponentUUID);
-        return wd != null && wd[0] >= RCTMod.getInstance().getTrainerManager().getData(this).getMaxTrainerWins();
+        var mw = RCTMod.getInstance().getTrainerManager().getData(this).getMaxTrainerWins();
+        return mw >= 0 && wd != null && wd[0] >= mw;
     }
 
     public boolean wasDefeated() {
