@@ -60,7 +60,6 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
 
     private double minPlayerDistance;
     private double maxPlayerDistance;
-    private boolean blockUpdated;
 
     private Set<Item> renderItems = new HashSet<>();
     private Timer ownerUpdateTimer = new Timer();
@@ -129,14 +128,11 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
                 }
             }
         });
-
-        this.blockUpdated = true;
     }
 
-    private void syncToClients(Level level) {
-        if(this.blockUpdated) {
+    private void syncToClients() {
+        if(this.level != null && !this.level.isClientSide) {
             this.level.sendBlockUpdated(this.getBlockPos(), this.getBlockState(), this.getBlockState(), Block.UPDATE_CLIENTS);
-            this.blockUpdated = false;
         }
     }
 
@@ -169,6 +165,7 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
         if(!Objects.equals(this.ownerUUID, ownerUUID)) {
             this.ownerUUID = ownerUUID;
             this.setChanged();
+            this.syncToClients();
         }
     }
 
@@ -208,6 +205,7 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
         if(added[0]) {
             this.updateRenderItems();
             this.setChanged();
+            this.syncToClients();
         }
 
         return added[0];
@@ -262,7 +260,6 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
 
     private void scanForTrainerNearby(Level level) {
         var trainerIds = this.getTrainerIds();
-        // ModCommon.LOG.info("SCAN: " + this.hashCode() + ": " + level.getGameTime() + ", " + this.scanTimer.passed(level.getGameTime()));
 
         level.getNearbyEntities(
                 TrainerMob.class,
@@ -270,13 +267,10 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
                 null, this.aabb).stream()
             .filter(t -> trainerIds.contains(t.getTrainerId()))
             .filter(t -> t.getHomePos() == null || t.getRandom().nextDouble() < HOME_SWITCH_CHANCE)
-            // .map(t -> { ModCommon.LOG.info("SELECT: " + t.getTrainerId() + ", " + t.getHomePos()); return t; })
             .findAny().ifPresent(t -> this.setOwner(t));
     }
 
     public static void serverTick(Level level, BlockPos blockPos, BlockState blockState, TrainerSpawnerBlockEntity be) {
-        // be.syncToClients(level); // TODO
-
         if(be.ownerUpdateTimer.passed(level.getGameTime()) >= OWNER_UPDATE_INTERVAL_TICKS) {
             be.updateOwner();
             be.ownerUpdateTimer.reset(level.getGameTime());
@@ -284,7 +278,6 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
 
         if(be.getTrainerIds().size() > 0) {
             if(be.ownerUUID == null && be.spawnTimer.passed(level.getGameTime()) >= SPAWN_INTERVAL_TICKS) {
-                // ModCommon.LOG.info("SPAWN ATTEMPT: " + be.hashCode() + ": " + be.ownerUUID + ", " + be.ownerTrainer);
                 be.attemptSpawn(level, blockPos, blockState);
                 be.spawnTimer.reset(level.getGameTime());
             }

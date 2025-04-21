@@ -375,7 +375,6 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
             if(!Objects.equals(currentHome, blockPos)) {
                 this.homePos = blockPos;
-                ModCommon.LOG.info("NEW HOME " + this.getTrainerId() + ", " + this.homePos);
             }
         }
     }
