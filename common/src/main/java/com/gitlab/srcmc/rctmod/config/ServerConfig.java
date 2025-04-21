@@ -17,20 +17,9 @@
  */
 package com.gitlab.srcmc.rctmod.config;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import com.gitlab.srcmc.rctmod.api.config.IServerConfig;
 
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.common.ModConfigSpec;
 import net.neoforged.neoforge.common.ModConfigSpec.ConfigValue;
 
@@ -52,7 +41,6 @@ public class ServerConfig implements IServerConfig {
     private final ConfigValue<List<? extends String>> dimensionWhitelistValue;
     private final ConfigValue<List<? extends String>> biomeTagBlacklistValue;
     private final ConfigValue<List<? extends String>> biomeTagWhitelistValue;
-    // private final ConfigValue<List<? extends String>> trainerSpawnerItemsValue;
 
     private double globalSpawnChanceCached;
     private double globalSpawnChanceMinimumCached;
@@ -70,8 +58,6 @@ public class ServerConfig implements IServerConfig {
     private List<? extends String> dimensionWhitelistCached;
     private List<? extends String> biomeTagBlacklistCached;
     private List<? extends String> biomeTagWhitelistCached;
-    // private Map<String, List<String>> trainerSpawnerItemsParsed;
-    // private Map<String, Set<Item>> trainerIdToSpawnerItems;
 
     // players
     private final ConfigValue<Integer> initialLevelCapValue;
@@ -102,7 +88,7 @@ public class ServerConfig implements IServerConfig {
             .comment(SEPARATOR,
                 "The chance for a trainer to spawn will shrink towards this value based of how many",
                 "trainers are already spawned in for a player. For example if a player has 0 trainers",
-                "spawned for them the chance will be as configured by globalSpawnChance if a player",
+                "spawned for them the chance will be as configured by globalSpawnChance, if a player",
                 "has barely filled up their spawn cap (maxTrainersPerPlayer), i.e. only one more free",
                 "spot is left, the chance for the last trainer will be as configured by globalSpawnChanceMinimum.",
                 "Set to any value equal to or above globalSpawnChance to disable (e.g. 1.0).")
@@ -191,13 +177,6 @@ public class ServerConfig implements IServerConfig {
                 "A biome must have atleast one of the given tags attached to it, for a trainer to spawn in that",
                 "biome (unless the list is empty). Trainers may also have additional tags defined by a data pack.")
             .defineList("biomeTagWhitelist", IServerConfig.super.biomeTagWhitelist(), String::new, element -> true);
-        
-        // this.trainerSpawnerItemsValue = builder
-        //     .comment(SEPARATOR,
-        //         "A list of items that can be used to configure a trainer spawner to spawn specific",
-        //         "trainers. Every entry must define an item followed by a space seperated list of",
-        //         "trainer ids (of which one will be randomly chosen to spawn).")
-        //     .defineList("trainerSpawnerItems", ServerConfig.trainerSpawnerItemList(IServerConfig.super.trainerSpawnerItems()), String::new, element -> true);
 
         builder.pop();
         builder.push("Players");
@@ -236,36 +215,10 @@ public class ServerConfig implements IServerConfig {
             .define("logSpawning", IServerConfig.super.logSpawning());
 
         this.spec = builder.build();
-        // this.trainerSpawnerItemsParsed = new HashMap<>();
-        // this.trainerIdToSpawnerItems = new HashMap<>();
     }
 
     @Override
     public void reload() {
-        // this.trainerSpawnerItemsParsed = new HashMap<>();
-        // this.trainerIdToSpawnerItems = new HashMap<>();
-
-        // for(var entry : this.trainerSpawnerItemsValue.get()) {
-        //     ServerConfig.parseTrainerSpawnerItem(trainerSpawnerItemsParsed, entry);
-        // }
-
-        // this.trainerSpawnerItemsParsed.forEach((itemKey, tids) -> {
-        //     var itemRl = ResourceLocation.parse(itemKey);
-
-        //     if(BuiltInRegistries.ITEM.containsKey(itemRl)) {
-        //         var item = BuiltInRegistries.ITEM.get(itemRl);
-
-        //         tids.forEach(tid -> this.trainerIdToSpawnerItems.compute(tid, (k, v) -> {
-        //             if(v == null) {
-        //                 v = new HashSet<>();
-        //             }
-
-        //             v.add(item);
-        //             return v;
-        //         }));
-        //     }
-        // });
-
         this.updateCache();
     }
 
@@ -378,16 +331,6 @@ public class ServerConfig implements IServerConfig {
         return this.biomeTagWhitelistCached;
     }
 
-    // @Override
-    // public Map<String, List<String>> trainerSpawnerItems() {
-    //     return Collections.unmodifiableMap(this.trainerSpawnerItemsParsed);
-    // }
-
-    // @Override
-    // public Set<Item> spawnerItemsFor(String trainerId) {
-    //     return Collections.unmodifiableSet(this.trainerIdToSpawnerItems.getOrDefault(trainerId, Set.of()));
-    // }
-
     @Override
     public int initialLevelCap() {
         return this.initialLevelCapCached;
@@ -412,23 +355,4 @@ public class ServerConfig implements IServerConfig {
     public boolean logSpawning() {
         return this.logSpawningCached;
     }
-
-    // public static void parseTrainerSpawnerItem(Map<String, List<String>> target, String trainerSpawnerItem) {
-    //     var values = trainerSpawnerItem.split(" ");
-
-    //     if(values.length > 1) {
-    //         // TODO: log errors (validation here?)
-    //         target.put(values[0], Arrays.stream(values).skip(1).toList());
-    //     }
-    // }
-
-    // public static List<String> trainerSpawnerItemList(Map<String, List<String>> trainerSpawnerItems) {
-    //     var list = new ArrayList<String>();
-
-    //     for(var entry : trainerSpawnerItems.entrySet()) {
-    //         list.add(String.format("%s%s", entry.getKey(), entry.getValue().stream().reduce("", (a, b) -> a + ' ' + b)));
-    //     }
-
-    //     return list;
-    // }
 }
