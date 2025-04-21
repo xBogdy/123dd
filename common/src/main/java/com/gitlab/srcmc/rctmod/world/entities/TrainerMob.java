@@ -647,6 +647,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
         compoundTag.putInt("Cooldown", this.getCooldown());
         compoundTag.putString("TrainerId", this.getTrainerId());
         compoundTag.putBoolean("Persistent", this.isPersistenceRequired());
+        compoundTag.putBoolean("InBattle", this.isInBattle());
 
         if(this.homePos != null) {
             compoundTag.putLong("HomePos", this.homePos.asLong());
