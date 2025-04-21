@@ -92,6 +92,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
         .sized(0.6F, 1.95F).build("trainer");
 
     final static int TICKS_TO_DESPAWN = 600;
+    final static int TICKS_TO_DETACH = 600;
     final static int DESPAWN_TICK_SCALE = 20;
     final static int DESPAWN_DISTANCE = 128;
     final static int MAX_PLAYER_TRACKING_RANGE = 128;
@@ -106,10 +107,12 @@ public class TrainerMob extends PathfinderMob implements Npc {
     private Map<UUID, int[]> winsAndDefeats = new HashMap<>();
     private int cooldown;
     private int extraCooldown;
+    private int detachTicks;
     private Player opponent;
     private UUID originPlayer;
     private boolean persistent;
     private int despawnTicks;
+    private boolean done;
     private BlockPos homePos;
     private TrainerSpawnerBlockEntity homeSpawner;
     private List<PlayerTransform> nearestTransforms = new ArrayList<>();
@@ -444,8 +447,9 @@ public class TrainerMob extends PathfinderMob implements Npc {
                 this.addWins(opponent, 1);
             }
 
-            if(this.originPlayer != null && (this.wasDefeatedBy(this.originPlayer) || this.wasVictoriousAgainst(this.originPlayer))) {
-                this.setOriginPlayer(null);
+            if(!this.done && (this.wasDefeatedBy(opponent.getUUID()) || this.wasVictoriousAgainst(opponent.getUUID()))) {
+                this.detachTicks = TICKS_TO_DETACH;
+                this.done = true;
             }
         }
     }
@@ -489,6 +493,14 @@ public class TrainerMob extends PathfinderMob implements Npc {
         if(!level.isClientSide) {
             if(this.cooldown > 0) {
                 this.cooldown--;
+            }
+            
+            if(this.done && this.originPlayer != null) {
+                if(this.detachTicks > 0) {
+                    this.detachTicks--;
+                } else {
+                    this.setOriginPlayer(null);
+                }
             }
 
             if(this.extraCooldown > 0 && this.isInBattle()) {
