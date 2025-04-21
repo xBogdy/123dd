@@ -4,23 +4,24 @@
 
 **Added:**
 
-- *#275* *Trainer Repel Rod*: Prevents trainers from naturally spawning in a `7x7` chunk area
-- *#274* New `signatureItem` property for trainers: Formerly known as `trainerSpawnerItems` these are now configured per *trainer mob* (data pack object), yet they still serve the same purpose (items to configure a Trainer Spawner). Updated current trainers to match the previous default configuration and defined signature items for all required trainers of the *bdsp* and *unbound* series (TODO)
+- *#276* *Trainer Repel Rod*: Prevents trainers from naturally spawning in a `7x7` chunk area
+- *#275* New `signatureItem` property for trainers: Formerly known as `trainerSpawnerItems` these are now configured per *trainer mob* (data pack object), yet they still serve the same purpose (items to configure a Trainer Spawner). Updated current trainers to match the previous default configuration and defined signature items for all required trainers of the *bdsp* and *unbound* series (TODO)
 
 **Changed:**
 
-- *#273* Configured distinct *identities* for *Team Rocket Grunts*, *Bug Catchers* and other *nameless* trainers so that different versions can spawn at the same time (TODO)
-- *#272* Improved language support
+- *#274* Configured distinct *identities* for *Team Rocket Grunts*, *Bug Catchers* and other *nameless* trainers so that different versions can spawn at the same time (TODO)
+- *#273* Improved language support
   - The `title` and `description` of series, the `name` of trainers (TODO) and trainer types as well as dialogs now alternatively accept a json object with a `translatable` and/or `literal` field as value (setting directly a string is equivalent to defining a object with a `literal` field having that string)
   - Updated/Added `en_us` language keys
-- *#271* Overhauled some features of the *Trainer Spawner* block
+- *#272* Overhauled some features of the *Trainer Spawner* block
   - Added `TrainerIds` block entity tag: Now also supports trainers that do not have any *signature items* configured (e.g. it is now possible to *generate* Trainer Spawners with arbitrary lists of trainer ids)
   - Added block state property `lootable` (default is `true`): Set to `false` to prevent signature items from getting dropped
   - Can now be configured with multiple items at the same time
   - Fixed some issues with trainers not properly occupying trainer spawners: A spawner may not spawn another trainer if it is already occupied
-  - Removed `renderItemKey` block entity tag: Render items are now derived from the configured trainer id list (see also *#274*)
+  - Removed `renderItemKey` block entity tag: Render items are now derived from the configured trainer id list (see also *#275*)
   - The block now also drops all *signature items* for the configured trainers when destroyed
   - Trainers that occupy a trainer spawner have a slight chance to switch to another non-occupied trainer spawner - with the correct *signature item* - in their vicinity (they did this already but somewhat uncontrolled, this should be fixed now)
+- *#271* Trainer cooldowns and defeat count restrictions: Trainers can now be battled indefinetely until beaten but their cooldowns will grow larger when losing frequently in a short time span against them
 
 **Fixed:**
 
@@ -29,7 +30,7 @@
 
 **Removed:**
 
-- *#268* Config option `trainerSpawnerItems` (see also *#274*)
+- *#268* Config option `trainerSpawnerItems` (see also *#275*)
 
 ## [0.14.3-beta] - 2025-03-29
 

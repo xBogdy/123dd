@@ -105,6 +105,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
     private Map<UUID, int[]> winsAndDefeats = new HashMap<>();
     private int cooldown;
+    private int extraCooldown;
     private Player opponent;
     private UUID originPlayer;
     private boolean persistent;
@@ -165,6 +166,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
         if(this.canBattleAgainst(player)) {
             if(RCTMod.getInstance().makeBattle(this, player)) {
                 this.setOpponent(player);
+                this.extraCooldown += (int)(1.5 * RCTMod.getInstance().getTrainerManager().getData(this).getBattleCooldownTicks());
                 RCTMod.getInstance().getTrainerManager().addBattle(player, this);
                 ChatUtils.reply(this, player, "on_battle_start");
             }
@@ -399,7 +401,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
             var mobTr = RCTMod.getInstance().getTrainerManager().getData(this);
             var opponent = this.getOpponent();
 
-            this.cooldown = mobTr.getBattleCooldownTicks();
+            this.cooldown = mobTr.getBattleCooldownTicks() + this.extraCooldown;
             this.setOpponent(null);
             this.setTarget(null);
 
@@ -485,6 +487,10 @@ public class TrainerMob extends PathfinderMob implements Npc {
         if(!level.isClientSide) {
             if(this.cooldown > 0) {
                 this.cooldown--;
+            }
+
+            if(this.extraCooldown > 0 && this.isInBattle()) {
+                this.extraCooldown--;
             }
 
             if(this.trainerIdCheckFails > 0 && --this.trainerIdCheckRetryTicks < 0) {
