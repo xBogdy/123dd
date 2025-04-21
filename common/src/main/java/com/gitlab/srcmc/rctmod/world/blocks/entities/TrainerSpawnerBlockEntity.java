@@ -103,6 +103,12 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
         this.trainerIds.clear();
         this.ownerUUID = tag.contains("OwnerUUID") ? tag.getUUID("OwnerUUID") : null;
 
+        // pre 0.15
+        if(tag.contains("renderItemKey")) {
+            var item = BuiltInRegistries.ITEM.get(ResourceLocation.parse(tag.getString("renderItemKey")));
+            this.addTrainerIdsFromItem(item.getDefaultInstance());
+        }
+
         if(tag.contains("TrainerIds")) {
             this.trainerIds.addAll(tag.getCompound("TrainerIds").getAllKeys());
         }
