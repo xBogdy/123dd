@@ -1,5 +1,6 @@
 {
   "name": "Team Rocket Admin",
+  "identity": "team_rocket_admin_0",
   "ai": {
     "type": "rct",
     "data": {

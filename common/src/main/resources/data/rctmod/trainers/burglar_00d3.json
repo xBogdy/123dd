@@ -1,5 +1,6 @@
 {
   "name": "Burglar",
+  "identity": "burglar_0",
   "team": [
     {
       "species": "growlithe",
