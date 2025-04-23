@@ -97,6 +97,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
     final static int DESPAWN_DISTANCE = 128;
     final static int MAX_PLAYER_TRACKING_RANGE = 128;
     final static int TARGET_UPDATE_INTERVAL = 120;
+    static final int BASE_BATTLE_COOLDOWN_TICKS = 400;
 
     static final int AFK_CHECK_INTERVAL_TICKS = 2400;
     static final int AFK_CHECK_MAX_COUNT = 6;
@@ -169,7 +170,6 @@ public class TrainerMob extends PathfinderMob implements Npc {
         if(this.canBattleAgainst(player)) {
             if(RCTMod.getInstance().makeBattle(this, player)) {
                 this.setOpponent(player);
-                this.extraCooldown += (int)(1.5 * RCTMod.getInstance().getTrainerManager().getData(this).getBattleCooldownTicks());
                 RCTMod.getInstance().getTrainerManager().addBattle(player, this);
                 ChatUtils.reply(this, player, "on_battle_start");
             }
@@ -407,6 +407,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
             var opponent = this.getOpponent();
 
             this.cooldown = mobTr.getBattleCooldownTicks() + this.extraCooldown;
+            this.extraCooldown += this.cooldown;
             this.setOpponent(null);
             this.setTarget(null);
 
@@ -493,18 +494,18 @@ public class TrainerMob extends PathfinderMob implements Npc {
         if(!level.isClientSide) {
             if(this.cooldown > 0) {
                 this.cooldown--;
+            } else if(this.extraCooldown > 0) {
+                if(!this.isInBattle() || (this.tickCount % 2) == 0) {
+                    this.extraCooldown--;
+                }
             }
-            
+
             if(this.done && this.originPlayer != null) {
                 if(this.detachTicks > 0) {
                     this.detachTicks--;
                 } else {
                     this.setOriginPlayer(null);
                 }
-            }
-
-            if(this.extraCooldown > 0 && this.isInBattle()) {
-                this.extraCooldown--;
             }
 
             if(this.trainerIdCheckFails > 0 && --this.trainerIdCheckRetryTicks < 0) {
