@@ -27,6 +27,7 @@ import java.util.stream.Collectors;
 import com.gitlab.srcmc.rctapi.api.util.Locations;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerMobData;
+import com.gitlab.srcmc.rctmod.api.utils.LangKeys;
 import com.gitlab.srcmc.rctmod.client.screens.widgets.TrainerListWidget.EntryState;
 import com.gitlab.srcmc.rctmod.client.screens.widgets.text.MultiStyleStringWidget;
 import com.gitlab.srcmc.rctmod.client.screens.widgets.text.TextUtils;
@@ -42,7 +43,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 
 public class TrainerInfoWidget extends TrainerDataWidget {
@@ -54,8 +54,8 @@ public class TrainerInfoWidget extends TrainerDataWidget {
         public final List<Renderable> renderables = new ArrayList<>();
         protected int height;
 
-        private PageContent(String title, Renderable... renderables) {
-            this.title = Component.literal(title);
+        private PageContent(Component title, Renderable... renderables) {
+            this.title = title;
 
             for(var r : renderables) {
                 this.renderables.add(r);
@@ -132,7 +132,7 @@ public class TrainerInfoWidget extends TrainerDataWidget {
         if(entryState != EntryState.DISCOVERED || identity.equals(displayName)) {
             this.aka = this.identity = null;
         } else {
-            this.aka = new MultiStyleStringWidget(this, 0, this.y += this.h, this.w, this.h, toComponent("aka"), this.font).alignLeft();
+            this.aka = new MultiStyleStringWidget(this, 0, this.y += this.h, this.w, this.h, toComponent(Component.translatable(LangKeys.GUI_TRAINER_CARD_IDENTITY)), this.font).alignLeft();
             this.identity = new MultiStyleStringWidget(this, (int)(this.w*0.18), this.y, this.w, this.h, entryState == EntryState.HIDDEN_KEY ? toComponent(identity).withStyle(ChatFormatting.OBFUSCATED) : toComponent(identity), this.font).alignLeft();
         }
 
@@ -153,7 +153,7 @@ public class TrainerInfoWidget extends TrainerDataWidget {
         this.updateInnerHeight();
     }
 
-    private PageContent initPage(String title) {
+    private PageContent initPage(Component title) {
         var pc = new PageContent(title, this.number, this.name, this.back);
 
         if(this.identity != null) {
@@ -165,21 +165,27 @@ public class TrainerInfoWidget extends TrainerDataWidget {
     }
 
     private PageContent initOverviewPage() {
-        var pc = initPage("Overview");
+        var pc = initPage(Component.translatable(LangKeys.GUI_TRAINER_CARD_OVERVIEW));
         this.y = this.identity == null ? 0 : this.h;
 
-        pc.renderables.add(new StringWidget(8, this.y += this.h, this.w, this.h, toComponent("Type: "), this.font).alignLeft());
+        pc.renderables.add(new StringWidget(8, this.y += this.h, this.w, this.h, toComponent(String.format("%s: ", Component.translatable(LangKeys.GUI_TRAINER_CARD_TYPE).getString())), this.font).alignLeft());
         pc.renderables.add(new StringWidget(8, this.y, (int)(this.w*0.9), this.h, toComponent(this.trainer.getType().name().asComponent().getString()), this.font).alignRight());
 
-        pc.renderables.add(new StringWidget(8, this.y += this.h, this.w, this.h, toComponent("Level Caps: "), this.font).alignLeft());
+        pc.renderables.add(new StringWidget(8, this.y += this.h, this.w, this.h, toComponent(String.format("%s: ", Component.translatable(LangKeys.GUI_TRAINER_CARD_LEVEL_CAP).getString())), this.font).alignLeft());
         pc.renderables.add(new StringWidget(8, this.y, (int)(this.w*0.9), this.h, toComponent(String.format("%d -> %d", this.trainer.getRequiredLevelCap(), this.trainer.getRewardLevelCap())), this.font).alignRight());
-        pc.renderables.add(new StringWidget(8, this.y += this.h , this.w, this.h, toComponent("Required Trainers: "), this.font).alignLeft());
+        
         var tm = RCTMod.getInstance().getTrainerManager();
+        var first = new boolean[]{true};
 
         this.trainer.getMissingRequirements(Set.of()).map(tm::getData).sorted((tmd1, tmd2) -> {
             var c = Integer.compare(tmd1.getRequiredLevelCap(), tmd2.getRequiredLevelCap());
             return c == 0 ? tmd1.getTrainerTeam().getName().compareTo(tmd2.getTrainerTeam().getName()) : c;
         }).forEach(tmd -> {
+            if(first[0]) {
+                pc.renderables.add(new StringWidget(8, this.y += this.h , this.w, this.h, toComponent(Component.translatable(LangKeys.GUI_TRAINER_CARD_REQUIRED_TRAINERS).getString()), this.font).alignLeft());
+                first[0] = false;
+            }
+
             pc.renderables.add(new StringWidget(16, this.y += this.h , this.w, this.h, toComponent(String.format("%s", tmd.getTrainerTeam().getName())), this.font).alignLeft());
         });
 
@@ -188,7 +194,7 @@ public class TrainerInfoWidget extends TrainerDataWidget {
     }
 
     private PageContent initSpawningPage() {
-        var pc = initPage("Spawning");
+        var pc = initPage(Component.translatable(LangKeys.GUI_TRAINER_CARD_SPAWNING));
         var mc = Minecraft.getInstance();
         var reg = mc.level.registryAccess().registryOrThrow(Registries.BIOME);
         var config = RCTMod.getInstance().getServerConfig();
@@ -199,14 +205,13 @@ public class TrainerInfoWidget extends TrainerDataWidget {
 
         this.y = this.identity == null ? 0 : this.h;
         var sigItem = BuiltInRegistries.ITEM.get(ResourceLocation.parse(this.trainer.getSignatureItem()));
-        var spawnerItems = (sigItem != null && !Items.AIR.equals(sigItem)) ? List.of(sigItem) : List.<Item>of();
         
-        if(spawnerItems.size() > 0) {
-            pc.renderables.add(new StringWidget(8, this.y += this.h , this.w, this.h, toComponent("Items:"), this.font).alignLeft());
-            spawnerItems.forEach(item -> pc.renderables.add(new StringWidget(16, this.y += this.h, this.w, this.h, toComponent(item.getDefaultInstance().getHoverName().getString()), this.font).alignLeft()));
+        if(sigItem != null && !Items.AIR.equals(sigItem)) {
+            pc.renderables.add(new StringWidget(8, this.y += this.h , this.w, this.h, toComponent(Component.translatable(LangKeys.GUI_TRAINER_CARD_SIGNATURE_ITEM)), this.font).alignLeft());
+            pc.renderables.add(new StringWidget(16, this.y += this.h, this.w, this.h, toComponent(sigItem.getDefaultInstance().getHoverName().getString()), this.font).alignLeft());
         }
 
-        pc.renderables.add(new StringWidget(8, this.y += this.h , this.w, this.h, toComponent("Biomes:"), this.font).alignLeft());
+        pc.renderables.add(new StringWidget(8, this.y += this.h , this.w, this.h, toComponent(Component.translatable(LangKeys.GUI_TRAINER_CARD_BIOMES)), this.font).alignLeft());
 
         reg.holders().forEach(holder -> {
             var tags = holder.tags()
@@ -247,7 +252,7 @@ public class TrainerInfoWidget extends TrainerDataWidget {
     }
 
     private PageContent initTeamPage() {
-        var pc = initPage("Team");
+        var pc = initPage(Component.translatable(LangKeys.GUI_TRAINER_CARD_TEAM));
         this.y = this.identity == null ? 0 : this.h;
         pc.height = this.y + this.h;
 
@@ -260,7 +265,7 @@ public class TrainerInfoWidget extends TrainerDataWidget {
     }
 
     // private PageContent initLootPage() {
-    //     var pc = initPage("Loot");
+    //     var pc = initPage(Component.translatable(LangKeys.GUI_TRAINER_CARD_LOOT));
     //     this.y = this.identity == null ? 0 : this.h;
     //     pc.height = this.y + this.h;
     //     return pc;

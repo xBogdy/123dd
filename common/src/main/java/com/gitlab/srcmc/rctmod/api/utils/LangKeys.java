@@ -28,6 +28,15 @@ public final class LangKeys {
     public static final String GUI_TRAINER_CARD_LEVEL_CAP = "gui.rctmod.trainer_card.level_cap";
     public static final String GUI_TRAINER_CARD_TOTAL = "gui.rctmod.trainer_card.total";
     public static final String GUI_TRAINER_CARD_LOADING = "gui.rctmod.trainer_card.loading";
+    public static final String GUI_TRAINER_CARD_TYPE = "gui.rctmod.trainer_card.type";
+    public static final String GUI_TRAINER_CARD_IDENTITY = "gui.rctmod.trainer_card.identity";
+    public static final String GUI_TRAINER_CARD_SIGNATURE_ITEM = "gui.rctmod.trainer_card.signature_item";
+    public static final String GUI_TRAINER_CARD_REQUIRED_TRAINERS = "gui.rctmod.trainer_card.required_trainers";
+    public static final String GUI_TRAINER_CARD_BIOMES = "gui.rctmod.trainer_card.biomes";
+    public static final String GUI_TRAINER_CARD_OVERVIEW = "gui.rctmod.trainer_card.overview";
+    public static final String GUI_TRAINER_CARD_SPAWNING = "gui.rctmod.trainer_card.spawning";
+    public static final String GUI_TRAINER_CARD_TEAM = "gui.rctmod.trainer_card.team";
+
     public static final String GUI_TITLE_SERIES_STARTED = "gui.rctmod.title.series_started";
     public static final String GUI_TITLE_SERIES_COMPLETED = "gui.rctmod.title.series_completed";
     public static final String GUI_TRAINER_ASSOCIATION_DIFFICULTY = "gui.rctmod.trainer_association.difficulty";
