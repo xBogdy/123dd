@@ -9,7 +9,7 @@
     "is_nether"
   ],
   "maxTrainerDefeats": 1,
-  "maxTrainerWins": 5,
+  "maxTrainerWins": -1,
   "optional": true,
   "requiredDefeats": [],
   "series": [],
