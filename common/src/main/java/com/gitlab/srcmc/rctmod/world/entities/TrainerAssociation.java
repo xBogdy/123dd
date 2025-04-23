@@ -302,14 +302,14 @@ public class TrainerAssociation extends WanderingTrader {
     protected void updateTrades() {
         this.itemOffers = new MerchantOffers();
         this.addRandomOffers(this.itemOffers, OFFER_CANDIDATES.stream().map(Supplier::get).toList(), MIN_ITEM_OFFERS, MAX_ITEM_OFFERS);
-        this.offers = null;
+        this.offers = new MerchantOffers();
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag tag) {
         super.readAdditionalSaveData(tag);
         this.itemOffers = this.offers;
-        this.offers = null;
+        this.offers = new MerchantOffers();
     }
 
     @Override
