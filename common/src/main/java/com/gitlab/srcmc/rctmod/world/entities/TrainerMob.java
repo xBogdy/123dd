@@ -495,7 +495,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
             if(this.cooldown > 0) {
                 this.cooldown--;
             } else if(this.extraCooldown > 0) {
-                if(!this.isInBattle() || (this.tickCount % 2) == 0) {
+                if(!this.isInBattle() || (this.tickCount % 3) == 0) {
                     this.extraCooldown--;
                 }
             }
