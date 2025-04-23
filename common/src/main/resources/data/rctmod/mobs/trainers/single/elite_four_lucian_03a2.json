@@ -20,6 +20,7 @@
   "series": [
     "bdsp"
   ],
+  "signatureItem": "cobblemon:psychic_seed",
   "spawnWeightFactor": 0.25,
   "type": "e4"
 }

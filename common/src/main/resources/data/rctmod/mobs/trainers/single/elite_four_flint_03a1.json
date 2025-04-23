@@ -19,6 +19,7 @@
   "series": [
     "bdsp"
   ],
+  "signatureItem": "cobblemon:fire_stone",
   "spawnWeightFactor": 0.25,
   "type": "e4"
 }

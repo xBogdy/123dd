@@ -19,6 +19,7 @@
   "series": [
     "bdsp"
   ],
+  "signatureItem": "cobblemon:smooth_rock",
   "spawnWeightFactor": 0.25,
   "type": "leader"
 }

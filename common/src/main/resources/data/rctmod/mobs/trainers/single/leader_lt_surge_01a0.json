@@ -21,6 +21,7 @@
   "series": [
     "radicalred"
   ],
+  "signatureItem": "cobblemon:magnet",
   "spawnWeightFactor": 0.25,
   "type": "leader"
 }

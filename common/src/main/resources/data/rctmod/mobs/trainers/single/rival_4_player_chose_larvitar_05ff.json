@@ -20,6 +20,7 @@
   "series": [
     "unbound"
   ],
+  "signatureItem": "cobblemon:binding_band",
   "spawnWeightFactor": 0.25,
   "type": "rival"
 }

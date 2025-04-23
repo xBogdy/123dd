@@ -21,6 +21,7 @@
   "series": [
     "unbound"
   ],
+  "signatureItem": "cobblemon:kings_rock",
   "spawnWeightFactor": 0.25,
   "type": "ligh_of_ruin"
 }

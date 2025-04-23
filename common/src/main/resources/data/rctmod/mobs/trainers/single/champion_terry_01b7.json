@@ -31,6 +31,7 @@
   "series": [
     "radicalred"
   ],
+  "signatureItem": "cobblemon:life_orb",
   "spawnWeightFactor": 0.25,
   "type": "champ"
 }

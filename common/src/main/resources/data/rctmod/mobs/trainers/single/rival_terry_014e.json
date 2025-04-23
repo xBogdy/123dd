@@ -20,6 +20,7 @@
   "series": [
     "radicalred"
   ],
+  "signatureItem": "minecraft:gold_nugget",
   "spawnWeightFactor": 0.25,
   "type": "rival"
 }

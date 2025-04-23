@@ -20,6 +20,7 @@
   "series": [
     "radicalred"
   ],
+  "signatureItem": "cobblemon:lucky_egg",
   "spawnWeightFactor": 0.25,
   "type": "rival"
 }

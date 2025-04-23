@@ -21,6 +21,7 @@
   "series": [
     "radicalred"
   ],
+  "signatureItem": "cobblemon:expert_belt",
   "spawnWeightFactor": 0.25,
   "type": "rival"
 }

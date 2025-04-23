@@ -21,6 +21,7 @@
   "series": [
     "unbound"
   ],
+  "signatureItem": "minecraft:ink_sac",
   "spawnWeightFactor": 0.25,
   "type": "team_shadow"
 }

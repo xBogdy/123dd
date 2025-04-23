@@ -21,6 +21,7 @@
   "series": [
     "unbound"
   ],
+  "signatureItem": "cobblemon:black_apricorn",
   "spawnWeightFactor": 0.25,
   "type": "team_shadow"
 }

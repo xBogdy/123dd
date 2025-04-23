@@ -21,6 +21,7 @@
   "series": [
     "bdsp"
   ],
+  "signatureItem": "cobblemon:zoom_lens",
   "spawnWeightFactor": 0.25,
   "type": "team_galactic"
 }

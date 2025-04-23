@@ -27,6 +27,7 @@
   "series": [
     "unbound"
   ],
+  "signatureItem": "minecraft:totem_of_undying",
   "spawnWeightFactor": 0.25,
   "type": "champ"
 }

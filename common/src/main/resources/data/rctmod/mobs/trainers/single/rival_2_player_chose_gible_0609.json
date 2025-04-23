@@ -16,6 +16,7 @@
   "series": [
     "unbound"
   ],
+  "signatureItem": "cobblemon:guard_spec",
   "spawnWeightFactor": 0.25,
   "type": "rival"
 }

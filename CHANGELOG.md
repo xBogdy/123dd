@@ -15,7 +15,7 @@
 - *#275* Improved language support
   - The `title` and `description` of series, trainer types as well as dialogs now alternatively accept a json object with a `translatable` and/or `literal` field as value (setting directly a string is equivalent to defining a object with a `literal` field having that string). Support for the `name` of trainers will be added at a later point in time
   - Updated/Added `en_us` language keys for most content from this mod
-- *#274* New `signatureItem` property for trainers: Formerly known as `trainerSpawnerItems` these are now configured per *trainer mob* (data pack object), yet they still serve the same purpose (items to configure a Trainer Spawner). Updated current trainers to match the previous default configuration and defined signature items for all required trainers of the *bdsp* and *unbound* series (TODO)
+- *#274* New `signatureItem` property for trainers: Formerly known as `trainerSpawnerItems` these are now configured per *trainer mob* (data pack object), yet they still serve the same purpose (items to configure a Trainer Spawner). Updated current trainers to match the previous default configuration and defined signature items for all required trainers from the *bdsp* and *unbound* series as well as the ev trainers (friendly coaches)
 - *#273* Overhauled some features of the *Trainer Spawner* block
   - Added `TrainerIds` block entity tag: Now also supports trainers that do not have any *signature items* configured (e.g. it is now possible to *generate* Trainer Spawners with arbitrary lists of trainer ids)
   - Added block state property `lootable` (default is `true`): Set to `false` to prevent signature items from getting dropped

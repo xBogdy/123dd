@@ -23,6 +23,7 @@
   "series": [
     "unbound"
   ],
+  "signatureItem": "cobblemon:water_gem",
   "spawnWeightFactor": 0.25,
   "type": "leader"
 }

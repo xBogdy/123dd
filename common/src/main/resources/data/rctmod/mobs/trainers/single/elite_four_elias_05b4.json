@@ -20,6 +20,7 @@
   "series": [
     "unbound"
   ],
+  "signatureItem": "cobblemon:spell_tag",
   "spawnWeightFactor": 0.25,
   "type": "e4"
 }

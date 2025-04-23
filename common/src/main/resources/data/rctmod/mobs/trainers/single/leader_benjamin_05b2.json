@@ -23,6 +23,7 @@
   "series": [
     "unbound"
   ],
+  "signatureItem": "cobblemon:bug_gem",
   "spawnWeightFactor": 0.25,
   "type": "leader"
 }

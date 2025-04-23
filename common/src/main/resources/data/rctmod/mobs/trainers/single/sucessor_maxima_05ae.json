@@ -23,6 +23,7 @@
   "series": [
     "unbound"
   ],
+  "signatureItem": "minecraft:diamond",
   "spawnWeightFactor": 0.25,
   "type": "rival"
 }

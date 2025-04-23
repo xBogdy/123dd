@@ -19,6 +19,7 @@
   "series": [
     "radicalred"
   ],
+  "signatureItem": "cobblemon:cleanse_tag",
   "spawnWeightFactor": 0.25,
   "type": "e4"
 }

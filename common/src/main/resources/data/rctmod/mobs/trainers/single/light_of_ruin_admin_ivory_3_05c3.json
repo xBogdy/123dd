@@ -23,6 +23,7 @@
   "series": [
     "unbound"
   ],
+  "signatureItem": "cobblemon:relic_coin",
   "spawnWeightFactor": 0.25,
   "type": "ligh_of_ruin"
 }

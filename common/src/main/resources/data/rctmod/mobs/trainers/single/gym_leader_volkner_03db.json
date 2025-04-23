@@ -21,6 +21,7 @@
   "series": [
     "bdsp"
   ],
+  "signatureItem": "cobblemon:thunder_stone",
   "spawnWeightFactor": 0.25,
   "type": "leader"
 }

@@ -24,6 +24,7 @@
   "series": [
     "bdsp"
   ],
+  "signatureItem": "cobblemon:metal_coat",
   "spawnWeightFactor": 0.25,
   "type": "leader"
 }

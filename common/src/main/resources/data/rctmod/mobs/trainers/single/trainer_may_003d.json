@@ -22,6 +22,7 @@
   "series": [
     "radicalred"
   ],
+  "signatureItem": "cobblemon:vivichoke",
   "spawnWeightFactor": 0.25,
   "type": "rival"
 }

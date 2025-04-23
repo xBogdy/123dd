@@ -22,6 +22,7 @@
   "series": [
     "unbound"
   ],
+  "signatureItem": "cobblemon:dark_gem",
   "spawnWeightFactor": 0.25,
   "type": "leader"
 }

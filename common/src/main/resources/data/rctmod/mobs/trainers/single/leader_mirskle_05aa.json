@@ -23,6 +23,7 @@
   "series": [
     "unbound"
   ],
+  "signatureItem": "cobblemon:medicinal_leek",
   "spawnWeightFactor": 0.25,
   "type": "leader"
 }

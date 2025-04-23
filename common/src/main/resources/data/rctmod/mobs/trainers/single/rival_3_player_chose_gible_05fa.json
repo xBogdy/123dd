@@ -20,6 +20,7 @@
   "series": [
     "unbound"
   ],
+  "signatureItem": "cobblemon:dire_hit",
   "spawnWeightFactor": 0.25,
   "type": "rival"
 }

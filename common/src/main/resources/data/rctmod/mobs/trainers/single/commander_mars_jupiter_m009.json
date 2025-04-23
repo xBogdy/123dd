@@ -21,6 +21,7 @@
   "series": [
     "bdsp"
   ],
+  "signatureItem": "cobblemon:smoke_ball",
   "spawnWeightFactor": 0.25,
   "type": "team_galactic"
 }

@@ -20,6 +20,7 @@
   "series": [
     "bdsp"
   ],
+  "signatureItem": "cobblemon:dawn_stone",
   "spawnWeightFactor": 0.25,
   "type": "rival"
 }

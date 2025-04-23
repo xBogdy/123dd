@@ -23,6 +23,7 @@
   "series": [
     "bdsp"
   ],
+  "signatureItem": "cobblemon:soft_sand",
   "spawnWeightFactor": 0.25,
   "type": "e4"
 }

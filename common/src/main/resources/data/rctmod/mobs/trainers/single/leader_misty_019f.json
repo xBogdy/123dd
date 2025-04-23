@@ -25,6 +25,7 @@
   "series": [
     "radicalred"
   ],
+  "signatureItem": "cobblemon:mystic_water",
   "spawnWeightFactor": 0.25,
   "type": "leader"
 }
