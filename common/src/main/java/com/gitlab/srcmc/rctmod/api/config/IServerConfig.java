@@ -43,9 +43,9 @@ public interface IServerConfig extends IModConfig {
      * globalSpawnChance to disable (e.g. 1.0).
      * 
      * range [0, 1]
-     * default: 0.15
+     * default: 0.1
      */
-    default double globalSpawnChanceMinimum() { return 0.15; }
+    default double globalSpawnChanceMinimum() { return 0.1; }
 
     /**
      * The interval in ticks at which a spawn attempt is made per player.
@@ -65,9 +65,9 @@ public interface IServerConfig extends IModConfig {
      * any value equal to or below spawnIntervalTicks to disable (e.g. 0).
      * 
      * range [0, inf]
-     * default: 1800
+     * default: 2400
      */
-    default int spawnIntervalTicksMaximum() { return 1800; }
+    default int spawnIntervalTicksMaximum() { return 2400; }
 
     /**
      * If enabled trainers will only spawn naturally around players that have a trainer
