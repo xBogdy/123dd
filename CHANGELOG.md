@@ -31,7 +31,7 @@
 - *#278* Configured distinct *identities* for *Team Rocket Grunts*, *Bug Catchers* and other *nameless* trainers so that different versions can spawn at the same time
 - *#277* Defeated trainers won't be immediately removed from a players spawn cap anymore but after a short period of time instead
 - *#276* Improved language support
-  - The `title` and `description` of series, trainer types as well as dialogs now alternatively accept a json object with a `translatable` and/or `literal` field as value (setting directly a string is equivalent to defining a object with a `literal` field having that string). Support for the `name` of trainers will be added at a later point in time
+  - The `title` and `description` of series, the `name` of trainer types as well as dialogs now alternatively accept a json object with a `translatable` and/or `literal` field as value (setting directly a string is equivalent to defining a object with a `literal` field having that string). Support for the `name` of trainers will be added at a later point in time
   - Updated/Added `en_us` language keys for most content from this mod
 - *#275* New `signatureItem` property for trainers: Formerly known as `trainerSpawnerItems` these are now configured per *trainer mob* (data pack object), yet they still serve the same purpose (items to configure a Trainer Spawner). Updated current trainers to match the previous default configuration and defined signature items for all required trainers from the *bdsp* and *unbound* series as well as the ev trainers (friendly coaches)
 - *#274* Overhauled some features of the *Trainer Spawner* block
