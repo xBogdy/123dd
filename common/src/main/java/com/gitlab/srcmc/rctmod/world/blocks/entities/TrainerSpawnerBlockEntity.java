@@ -20,13 +20,16 @@ package com.gitlab.srcmc.rctmod.world.blocks.entities;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.Objects;
+import java.util.Queue;
 import java.util.Set;
 import java.util.UUID;
-
+import java.util.function.Consumer;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.ModRegistries;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
+import com.gitlab.srcmc.rctmod.api.service.TrainerManager;
 import com.gitlab.srcmc.rctmod.world.blocks.TrainerSpawnerBlock;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 
@@ -60,8 +63,8 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
 
     private double minPlayerDistance;
     private double maxPlayerDistance;
-    private boolean updated;
 
+    private Queue<Consumer<TrainerManager>> updateQueue = new LinkedList<>();
     private Set<Item> renderItems = new HashSet<>();
     private Timer ownerUpdateTimer = new Timer();
     private Timer spawnTimer = new Timer();
@@ -115,26 +118,37 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
         }
 
         this.updateOwner();
-        this.updated = true;
+        this.updateRenderItems();
     }
 
-    private void updateRenderItems(Level level) {
-        this.renderItems.clear();
+    private void update() {
         var tm = RCTMod.getInstance().getTrainerManager();
 
-        this.trainerIds.forEach(tid -> {
-            var renderItemKey = tm.getData(tid).getSignatureItem();
-
-            if(renderItemKey != null && !renderItemKey.isBlank()) {
-                var rl = ResourceLocation.parse(renderItemKey);
-
-                if(!BuiltInRegistries.ITEM.containsKey(rl)) {
-                    ModCommon.LOG.error(String.format("Invalid Trainer Spawner item for '%s': %s", tid, rl.toString()));
-                } else {
-                    var item = BuiltInRegistries.ITEM.get(rl);
-                    this.renderItems.add(item);
-                }
+        if(!tm.isLoading()) {
+            while(!this.updateQueue.isEmpty()) {
+                this.updateQueue.poll().accept(tm);
             }
+        }
+    }
+
+    private void updateRenderItems() {
+        this.updateQueue.add(tm -> {
+            this.renderItems.clear();
+
+            this.trainerIds.forEach(tid -> {
+                var renderItemKey = tm.getData(tid).getSignatureItem();
+
+                if(renderItemKey != null && !renderItemKey.isBlank()) {
+                    var rl = ResourceLocation.parse(renderItemKey);
+
+                    if(!BuiltInRegistries.ITEM.containsKey(rl)) {
+                        ModCommon.LOG.error(String.format("Invalid Trainer Spawner item for '%s': %s", tid, rl.toString()));
+                    } else {
+                        var item = BuiltInRegistries.ITEM.get(rl);
+                        this.renderItems.add(item);
+                    }
+                }
+            });
         });
     }
 
@@ -197,22 +211,28 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
         }
     }
 
-    public boolean addTrainerIdsFromItem(ItemStack item) {
-        var tm = RCTMod.getInstance().getTrainerManager();
-        var itemId = item.getItem().arch$registryName().toString();
+    private void addTrainerIdsFromItem(ItemStack item) {
+        this.updateQueue.add(tm -> this.addTrainerIdsFromItem(tm, item));
+    }
+
+    public boolean addTrainerIdsFromItem(TrainerManager tm, ItemStack item) {
         var added = new boolean[]{false};
 
-        tm.getAllData()
-            .filter(e -> itemId.equals(e.getValue().getSignatureItem()))
-            .forEach(e -> {
-                if(this.trainerIds.add(e.getKey())) {
-                    added[0] = true;
-                }
-            });
+        if(!tm.isLoading()) {
+            var itemId = item.getItem().arch$registryName().toString();
 
-        if(added[0]) {
-            this.setChanged();
-            this.syncToClients();
+            tm.getAllData()
+                .filter(e -> itemId.equals(e.getValue().getSignatureItem()))
+                .forEach(e -> {
+                    if(this.trainerIds.add(e.getKey())) {
+                        added[0] = true;
+                    }
+                });
+
+            if(added[0]) {
+                this.setChanged();
+                this.syncToClients();
+            }
         }
 
         return added[0];
@@ -278,6 +298,8 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
     }
 
     public static void serverTick(Level level, BlockPos blockPos, BlockState blockState, TrainerSpawnerBlockEntity be) {
+        be.update();
+
         if(be.ownerUpdateTimer.passed(level.getGameTime()) >= OWNER_UPDATE_INTERVAL_TICKS) {
             be.updateOwner();
             be.ownerUpdateTimer.reset(level.getGameTime());
@@ -297,10 +319,7 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
     }
 
     public static void clientTick(Level level, BlockPos blockPos, BlockState blockState, TrainerSpawnerBlockEntity be) {
-        if(be.updated && !RCTMod.getInstance().getTrainerManager().isLoading()) {
-            be.updateRenderItems(level);
-            be.updated = false;
-        }
+        be.update();
     }
 
     public class RenderState {

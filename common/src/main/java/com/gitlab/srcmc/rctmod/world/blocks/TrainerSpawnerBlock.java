@@ -169,7 +169,7 @@ public class TrainerSpawnerBlock extends BaseEntityBlock {
         var result = ItemInteractionResult.FAIL;
 
         if(level.getBlockEntity(blockPos) instanceof TrainerSpawnerBlockEntity be) {
-            if(be.addTrainerIdsFromItem(itemStack)) {
+            if(be.addTrainerIdsFromItem(RCTMod.getInstance().getTrainerManager(), itemStack)) {
                 if(!level.isClientSide) {
                     itemStack.consume(1, player);
                 }
