@@ -1,15 +1,33 @@
 # Changelog
 
-## [0.15.0-beta] - 2025-04-23
+## [0.15.0-beta] - 2025-04-24
 
 **Added:**
 
-- *#281* *Trainer Repel Rod*: Prevents trainers from naturally spawning in a `7x7` chunk area
+- *#282* *Trainer Repel Rod*: Prevents trainers from naturally spawning in a `7x7` chunk area
 
 **Changed:**
 
-- *#280* Added `InBattle` boolean tag to trainer entities
-- *#279* Adjusted some default configs to slightly lower trainer spawn rates
+- *#281* Added `InBattle` boolean tag to trainer entities
+- *#280* Adjusted some default configs to slightly lower trainer spawn rates
+- *#279* Changed and added some dialog contexts
+  - Added `missing_required_trainer`
+  - Added `missing_required_trainer_light_of_ruin`
+  - Added `missing_required_trainer_team_galactic`
+  - Added `missing_required_trainer_team_shadow`
+  - Added `wrong_series` (currently not in use)
+  - Changed `battle_lost` -> `on_battle_lost`
+  - Changed `battle_start` -> `on_battle_start`
+  - Changed `battle_won` -> `on_battle_won`
+  - Changed `done_generic` -> `unknown_reason`
+  - Changed `done_looser` -> `trainer_lost`
+  - Changed `done_winner` -> `trainer_won`
+  - Changed `is_busy` -> `trainer_busy`
+  - Changed `missing_badges` -> `missing_required_trainer_leader`
+  - Changed `missing_beaten_champs` -> `missing_required_trainer_champ`
+  - Changed `missing_beaten_e4` -> `missing_required_trainer_e4`
+  - Changed `missing_beaten_rival` -> `missing_required_trainer_rival`
+  - Changed `missing_beaten_team_rocket` -> `missing_required_trainer_team_rocket`
 - *#278* Configured distinct *identities* for *Team Rocket Grunts*, *Bug Catchers* and other *nameless* trainers so that different versions can spawn at the same time
 - *#277* Defeated trainers won't be immediately removed from a players spawn cap anymore but after a short period of time instead
 - *#276* Improved language support

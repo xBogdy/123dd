@@ -188,9 +188,10 @@ public class ServerConfig implements IServerConfig {
         this.additiveLevelCapRequirementValue = builder
             .comment(SEPARATOR,
                 "The required level cap for trainers is based of the strongest pokemon in their team.",
-                "This value will be added to the derived level cap. Example: A trainer with a Pikachu at level 50",
-                "has a level cap requirement of 50. If the additiveLevelCapRequirement is -10 the required level cap",
-                "of that trainer becomes 40, if it is 10 the level cap requirement becomes 60.")
+                "This value will be added to the derived player level cap (including the initial level cap).",
+                "Example: A trainer with a Pikachu at level 50 has a level cap requirement of 50.",
+                "If the additiveLevelCapRequirement is -10 the required level cap for that trainer becomes 40,",
+                "if it is 10 the level cap requirement becomes 60.")
             .define("additiveLevelCapRequirement", IServerConfig.super.additiveLevelCapRequirement());
 
         this.considerEmptySeriesCompletedValue = builder
