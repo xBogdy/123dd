@@ -11,10 +11,10 @@
 - *#281* Added `InBattle` boolean tag to trainer entities
 - *#280* Adjusted some default configs to slightly lower trainer spawn rates
 - *#279* Changed and added some dialog contexts
-  - Added `missing_required_trainer`
   - Added `missing_required_trainer_light_of_ruin`
   - Added `missing_required_trainer_team_galactic`
   - Added `missing_required_trainer_team_shadow`
+  - Added `missing_required_trainer`
   - Added `wrong_series` (currently not in use)
   - Changed `battle_lost` -> `on_battle_lost`
   - Changed `battle_start` -> `on_battle_start`
