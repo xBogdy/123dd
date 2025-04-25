@@ -59,6 +59,7 @@ public class TrainerSpawnerBlock extends BaseEntityBlock {
     public static final MapCodec<TrainerSpawnerBlock> CODEC = TrainerSpawnerBlock.simpleCodec(TrainerSpawnerBlock::new);
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
     public static final BooleanProperty LOOTABLE = BooleanProperty.create("lootable");
+    public static final BooleanProperty LOCKED = BooleanProperty.create("locked");
 
     public static boolean isPowered(BlockState blockState) {
         return blockState.getValue(POWERED);
@@ -74,6 +75,14 @@ public class TrainerSpawnerBlock extends BaseEntityBlock {
 
     static BlockState setLootable(BlockState blockState, boolean value) {
         return blockState.setValue(LOOTABLE, value);
+    }
+
+    public static boolean isLocked(BlockState blockState) {
+        return blockState.getValue(LOCKED);
+    }
+
+    public static BlockState setLocked(BlockState blockState, boolean value) {
+        return blockState.setValue(LOCKED, value);
     }
 
     // sub-optimal for ai pathing (TODO: adjust model?)
@@ -93,7 +102,8 @@ public class TrainerSpawnerBlock extends BaseEntityBlock {
         super(properties);
         this.registerDefaultState(this.defaultBlockState()
             .setValue(POWERED, false)
-            .setValue(LOOTABLE, true));
+            .setValue(LOOTABLE, true)
+            .setValue(LOCKED, false));
     }
 
     @Override
@@ -161,7 +171,7 @@ public class TrainerSpawnerBlock extends BaseEntityBlock {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(new Property[]{POWERED, LOOTABLE});
+        builder.add(new Property[]{POWERED, LOOTABLE, LOCKED});
     }
 
     @Override
@@ -169,7 +179,7 @@ public class TrainerSpawnerBlock extends BaseEntityBlock {
         var result = ItemInteractionResult.FAIL;
 
         if(level.getBlockEntity(blockPos) instanceof TrainerSpawnerBlockEntity be) {
-            if(be.addTrainerIdsFromItem(RCTMod.getInstance().getTrainerManager(), itemStack)) {
+            if(!isLocked(blockState) && be.addTrainerIdsFromItem(RCTMod.getInstance().getTrainerManager(), itemStack)) {
                 if(!level.isClientSide) {
                     itemStack.consume(1, player);
                 }

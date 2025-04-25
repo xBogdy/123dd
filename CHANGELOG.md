@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.15.1-beta] - 2025-04-25
+
+**Changed:**
+
+- *#283* Added `locked` block state to the Trainer Spawner block: Prevents players from applying any signature items (`false` by default)
+
 ## [0.15.0-beta] - 2025-04-24
 
 **Added:**
