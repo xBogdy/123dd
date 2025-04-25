@@ -4,7 +4,8 @@
 
 **Changed:**
 
-- *#283* Added `locked` block state to the Trainer Spawner block: Prevents players from applying any signature items (`false` by default)
+- *#284* Added `locked` block state to the Trainer Spawner block: Prevents players from applying any signature items (`false` by default)
+- *#283* Format of the `TrainerIds` tag from the Trainer Spawner block to an array (instead of an object)
 
 ## [0.15.0-beta] - 2025-04-24
 

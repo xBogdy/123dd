@@ -26,6 +26,7 @@ import java.util.Queue;
 import java.util.Set;
 import java.util.UUID;
 import java.util.function.Consumer;
+
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.ModRegistries;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
@@ -37,6 +38,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.StringTag;
+import net.minecraft.nbt.Tag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
@@ -96,8 +100,8 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
             tag.putUUID("OwnerUUID", this.ownerUUID);
         }
 
-        var tids = new CompoundTag();
-        this.trainerIds.forEach(tid -> tids.putByte(tid, (byte)0));
+        var tids = new ListTag();
+        tids.addAll(this.trainerIds.stream().map(StringTag::valueOf).toList());
         tag.put("TrainerIds", tids);
     }
 
@@ -114,7 +118,8 @@ public class TrainerSpawnerBlockEntity extends BlockEntity {
         }
 
         if(tag.contains("TrainerIds")) {
-            this.trainerIds.addAll(tag.getCompound("TrainerIds").getAllKeys());
+            this.trainerIds.addAll(tag.getCompound("TrainerIds").getAllKeys()); // 0.15.0 format (TODO: this can probably be removed on full release, 0.15.0 was short lived)
+            this.trainerIds.addAll(tag.getList("TrainerIds", Tag.TAG_STRING).stream().map(Tag::getAsString).toList());
         }
 
         this.updateOwner();
