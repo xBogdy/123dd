@@ -64,9 +64,21 @@ Over **1500** unique and **challenging** trainers, from the Pokemon ROM hacks *R
 
 ## Youtube Guides
 
+Overview of the *series feature* (added with **0.14**) by Pocketcraft:
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/qdBjZ7OPQFQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+---
+
 Awesome guide by Jonathan's Playroom (**applies to version 0.13 for the most part**):
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Dzk3DTmBQDE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+---
+
+Another great guide for **0.13** by Pocketcraft:
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/a9Ztr9dUOMo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Data Packs
 
