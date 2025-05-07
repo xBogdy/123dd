@@ -67,7 +67,7 @@ public class MerchantResultSlotMixin {
                 }
 
                 RCTMod.getInstance().getTrainerManager().getData(player).setCurrentSeries(offer.getKey());
-                ChatUtils.sendTitle(player, Component.translatable(LangKeys.GUI_TITLE_SERIES_STARTED).getString(), RCTMod.getInstance().getSeriesManager().getGraph(offer.getKey()).getMetaData().title().asComponent().getString());
+                ChatUtils.sendTitle(player, Component.translatable(LangKeys.GUI_TITLE_SERIES_STARTED).getString(), RCTMod.getInstance().getSeriesManager().getGraph(offer.getKey()).getMetaData().title().getComponent().getString());
                 ta.updateOffersFor(player);
             }
         }

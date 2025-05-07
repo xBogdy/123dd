@@ -20,9 +20,9 @@ package com.gitlab.srcmc.rctmod.api.utils;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.gitlab.srcmc.rctapi.api.util.Text;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
-import com.gitlab.srcmc.rctmod.api.data.Text;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerMob;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 
@@ -45,7 +45,7 @@ public final class ChatUtils {
 
             if(messages != null) {
                 if(messages.length > 0) {
-                    var message = PlayerChatMessage.system(messages[(target.getRandom().nextInt() & Integer.MAX_VALUE) % messages.length].asComponent().getString());
+                    var message = PlayerChatMessage.system(messages[(target.getRandom().nextInt() & Integer.MAX_VALUE) % messages.length].getComponent().getString());
                     target.createCommandSourceStack().sendChatMessage(OutgoingChatMessage.create(message), false, ChatType.bind(ChatType.CHAT, source));
                     return;
                 } else {
@@ -64,7 +64,7 @@ public final class ChatUtils {
 
             if(messages != null) {
                 if(messages.length > 0) {
-                    var message = PlayerChatMessage.system(messages[(target.getRandom().nextInt() & Integer.MAX_VALUE) % messages.length].asComponent().getString());
+                    var message = PlayerChatMessage.system(messages[(target.getRandom().nextInt() & Integer.MAX_VALUE) % messages.length].getComponent().getString());
                     target.createCommandSourceStack().sendChatMessage(OutgoingChatMessage.create(message), false, ChatType.bind(ChatType.CHAT, source));
                     return;
                 } else {

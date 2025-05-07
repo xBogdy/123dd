@@ -28,21 +28,19 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import java.nio.charset.StandardCharsets;
 
-import com.gitlab.srcmc.rctmod.api.data.Text;
+import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerType;
 import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import net.minecraft.server.packs.resources.IoSupplier;
 
 public final class JsonUtils<T> {
-    public static final Gson GSON = new GsonBuilder()
+    public static final Gson GSON = ModCommon.RCT.gsonBuilder()
         .registerTypeAdapter(TrainerType.Color.class, new TrainerType.Color.Serializer())
         .registerTypeAdapter(TrainerType.Color.class, new TrainerType.Color.Deserializer())
-        .registerTypeAdapter(Text.class, new Text.Deserializer())
         .addSerializationExclusionStrategy(new AnnotationExclusionStrategy())
         .addDeserializationExclusionStrategy(new AnnotationExclusionStrategy())
         .setPrettyPrinting()

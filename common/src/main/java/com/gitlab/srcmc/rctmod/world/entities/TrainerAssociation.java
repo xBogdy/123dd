@@ -448,9 +448,9 @@ public class TrainerAssociation extends WanderingTrader {
             var completions = player != null ? RCTMod.getInstance().getTrainerManager().getData(player).getCompletedSeries().getOrDefault(seriesId, 0) : 0;
 
             card.applyComponents(DataComponentMap.builder()
-                .set(DataComponents.CUSTOM_NAME, seriesData.title().asComponent())
+                .set(DataComponents.CUSTOM_NAME, seriesData.title().getComponent())
                 .set(DataComponents.LORE, new ItemLore(List.of(
-                    seriesData.description().asComponent(),
+                    seriesData.description().getComponent(),
                     Component.literal(""), // empty line
                     Component.literal(String.format("%s: %s", Component.translatable(LangKeys.GUI_TRAINER_ASSOCIATION_DIFFICULTY).getString(), makeStars(seriesData.difficulty(), SeriesMetaData.MAX_DIFFICULTY))),
                     Component.literal(String.format("%s: %d", Component.translatable(LangKeys.GUI_TRAINER_ASSOCIATION_COMPLETED).getString(), completions)),

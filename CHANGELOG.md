@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.16.0-beta] - 2025-05-06
+
+**Added:**
+
+- *#287* Language support and keys (TODO) for trainer names
+
+**Changed:**
+
+- *#286* Bumped min required version of *rctapi* to `0.11.2-beta`
+- *#285* Translatable text now uses a configured `literal` as fallback if no translation was found
+
 ## [0.15.1-beta] - 2025-04-25
 
 **Changed:**

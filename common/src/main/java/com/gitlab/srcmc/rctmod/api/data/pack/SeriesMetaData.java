@@ -20,7 +20,7 @@ package com.gitlab.srcmc.rctmod.api.data.pack;
 import java.io.Serializable;
 import java.util.List;
 
-import com.gitlab.srcmc.rctmod.api.data.Text;
+import com.gitlab.srcmc.rctapi.api.util.Text;
 
 public record SeriesMetaData(Text title, Text description, int difficulty, List<List<String>> requiredSeries) implements Comparable<SeriesMetaData>, Serializable {
     private static final long serialVersionUID = 0L;

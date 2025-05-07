@@ -327,7 +327,7 @@ public final class PlayerCommands {
         var graph = RCTMod.getInstance().getSeriesManager().getGraph(tpd.getCurrentSeries());
         var url = PlantUML.SERVER_URL + PlantUML.encode(includeDefeated ? graph.getRemaining(includeOptionals, includeSingles) : graph.getRemaining(tpd.getDefeatedTrainerIds(), includeOptionals, includeSingles), tpd.getDefeatedTrainerIds());
 
-        context.getSource().sendSuccess(() -> Component.translatable(LangKeys.COMMANDS_FEEDBACK_SERIES_GRAPH, player.getDisplayName().getString(), graph.getMetaData().title().asComponent().getString())
+        context.getSource().sendSuccess(() -> Component.translatable(LangKeys.COMMANDS_FEEDBACK_SERIES_GRAPH, player.getDisplayName().getString(), graph.getMetaData().title().getComponent().getString())
             .append(Component.literal(" "))
             .append(Component.literal(url).setStyle(Style.EMPTY
                 .applyFormats(ChatFormatting.UNDERLINE, ChatFormatting.GREEN)

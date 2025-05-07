@@ -191,7 +191,7 @@ public class TrainerPlayerData extends SavedData {
         if(this.testSeriesCompleted()) {
             this.addSeriesCompletion(this.getCurrentSeries());
             this.updateLevelCap();
-            ChatUtils.sendTitle(this.player, Component.translatable(LangKeys.GUI_TITLE_SERIES_COMPLETED).getString(), RCTMod.getInstance().getSeriesManager().getGraph(this.getCurrentSeries()).getMetaData().title().asComponent().getString());
+            ChatUtils.sendTitle(this.player, Component.translatable(LangKeys.GUI_TITLE_SERIES_COMPLETED).getString(), RCTMod.getInstance().getSeriesManager().getGraph(this.getCurrentSeries()).getMetaData().title().getComponent().getString());
             // ModRegistries.CriteriaTriggers.DEFEAT_COUNT.get().trigger((ServerPlayer)player, mob); // TODO: series completion advancements?
         }
     }

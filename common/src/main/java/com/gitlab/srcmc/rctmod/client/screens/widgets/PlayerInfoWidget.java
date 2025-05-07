@@ -23,9 +23,9 @@ import java.util.List;
 
 import org.spongepowered.include.com.google.common.base.Strings;
 
+import com.gitlab.srcmc.rctapi.api.util.Text;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
-import com.gitlab.srcmc.rctmod.api.data.Text;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerType;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.api.utils.LangKeys;
@@ -150,7 +150,7 @@ public class PlayerInfoWidget extends AbstractWidget {
             x + CHECKBOX_X, y + CHECKBOX_Y, CHECKBOX_W, CHECKBOX_H, true);
 
         this.trainerTypeButton = CycleButton.create(
-            t -> t.name().asComponent(), this.trainerTypes, 0,
+            t -> t.name().getComponent(), this.trainerTypes, 0,
             x + TYPE_BUTTON_X, y + TYPE_BUTTON_Y, TYPE_BUTTON_W, TYPE_BUTTON_H, false);
         
         this.nextPageButton = Button

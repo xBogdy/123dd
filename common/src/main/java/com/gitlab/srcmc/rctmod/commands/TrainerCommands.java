@@ -190,7 +190,7 @@ public class TrainerCommands {
             .getData(context.getArgument("trainer", String.class))
             .getType().name();
 
-        context.getSource().sendSuccess(() -> type.asComponent(), false);
+        context.getSource().sendSuccess(() -> type.getComponent(), false);
         return 0;
     }
 

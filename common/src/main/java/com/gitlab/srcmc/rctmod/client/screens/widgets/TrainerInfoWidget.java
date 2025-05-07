@@ -169,7 +169,7 @@ public class TrainerInfoWidget extends TrainerDataWidget {
         this.y = this.identity == null ? 0 : this.h;
 
         pc.renderables.add(new StringWidget(8, this.y += this.h, this.w, this.h, toComponent(String.format("%s: ", Component.translatable(LangKeys.GUI_TRAINER_CARD_TYPE).getString())), this.font).alignLeft());
-        pc.renderables.add(new StringWidget(8, this.y, (int)(this.w*0.9), this.h, toComponent(this.trainer.getType().name().asComponent().getString()), this.font).alignRight());
+        pc.renderables.add(new StringWidget(8, this.y, (int)(this.w*0.9), this.h, toComponent(this.trainer.getType().name().getComponent().getString()), this.font).alignRight());
 
         pc.renderables.add(new StringWidget(8, this.y += this.h, this.w, this.h, toComponent(String.format("%s: ", Component.translatable(LangKeys.GUI_TRAINER_CARD_LEVEL_CAP).getString())), this.font).alignLeft());
         pc.renderables.add(new StringWidget(8, this.y, (int)(this.w*0.9), this.h, toComponent(String.format("%d -> %d", this.trainer.getRequiredLevelCap(), this.trainer.getRewardLevelCap())), this.font).alignRight());

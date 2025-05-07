@@ -97,7 +97,7 @@ public final class RCTMod {
             } else {
                 var team = RCTMod.getInstance().getTrainerManager().getData(mob).getTrainerTeam();
                 trNPC.setEntity(mob); // safety measure to prevent a battle against entities in unloaded chunks
-                return ModCommon.RCT.getBattleManager().start(List.of(trPlayer), List.of(trNPC), team.getBattleFormat(), team.getBattleRules());
+                return ModCommon.RCT.getBattleManager().startBattle(List.of(trPlayer), List.of(trNPC), team.getBattleFormat(), team.getBattleRules()) != null;
             }
         } catch(IllegalArgumentException e) {
             ModCommon.LOG.error("Failed to start battle", e);
