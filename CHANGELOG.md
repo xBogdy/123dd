@@ -1,14 +1,20 @@
 # Changelog
 
-## [0.16.0-beta] - 2025-05-06
+## [0.16.0-beta] - 2025-05-07
 
 **Added:**
 
-- *#287* Language support and keys (TODO) for trainer names
+- *#288* Language support for trainer names and pokemon nicknames
 
 **Changed:**
 
-- *#286* Bumped min required version of *rctapi* to `0.11.2-beta`
+- *#287* Bumped min required version of *rctapi* to `0.11.2-beta`
+- *#286* Language keys are now automatically defined for certain data pack objects (if not explicitly defined otherwise)
+  - Pokemon `nickname` property. Format: `pokemon.rctmod.<trainer_id>.<position>.nickname` (`<position>` starts at `0`)
+  - Series `description` property. Format: `series.rctmod.<series_id>.description`
+  - Series `title` property. Format: `series.rctmod.<series_id>.title`
+  - Trainer `name` property. Format: `trainer.rctmod.<trainer_id>.name`
+  - Trainer type `name` property. Format: `trainer_type.rctmod.<type_id>.name`
 - *#285* Translatable text now uses a configured `literal` as fallback if no translation was found
 
 ## [0.15.1-beta] - 2025-04-25

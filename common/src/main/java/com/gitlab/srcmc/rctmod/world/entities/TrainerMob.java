@@ -290,7 +290,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
     private void udpateCustomName() {
         var tmd = RCTMod.getInstance().getTrainerManager().getData(this);
-        this.setCustomName(Component.literal(tmd.getTrainerTeam().getName()));
+        this.setCustomName(tmd.getTrainerTeam().getName().getComponent());
     }
 
     @Override

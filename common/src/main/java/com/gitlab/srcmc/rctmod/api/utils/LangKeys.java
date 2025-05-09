@@ -53,6 +53,8 @@ public final class LangKeys {
     public static String SERIES_TITLE(String seriesId) { return String.format("series.rctmod.%s.title", seriesId); }
     public static String SERIES_DESCRIPTION(String seriesId) { return String.format("series.rctmod.%s.description", seriesId); }
     public static String TRAINER_TYPE_TITLE(String typeId) { return String.format("trainer_type.rctmod.%s.title", typeId); }
+    public static String TRAINER_NAME(String trainerId) { return String.format("trainer.rctmod.%s.name", trainerId); }
+    public static String POKEMON_NICKNAME(String trainerId, int position) { return String.format("pokemon.rctmod.%s.%d.nickname", trainerId, position); }
 
     private LangKeys() {}
 }

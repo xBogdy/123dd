@@ -47,7 +47,9 @@ public class TrainerTeam extends TrainerModel {
     }
 
     public String getIdentity() {
-        return this.identity != null ? this.identity : this.getName();
+        return this.identity != null ? this.identity : (this.getName().getTranslatable() != null
+            ? this.getName().getTranslatable()
+            : this.getName().getComponent().getString());
     }
 
     public BattleFormat getBattleFormat() {

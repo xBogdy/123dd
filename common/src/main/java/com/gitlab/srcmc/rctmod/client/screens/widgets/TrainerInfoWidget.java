@@ -116,7 +116,7 @@ public class TrainerInfoWidget extends TrainerDataWidget {
         this.h = this.getHeight() / 6;
         this.y = 0;
 
-        var displayName = entryState == EntryState.UNKNOWN ? "???" : trainer.getTrainerTeam().getName();
+        var displayName = entryState == EntryState.UNKNOWN ? "???" : trainer.getTrainerTeam().getName().getComponent().getString();
         var identity = entryState == EntryState.UNKNOWN ? "???" : trainer.getTrainerTeam().getIdentity();
         var backX = (int)(this.w*0.9);
 
