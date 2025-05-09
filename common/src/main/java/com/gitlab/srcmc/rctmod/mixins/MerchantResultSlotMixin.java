@@ -24,6 +24,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
+import com.gitlab.srcmc.rctmod.api.service.SeriesManager;
 import com.gitlab.srcmc.rctmod.api.utils.ChatUtils;
 import com.gitlab.srcmc.rctmod.api.utils.LangKeys;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerAssociation;
@@ -66,8 +67,12 @@ public class MerchantResultSlotMixin {
                     itemStack.applyComponents(offer.getValue().getComponents());
                 }
 
-                RCTMod.getInstance().getTrainerManager().getData(player).setCurrentSeries(offer.getKey());
-                ChatUtils.sendTitle(player, Component.translatable(LangKeys.GUI_TITLE_SERIES_STARTED).getString(), RCTMod.getInstance().getSeriesManager().getGraph(offer.getKey()).getMetaData().title().getComponent().getString());
+                var tpd = RCTMod.getInstance().getTrainerManager().getData(player);
+                var seriesPaused = SeriesManager.FREEROAM_SERIES_ID.equals(offer.getKey());
+                var seriesContinued = SeriesManager.FREEROAM_SERIES_ID.equals(tpd.getCurrentSeries()) && offer.getKey().equals(tpd.getPreviousSeries());
+
+                tpd.setCurrentSeries(offer.getKey(), seriesPaused || seriesContinued);
+                ChatUtils.sendTitle(player, Component.translatable(seriesPaused ? LangKeys.GUI_TITLE_SERIES_PAUSED : (seriesContinued ? LangKeys.GUI_TITLE_SERIES_CONTINUED : LangKeys.GUI_TITLE_SERIES_STARTED)).getString(), RCTMod.getInstance().getSeriesManager().getGraph(seriesPaused ? tpd.getCurrentSeries() : offer.getKey()).getMetaData().title().getComponent().getString());
                 ta.updateOffersFor(player);
             }
         }

@@ -365,8 +365,9 @@ public class TrainerAssociation extends WanderingTrader {
 
         sm.getSeriesIds()
             .stream().map(sid -> Map.entry(sid, sm.getGraph(sid).getMetaData()))
-            .sorted((e1, e2) -> e1.getValue().compareTo(e2.getValue()))
             .filter(e -> !e.getKey().equals(SeriesManager.EMPTY_SERIES_ID))
+            .filter(e -> SeriesManager.FREEROAM_SERIES_ID.equals(tpd.getCurrentSeries()) ? (tpd.getPreviousSeries().isEmpty() || e.getKey().equals(tpd.getPreviousSeries())) : true)
+            .sorted((e1, e2) -> e1.getValue().compareTo(e2.getValue()))
             .forEach(e -> {
                 if(e.getValue().requiredSeries() != null) {
                     for(var reqs : e.getValue().requiredSeries()) {
@@ -444,8 +445,28 @@ public class TrainerAssociation extends WanderingTrader {
         }
 
         private static ItemStack createOfferFor(Player player, String seriesId, SeriesMetaData seriesData) {
+            return player == null ? new ItemStack(Items.TRAINER_CARD.get(), 1) : (SeriesManager.FREEROAM_SERIES_ID.equals(seriesId)
+                ? createFreeroamOffer(player, seriesId, seriesData)
+                : (SeriesManager.FREEROAM_SERIES_ID.equals(RCTMod.getInstance().getTrainerManager().getData(player).getCurrentSeries())
+                    ? createContinueOffer(player, seriesId, seriesData)
+                    : createSwitchOffer(player, seriesId, seriesData)));
+        }
+
+        private static ItemStack createFreeroamOffer(Player player, String seriesId, SeriesMetaData seriesData) {
             var card = new ItemStack(Items.TRAINER_CARD.get(), 1);
-            var completions = player != null ? RCTMod.getInstance().getTrainerManager().getData(player).getCompletedSeries().getOrDefault(seriesId, 0) : 0;
+
+            card.applyComponents(DataComponentMap.builder()
+                .set(DataComponents.CUSTOM_NAME, seriesData.title().getComponent())
+                .set(DataComponents.LORE, new ItemLore(List.of(
+                    seriesData.description().getComponent()
+                ))).build());
+
+            return card;
+        }
+
+        private static ItemStack createSwitchOffer(Player player, String seriesId, SeriesMetaData seriesData) {
+            var card = new ItemStack(Items.TRAINER_CARD.get(), 1);
+            var completions = RCTMod.getInstance().getTrainerManager().getData(player).getCompletedSeries().getOrDefault(seriesId, 0);
 
             card.applyComponents(DataComponentMap.builder()
                 .set(DataComponents.CUSTOM_NAME, seriesData.title().getComponent())
@@ -457,6 +478,24 @@ public class TrainerAssociation extends WanderingTrader {
                     Component.literal(""), // empty line
                     Component.translatable(LangKeys.GUI_TRAINER_ASSOCIATION_IMPORTANT).withStyle(ChatFormatting.BOLD).withStyle(ChatFormatting.GOLD),
                     Component.translatable(LangKeys.GUI_TRAINER_ASSOCIATION_SERIES_RESET).withStyle(ChatFormatting.GOLD)
+                ))).build());
+
+            return card;
+        }
+
+        private static ItemStack createContinueOffer(Player player, String seriesId, SeriesMetaData seriesData) {
+            var card = new ItemStack(Items.TRAINER_CARD.get(), 1);
+            var completions = RCTMod.getInstance().getTrainerManager().getData(player).getCompletedSeries().getOrDefault(seriesId, 0);
+
+            card.applyComponents(DataComponentMap.builder()
+                .set(DataComponents.CUSTOM_NAME, seriesData.title().getComponent())
+                .set(DataComponents.LORE, new ItemLore(List.of(
+                    seriesData.description().getComponent(),
+                    Component.literal(""), // empty line
+                    Component.literal(String.format("%s: %s", Component.translatable(LangKeys.GUI_TRAINER_ASSOCIATION_DIFFICULTY).getString(), makeStars(seriesData.difficulty(), SeriesMetaData.MAX_DIFFICULTY))),
+                    Component.literal(String.format("%s: %d", Component.translatable(LangKeys.GUI_TRAINER_ASSOCIATION_COMPLETED).getString(), completions)),
+                    Component.literal(""), // empty line
+                    Component.translatable(LangKeys.GUI_TRAINER_ASSOCIATION_SERIES_CONTINUE).withStyle(ChatFormatting.GOLD)
                 ))).build());
 
             return card;

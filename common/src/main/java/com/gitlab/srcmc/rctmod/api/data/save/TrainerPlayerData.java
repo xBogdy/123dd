@@ -27,6 +27,7 @@ import java.util.stream.Stream;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
+import com.gitlab.srcmc.rctmod.api.service.SeriesManager;
 import com.gitlab.srcmc.rctmod.api.utils.ChatUtils;
 import com.gitlab.srcmc.rctmod.api.utils.LangKeys;
 
@@ -40,6 +41,7 @@ public class TrainerPlayerData extends SavedData {
     private Set<String> defeatedTrainerIds = new HashSet<>();
     private Map<String, Integer> completedSeries = new HashMap<>();
     private String currentSeries = "";
+    private String previousSeries = "";
     private Player player;
     private int initialLevelCap, additiveLevelCapRequirement, levelCap;
     private boolean currentSeriesCompleted;
@@ -66,7 +68,7 @@ public class TrainerPlayerData extends SavedData {
     }
 
     private void updateLevelCap() {
-        if(this.currentSeriesCompleted) {
+        if(this.isSeriesCompleted()) {
             this.levelCap = 100; // TODO: maybe something like 'maxSeriesLevel'?
         } else {
             var cfg = RCTMod.getInstance().getServerConfig();
@@ -81,7 +83,7 @@ public class TrainerPlayerData extends SavedData {
     }
 
     private void updateLevelCap(String trainerId) {
-        if(this.currentSeriesCompleted) {
+        if(this.isSeriesCompleted()) {
             this.levelCap = 100; // TODO: maybe something like 'maxSeriesLevel'?
         } else {
             var tmd = RCTMod.getInstance().getTrainerManager().getData(trainerId);
@@ -96,7 +98,27 @@ public class TrainerPlayerData extends SavedData {
     }
 
     public boolean addProgressDefeat(String trainerId) {
-        var graph = RCTMod.getInstance().getSeriesManager().getGraph(this.currentSeries);
+        return this.addProgressDefeat(trainerId, false);
+    }
+
+    private boolean addProgressDefeat(String trainerId, boolean allowPrevious) {
+        var sm = RCTMod.getInstance().getSeriesManager();
+        var graph = sm.getGraph(this.currentSeries);
+
+        if(graph == sm.FREEROAM_SERIES) {
+            if(allowPrevious) {
+                if(!this.previousSeries.isEmpty()) {
+                    graph = sm.getGraph(this.previousSeries);
+                }
+            } else {
+                return false;
+            }
+        }
+
+        if(graph == sm.EMPTY_SERIES) {
+            return false;
+        }
+
         var node = graph.get(trainerId);
         var updated = new boolean[]{false};
 
@@ -135,8 +157,8 @@ public class TrainerPlayerData extends SavedData {
             });
         }
 
-        if(!this.isSeriesCompleted()) {
-            this.currentSeriesCompleted = false; // must be 'dirty' or something else went wron earlier
+        if(!this.isCurrentSeriesCompleted()) {
+            this.currentSeriesCompleted = false; // must be 'dirty' or something else went wrong earlier
         }
 
         return updated[0];
@@ -161,18 +183,25 @@ public class TrainerPlayerData extends SavedData {
     }
 
     public boolean isSeriesCompleted() {
-        if(!this.currentSeries.isEmpty()) {
-            return RCTMod.getInstance()
-                .getSeriesManager().getGraph(this.currentSeries)
-                .getRemaining(this.defeatedTrainerIds).size() == 0;
+        return this.currentSeriesCompleted || (SeriesManager.FREEROAM_SERIES_ID.equals(this.currentSeries) && this.completedSeries.values().stream().anyMatch(i -> i > 0));
+    }
+
+    private boolean isCurrentSeriesCompleted() {
+        if(this.canCompleteCurrentSeries()) {
+            var graph = RCTMod.getInstance().getSeriesManager().getGraph(this.currentSeries);
+            return graph.size() > 0 && graph.getRemaining(this.defeatedTrainerIds).size() == 0;
         }
 
         return false;
     }
 
+    private boolean canCompleteCurrentSeries() {
+        return !this.currentSeries.isEmpty() && !SeriesManager.EMPTY_SERIES_ID.equals(this.currentSeries) && !SeriesManager.FREEROAM_SERIES_ID.equals(this.currentSeries);
+    }
+
     // will only ever return true once after a series has been set and was completed
     private boolean testSeriesCompleted() {
-        if(!this.currentSeries.isEmpty() && !this.currentSeriesCompleted) {
+        if(this.canCompleteCurrentSeries() && !this.currentSeriesCompleted) {
             this.currentSeriesCompleted = RCTMod.getInstance()
                 .getSeriesManager().getGraph(this.currentSeries)
                 .getRemaining(this.defeatedTrainerIds).size() == 0;
@@ -200,12 +229,17 @@ public class TrainerPlayerData extends SavedData {
         return this.currentSeries;
     }
 
+    public String getPreviousSeries() {
+        return this.previousSeries;
+    }
+
     public void setCurrentSeries(String seriesId) {
-        this.setCurrentSeries(seriesId, false);
+        this.setCurrentSeries(seriesId, this.currentSeries.isEmpty());
     }
 
     public void setCurrentSeries(String seriesId, boolean keepProgress) {
         if(!seriesId.equals(this.currentSeries)) {
+            this.previousSeries = this.currentSeries;
             this.currentSeries = seriesId;
             PlayerState.get(this.player).setCurrentSeries(this.currentSeries);
             this.setDirty();
@@ -218,6 +252,8 @@ public class TrainerPlayerData extends SavedData {
                 this.currentSeriesCompleted = false;
                 this.setDirty();
             }
+        } else {
+            this.updateLevelCap();
         }
     }
 
@@ -276,6 +312,7 @@ public class TrainerPlayerData extends SavedData {
         compoundTag.put("progressDefeats", progressDefeats);
         compoundTag.put("completedSeries", completedSeries);
         compoundTag.putString("currentSeries", this.currentSeries);
+        compoundTag.putString("previousSeries", this.previousSeries);
         compoundTag.putBoolean("currentSeriesCompleted", this.currentSeriesCompleted);
         return compoundTag;
     }
@@ -317,6 +354,12 @@ public class TrainerPlayerData extends SavedData {
                 tpd.setCurrentSeries("radicalred");
             }
 
+            if(tag.contains("previousSeries")) {
+                tpd.previousSeries = tag.getString("previousSeries");
+            } else {
+                tpd.previousSeries = "";
+            }
+
             if(tag.contains("completedSeries")) {
                 var seriesTag = tag.getCompound("completedSeries");
                 seriesTag.getAllKeys().forEach(s -> tpd.setSeriesCompletion(s, seriesTag.getInt(s)));
@@ -328,7 +371,7 @@ public class TrainerPlayerData extends SavedData {
 
             if(!tpd.currentSeries.isEmpty()) {
                 if(tag.contains("progressDefeats")) {
-                    tag.getCompound("progressDefeats").getAllKeys().forEach(tpd::addProgressDefeat);
+                    tag.getCompound("progressDefeats").getAllKeys().forEach(tid -> tpd.addProgressDefeat(tid, true));
                 } else {
                     // legacy support (< 0.14): derive progress defeats from trainer defeat counts
                     var level = this.player.getServer().overworld();
@@ -336,7 +379,7 @@ public class TrainerPlayerData extends SavedData {
                     tm.getAllData()
                         .map(entry -> entry.getKey())
                         .filter(tid -> tm.getBattleMemory(level, tid).getDefeatByCount(tid, this.player) > 0)
-                        .forEach(tpd::addProgressDefeat);
+                        .forEach(tid -> tpd.addProgressDefeat(tid, true));
                 }
             }
 

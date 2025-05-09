@@ -38,10 +38,17 @@ public class SeriesManager implements Serializable {
     private static final long serialVersionUID = 0L;
 
     public static final String EMPTY_SERIES_ID = "empty";
-    private Map<String, SeriesGraph> seriesGraphs = new HashMap<>();
-    private transient final SeriesGraph EMPTY_SERIES = new SeriesGraph(new SeriesMetaData(
+    public static final String FREEROAM_SERIES_ID = "freeroam";
+
+    public transient final SeriesGraph EMPTY_SERIES = new SeriesGraph(new SeriesMetaData(
         new Text().setTranslatable(LangKeys.SERIES_TITLE(EMPTY_SERIES_ID)),
         new Text().setTranslatable(LangKeys.SERIES_DESCRIPTION(EMPTY_SERIES_ID)), 0));
+
+    public transient final SeriesGraph FREEROAM_SERIES = new SeriesGraph(new SeriesMetaData(
+        new Text().setTranslatable(LangKeys.SERIES_TITLE(FREEROAM_SERIES_ID)),
+        new Text().setTranslatable(LangKeys.SERIES_DESCRIPTION(FREEROAM_SERIES_ID)), 0));
+
+    private Map<String, SeriesGraph> seriesGraphs = new HashMap<>();
 
     public void copyFrom(SeriesManager sm) {
         this.seriesGraphs = sm.seriesGraphs;
@@ -52,14 +59,20 @@ public class SeriesManager implements Serializable {
     }
 
     public SeriesGraph getGraph(String seriesId) {
-        return seriesId == null || seriesId.isBlank() ? this.EMPTY_SERIES : this.seriesGraphs.getOrDefault(seriesId, new SeriesGraph(seriesId));
+        return (seriesId == null || seriesId.isBlank() || seriesId.equals(EMPTY_SERIES_ID))
+            ? EMPTY_SERIES
+            : (FREEROAM_SERIES_ID.equals(seriesId)
+                ? FREEROAM_SERIES
+                : this.seriesGraphs.getOrDefault(seriesId, new SeriesGraph(seriesId)));
     }
 
     void onLoad(TrainerManager tm) {
         EMPTY_SERIES.clear();
+        FREEROAM_SERIES.clear();
 
         var seriesGraphs = new HashMap<String, SeriesGraph>();
         seriesGraphs.put(EMPTY_SERIES_ID, EMPTY_SERIES);
+        seriesGraphs.put(FREEROAM_SERIES_ID, FREEROAM_SERIES);
 
         // gather series ids
         tm.listSeries((rl, io) -> {
@@ -67,6 +80,10 @@ public class SeriesManager implements Serializable {
 
             if(sid.equals(EMPTY_SERIES_ID)) {
                 throw new IllegalStateException(String.format("series id '%s' already occupied by empty series", EMPTY_SERIES_ID));
+            }
+
+            if(sid.equals(FREEROAM_SERIES_ID)) {
+                throw new IllegalStateException(String.format("series id '%s' already occupied by freeroam series", FREEROAM_SERIES_ID));
             }
             
             if(seriesGraphs.put(sid, new SeriesGraph(tm.loadSeries(sid).get())) != null) {

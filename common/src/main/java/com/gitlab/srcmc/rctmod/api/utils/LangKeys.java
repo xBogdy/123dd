@@ -38,11 +38,14 @@ public final class LangKeys {
     public static final String GUI_TRAINER_CARD_TEAM = "gui.rctmod.trainer_card.team";
 
     public static final String GUI_TITLE_SERIES_STARTED = "gui.rctmod.title.series_started";
+    public static final String GUI_TITLE_SERIES_PAUSED = "gui.rctmod.title.series_paused";
+    public static final String GUI_TITLE_SERIES_CONTINUED = "gui.rctmod.title.series_continued";
     public static final String GUI_TITLE_SERIES_COMPLETED = "gui.rctmod.title.series_completed";
     public static final String GUI_TRAINER_ASSOCIATION_DIFFICULTY = "gui.rctmod.trainer_association.difficulty";
     public static final String GUI_TRAINER_ASSOCIATION_IMPORTANT = "gui.rctmod.trainer_association.important";
     public static final String GUI_TRAINER_ASSOCIATION_COMPLETED = "gui.rctmod.trainer_association.completed";
     public static final String GUI_TRAINER_ASSOCIATION_SERIES_RESET = "gui.rctmod.trainer_association.series_reset";
+    public static final String GUI_TRAINER_ASSOCIATION_SERIES_CONTINUE = "gui.rctmod.trainer_association.series_continue";
 
     public static final String COMMANDS_ERRORS_CALLER_NOT_A_PLAYER = "commands.rctmod.errors.caller_not_a_player";
     public static final String COMMANDS_ERRORS_TARGET_NOT_A_PLAYER = "commands.rctmod.errors.target_not_a_player";

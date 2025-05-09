@@ -487,7 +487,7 @@ public class TrainerSpawner {
         }
 
         if(config.logSpawning()) {
-            var trainer = RCTMod.getInstance().getTrainerManager().getData(trainerId).getTrainerTeam().getName();
+            var trainer = RCTMod.getInstance().getTrainerManager().getData(trainerId).getTrainerTeam().getName().getComponent().getString();
             var biome = level.getBiome(mob.blockPosition());
             var dim = level.dimension();
 

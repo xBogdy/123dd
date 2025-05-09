@@ -1,14 +1,23 @@
 # Changelog
 
-## [0.16.0-beta] - 2025-05-07
+## [0.16.0-beta] - 2025-05-10
 
 **Added:**
 
-- *#288* Language support for trainer names and pokemon nicknames
+- *#290* Language keys
+  - `gui.rctmod.title.series_continued`: Title display when a series was continued
+  - `gui.rctmod.title.series_paused`: Title display when a series was paused
+  - `gui.rctmod.trainer_association.series_continue`: Notice of series continuation in trainer association trade (instad of "Important" section)
+  - `series.rctmod.freeroam.description`: Freeroam series description
+  - `series.rctmod.freeroam.title`: Freeroam series title
+- *#289* Language support for trainer names and pokemon nicknames
+- *#288* Special *freeroam series*: Grants players a level cap of `100` and allows to **pause** their current series
+  - A trade for the freeroam series will be available at the trainer association, for players that have completed any series by default
+  - Players that are in the freeroam series may switch back to their previous series at the trainer association (it will be the only available series trade)
 
 **Changed:**
 
-- *#287* Bumped min required version of *rctapi* to `0.11.2-beta`
+- *#287* Bumped min required version of *rctapi* to `0.12.0-beta`
 - *#286* Language keys are now automatically defined for certain data pack objects (if not explicitly defined otherwise)
   - Pokemon `nickname` property. Format: `pokemon.rctmod.<trainer_id>.<position>.nickname` (`<position>` starts at `0`)
   - Series `description` property. Format: `series.rctmod.<series_id>.description`
