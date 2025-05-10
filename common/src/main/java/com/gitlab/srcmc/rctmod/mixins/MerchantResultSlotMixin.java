@@ -23,6 +23,8 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import com.gitlab.srcmc.rctapi.api.util.Text;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.service.SeriesManager;
 import com.gitlab.srcmc.rctmod.api.utils.ChatUtils;
@@ -30,7 +32,6 @@ import com.gitlab.srcmc.rctmod.api.utils.LangKeys;
 import com.gitlab.srcmc.rctmod.world.entities.TrainerAssociation;
 
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.MerchantContainer;
 import net.minecraft.world.inventory.MerchantResultSlot;
@@ -71,9 +72,9 @@ public class MerchantResultSlotMixin {
                 var seriesPaused = SeriesManager.FREEROAM_SERIES_ID.equals(offer.getKey());
                 var seriesContinued = SeriesManager.FREEROAM_SERIES_ID.equals(tpd.getCurrentSeries()) && offer.getKey().equals(tpd.getPreviousSeries());
                 
-                ChatUtils.sendTitle(player, Component.translatable(
-                    seriesPaused ? LangKeys.GUI_TITLE_SERIES_PAUSED : (seriesContinued ? LangKeys.GUI_TITLE_SERIES_CONTINUED : LangKeys.GUI_TITLE_SERIES_STARTED)).getString(),
-                    RCTMod.getInstance().getSeriesManager().getGraph(seriesPaused ? tpd.getCurrentSeries() : offer.getKey()).getMetaData().title().getComponent().getString());
+                ChatUtils.sendTitle(player,
+                    Text.translatable(seriesPaused ? LangKeys.GUI_TITLE_SERIES_PAUSED : (seriesContinued ? LangKeys.GUI_TITLE_SERIES_CONTINUED : LangKeys.GUI_TITLE_SERIES_STARTED)),
+                    RCTMod.getInstance().getSeriesManager().getGraph(seriesPaused ? tpd.getCurrentSeries() : offer.getKey()).getMetaData().title());
                     
                 tpd.setCurrentSeries(offer.getKey(), seriesPaused || seriesContinued);
                 ta.updateOffersFor(player);

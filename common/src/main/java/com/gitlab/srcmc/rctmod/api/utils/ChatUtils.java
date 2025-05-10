@@ -19,6 +19,7 @@ package com.gitlab.srcmc.rctmod.api.utils;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Function;
 
 import com.gitlab.srcmc.rctapi.api.util.Text;
 import com.gitlab.srcmc.rctmod.ModCommon;
@@ -28,6 +29,7 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.ChatType;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.OutgoingChatMessage;
 import net.minecraft.network.chat.PlayerChatMessage;
 import net.minecraft.world.entity.LivingEntity;
@@ -41,35 +43,26 @@ public final class ChatUtils {
     }
 
     public static void reply(TrainerMob source, Player target, String... contexts) {
-        for(var context : contexts) {
-            var messages = RCTMod.getInstance().getTrainerManager().getData(source).getDialog().get(context);
-
-            if(messages != null) {
-                if(messages.length > 0) {
-                    var message = PlayerChatMessage.system(messages[(target.getRandom().nextInt() & Integer.MAX_VALUE) % messages.length].getComponent().getString());
-                    target.createCommandSourceStack().sendChatMessage(OutgoingChatMessage.create(message), false, ChatType.bind(ChatType.CHAT, source));
-                    return;
-                } else {
-                    ModCommon.LOG.error(String.format("Empty dialog context '%s'", context));
-                    return;
-                }
-            }
-        }
-
-        ModCommon.LOG.error(String.format("Invalid dialog contexts '%s'", String.valueOf(contexts)));
+        var tmd = RCTMod.getInstance().getTrainerManager().getData(source);
+        reply(source, target, context -> tmd.getDialog().get(context), contexts);
     }
 
     public static void reply(LivingEntity source, Player target, String... contexts) {
+        reply(source, target, context -> ChatUtils.defaultDialog.get(context), contexts);
+    }
+
+    private static void reply(LivingEntity source, Player target, Function<String, Text[]> messagesFunc, String... contexts) {
         for(var context : contexts) {
-            var messages = ChatUtils.defaultDialog.get(context);
+            var messages = messagesFunc.apply(context);
 
             if(messages != null) {
                 if(messages.length > 0) {
-                    var message = PlayerChatMessage.system(messages[(target.getRandom().nextInt() & Integer.MAX_VALUE) % messages.length].getComponent().getString());
+                    var message = PlayerChatMessage.system("").withUnsignedContent(messages[(target.getRandom().nextInt() & Integer.MAX_VALUE) % messages.length].getComponent());
                     target.createCommandSourceStack().sendChatMessage(OutgoingChatMessage.create(message), false, ChatType.bind(ChatType.CHAT, source));
                     return;
                 } else {
                     ModCommon.LOG.error(String.format("Empty dialog context '%s'", context));
+                    return;
                 }
             }
         }
@@ -77,8 +70,8 @@ public final class ChatUtils {
         ModCommon.LOG.error(String.format("Invalid dialog contexts '%s'", String.valueOf(contexts)));
     }
 
-    public static void replyRaw(LivingEntity source, Player target, String rawMessage) {
-        var message = PlayerChatMessage.system(rawMessage);
+    public static void replyRaw(LivingEntity source, Player target, Text text, Object... args) {
+        var message = PlayerChatMessage.system("").withUnsignedContent(text.getComponent(args));
         target.createCommandSourceStack().sendChatMessage(OutgoingChatMessage.create(message), false, ChatType.bind(ChatType.CHAT, source));
     }
 
@@ -90,19 +83,19 @@ public final class ChatUtils {
         target.createCommandSourceStack().sendSystemMessage(text.getComponent(args).withStyle(ChatFormatting.RED));
     }
 
-    public static void sendTitle(Player target, String title, String subtitle) {
+    public static void sendTitle(Player target, Text title, Text subtitle) {
         try {
             var cs = target.createCommandSourceStack().withPermission(2).withSuppressedOutput();
 
-            if(subtitle != null && !subtitle.isBlank()) {
-                cs.dispatcher().execute(String.format("title @s subtitle {\"text\": \"%s\", \"italic\": true}", subtitle), cs);
+            if(subtitle != null && !subtitle.isEmpty()) {
+                cs.dispatcher().execute(String.format("title @s subtitle %s", Component.Serializer.toJson(subtitle.getComponent().withStyle(ChatFormatting.ITALIC), target.registryAccess())), cs);
             }
 
             if(title == null) {
-                title = "";
+                title = Text.empty();
             }
-
-            cs.dispatcher().execute(String.format("title @s title {\"text\": \"%s\"}", title), cs);
+            
+            cs.dispatcher().execute(String.format("title @s title %s", Component.Serializer.toJson(title.getComponent(), target.registryAccess())), cs);
         } catch(CommandSyntaxException e) {
             ModCommon.LOG.error(e.getMessage(), e);
         }

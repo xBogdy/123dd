@@ -34,7 +34,6 @@ import com.gitlab.srcmc.rctmod.api.utils.LangKeys;
 
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.saveddata.SavedData;
 
@@ -225,7 +224,11 @@ public class TrainerPlayerData extends SavedData {
         if(this.testSeriesCompleted()) {
             this.addSeriesCompletion(this.getCurrentSeries());
             this.updateLevelCap();
-            ChatUtils.sendTitle(this.player, Component.translatable(LangKeys.GUI_TITLE_SERIES_COMPLETED).getString(), RCTMod.getInstance().getSeriesManager().getGraph(this.getCurrentSeries()).getMetaData().title().getComponent().getString());
+
+            ChatUtils.sendTitle(this.player,
+                Text.translatable(LangKeys.GUI_TITLE_SERIES_COMPLETED),
+                RCTMod.getInstance().getSeriesManager().getGraph(this.getCurrentSeries()).getMetaData().title());
+
             // ModRegistries.CriteriaTriggers.DEFEAT_COUNT.get().trigger((ServerPlayer)player, mob); // TODO: series completion advancements?
         }
     }

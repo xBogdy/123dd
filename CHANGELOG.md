@@ -4,34 +4,43 @@
 
 **Added:**
 
-- *#294* Config option `freeroamRequiresCompletedSeries`: Configure *freeroam series* requirement
-- *#293* Config option `initialSeries`: Defines a series new players are automatically assigned to
-- *#292* Language keys
+- *#298* Config option `freeroamRequiresCompletedSeries`: Configure *freeroam series* requirement
+- *#297* Config option `initialSeries`: Defines a series new players are automatically assigned to
+- *#296* Language keys
+  - `commands.rctmod.errors.unknown_series`: Error when attempting to set a player to an unknwon series
   - `gui.rctmod.title.series_continued`: Title display when a series was continued
   - `gui.rctmod.title.series_paused`: Title display when a series was paused
   - `gui.rctmod.trainer_association.series_continue`: Notice of series continuation in trainer association trade (instad of "Important" section)
   - `series.rctmod.freeroam.description`: Freeroam series description
   - `series.rctmod.freeroam.title`: Freeroam series title
-- *#291* Language support for trainer names and pokemon nicknames
-- *#290* Special *freeroam series*: Grants players a level cap of `100` and allows to **pause** their current series
+- *#295* Language support for trainer names and pokemon nicknames
+- *#294* Special *freeroam series*: Grants players a level cap of `100` and allows to **pause** their current series
   - A trade for the freeroam series will be available at the trainer association, for players that have completed any series by default
   - Players that are in the freeroam series may switch back to their previous series at the trainer association (it will be the only available series trade)
 
 **Changed:**
 
-- *#289* Bumped min required version of *rctapi* to `0.12.0-beta`
-- *#288* Language keys are now automatically defined for certain data pack objects (if not explicitly defined otherwise)
-  - Pokemon `nickname` property. Format: `pokemon.rctmod.<trainer_id>.<position>.nickname` (`<position>` starts at `0`)
+- *#293* Bumped min required version of *rctapi* to `0.12.0-beta`
+- *#292* Language keys are now automatically defined for certain data pack objects (if not explicitly defined otherwise)
+  - Pokemon `nickname` property. Format: `pokemon.rctmod.<trainer_id>.<position>.nickname` (`<position>` starts at `0`; **the `literal` of a `nickname` may not be empty, or the translation will be ignored**)
   - Series `description` property. Format: `series.rctmod.<series_id>.description`
   - Series `title` property. Format: `series.rctmod.<series_id>.title`
   - Trainer `name` property. Format: `trainer.rctmod.<trainer_id>.name`
   - Trainer type `name` property. Format: `trainer_type.rctmod.<type_id>.name`
-- *#287* The Trainer Association will no longer list a trade for the current series of a player
-- *#286* Translatable text now uses a configured `literal` as fallback if no translation was found
+- *#291* The Trainer Association will no longer list a trade for the current series of a player
+- *#290* Trainers that are part of a series progression may now refuse to battle players that are not in the correct series (unless a player has beaten them before) (TODO)
+- *#289* Translatable text now uses a configured `literal` as fallback if no translation was found
+
+**Fixed:**
+
+- *#288* Various messages getting displayed in the language that has been configured on the server rather than the configured language on clients (i.e. trainer dialogs and series notifications)
+- *#287* Wrong forms of some pokemon (TODO)
+  - Rotom of `gioveanni_121`: `frost` -> `frost-appliance`
 
 **Removed:**
 
-- *#285* Config option `considerEmptySeriesCompleted` (use `initialSeries="freeroam"` instead)
+- *#286* Config option `considerEmptySeriesCompleted` (use `initialSeries="freeroam"` instead)
+- *#285* Identity line ("a.k.a") in Trainer Card (identities are not necessarily well formatted like names and will not get translated) (TODO)
 
 ## [0.15.1-beta] - 2025-04-25
 
