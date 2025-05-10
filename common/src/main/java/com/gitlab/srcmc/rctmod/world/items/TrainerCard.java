@@ -68,7 +68,7 @@ public class TrainerCard extends Item {
                     var tpd = RCTMod.getInstance().getTrainerManager().getData(player);
                     var ts = RCTMod.getInstance().getTrainerSpawner();
 
-                    if(tpd.getCurrentSeries().isEmpty() || tpd.isSeriesCompleted()) {
+                    if(tpd.isSeriesCompleted() || tpd.isInEmptySeries()) {
                         var closestTA = ts.getTASpawns().stream()
                             .sorted((t1, t2) -> t1.level().dimension().location().equals(player.level().dimension().location()) ? Double.compare(t1.distanceToSqr(player), t2.distanceToSqr(player)) : 1)
                             .findFirst();

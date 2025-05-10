@@ -168,7 +168,7 @@ public class TrainerAssociation extends WanderingTrader {
 
         return !TrainerAssociation.playerSpawns.contains(player.getUUID())
             && TrainerCard.has(player)
-            && (tpd.isSeriesCompleted() || tpd.getCurrentSeries().isEmpty());
+            && (tpd.isSeriesCompleted() || tpd.isInEmptySeries());
     }
 
     private Map.Entry<String, ItemStack> offer;

@@ -182,6 +182,10 @@ public class TrainerPlayerData extends SavedData {
         return false;
     }
 
+    public boolean isInEmptySeries() {
+        return this.currentSeries.isEmpty() || SeriesManager.EMPTY_SERIES_ID.equals(this.currentSeries);
+    }
+
     public boolean isSeriesCompleted() {
         return this.currentSeriesCompleted || SeriesManager.FREEROAM_SERIES_ID.equals(this.currentSeries);
     }

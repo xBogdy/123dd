@@ -200,8 +200,8 @@ public class ServerConfig implements IServerConfig {
             .comment(SEPARATOR,
                 "The initial series players are placed in when entering a world for the first time. Apart from any series id",
                 "this value may also be set to one of the special series ids \"empty\" (i.e. no series) or \"freeroam\".",
-                "Note that when setting the initial series to \"freeroam\" it is usually a good idea",
-                "to also disable 'freeroamRequiresCompletedSeries'.")
+                "Note that when setting the initial series to \"freeroam\" it is usually a good idea to also disable",
+                "'freeroamRequiresCompletedSeries'.")
             .define("initialSeries", IServerConfig.super.initialSeries());
 
         this.freeroamRequiresCompletedSeriesValue = builder
