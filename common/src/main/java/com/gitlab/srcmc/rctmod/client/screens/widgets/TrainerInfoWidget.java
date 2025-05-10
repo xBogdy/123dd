@@ -74,7 +74,7 @@ public class TrainerInfoWidget extends TrainerDataWidget {
 
     private List<PageContent> contents = new ArrayList<>();
     private HoverElement<MultiStyleStringWidget> back;
-    private StringWidget number, name, aka, identity;
+    private StringWidget number, name;
     private boolean obfuscated;
     private int ticks;
 
@@ -92,16 +92,6 @@ public class TrainerInfoWidget extends TrainerDataWidget {
             }
 
             this.name.setMessage(msg);
-
-            if(this.identity != null) {
-                msg = this.identity.getMessage().plainCopy().withStyle(ChatFormatting.GREEN);
-
-                if(this.obfuscated) {
-                    msg = msg.withStyle(ChatFormatting.OBFUSCATED);
-                }
-
-                this.identity.setMessage(msg);
-            }
         }
 
         ++this.ticks;
@@ -117,7 +107,6 @@ public class TrainerInfoWidget extends TrainerDataWidget {
         this.y = 0;
 
         var displayName = entryState == EntryState.UNKNOWN ? "???" : trainer.getTrainerTeam().getName().getComponent().getString();
-        var identity = entryState == EntryState.UNKNOWN ? "???" : trainer.getTrainerTeam().getIdentity();
         var backX = (int)(this.w*0.9);
 
         this.back = new HoverElement<>(
@@ -128,13 +117,6 @@ public class TrainerInfoWidget extends TrainerDataWidget {
         this.name = new MultiStyleStringWidget(this, (int)(this.w*0.18), this.y, (int)(this.w*0.72), this.h, entryState == EntryState.HIDDEN_KEY ? toComponent(displayName)
             .withStyle(ChatFormatting.OBFUSCATED) : toComponent(displayName), this.font)
             .scrolling().alignLeft();
-
-        if(entryState != EntryState.DISCOVERED || identity.equals(displayName)) {
-            this.aka = this.identity = null;
-        } else {
-            this.aka = new MultiStyleStringWidget(this, 0, this.y += this.h, this.w, this.h, toComponent(Component.translatable(LangKeys.GUI_TRAINER_CARD_IDENTITY)), this.font).alignLeft();
-            this.identity = new MultiStyleStringWidget(this, (int)(this.w*0.18), this.y, this.w, this.h, entryState == EntryState.HIDDEN_KEY ? toComponent(identity).withStyle(ChatFormatting.OBFUSCATED) : toComponent(identity), this.font).alignLeft();
-        }
 
         this.back.element.active = true;
         this.contents.clear();
@@ -154,19 +136,12 @@ public class TrainerInfoWidget extends TrainerDataWidget {
     }
 
     private PageContent initPage(Component title) {
-        var pc = new PageContent(title, this.number, this.name, this.back);
-
-        if(this.identity != null) {
-            pc.renderables.add(this.aka);
-            pc.renderables.add(this.identity);
-        }
-
-        return pc;
+        return new PageContent(title, this.number, this.name, this.back);
     }
 
     private PageContent initOverviewPage() {
         var pc = initPage(Component.translatable(LangKeys.GUI_TRAINER_CARD_OVERVIEW));
-        this.y = this.identity == null ? 0 : this.h;
+        this.y = 0;
 
         pc.renderables.add(new StringWidget(8, this.y += this.h, this.w, this.h, toComponent(String.format("%s: ", Component.translatable(LangKeys.GUI_TRAINER_CARD_TYPE).getString())), this.font).alignLeft());
         pc.renderables.add(new StringWidget(8, this.y, (int)(this.w*0.9), this.h, toComponent(this.trainer.getType().name().getComponent().getString()), this.font).alignRight());
@@ -203,7 +178,7 @@ public class TrainerInfoWidget extends TrainerDataWidget {
             return i == 0 ? r1.getPath().compareTo(r2.getPath()) : i;
         });
 
-        this.y = this.identity == null ? 0 : this.h;
+        this.y = 0;
         var sigItem = BuiltInRegistries.ITEM.get(ResourceLocation.parse(this.trainer.getSignatureItem()));
         
         if(sigItem != null && !Items.AIR.equals(sigItem)) {
@@ -253,7 +228,7 @@ public class TrainerInfoWidget extends TrainerDataWidget {
 
     private PageContent initTeamPage() {
         var pc = initPage(Component.translatable(LangKeys.GUI_TRAINER_CARD_TEAM));
-        this.y = this.identity == null ? 0 : this.h;
+        this.y = 0;
         pc.height = this.y + this.h;
 
         this.trainer.getTrainerTeam().getTeam().forEach(poke -> {

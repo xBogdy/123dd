@@ -18,6 +18,7 @@
 package com.gitlab.srcmc.rctmod.api.data.pack;
 
 import java.util.List;
+import java.util.UUID;
 
 import com.cobblemon.mod.common.api.battles.model.ai.BattleAI;
 import com.gitlab.srcmc.rctapi.api.ai.RCTBattleAI;
@@ -47,9 +48,15 @@ public class TrainerTeam extends TrainerModel {
     }
 
     public String getIdentity() {
-        return this.identity != null ? this.identity : (this.getName().getTranslatable() != null
-            ? this.getName().getTranslatable()
-            : this.getName().getComponent().getString());
+        if(this.identity == null) {
+            this.identity = this.getName().getLiteral() != null
+                ? this.getName().getLiteral()
+                : (this.getName().getTranslatable() != null
+                    ? this.getName().getTranslatable()
+                    : UUID.randomUUID().toString());
+        }
+
+        return this.identity;
     }
 
     public BattleFormat getBattleFormat() {
