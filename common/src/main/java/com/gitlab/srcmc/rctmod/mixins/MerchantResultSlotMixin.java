@@ -71,11 +71,11 @@ public class MerchantResultSlotMixin {
                 var seriesPaused = SeriesManager.FREEROAM_SERIES_ID.equals(offer.getKey());
                 var seriesContinued = SeriesManager.FREEROAM_SERIES_ID.equals(tpd.getCurrentSeries()) && offer.getKey().equals(tpd.getPreviousSeries());
                 
-                tpd.setCurrentSeries(offer.getKey(), seriesPaused || seriesContinued);
                 ChatUtils.sendTitle(player, Component.translatable(
                     seriesPaused ? LangKeys.GUI_TITLE_SERIES_PAUSED : (seriesContinued ? LangKeys.GUI_TITLE_SERIES_CONTINUED : LangKeys.GUI_TITLE_SERIES_STARTED)).getString(),
                     RCTMod.getInstance().getSeriesManager().getGraph(seriesPaused ? tpd.getCurrentSeries() : offer.getKey()).getMetaData().title().getComponent().getString());
-
+                    
+                tpd.setCurrentSeries(offer.getKey(), seriesPaused || seriesContinued);
                 ta.updateOffersFor(player);
             }
         }
