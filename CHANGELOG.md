@@ -4,28 +4,29 @@
 
 **Added:**
 
-- *#293* Config option `freeroamRequiresCompletedSeries`: Configure *freeroam series* requirement
-- *#292* Config option `initialSeries`: Defines a series new players are automatically assigned to
-- *#291* Language keys
+- *#294* Config option `freeroamRequiresCompletedSeries`: Configure *freeroam series* requirement
+- *#293* Config option `initialSeries`: Defines a series new players are automatically assigned to
+- *#292* Language keys
   - `gui.rctmod.title.series_continued`: Title display when a series was continued
   - `gui.rctmod.title.series_paused`: Title display when a series was paused
   - `gui.rctmod.trainer_association.series_continue`: Notice of series continuation in trainer association trade (instad of "Important" section)
   - `series.rctmod.freeroam.description`: Freeroam series description
   - `series.rctmod.freeroam.title`: Freeroam series title
-- *#290* Language support for trainer names and pokemon nicknames
-- *#289* Special *freeroam series*: Grants players a level cap of `100` and allows to **pause** their current series
+- *#291* Language support for trainer names and pokemon nicknames
+- *#290* Special *freeroam series*: Grants players a level cap of `100` and allows to **pause** their current series
   - A trade for the freeroam series will be available at the trainer association, for players that have completed any series by default
   - Players that are in the freeroam series may switch back to their previous series at the trainer association (it will be the only available series trade)
 
 **Changed:**
 
-- *#288* Bumped min required version of *rctapi* to `0.12.0-beta`
-- *#287* Language keys are now automatically defined for certain data pack objects (if not explicitly defined otherwise)
+- *#289* Bumped min required version of *rctapi* to `0.12.0-beta`
+- *#288* Language keys are now automatically defined for certain data pack objects (if not explicitly defined otherwise)
   - Pokemon `nickname` property. Format: `pokemon.rctmod.<trainer_id>.<position>.nickname` (`<position>` starts at `0`)
   - Series `description` property. Format: `series.rctmod.<series_id>.description`
   - Series `title` property. Format: `series.rctmod.<series_id>.title`
   - Trainer `name` property. Format: `trainer.rctmod.<trainer_id>.name`
   - Trainer type `name` property. Format: `trainer_type.rctmod.<type_id>.name`
+- *#287* The Trainer Association will no longer list a trade for the current series of a player
 - *#286* Translatable text now uses a configured `literal` as fallback if no translation was found
 
 **Removed:**
