@@ -40,6 +40,8 @@ public class SeriesManager implements Serializable {
     public static final String EMPTY_SERIES_ID = "empty";
     public static final String FREEROAM_SERIES_ID = "freeroam";
 
+    public transient final SeriesGraph UNKNOWN_SERIES = new SeriesGraph(new SeriesMetaData(new Text()));
+
     public transient final SeriesGraph EMPTY_SERIES = new SeriesGraph(new SeriesMetaData(
         new Text().setTranslatable(LangKeys.SERIES_TITLE(EMPTY_SERIES_ID)),
         new Text().setTranslatable(LangKeys.SERIES_DESCRIPTION(EMPTY_SERIES_ID)), 0));
@@ -60,15 +62,15 @@ public class SeriesManager implements Serializable {
 
     public SeriesGraph getGraph(String seriesId) {
         return (seriesId == null || seriesId.isBlank() || seriesId.equals(EMPTY_SERIES_ID))
-            ? EMPTY_SERIES
+            ? this.EMPTY_SERIES
             : (FREEROAM_SERIES_ID.equals(seriesId)
-                ? FREEROAM_SERIES
-                : this.seriesGraphs.getOrDefault(seriesId, new SeriesGraph(seriesId)));
+                ? this.FREEROAM_SERIES
+                : this.seriesGraphs.getOrDefault(seriesId, this.UNKNOWN_SERIES));
     }
 
     void onLoad(TrainerManager tm) {
-        EMPTY_SERIES.clear();
-        FREEROAM_SERIES.clear();
+        this.EMPTY_SERIES.clear();
+        this.FREEROAM_SERIES.clear();
 
         var seriesGraphs = new HashMap<String, SeriesGraph>();
         seriesGraphs.put(EMPTY_SERIES_ID, EMPTY_SERIES);

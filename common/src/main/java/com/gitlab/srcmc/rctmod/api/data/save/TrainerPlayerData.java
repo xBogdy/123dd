@@ -24,6 +24,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Stream;
 
+import com.gitlab.srcmc.rctapi.api.util.Text;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
@@ -244,6 +245,17 @@ public class TrainerPlayerData extends SavedData {
     }
 
     public void setCurrentSeries(String seriesId, boolean keepProgress) {
+        var sm = RCTMod.getInstance().getSeriesManager();
+
+        if(seriesId.isEmpty()) {
+            seriesId = SeriesManager.EMPTY_SERIES_ID;
+        }
+
+        if(sm.getGraph(seriesId) == sm.UNKNOWN_SERIES) {
+            ChatUtils.sendError(this.player, new Text().setTranslatable(LangKeys.COMMANDS_ERRORS_UNKNOWN_SERIES), seriesId);
+            return;
+        }
+
         if(!seriesId.equals(this.currentSeries)) {
             this.previousSeries = this.currentSeries;
             this.currentSeries = seriesId;
@@ -345,7 +357,7 @@ public class TrainerPlayerData extends SavedData {
 
         public TrainerPlayerData create() {
             var tpd = new TrainerPlayerData(this.player);
-            tpd.currentSeries = RCTMod.getInstance().getServerConfig().initialSeries();
+            tpd.setCurrentSeries(RCTMod.getInstance().getServerConfig().initialSeries());
             tpd.updateLevelCap();
             return tpd;
         }
