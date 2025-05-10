@@ -19,6 +19,8 @@ package com.gitlab.srcmc.rctmod.api.config;
 
 import java.util.List;
 
+import com.gitlab.srcmc.rctmod.api.service.SeriesManager;
+
 public interface IServerConfig extends IModConfig {
     /**
      * Reload is invoked after the config was reloaded and all config values have been parsed.
@@ -50,7 +52,7 @@ public interface IServerConfig extends IModConfig {
     /**
      * The interval in ticks at which a spawn attempt is made per player.
      * 
-     * range [1, inf]
+     * range [1, inf)
      * default 180
      */
     default int spawnIntervalTicks() { return 180; }
@@ -64,7 +66,7 @@ public interface IServerConfig extends IModConfig {
      * for the last trainer will be as configured by spawnIntervalTicksMaximum. Set to
      * any value equal to or below spawnIntervalTicks to disable (e.g. 0).
      * 
-     * range [0, inf]
+     * range [0, inf)
      * default: 2400
      */
     default int spawnIntervalTicksMaximum() { return 2400; }
@@ -92,7 +94,7 @@ public interface IServerConfig extends IModConfig {
     /**
      * The min horizontal distance a trainer can spawn from players.
      * 
-     * range [1, inf]
+     * range [1, inf)
      * default 25
      */
     default int minHorizontalDistanceToPlayers() { return 25; }
@@ -100,7 +102,7 @@ public interface IServerConfig extends IModConfig {
     /**
      * The max horizontal distance a trainer can spawn from players.
      * 
-     * range [1, inf]
+     * range [1, inf)
      * default 70
      */
     default int maxHorizontalDistanceToPlayers() { return 70; }
@@ -108,7 +110,7 @@ public interface IServerConfig extends IModConfig {
     /**
      * The max vertical distance a trainer can spawn from players.
      * 
-     * range [1, inf]
+     * range [1, inf)
      * default 30
      */
     default int maxVerticalDistanceToPlayers() { return 30; }
@@ -116,7 +118,7 @@ public interface IServerConfig extends IModConfig {
     /**
      * Spawn cap of trainers per player.
      * 
-     * range [0, inf]
+     * range [0, inf)
      * default 12
      */
     default int maxTrainersPerPlayer() { return 12; }
@@ -125,7 +127,7 @@ public interface IServerConfig extends IModConfig {
      * Total trainer spawn cap. This value may be increased for servers with higher
      * expected player numbers (> 4), for example (|players| + 1)*maxTrainersPerPlayer.
      * 
-     * range [0, inf]
+     * range [0, inf)
      * default 60
      */
     default int maxTrainersTotal() { return 60; }
@@ -208,15 +210,26 @@ public interface IServerConfig extends IModConfig {
     default boolean allowOverLeveling() { return false; }
 
     /**
-     * Can an empty series be considered completed or uncompletable? You tell me. If
-     * enabled an empty series will always be considered completed hence rewarding
-     * players immediately with a level cap of 100 otherwise the level cap of players
-     * will be as configured by initialLevelCap (and additiveLevelCapRequirement). Note
-     * that players will start with an empty series by default.
+     * The initial series players are placed in when entering a world for the first
+     * time. Apart from any series id this value may also be set to one of the special
+     * series ids "empty" (i.e. no series) or "freeroam".
      * 
-     * default: false
+     * Note that when setting the initial series to "freeroam" it is usually a good
+     * idea to also disable 'freeroamRequiresCompletedSeries'.
+     * 
+     * default: "empty"
      */
-    default boolean considerEmptySeriesCompleted() { return false; }
+    default String initialSeries() { return SeriesManager.EMPTY_SERIES_ID; }
+
+    /**
+     * The freeroam series will grant a level cap of 100 and allows players to pause
+     * the progression of their current series. If this option is enabled, players must
+     * have completed any other series first to gain access to the trade at the trainer
+     * association.
+     * 
+     * default: true
+     */
+    default boolean freeroamRequiresCompletedSeries() { return true; }
 
     /**
      * If enabled additional information are printed to the log whenever a trainer

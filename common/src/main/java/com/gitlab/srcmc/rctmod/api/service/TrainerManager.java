@@ -388,7 +388,7 @@ public class TrainerManager extends DataPackManager {
         });
 
         var cfg = RCTMod.getInstance().getServerConfig();
-        this.globalMinRequiredLevelCap = globalMin[0] == Integer.MAX_VALUE ? (cfg.considerEmptySeriesCompleted() ? 100 : Math.max(1, Math.min(100, cfg.initialLevelCap() + cfg.additiveLevelCapRequirement()))) : globalMin[0];
+        this.globalMinRequiredLevelCap = globalMin[0] == Integer.MAX_VALUE ? Math.max(1, Math.min(100, cfg.initialLevelCap() + cfg.additiveLevelCapRequirement())) : globalMin[0];
         this.trainerMobs = newTrainerMobs;
         this.seriesManager.onLoad(this);
         this.receivedUpdates = new HashSet<>();

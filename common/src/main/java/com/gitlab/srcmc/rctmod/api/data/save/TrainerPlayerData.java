@@ -183,7 +183,7 @@ public class TrainerPlayerData extends SavedData {
     }
 
     public boolean isSeriesCompleted() {
-        return this.currentSeriesCompleted || (SeriesManager.FREEROAM_SERIES_ID.equals(this.currentSeries) && this.completedSeries.values().stream().anyMatch(i -> i > 0));
+        return this.currentSeriesCompleted || SeriesManager.FREEROAM_SERIES_ID.equals(this.currentSeries);
     }
 
     private boolean isCurrentSeriesCompleted() {
@@ -234,7 +234,9 @@ public class TrainerPlayerData extends SavedData {
     }
 
     public void setCurrentSeries(String seriesId) {
-        this.setCurrentSeries(seriesId, this.currentSeries.isEmpty());
+        var seriesPaused = SeriesManager.FREEROAM_SERIES_ID.equals(seriesId);
+        var seriesContinued = SeriesManager.FREEROAM_SERIES_ID.equals(this.currentSeries) && seriesId != null && seriesId.equals(this.previousSeries);
+        this.setCurrentSeries(seriesId, seriesPaused || seriesContinued);
     }
 
     public void setCurrentSeries(String seriesId, boolean keepProgress) {
@@ -339,6 +341,7 @@ public class TrainerPlayerData extends SavedData {
 
         public TrainerPlayerData create() {
             var tpd = new TrainerPlayerData(this.player);
+            tpd.currentSeries = RCTMod.getInstance().getServerConfig().initialSeries();
             tpd.updateLevelCap();
             return tpd;
         }

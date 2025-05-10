@@ -62,12 +62,14 @@ public class ServerConfig implements IServerConfig {
     // players
     private final ConfigValue<Integer> initialLevelCapValue;
     private final ConfigValue<Integer> additiveLevelCapRequirementValue;
-    private final ConfigValue<Boolean> considerEmptySeriesCompletedValue;
+    private final ConfigValue<String> initialSeriesValue;
+    private final ConfigValue<Boolean> freeroamRequiresCompletedSeriesValue;
     private final ConfigValue<Boolean> allowOverLevelingValue;
 
     private int initialLevelCapCached;
     private int additiveLevelCapRequirementCached;
-    private boolean considerEmptySeriesCompletedCached;
+    private String initialSeriesCached;
+    private boolean freeroamRequiresCompletedSeriesCached;
     private boolean allowOverLevelingCached;
 
     // debug
@@ -194,13 +196,20 @@ public class ServerConfig implements IServerConfig {
                 "if it is 10 the level cap requirement becomes 60.")
             .define("additiveLevelCapRequirement", IServerConfig.super.additiveLevelCapRequirement());
 
-        this.considerEmptySeriesCompletedValue = builder
+        this.initialSeriesValue = builder
             .comment(SEPARATOR,
-                "Can an empty series be considered completed or uncompletable? You tell me. If enabled an empty series",
-                "will always be considered completed hence rewarding players immediately with a level cap of 100 otherwise",
-                "the level cap of players will be as configured by initialLevelCap (and additiveLevelCapRequirement).",
-                "Note that players will start with an empty series by default.")
-            .define("considerEmptySeriesCompleted", IServerConfig.super.considerEmptySeriesCompleted());
+                "The initial series players are placed in when entering a world for the first time. Apart from any series id",
+                "this value may also be set to one of the special series ids \"empty\" (i.e. no series) or \"freeroam\".",
+                "Note that when setting the initial series to \"freeroam\" it is usually a good idea",
+                "to also disable 'freeroamRequiresCompletedSeries'.")
+            .define("initialSeries", IServerConfig.super.initialSeries());
+
+        this.freeroamRequiresCompletedSeriesValue = builder
+            .comment(SEPARATOR,
+                "The freeroam series will grant a level cap of 100 and allows players to pause the progression of their",
+                "current series. If this option is enabled, players must have completed any other series first to gain",
+                "access to the trade at the trainer association.")
+            .define("freeroamRequiresCompletedSeries", IServerConfig.super.freeroamRequiresCompletedSeries());
 
         this.allowOverLevelingValue = builder
             .comment(SEPARATOR,
@@ -242,7 +251,8 @@ public class ServerConfig implements IServerConfig {
         this.biomeTagWhitelistCached = List.copyOf(this.biomeTagWhitelistValue.get());
         this.initialLevelCapCached = this.initialLevelCapValue.get();
         this.additiveLevelCapRequirementCached = this.additiveLevelCapRequirementValue.get();
-        this.considerEmptySeriesCompletedCached = this.considerEmptySeriesCompletedValue.get();
+        this.initialSeriesCached = this.initialSeriesValue.get();
+        this.freeroamRequiresCompletedSeriesCached = this.freeroamRequiresCompletedSeriesValue.get();
         this.allowOverLevelingCached = this.allowOverLevelingValue.get();
         this.logSpawningCached = this.logSpawningValue.get();
     }
@@ -343,8 +353,13 @@ public class ServerConfig implements IServerConfig {
     }
 
     @Override
-    public boolean considerEmptySeriesCompleted() {
-        return this.considerEmptySeriesCompletedCached;
+    public String initialSeries() {
+        return this.initialSeriesCached;
+    }
+
+    @Override
+    public boolean freeroamRequiresCompletedSeries() {
+        return this.freeroamRequiresCompletedSeriesCached;
     }
 
     @Override

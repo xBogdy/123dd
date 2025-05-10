@@ -355,8 +355,11 @@ public class TrainerAssociation extends WanderingTrader {
     }
 
     public void updateOffersFor(Player player) {
-        var tpd = RCTMod.getInstance().getTrainerManager().getData(player);
-        var sm = RCTMod.getInstance().getSeriesManager();
+        var rct = RCTMod.getInstance();
+        var tm = rct.getTrainerManager();
+        var sm = rct.getSeriesManager();
+        var tpd = tm.getData(player);
+        var freeroamRequiresCompletedSeries = rct.getServerConfig().freeroamRequiresCompletedSeries();
         this.offers = new MerchantOffers();
 
         if(this.itemOffers != null) {
@@ -366,6 +369,7 @@ public class TrainerAssociation extends WanderingTrader {
         sm.getSeriesIds()
             .stream().map(sid -> Map.entry(sid, sm.getGraph(sid).getMetaData()))
             .filter(e -> !e.getKey().equals(SeriesManager.EMPTY_SERIES_ID))
+            .filter(e -> !SeriesManager.FREEROAM_SERIES_ID.equals(e.getKey()) || !freeroamRequiresCompletedSeries || tpd.getCompletedSeries().values().stream().anyMatch(c -> c > 0))
             .filter(e -> SeriesManager.FREEROAM_SERIES_ID.equals(tpd.getCurrentSeries()) ? (tpd.getPreviousSeries().isEmpty() || e.getKey().equals(tpd.getPreviousSeries())) : true)
             .sorted((e1, e2) -> e1.getValue().compareTo(e2.getValue()))
             .forEach(e -> {
