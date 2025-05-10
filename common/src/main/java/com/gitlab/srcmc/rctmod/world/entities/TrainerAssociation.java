@@ -368,10 +368,9 @@ public class TrainerAssociation extends WanderingTrader {
 
         sm.getSeriesIds()
             .stream().map(sid -> Map.entry(sid, sm.getGraph(sid).getMetaData()))
-            .filter(e -> !e.getKey().equals(SeriesManager.EMPTY_SERIES_ID))
-            .filter(e -> !e.getKey().equals(tpd.getCurrentSeries()))
+            .filter(e -> !e.getKey().equals(SeriesManager.EMPTY_SERIES_ID) && !e.getKey().equals(tpd.getCurrentSeries()))
             .filter(e -> !SeriesManager.FREEROAM_SERIES_ID.equals(e.getKey()) || !freeroamRequiresCompletedSeries || tpd.getCompletedSeries().values().stream().anyMatch(c -> c > 0))
-            .filter(e -> SeriesManager.FREEROAM_SERIES_ID.equals(tpd.getCurrentSeries()) ? (tpd.getPreviousSeries().isEmpty() || e.getKey().equals(tpd.getPreviousSeries())) : true)
+            .filter(e -> SeriesManager.FREEROAM_SERIES_ID.equals(tpd.getCurrentSeries()) ? (sm.getGraph(tpd.getPreviousSeries()) == sm.EMPTY_SERIES || sm.getGraph(tpd.getPreviousSeries()) == sm.UNKNOWN_SERIES || e.getKey().equals(tpd.getPreviousSeries())) : true)
             .sorted((e1, e2) -> e1.getValue().compareTo(e2.getValue()))
             .forEach(e -> {
                 if(e.getValue().requiredSeries() != null) {
