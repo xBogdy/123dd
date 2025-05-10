@@ -91,7 +91,7 @@ public class TrainerType implements Serializable {
     private int numericId = -1;
 
     public TrainerType() {
-        this(new Text().setTranslatable(LangKeys.TRAINER_TYPE_TITLE("unknown")));
+        this(Text.translatable(LangKeys.TRAINER_TYPE_TITLE("unknown")));
     }
 
     public TrainerType(Text name) {

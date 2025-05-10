@@ -99,7 +99,7 @@ public class PlayerInfoWidget extends AbstractWidget {
     public static final int LOADING_X = TRAINER_LIST_X;
     public static final int LOADING_Y = TRAINER_LIST_Y + TRAINER_LIST_H/2 - LOADING_H/2;
 
-    private final TrainerType ALL_TRAINER_TYPES = new TrainerType(new Text().setTranslatable(LangKeys.TRAINER_TYPE_TITLE("all")));
+    private final TrainerType ALL_TRAINER_TYPES = new TrainerType(Text.translatable(LangKeys.TRAINER_TYPE_TITLE("all")));
 
     private StringWidget displayName;
     private StringWidget levelCapLabel;

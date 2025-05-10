@@ -252,7 +252,7 @@ public class TrainerPlayerData extends SavedData {
         }
 
         if(sm.getGraph(seriesId) == sm.UNKNOWN_SERIES) {
-            ChatUtils.sendError(this.player, new Text().setTranslatable(LangKeys.COMMANDS_ERRORS_UNKNOWN_SERIES), seriesId);
+            ChatUtils.sendError(this.player, Text.translatable(LangKeys.COMMANDS_ERRORS_UNKNOWN_SERIES), seriesId);
             return;
         }
 

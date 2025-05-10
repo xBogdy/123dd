@@ -40,15 +40,15 @@ public class SeriesManager implements Serializable {
     public static final String EMPTY_SERIES_ID = "empty";
     public static final String FREEROAM_SERIES_ID = "freeroam";
 
-    public transient final SeriesGraph UNKNOWN_SERIES = new SeriesGraph(new SeriesMetaData(new Text()));
+    public transient final SeriesGraph UNKNOWN_SERIES = new SeriesGraph(new SeriesMetaData(Text.empty()));
 
     public transient final SeriesGraph EMPTY_SERIES = new SeriesGraph(new SeriesMetaData(
-        new Text().setTranslatable(LangKeys.SERIES_TITLE(EMPTY_SERIES_ID)),
-        new Text().setTranslatable(LangKeys.SERIES_DESCRIPTION(EMPTY_SERIES_ID)), 0));
+        Text.translatable(LangKeys.SERIES_TITLE(EMPTY_SERIES_ID)),
+        Text.translatable(LangKeys.SERIES_DESCRIPTION(EMPTY_SERIES_ID)), 0));
 
     public transient final SeriesGraph FREEROAM_SERIES = new SeriesGraph(new SeriesMetaData(
-        new Text().setTranslatable(LangKeys.SERIES_TITLE(FREEROAM_SERIES_ID)),
-        new Text().setTranslatable(LangKeys.SERIES_DESCRIPTION(FREEROAM_SERIES_ID)), 0));
+        Text.translatable(LangKeys.SERIES_TITLE(FREEROAM_SERIES_ID)),
+        Text.translatable(LangKeys.SERIES_DESCRIPTION(FREEROAM_SERIES_ID)), 0));
 
     private Map<String, SeriesGraph> seriesGraphs = new HashMap<>();
 
@@ -155,8 +155,8 @@ public class SeriesManager implements Serializable {
 
         SeriesGraph(String seriesId) {
             this(new SeriesMetaData(
-                new Text().setTranslatable(LangKeys.SERIES_TITLE(seriesId)),
-                new Text().setTranslatable(LangKeys.SERIES_DESCRIPTION(seriesId))));
+                Text.translatable(LangKeys.SERIES_TITLE(seriesId)),
+                Text.translatable(LangKeys.SERIES_DESCRIPTION(seriesId))));
         }
 
         SeriesGraph(SeriesMetaData metaData) {

@@ -28,7 +28,7 @@ public record SeriesMetaData(Text title, Text description, int difficulty, List<
     public static final int MAX_DIFFICULTY = 10;
 
     public SeriesMetaData(Text title) {
-        this(title, new Text(), MIN_DIFFICULTY + (MAX_DIFFICULTY - MIN_DIFFICULTY) / 2);
+        this(title, Text.empty(), MIN_DIFFICULTY + (MAX_DIFFICULTY - MIN_DIFFICULTY) / 2);
     }
 
     public SeriesMetaData(Text title, Text description) {
