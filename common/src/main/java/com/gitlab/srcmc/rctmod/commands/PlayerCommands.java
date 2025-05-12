@@ -24,7 +24,6 @@ import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.pack.SeriesMetaData;
 import com.gitlab.srcmc.rctmod.api.data.pack.TrainerType;
 import com.gitlab.srcmc.rctmod.api.data.save.TrainerPlayerData;
-import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.api.service.SeriesManager;
 import com.gitlab.srcmc.rctmod.api.utils.LangKeys;
 import com.gitlab.srcmc.rctmod.api.utils.PlantUML;
@@ -189,13 +188,13 @@ public final class PlayerCommands {
 
     private static int player_get_current_series_target(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         var player = EntityArgument.getPlayer(context, "target");
-        context.getSource().sendSuccess(() -> Component.literal(PlayerState.get(player).getCurrentSeries()), false);
+        context.getSource().sendSuccess(() -> Component.literal(RCTMod.getInstance().getTrainerManager().getData(player).getCurrentSeries()), false);
         return 0;
     }
 
     public static int player_get_current_series(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         if(context.getSource().getEntity() instanceof Player player) {
-            context.getSource().sendSuccess(() -> Component.literal(PlayerState.get(player).getCurrentSeries()), false);
+            context.getSource().sendSuccess(() -> Component.literal(RCTMod.getInstance().getTrainerManager().getData(player).getCurrentSeries()), false);
             return 0;
         }
         
@@ -357,7 +356,7 @@ public final class PlayerCommands {
         if(context.getSource().getEntity() instanceof Player player) {
             try {
                 var trainerId = context.getArgument("trainerId", String.class);
-                var count = PlayerState.get(player).getTrainerDefeatCount(trainerId);
+                var count = RCTMod.getInstance().getTrainerManager().getBattleMemory((ServerLevel)player.level(), trainerId).getDefeatByCount(trainerId, player);
                 context.getSource().sendSuccess(() -> Component.literal(String.valueOf(count)), false);
                 return count;
             } catch(IllegalArgumentException e) {
@@ -374,7 +373,7 @@ public final class PlayerCommands {
         try {
             var trainerId = context.getArgument("trainerId", String.class);
             var player = EntityArgument.getPlayer(context, "target");
-            var count = PlayerState.get(player).getTrainerDefeatCount(trainerId);
+            var count = RCTMod.getInstance().getTrainerManager().getBattleMemory((ServerLevel)player.level(), trainerId).getDefeatByCount(trainerId, player);
             context.getSource().sendSuccess(() -> Component.literal(String.valueOf(count)), false);
             return count;
         } catch(IllegalArgumentException e) {
@@ -386,8 +385,13 @@ public final class PlayerCommands {
     private static int player_get_type_defeats(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         if(context.getSource().getEntity() instanceof Player player) {
             try {
+                var level = (ServerLevel)player.level();
                 var type = TrainerType.valueOf(context.getArgument("type", String.class));
-                var count = PlayerState.get(player).getTypeDefeatCount(type);
+                var tm = RCTMod.getInstance().getTrainerManager();
+                var count = tm.getAllData().filter(e -> e.getValue().getType().equals(type))
+                    .map(e -> tm.getBattleMemory(level, e.getKey()).getDefeatByCount(e.getKey(), player))
+                    .reduce(0, (a, b) -> a + b);
+
                 context.getSource().sendSuccess(() -> Component.literal(String.valueOf(count)), false);
                 return (int)count;
             } catch(IllegalArgumentException e) {
@@ -404,7 +408,12 @@ public final class PlayerCommands {
         try {
             var type = TrainerType.valueOf(context.getArgument("type", String.class));
             var player = EntityArgument.getPlayer(context, "target");
-            var count = PlayerState.get(player).getTypeDefeatCount(type);
+            var level = (ServerLevel)player.level();
+            var tm = RCTMod.getInstance().getTrainerManager();
+            var count = tm.getAllData().filter(e -> e.getValue().getType().equals(type))
+                .map(e -> tm.getBattleMemory(level, e.getKey()).getDefeatByCount(e.getKey(), player))
+                .reduce(0, (a, b) -> a + b);
+
             context.getSource().sendSuccess(() -> Component.literal(String.valueOf(count)), false);
             return (int)count;
         } catch(IllegalArgumentException e) {

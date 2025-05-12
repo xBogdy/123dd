@@ -1,13 +1,13 @@
 # Changelog
 
-## [0.16.0-beta] - 2025-05-10
+## [0.16.0-beta] - 2025-05-12
 
 **Added:**
 
-- *#299* Config option `freeroamRequiresCompletedSeries`: Configure *freeroam series* requirement
-- *#298* Config option `initialSeries`: Defines a series new players are automatically assigned to
-- *#297* Language support for trainer names and pokemon nicknames (see also *#293*)
-- *#296* New language keys
+- *#300* Config option `freeroamRequiresCompletedSeries`: Configure *freeroam series* requirement
+- *#299* Config option `initialSeries`: Defines a series new players are automatically assigned to
+- *#298* Language support for trainer names and pokemon nicknames (see also *#294*)
+- *#297* New language keys
   - `commands.rctmod.errors.unknown_series`: Error when attempting to set a player to an unknwon series
   - `gui.rctmod.actionbar.warning.level_cap`: Notification shown to players that attempt to level up pokemon at or above their level cap
   - `gui.rctmod.title.series_continued`: Title display when a series was continued
@@ -15,29 +15,30 @@
   - `gui.rctmod.trainer_association.series_continue`: Notice of series continuation in trainer association trade (instead of "Important" section)
   - `series.rctmod.freeroam.description`: Freeroam series description
   - `series.rctmod.freeroam.title`: Freeroam series title
-- *#295* Special *freeroam series*: Grants players a level cap of `100` and allows to **pause** the current series
+- *#296* Special *freeroam series*: Grants players a level cap of `100` and allows to **pause** the current series
   - A trade for the freeroam series will be available at the trainer association, for players that have completed any series by default
   - Players that are in the freeroam series may switch back to their previous series at the trainer association and continue where they left off (it will be the only available series trade)
 
 **Changed:**
 
-- *#294* Bumped min required version of *rctapi* to `0.12.0-beta`
-- *#293* Language keys are now automatically defined for certain data pack objects (if not explicitly defined otherwise)
+- *#295* Bumped min required version of *rctapi* to `0.12.0-beta`
+- *#294* Language keys are now automatically defined for certain data pack objects (if not explicitly defined otherwise)
   - Pokemon `nickname` property. Format: `pokemon.rctmod.<trainer_id>.<position>.nickname` (`<position>` starts at `0`; **the `literal` of a `nickname` may not be empty, or the translation will be ignored**)
   - Series `description` property. Format: `series.rctmod.<series_id>.description`
   - Series `title` property. Format: `series.rctmod.<series_id>.title`
   - Trainer `name` property. Format: `trainer.rctmod.<trainer_id>.name`
   - Trainer type `name` property. Format: `trainer_type.rctmod.<type_id>.name`
-- *#292* The Trainer Association will no longer list a trade for the current series of a player
-- *#291* Trainers that are part of a series progression may now refuse to battle players that are not in the correct series (unless a player has beaten them before)
-- *#290* Translatable text now uses a configured `literal` as fallback if no translation was found
+- *#293* The Trainer Association will no longer list a trade for the current series of a player
+- *#292* Trainers that are part of a series progression may now refuse to battle players that are not in the correct series (unless a player has beaten them before)
+- *#291* Translatable text now uses a configured `literal` as fallback if no translation was found
 
 **Fixed:**
 
-- *#289* Trainer Card mistakenly indicating that some progression trainers lower the level cap
-- *#288* Various messages getting displayed in the language that has been configured on the server rather than the configured language on clients (i.e. trainer dialogs and series notifications)
-- *#287* Wrong forms of some pokemon (TODO)
+- *#290* Trainer Card mistakenly indicating that some progression trainers lower the level cap
+- *#289* Various messages getting displayed in the language that has been configured on the server rather than the configured language on clients (i.e. trainer dialogs and series notifications)
+- *#288* Wrong forms of some pokemon (TODO)
   - Rotom of `gioveanni_121`: `frost` -> `frost-appliance`
+- *#287* `player set/get defeats` commands not working for trainers that are in a different series
 
 **Removed:**
 

@@ -307,9 +307,14 @@ public class TrainerMob extends PathfinderMob implements Npc {
 
         if(level.isClientSide) {
             var cfg = RCTMod.getInstance().getClientConfig();
+            var ps = PlayerState.get(ModCommon.localPlayer());
             showSymbols = cfg.showTrainerTypeSymbols();
             showColors = cfg.showTrainerTypeColors();
-            showItalic = PlayerState.get(ModCommon.localPlayer()).getTrainerDefeatCount(this.getTrainerId()) == 0;
+
+            // TODO: PlayerState only keeps track of defeated trainers from the current series
+            // of a player, hence it would be necessary to fetch the defeat counts of trainers
+            // from different series (which would introduce some significant overhead).
+            showItalic = tmd.isOfSeries(ps.getCurrentSeries()) && ps.getTrainerDefeatCount(this.getTrainerId()) == 0;
         }
 
         if(showSymbols) {
