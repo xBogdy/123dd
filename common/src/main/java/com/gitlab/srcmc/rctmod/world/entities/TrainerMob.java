@@ -197,7 +197,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
             ChatUtils.reply(this, player, "on_cooldown");
         } else if(RCTMod.getInstance().isInBattle(player)) {
             ChatUtils.reply(this, player, "player_busy");
-        } else if(tmd.isOfSeries(tpd.getCurrentSeries()) || bm.getDefeatByCount(this.getTrainerId(), player) > 0) {
+        } else if((!tmd.isOfSeries(tpd.getCurrentSeries()) && bm.getDefeatByCount(this.getTrainerId(), player) == 0)) {
             ChatUtils.reply(this, player, "wrong_series");
         } else if(msr.isPresent()) {
             ChatUtils.reply(this, player, "missing_required_trainer_"  + tm.getData(msr.get()).getType().id(), "missing_required_trainer");
