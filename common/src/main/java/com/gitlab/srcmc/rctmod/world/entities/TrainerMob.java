@@ -144,6 +144,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
             var tm = rct.getTrainerManager();
             var tpd = tm.getData(player);
             var tmd = tm.getData(this);
+            var bm = tm.getBattleMemory(this);
 
             return this.getCooldown() == 0
                 && !this.isInBattle()
@@ -152,6 +153,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
                 && tpd.getLevelCap() >= tmd.getRequiredLevelCap()
                 && tm.getPlayerLevel(player) <= tpd.getLevelCap()
                 && tmd.getMissingRequirements(tm.getData(player).getDefeatedTrainerIds()).findFirst().isEmpty()
+                && (tmd.isOfSeries(tpd.getCurrentSeries()) || bm.getDefeatByCount(this.getTrainerId(), player) > 0)
                 && this.couldBattleAgainst(e);
         }
 
@@ -183,6 +185,7 @@ public class TrainerMob extends PathfinderMob implements Npc {
         var tmd = tm.getData(this);
         var tpd = tm.getData(player);
         var msr = tmd.getMissingRequirements(tm.getData(player).getDefeatedTrainerIds()).findFirst();
+        var bm = tm.getBattleMemory(this);
 
         if(this.isInBattle()) {
             ChatUtils.reply(this, player, "trainer_busy");
@@ -194,9 +197,8 @@ public class TrainerMob extends PathfinderMob implements Npc {
             ChatUtils.reply(this, player, "on_cooldown");
         } else if(RCTMod.getInstance().isInBattle(player)) {
             ChatUtils.reply(this, player, "player_busy");
-        // TODO: wrong_series
-        // } else if(...) {
-        //     ChatUtils.reply(this, player, "wrong_series");
+        } else if(tmd.isOfSeries(tpd.getCurrentSeries()) || bm.getDefeatByCount(this.getTrainerId(), player) > 0) {
+            ChatUtils.reply(this, player, "wrong_series");
         } else if(msr.isPresent()) {
             ChatUtils.reply(this, player, "missing_required_trainer_"  + tm.getData(msr.get()).getType().id(), "missing_required_trainer");
         } else if(tpd.getLevelCap() < tmd.getRequiredLevelCap()) {

@@ -29,7 +29,7 @@
   - Trainer `name` property. Format: `trainer.rctmod.<trainer_id>.name`
   - Trainer type `name` property. Format: `trainer_type.rctmod.<type_id>.name`
 - *#292* The Trainer Association will no longer list a trade for the current series of a player
-- *#291* Trainers that are part of a series progression may now refuse to battle players that are not in the correct series (unless a player has beaten them before) (TODO)
+- *#291* Trainers that are part of a series progression may now refuse to battle players that are not in the correct series (unless a player has beaten them before)
 - *#290* Translatable text now uses a configured `literal` as fallback if no translation was found
 
 **Fixed:**
