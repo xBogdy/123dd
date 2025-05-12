@@ -28,11 +28,14 @@ import com.cobblemon.mod.common.api.battles.model.actor.BattleActor;
 import com.cobblemon.mod.common.api.events.CobblemonEvents;
 import com.cobblemon.mod.common.api.events.battles.BattleVictoryEvent;
 import com.cobblemon.mod.common.api.events.pokemon.ExperienceGainedPreEvent;
+import com.gitlab.srcmc.rctapi.api.util.Text;
 import com.gitlab.srcmc.rctmod.ModCommon;
 import com.gitlab.srcmc.rctmod.api.RCTMod;
 import com.gitlab.srcmc.rctmod.api.data.save.TrainerBattleMemory;
 import com.gitlab.srcmc.rctmod.api.data.sync.PlayerState;
 import com.gitlab.srcmc.rctmod.api.utils.ArrUtils;
+import com.gitlab.srcmc.rctmod.api.utils.ChatUtils;
+import com.gitlab.srcmc.rctmod.api.utils.LangKeys;
 import com.gitlab.srcmc.rctmod.commands.PlayerCommands;
 import com.gitlab.srcmc.rctmod.commands.TrainerCommands;
 import com.gitlab.srcmc.rctmod.commands.utils.SuggestionUtils;
@@ -255,13 +258,9 @@ public class ModServer {
                 var maxExp = event.getPokemon().getExperienceToLevel(playerTr.getLevelCap());
 
                 if(maxExp < event.getExperience()) {
-                    owner.server.getCommands().performPrefixedCommand(
-                        owner.server.createCommandSourceStack().withSuppressedOutput(),
-                        String.format("title %s actionbar \"%s is %s the level cap (%d)\"",
-                            owner.getName().getString(),
-                            event.getPokemon().getDisplayName().getString(),
-                            event.getPokemon().getLevel() == playerTr.getLevelCap() ? "at" : "over",
-                            playerTr.getLevelCap()));
+                    ChatUtils.sendActionbar(owner, Text.translatable(LangKeys.GUI_ACTIONBAR_WARNING_LEVEL_CAP),
+                        event.getPokemon().getDisplayName(),
+                        playerTr.getLevelCap());
                 }
 
                 event.setExperience(Math.min(event.getExperience(), maxExp));

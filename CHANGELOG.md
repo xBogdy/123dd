@@ -9,9 +9,10 @@
 - *#297* Language support for trainer names and pokemon nicknames (see also *#293*)
 - *#296* New language keys
   - `commands.rctmod.errors.unknown_series`: Error when attempting to set a player to an unknwon series
+  - `gui.rctmod.actionbar.warning.level_cap`: Notification shown to players that attempt to level up pokemon at or above their level cap
   - `gui.rctmod.title.series_continued`: Title display when a series was continued
   - `gui.rctmod.title.series_paused`: Title display when a series was paused
-  - `gui.rctmod.trainer_association.series_continue`: Notice of series continuation in trainer association trade (instad of "Important" section)
+  - `gui.rctmod.trainer_association.series_continue`: Notice of series continuation in trainer association trade (instead of "Important" section)
   - `series.rctmod.freeroam.description`: Freeroam series description
   - `series.rctmod.freeroam.title`: Freeroam series title
 - *#295* Special *freeroam series*: Grants players a level cap of `100` and allows to **pause** the current series

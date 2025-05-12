@@ -41,6 +41,7 @@ public final class LangKeys {
     public static final String GUI_TITLE_SERIES_PAUSED = "gui.rctmod.title.series_paused";
     public static final String GUI_TITLE_SERIES_CONTINUED = "gui.rctmod.title.series_continued";
     public static final String GUI_TITLE_SERIES_COMPLETED = "gui.rctmod.title.series_completed";
+    public static final String GUI_ACTIONBAR_WARNING_LEVEL_CAP = "gui.rctmod.actionbar.warning.level_cap";
     public static final String GUI_TRAINER_ASSOCIATION_DIFFICULTY = "gui.rctmod.trainer_association.difficulty";
     public static final String GUI_TRAINER_ASSOCIATION_IMPORTANT = "gui.rctmod.trainer_association.important";
     public static final String GUI_TRAINER_ASSOCIATION_COMPLETED = "gui.rctmod.trainer_association.completed";

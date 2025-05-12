@@ -83,19 +83,28 @@ public final class ChatUtils {
         target.createCommandSourceStack().sendSystemMessage(text.getComponent(args).withStyle(ChatFormatting.RED));
     }
 
-    public static void sendTitle(Player target, Text title, Text subtitle) {
+    public static void sendTitle(Player target, Text title, Text subtitle, Object... args) {
         try {
             var cs = target.createCommandSourceStack().withPermission(2).withSuppressedOutput();
 
             if(subtitle != null && !subtitle.isEmpty()) {
-                cs.dispatcher().execute(String.format("title @s subtitle %s", Component.Serializer.toJson(subtitle.getComponent().withStyle(ChatFormatting.ITALIC), target.registryAccess())), cs);
+                cs.dispatcher().execute(String.format("title @s subtitle %s", Component.Serializer.toJson(subtitle.getComponent(args).withStyle(ChatFormatting.ITALIC), target.registryAccess())), cs);
             }
 
             if(title == null) {
                 title = Text.empty();
             }
             
-            cs.dispatcher().execute(String.format("title @s title %s", Component.Serializer.toJson(title.getComponent(), target.registryAccess())), cs);
+            cs.dispatcher().execute(String.format("title @s title %s", Component.Serializer.toJson(title.getComponent(args), target.registryAccess())), cs);
+        } catch(CommandSyntaxException e) {
+            ModCommon.LOG.error(e.getMessage(), e);
+        }
+    }
+
+    public static void sendActionbar(Player target, Text message, Object... args) {
+        try {
+            var cs = target.createCommandSourceStack().withPermission(2).withSuppressedOutput();
+            cs.dispatcher().execute(String.format("title @s actionbar %s", Component.Serializer.toJson(message.getComponent(args), target.registryAccess())), cs);
         } catch(CommandSyntaxException e) {
             ModCommon.LOG.error(e.getMessage(), e);
         }
