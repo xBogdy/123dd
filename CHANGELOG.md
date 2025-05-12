@@ -34,7 +34,7 @@
 
 **Fixed:**
 
-- *#289* Trainer Card mistakenly indicating that some trainers lower the level cap (TODO)
+- *#289* Trainer Card mistakenly indicating that some progression trainers lower the level cap
 - *#288* Various messages getting displayed in the language that has been configured on the server rather than the configured language on clients (i.e. trainer dialogs and series notifications)
 - *#287* Wrong forms of some pokemon (TODO)
   - Rotom of `gioveanni_121`: `frost` -> `frost-appliance`

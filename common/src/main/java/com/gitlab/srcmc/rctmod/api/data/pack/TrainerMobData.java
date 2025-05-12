@@ -116,8 +116,7 @@ public class TrainerMobData implements IDataPackObject, Serializable {
     }
 
     public void setRewardLevelCap(int levelCap) {
-        var cfg = RCTMod.getInstance().getServerConfig();
-        this.rewardLevelCap = Math.min(100, Math.max(1, Math.max(cfg.initialLevelCap() + cfg.additiveLevelCapRequirement(), levelCap)));
+        this.rewardLevelCap = Math.min(100, Math.max(1, Math.max(this.getRequiredLevelCap(), levelCap)));
     }
 
     public int getRewardLevelCap() {
