@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.16.0-beta] - 2025-05-12
+## [0.16.0-beta] - 2025-05-13
 
 **Added:**
 
@@ -34,10 +34,9 @@
 
 **Fixed:**
 
-- *#290* Trainer Card mistakenly indicating that some progression trainers lower the level cap
-- *#289* Various messages getting displayed in the language that has been configured on the server rather than the configured language on clients (i.e. trainer dialogs and series notifications)
-- *#288* Wrong forms of some pokemon (TODO)
-  - Rotom of `gioveanni_121`: `frost` -> `frost-appliance`
+- *#290* Fixed Rotom forms of various trainers
+- *#289* Trainer Card mistakenly indicating that some progression trainers lower the level cap
+- *#288* Various messages getting displayed in the language that has been configured on the server rather than the configured language on clients (i.e. trainer dialogs and series notifications)
 - *#287* `player set/get defeats` commands not working for trainers that are in a different series
 
 **Removed:**

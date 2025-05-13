@@ -124,7 +124,7 @@
       },
       "heldItem": "choice_specs",
       "aspects": [
-        "heat"
+        "heat-appliance"
       ]
     },
     {
