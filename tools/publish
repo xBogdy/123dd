@@ -256,17 +256,14 @@ for mod_loader in "${mod_loaders[@]}"; do
             relations="\"relations\": $relations,"
         fi
 
-        metadata="{
-            $relations
-            \"changelog\": \"$(as_json "$(changelog cat -e 0)")\",
-            \"changelogType\": \"markdown\",
-            \"gameVersions\": [$minecraft_version_ids],
-            \"releaseType\": \"$release_type\",
-            \"modLoaderType\": \"${mod_loader^}\"
-        }"
-
-        echo "metadata:"
-        echo "$metadata"
+metadata="{
+    $relations
+    \"changelog\": \"$(as_json "$(changelog cat -e 0)")\",
+    \"changelogType\": \"markdown\",
+    \"gameVersions\": [$minecraft_version_ids],
+    \"releaseType\": \"$release_type\",
+    \"modLoaderType\": \"${mod_loader^}\"
+}"
 
         mod_archive="./$mod_loader/build/libs/$mod_id-$mod_loader-$minecraft_version-$mod_version.jar"
         response=$(assert_curl -s -F metadata="$metadata" -F file="@$mod_archive" \
@@ -293,21 +290,18 @@ for mod_loader in "${mod_loaders[@]}"; do
     done
 
     if [ "$answer" = "y" ]; then
-        metadata="{
-            \"name\": \"Version $mod_version\",
-            \"version_number\": \"$mod_version\",
-            \"changelog\": \"$(as_json "$(changelog cat -e 0)")\",
-            \"dependencies\": $(cat publish/modrinth.$mod_loader.dependencies.json | tr -d "[:space:]"),
-            \"game_versions\": [\"$minecraft_version\"],
-            \"version_type\": \"$release_type\",
-            \"loaders\": [\"$mod_loader\"],
-            \"featured\": false,
-            \"project_id\": \"$MODRINTH_PROJECT_ID\",
-            \"file_parts\": [\"$mod_id-$mod_loader-$minecraft_version-$mod_version.jar\"]
-        }"
-
-        echo "metadata:"
-        echo "$metadata"
+metadata="{
+    \"name\": \"Version $mod_version\",
+    \"version_number\": \"$mod_version\",
+    \"changelog\": \"$(as_json "$(changelog cat -e 0)")\",
+    \"dependencies\": $(cat publish/modrinth.$mod_loader.dependencies.json | tr -d "[:space:]"),
+    \"game_versions\": [\"$minecraft_version\"],
+    \"version_type\": \"$release_type\",
+    \"loaders\": [\"$mod_loader\"],
+    \"featured\": false,
+    \"project_id\": \"$MODRINTH_PROJECT_ID\",
+    \"file_parts\": [\"$mod_id-$mod_loader-$minecraft_version-$mod_version.jar\"]
+}"
 
         mod_archive="./$mod_loader/build/libs/$mod_id-$mod_loader-$minecraft_version-$mod_version.jar"
         response=$(assert_curl -s -F data="$metadata" -F file="@$mod_archive" \
