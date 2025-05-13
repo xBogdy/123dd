@@ -938,7 +938,7 @@
   "series.rctmod.bdsp.title": "Brilliant Diamond/Shining Pearl",
   "series.rctmod.empty.description": "Empty Series",
   "series.rctmod.empty.title": "Empty",
-  "series.rctmod.freeroam.description": "Pause your current series and enjoy the freedom of no level cap restriction. Beware that when continuing your series it will set the level cap back to where it was originally.",
+  "series.rctmod.freeroam.description": "Pause your current series and enjoy the freedom of no level cap restriction. Keep in mind that resuming will revert the level cap back.",
   "series.rctmod.freeroam.title": "Freeroam",
   "series.rctmod.radicalred.description": "A difficult series taking place in the Kanto region. Are you up to the challenge?",
   "series.rctmod.radicalred.title": "Radical Red",
