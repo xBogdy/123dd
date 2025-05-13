@@ -295,7 +295,7 @@ for mod_loader in "${mod_loaders[@]}"; do
 metadata="{
     \"name\": \"Version $mod_version\",
     \"version_number\": \"$mod_version\",
-    \"changelog\": \"$(as_json "$(changelog cat -e 0)")\",
+    \"changelog\": \"\",
     \"dependencies\": $(cat publish/modrinth.$mod_loader.dependencies.json | tr -d "[:space:]"),
     \"game_versions\": [\"$minecraft_version\"],
     \"version_type\": \"$release_type\",
