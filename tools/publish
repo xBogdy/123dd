@@ -258,14 +258,12 @@ for mod_loader in "${mod_loaders[@]}"; do
 
 metadata="{
     $relations
-    \"changelog\": \"$(as_json "$(changelog cat -e 0)")\",
+    \"changelog\": \"\",
     \"changelogType\": \"markdown\",
     \"gameVersions\": [$minecraft_version_ids],
     \"releaseType\": \"$release_type\",
     \"modLoaderType\": \"${mod_loader^}\"
 }"
-
-        echo "$metadata" > "$mod_loader.meta.json"
 
         mod_archive="./$mod_loader/build/libs/$mod_id-$mod_loader-$minecraft_version-$mod_version.jar"
         response=$(assert_curl -s -F metadata="$metadata" -F file="@$mod_archive" \
@@ -304,8 +302,6 @@ metadata="{
     \"project_id\": \"$MODRINTH_PROJECT_ID\",
     \"file_parts\": [\"$mod_id-$mod_loader-$minecraft_version-$mod_version.jar\"]
 }"
-
-        echo "$metadata" > "$mod_loader.meta.json"
 
         mod_archive="./$mod_loader/build/libs/$mod_id-$mod_loader-$minecraft_version-$mod_version.jar"
         response=$(assert_curl -s -F data="$metadata" -F file="@$mod_archive" \
