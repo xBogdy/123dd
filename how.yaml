@@ -1,0 +1,13 @@
+run:
+  client:
+    fabric: bash gradlew fabric:runClient --console=plain
+    neoforge: bash gradlew neoforge:runClient --console=plain
+  server:
+    fabric: bash gradlew fabric:runServer --console=plain
+    neoforge: bash gradlew neoforge:runServer --console=plain
+generate:
+  assets: bash tools/generate/assets
+  textures: bash tools/generate/textures
+  trainers: bash tools/generate/trainers
+build: bash gradlew clean build --console=plain
+publish: inenv ./tools/publish
