@@ -266,7 +266,7 @@ for mod_loader in "${mod_loaders[@]}"; do
         }"
 
         echo "metadata:"
-        echo "$metatada"
+        echo "$metadata"
 
         mod_archive="./$mod_loader/build/libs/$mod_id-$mod_loader-$minecraft_version-$mod_version.jar"
         response=$(assert_curl -s -F metadata="$metadata" -F file="@$mod_archive" \
@@ -307,7 +307,7 @@ for mod_loader in "${mod_loaders[@]}"; do
         }"
 
         echo "metadata:"
-        echo "$metatada"
+        echo "$metadata"
 
         mod_archive="./$mod_loader/build/libs/$mod_id-$mod_loader-$minecraft_version-$mod_version.jar"
         response=$(assert_curl -s -F data="$metadata" -F file="@$mod_archive" \
